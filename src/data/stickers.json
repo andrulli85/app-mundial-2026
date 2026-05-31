@@ -260,6 +260,19 @@
     "group": "A"
   },
   {
+    "sticker_id": "mex-team",
+    "code": "MEX 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Mexico",
+    "team_code": "MEX",
+    "team_color": "#006847",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 20,
+    "group": "A"
+  },
+  {
     "sticker_id": "mex-2-malagon",
     "code": "MEX 2",
     "name": "Luis Malagón",
@@ -269,7 +282,7 @@
     "team_color": "#006847",
     "number": 2,
     "type": "player",
-    "sort_order": 20,
+    "sort_order": 21,
     "group": "A"
   },
   {
@@ -282,7 +295,7 @@
     "team_color": "#006847",
     "number": 3,
     "type": "player",
-    "sort_order": 21,
+    "sort_order": 22,
     "group": "A"
   },
   {
@@ -295,7 +308,7 @@
     "team_color": "#006847",
     "number": 4,
     "type": "player",
-    "sort_order": 22,
+    "sort_order": 23,
     "group": "A"
   },
   {
@@ -308,7 +321,7 @@
     "team_color": "#006847",
     "number": 5,
     "type": "player",
-    "sort_order": 23,
+    "sort_order": 24,
     "group": "A"
   },
   {
@@ -321,7 +334,7 @@
     "team_color": "#006847",
     "number": 6,
     "type": "player",
-    "sort_order": 24,
+    "sort_order": 25,
     "group": "A"
   },
   {
@@ -334,7 +347,7 @@
     "team_color": "#006847",
     "number": 7,
     "type": "player",
-    "sort_order": 25,
+    "sort_order": 26,
     "group": "A"
   },
   {
@@ -347,7 +360,7 @@
     "team_color": "#006847",
     "number": 8,
     "type": "player",
-    "sort_order": 26,
+    "sort_order": 27,
     "group": "A"
   },
   {
@@ -360,7 +373,7 @@
     "team_color": "#006847",
     "number": 9,
     "type": "player",
-    "sort_order": 27,
+    "sort_order": 28,
     "group": "A"
   },
   {
@@ -373,7 +386,7 @@
     "team_color": "#006847",
     "number": 10,
     "type": "player",
-    "sort_order": 28,
+    "sort_order": 29,
     "group": "A"
   },
   {
@@ -386,7 +399,7 @@
     "team_color": "#006847",
     "number": 11,
     "type": "player",
-    "sort_order": 29,
+    "sort_order": 30,
     "group": "A"
   },
   {
@@ -399,7 +412,7 @@
     "team_color": "#006847",
     "number": 12,
     "type": "player",
-    "sort_order": 30,
+    "sort_order": 31,
     "group": "A"
   },
   {
@@ -412,7 +425,7 @@
     "team_color": "#006847",
     "number": 14,
     "type": "player",
-    "sort_order": 31,
+    "sort_order": 32,
     "group": "A"
   },
   {
@@ -425,7 +438,7 @@
     "team_color": "#006847",
     "number": 15,
     "type": "player",
-    "sort_order": 32,
+    "sort_order": 33,
     "group": "A"
   },
   {
@@ -438,7 +451,7 @@
     "team_color": "#006847",
     "number": 16,
     "type": "player",
-    "sort_order": 33,
+    "sort_order": 34,
     "group": "A"
   },
   {
@@ -451,7 +464,7 @@
     "team_color": "#006847",
     "number": 17,
     "type": "player",
-    "sort_order": 34,
+    "sort_order": 35,
     "group": "A"
   },
   {
@@ -464,7 +477,7 @@
     "team_color": "#006847",
     "number": 18,
     "type": "player",
-    "sort_order": 35,
+    "sort_order": 36,
     "group": "A"
   },
   {
@@ -477,7 +490,7 @@
     "team_color": "#006847",
     "number": 19,
     "type": "player",
-    "sort_order": 36,
+    "sort_order": 37,
     "group": "A"
   },
   {
@@ -490,19 +503,6 @@
     "team_color": "#006847",
     "number": 20,
     "type": "player",
-    "sort_order": 37,
-    "group": "A"
-  },
-  {
-    "sticker_id": "mex-team",
-    "code": "MEX 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Mexico",
-    "team_code": "MEX",
-    "team_color": "#006847",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 38,
     "group": "A"
   },
@@ -520,6 +520,19 @@
     "group": "A"
   },
   {
+    "sticker_id": "rsa-team",
+    "code": "RSA 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "South Africa",
+    "team_code": "RSA",
+    "team_color": "#007749",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 40,
+    "group": "A"
+  },
+  {
     "sticker_id": "rsa-2-williams",
     "code": "RSA 2",
     "name": "Ronwen Williams",
@@ -529,7 +542,7 @@
     "team_color": "#007749",
     "number": 2,
     "type": "player",
-    "sort_order": 40,
+    "sort_order": 41,
     "group": "A"
   },
   {
@@ -542,7 +555,7 @@
     "team_color": "#007749",
     "number": 3,
     "type": "player",
-    "sort_order": 41,
+    "sort_order": 42,
     "group": "A"
   },
   {
@@ -555,7 +568,7 @@
     "team_color": "#007749",
     "number": 4,
     "type": "player",
-    "sort_order": 42,
+    "sort_order": 43,
     "group": "A"
   },
   {
@@ -568,7 +581,7 @@
     "team_color": "#007749",
     "number": 5,
     "type": "player",
-    "sort_order": 43,
+    "sort_order": 44,
     "group": "A"
   },
   {
@@ -581,7 +594,7 @@
     "team_color": "#007749",
     "number": 6,
     "type": "player",
-    "sort_order": 44,
+    "sort_order": 45,
     "group": "A"
   },
   {
@@ -594,7 +607,7 @@
     "team_color": "#007749",
     "number": 7,
     "type": "player",
-    "sort_order": 45,
+    "sort_order": 46,
     "group": "A"
   },
   {
@@ -607,7 +620,7 @@
     "team_color": "#007749",
     "number": 8,
     "type": "player",
-    "sort_order": 46,
+    "sort_order": 47,
     "group": "A"
   },
   {
@@ -620,7 +633,7 @@
     "team_color": "#007749",
     "number": 9,
     "type": "player",
-    "sort_order": 47,
+    "sort_order": 48,
     "group": "A"
   },
   {
@@ -633,7 +646,7 @@
     "team_color": "#007749",
     "number": 10,
     "type": "player",
-    "sort_order": 48,
+    "sort_order": 49,
     "group": "A"
   },
   {
@@ -646,7 +659,7 @@
     "team_color": "#007749",
     "number": 11,
     "type": "player",
-    "sort_order": 49,
+    "sort_order": 50,
     "group": "A"
   },
   {
@@ -659,7 +672,7 @@
     "team_color": "#007749",
     "number": 12,
     "type": "player",
-    "sort_order": 50,
+    "sort_order": 51,
     "group": "A"
   },
   {
@@ -672,7 +685,7 @@
     "team_color": "#007749",
     "number": 14,
     "type": "player",
-    "sort_order": 51,
+    "sort_order": 52,
     "group": "A"
   },
   {
@@ -685,7 +698,7 @@
     "team_color": "#007749",
     "number": 15,
     "type": "player",
-    "sort_order": 52,
+    "sort_order": 53,
     "group": "A"
   },
   {
@@ -698,7 +711,7 @@
     "team_color": "#007749",
     "number": 16,
     "type": "player",
-    "sort_order": 53,
+    "sort_order": 54,
     "group": "A"
   },
   {
@@ -711,7 +724,7 @@
     "team_color": "#007749",
     "number": 17,
     "type": "player",
-    "sort_order": 54,
+    "sort_order": 55,
     "group": "A"
   },
   {
@@ -724,7 +737,7 @@
     "team_color": "#007749",
     "number": 18,
     "type": "player",
-    "sort_order": 55,
+    "sort_order": 56,
     "group": "A"
   },
   {
@@ -737,7 +750,7 @@
     "team_color": "#007749",
     "number": 19,
     "type": "player",
-    "sort_order": 56,
+    "sort_order": 57,
     "group": "A"
   },
   {
@@ -750,19 +763,6 @@
     "team_color": "#007749",
     "number": 20,
     "type": "player",
-    "sort_order": 57,
-    "group": "A"
-  },
-  {
-    "sticker_id": "rsa-team",
-    "code": "RSA 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "South Africa",
-    "team_code": "RSA",
-    "team_color": "#007749",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 58,
     "group": "A"
   },
@@ -780,6 +780,19 @@
     "group": "A"
   },
   {
+    "sticker_id": "kor-team",
+    "code": "KOR 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "South Korea",
+    "team_code": "KOR",
+    "team_color": "#C8102E",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 60,
+    "group": "A"
+  },
+  {
     "sticker_id": "kor-2-jo",
     "code": "KOR 2",
     "name": "Hyeon-woo Jo",
@@ -789,7 +802,7 @@
     "team_color": "#C8102E",
     "number": 2,
     "type": "player",
-    "sort_order": 60,
+    "sort_order": 61,
     "group": "A"
   },
   {
@@ -802,7 +815,7 @@
     "team_color": "#C8102E",
     "number": 3,
     "type": "player",
-    "sort_order": 61,
+    "sort_order": 62,
     "group": "A"
   },
   {
@@ -815,7 +828,7 @@
     "team_color": "#C8102E",
     "number": 4,
     "type": "player",
-    "sort_order": 62,
+    "sort_order": 63,
     "group": "A"
   },
   {
@@ -828,7 +841,7 @@
     "team_color": "#C8102E",
     "number": 5,
     "type": "player",
-    "sort_order": 63,
+    "sort_order": 64,
     "group": "A"
   },
   {
@@ -841,7 +854,7 @@
     "team_color": "#C8102E",
     "number": 6,
     "type": "player",
-    "sort_order": 64,
+    "sort_order": 65,
     "group": "A"
   },
   {
@@ -854,7 +867,7 @@
     "team_color": "#C8102E",
     "number": 7,
     "type": "player",
-    "sort_order": 65,
+    "sort_order": 66,
     "group": "A"
   },
   {
@@ -867,7 +880,7 @@
     "team_color": "#C8102E",
     "number": 8,
     "type": "player",
-    "sort_order": 66,
+    "sort_order": 67,
     "group": "A"
   },
   {
@@ -880,7 +893,7 @@
     "team_color": "#C8102E",
     "number": 9,
     "type": "player",
-    "sort_order": 67,
+    "sort_order": 68,
     "group": "A"
   },
   {
@@ -893,7 +906,7 @@
     "team_color": "#C8102E",
     "number": 10,
     "type": "player",
-    "sort_order": 68,
+    "sort_order": 69,
     "group": "A"
   },
   {
@@ -906,7 +919,7 @@
     "team_color": "#C8102E",
     "number": 11,
     "type": "player",
-    "sort_order": 69,
+    "sort_order": 70,
     "group": "A"
   },
   {
@@ -919,7 +932,7 @@
     "team_color": "#C8102E",
     "number": 12,
     "type": "player",
-    "sort_order": 70,
+    "sort_order": 71,
     "group": "A"
   },
   {
@@ -932,7 +945,7 @@
     "team_color": "#C8102E",
     "number": 14,
     "type": "player",
-    "sort_order": 71,
+    "sort_order": 72,
     "group": "A"
   },
   {
@@ -945,7 +958,7 @@
     "team_color": "#C8102E",
     "number": 15,
     "type": "player",
-    "sort_order": 72,
+    "sort_order": 73,
     "group": "A"
   },
   {
@@ -958,7 +971,7 @@
     "team_color": "#C8102E",
     "number": 16,
     "type": "player",
-    "sort_order": 73,
+    "sort_order": 74,
     "group": "A"
   },
   {
@@ -971,7 +984,7 @@
     "team_color": "#C8102E",
     "number": 17,
     "type": "player",
-    "sort_order": 74,
+    "sort_order": 75,
     "group": "A"
   },
   {
@@ -984,7 +997,7 @@
     "team_color": "#C8102E",
     "number": 18,
     "type": "player",
-    "sort_order": 75,
+    "sort_order": 76,
     "group": "A"
   },
   {
@@ -997,7 +1010,7 @@
     "team_color": "#C8102E",
     "number": 19,
     "type": "player",
-    "sort_order": 76,
+    "sort_order": 77,
     "group": "A"
   },
   {
@@ -1010,19 +1023,6 @@
     "team_color": "#C8102E",
     "number": 20,
     "type": "player",
-    "sort_order": 77,
-    "group": "A"
-  },
-  {
-    "sticker_id": "kor-team",
-    "code": "KOR 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "South Korea",
-    "team_code": "KOR",
-    "team_color": "#C8102E",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 78,
     "group": "A"
   },
@@ -1040,6 +1040,19 @@
     "group": "A"
   },
   {
+    "sticker_id": "cze-team",
+    "code": "CZE 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Czechia",
+    "team_code": "CZE",
+    "team_color": "#11457E",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 80,
+    "group": "A"
+  },
+  {
     "sticker_id": "cze-2-kovar",
     "code": "CZE 2",
     "name": "Matej Kovar",
@@ -1049,7 +1062,7 @@
     "team_color": "#11457E",
     "number": 2,
     "type": "player",
-    "sort_order": 80,
+    "sort_order": 81,
     "group": "A"
   },
   {
@@ -1062,7 +1075,7 @@
     "team_color": "#11457E",
     "number": 3,
     "type": "player",
-    "sort_order": 81,
+    "sort_order": 82,
     "group": "A"
   },
   {
@@ -1075,7 +1088,7 @@
     "team_color": "#11457E",
     "number": 4,
     "type": "player",
-    "sort_order": 82,
+    "sort_order": 83,
     "group": "A"
   },
   {
@@ -1088,7 +1101,7 @@
     "team_color": "#11457E",
     "number": 5,
     "type": "player",
-    "sort_order": 83,
+    "sort_order": 84,
     "group": "A"
   },
   {
@@ -1101,7 +1114,7 @@
     "team_color": "#11457E",
     "number": 6,
     "type": "player",
-    "sort_order": 84,
+    "sort_order": 85,
     "group": "A"
   },
   {
@@ -1114,7 +1127,7 @@
     "team_color": "#11457E",
     "number": 7,
     "type": "player",
-    "sort_order": 85,
+    "sort_order": 86,
     "group": "A"
   },
   {
@@ -1127,7 +1140,7 @@
     "team_color": "#11457E",
     "number": 8,
     "type": "player",
-    "sort_order": 86,
+    "sort_order": 87,
     "group": "A"
   },
   {
@@ -1140,7 +1153,7 @@
     "team_color": "#11457E",
     "number": 9,
     "type": "player",
-    "sort_order": 87,
+    "sort_order": 88,
     "group": "A"
   },
   {
@@ -1153,7 +1166,7 @@
     "team_color": "#11457E",
     "number": 10,
     "type": "player",
-    "sort_order": 88,
+    "sort_order": 89,
     "group": "A"
   },
   {
@@ -1166,7 +1179,7 @@
     "team_color": "#11457E",
     "number": 11,
     "type": "player",
-    "sort_order": 89,
+    "sort_order": 90,
     "group": "A"
   },
   {
@@ -1179,7 +1192,7 @@
     "team_color": "#11457E",
     "number": 12,
     "type": "player",
-    "sort_order": 90,
+    "sort_order": 91,
     "group": "A"
   },
   {
@@ -1192,7 +1205,7 @@
     "team_color": "#11457E",
     "number": 14,
     "type": "player",
-    "sort_order": 91,
+    "sort_order": 92,
     "group": "A"
   },
   {
@@ -1205,7 +1218,7 @@
     "team_color": "#11457E",
     "number": 15,
     "type": "player",
-    "sort_order": 92,
+    "sort_order": 93,
     "group": "A"
   },
   {
@@ -1218,7 +1231,7 @@
     "team_color": "#11457E",
     "number": 16,
     "type": "player",
-    "sort_order": 93,
+    "sort_order": 94,
     "group": "A"
   },
   {
@@ -1231,7 +1244,7 @@
     "team_color": "#11457E",
     "number": 17,
     "type": "player",
-    "sort_order": 94,
+    "sort_order": 95,
     "group": "A"
   },
   {
@@ -1244,7 +1257,7 @@
     "team_color": "#11457E",
     "number": 18,
     "type": "player",
-    "sort_order": 95,
+    "sort_order": 96,
     "group": "A"
   },
   {
@@ -1257,7 +1270,7 @@
     "team_color": "#11457E",
     "number": 19,
     "type": "player",
-    "sort_order": 96,
+    "sort_order": 97,
     "group": "A"
   },
   {
@@ -1270,19 +1283,6 @@
     "team_color": "#11457E",
     "number": 20,
     "type": "player",
-    "sort_order": 97,
-    "group": "A"
-  },
-  {
-    "sticker_id": "cze-team",
-    "code": "CZE 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Czechia",
-    "team_code": "CZE",
-    "team_color": "#11457E",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 98,
     "group": "A"
   },
@@ -1300,6 +1300,19 @@
     "group": "B"
   },
   {
+    "sticker_id": "can-team",
+    "code": "CAN 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Canada",
+    "team_code": "CAN",
+    "team_color": "#D52B1E",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 100,
+    "group": "B"
+  },
+  {
     "sticker_id": "can-2-st-clair",
     "code": "CAN 2",
     "name": "Dayne St.Clair",
@@ -1309,7 +1322,7 @@
     "team_color": "#D52B1E",
     "number": 2,
     "type": "player",
-    "sort_order": 100,
+    "sort_order": 101,
     "group": "B"
   },
   {
@@ -1322,7 +1335,7 @@
     "team_color": "#D52B1E",
     "number": 3,
     "type": "player",
-    "sort_order": 101,
+    "sort_order": 102,
     "group": "B"
   },
   {
@@ -1335,7 +1348,7 @@
     "team_color": "#D52B1E",
     "number": 4,
     "type": "player",
-    "sort_order": 102,
+    "sort_order": 103,
     "group": "B"
   },
   {
@@ -1348,7 +1361,7 @@
     "team_color": "#D52B1E",
     "number": 5,
     "type": "player",
-    "sort_order": 103,
+    "sort_order": 104,
     "group": "B"
   },
   {
@@ -1361,7 +1374,7 @@
     "team_color": "#D52B1E",
     "number": 6,
     "type": "player",
-    "sort_order": 104,
+    "sort_order": 105,
     "group": "B"
   },
   {
@@ -1374,7 +1387,7 @@
     "team_color": "#D52B1E",
     "number": 7,
     "type": "player",
-    "sort_order": 105,
+    "sort_order": 106,
     "group": "B"
   },
   {
@@ -1387,7 +1400,7 @@
     "team_color": "#D52B1E",
     "number": 8,
     "type": "player",
-    "sort_order": 106,
+    "sort_order": 107,
     "group": "B"
   },
   {
@@ -1400,7 +1413,7 @@
     "team_color": "#D52B1E",
     "number": 9,
     "type": "player",
-    "sort_order": 107,
+    "sort_order": 108,
     "group": "B"
   },
   {
@@ -1413,7 +1426,7 @@
     "team_color": "#D52B1E",
     "number": 10,
     "type": "player",
-    "sort_order": 108,
+    "sort_order": 109,
     "group": "B"
   },
   {
@@ -1426,7 +1439,7 @@
     "team_color": "#D52B1E",
     "number": 11,
     "type": "player",
-    "sort_order": 109,
+    "sort_order": 110,
     "group": "B"
   },
   {
@@ -1439,7 +1452,7 @@
     "team_color": "#D52B1E",
     "number": 12,
     "type": "player",
-    "sort_order": 110,
+    "sort_order": 111,
     "group": "B"
   },
   {
@@ -1452,7 +1465,7 @@
     "team_color": "#D52B1E",
     "number": 14,
     "type": "player",
-    "sort_order": 111,
+    "sort_order": 112,
     "group": "B"
   },
   {
@@ -1465,7 +1478,7 @@
     "team_color": "#D52B1E",
     "number": 15,
     "type": "player",
-    "sort_order": 112,
+    "sort_order": 113,
     "group": "B"
   },
   {
@@ -1478,7 +1491,7 @@
     "team_color": "#D52B1E",
     "number": 16,
     "type": "player",
-    "sort_order": 113,
+    "sort_order": 114,
     "group": "B"
   },
   {
@@ -1491,7 +1504,7 @@
     "team_color": "#D52B1E",
     "number": 17,
     "type": "player",
-    "sort_order": 114,
+    "sort_order": 115,
     "group": "B"
   },
   {
@@ -1504,7 +1517,7 @@
     "team_color": "#D52B1E",
     "number": 18,
     "type": "player",
-    "sort_order": 115,
+    "sort_order": 116,
     "group": "B"
   },
   {
@@ -1517,7 +1530,7 @@
     "team_color": "#D52B1E",
     "number": 19,
     "type": "player",
-    "sort_order": 116,
+    "sort_order": 117,
     "group": "B"
   },
   {
@@ -1530,19 +1543,6 @@
     "team_color": "#D52B1E",
     "number": 20,
     "type": "player",
-    "sort_order": 117,
-    "group": "B"
-  },
-  {
-    "sticker_id": "can-team",
-    "code": "CAN 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Canada",
-    "team_code": "CAN",
-    "team_color": "#D52B1E",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 118,
     "group": "B"
   },
@@ -1560,6 +1560,19 @@
     "group": "B"
   },
   {
+    "sticker_id": "bih-team",
+    "code": "BIH 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Bosnia and Herzegovina",
+    "team_code": "BIH",
+    "team_color": "#002F6C",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 120,
+    "group": "B"
+  },
+  {
     "sticker_id": "bih-2-vasilj",
     "code": "BIH 2",
     "name": "Nikola Vasilj",
@@ -1569,7 +1582,7 @@
     "team_color": "#002F6C",
     "number": 2,
     "type": "player",
-    "sort_order": 120,
+    "sort_order": 121,
     "group": "B"
   },
   {
@@ -1582,7 +1595,7 @@
     "team_color": "#002F6C",
     "number": 3,
     "type": "player",
-    "sort_order": 121,
+    "sort_order": 122,
     "group": "B"
   },
   {
@@ -1595,7 +1608,7 @@
     "team_color": "#002F6C",
     "number": 4,
     "type": "player",
-    "sort_order": 122,
+    "sort_order": 123,
     "group": "B"
   },
   {
@@ -1608,7 +1621,7 @@
     "team_color": "#002F6C",
     "number": 5,
     "type": "player",
-    "sort_order": 123,
+    "sort_order": 124,
     "group": "B"
   },
   {
@@ -1621,7 +1634,7 @@
     "team_color": "#002F6C",
     "number": 6,
     "type": "player",
-    "sort_order": 124,
+    "sort_order": 125,
     "group": "B"
   },
   {
@@ -1634,7 +1647,7 @@
     "team_color": "#002F6C",
     "number": 7,
     "type": "player",
-    "sort_order": 125,
+    "sort_order": 126,
     "group": "B"
   },
   {
@@ -1647,7 +1660,7 @@
     "team_color": "#002F6C",
     "number": 8,
     "type": "player",
-    "sort_order": 126,
+    "sort_order": 127,
     "group": "B"
   },
   {
@@ -1660,7 +1673,7 @@
     "team_color": "#002F6C",
     "number": 9,
     "type": "player",
-    "sort_order": 127,
+    "sort_order": 128,
     "group": "B"
   },
   {
@@ -1673,7 +1686,7 @@
     "team_color": "#002F6C",
     "number": 10,
     "type": "player",
-    "sort_order": 128,
+    "sort_order": 129,
     "group": "B"
   },
   {
@@ -1686,7 +1699,7 @@
     "team_color": "#002F6C",
     "number": 11,
     "type": "player",
-    "sort_order": 129,
+    "sort_order": 130,
     "group": "B"
   },
   {
@@ -1699,7 +1712,7 @@
     "team_color": "#002F6C",
     "number": 12,
     "type": "player",
-    "sort_order": 130,
+    "sort_order": 131,
     "group": "B"
   },
   {
@@ -1712,7 +1725,7 @@
     "team_color": "#002F6C",
     "number": 14,
     "type": "player",
-    "sort_order": 131,
+    "sort_order": 132,
     "group": "B"
   },
   {
@@ -1725,7 +1738,7 @@
     "team_color": "#002F6C",
     "number": 15,
     "type": "player",
-    "sort_order": 132,
+    "sort_order": 133,
     "group": "B"
   },
   {
@@ -1738,7 +1751,7 @@
     "team_color": "#002F6C",
     "number": 16,
     "type": "player",
-    "sort_order": 133,
+    "sort_order": 134,
     "group": "B"
   },
   {
@@ -1751,7 +1764,7 @@
     "team_color": "#002F6C",
     "number": 17,
     "type": "player",
-    "sort_order": 134,
+    "sort_order": 135,
     "group": "B"
   },
   {
@@ -1764,7 +1777,7 @@
     "team_color": "#002F6C",
     "number": 18,
     "type": "player",
-    "sort_order": 135,
+    "sort_order": 136,
     "group": "B"
   },
   {
@@ -1777,7 +1790,7 @@
     "team_color": "#002F6C",
     "number": 19,
     "type": "player",
-    "sort_order": 136,
+    "sort_order": 137,
     "group": "B"
   },
   {
@@ -1790,19 +1803,6 @@
     "team_color": "#002F6C",
     "number": 20,
     "type": "player",
-    "sort_order": 137,
-    "group": "B"
-  },
-  {
-    "sticker_id": "bih-team",
-    "code": "BIH 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Bosnia and Herzegovina",
-    "team_code": "BIH",
-    "team_color": "#002F6C",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 138,
     "group": "B"
   },
@@ -1820,6 +1820,19 @@
     "group": "B"
   },
   {
+    "sticker_id": "qat-team",
+    "code": "QAT 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Qatar",
+    "team_code": "QAT",
+    "team_color": "#8A1538",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 140,
+    "group": "B"
+  },
+  {
     "sticker_id": "qat-2-barsham",
     "code": "QAT 2",
     "name": "Meshaal Barsham",
@@ -1829,7 +1842,7 @@
     "team_color": "#8A1538",
     "number": 2,
     "type": "player",
-    "sort_order": 140,
+    "sort_order": 141,
     "group": "B"
   },
   {
@@ -1842,7 +1855,7 @@
     "team_color": "#8A1538",
     "number": 3,
     "type": "player",
-    "sort_order": 141,
+    "sort_order": 142,
     "group": "B"
   },
   {
@@ -1855,7 +1868,7 @@
     "team_color": "#8A1538",
     "number": 4,
     "type": "player",
-    "sort_order": 142,
+    "sort_order": 143,
     "group": "B"
   },
   {
@@ -1868,7 +1881,7 @@
     "team_color": "#8A1538",
     "number": 5,
     "type": "player",
-    "sort_order": 143,
+    "sort_order": 144,
     "group": "B"
   },
   {
@@ -1881,7 +1894,7 @@
     "team_color": "#8A1538",
     "number": 6,
     "type": "player",
-    "sort_order": 144,
+    "sort_order": 145,
     "group": "B"
   },
   {
@@ -1894,7 +1907,7 @@
     "team_color": "#8A1538",
     "number": 7,
     "type": "player",
-    "sort_order": 145,
+    "sort_order": 146,
     "group": "B"
   },
   {
@@ -1907,7 +1920,7 @@
     "team_color": "#8A1538",
     "number": 8,
     "type": "player",
-    "sort_order": 146,
+    "sort_order": 147,
     "group": "B"
   },
   {
@@ -1920,7 +1933,7 @@
     "team_color": "#8A1538",
     "number": 9,
     "type": "player",
-    "sort_order": 147,
+    "sort_order": 148,
     "group": "B"
   },
   {
@@ -1933,7 +1946,7 @@
     "team_color": "#8A1538",
     "number": 10,
     "type": "player",
-    "sort_order": 148,
+    "sort_order": 149,
     "group": "B"
   },
   {
@@ -1946,7 +1959,7 @@
     "team_color": "#8A1538",
     "number": 11,
     "type": "player",
-    "sort_order": 149,
+    "sort_order": 150,
     "group": "B"
   },
   {
@@ -1959,7 +1972,7 @@
     "team_color": "#8A1538",
     "number": 12,
     "type": "player",
-    "sort_order": 150,
+    "sort_order": 151,
     "group": "B"
   },
   {
@@ -1972,7 +1985,7 @@
     "team_color": "#8A1538",
     "number": 14,
     "type": "player",
-    "sort_order": 151,
+    "sort_order": 152,
     "group": "B"
   },
   {
@@ -1985,7 +1998,7 @@
     "team_color": "#8A1538",
     "number": 15,
     "type": "player",
-    "sort_order": 152,
+    "sort_order": 153,
     "group": "B"
   },
   {
@@ -1998,7 +2011,7 @@
     "team_color": "#8A1538",
     "number": 16,
     "type": "player",
-    "sort_order": 153,
+    "sort_order": 154,
     "group": "B"
   },
   {
@@ -2011,7 +2024,7 @@
     "team_color": "#8A1538",
     "number": 17,
     "type": "player",
-    "sort_order": 154,
+    "sort_order": 155,
     "group": "B"
   },
   {
@@ -2024,7 +2037,7 @@
     "team_color": "#8A1538",
     "number": 18,
     "type": "player",
-    "sort_order": 155,
+    "sort_order": 156,
     "group": "B"
   },
   {
@@ -2037,7 +2050,7 @@
     "team_color": "#8A1538",
     "number": 19,
     "type": "player",
-    "sort_order": 156,
+    "sort_order": 157,
     "group": "B"
   },
   {
@@ -2050,19 +2063,6 @@
     "team_color": "#8A1538",
     "number": 20,
     "type": "player",
-    "sort_order": 157,
-    "group": "B"
-  },
-  {
-    "sticker_id": "qat-team",
-    "code": "QAT 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Qatar",
-    "team_code": "QAT",
-    "team_color": "#8A1538",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 158,
     "group": "B"
   },
@@ -2080,6 +2080,19 @@
     "group": "B"
   },
   {
+    "sticker_id": "sui-team",
+    "code": "SUI 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Switzerland",
+    "team_code": "SUI",
+    "team_color": "#D52B1E",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 160,
+    "group": "B"
+  },
+  {
     "sticker_id": "sui-2-kobel",
     "code": "SUI 2",
     "name": "Gregor Kobel",
@@ -2089,7 +2102,7 @@
     "team_color": "#D52B1E",
     "number": 2,
     "type": "player",
-    "sort_order": 160,
+    "sort_order": 161,
     "group": "B"
   },
   {
@@ -2102,7 +2115,7 @@
     "team_color": "#D52B1E",
     "number": 3,
     "type": "player",
-    "sort_order": 161,
+    "sort_order": 162,
     "group": "B"
   },
   {
@@ -2115,7 +2128,7 @@
     "team_color": "#D52B1E",
     "number": 4,
     "type": "player",
-    "sort_order": 162,
+    "sort_order": 163,
     "group": "B"
   },
   {
@@ -2128,7 +2141,7 @@
     "team_color": "#D52B1E",
     "number": 5,
     "type": "player",
-    "sort_order": 163,
+    "sort_order": 164,
     "group": "B"
   },
   {
@@ -2141,7 +2154,7 @@
     "team_color": "#D52B1E",
     "number": 6,
     "type": "player",
-    "sort_order": 164,
+    "sort_order": 165,
     "group": "B"
   },
   {
@@ -2154,7 +2167,7 @@
     "team_color": "#D52B1E",
     "number": 7,
     "type": "player",
-    "sort_order": 165,
+    "sort_order": 166,
     "group": "B"
   },
   {
@@ -2167,7 +2180,7 @@
     "team_color": "#D52B1E",
     "number": 8,
     "type": "player",
-    "sort_order": 166,
+    "sort_order": 167,
     "group": "B"
   },
   {
@@ -2180,7 +2193,7 @@
     "team_color": "#D52B1E",
     "number": 9,
     "type": "player",
-    "sort_order": 167,
+    "sort_order": 168,
     "group": "B"
   },
   {
@@ -2193,7 +2206,7 @@
     "team_color": "#D52B1E",
     "number": 10,
     "type": "player",
-    "sort_order": 168,
+    "sort_order": 169,
     "group": "B"
   },
   {
@@ -2206,7 +2219,7 @@
     "team_color": "#D52B1E",
     "number": 11,
     "type": "player",
-    "sort_order": 169,
+    "sort_order": 170,
     "group": "B"
   },
   {
@@ -2219,7 +2232,7 @@
     "team_color": "#D52B1E",
     "number": 12,
     "type": "player",
-    "sort_order": 170,
+    "sort_order": 171,
     "group": "B"
   },
   {
@@ -2232,7 +2245,7 @@
     "team_color": "#D52B1E",
     "number": 14,
     "type": "player",
-    "sort_order": 171,
+    "sort_order": 172,
     "group": "B"
   },
   {
@@ -2245,7 +2258,7 @@
     "team_color": "#D52B1E",
     "number": 15,
     "type": "player",
-    "sort_order": 172,
+    "sort_order": 173,
     "group": "B"
   },
   {
@@ -2258,7 +2271,7 @@
     "team_color": "#D52B1E",
     "number": 16,
     "type": "player",
-    "sort_order": 173,
+    "sort_order": 174,
     "group": "B"
   },
   {
@@ -2271,7 +2284,7 @@
     "team_color": "#D52B1E",
     "number": 17,
     "type": "player",
-    "sort_order": 174,
+    "sort_order": 175,
     "group": "B"
   },
   {
@@ -2284,7 +2297,7 @@
     "team_color": "#D52B1E",
     "number": 18,
     "type": "player",
-    "sort_order": 175,
+    "sort_order": 176,
     "group": "B"
   },
   {
@@ -2297,7 +2310,7 @@
     "team_color": "#D52B1E",
     "number": 19,
     "type": "player",
-    "sort_order": 176,
+    "sort_order": 177,
     "group": "B"
   },
   {
@@ -2310,19 +2323,6 @@
     "team_color": "#D52B1E",
     "number": 20,
     "type": "player",
-    "sort_order": 177,
-    "group": "B"
-  },
-  {
-    "sticker_id": "sui-team",
-    "code": "SUI 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Switzerland",
-    "team_code": "SUI",
-    "team_color": "#D52B1E",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 178,
     "group": "B"
   },
@@ -2340,6 +2340,19 @@
     "group": "C"
   },
   {
+    "sticker_id": "bra-team",
+    "code": "BRA 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Brazil",
+    "team_code": "BRA",
+    "team_color": "#FEDF00",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 180,
+    "group": "C"
+  },
+  {
     "sticker_id": "bra-2-alisson",
     "code": "BRA 2",
     "name": "Alisson",
@@ -2349,7 +2362,7 @@
     "team_color": "#FEDF00",
     "number": 2,
     "type": "player",
-    "sort_order": 180,
+    "sort_order": 181,
     "group": "C"
   },
   {
@@ -2362,7 +2375,7 @@
     "team_color": "#FEDF00",
     "number": 3,
     "type": "player",
-    "sort_order": 181,
+    "sort_order": 182,
     "group": "C"
   },
   {
@@ -2375,7 +2388,7 @@
     "team_color": "#FEDF00",
     "number": 4,
     "type": "player",
-    "sort_order": 182,
+    "sort_order": 183,
     "group": "C"
   },
   {
@@ -2388,7 +2401,7 @@
     "team_color": "#FEDF00",
     "number": 5,
     "type": "player",
-    "sort_order": 183,
+    "sort_order": 184,
     "group": "C"
   },
   {
@@ -2401,7 +2414,7 @@
     "team_color": "#FEDF00",
     "number": 6,
     "type": "player",
-    "sort_order": 184,
+    "sort_order": 185,
     "group": "C"
   },
   {
@@ -2414,7 +2427,7 @@
     "team_color": "#FEDF00",
     "number": 7,
     "type": "player",
-    "sort_order": 185,
+    "sort_order": 186,
     "group": "C"
   },
   {
@@ -2427,7 +2440,7 @@
     "team_color": "#FEDF00",
     "number": 8,
     "type": "player",
-    "sort_order": 186,
+    "sort_order": 187,
     "group": "C"
   },
   {
@@ -2440,7 +2453,7 @@
     "team_color": "#FEDF00",
     "number": 9,
     "type": "player",
-    "sort_order": 187,
+    "sort_order": 188,
     "group": "C"
   },
   {
@@ -2453,7 +2466,7 @@
     "team_color": "#FEDF00",
     "number": 10,
     "type": "player",
-    "sort_order": 188,
+    "sort_order": 189,
     "group": "C"
   },
   {
@@ -2466,7 +2479,7 @@
     "team_color": "#FEDF00",
     "number": 11,
     "type": "player",
-    "sort_order": 189,
+    "sort_order": 190,
     "group": "C"
   },
   {
@@ -2479,7 +2492,7 @@
     "team_color": "#FEDF00",
     "number": 12,
     "type": "player",
-    "sort_order": 190,
+    "sort_order": 191,
     "group": "C"
   },
   {
@@ -2492,7 +2505,7 @@
     "team_color": "#FEDF00",
     "number": 14,
     "type": "player",
-    "sort_order": 191,
+    "sort_order": 192,
     "group": "C"
   },
   {
@@ -2505,7 +2518,7 @@
     "team_color": "#FEDF00",
     "number": 15,
     "type": "player",
-    "sort_order": 192,
+    "sort_order": 193,
     "group": "C"
   },
   {
@@ -2518,7 +2531,7 @@
     "team_color": "#FEDF00",
     "number": 16,
     "type": "player",
-    "sort_order": 193,
+    "sort_order": 194,
     "group": "C"
   },
   {
@@ -2531,7 +2544,7 @@
     "team_color": "#FEDF00",
     "number": 17,
     "type": "player",
-    "sort_order": 194,
+    "sort_order": 195,
     "group": "C"
   },
   {
@@ -2544,7 +2557,7 @@
     "team_color": "#FEDF00",
     "number": 18,
     "type": "player",
-    "sort_order": 195,
+    "sort_order": 196,
     "group": "C"
   },
   {
@@ -2557,7 +2570,7 @@
     "team_color": "#FEDF00",
     "number": 19,
     "type": "player",
-    "sort_order": 196,
+    "sort_order": 197,
     "group": "C"
   },
   {
@@ -2570,19 +2583,6 @@
     "team_color": "#FEDF00",
     "number": 20,
     "type": "player",
-    "sort_order": 197,
-    "group": "C"
-  },
-  {
-    "sticker_id": "bra-team",
-    "code": "BRA 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Brazil",
-    "team_code": "BRA",
-    "team_color": "#FEDF00",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 198,
     "group": "C"
   },
@@ -2600,6 +2600,19 @@
     "group": "C"
   },
   {
+    "sticker_id": "mar-team",
+    "code": "MAR 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Morocco",
+    "team_code": "MAR",
+    "team_color": "#C1272D",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 200,
+    "group": "C"
+  },
+  {
     "sticker_id": "mar-2-bounou",
     "code": "MAR 2",
     "name": "Yassine Bounou",
@@ -2609,7 +2622,7 @@
     "team_color": "#C1272D",
     "number": 2,
     "type": "player",
-    "sort_order": 200,
+    "sort_order": 201,
     "group": "C"
   },
   {
@@ -2622,7 +2635,7 @@
     "team_color": "#C1272D",
     "number": 3,
     "type": "player",
-    "sort_order": 201,
+    "sort_order": 202,
     "group": "C"
   },
   {
@@ -2635,7 +2648,7 @@
     "team_color": "#C1272D",
     "number": 4,
     "type": "player",
-    "sort_order": 202,
+    "sort_order": 203,
     "group": "C"
   },
   {
@@ -2648,7 +2661,7 @@
     "team_color": "#C1272D",
     "number": 5,
     "type": "player",
-    "sort_order": 203,
+    "sort_order": 204,
     "group": "C"
   },
   {
@@ -2661,7 +2674,7 @@
     "team_color": "#C1272D",
     "number": 6,
     "type": "player",
-    "sort_order": 204,
+    "sort_order": 205,
     "group": "C"
   },
   {
@@ -2674,7 +2687,7 @@
     "team_color": "#C1272D",
     "number": 7,
     "type": "player",
-    "sort_order": 205,
+    "sort_order": 206,
     "group": "C"
   },
   {
@@ -2687,7 +2700,7 @@
     "team_color": "#C1272D",
     "number": 8,
     "type": "player",
-    "sort_order": 206,
+    "sort_order": 207,
     "group": "C"
   },
   {
@@ -2700,7 +2713,7 @@
     "team_color": "#C1272D",
     "number": 9,
     "type": "player",
-    "sort_order": 207,
+    "sort_order": 208,
     "group": "C"
   },
   {
@@ -2713,7 +2726,7 @@
     "team_color": "#C1272D",
     "number": 10,
     "type": "player",
-    "sort_order": 208,
+    "sort_order": 209,
     "group": "C"
   },
   {
@@ -2726,7 +2739,7 @@
     "team_color": "#C1272D",
     "number": 11,
     "type": "player",
-    "sort_order": 209,
+    "sort_order": 210,
     "group": "C"
   },
   {
@@ -2739,7 +2752,7 @@
     "team_color": "#C1272D",
     "number": 12,
     "type": "player",
-    "sort_order": 210,
+    "sort_order": 211,
     "group": "C"
   },
   {
@@ -2752,7 +2765,7 @@
     "team_color": "#C1272D",
     "number": 14,
     "type": "player",
-    "sort_order": 211,
+    "sort_order": 212,
     "group": "C"
   },
   {
@@ -2765,7 +2778,7 @@
     "team_color": "#C1272D",
     "number": 15,
     "type": "player",
-    "sort_order": 212,
+    "sort_order": 213,
     "group": "C"
   },
   {
@@ -2778,7 +2791,7 @@
     "team_color": "#C1272D",
     "number": 16,
     "type": "player",
-    "sort_order": 213,
+    "sort_order": 214,
     "group": "C"
   },
   {
@@ -2791,7 +2804,7 @@
     "team_color": "#C1272D",
     "number": 17,
     "type": "player",
-    "sort_order": 214,
+    "sort_order": 215,
     "group": "C"
   },
   {
@@ -2804,7 +2817,7 @@
     "team_color": "#C1272D",
     "number": 18,
     "type": "player",
-    "sort_order": 215,
+    "sort_order": 216,
     "group": "C"
   },
   {
@@ -2817,7 +2830,7 @@
     "team_color": "#C1272D",
     "number": 19,
     "type": "player",
-    "sort_order": 216,
+    "sort_order": 217,
     "group": "C"
   },
   {
@@ -2830,19 +2843,6 @@
     "team_color": "#C1272D",
     "number": 20,
     "type": "player",
-    "sort_order": 217,
-    "group": "C"
-  },
-  {
-    "sticker_id": "mar-team",
-    "code": "MAR 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Morocco",
-    "team_code": "MAR",
-    "team_color": "#C1272D",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 218,
     "group": "C"
   },
@@ -2860,6 +2860,19 @@
     "group": "C"
   },
   {
+    "sticker_id": "hai-team",
+    "code": "HAI 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Haiti",
+    "team_code": "HAI",
+    "team_color": "#00209F",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 220,
+    "group": "C"
+  },
+  {
     "sticker_id": "hai-2-placide",
     "code": "HAI 2",
     "name": "Johny Placide",
@@ -2869,7 +2882,7 @@
     "team_color": "#00209F",
     "number": 2,
     "type": "player",
-    "sort_order": 220,
+    "sort_order": 221,
     "group": "C"
   },
   {
@@ -2882,7 +2895,7 @@
     "team_color": "#00209F",
     "number": 3,
     "type": "player",
-    "sort_order": 221,
+    "sort_order": 222,
     "group": "C"
   },
   {
@@ -2895,7 +2908,7 @@
     "team_color": "#00209F",
     "number": 4,
     "type": "player",
-    "sort_order": 222,
+    "sort_order": 223,
     "group": "C"
   },
   {
@@ -2908,7 +2921,7 @@
     "team_color": "#00209F",
     "number": 5,
     "type": "player",
-    "sort_order": 223,
+    "sort_order": 224,
     "group": "C"
   },
   {
@@ -2921,7 +2934,7 @@
     "team_color": "#00209F",
     "number": 6,
     "type": "player",
-    "sort_order": 224,
+    "sort_order": 225,
     "group": "C"
   },
   {
@@ -2934,7 +2947,7 @@
     "team_color": "#00209F",
     "number": 7,
     "type": "player",
-    "sort_order": 225,
+    "sort_order": 226,
     "group": "C"
   },
   {
@@ -2947,7 +2960,7 @@
     "team_color": "#00209F",
     "number": 8,
     "type": "player",
-    "sort_order": 226,
+    "sort_order": 227,
     "group": "C"
   },
   {
@@ -2960,7 +2973,7 @@
     "team_color": "#00209F",
     "number": 9,
     "type": "player",
-    "sort_order": 227,
+    "sort_order": 228,
     "group": "C"
   },
   {
@@ -2973,7 +2986,7 @@
     "team_color": "#00209F",
     "number": 10,
     "type": "player",
-    "sort_order": 228,
+    "sort_order": 229,
     "group": "C"
   },
   {
@@ -2986,7 +2999,7 @@
     "team_color": "#00209F",
     "number": 11,
     "type": "player",
-    "sort_order": 229,
+    "sort_order": 230,
     "group": "C"
   },
   {
@@ -2999,7 +3012,7 @@
     "team_color": "#00209F",
     "number": 12,
     "type": "player",
-    "sort_order": 230,
+    "sort_order": 231,
     "group": "C"
   },
   {
@@ -3012,7 +3025,7 @@
     "team_color": "#00209F",
     "number": 14,
     "type": "player",
-    "sort_order": 231,
+    "sort_order": 232,
     "group": "C"
   },
   {
@@ -3025,7 +3038,7 @@
     "team_color": "#00209F",
     "number": 15,
     "type": "player",
-    "sort_order": 232,
+    "sort_order": 233,
     "group": "C"
   },
   {
@@ -3038,7 +3051,7 @@
     "team_color": "#00209F",
     "number": 16,
     "type": "player",
-    "sort_order": 233,
+    "sort_order": 234,
     "group": "C"
   },
   {
@@ -3051,7 +3064,7 @@
     "team_color": "#00209F",
     "number": 17,
     "type": "player",
-    "sort_order": 234,
+    "sort_order": 235,
     "group": "C"
   },
   {
@@ -3064,7 +3077,7 @@
     "team_color": "#00209F",
     "number": 18,
     "type": "player",
-    "sort_order": 235,
+    "sort_order": 236,
     "group": "C"
   },
   {
@@ -3077,7 +3090,7 @@
     "team_color": "#00209F",
     "number": 19,
     "type": "player",
-    "sort_order": 236,
+    "sort_order": 237,
     "group": "C"
   },
   {
@@ -3090,19 +3103,6 @@
     "team_color": "#00209F",
     "number": 20,
     "type": "player",
-    "sort_order": 237,
-    "group": "C"
-  },
-  {
-    "sticker_id": "hai-team",
-    "code": "HAI 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Haiti",
-    "team_code": "HAI",
-    "team_color": "#00209F",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 238,
     "group": "C"
   },
@@ -3120,6 +3120,19 @@
     "group": "C"
   },
   {
+    "sticker_id": "sco-team",
+    "code": "SCO 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Scotland",
+    "team_code": "SCO",
+    "team_color": "#0065BD",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 240,
+    "group": "C"
+  },
+  {
     "sticker_id": "sco-2-gunn",
     "code": "SCO 2",
     "name": "Angus Gunn",
@@ -3129,7 +3142,7 @@
     "team_color": "#0065BD",
     "number": 2,
     "type": "player",
-    "sort_order": 240,
+    "sort_order": 241,
     "group": "C"
   },
   {
@@ -3142,7 +3155,7 @@
     "team_color": "#0065BD",
     "number": 3,
     "type": "player",
-    "sort_order": 241,
+    "sort_order": 242,
     "group": "C"
   },
   {
@@ -3155,7 +3168,7 @@
     "team_color": "#0065BD",
     "number": 4,
     "type": "player",
-    "sort_order": 242,
+    "sort_order": 243,
     "group": "C"
   },
   {
@@ -3168,7 +3181,7 @@
     "team_color": "#0065BD",
     "number": 5,
     "type": "player",
-    "sort_order": 243,
+    "sort_order": 244,
     "group": "C"
   },
   {
@@ -3181,7 +3194,7 @@
     "team_color": "#0065BD",
     "number": 6,
     "type": "player",
-    "sort_order": 244,
+    "sort_order": 245,
     "group": "C"
   },
   {
@@ -3194,7 +3207,7 @@
     "team_color": "#0065BD",
     "number": 7,
     "type": "player",
-    "sort_order": 245,
+    "sort_order": 246,
     "group": "C"
   },
   {
@@ -3207,7 +3220,7 @@
     "team_color": "#0065BD",
     "number": 8,
     "type": "player",
-    "sort_order": 246,
+    "sort_order": 247,
     "group": "C"
   },
   {
@@ -3220,7 +3233,7 @@
     "team_color": "#0065BD",
     "number": 9,
     "type": "player",
-    "sort_order": 247,
+    "sort_order": 248,
     "group": "C"
   },
   {
@@ -3233,7 +3246,7 @@
     "team_color": "#0065BD",
     "number": 10,
     "type": "player",
-    "sort_order": 248,
+    "sort_order": 249,
     "group": "C"
   },
   {
@@ -3246,7 +3259,7 @@
     "team_color": "#0065BD",
     "number": 11,
     "type": "player",
-    "sort_order": 249,
+    "sort_order": 250,
     "group": "C"
   },
   {
@@ -3259,7 +3272,7 @@
     "team_color": "#0065BD",
     "number": 12,
     "type": "player",
-    "sort_order": 250,
+    "sort_order": 251,
     "group": "C"
   },
   {
@@ -3272,7 +3285,7 @@
     "team_color": "#0065BD",
     "number": 14,
     "type": "player",
-    "sort_order": 251,
+    "sort_order": 252,
     "group": "C"
   },
   {
@@ -3285,7 +3298,7 @@
     "team_color": "#0065BD",
     "number": 15,
     "type": "player",
-    "sort_order": 252,
+    "sort_order": 253,
     "group": "C"
   },
   {
@@ -3298,7 +3311,7 @@
     "team_color": "#0065BD",
     "number": 16,
     "type": "player",
-    "sort_order": 253,
+    "sort_order": 254,
     "group": "C"
   },
   {
@@ -3311,7 +3324,7 @@
     "team_color": "#0065BD",
     "number": 17,
     "type": "player",
-    "sort_order": 254,
+    "sort_order": 255,
     "group": "C"
   },
   {
@@ -3324,7 +3337,7 @@
     "team_color": "#0065BD",
     "number": 18,
     "type": "player",
-    "sort_order": 255,
+    "sort_order": 256,
     "group": "C"
   },
   {
@@ -3337,7 +3350,7 @@
     "team_color": "#0065BD",
     "number": 19,
     "type": "player",
-    "sort_order": 256,
+    "sort_order": 257,
     "group": "C"
   },
   {
@@ -3350,19 +3363,6 @@
     "team_color": "#0065BD",
     "number": 20,
     "type": "player",
-    "sort_order": 257,
-    "group": "C"
-  },
-  {
-    "sticker_id": "sco-team",
-    "code": "SCO 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Scotland",
-    "team_code": "SCO",
-    "team_color": "#0065BD",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 258,
     "group": "C"
   },
@@ -3380,6 +3380,19 @@
     "group": "D"
   },
   {
+    "sticker_id": "usa-team",
+    "code": "USA 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "United States",
+    "team_code": "USA",
+    "team_color": "#002868",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 260,
+    "group": "D"
+  },
+  {
     "sticker_id": "usa-2-freese",
     "code": "USA 2",
     "name": "Math Freese",
@@ -3389,7 +3402,7 @@
     "team_color": "#002868",
     "number": 2,
     "type": "player",
-    "sort_order": 260,
+    "sort_order": 261,
     "group": "D"
   },
   {
@@ -3402,7 +3415,7 @@
     "team_color": "#002868",
     "number": 3,
     "type": "player",
-    "sort_order": 261,
+    "sort_order": 262,
     "group": "D"
   },
   {
@@ -3415,7 +3428,7 @@
     "team_color": "#002868",
     "number": 4,
     "type": "player",
-    "sort_order": 262,
+    "sort_order": 263,
     "group": "D"
   },
   {
@@ -3428,7 +3441,7 @@
     "team_color": "#002868",
     "number": 5,
     "type": "player",
-    "sort_order": 263,
+    "sort_order": 264,
     "group": "D"
   },
   {
@@ -3441,7 +3454,7 @@
     "team_color": "#002868",
     "number": 6,
     "type": "player",
-    "sort_order": 264,
+    "sort_order": 265,
     "group": "D"
   },
   {
@@ -3454,7 +3467,7 @@
     "team_color": "#002868",
     "number": 7,
     "type": "player",
-    "sort_order": 265,
+    "sort_order": 266,
     "group": "D"
   },
   {
@@ -3467,7 +3480,7 @@
     "team_color": "#002868",
     "number": 8,
     "type": "player",
-    "sort_order": 266,
+    "sort_order": 267,
     "group": "D"
   },
   {
@@ -3480,7 +3493,7 @@
     "team_color": "#002868",
     "number": 9,
     "type": "player",
-    "sort_order": 267,
+    "sort_order": 268,
     "group": "D"
   },
   {
@@ -3493,7 +3506,7 @@
     "team_color": "#002868",
     "number": 10,
     "type": "player",
-    "sort_order": 268,
+    "sort_order": 269,
     "group": "D"
   },
   {
@@ -3506,7 +3519,7 @@
     "team_color": "#002868",
     "number": 11,
     "type": "player",
-    "sort_order": 269,
+    "sort_order": 270,
     "group": "D"
   },
   {
@@ -3519,7 +3532,7 @@
     "team_color": "#002868",
     "number": 12,
     "type": "player",
-    "sort_order": 270,
+    "sort_order": 271,
     "group": "D"
   },
   {
@@ -3532,7 +3545,7 @@
     "team_color": "#002868",
     "number": 14,
     "type": "player",
-    "sort_order": 271,
+    "sort_order": 272,
     "group": "D"
   },
   {
@@ -3545,7 +3558,7 @@
     "team_color": "#002868",
     "number": 15,
     "type": "player",
-    "sort_order": 272,
+    "sort_order": 273,
     "group": "D"
   },
   {
@@ -3558,7 +3571,7 @@
     "team_color": "#002868",
     "number": 16,
     "type": "player",
-    "sort_order": 273,
+    "sort_order": 274,
     "group": "D"
   },
   {
@@ -3571,7 +3584,7 @@
     "team_color": "#002868",
     "number": 17,
     "type": "player",
-    "sort_order": 274,
+    "sort_order": 275,
     "group": "D"
   },
   {
@@ -3584,7 +3597,7 @@
     "team_color": "#002868",
     "number": 18,
     "type": "player",
-    "sort_order": 275,
+    "sort_order": 276,
     "group": "D"
   },
   {
@@ -3597,7 +3610,7 @@
     "team_color": "#002868",
     "number": 19,
     "type": "player",
-    "sort_order": 276,
+    "sort_order": 277,
     "group": "D"
   },
   {
@@ -3610,19 +3623,6 @@
     "team_color": "#002868",
     "number": 20,
     "type": "player",
-    "sort_order": 277,
-    "group": "D"
-  },
-  {
-    "sticker_id": "usa-team",
-    "code": "USA 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "United States",
-    "team_code": "USA",
-    "team_color": "#002868",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 278,
     "group": "D"
   },
@@ -3640,6 +3640,19 @@
     "group": "D"
   },
   {
+    "sticker_id": "par-team",
+    "code": "PAR 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Paraguay",
+    "team_code": "PAR",
+    "team_color": "#D52B1E",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 280,
+    "group": "D"
+  },
+  {
     "sticker_id": "par-2-fernandez",
     "code": "PAR 2",
     "name": "Roberto Fernandez",
@@ -3649,7 +3662,7 @@
     "team_color": "#D52B1E",
     "number": 2,
     "type": "player",
-    "sort_order": 280,
+    "sort_order": 281,
     "group": "D"
   },
   {
@@ -3662,7 +3675,7 @@
     "team_color": "#D52B1E",
     "number": 3,
     "type": "player",
-    "sort_order": 281,
+    "sort_order": 282,
     "group": "D"
   },
   {
@@ -3675,7 +3688,7 @@
     "team_color": "#D52B1E",
     "number": 4,
     "type": "player",
-    "sort_order": 282,
+    "sort_order": 283,
     "group": "D"
   },
   {
@@ -3688,7 +3701,7 @@
     "team_color": "#D52B1E",
     "number": 5,
     "type": "player",
-    "sort_order": 283,
+    "sort_order": 284,
     "group": "D"
   },
   {
@@ -3701,7 +3714,7 @@
     "team_color": "#D52B1E",
     "number": 6,
     "type": "player",
-    "sort_order": 284,
+    "sort_order": 285,
     "group": "D"
   },
   {
@@ -3714,7 +3727,7 @@
     "team_color": "#D52B1E",
     "number": 7,
     "type": "player",
-    "sort_order": 285,
+    "sort_order": 286,
     "group": "D"
   },
   {
@@ -3727,7 +3740,7 @@
     "team_color": "#D52B1E",
     "number": 8,
     "type": "player",
-    "sort_order": 286,
+    "sort_order": 287,
     "group": "D"
   },
   {
@@ -3740,7 +3753,7 @@
     "team_color": "#D52B1E",
     "number": 9,
     "type": "player",
-    "sort_order": 287,
+    "sort_order": 288,
     "group": "D"
   },
   {
@@ -3753,7 +3766,7 @@
     "team_color": "#D52B1E",
     "number": 10,
     "type": "player",
-    "sort_order": 288,
+    "sort_order": 289,
     "group": "D"
   },
   {
@@ -3766,7 +3779,7 @@
     "team_color": "#D52B1E",
     "number": 11,
     "type": "player",
-    "sort_order": 289,
+    "sort_order": 290,
     "group": "D"
   },
   {
@@ -3779,7 +3792,7 @@
     "team_color": "#D52B1E",
     "number": 12,
     "type": "player",
-    "sort_order": 290,
+    "sort_order": 291,
     "group": "D"
   },
   {
@@ -3792,7 +3805,7 @@
     "team_color": "#D52B1E",
     "number": 14,
     "type": "player",
-    "sort_order": 291,
+    "sort_order": 292,
     "group": "D"
   },
   {
@@ -3805,7 +3818,7 @@
     "team_color": "#D52B1E",
     "number": 15,
     "type": "player",
-    "sort_order": 292,
+    "sort_order": 293,
     "group": "D"
   },
   {
@@ -3818,7 +3831,7 @@
     "team_color": "#D52B1E",
     "number": 16,
     "type": "player",
-    "sort_order": 293,
+    "sort_order": 294,
     "group": "D"
   },
   {
@@ -3831,7 +3844,7 @@
     "team_color": "#D52B1E",
     "number": 17,
     "type": "player",
-    "sort_order": 294,
+    "sort_order": 295,
     "group": "D"
   },
   {
@@ -3844,7 +3857,7 @@
     "team_color": "#D52B1E",
     "number": 18,
     "type": "player",
-    "sort_order": 295,
+    "sort_order": 296,
     "group": "D"
   },
   {
@@ -3857,7 +3870,7 @@
     "team_color": "#D52B1E",
     "number": 19,
     "type": "player",
-    "sort_order": 296,
+    "sort_order": 297,
     "group": "D"
   },
   {
@@ -3870,19 +3883,6 @@
     "team_color": "#D52B1E",
     "number": 20,
     "type": "player",
-    "sort_order": 297,
-    "group": "D"
-  },
-  {
-    "sticker_id": "par-team",
-    "code": "PAR 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Paraguay",
-    "team_code": "PAR",
-    "team_color": "#D52B1E",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 298,
     "group": "D"
   },
@@ -3900,6 +3900,19 @@
     "group": "D"
   },
   {
+    "sticker_id": "aus-team",
+    "code": "AUS 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Australia",
+    "team_code": "AUS",
+    "team_color": "#FFCD00",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 300,
+    "group": "D"
+  },
+  {
     "sticker_id": "aus-2-ryan",
     "code": "AUS 2",
     "name": "Mathew Ryan",
@@ -3909,7 +3922,7 @@
     "team_color": "#FFCD00",
     "number": 2,
     "type": "player",
-    "sort_order": 300,
+    "sort_order": 301,
     "group": "D"
   },
   {
@@ -3922,7 +3935,7 @@
     "team_color": "#FFCD00",
     "number": 3,
     "type": "player",
-    "sort_order": 301,
+    "sort_order": 302,
     "group": "D"
   },
   {
@@ -3935,7 +3948,7 @@
     "team_color": "#FFCD00",
     "number": 4,
     "type": "player",
-    "sort_order": 302,
+    "sort_order": 303,
     "group": "D"
   },
   {
@@ -3948,7 +3961,7 @@
     "team_color": "#FFCD00",
     "number": 5,
     "type": "player",
-    "sort_order": 303,
+    "sort_order": 304,
     "group": "D"
   },
   {
@@ -3961,7 +3974,7 @@
     "team_color": "#FFCD00",
     "number": 6,
     "type": "player",
-    "sort_order": 304,
+    "sort_order": 305,
     "group": "D"
   },
   {
@@ -3974,7 +3987,7 @@
     "team_color": "#FFCD00",
     "number": 7,
     "type": "player",
-    "sort_order": 305,
+    "sort_order": 306,
     "group": "D"
   },
   {
@@ -3987,7 +4000,7 @@
     "team_color": "#FFCD00",
     "number": 8,
     "type": "player",
-    "sort_order": 306,
+    "sort_order": 307,
     "group": "D"
   },
   {
@@ -4000,7 +4013,7 @@
     "team_color": "#FFCD00",
     "number": 9,
     "type": "player",
-    "sort_order": 307,
+    "sort_order": 308,
     "group": "D"
   },
   {
@@ -4013,7 +4026,7 @@
     "team_color": "#FFCD00",
     "number": 10,
     "type": "player",
-    "sort_order": 308,
+    "sort_order": 309,
     "group": "D"
   },
   {
@@ -4026,7 +4039,7 @@
     "team_color": "#FFCD00",
     "number": 11,
     "type": "player",
-    "sort_order": 309,
+    "sort_order": 310,
     "group": "D"
   },
   {
@@ -4039,7 +4052,7 @@
     "team_color": "#FFCD00",
     "number": 12,
     "type": "player",
-    "sort_order": 310,
+    "sort_order": 311,
     "group": "D"
   },
   {
@@ -4052,7 +4065,7 @@
     "team_color": "#FFCD00",
     "number": 14,
     "type": "player",
-    "sort_order": 311,
+    "sort_order": 312,
     "group": "D"
   },
   {
@@ -4065,7 +4078,7 @@
     "team_color": "#FFCD00",
     "number": 15,
     "type": "player",
-    "sort_order": 312,
+    "sort_order": 313,
     "group": "D"
   },
   {
@@ -4078,7 +4091,7 @@
     "team_color": "#FFCD00",
     "number": 16,
     "type": "player",
-    "sort_order": 313,
+    "sort_order": 314,
     "group": "D"
   },
   {
@@ -4091,7 +4104,7 @@
     "team_color": "#FFCD00",
     "number": 17,
     "type": "player",
-    "sort_order": 314,
+    "sort_order": 315,
     "group": "D"
   },
   {
@@ -4104,7 +4117,7 @@
     "team_color": "#FFCD00",
     "number": 18,
     "type": "player",
-    "sort_order": 315,
+    "sort_order": 316,
     "group": "D"
   },
   {
@@ -4117,7 +4130,7 @@
     "team_color": "#FFCD00",
     "number": 19,
     "type": "player",
-    "sort_order": 316,
+    "sort_order": 317,
     "group": "D"
   },
   {
@@ -4130,19 +4143,6 @@
     "team_color": "#FFCD00",
     "number": 20,
     "type": "player",
-    "sort_order": 317,
-    "group": "D"
-  },
-  {
-    "sticker_id": "aus-team",
-    "code": "AUS 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Australia",
-    "team_code": "AUS",
-    "team_color": "#FFCD00",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 318,
     "group": "D"
   },
@@ -4160,6 +4160,19 @@
     "group": "D"
   },
   {
+    "sticker_id": "tur-team",
+    "code": "TUR 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Turkey",
+    "team_code": "TUR",
+    "team_color": "#E30A17",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 320,
+    "group": "D"
+  },
+  {
     "sticker_id": "tur-2-cakir",
     "code": "TUR 2",
     "name": "Ugurcan Cakir",
@@ -4169,7 +4182,7 @@
     "team_color": "#E30A17",
     "number": 2,
     "type": "player",
-    "sort_order": 320,
+    "sort_order": 321,
     "group": "D"
   },
   {
@@ -4182,7 +4195,7 @@
     "team_color": "#E30A17",
     "number": 3,
     "type": "player",
-    "sort_order": 321,
+    "sort_order": 322,
     "group": "D"
   },
   {
@@ -4195,7 +4208,7 @@
     "team_color": "#E30A17",
     "number": 4,
     "type": "player",
-    "sort_order": 322,
+    "sort_order": 323,
     "group": "D"
   },
   {
@@ -4208,7 +4221,7 @@
     "team_color": "#E30A17",
     "number": 5,
     "type": "player",
-    "sort_order": 323,
+    "sort_order": 324,
     "group": "D"
   },
   {
@@ -4221,7 +4234,7 @@
     "team_color": "#E30A17",
     "number": 6,
     "type": "player",
-    "sort_order": 324,
+    "sort_order": 325,
     "group": "D"
   },
   {
@@ -4234,7 +4247,7 @@
     "team_color": "#E30A17",
     "number": 7,
     "type": "player",
-    "sort_order": 325,
+    "sort_order": 326,
     "group": "D"
   },
   {
@@ -4247,7 +4260,7 @@
     "team_color": "#E30A17",
     "number": 8,
     "type": "player",
-    "sort_order": 326,
+    "sort_order": 327,
     "group": "D"
   },
   {
@@ -4260,7 +4273,7 @@
     "team_color": "#E30A17",
     "number": 9,
     "type": "player",
-    "sort_order": 327,
+    "sort_order": 328,
     "group": "D"
   },
   {
@@ -4273,7 +4286,7 @@
     "team_color": "#E30A17",
     "number": 10,
     "type": "player",
-    "sort_order": 328,
+    "sort_order": 329,
     "group": "D"
   },
   {
@@ -4286,7 +4299,7 @@
     "team_color": "#E30A17",
     "number": 11,
     "type": "player",
-    "sort_order": 329,
+    "sort_order": 330,
     "group": "D"
   },
   {
@@ -4299,7 +4312,7 @@
     "team_color": "#E30A17",
     "number": 12,
     "type": "player",
-    "sort_order": 330,
+    "sort_order": 331,
     "group": "D"
   },
   {
@@ -4312,7 +4325,7 @@
     "team_color": "#E30A17",
     "number": 14,
     "type": "player",
-    "sort_order": 331,
+    "sort_order": 332,
     "group": "D"
   },
   {
@@ -4325,7 +4338,7 @@
     "team_color": "#E30A17",
     "number": 15,
     "type": "player",
-    "sort_order": 332,
+    "sort_order": 333,
     "group": "D"
   },
   {
@@ -4338,7 +4351,7 @@
     "team_color": "#E30A17",
     "number": 16,
     "type": "player",
-    "sort_order": 333,
+    "sort_order": 334,
     "group": "D"
   },
   {
@@ -4351,7 +4364,7 @@
     "team_color": "#E30A17",
     "number": 17,
     "type": "player",
-    "sort_order": 334,
+    "sort_order": 335,
     "group": "D"
   },
   {
@@ -4364,7 +4377,7 @@
     "team_color": "#E30A17",
     "number": 18,
     "type": "player",
-    "sort_order": 335,
+    "sort_order": 336,
     "group": "D"
   },
   {
@@ -4377,7 +4390,7 @@
     "team_color": "#E30A17",
     "number": 19,
     "type": "player",
-    "sort_order": 336,
+    "sort_order": 337,
     "group": "D"
   },
   {
@@ -4390,19 +4403,6 @@
     "team_color": "#E30A17",
     "number": 20,
     "type": "player",
-    "sort_order": 337,
-    "group": "D"
-  },
-  {
-    "sticker_id": "tur-team",
-    "code": "TUR 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Turkey",
-    "team_code": "TUR",
-    "team_color": "#E30A17",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 338,
     "group": "D"
   },
@@ -4420,6 +4420,19 @@
     "group": "E"
   },
   {
+    "sticker_id": "ger-team",
+    "code": "GER 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Germany",
+    "team_code": "GER",
+    "team_color": "#000000",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 340,
+    "group": "E"
+  },
+  {
     "sticker_id": "ger-2-stegen",
     "code": "GER 2",
     "name": "Marc-André ter Stegen",
@@ -4429,7 +4442,7 @@
     "team_color": "#000000",
     "number": 2,
     "type": "player",
-    "sort_order": 340,
+    "sort_order": 341,
     "group": "E"
   },
   {
@@ -4442,7 +4455,7 @@
     "team_color": "#000000",
     "number": 3,
     "type": "player",
-    "sort_order": 341,
+    "sort_order": 342,
     "group": "E"
   },
   {
@@ -4455,7 +4468,7 @@
     "team_color": "#000000",
     "number": 4,
     "type": "player",
-    "sort_order": 342,
+    "sort_order": 343,
     "group": "E"
   },
   {
@@ -4468,7 +4481,7 @@
     "team_color": "#000000",
     "number": 5,
     "type": "player",
-    "sort_order": 343,
+    "sort_order": 344,
     "group": "E"
   },
   {
@@ -4481,7 +4494,7 @@
     "team_color": "#000000",
     "number": 6,
     "type": "player",
-    "sort_order": 344,
+    "sort_order": 345,
     "group": "E"
   },
   {
@@ -4494,7 +4507,7 @@
     "team_color": "#000000",
     "number": 7,
     "type": "player",
-    "sort_order": 345,
+    "sort_order": 346,
     "group": "E"
   },
   {
@@ -4507,7 +4520,7 @@
     "team_color": "#000000",
     "number": 8,
     "type": "player",
-    "sort_order": 346,
+    "sort_order": 347,
     "group": "E"
   },
   {
@@ -4520,7 +4533,7 @@
     "team_color": "#000000",
     "number": 9,
     "type": "player",
-    "sort_order": 347,
+    "sort_order": 348,
     "group": "E"
   },
   {
@@ -4533,7 +4546,7 @@
     "team_color": "#000000",
     "number": 10,
     "type": "player",
-    "sort_order": 348,
+    "sort_order": 349,
     "group": "E"
   },
   {
@@ -4546,7 +4559,7 @@
     "team_color": "#000000",
     "number": 11,
     "type": "player",
-    "sort_order": 349,
+    "sort_order": 350,
     "group": "E"
   },
   {
@@ -4559,7 +4572,7 @@
     "team_color": "#000000",
     "number": 12,
     "type": "player",
-    "sort_order": 350,
+    "sort_order": 351,
     "group": "E"
   },
   {
@@ -4572,7 +4585,7 @@
     "team_color": "#000000",
     "number": 14,
     "type": "player",
-    "sort_order": 351,
+    "sort_order": 352,
     "group": "E"
   },
   {
@@ -4585,7 +4598,7 @@
     "team_color": "#000000",
     "number": 15,
     "type": "player",
-    "sort_order": 352,
+    "sort_order": 353,
     "group": "E"
   },
   {
@@ -4598,7 +4611,7 @@
     "team_color": "#000000",
     "number": 16,
     "type": "player",
-    "sort_order": 353,
+    "sort_order": 354,
     "group": "E"
   },
   {
@@ -4611,7 +4624,7 @@
     "team_color": "#000000",
     "number": 17,
     "type": "player",
-    "sort_order": 354,
+    "sort_order": 355,
     "group": "E"
   },
   {
@@ -4624,7 +4637,7 @@
     "team_color": "#000000",
     "number": 18,
     "type": "player",
-    "sort_order": 355,
+    "sort_order": 356,
     "group": "E"
   },
   {
@@ -4637,7 +4650,7 @@
     "team_color": "#000000",
     "number": 19,
     "type": "player",
-    "sort_order": 356,
+    "sort_order": 357,
     "group": "E"
   },
   {
@@ -4650,19 +4663,6 @@
     "team_color": "#000000",
     "number": 20,
     "type": "player",
-    "sort_order": 357,
-    "group": "E"
-  },
-  {
-    "sticker_id": "ger-team",
-    "code": "GER 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Germany",
-    "team_code": "GER",
-    "team_color": "#000000",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 358,
     "group": "E"
   },
@@ -4680,6 +4680,19 @@
     "group": "E"
   },
   {
+    "sticker_id": "cuw-team",
+    "code": "CUW 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Curaçao",
+    "team_code": "CUW",
+    "team_color": "#002B7F",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 360,
+    "group": "E"
+  },
+  {
     "sticker_id": "cuw-2-room",
     "code": "CUW 2",
     "name": "Eloy Room",
@@ -4689,7 +4702,7 @@
     "team_color": "#002B7F",
     "number": 2,
     "type": "player",
-    "sort_order": 360,
+    "sort_order": 361,
     "group": "E"
   },
   {
@@ -4702,7 +4715,7 @@
     "team_color": "#002B7F",
     "number": 3,
     "type": "player",
-    "sort_order": 361,
+    "sort_order": 362,
     "group": "E"
   },
   {
@@ -4715,7 +4728,7 @@
     "team_color": "#002B7F",
     "number": 4,
     "type": "player",
-    "sort_order": 362,
+    "sort_order": 363,
     "group": "E"
   },
   {
@@ -4728,7 +4741,7 @@
     "team_color": "#002B7F",
     "number": 5,
     "type": "player",
-    "sort_order": 363,
+    "sort_order": 364,
     "group": "E"
   },
   {
@@ -4741,7 +4754,7 @@
     "team_color": "#002B7F",
     "number": 6,
     "type": "player",
-    "sort_order": 364,
+    "sort_order": 365,
     "group": "E"
   },
   {
@@ -4754,7 +4767,7 @@
     "team_color": "#002B7F",
     "number": 7,
     "type": "player",
-    "sort_order": 365,
+    "sort_order": 366,
     "group": "E"
   },
   {
@@ -4767,7 +4780,7 @@
     "team_color": "#002B7F",
     "number": 8,
     "type": "player",
-    "sort_order": 366,
+    "sort_order": 367,
     "group": "E"
   },
   {
@@ -4780,7 +4793,7 @@
     "team_color": "#002B7F",
     "number": 9,
     "type": "player",
-    "sort_order": 367,
+    "sort_order": 368,
     "group": "E"
   },
   {
@@ -4793,7 +4806,7 @@
     "team_color": "#002B7F",
     "number": 10,
     "type": "player",
-    "sort_order": 368,
+    "sort_order": 369,
     "group": "E"
   },
   {
@@ -4806,7 +4819,7 @@
     "team_color": "#002B7F",
     "number": 11,
     "type": "player",
-    "sort_order": 369,
+    "sort_order": 370,
     "group": "E"
   },
   {
@@ -4819,7 +4832,7 @@
     "team_color": "#002B7F",
     "number": 12,
     "type": "player",
-    "sort_order": 370,
+    "sort_order": 371,
     "group": "E"
   },
   {
@@ -4832,7 +4845,7 @@
     "team_color": "#002B7F",
     "number": 14,
     "type": "player",
-    "sort_order": 371,
+    "sort_order": 372,
     "group": "E"
   },
   {
@@ -4845,7 +4858,7 @@
     "team_color": "#002B7F",
     "number": 15,
     "type": "player",
-    "sort_order": 372,
+    "sort_order": 373,
     "group": "E"
   },
   {
@@ -4858,7 +4871,7 @@
     "team_color": "#002B7F",
     "number": 16,
     "type": "player",
-    "sort_order": 373,
+    "sort_order": 374,
     "group": "E"
   },
   {
@@ -4871,7 +4884,7 @@
     "team_color": "#002B7F",
     "number": 17,
     "type": "player",
-    "sort_order": 374,
+    "sort_order": 375,
     "group": "E"
   },
   {
@@ -4884,7 +4897,7 @@
     "team_color": "#002B7F",
     "number": 18,
     "type": "player",
-    "sort_order": 375,
+    "sort_order": 376,
     "group": "E"
   },
   {
@@ -4897,7 +4910,7 @@
     "team_color": "#002B7F",
     "number": 19,
     "type": "player",
-    "sort_order": 376,
+    "sort_order": 377,
     "group": "E"
   },
   {
@@ -4910,19 +4923,6 @@
     "team_color": "#002B7F",
     "number": 20,
     "type": "player",
-    "sort_order": 377,
-    "group": "E"
-  },
-  {
-    "sticker_id": "cuw-team",
-    "code": "CUW 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Curaçao",
-    "team_code": "CUW",
-    "team_color": "#002B7F",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 378,
     "group": "E"
   },
@@ -4940,6 +4940,19 @@
     "group": "E"
   },
   {
+    "sticker_id": "civ-team",
+    "code": "CIV 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Côte d'Ivoire",
+    "team_code": "CIV",
+    "team_color": "#FF8200",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 380,
+    "group": "E"
+  },
+  {
     "sticker_id": "civ-2-fofana",
     "code": "CIV 2",
     "name": "Yahia Fofana",
@@ -4949,7 +4962,7 @@
     "team_color": "#FF8200",
     "number": 2,
     "type": "player",
-    "sort_order": 380,
+    "sort_order": 381,
     "group": "E"
   },
   {
@@ -4962,7 +4975,7 @@
     "team_color": "#FF8200",
     "number": 3,
     "type": "player",
-    "sort_order": 381,
+    "sort_order": 382,
     "group": "E"
   },
   {
@@ -4975,7 +4988,7 @@
     "team_color": "#FF8200",
     "number": 4,
     "type": "player",
-    "sort_order": 382,
+    "sort_order": 383,
     "group": "E"
   },
   {
@@ -4988,7 +5001,7 @@
     "team_color": "#FF8200",
     "number": 5,
     "type": "player",
-    "sort_order": 383,
+    "sort_order": 384,
     "group": "E"
   },
   {
@@ -5001,7 +5014,7 @@
     "team_color": "#FF8200",
     "number": 6,
     "type": "player",
-    "sort_order": 384,
+    "sort_order": 385,
     "group": "E"
   },
   {
@@ -5014,7 +5027,7 @@
     "team_color": "#FF8200",
     "number": 7,
     "type": "player",
-    "sort_order": 385,
+    "sort_order": 386,
     "group": "E"
   },
   {
@@ -5027,7 +5040,7 @@
     "team_color": "#FF8200",
     "number": 8,
     "type": "player",
-    "sort_order": 386,
+    "sort_order": 387,
     "group": "E"
   },
   {
@@ -5040,7 +5053,7 @@
     "team_color": "#FF8200",
     "number": 9,
     "type": "player",
-    "sort_order": 387,
+    "sort_order": 388,
     "group": "E"
   },
   {
@@ -5053,7 +5066,7 @@
     "team_color": "#FF8200",
     "number": 10,
     "type": "player",
-    "sort_order": 388,
+    "sort_order": 389,
     "group": "E"
   },
   {
@@ -5066,7 +5079,7 @@
     "team_color": "#FF8200",
     "number": 11,
     "type": "player",
-    "sort_order": 389,
+    "sort_order": 390,
     "group": "E"
   },
   {
@@ -5079,7 +5092,7 @@
     "team_color": "#FF8200",
     "number": 12,
     "type": "player",
-    "sort_order": 390,
+    "sort_order": 391,
     "group": "E"
   },
   {
@@ -5092,7 +5105,7 @@
     "team_color": "#FF8200",
     "number": 14,
     "type": "player",
-    "sort_order": 391,
+    "sort_order": 392,
     "group": "E"
   },
   {
@@ -5105,7 +5118,7 @@
     "team_color": "#FF8200",
     "number": 15,
     "type": "player",
-    "sort_order": 392,
+    "sort_order": 393,
     "group": "E"
   },
   {
@@ -5118,7 +5131,7 @@
     "team_color": "#FF8200",
     "number": 16,
     "type": "player",
-    "sort_order": 393,
+    "sort_order": 394,
     "group": "E"
   },
   {
@@ -5131,7 +5144,7 @@
     "team_color": "#FF8200",
     "number": 17,
     "type": "player",
-    "sort_order": 394,
+    "sort_order": 395,
     "group": "E"
   },
   {
@@ -5144,7 +5157,7 @@
     "team_color": "#FF8200",
     "number": 18,
     "type": "player",
-    "sort_order": 395,
+    "sort_order": 396,
     "group": "E"
   },
   {
@@ -5157,7 +5170,7 @@
     "team_color": "#FF8200",
     "number": 19,
     "type": "player",
-    "sort_order": 396,
+    "sort_order": 397,
     "group": "E"
   },
   {
@@ -5170,19 +5183,6 @@
     "team_color": "#FF8200",
     "number": 20,
     "type": "player",
-    "sort_order": 397,
-    "group": "E"
-  },
-  {
-    "sticker_id": "civ-team",
-    "code": "CIV 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Côte d'Ivoire",
-    "team_code": "CIV",
-    "team_color": "#FF8200",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 398,
     "group": "E"
   },
@@ -5200,6 +5200,19 @@
     "group": "E"
   },
   {
+    "sticker_id": "ecu-team",
+    "code": "ECU 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Ecuador",
+    "team_code": "ECU",
+    "team_color": "#FFD100",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 400,
+    "group": "E"
+  },
+  {
     "sticker_id": "ecu-2-galindez",
     "code": "ECU 2",
     "name": "Hernán Galíndez",
@@ -5209,7 +5222,7 @@
     "team_color": "#FFD100",
     "number": 2,
     "type": "player",
-    "sort_order": 400,
+    "sort_order": 401,
     "group": "E"
   },
   {
@@ -5222,7 +5235,7 @@
     "team_color": "#FFD100",
     "number": 3,
     "type": "player",
-    "sort_order": 401,
+    "sort_order": 402,
     "group": "E"
   },
   {
@@ -5235,7 +5248,7 @@
     "team_color": "#FFD100",
     "number": 4,
     "type": "player",
-    "sort_order": 402,
+    "sort_order": 403,
     "group": "E"
   },
   {
@@ -5248,7 +5261,7 @@
     "team_color": "#FFD100",
     "number": 5,
     "type": "player",
-    "sort_order": 403,
+    "sort_order": 404,
     "group": "E"
   },
   {
@@ -5261,7 +5274,7 @@
     "team_color": "#FFD100",
     "number": 6,
     "type": "player",
-    "sort_order": 404,
+    "sort_order": 405,
     "group": "E"
   },
   {
@@ -5274,7 +5287,7 @@
     "team_color": "#FFD100",
     "number": 7,
     "type": "player",
-    "sort_order": 405,
+    "sort_order": 406,
     "group": "E"
   },
   {
@@ -5287,7 +5300,7 @@
     "team_color": "#FFD100",
     "number": 8,
     "type": "player",
-    "sort_order": 406,
+    "sort_order": 407,
     "group": "E"
   },
   {
@@ -5300,7 +5313,7 @@
     "team_color": "#FFD100",
     "number": 9,
     "type": "player",
-    "sort_order": 407,
+    "sort_order": 408,
     "group": "E"
   },
   {
@@ -5313,7 +5326,7 @@
     "team_color": "#FFD100",
     "number": 10,
     "type": "player",
-    "sort_order": 408,
+    "sort_order": 409,
     "group": "E"
   },
   {
@@ -5326,7 +5339,7 @@
     "team_color": "#FFD100",
     "number": 11,
     "type": "player",
-    "sort_order": 409,
+    "sort_order": 410,
     "group": "E"
   },
   {
@@ -5339,7 +5352,7 @@
     "team_color": "#FFD100",
     "number": 12,
     "type": "player",
-    "sort_order": 410,
+    "sort_order": 411,
     "group": "E"
   },
   {
@@ -5352,7 +5365,7 @@
     "team_color": "#FFD100",
     "number": 14,
     "type": "player",
-    "sort_order": 411,
+    "sort_order": 412,
     "group": "E"
   },
   {
@@ -5365,7 +5378,7 @@
     "team_color": "#FFD100",
     "number": 15,
     "type": "player",
-    "sort_order": 412,
+    "sort_order": 413,
     "group": "E"
   },
   {
@@ -5378,7 +5391,7 @@
     "team_color": "#FFD100",
     "number": 16,
     "type": "player",
-    "sort_order": 413,
+    "sort_order": 414,
     "group": "E"
   },
   {
@@ -5391,7 +5404,7 @@
     "team_color": "#FFD100",
     "number": 17,
     "type": "player",
-    "sort_order": 414,
+    "sort_order": 415,
     "group": "E"
   },
   {
@@ -5404,7 +5417,7 @@
     "team_color": "#FFD100",
     "number": 18,
     "type": "player",
-    "sort_order": 415,
+    "sort_order": 416,
     "group": "E"
   },
   {
@@ -5417,7 +5430,7 @@
     "team_color": "#FFD100",
     "number": 19,
     "type": "player",
-    "sort_order": 416,
+    "sort_order": 417,
     "group": "E"
   },
   {
@@ -5430,19 +5443,6 @@
     "team_color": "#FFD100",
     "number": 20,
     "type": "player",
-    "sort_order": 417,
-    "group": "E"
-  },
-  {
-    "sticker_id": "ecu-team",
-    "code": "ECU 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Ecuador",
-    "team_code": "ECU",
-    "team_color": "#FFD100",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 418,
     "group": "E"
   },
@@ -5460,6 +5460,19 @@
     "group": "F"
   },
   {
+    "sticker_id": "ned-team",
+    "code": "NED 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Netherlands",
+    "team_code": "NED",
+    "team_color": "#FF6C00",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 420,
+    "group": "F"
+  },
+  {
     "sticker_id": "ned-2-verbruggen",
     "code": "NED 2",
     "name": "Bart Verbruggen",
@@ -5469,7 +5482,7 @@
     "team_color": "#FF6C00",
     "number": 2,
     "type": "player",
-    "sort_order": 420,
+    "sort_order": 421,
     "group": "F"
   },
   {
@@ -5482,7 +5495,7 @@
     "team_color": "#FF6C00",
     "number": 3,
     "type": "player",
-    "sort_order": 421,
+    "sort_order": 422,
     "group": "F"
   },
   {
@@ -5495,7 +5508,7 @@
     "team_color": "#FF6C00",
     "number": 4,
     "type": "player",
-    "sort_order": 422,
+    "sort_order": 423,
     "group": "F"
   },
   {
@@ -5508,7 +5521,7 @@
     "team_color": "#FF6C00",
     "number": 5,
     "type": "player",
-    "sort_order": 423,
+    "sort_order": 424,
     "group": "F"
   },
   {
@@ -5521,7 +5534,7 @@
     "team_color": "#FF6C00",
     "number": 6,
     "type": "player",
-    "sort_order": 424,
+    "sort_order": 425,
     "group": "F"
   },
   {
@@ -5534,7 +5547,7 @@
     "team_color": "#FF6C00",
     "number": 7,
     "type": "player",
-    "sort_order": 425,
+    "sort_order": 426,
     "group": "F"
   },
   {
@@ -5547,7 +5560,7 @@
     "team_color": "#FF6C00",
     "number": 8,
     "type": "player",
-    "sort_order": 426,
+    "sort_order": 427,
     "group": "F"
   },
   {
@@ -5560,7 +5573,7 @@
     "team_color": "#FF6C00",
     "number": 9,
     "type": "player",
-    "sort_order": 427,
+    "sort_order": 428,
     "group": "F"
   },
   {
@@ -5573,7 +5586,7 @@
     "team_color": "#FF6C00",
     "number": 10,
     "type": "player",
-    "sort_order": 428,
+    "sort_order": 429,
     "group": "F"
   },
   {
@@ -5586,7 +5599,7 @@
     "team_color": "#FF6C00",
     "number": 11,
     "type": "player",
-    "sort_order": 429,
+    "sort_order": 430,
     "group": "F"
   },
   {
@@ -5599,7 +5612,7 @@
     "team_color": "#FF6C00",
     "number": 12,
     "type": "player",
-    "sort_order": 430,
+    "sort_order": 431,
     "group": "F"
   },
   {
@@ -5612,7 +5625,7 @@
     "team_color": "#FF6C00",
     "number": 14,
     "type": "player",
-    "sort_order": 431,
+    "sort_order": 432,
     "group": "F"
   },
   {
@@ -5625,7 +5638,7 @@
     "team_color": "#FF6C00",
     "number": 15,
     "type": "player",
-    "sort_order": 432,
+    "sort_order": 433,
     "group": "F"
   },
   {
@@ -5638,7 +5651,7 @@
     "team_color": "#FF6C00",
     "number": 16,
     "type": "player",
-    "sort_order": 433,
+    "sort_order": 434,
     "group": "F"
   },
   {
@@ -5651,7 +5664,7 @@
     "team_color": "#FF6C00",
     "number": 17,
     "type": "player",
-    "sort_order": 434,
+    "sort_order": 435,
     "group": "F"
   },
   {
@@ -5664,7 +5677,7 @@
     "team_color": "#FF6C00",
     "number": 18,
     "type": "player",
-    "sort_order": 435,
+    "sort_order": 436,
     "group": "F"
   },
   {
@@ -5677,7 +5690,7 @@
     "team_color": "#FF6C00",
     "number": 19,
     "type": "player",
-    "sort_order": 436,
+    "sort_order": 437,
     "group": "F"
   },
   {
@@ -5690,19 +5703,6 @@
     "team_color": "#FF6C00",
     "number": 20,
     "type": "player",
-    "sort_order": 437,
-    "group": "F"
-  },
-  {
-    "sticker_id": "ned-team",
-    "code": "NED 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Netherlands",
-    "team_code": "NED",
-    "team_color": "#FF6C00",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 438,
     "group": "F"
   },
@@ -5720,6 +5720,19 @@
     "group": "F"
   },
   {
+    "sticker_id": "jpn-team",
+    "code": "JPN 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Japan",
+    "team_code": "JPN",
+    "team_color": "#0B2D5E",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 440,
+    "group": "F"
+  },
+  {
     "sticker_id": "jpn-2-suzuki",
     "code": "JPN 2",
     "name": "Zion Suzuki",
@@ -5729,7 +5742,7 @@
     "team_color": "#0B2D5E",
     "number": 2,
     "type": "player",
-    "sort_order": 440,
+    "sort_order": 441,
     "group": "F"
   },
   {
@@ -5742,7 +5755,7 @@
     "team_color": "#0B2D5E",
     "number": 3,
     "type": "player",
-    "sort_order": 441,
+    "sort_order": 442,
     "group": "F"
   },
   {
@@ -5755,7 +5768,7 @@
     "team_color": "#0B2D5E",
     "number": 4,
     "type": "player",
-    "sort_order": 442,
+    "sort_order": 443,
     "group": "F"
   },
   {
@@ -5768,7 +5781,7 @@
     "team_color": "#0B2D5E",
     "number": 5,
     "type": "player",
-    "sort_order": 443,
+    "sort_order": 444,
     "group": "F"
   },
   {
@@ -5781,7 +5794,7 @@
     "team_color": "#0B2D5E",
     "number": 6,
     "type": "player",
-    "sort_order": 444,
+    "sort_order": 445,
     "group": "F"
   },
   {
@@ -5794,7 +5807,7 @@
     "team_color": "#0B2D5E",
     "number": 7,
     "type": "player",
-    "sort_order": 445,
+    "sort_order": 446,
     "group": "F"
   },
   {
@@ -5807,7 +5820,7 @@
     "team_color": "#0B2D5E",
     "number": 8,
     "type": "player",
-    "sort_order": 446,
+    "sort_order": 447,
     "group": "F"
   },
   {
@@ -5820,7 +5833,7 @@
     "team_color": "#0B2D5E",
     "number": 9,
     "type": "player",
-    "sort_order": 447,
+    "sort_order": 448,
     "group": "F"
   },
   {
@@ -5833,7 +5846,7 @@
     "team_color": "#0B2D5E",
     "number": 10,
     "type": "player",
-    "sort_order": 448,
+    "sort_order": 449,
     "group": "F"
   },
   {
@@ -5846,7 +5859,7 @@
     "team_color": "#0B2D5E",
     "number": 11,
     "type": "player",
-    "sort_order": 449,
+    "sort_order": 450,
     "group": "F"
   },
   {
@@ -5859,7 +5872,7 @@
     "team_color": "#0B2D5E",
     "number": 12,
     "type": "player",
-    "sort_order": 450,
+    "sort_order": 451,
     "group": "F"
   },
   {
@@ -5872,7 +5885,7 @@
     "team_color": "#0B2D5E",
     "number": 14,
     "type": "player",
-    "sort_order": 451,
+    "sort_order": 452,
     "group": "F"
   },
   {
@@ -5885,7 +5898,7 @@
     "team_color": "#0B2D5E",
     "number": 15,
     "type": "player",
-    "sort_order": 452,
+    "sort_order": 453,
     "group": "F"
   },
   {
@@ -5898,7 +5911,7 @@
     "team_color": "#0B2D5E",
     "number": 16,
     "type": "player",
-    "sort_order": 453,
+    "sort_order": 454,
     "group": "F"
   },
   {
@@ -5911,7 +5924,7 @@
     "team_color": "#0B2D5E",
     "number": 17,
     "type": "player",
-    "sort_order": 454,
+    "sort_order": 455,
     "group": "F"
   },
   {
@@ -5924,7 +5937,7 @@
     "team_color": "#0B2D5E",
     "number": 18,
     "type": "player",
-    "sort_order": 455,
+    "sort_order": 456,
     "group": "F"
   },
   {
@@ -5937,7 +5950,7 @@
     "team_color": "#0B2D5E",
     "number": 19,
     "type": "player",
-    "sort_order": 456,
+    "sort_order": 457,
     "group": "F"
   },
   {
@@ -5950,19 +5963,6 @@
     "team_color": "#0B2D5E",
     "number": 20,
     "type": "player",
-    "sort_order": 457,
-    "group": "F"
-  },
-  {
-    "sticker_id": "jpn-team",
-    "code": "JPN 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Japan",
-    "team_code": "JPN",
-    "team_color": "#0B2D5E",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 458,
     "group": "F"
   },
@@ -5980,6 +5980,19 @@
     "group": "F"
   },
   {
+    "sticker_id": "swe-team",
+    "code": "SWE 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Sweden",
+    "team_code": "SWE",
+    "team_color": "#FECC00",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 460,
+    "group": "F"
+  },
+  {
     "sticker_id": "swe-2-johansson",
     "code": "SWE 2",
     "name": "Victor Johansson",
@@ -5989,7 +6002,7 @@
     "team_color": "#FECC00",
     "number": 2,
     "type": "player",
-    "sort_order": 460,
+    "sort_order": 461,
     "group": "F"
   },
   {
@@ -6002,7 +6015,7 @@
     "team_color": "#FECC00",
     "number": 3,
     "type": "player",
-    "sort_order": 461,
+    "sort_order": 462,
     "group": "F"
   },
   {
@@ -6015,7 +6028,7 @@
     "team_color": "#FECC00",
     "number": 4,
     "type": "player",
-    "sort_order": 462,
+    "sort_order": 463,
     "group": "F"
   },
   {
@@ -6028,7 +6041,7 @@
     "team_color": "#FECC00",
     "number": 5,
     "type": "player",
-    "sort_order": 463,
+    "sort_order": 464,
     "group": "F"
   },
   {
@@ -6041,7 +6054,7 @@
     "team_color": "#FECC00",
     "number": 6,
     "type": "player",
-    "sort_order": 464,
+    "sort_order": 465,
     "group": "F"
   },
   {
@@ -6054,7 +6067,7 @@
     "team_color": "#FECC00",
     "number": 7,
     "type": "player",
-    "sort_order": 465,
+    "sort_order": 466,
     "group": "F"
   },
   {
@@ -6067,7 +6080,7 @@
     "team_color": "#FECC00",
     "number": 8,
     "type": "player",
-    "sort_order": 466,
+    "sort_order": 467,
     "group": "F"
   },
   {
@@ -6080,7 +6093,7 @@
     "team_color": "#FECC00",
     "number": 9,
     "type": "player",
-    "sort_order": 467,
+    "sort_order": 468,
     "group": "F"
   },
   {
@@ -6093,7 +6106,7 @@
     "team_color": "#FECC00",
     "number": 10,
     "type": "player",
-    "sort_order": 468,
+    "sort_order": 469,
     "group": "F"
   },
   {
@@ -6106,7 +6119,7 @@
     "team_color": "#FECC00",
     "number": 11,
     "type": "player",
-    "sort_order": 469,
+    "sort_order": 470,
     "group": "F"
   },
   {
@@ -6119,7 +6132,7 @@
     "team_color": "#FECC00",
     "number": 12,
     "type": "player",
-    "sort_order": 470,
+    "sort_order": 471,
     "group": "F"
   },
   {
@@ -6132,7 +6145,7 @@
     "team_color": "#FECC00",
     "number": 14,
     "type": "player",
-    "sort_order": 471,
+    "sort_order": 472,
     "group": "F"
   },
   {
@@ -6145,7 +6158,7 @@
     "team_color": "#FECC00",
     "number": 15,
     "type": "player",
-    "sort_order": 472,
+    "sort_order": 473,
     "group": "F"
   },
   {
@@ -6158,7 +6171,7 @@
     "team_color": "#FECC00",
     "number": 16,
     "type": "player",
-    "sort_order": 473,
+    "sort_order": 474,
     "group": "F"
   },
   {
@@ -6171,7 +6184,7 @@
     "team_color": "#FECC00",
     "number": 17,
     "type": "player",
-    "sort_order": 474,
+    "sort_order": 475,
     "group": "F"
   },
   {
@@ -6184,7 +6197,7 @@
     "team_color": "#FECC00",
     "number": 18,
     "type": "player",
-    "sort_order": 475,
+    "sort_order": 476,
     "group": "F"
   },
   {
@@ -6197,7 +6210,7 @@
     "team_color": "#FECC00",
     "number": 19,
     "type": "player",
-    "sort_order": 476,
+    "sort_order": 477,
     "group": "F"
   },
   {
@@ -6210,19 +6223,6 @@
     "team_color": "#FECC00",
     "number": 20,
     "type": "player",
-    "sort_order": 477,
-    "group": "F"
-  },
-  {
-    "sticker_id": "swe-team",
-    "code": "SWE 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Sweden",
-    "team_code": "SWE",
-    "team_color": "#FECC00",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 478,
     "group": "F"
   },
@@ -6240,6 +6240,19 @@
     "group": "F"
   },
   {
+    "sticker_id": "tun-team",
+    "code": "TUN 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Tunisia",
+    "team_code": "TUN",
+    "team_color": "#E70013",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 480,
+    "group": "F"
+  },
+  {
     "sticker_id": "tun-2-said",
     "code": "TUN 2",
     "name": "Bechir Ben Said",
@@ -6249,7 +6262,7 @@
     "team_color": "#E70013",
     "number": 2,
     "type": "player",
-    "sort_order": 480,
+    "sort_order": 481,
     "group": "F"
   },
   {
@@ -6262,7 +6275,7 @@
     "team_color": "#E70013",
     "number": 3,
     "type": "player",
-    "sort_order": 481,
+    "sort_order": 482,
     "group": "F"
   },
   {
@@ -6275,7 +6288,7 @@
     "team_color": "#E70013",
     "number": 4,
     "type": "player",
-    "sort_order": 482,
+    "sort_order": 483,
     "group": "F"
   },
   {
@@ -6288,7 +6301,7 @@
     "team_color": "#E70013",
     "number": 5,
     "type": "player",
-    "sort_order": 483,
+    "sort_order": 484,
     "group": "F"
   },
   {
@@ -6301,7 +6314,7 @@
     "team_color": "#E70013",
     "number": 6,
     "type": "player",
-    "sort_order": 484,
+    "sort_order": 485,
     "group": "F"
   },
   {
@@ -6314,7 +6327,7 @@
     "team_color": "#E70013",
     "number": 7,
     "type": "player",
-    "sort_order": 485,
+    "sort_order": 486,
     "group": "F"
   },
   {
@@ -6327,7 +6340,7 @@
     "team_color": "#E70013",
     "number": 8,
     "type": "player",
-    "sort_order": 486,
+    "sort_order": 487,
     "group": "F"
   },
   {
@@ -6340,7 +6353,7 @@
     "team_color": "#E70013",
     "number": 9,
     "type": "player",
-    "sort_order": 487,
+    "sort_order": 488,
     "group": "F"
   },
   {
@@ -6353,7 +6366,7 @@
     "team_color": "#E70013",
     "number": 10,
     "type": "player",
-    "sort_order": 488,
+    "sort_order": 489,
     "group": "F"
   },
   {
@@ -6366,7 +6379,7 @@
     "team_color": "#E70013",
     "number": 11,
     "type": "player",
-    "sort_order": 489,
+    "sort_order": 490,
     "group": "F"
   },
   {
@@ -6379,7 +6392,7 @@
     "team_color": "#E70013",
     "number": 12,
     "type": "player",
-    "sort_order": 490,
+    "sort_order": 491,
     "group": "F"
   },
   {
@@ -6392,7 +6405,7 @@
     "team_color": "#E70013",
     "number": 14,
     "type": "player",
-    "sort_order": 491,
+    "sort_order": 492,
     "group": "F"
   },
   {
@@ -6405,7 +6418,7 @@
     "team_color": "#E70013",
     "number": 15,
     "type": "player",
-    "sort_order": 492,
+    "sort_order": 493,
     "group": "F"
   },
   {
@@ -6418,7 +6431,7 @@
     "team_color": "#E70013",
     "number": 16,
     "type": "player",
-    "sort_order": 493,
+    "sort_order": 494,
     "group": "F"
   },
   {
@@ -6431,7 +6444,7 @@
     "team_color": "#E70013",
     "number": 17,
     "type": "player",
-    "sort_order": 494,
+    "sort_order": 495,
     "group": "F"
   },
   {
@@ -6444,7 +6457,7 @@
     "team_color": "#E70013",
     "number": 18,
     "type": "player",
-    "sort_order": 495,
+    "sort_order": 496,
     "group": "F"
   },
   {
@@ -6457,7 +6470,7 @@
     "team_color": "#E70013",
     "number": 19,
     "type": "player",
-    "sort_order": 496,
+    "sort_order": 497,
     "group": "F"
   },
   {
@@ -6470,19 +6483,6 @@
     "team_color": "#E70013",
     "number": 20,
     "type": "player",
-    "sort_order": 497,
-    "group": "F"
-  },
-  {
-    "sticker_id": "tun-team",
-    "code": "TUN 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Tunisia",
-    "team_code": "TUN",
-    "team_color": "#E70013",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 498,
     "group": "F"
   },
@@ -6500,6 +6500,19 @@
     "group": "G"
   },
   {
+    "sticker_id": "bel-team",
+    "code": "BEL 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Belgium",
+    "team_code": "BEL",
+    "team_color": "#E30613",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 500,
+    "group": "G"
+  },
+  {
     "sticker_id": "bel-2-courtois",
     "code": "BEL 2",
     "name": "Thibaut Courtois",
@@ -6509,7 +6522,7 @@
     "team_color": "#E30613",
     "number": 2,
     "type": "player",
-    "sort_order": 500,
+    "sort_order": 501,
     "group": "G"
   },
   {
@@ -6522,7 +6535,7 @@
     "team_color": "#E30613",
     "number": 3,
     "type": "player",
-    "sort_order": 501,
+    "sort_order": 502,
     "group": "G"
   },
   {
@@ -6535,7 +6548,7 @@
     "team_color": "#E30613",
     "number": 4,
     "type": "player",
-    "sort_order": 502,
+    "sort_order": 503,
     "group": "G"
   },
   {
@@ -6548,7 +6561,7 @@
     "team_color": "#E30613",
     "number": 5,
     "type": "player",
-    "sort_order": 503,
+    "sort_order": 504,
     "group": "G"
   },
   {
@@ -6561,7 +6574,7 @@
     "team_color": "#E30613",
     "number": 6,
     "type": "player",
-    "sort_order": 504,
+    "sort_order": 505,
     "group": "G"
   },
   {
@@ -6574,7 +6587,7 @@
     "team_color": "#E30613",
     "number": 7,
     "type": "player",
-    "sort_order": 505,
+    "sort_order": 506,
     "group": "G"
   },
   {
@@ -6587,7 +6600,7 @@
     "team_color": "#E30613",
     "number": 8,
     "type": "player",
-    "sort_order": 506,
+    "sort_order": 507,
     "group": "G"
   },
   {
@@ -6600,7 +6613,7 @@
     "team_color": "#E30613",
     "number": 9,
     "type": "player",
-    "sort_order": 507,
+    "sort_order": 508,
     "group": "G"
   },
   {
@@ -6613,7 +6626,7 @@
     "team_color": "#E30613",
     "number": 10,
     "type": "player",
-    "sort_order": 508,
+    "sort_order": 509,
     "group": "G"
   },
   {
@@ -6626,7 +6639,7 @@
     "team_color": "#E30613",
     "number": 11,
     "type": "player",
-    "sort_order": 509,
+    "sort_order": 510,
     "group": "G"
   },
   {
@@ -6639,7 +6652,7 @@
     "team_color": "#E30613",
     "number": 12,
     "type": "player",
-    "sort_order": 510,
+    "sort_order": 511,
     "group": "G"
   },
   {
@@ -6652,7 +6665,7 @@
     "team_color": "#E30613",
     "number": 14,
     "type": "player",
-    "sort_order": 511,
+    "sort_order": 512,
     "group": "G"
   },
   {
@@ -6665,7 +6678,7 @@
     "team_color": "#E30613",
     "number": 15,
     "type": "player",
-    "sort_order": 512,
+    "sort_order": 513,
     "group": "G"
   },
   {
@@ -6678,7 +6691,7 @@
     "team_color": "#E30613",
     "number": 16,
     "type": "player",
-    "sort_order": 513,
+    "sort_order": 514,
     "group": "G"
   },
   {
@@ -6691,7 +6704,7 @@
     "team_color": "#E30613",
     "number": 17,
     "type": "player",
-    "sort_order": 514,
+    "sort_order": 515,
     "group": "G"
   },
   {
@@ -6704,7 +6717,7 @@
     "team_color": "#E30613",
     "number": 18,
     "type": "player",
-    "sort_order": 515,
+    "sort_order": 516,
     "group": "G"
   },
   {
@@ -6717,7 +6730,7 @@
     "team_color": "#E30613",
     "number": 19,
     "type": "player",
-    "sort_order": 516,
+    "sort_order": 517,
     "group": "G"
   },
   {
@@ -6730,19 +6743,6 @@
     "team_color": "#E30613",
     "number": 20,
     "type": "player",
-    "sort_order": 517,
-    "group": "G"
-  },
-  {
-    "sticker_id": "bel-team",
-    "code": "BEL 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Belgium",
-    "team_code": "BEL",
-    "team_color": "#E30613",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 518,
     "group": "G"
   },
@@ -6760,6 +6760,19 @@
     "group": "G"
   },
   {
+    "sticker_id": "egy-team",
+    "code": "EGY 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Egypt",
+    "team_code": "EGY",
+    "team_color": "#C8102E",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 520,
+    "group": "G"
+  },
+  {
     "sticker_id": "egy-2-shenawy",
     "code": "EGY 2",
     "name": "Mohamed El Shenawy",
@@ -6769,7 +6782,7 @@
     "team_color": "#C8102E",
     "number": 2,
     "type": "player",
-    "sort_order": 520,
+    "sort_order": 521,
     "group": "G"
   },
   {
@@ -6782,7 +6795,7 @@
     "team_color": "#C8102E",
     "number": 3,
     "type": "player",
-    "sort_order": 521,
+    "sort_order": 522,
     "group": "G"
   },
   {
@@ -6795,7 +6808,7 @@
     "team_color": "#C8102E",
     "number": 4,
     "type": "player",
-    "sort_order": 522,
+    "sort_order": 523,
     "group": "G"
   },
   {
@@ -6808,7 +6821,7 @@
     "team_color": "#C8102E",
     "number": 5,
     "type": "player",
-    "sort_order": 523,
+    "sort_order": 524,
     "group": "G"
   },
   {
@@ -6821,7 +6834,7 @@
     "team_color": "#C8102E",
     "number": 6,
     "type": "player",
-    "sort_order": 524,
+    "sort_order": 525,
     "group": "G"
   },
   {
@@ -6834,7 +6847,7 @@
     "team_color": "#C8102E",
     "number": 7,
     "type": "player",
-    "sort_order": 525,
+    "sort_order": 526,
     "group": "G"
   },
   {
@@ -6847,7 +6860,7 @@
     "team_color": "#C8102E",
     "number": 8,
     "type": "player",
-    "sort_order": 526,
+    "sort_order": 527,
     "group": "G"
   },
   {
@@ -6860,7 +6873,7 @@
     "team_color": "#C8102E",
     "number": 9,
     "type": "player",
-    "sort_order": 527,
+    "sort_order": 528,
     "group": "G"
   },
   {
@@ -6873,7 +6886,7 @@
     "team_color": "#C8102E",
     "number": 10,
     "type": "player",
-    "sort_order": 528,
+    "sort_order": 529,
     "group": "G"
   },
   {
@@ -6886,7 +6899,7 @@
     "team_color": "#C8102E",
     "number": 11,
     "type": "player",
-    "sort_order": 529,
+    "sort_order": 530,
     "group": "G"
   },
   {
@@ -6899,7 +6912,7 @@
     "team_color": "#C8102E",
     "number": 12,
     "type": "player",
-    "sort_order": 530,
+    "sort_order": 531,
     "group": "G"
   },
   {
@@ -6912,7 +6925,7 @@
     "team_color": "#C8102E",
     "number": 14,
     "type": "player",
-    "sort_order": 531,
+    "sort_order": 532,
     "group": "G"
   },
   {
@@ -6925,7 +6938,7 @@
     "team_color": "#C8102E",
     "number": 15,
     "type": "player",
-    "sort_order": 532,
+    "sort_order": 533,
     "group": "G"
   },
   {
@@ -6938,7 +6951,7 @@
     "team_color": "#C8102E",
     "number": 16,
     "type": "player",
-    "sort_order": 533,
+    "sort_order": 534,
     "group": "G"
   },
   {
@@ -6951,7 +6964,7 @@
     "team_color": "#C8102E",
     "number": 17,
     "type": "player",
-    "sort_order": 534,
+    "sort_order": 535,
     "group": "G"
   },
   {
@@ -6964,7 +6977,7 @@
     "team_color": "#C8102E",
     "number": 18,
     "type": "player",
-    "sort_order": 535,
+    "sort_order": 536,
     "group": "G"
   },
   {
@@ -6977,7 +6990,7 @@
     "team_color": "#C8102E",
     "number": 19,
     "type": "player",
-    "sort_order": 536,
+    "sort_order": 537,
     "group": "G"
   },
   {
@@ -6990,19 +7003,6 @@
     "team_color": "#C8102E",
     "number": 20,
     "type": "player",
-    "sort_order": 537,
-    "group": "G"
-  },
-  {
-    "sticker_id": "egy-team",
-    "code": "EGY 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Egypt",
-    "team_code": "EGY",
-    "team_color": "#C8102E",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 538,
     "group": "G"
   },
@@ -7020,6 +7020,19 @@
     "group": "G"
   },
   {
+    "sticker_id": "irn-team",
+    "code": "IRN 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Iran",
+    "team_code": "IRN",
+    "team_color": "#239F40",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 540,
+    "group": "G"
+  },
+  {
     "sticker_id": "irn-2-beiranvand",
     "code": "IRN 2",
     "name": "Alireza Beiranvand",
@@ -7029,7 +7042,7 @@
     "team_color": "#239F40",
     "number": 2,
     "type": "player",
-    "sort_order": 540,
+    "sort_order": 541,
     "group": "G"
   },
   {
@@ -7042,7 +7055,7 @@
     "team_color": "#239F40",
     "number": 3,
     "type": "player",
-    "sort_order": 541,
+    "sort_order": 542,
     "group": "G"
   },
   {
@@ -7055,7 +7068,7 @@
     "team_color": "#239F40",
     "number": 4,
     "type": "player",
-    "sort_order": 542,
+    "sort_order": 543,
     "group": "G"
   },
   {
@@ -7068,7 +7081,7 @@
     "team_color": "#239F40",
     "number": 5,
     "type": "player",
-    "sort_order": 543,
+    "sort_order": 544,
     "group": "G"
   },
   {
@@ -7081,7 +7094,7 @@
     "team_color": "#239F40",
     "number": 6,
     "type": "player",
-    "sort_order": 544,
+    "sort_order": 545,
     "group": "G"
   },
   {
@@ -7094,7 +7107,7 @@
     "team_color": "#239F40",
     "number": 7,
     "type": "player",
-    "sort_order": 545,
+    "sort_order": 546,
     "group": "G"
   },
   {
@@ -7107,7 +7120,7 @@
     "team_color": "#239F40",
     "number": 8,
     "type": "player",
-    "sort_order": 546,
+    "sort_order": 547,
     "group": "G"
   },
   {
@@ -7120,7 +7133,7 @@
     "team_color": "#239F40",
     "number": 9,
     "type": "player",
-    "sort_order": 547,
+    "sort_order": 548,
     "group": "G"
   },
   {
@@ -7133,7 +7146,7 @@
     "team_color": "#239F40",
     "number": 10,
     "type": "player",
-    "sort_order": 548,
+    "sort_order": 549,
     "group": "G"
   },
   {
@@ -7146,7 +7159,7 @@
     "team_color": "#239F40",
     "number": 11,
     "type": "player",
-    "sort_order": 549,
+    "sort_order": 550,
     "group": "G"
   },
   {
@@ -7159,7 +7172,7 @@
     "team_color": "#239F40",
     "number": 12,
     "type": "player",
-    "sort_order": 550,
+    "sort_order": 551,
     "group": "G"
   },
   {
@@ -7172,7 +7185,7 @@
     "team_color": "#239F40",
     "number": 14,
     "type": "player",
-    "sort_order": 551,
+    "sort_order": 552,
     "group": "G"
   },
   {
@@ -7185,7 +7198,7 @@
     "team_color": "#239F40",
     "number": 15,
     "type": "player",
-    "sort_order": 552,
+    "sort_order": 553,
     "group": "G"
   },
   {
@@ -7198,7 +7211,7 @@
     "team_color": "#239F40",
     "number": 16,
     "type": "player",
-    "sort_order": 553,
+    "sort_order": 554,
     "group": "G"
   },
   {
@@ -7211,7 +7224,7 @@
     "team_color": "#239F40",
     "number": 17,
     "type": "player",
-    "sort_order": 554,
+    "sort_order": 555,
     "group": "G"
   },
   {
@@ -7224,7 +7237,7 @@
     "team_color": "#239F40",
     "number": 18,
     "type": "player",
-    "sort_order": 555,
+    "sort_order": 556,
     "group": "G"
   },
   {
@@ -7237,7 +7250,7 @@
     "team_color": "#239F40",
     "number": 19,
     "type": "player",
-    "sort_order": 556,
+    "sort_order": 557,
     "group": "G"
   },
   {
@@ -7250,19 +7263,6 @@
     "team_color": "#239F40",
     "number": 20,
     "type": "player",
-    "sort_order": 557,
-    "group": "G"
-  },
-  {
-    "sticker_id": "irn-team",
-    "code": "IRN 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Iran",
-    "team_code": "IRN",
-    "team_color": "#239F40",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 558,
     "group": "G"
   },
@@ -7280,6 +7280,19 @@
     "group": "G"
   },
   {
+    "sticker_id": "nzl-team",
+    "code": "NZL 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "New Zealand",
+    "team_code": "NZL",
+    "team_color": "#000000",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 560,
+    "group": "G"
+  },
+  {
     "sticker_id": "nzl-2-payne",
     "code": "NZL 2",
     "name": "Max Crocombe Payne",
@@ -7289,7 +7302,7 @@
     "team_color": "#000000",
     "number": 2,
     "type": "player",
-    "sort_order": 560,
+    "sort_order": 561,
     "group": "G"
   },
   {
@@ -7302,7 +7315,7 @@
     "team_color": "#000000",
     "number": 3,
     "type": "player",
-    "sort_order": 561,
+    "sort_order": 562,
     "group": "G"
   },
   {
@@ -7315,7 +7328,7 @@
     "team_color": "#000000",
     "number": 4,
     "type": "player",
-    "sort_order": 562,
+    "sort_order": 563,
     "group": "G"
   },
   {
@@ -7328,7 +7341,7 @@
     "team_color": "#000000",
     "number": 5,
     "type": "player",
-    "sort_order": 563,
+    "sort_order": 564,
     "group": "G"
   },
   {
@@ -7341,7 +7354,7 @@
     "team_color": "#000000",
     "number": 6,
     "type": "player",
-    "sort_order": 564,
+    "sort_order": 565,
     "group": "G"
   },
   {
@@ -7354,7 +7367,7 @@
     "team_color": "#000000",
     "number": 7,
     "type": "player",
-    "sort_order": 565,
+    "sort_order": 566,
     "group": "G"
   },
   {
@@ -7367,7 +7380,7 @@
     "team_color": "#000000",
     "number": 8,
     "type": "player",
-    "sort_order": 566,
+    "sort_order": 567,
     "group": "G"
   },
   {
@@ -7380,7 +7393,7 @@
     "team_color": "#000000",
     "number": 9,
     "type": "player",
-    "sort_order": 567,
+    "sort_order": 568,
     "group": "G"
   },
   {
@@ -7393,7 +7406,7 @@
     "team_color": "#000000",
     "number": 10,
     "type": "player",
-    "sort_order": 568,
+    "sort_order": 569,
     "group": "G"
   },
   {
@@ -7406,7 +7419,7 @@
     "team_color": "#000000",
     "number": 11,
     "type": "player",
-    "sort_order": 569,
+    "sort_order": 570,
     "group": "G"
   },
   {
@@ -7419,7 +7432,7 @@
     "team_color": "#000000",
     "number": 12,
     "type": "player",
-    "sort_order": 570,
+    "sort_order": 571,
     "group": "G"
   },
   {
@@ -7432,7 +7445,7 @@
     "team_color": "#000000",
     "number": 14,
     "type": "player",
-    "sort_order": 571,
+    "sort_order": 572,
     "group": "G"
   },
   {
@@ -7445,7 +7458,7 @@
     "team_color": "#000000",
     "number": 15,
     "type": "player",
-    "sort_order": 572,
+    "sort_order": 573,
     "group": "G"
   },
   {
@@ -7458,7 +7471,7 @@
     "team_color": "#000000",
     "number": 16,
     "type": "player",
-    "sort_order": 573,
+    "sort_order": 574,
     "group": "G"
   },
   {
@@ -7471,7 +7484,7 @@
     "team_color": "#000000",
     "number": 17,
     "type": "player",
-    "sort_order": 574,
+    "sort_order": 575,
     "group": "G"
   },
   {
@@ -7484,7 +7497,7 @@
     "team_color": "#000000",
     "number": 18,
     "type": "player",
-    "sort_order": 575,
+    "sort_order": 576,
     "group": "G"
   },
   {
@@ -7497,7 +7510,7 @@
     "team_color": "#000000",
     "number": 19,
     "type": "player",
-    "sort_order": 576,
+    "sort_order": 577,
     "group": "G"
   },
   {
@@ -7510,19 +7523,6 @@
     "team_color": "#000000",
     "number": 20,
     "type": "player",
-    "sort_order": 577,
-    "group": "G"
-  },
-  {
-    "sticker_id": "nzl-team",
-    "code": "NZL 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "New Zealand",
-    "team_code": "NZL",
-    "team_color": "#000000",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 578,
     "group": "G"
   },
@@ -7540,6 +7540,19 @@
     "group": "H"
   },
   {
+    "sticker_id": "esp-team",
+    "code": "ESP 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Spain",
+    "team_code": "ESP",
+    "team_color": "#AA151B",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 580,
+    "group": "H"
+  },
+  {
     "sticker_id": "esp-2-simon",
     "code": "ESP 2",
     "name": "Unai Simon",
@@ -7549,7 +7562,7 @@
     "team_color": "#AA151B",
     "number": 2,
     "type": "player",
-    "sort_order": 580,
+    "sort_order": 581,
     "group": "H"
   },
   {
@@ -7562,7 +7575,7 @@
     "team_color": "#AA151B",
     "number": 3,
     "type": "player",
-    "sort_order": 581,
+    "sort_order": 582,
     "group": "H"
   },
   {
@@ -7575,7 +7588,7 @@
     "team_color": "#AA151B",
     "number": 4,
     "type": "player",
-    "sort_order": 582,
+    "sort_order": 583,
     "group": "H"
   },
   {
@@ -7588,7 +7601,7 @@
     "team_color": "#AA151B",
     "number": 5,
     "type": "player",
-    "sort_order": 583,
+    "sort_order": 584,
     "group": "H"
   },
   {
@@ -7601,7 +7614,7 @@
     "team_color": "#AA151B",
     "number": 6,
     "type": "player",
-    "sort_order": 584,
+    "sort_order": 585,
     "group": "H"
   },
   {
@@ -7614,7 +7627,7 @@
     "team_color": "#AA151B",
     "number": 7,
     "type": "player",
-    "sort_order": 585,
+    "sort_order": 586,
     "group": "H"
   },
   {
@@ -7627,7 +7640,7 @@
     "team_color": "#AA151B",
     "number": 8,
     "type": "player",
-    "sort_order": 586,
+    "sort_order": 587,
     "group": "H"
   },
   {
@@ -7640,7 +7653,7 @@
     "team_color": "#AA151B",
     "number": 9,
     "type": "player",
-    "sort_order": 587,
+    "sort_order": 588,
     "group": "H"
   },
   {
@@ -7653,7 +7666,7 @@
     "team_color": "#AA151B",
     "number": 10,
     "type": "player",
-    "sort_order": 588,
+    "sort_order": 589,
     "group": "H"
   },
   {
@@ -7666,7 +7679,7 @@
     "team_color": "#AA151B",
     "number": 11,
     "type": "player",
-    "sort_order": 589,
+    "sort_order": 590,
     "group": "H"
   },
   {
@@ -7679,7 +7692,7 @@
     "team_color": "#AA151B",
     "number": 12,
     "type": "player",
-    "sort_order": 590,
+    "sort_order": 591,
     "group": "H"
   },
   {
@@ -7692,7 +7705,7 @@
     "team_color": "#AA151B",
     "number": 14,
     "type": "player",
-    "sort_order": 591,
+    "sort_order": 592,
     "group": "H"
   },
   {
@@ -7705,7 +7718,7 @@
     "team_color": "#AA151B",
     "number": 15,
     "type": "player",
-    "sort_order": 592,
+    "sort_order": 593,
     "group": "H"
   },
   {
@@ -7718,7 +7731,7 @@
     "team_color": "#AA151B",
     "number": 16,
     "type": "player",
-    "sort_order": 593,
+    "sort_order": 594,
     "group": "H"
   },
   {
@@ -7731,7 +7744,7 @@
     "team_color": "#AA151B",
     "number": 17,
     "type": "player",
-    "sort_order": 594,
+    "sort_order": 595,
     "group": "H"
   },
   {
@@ -7744,7 +7757,7 @@
     "team_color": "#AA151B",
     "number": 18,
     "type": "player",
-    "sort_order": 595,
+    "sort_order": 596,
     "group": "H"
   },
   {
@@ -7757,7 +7770,7 @@
     "team_color": "#AA151B",
     "number": 19,
     "type": "player",
-    "sort_order": 596,
+    "sort_order": 597,
     "group": "H"
   },
   {
@@ -7770,19 +7783,6 @@
     "team_color": "#AA151B",
     "number": 20,
     "type": "player",
-    "sort_order": 597,
-    "group": "H"
-  },
-  {
-    "sticker_id": "esp-team",
-    "code": "ESP 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Spain",
-    "team_code": "ESP",
-    "team_color": "#AA151B",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 598,
     "group": "H"
   },
@@ -7800,6 +7800,19 @@
     "group": "H"
   },
   {
+    "sticker_id": "cpv-team",
+    "code": "CPV 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Cape Verde",
+    "team_code": "CPV",
+    "team_color": "#003893",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 600,
+    "group": "H"
+  },
+  {
     "sticker_id": "cpv-2-vozinha",
     "code": "CPV 2",
     "name": "Vozinha",
@@ -7809,7 +7822,7 @@
     "team_color": "#003893",
     "number": 2,
     "type": "player",
-    "sort_order": 600,
+    "sort_order": 601,
     "group": "H"
   },
   {
@@ -7822,7 +7835,7 @@
     "team_color": "#003893",
     "number": 3,
     "type": "player",
-    "sort_order": 601,
+    "sort_order": 602,
     "group": "H"
   },
   {
@@ -7835,7 +7848,7 @@
     "team_color": "#003893",
     "number": 4,
     "type": "player",
-    "sort_order": 602,
+    "sort_order": 603,
     "group": "H"
   },
   {
@@ -7848,7 +7861,7 @@
     "team_color": "#003893",
     "number": 5,
     "type": "player",
-    "sort_order": 603,
+    "sort_order": 604,
     "group": "H"
   },
   {
@@ -7861,7 +7874,7 @@
     "team_color": "#003893",
     "number": 6,
     "type": "player",
-    "sort_order": 604,
+    "sort_order": 605,
     "group": "H"
   },
   {
@@ -7874,7 +7887,7 @@
     "team_color": "#003893",
     "number": 7,
     "type": "player",
-    "sort_order": 605,
+    "sort_order": 606,
     "group": "H"
   },
   {
@@ -7887,7 +7900,7 @@
     "team_color": "#003893",
     "number": 8,
     "type": "player",
-    "sort_order": 606,
+    "sort_order": 607,
     "group": "H"
   },
   {
@@ -7900,7 +7913,7 @@
     "team_color": "#003893",
     "number": 9,
     "type": "player",
-    "sort_order": 607,
+    "sort_order": 608,
     "group": "H"
   },
   {
@@ -7913,7 +7926,7 @@
     "team_color": "#003893",
     "number": 10,
     "type": "player",
-    "sort_order": 608,
+    "sort_order": 609,
     "group": "H"
   },
   {
@@ -7926,7 +7939,7 @@
     "team_color": "#003893",
     "number": 11,
     "type": "player",
-    "sort_order": 609,
+    "sort_order": 610,
     "group": "H"
   },
   {
@@ -7939,7 +7952,7 @@
     "team_color": "#003893",
     "number": 12,
     "type": "player",
-    "sort_order": 610,
+    "sort_order": 611,
     "group": "H"
   },
   {
@@ -7952,7 +7965,7 @@
     "team_color": "#003893",
     "number": 14,
     "type": "player",
-    "sort_order": 611,
+    "sort_order": 612,
     "group": "H"
   },
   {
@@ -7965,7 +7978,7 @@
     "team_color": "#003893",
     "number": 15,
     "type": "player",
-    "sort_order": 612,
+    "sort_order": 613,
     "group": "H"
   },
   {
@@ -7978,7 +7991,7 @@
     "team_color": "#003893",
     "number": 16,
     "type": "player",
-    "sort_order": 613,
+    "sort_order": 614,
     "group": "H"
   },
   {
@@ -7991,7 +8004,7 @@
     "team_color": "#003893",
     "number": 17,
     "type": "player",
-    "sort_order": 614,
+    "sort_order": 615,
     "group": "H"
   },
   {
@@ -8004,7 +8017,7 @@
     "team_color": "#003893",
     "number": 18,
     "type": "player",
-    "sort_order": 615,
+    "sort_order": 616,
     "group": "H"
   },
   {
@@ -8017,7 +8030,7 @@
     "team_color": "#003893",
     "number": 19,
     "type": "player",
-    "sort_order": 616,
+    "sort_order": 617,
     "group": "H"
   },
   {
@@ -8030,19 +8043,6 @@
     "team_color": "#003893",
     "number": 20,
     "type": "player",
-    "sort_order": 617,
-    "group": "H"
-  },
-  {
-    "sticker_id": "cpv-team",
-    "code": "CPV 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Cape Verde",
-    "team_code": "CPV",
-    "team_color": "#003893",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 618,
     "group": "H"
   },
@@ -8060,6 +8060,19 @@
     "group": "H"
   },
   {
+    "sticker_id": "ksa-team",
+    "code": "KSA 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Saudi Arabia",
+    "team_code": "KSA",
+    "team_color": "#006C35",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 620,
+    "group": "H"
+  },
+  {
     "sticker_id": "ksa-2-alaqidi",
     "code": "KSA 2",
     "name": "Nawaf Alaqidi",
@@ -8069,7 +8082,7 @@
     "team_color": "#006C35",
     "number": 2,
     "type": "player",
-    "sort_order": 620,
+    "sort_order": 621,
     "group": "H"
   },
   {
@@ -8082,7 +8095,7 @@
     "team_color": "#006C35",
     "number": 3,
     "type": "player",
-    "sort_order": 621,
+    "sort_order": 622,
     "group": "H"
   },
   {
@@ -8095,7 +8108,7 @@
     "team_color": "#006C35",
     "number": 4,
     "type": "player",
-    "sort_order": 622,
+    "sort_order": 623,
     "group": "H"
   },
   {
@@ -8108,7 +8121,7 @@
     "team_color": "#006C35",
     "number": 5,
     "type": "player",
-    "sort_order": 623,
+    "sort_order": 624,
     "group": "H"
   },
   {
@@ -8121,7 +8134,7 @@
     "team_color": "#006C35",
     "number": 6,
     "type": "player",
-    "sort_order": 624,
+    "sort_order": 625,
     "group": "H"
   },
   {
@@ -8134,7 +8147,7 @@
     "team_color": "#006C35",
     "number": 7,
     "type": "player",
-    "sort_order": 625,
+    "sort_order": 626,
     "group": "H"
   },
   {
@@ -8147,7 +8160,7 @@
     "team_color": "#006C35",
     "number": 8,
     "type": "player",
-    "sort_order": 626,
+    "sort_order": 627,
     "group": "H"
   },
   {
@@ -8160,7 +8173,7 @@
     "team_color": "#006C35",
     "number": 9,
     "type": "player",
-    "sort_order": 627,
+    "sort_order": 628,
     "group": "H"
   },
   {
@@ -8173,7 +8186,7 @@
     "team_color": "#006C35",
     "number": 10,
     "type": "player",
-    "sort_order": 628,
+    "sort_order": 629,
     "group": "H"
   },
   {
@@ -8186,7 +8199,7 @@
     "team_color": "#006C35",
     "number": 11,
     "type": "player",
-    "sort_order": 629,
+    "sort_order": 630,
     "group": "H"
   },
   {
@@ -8199,7 +8212,7 @@
     "team_color": "#006C35",
     "number": 12,
     "type": "player",
-    "sort_order": 630,
+    "sort_order": 631,
     "group": "H"
   },
   {
@@ -8212,7 +8225,7 @@
     "team_color": "#006C35",
     "number": 14,
     "type": "player",
-    "sort_order": 631,
+    "sort_order": 632,
     "group": "H"
   },
   {
@@ -8225,7 +8238,7 @@
     "team_color": "#006C35",
     "number": 15,
     "type": "player",
-    "sort_order": 632,
+    "sort_order": 633,
     "group": "H"
   },
   {
@@ -8238,7 +8251,7 @@
     "team_color": "#006C35",
     "number": 16,
     "type": "player",
-    "sort_order": 633,
+    "sort_order": 634,
     "group": "H"
   },
   {
@@ -8251,7 +8264,7 @@
     "team_color": "#006C35",
     "number": 17,
     "type": "player",
-    "sort_order": 634,
+    "sort_order": 635,
     "group": "H"
   },
   {
@@ -8264,7 +8277,7 @@
     "team_color": "#006C35",
     "number": 18,
     "type": "player",
-    "sort_order": 635,
+    "sort_order": 636,
     "group": "H"
   },
   {
@@ -8277,7 +8290,7 @@
     "team_color": "#006C35",
     "number": 19,
     "type": "player",
-    "sort_order": 636,
+    "sort_order": 637,
     "group": "H"
   },
   {
@@ -8290,19 +8303,6 @@
     "team_color": "#006C35",
     "number": 20,
     "type": "player",
-    "sort_order": 637,
-    "group": "H"
-  },
-  {
-    "sticker_id": "ksa-team",
-    "code": "KSA 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Saudi Arabia",
-    "team_code": "KSA",
-    "team_color": "#006C35",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 638,
     "group": "H"
   },
@@ -8320,6 +8320,19 @@
     "group": "H"
   },
   {
+    "sticker_id": "uru-team",
+    "code": "URU 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Uruguay",
+    "team_code": "URU",
+    "team_color": "#5CBFEB",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 640,
+    "group": "H"
+  },
+  {
     "sticker_id": "uru-2-rochet",
     "code": "URU 2",
     "name": "Sergio Rochet",
@@ -8329,7 +8342,7 @@
     "team_color": "#5CBFEB",
     "number": 2,
     "type": "player",
-    "sort_order": 640,
+    "sort_order": 641,
     "group": "H"
   },
   {
@@ -8342,7 +8355,7 @@
     "team_color": "#5CBFEB",
     "number": 3,
     "type": "player",
-    "sort_order": 641,
+    "sort_order": 642,
     "group": "H"
   },
   {
@@ -8355,7 +8368,7 @@
     "team_color": "#5CBFEB",
     "number": 4,
     "type": "player",
-    "sort_order": 642,
+    "sort_order": 643,
     "group": "H"
   },
   {
@@ -8368,7 +8381,7 @@
     "team_color": "#5CBFEB",
     "number": 5,
     "type": "player",
-    "sort_order": 643,
+    "sort_order": 644,
     "group": "H"
   },
   {
@@ -8381,7 +8394,7 @@
     "team_color": "#5CBFEB",
     "number": 6,
     "type": "player",
-    "sort_order": 644,
+    "sort_order": 645,
     "group": "H"
   },
   {
@@ -8394,7 +8407,7 @@
     "team_color": "#5CBFEB",
     "number": 7,
     "type": "player",
-    "sort_order": 645,
+    "sort_order": 646,
     "group": "H"
   },
   {
@@ -8407,7 +8420,7 @@
     "team_color": "#5CBFEB",
     "number": 8,
     "type": "player",
-    "sort_order": 646,
+    "sort_order": 647,
     "group": "H"
   },
   {
@@ -8420,7 +8433,7 @@
     "team_color": "#5CBFEB",
     "number": 9,
     "type": "player",
-    "sort_order": 647,
+    "sort_order": 648,
     "group": "H"
   },
   {
@@ -8433,7 +8446,7 @@
     "team_color": "#5CBFEB",
     "number": 10,
     "type": "player",
-    "sort_order": 648,
+    "sort_order": 649,
     "group": "H"
   },
   {
@@ -8446,7 +8459,7 @@
     "team_color": "#5CBFEB",
     "number": 11,
     "type": "player",
-    "sort_order": 649,
+    "sort_order": 650,
     "group": "H"
   },
   {
@@ -8459,7 +8472,7 @@
     "team_color": "#5CBFEB",
     "number": 12,
     "type": "player",
-    "sort_order": 650,
+    "sort_order": 651,
     "group": "H"
   },
   {
@@ -8472,7 +8485,7 @@
     "team_color": "#5CBFEB",
     "number": 14,
     "type": "player",
-    "sort_order": 651,
+    "sort_order": 652,
     "group": "H"
   },
   {
@@ -8485,7 +8498,7 @@
     "team_color": "#5CBFEB",
     "number": 15,
     "type": "player",
-    "sort_order": 652,
+    "sort_order": 653,
     "group": "H"
   },
   {
@@ -8498,7 +8511,7 @@
     "team_color": "#5CBFEB",
     "number": 16,
     "type": "player",
-    "sort_order": 653,
+    "sort_order": 654,
     "group": "H"
   },
   {
@@ -8511,7 +8524,7 @@
     "team_color": "#5CBFEB",
     "number": 17,
     "type": "player",
-    "sort_order": 654,
+    "sort_order": 655,
     "group": "H"
   },
   {
@@ -8524,7 +8537,7 @@
     "team_color": "#5CBFEB",
     "number": 18,
     "type": "player",
-    "sort_order": 655,
+    "sort_order": 656,
     "group": "H"
   },
   {
@@ -8537,7 +8550,7 @@
     "team_color": "#5CBFEB",
     "number": 19,
     "type": "player",
-    "sort_order": 656,
+    "sort_order": 657,
     "group": "H"
   },
   {
@@ -8550,19 +8563,6 @@
     "team_color": "#5CBFEB",
     "number": 20,
     "type": "player",
-    "sort_order": 657,
-    "group": "H"
-  },
-  {
-    "sticker_id": "uru-team",
-    "code": "URU 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Uruguay",
-    "team_code": "URU",
-    "team_color": "#5CBFEB",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 658,
     "group": "H"
   },
@@ -8580,6 +8580,19 @@
     "group": "I"
   },
   {
+    "sticker_id": "fra-team",
+    "code": "FRA 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "France",
+    "team_code": "FRA",
+    "team_color": "#0055A4",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 660,
+    "group": "I"
+  },
+  {
     "sticker_id": "fra-2-maignan",
     "code": "FRA 2",
     "name": "Mike Maignan",
@@ -8589,7 +8602,7 @@
     "team_color": "#0055A4",
     "number": 2,
     "type": "player",
-    "sort_order": 660,
+    "sort_order": 661,
     "group": "I"
   },
   {
@@ -8602,7 +8615,7 @@
     "team_color": "#0055A4",
     "number": 3,
     "type": "player",
-    "sort_order": 661,
+    "sort_order": 662,
     "group": "I"
   },
   {
@@ -8615,7 +8628,7 @@
     "team_color": "#0055A4",
     "number": 4,
     "type": "player",
-    "sort_order": 662,
+    "sort_order": 663,
     "group": "I"
   },
   {
@@ -8628,7 +8641,7 @@
     "team_color": "#0055A4",
     "number": 5,
     "type": "player",
-    "sort_order": 663,
+    "sort_order": 664,
     "group": "I"
   },
   {
@@ -8641,7 +8654,7 @@
     "team_color": "#0055A4",
     "number": 6,
     "type": "player",
-    "sort_order": 664,
+    "sort_order": 665,
     "group": "I"
   },
   {
@@ -8654,7 +8667,7 @@
     "team_color": "#0055A4",
     "number": 7,
     "type": "player",
-    "sort_order": 665,
+    "sort_order": 666,
     "group": "I"
   },
   {
@@ -8667,7 +8680,7 @@
     "team_color": "#0055A4",
     "number": 8,
     "type": "player",
-    "sort_order": 666,
+    "sort_order": 667,
     "group": "I"
   },
   {
@@ -8680,7 +8693,7 @@
     "team_color": "#0055A4",
     "number": 9,
     "type": "player",
-    "sort_order": 667,
+    "sort_order": 668,
     "group": "I"
   },
   {
@@ -8693,7 +8706,7 @@
     "team_color": "#0055A4",
     "number": 10,
     "type": "player",
-    "sort_order": 668,
+    "sort_order": 669,
     "group": "I"
   },
   {
@@ -8706,7 +8719,7 @@
     "team_color": "#0055A4",
     "number": 11,
     "type": "player",
-    "sort_order": 669,
+    "sort_order": 670,
     "group": "I"
   },
   {
@@ -8719,7 +8732,7 @@
     "team_color": "#0055A4",
     "number": 12,
     "type": "player",
-    "sort_order": 670,
+    "sort_order": 671,
     "group": "I"
   },
   {
@@ -8732,7 +8745,7 @@
     "team_color": "#0055A4",
     "number": 14,
     "type": "player",
-    "sort_order": 671,
+    "sort_order": 672,
     "group": "I"
   },
   {
@@ -8745,7 +8758,7 @@
     "team_color": "#0055A4",
     "number": 15,
     "type": "player",
-    "sort_order": 672,
+    "sort_order": 673,
     "group": "I"
   },
   {
@@ -8758,7 +8771,7 @@
     "team_color": "#0055A4",
     "number": 16,
     "type": "player",
-    "sort_order": 673,
+    "sort_order": 674,
     "group": "I"
   },
   {
@@ -8771,7 +8784,7 @@
     "team_color": "#0055A4",
     "number": 17,
     "type": "player",
-    "sort_order": 674,
+    "sort_order": 675,
     "group": "I"
   },
   {
@@ -8784,7 +8797,7 @@
     "team_color": "#0055A4",
     "number": 18,
     "type": "player",
-    "sort_order": 675,
+    "sort_order": 676,
     "group": "I"
   },
   {
@@ -8797,7 +8810,7 @@
     "team_color": "#0055A4",
     "number": 19,
     "type": "player",
-    "sort_order": 676,
+    "sort_order": 677,
     "group": "I"
   },
   {
@@ -8810,19 +8823,6 @@
     "team_color": "#0055A4",
     "number": 20,
     "type": "player",
-    "sort_order": 677,
-    "group": "I"
-  },
-  {
-    "sticker_id": "fra-team",
-    "code": "FRA 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "France",
-    "team_code": "FRA",
-    "team_color": "#0055A4",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 678,
     "group": "I"
   },
@@ -8840,6 +8840,19 @@
     "group": "I"
   },
   {
+    "sticker_id": "sen-team",
+    "code": "SEN 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Senegal",
+    "team_code": "SEN",
+    "team_color": "#00853F",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 680,
+    "group": "I"
+  },
+  {
     "sticker_id": "sen-2-mendy",
     "code": "SEN 2",
     "name": "Edouard Mendy",
@@ -8849,7 +8862,7 @@
     "team_color": "#00853F",
     "number": 2,
     "type": "player",
-    "sort_order": 680,
+    "sort_order": 681,
     "group": "I"
   },
   {
@@ -8862,7 +8875,7 @@
     "team_color": "#00853F",
     "number": 3,
     "type": "player",
-    "sort_order": 681,
+    "sort_order": 682,
     "group": "I"
   },
   {
@@ -8875,7 +8888,7 @@
     "team_color": "#00853F",
     "number": 4,
     "type": "player",
-    "sort_order": 682,
+    "sort_order": 683,
     "group": "I"
   },
   {
@@ -8888,7 +8901,7 @@
     "team_color": "#00853F",
     "number": 5,
     "type": "player",
-    "sort_order": 683,
+    "sort_order": 684,
     "group": "I"
   },
   {
@@ -8901,7 +8914,7 @@
     "team_color": "#00853F",
     "number": 6,
     "type": "player",
-    "sort_order": 684,
+    "sort_order": 685,
     "group": "I"
   },
   {
@@ -8914,7 +8927,7 @@
     "team_color": "#00853F",
     "number": 7,
     "type": "player",
-    "sort_order": 685,
+    "sort_order": 686,
     "group": "I"
   },
   {
@@ -8927,7 +8940,7 @@
     "team_color": "#00853F",
     "number": 8,
     "type": "player",
-    "sort_order": 686,
+    "sort_order": 687,
     "group": "I"
   },
   {
@@ -8940,7 +8953,7 @@
     "team_color": "#00853F",
     "number": 9,
     "type": "player",
-    "sort_order": 687,
+    "sort_order": 688,
     "group": "I"
   },
   {
@@ -8953,7 +8966,7 @@
     "team_color": "#00853F",
     "number": 10,
     "type": "player",
-    "sort_order": 688,
+    "sort_order": 689,
     "group": "I"
   },
   {
@@ -8966,7 +8979,7 @@
     "team_color": "#00853F",
     "number": 11,
     "type": "player",
-    "sort_order": 689,
+    "sort_order": 690,
     "group": "I"
   },
   {
@@ -8979,7 +8992,7 @@
     "team_color": "#00853F",
     "number": 12,
     "type": "player",
-    "sort_order": 690,
+    "sort_order": 691,
     "group": "I"
   },
   {
@@ -8992,7 +9005,7 @@
     "team_color": "#00853F",
     "number": 14,
     "type": "player",
-    "sort_order": 691,
+    "sort_order": 692,
     "group": "I"
   },
   {
@@ -9005,7 +9018,7 @@
     "team_color": "#00853F",
     "number": 15,
     "type": "player",
-    "sort_order": 692,
+    "sort_order": 693,
     "group": "I"
   },
   {
@@ -9018,7 +9031,7 @@
     "team_color": "#00853F",
     "number": 16,
     "type": "player",
-    "sort_order": 693,
+    "sort_order": 694,
     "group": "I"
   },
   {
@@ -9031,7 +9044,7 @@
     "team_color": "#00853F",
     "number": 17,
     "type": "player",
-    "sort_order": 694,
+    "sort_order": 695,
     "group": "I"
   },
   {
@@ -9044,7 +9057,7 @@
     "team_color": "#00853F",
     "number": 18,
     "type": "player",
-    "sort_order": 695,
+    "sort_order": 696,
     "group": "I"
   },
   {
@@ -9057,7 +9070,7 @@
     "team_color": "#00853F",
     "number": 19,
     "type": "player",
-    "sort_order": 696,
+    "sort_order": 697,
     "group": "I"
   },
   {
@@ -9070,19 +9083,6 @@
     "team_color": "#00853F",
     "number": 20,
     "type": "player",
-    "sort_order": 697,
-    "group": "I"
-  },
-  {
-    "sticker_id": "sen-team",
-    "code": "SEN 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Senegal",
-    "team_code": "SEN",
-    "team_color": "#00853F",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 698,
     "group": "I"
   },
@@ -9100,6 +9100,19 @@
     "group": "I"
   },
   {
+    "sticker_id": "irq-team",
+    "code": "IRQ 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Iraq",
+    "team_code": "IRQ",
+    "team_color": "#007A3D",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 700,
+    "group": "I"
+  },
+  {
     "sticker_id": "irq-2-hassan",
     "code": "IRQ 2",
     "name": "Jalal Hassan",
@@ -9109,7 +9122,7 @@
     "team_color": "#007A3D",
     "number": 2,
     "type": "player",
-    "sort_order": 700,
+    "sort_order": 701,
     "group": "I"
   },
   {
@@ -9122,7 +9135,7 @@
     "team_color": "#007A3D",
     "number": 3,
     "type": "player",
-    "sort_order": 701,
+    "sort_order": 702,
     "group": "I"
   },
   {
@@ -9135,7 +9148,7 @@
     "team_color": "#007A3D",
     "number": 4,
     "type": "player",
-    "sort_order": 702,
+    "sort_order": 703,
     "group": "I"
   },
   {
@@ -9148,7 +9161,7 @@
     "team_color": "#007A3D",
     "number": 5,
     "type": "player",
-    "sort_order": 703,
+    "sort_order": 704,
     "group": "I"
   },
   {
@@ -9161,7 +9174,7 @@
     "team_color": "#007A3D",
     "number": 6,
     "type": "player",
-    "sort_order": 704,
+    "sort_order": 705,
     "group": "I"
   },
   {
@@ -9174,7 +9187,7 @@
     "team_color": "#007A3D",
     "number": 7,
     "type": "player",
-    "sort_order": 705,
+    "sort_order": 706,
     "group": "I"
   },
   {
@@ -9187,7 +9200,7 @@
     "team_color": "#007A3D",
     "number": 8,
     "type": "player",
-    "sort_order": 706,
+    "sort_order": 707,
     "group": "I"
   },
   {
@@ -9200,7 +9213,7 @@
     "team_color": "#007A3D",
     "number": 9,
     "type": "player",
-    "sort_order": 707,
+    "sort_order": 708,
     "group": "I"
   },
   {
@@ -9213,7 +9226,7 @@
     "team_color": "#007A3D",
     "number": 10,
     "type": "player",
-    "sort_order": 708,
+    "sort_order": 709,
     "group": "I"
   },
   {
@@ -9226,7 +9239,7 @@
     "team_color": "#007A3D",
     "number": 11,
     "type": "player",
-    "sort_order": 709,
+    "sort_order": 710,
     "group": "I"
   },
   {
@@ -9239,7 +9252,7 @@
     "team_color": "#007A3D",
     "number": 12,
     "type": "player",
-    "sort_order": 710,
+    "sort_order": 711,
     "group": "I"
   },
   {
@@ -9252,7 +9265,7 @@
     "team_color": "#007A3D",
     "number": 14,
     "type": "player",
-    "sort_order": 711,
+    "sort_order": 712,
     "group": "I"
   },
   {
@@ -9265,7 +9278,7 @@
     "team_color": "#007A3D",
     "number": 15,
     "type": "player",
-    "sort_order": 712,
+    "sort_order": 713,
     "group": "I"
   },
   {
@@ -9278,7 +9291,7 @@
     "team_color": "#007A3D",
     "number": 16,
     "type": "player",
-    "sort_order": 713,
+    "sort_order": 714,
     "group": "I"
   },
   {
@@ -9291,7 +9304,7 @@
     "team_color": "#007A3D",
     "number": 17,
     "type": "player",
-    "sort_order": 714,
+    "sort_order": 715,
     "group": "I"
   },
   {
@@ -9304,7 +9317,7 @@
     "team_color": "#007A3D",
     "number": 18,
     "type": "player",
-    "sort_order": 715,
+    "sort_order": 716,
     "group": "I"
   },
   {
@@ -9317,7 +9330,7 @@
     "team_color": "#007A3D",
     "number": 19,
     "type": "player",
-    "sort_order": 716,
+    "sort_order": 717,
     "group": "I"
   },
   {
@@ -9330,19 +9343,6 @@
     "team_color": "#007A3D",
     "number": 20,
     "type": "player",
-    "sort_order": 717,
-    "group": "I"
-  },
-  {
-    "sticker_id": "irq-team",
-    "code": "IRQ 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Iraq",
-    "team_code": "IRQ",
-    "team_color": "#007A3D",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 718,
     "group": "I"
   },
@@ -9360,6 +9360,19 @@
     "group": "I"
   },
   {
+    "sticker_id": "nor-team",
+    "code": "NOR 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Norway",
+    "team_code": "NOR",
+    "team_color": "#BA0C2F",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 720,
+    "group": "I"
+  },
+  {
     "sticker_id": "nor-2-nyland",
     "code": "NOR 2",
     "name": "Orjan Nyland",
@@ -9369,7 +9382,7 @@
     "team_color": "#BA0C2F",
     "number": 2,
     "type": "player",
-    "sort_order": 720,
+    "sort_order": 721,
     "group": "I"
   },
   {
@@ -9382,7 +9395,7 @@
     "team_color": "#BA0C2F",
     "number": 3,
     "type": "player",
-    "sort_order": 721,
+    "sort_order": 722,
     "group": "I"
   },
   {
@@ -9395,7 +9408,7 @@
     "team_color": "#BA0C2F",
     "number": 4,
     "type": "player",
-    "sort_order": 722,
+    "sort_order": 723,
     "group": "I"
   },
   {
@@ -9408,7 +9421,7 @@
     "team_color": "#BA0C2F",
     "number": 5,
     "type": "player",
-    "sort_order": 723,
+    "sort_order": 724,
     "group": "I"
   },
   {
@@ -9421,7 +9434,7 @@
     "team_color": "#BA0C2F",
     "number": 6,
     "type": "player",
-    "sort_order": 724,
+    "sort_order": 725,
     "group": "I"
   },
   {
@@ -9434,7 +9447,7 @@
     "team_color": "#BA0C2F",
     "number": 7,
     "type": "player",
-    "sort_order": 725,
+    "sort_order": 726,
     "group": "I"
   },
   {
@@ -9447,7 +9460,7 @@
     "team_color": "#BA0C2F",
     "number": 8,
     "type": "player",
-    "sort_order": 726,
+    "sort_order": 727,
     "group": "I"
   },
   {
@@ -9460,7 +9473,7 @@
     "team_color": "#BA0C2F",
     "number": 9,
     "type": "player",
-    "sort_order": 727,
+    "sort_order": 728,
     "group": "I"
   },
   {
@@ -9473,7 +9486,7 @@
     "team_color": "#BA0C2F",
     "number": 10,
     "type": "player",
-    "sort_order": 728,
+    "sort_order": 729,
     "group": "I"
   },
   {
@@ -9486,7 +9499,7 @@
     "team_color": "#BA0C2F",
     "number": 11,
     "type": "player",
-    "sort_order": 729,
+    "sort_order": 730,
     "group": "I"
   },
   {
@@ -9499,7 +9512,7 @@
     "team_color": "#BA0C2F",
     "number": 12,
     "type": "player",
-    "sort_order": 730,
+    "sort_order": 731,
     "group": "I"
   },
   {
@@ -9512,7 +9525,7 @@
     "team_color": "#BA0C2F",
     "number": 14,
     "type": "player",
-    "sort_order": 731,
+    "sort_order": 732,
     "group": "I"
   },
   {
@@ -9525,7 +9538,7 @@
     "team_color": "#BA0C2F",
     "number": 15,
     "type": "player",
-    "sort_order": 732,
+    "sort_order": 733,
     "group": "I"
   },
   {
@@ -9538,7 +9551,7 @@
     "team_color": "#BA0C2F",
     "number": 16,
     "type": "player",
-    "sort_order": 733,
+    "sort_order": 734,
     "group": "I"
   },
   {
@@ -9551,7 +9564,7 @@
     "team_color": "#BA0C2F",
     "number": 17,
     "type": "player",
-    "sort_order": 734,
+    "sort_order": 735,
     "group": "I"
   },
   {
@@ -9564,7 +9577,7 @@
     "team_color": "#BA0C2F",
     "number": 18,
     "type": "player",
-    "sort_order": 735,
+    "sort_order": 736,
     "group": "I"
   },
   {
@@ -9577,7 +9590,7 @@
     "team_color": "#BA0C2F",
     "number": 19,
     "type": "player",
-    "sort_order": 736,
+    "sort_order": 737,
     "group": "I"
   },
   {
@@ -9590,19 +9603,6 @@
     "team_color": "#BA0C2F",
     "number": 20,
     "type": "player",
-    "sort_order": 737,
-    "group": "I"
-  },
-  {
-    "sticker_id": "nor-team",
-    "code": "NOR 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Norway",
-    "team_code": "NOR",
-    "team_color": "#BA0C2F",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 738,
     "group": "I"
   },
@@ -9620,6 +9620,19 @@
     "group": "J"
   },
   {
+    "sticker_id": "arg-team",
+    "code": "ARG 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Argentina",
+    "team_code": "ARG",
+    "team_color": "#75AADB",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 740,
+    "group": "J"
+  },
+  {
     "sticker_id": "arg-2-martinez",
     "code": "ARG 2",
     "name": "Emiliano Martinez",
@@ -9629,7 +9642,7 @@
     "team_color": "#75AADB",
     "number": 2,
     "type": "player",
-    "sort_order": 740,
+    "sort_order": 741,
     "group": "J"
   },
   {
@@ -9642,7 +9655,7 @@
     "team_color": "#75AADB",
     "number": 3,
     "type": "player",
-    "sort_order": 741,
+    "sort_order": 742,
     "group": "J"
   },
   {
@@ -9655,7 +9668,7 @@
     "team_color": "#75AADB",
     "number": 4,
     "type": "player",
-    "sort_order": 742,
+    "sort_order": 743,
     "group": "J"
   },
   {
@@ -9668,7 +9681,7 @@
     "team_color": "#75AADB",
     "number": 5,
     "type": "player",
-    "sort_order": 743,
+    "sort_order": 744,
     "group": "J"
   },
   {
@@ -9681,7 +9694,7 @@
     "team_color": "#75AADB",
     "number": 6,
     "type": "player",
-    "sort_order": 744,
+    "sort_order": 745,
     "group": "J"
   },
   {
@@ -9694,7 +9707,7 @@
     "team_color": "#75AADB",
     "number": 7,
     "type": "player",
-    "sort_order": 745,
+    "sort_order": 746,
     "group": "J"
   },
   {
@@ -9707,7 +9720,7 @@
     "team_color": "#75AADB",
     "number": 8,
     "type": "player",
-    "sort_order": 746,
+    "sort_order": 747,
     "group": "J"
   },
   {
@@ -9720,7 +9733,7 @@
     "team_color": "#75AADB",
     "number": 9,
     "type": "player",
-    "sort_order": 747,
+    "sort_order": 748,
     "group": "J"
   },
   {
@@ -9733,7 +9746,7 @@
     "team_color": "#75AADB",
     "number": 10,
     "type": "player",
-    "sort_order": 748,
+    "sort_order": 749,
     "group": "J"
   },
   {
@@ -9746,7 +9759,7 @@
     "team_color": "#75AADB",
     "number": 11,
     "type": "player",
-    "sort_order": 749,
+    "sort_order": 750,
     "group": "J"
   },
   {
@@ -9759,7 +9772,7 @@
     "team_color": "#75AADB",
     "number": 12,
     "type": "player",
-    "sort_order": 750,
+    "sort_order": 751,
     "group": "J"
   },
   {
@@ -9772,7 +9785,7 @@
     "team_color": "#75AADB",
     "number": 14,
     "type": "player",
-    "sort_order": 751,
+    "sort_order": 752,
     "group": "J"
   },
   {
@@ -9785,7 +9798,7 @@
     "team_color": "#75AADB",
     "number": 15,
     "type": "player",
-    "sort_order": 752,
+    "sort_order": 753,
     "group": "J"
   },
   {
@@ -9798,7 +9811,7 @@
     "team_color": "#75AADB",
     "number": 16,
     "type": "player",
-    "sort_order": 753,
+    "sort_order": 754,
     "group": "J"
   },
   {
@@ -9811,7 +9824,7 @@
     "team_color": "#75AADB",
     "number": 17,
     "type": "player",
-    "sort_order": 754,
+    "sort_order": 755,
     "group": "J"
   },
   {
@@ -9824,7 +9837,7 @@
     "team_color": "#75AADB",
     "number": 18,
     "type": "player",
-    "sort_order": 755,
+    "sort_order": 756,
     "group": "J"
   },
   {
@@ -9837,7 +9850,7 @@
     "team_color": "#75AADB",
     "number": 19,
     "type": "player",
-    "sort_order": 756,
+    "sort_order": 757,
     "group": "J"
   },
   {
@@ -9850,19 +9863,6 @@
     "team_color": "#75AADB",
     "number": 20,
     "type": "player",
-    "sort_order": 757,
-    "group": "J"
-  },
-  {
-    "sticker_id": "arg-team",
-    "code": "ARG 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Argentina",
-    "team_code": "ARG",
-    "team_color": "#75AADB",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 758,
     "group": "J"
   },
@@ -9880,6 +9880,19 @@
     "group": "J"
   },
   {
+    "sticker_id": "alg-team",
+    "code": "ALG 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Algeria",
+    "team_code": "ALG",
+    "team_color": "#006633",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 760,
+    "group": "J"
+  },
+  {
     "sticker_id": "alg-2-guendouz",
     "code": "ALG 2",
     "name": "Alexis Guendouz",
@@ -9889,7 +9902,7 @@
     "team_color": "#006633",
     "number": 2,
     "type": "player",
-    "sort_order": 760,
+    "sort_order": 761,
     "group": "J"
   },
   {
@@ -9902,7 +9915,7 @@
     "team_color": "#006633",
     "number": 3,
     "type": "player",
-    "sort_order": 761,
+    "sort_order": 762,
     "group": "J"
   },
   {
@@ -9915,7 +9928,7 @@
     "team_color": "#006633",
     "number": 4,
     "type": "player",
-    "sort_order": 762,
+    "sort_order": 763,
     "group": "J"
   },
   {
@@ -9928,7 +9941,7 @@
     "team_color": "#006633",
     "number": 5,
     "type": "player",
-    "sort_order": 763,
+    "sort_order": 764,
     "group": "J"
   },
   {
@@ -9941,7 +9954,7 @@
     "team_color": "#006633",
     "number": 6,
     "type": "player",
-    "sort_order": 764,
+    "sort_order": 765,
     "group": "J"
   },
   {
@@ -9954,7 +9967,7 @@
     "team_color": "#006633",
     "number": 7,
     "type": "player",
-    "sort_order": 765,
+    "sort_order": 766,
     "group": "J"
   },
   {
@@ -9967,7 +9980,7 @@
     "team_color": "#006633",
     "number": 8,
     "type": "player",
-    "sort_order": 766,
+    "sort_order": 767,
     "group": "J"
   },
   {
@@ -9980,7 +9993,7 @@
     "team_color": "#006633",
     "number": 9,
     "type": "player",
-    "sort_order": 767,
+    "sort_order": 768,
     "group": "J"
   },
   {
@@ -9993,7 +10006,7 @@
     "team_color": "#006633",
     "number": 10,
     "type": "player",
-    "sort_order": 768,
+    "sort_order": 769,
     "group": "J"
   },
   {
@@ -10006,7 +10019,7 @@
     "team_color": "#006633",
     "number": 11,
     "type": "player",
-    "sort_order": 769,
+    "sort_order": 770,
     "group": "J"
   },
   {
@@ -10019,7 +10032,7 @@
     "team_color": "#006633",
     "number": 12,
     "type": "player",
-    "sort_order": 770,
+    "sort_order": 771,
     "group": "J"
   },
   {
@@ -10032,7 +10045,7 @@
     "team_color": "#006633",
     "number": 14,
     "type": "player",
-    "sort_order": 771,
+    "sort_order": 772,
     "group": "J"
   },
   {
@@ -10045,7 +10058,7 @@
     "team_color": "#006633",
     "number": 15,
     "type": "player",
-    "sort_order": 772,
+    "sort_order": 773,
     "group": "J"
   },
   {
@@ -10058,7 +10071,7 @@
     "team_color": "#006633",
     "number": 16,
     "type": "player",
-    "sort_order": 773,
+    "sort_order": 774,
     "group": "J"
   },
   {
@@ -10071,7 +10084,7 @@
     "team_color": "#006633",
     "number": 17,
     "type": "player",
-    "sort_order": 774,
+    "sort_order": 775,
     "group": "J"
   },
   {
@@ -10084,7 +10097,7 @@
     "team_color": "#006633",
     "number": 18,
     "type": "player",
-    "sort_order": 775,
+    "sort_order": 776,
     "group": "J"
   },
   {
@@ -10097,7 +10110,7 @@
     "team_color": "#006633",
     "number": 19,
     "type": "player",
-    "sort_order": 776,
+    "sort_order": 777,
     "group": "J"
   },
   {
@@ -10110,19 +10123,6 @@
     "team_color": "#006633",
     "number": 20,
     "type": "player",
-    "sort_order": 777,
-    "group": "J"
-  },
-  {
-    "sticker_id": "alg-team",
-    "code": "ALG 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Algeria",
-    "team_code": "ALG",
-    "team_color": "#006633",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 778,
     "group": "J"
   },
@@ -10140,6 +10140,19 @@
     "group": "J"
   },
   {
+    "sticker_id": "aut-team",
+    "code": "AUT 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Austria",
+    "team_code": "AUT",
+    "team_color": "#ED2939",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 780,
+    "group": "J"
+  },
+  {
     "sticker_id": "aut-2-schlager",
     "code": "AUT 2",
     "name": "Alexander Schlager",
@@ -10149,7 +10162,7 @@
     "team_color": "#ED2939",
     "number": 2,
     "type": "player",
-    "sort_order": 780,
+    "sort_order": 781,
     "group": "J"
   },
   {
@@ -10162,7 +10175,7 @@
     "team_color": "#ED2939",
     "number": 3,
     "type": "player",
-    "sort_order": 781,
+    "sort_order": 782,
     "group": "J"
   },
   {
@@ -10175,7 +10188,7 @@
     "team_color": "#ED2939",
     "number": 4,
     "type": "player",
-    "sort_order": 782,
+    "sort_order": 783,
     "group": "J"
   },
   {
@@ -10188,7 +10201,7 @@
     "team_color": "#ED2939",
     "number": 5,
     "type": "player",
-    "sort_order": 783,
+    "sort_order": 784,
     "group": "J"
   },
   {
@@ -10201,7 +10214,7 @@
     "team_color": "#ED2939",
     "number": 6,
     "type": "player",
-    "sort_order": 784,
+    "sort_order": 785,
     "group": "J"
   },
   {
@@ -10214,7 +10227,7 @@
     "team_color": "#ED2939",
     "number": 7,
     "type": "player",
-    "sort_order": 785,
+    "sort_order": 786,
     "group": "J"
   },
   {
@@ -10227,7 +10240,7 @@
     "team_color": "#ED2939",
     "number": 8,
     "type": "player",
-    "sort_order": 786,
+    "sort_order": 787,
     "group": "J"
   },
   {
@@ -10240,7 +10253,7 @@
     "team_color": "#ED2939",
     "number": 9,
     "type": "player",
-    "sort_order": 787,
+    "sort_order": 788,
     "group": "J"
   },
   {
@@ -10253,7 +10266,7 @@
     "team_color": "#ED2939",
     "number": 10,
     "type": "player",
-    "sort_order": 788,
+    "sort_order": 789,
     "group": "J"
   },
   {
@@ -10266,7 +10279,7 @@
     "team_color": "#ED2939",
     "number": 11,
     "type": "player",
-    "sort_order": 789,
+    "sort_order": 790,
     "group": "J"
   },
   {
@@ -10279,7 +10292,7 @@
     "team_color": "#ED2939",
     "number": 12,
     "type": "player",
-    "sort_order": 790,
+    "sort_order": 791,
     "group": "J"
   },
   {
@@ -10292,7 +10305,7 @@
     "team_color": "#ED2939",
     "number": 14,
     "type": "player",
-    "sort_order": 791,
+    "sort_order": 792,
     "group": "J"
   },
   {
@@ -10305,7 +10318,7 @@
     "team_color": "#ED2939",
     "number": 15,
     "type": "player",
-    "sort_order": 792,
+    "sort_order": 793,
     "group": "J"
   },
   {
@@ -10318,7 +10331,7 @@
     "team_color": "#ED2939",
     "number": 16,
     "type": "player",
-    "sort_order": 793,
+    "sort_order": 794,
     "group": "J"
   },
   {
@@ -10331,7 +10344,7 @@
     "team_color": "#ED2939",
     "number": 17,
     "type": "player",
-    "sort_order": 794,
+    "sort_order": 795,
     "group": "J"
   },
   {
@@ -10344,7 +10357,7 @@
     "team_color": "#ED2939",
     "number": 18,
     "type": "player",
-    "sort_order": 795,
+    "sort_order": 796,
     "group": "J"
   },
   {
@@ -10357,7 +10370,7 @@
     "team_color": "#ED2939",
     "number": 19,
     "type": "player",
-    "sort_order": 796,
+    "sort_order": 797,
     "group": "J"
   },
   {
@@ -10370,19 +10383,6 @@
     "team_color": "#ED2939",
     "number": 20,
     "type": "player",
-    "sort_order": 797,
-    "group": "J"
-  },
-  {
-    "sticker_id": "aut-team",
-    "code": "AUT 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Austria",
-    "team_code": "AUT",
-    "team_color": "#ED2939",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 798,
     "group": "J"
   },
@@ -10400,6 +10400,19 @@
     "group": "J"
   },
   {
+    "sticker_id": "jor-team",
+    "code": "JOR 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Jordan",
+    "team_code": "JOR",
+    "team_color": "#007A3D",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 800,
+    "group": "J"
+  },
+  {
     "sticker_id": "jor-2-abulaila",
     "code": "JOR 2",
     "name": "Yazeed Abulaila",
@@ -10409,7 +10422,7 @@
     "team_color": "#007A3D",
     "number": 2,
     "type": "player",
-    "sort_order": 800,
+    "sort_order": 801,
     "group": "J"
   },
   {
@@ -10422,7 +10435,7 @@
     "team_color": "#007A3D",
     "number": 3,
     "type": "player",
-    "sort_order": 801,
+    "sort_order": 802,
     "group": "J"
   },
   {
@@ -10435,7 +10448,7 @@
     "team_color": "#007A3D",
     "number": 4,
     "type": "player",
-    "sort_order": 802,
+    "sort_order": 803,
     "group": "J"
   },
   {
@@ -10448,7 +10461,7 @@
     "team_color": "#007A3D",
     "number": 5,
     "type": "player",
-    "sort_order": 803,
+    "sort_order": 804,
     "group": "J"
   },
   {
@@ -10461,7 +10474,7 @@
     "team_color": "#007A3D",
     "number": 6,
     "type": "player",
-    "sort_order": 804,
+    "sort_order": 805,
     "group": "J"
   },
   {
@@ -10474,7 +10487,7 @@
     "team_color": "#007A3D",
     "number": 7,
     "type": "player",
-    "sort_order": 805,
+    "sort_order": 806,
     "group": "J"
   },
   {
@@ -10487,7 +10500,7 @@
     "team_color": "#007A3D",
     "number": 8,
     "type": "player",
-    "sort_order": 806,
+    "sort_order": 807,
     "group": "J"
   },
   {
@@ -10500,7 +10513,7 @@
     "team_color": "#007A3D",
     "number": 9,
     "type": "player",
-    "sort_order": 807,
+    "sort_order": 808,
     "group": "J"
   },
   {
@@ -10513,7 +10526,7 @@
     "team_color": "#007A3D",
     "number": 10,
     "type": "player",
-    "sort_order": 808,
+    "sort_order": 809,
     "group": "J"
   },
   {
@@ -10526,7 +10539,7 @@
     "team_color": "#007A3D",
     "number": 11,
     "type": "player",
-    "sort_order": 809,
+    "sort_order": 810,
     "group": "J"
   },
   {
@@ -10539,7 +10552,7 @@
     "team_color": "#007A3D",
     "number": 12,
     "type": "player",
-    "sort_order": 810,
+    "sort_order": 811,
     "group": "J"
   },
   {
@@ -10552,7 +10565,7 @@
     "team_color": "#007A3D",
     "number": 14,
     "type": "player",
-    "sort_order": 811,
+    "sort_order": 812,
     "group": "J"
   },
   {
@@ -10565,7 +10578,7 @@
     "team_color": "#007A3D",
     "number": 15,
     "type": "player",
-    "sort_order": 812,
+    "sort_order": 813,
     "group": "J"
   },
   {
@@ -10578,7 +10591,7 @@
     "team_color": "#007A3D",
     "number": 16,
     "type": "player",
-    "sort_order": 813,
+    "sort_order": 814,
     "group": "J"
   },
   {
@@ -10591,7 +10604,7 @@
     "team_color": "#007A3D",
     "number": 17,
     "type": "player",
-    "sort_order": 814,
+    "sort_order": 815,
     "group": "J"
   },
   {
@@ -10604,7 +10617,7 @@
     "team_color": "#007A3D",
     "number": 18,
     "type": "player",
-    "sort_order": 815,
+    "sort_order": 816,
     "group": "J"
   },
   {
@@ -10617,7 +10630,7 @@
     "team_color": "#007A3D",
     "number": 19,
     "type": "player",
-    "sort_order": 816,
+    "sort_order": 817,
     "group": "J"
   },
   {
@@ -10630,19 +10643,6 @@
     "team_color": "#007A3D",
     "number": 20,
     "type": "player",
-    "sort_order": 817,
-    "group": "J"
-  },
-  {
-    "sticker_id": "jor-team",
-    "code": "JOR 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Jordan",
-    "team_code": "JOR",
-    "team_color": "#007A3D",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 818,
     "group": "J"
   },
@@ -10660,6 +10660,19 @@
     "group": "K"
   },
   {
+    "sticker_id": "por-team",
+    "code": "POR 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Portugal",
+    "team_code": "POR",
+    "team_color": "#006600",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 820,
+    "group": "K"
+  },
+  {
     "sticker_id": "por-2-costa",
     "code": "POR 2",
     "name": "Diogo Costa",
@@ -10669,7 +10682,7 @@
     "team_color": "#006600",
     "number": 2,
     "type": "player",
-    "sort_order": 820,
+    "sort_order": 821,
     "group": "K"
   },
   {
@@ -10682,7 +10695,7 @@
     "team_color": "#006600",
     "number": 3,
     "type": "player",
-    "sort_order": 821,
+    "sort_order": 822,
     "group": "K"
   },
   {
@@ -10695,7 +10708,7 @@
     "team_color": "#006600",
     "number": 4,
     "type": "player",
-    "sort_order": 822,
+    "sort_order": 823,
     "group": "K"
   },
   {
@@ -10708,7 +10721,7 @@
     "team_color": "#006600",
     "number": 5,
     "type": "player",
-    "sort_order": 823,
+    "sort_order": 824,
     "group": "K"
   },
   {
@@ -10721,7 +10734,7 @@
     "team_color": "#006600",
     "number": 6,
     "type": "player",
-    "sort_order": 824,
+    "sort_order": 825,
     "group": "K"
   },
   {
@@ -10734,7 +10747,7 @@
     "team_color": "#006600",
     "number": 7,
     "type": "player",
-    "sort_order": 825,
+    "sort_order": 826,
     "group": "K"
   },
   {
@@ -10747,7 +10760,7 @@
     "team_color": "#006600",
     "number": 8,
     "type": "player",
-    "sort_order": 826,
+    "sort_order": 827,
     "group": "K"
   },
   {
@@ -10760,7 +10773,7 @@
     "team_color": "#006600",
     "number": 9,
     "type": "player",
-    "sort_order": 827,
+    "sort_order": 828,
     "group": "K"
   },
   {
@@ -10773,7 +10786,7 @@
     "team_color": "#006600",
     "number": 10,
     "type": "player",
-    "sort_order": 828,
+    "sort_order": 829,
     "group": "K"
   },
   {
@@ -10786,7 +10799,7 @@
     "team_color": "#006600",
     "number": 11,
     "type": "player",
-    "sort_order": 829,
+    "sort_order": 830,
     "group": "K"
   },
   {
@@ -10799,7 +10812,7 @@
     "team_color": "#006600",
     "number": 12,
     "type": "player",
-    "sort_order": 830,
+    "sort_order": 831,
     "group": "K"
   },
   {
@@ -10812,7 +10825,7 @@
     "team_color": "#006600",
     "number": 14,
     "type": "player",
-    "sort_order": 831,
+    "sort_order": 832,
     "group": "K"
   },
   {
@@ -10825,7 +10838,7 @@
     "team_color": "#006600",
     "number": 15,
     "type": "player",
-    "sort_order": 832,
+    "sort_order": 833,
     "group": "K"
   },
   {
@@ -10838,7 +10851,7 @@
     "team_color": "#006600",
     "number": 16,
     "type": "player",
-    "sort_order": 833,
+    "sort_order": 834,
     "group": "K"
   },
   {
@@ -10851,7 +10864,7 @@
     "team_color": "#006600",
     "number": 17,
     "type": "player",
-    "sort_order": 834,
+    "sort_order": 835,
     "group": "K"
   },
   {
@@ -10864,7 +10877,7 @@
     "team_color": "#006600",
     "number": 18,
     "type": "player",
-    "sort_order": 835,
+    "sort_order": 836,
     "group": "K"
   },
   {
@@ -10877,7 +10890,7 @@
     "team_color": "#006600",
     "number": 19,
     "type": "player",
-    "sort_order": 836,
+    "sort_order": 837,
     "group": "K"
   },
   {
@@ -10890,19 +10903,6 @@
     "team_color": "#006600",
     "number": 20,
     "type": "player",
-    "sort_order": 837,
-    "group": "K"
-  },
-  {
-    "sticker_id": "por-team",
-    "code": "POR 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Portugal",
-    "team_code": "POR",
-    "team_color": "#006600",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 838,
     "group": "K"
   },
@@ -10920,6 +10920,19 @@
     "group": "K"
   },
   {
+    "sticker_id": "cod-team",
+    "code": "COD 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "DR Congo",
+    "team_code": "COD",
+    "team_color": "#007FFF",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 840,
+    "group": "K"
+  },
+  {
     "sticker_id": "cod-2-mpasi",
     "code": "COD 2",
     "name": "Lionel Mpasi",
@@ -10929,7 +10942,7 @@
     "team_color": "#007FFF",
     "number": 2,
     "type": "player",
-    "sort_order": 840,
+    "sort_order": 841,
     "group": "K"
   },
   {
@@ -10942,7 +10955,7 @@
     "team_color": "#007FFF",
     "number": 3,
     "type": "player",
-    "sort_order": 841,
+    "sort_order": 842,
     "group": "K"
   },
   {
@@ -10955,7 +10968,7 @@
     "team_color": "#007FFF",
     "number": 4,
     "type": "player",
-    "sort_order": 842,
+    "sort_order": 843,
     "group": "K"
   },
   {
@@ -10968,7 +10981,7 @@
     "team_color": "#007FFF",
     "number": 5,
     "type": "player",
-    "sort_order": 843,
+    "sort_order": 844,
     "group": "K"
   },
   {
@@ -10981,7 +10994,7 @@
     "team_color": "#007FFF",
     "number": 6,
     "type": "player",
-    "sort_order": 844,
+    "sort_order": 845,
     "group": "K"
   },
   {
@@ -10994,7 +11007,7 @@
     "team_color": "#007FFF",
     "number": 7,
     "type": "player",
-    "sort_order": 845,
+    "sort_order": 846,
     "group": "K"
   },
   {
@@ -11007,7 +11020,7 @@
     "team_color": "#007FFF",
     "number": 8,
     "type": "player",
-    "sort_order": 846,
+    "sort_order": 847,
     "group": "K"
   },
   {
@@ -11020,7 +11033,7 @@
     "team_color": "#007FFF",
     "number": 9,
     "type": "player",
-    "sort_order": 847,
+    "sort_order": 848,
     "group": "K"
   },
   {
@@ -11033,7 +11046,7 @@
     "team_color": "#007FFF",
     "number": 10,
     "type": "player",
-    "sort_order": 848,
+    "sort_order": 849,
     "group": "K"
   },
   {
@@ -11046,7 +11059,7 @@
     "team_color": "#007FFF",
     "number": 11,
     "type": "player",
-    "sort_order": 849,
+    "sort_order": 850,
     "group": "K"
   },
   {
@@ -11059,7 +11072,7 @@
     "team_color": "#007FFF",
     "number": 12,
     "type": "player",
-    "sort_order": 850,
+    "sort_order": 851,
     "group": "K"
   },
   {
@@ -11072,7 +11085,7 @@
     "team_color": "#007FFF",
     "number": 14,
     "type": "player",
-    "sort_order": 851,
+    "sort_order": 852,
     "group": "K"
   },
   {
@@ -11085,7 +11098,7 @@
     "team_color": "#007FFF",
     "number": 15,
     "type": "player",
-    "sort_order": 852,
+    "sort_order": 853,
     "group": "K"
   },
   {
@@ -11098,7 +11111,7 @@
     "team_color": "#007FFF",
     "number": 16,
     "type": "player",
-    "sort_order": 853,
+    "sort_order": 854,
     "group": "K"
   },
   {
@@ -11111,7 +11124,7 @@
     "team_color": "#007FFF",
     "number": 17,
     "type": "player",
-    "sort_order": 854,
+    "sort_order": 855,
     "group": "K"
   },
   {
@@ -11124,7 +11137,7 @@
     "team_color": "#007FFF",
     "number": 18,
     "type": "player",
-    "sort_order": 855,
+    "sort_order": 856,
     "group": "K"
   },
   {
@@ -11137,7 +11150,7 @@
     "team_color": "#007FFF",
     "number": 19,
     "type": "player",
-    "sort_order": 856,
+    "sort_order": 857,
     "group": "K"
   },
   {
@@ -11150,19 +11163,6 @@
     "team_color": "#007FFF",
     "number": 20,
     "type": "player",
-    "sort_order": 857,
-    "group": "K"
-  },
-  {
-    "sticker_id": "cod-team",
-    "code": "COD 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "DR Congo",
-    "team_code": "COD",
-    "team_color": "#007FFF",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 858,
     "group": "K"
   },
@@ -11180,6 +11180,19 @@
     "group": "K"
   },
   {
+    "sticker_id": "uzb-team",
+    "code": "UZB 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Uzbekistan",
+    "team_code": "UZB",
+    "team_color": "#1EB53A",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 860,
+    "group": "K"
+  },
+  {
     "sticker_id": "uzb-2-yusupov",
     "code": "UZB 2",
     "name": "Utkir Yusupov",
@@ -11189,7 +11202,7 @@
     "team_color": "#1EB53A",
     "number": 2,
     "type": "player",
-    "sort_order": 860,
+    "sort_order": 861,
     "group": "K"
   },
   {
@@ -11202,7 +11215,7 @@
     "team_color": "#1EB53A",
     "number": 3,
     "type": "player",
-    "sort_order": 861,
+    "sort_order": 862,
     "group": "K"
   },
   {
@@ -11215,7 +11228,7 @@
     "team_color": "#1EB53A",
     "number": 4,
     "type": "player",
-    "sort_order": 862,
+    "sort_order": 863,
     "group": "K"
   },
   {
@@ -11228,7 +11241,7 @@
     "team_color": "#1EB53A",
     "number": 5,
     "type": "player",
-    "sort_order": 863,
+    "sort_order": 864,
     "group": "K"
   },
   {
@@ -11241,7 +11254,7 @@
     "team_color": "#1EB53A",
     "number": 6,
     "type": "player",
-    "sort_order": 864,
+    "sort_order": 865,
     "group": "K"
   },
   {
@@ -11254,7 +11267,7 @@
     "team_color": "#1EB53A",
     "number": 7,
     "type": "player",
-    "sort_order": 865,
+    "sort_order": 866,
     "group": "K"
   },
   {
@@ -11267,7 +11280,7 @@
     "team_color": "#1EB53A",
     "number": 8,
     "type": "player",
-    "sort_order": 866,
+    "sort_order": 867,
     "group": "K"
   },
   {
@@ -11280,7 +11293,7 @@
     "team_color": "#1EB53A",
     "number": 9,
     "type": "player",
-    "sort_order": 867,
+    "sort_order": 868,
     "group": "K"
   },
   {
@@ -11293,7 +11306,7 @@
     "team_color": "#1EB53A",
     "number": 10,
     "type": "player",
-    "sort_order": 868,
+    "sort_order": 869,
     "group": "K"
   },
   {
@@ -11306,7 +11319,7 @@
     "team_color": "#1EB53A",
     "number": 11,
     "type": "player",
-    "sort_order": 869,
+    "sort_order": 870,
     "group": "K"
   },
   {
@@ -11319,7 +11332,7 @@
     "team_color": "#1EB53A",
     "number": 12,
     "type": "player",
-    "sort_order": 870,
+    "sort_order": 871,
     "group": "K"
   },
   {
@@ -11332,7 +11345,7 @@
     "team_color": "#1EB53A",
     "number": 14,
     "type": "player",
-    "sort_order": 871,
+    "sort_order": 872,
     "group": "K"
   },
   {
@@ -11345,7 +11358,7 @@
     "team_color": "#1EB53A",
     "number": 15,
     "type": "player",
-    "sort_order": 872,
+    "sort_order": 873,
     "group": "K"
   },
   {
@@ -11358,7 +11371,7 @@
     "team_color": "#1EB53A",
     "number": 16,
     "type": "player",
-    "sort_order": 873,
+    "sort_order": 874,
     "group": "K"
   },
   {
@@ -11371,7 +11384,7 @@
     "team_color": "#1EB53A",
     "number": 17,
     "type": "player",
-    "sort_order": 874,
+    "sort_order": 875,
     "group": "K"
   },
   {
@@ -11384,7 +11397,7 @@
     "team_color": "#1EB53A",
     "number": 18,
     "type": "player",
-    "sort_order": 875,
+    "sort_order": 876,
     "group": "K"
   },
   {
@@ -11397,7 +11410,7 @@
     "team_color": "#1EB53A",
     "number": 19,
     "type": "player",
-    "sort_order": 876,
+    "sort_order": 877,
     "group": "K"
   },
   {
@@ -11410,19 +11423,6 @@
     "team_color": "#1EB53A",
     "number": 20,
     "type": "player",
-    "sort_order": 877,
-    "group": "K"
-  },
-  {
-    "sticker_id": "uzb-team",
-    "code": "UZB 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Uzbekistan",
-    "team_code": "UZB",
-    "team_color": "#1EB53A",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 878,
     "group": "K"
   },
@@ -11440,6 +11440,19 @@
     "group": "K"
   },
   {
+    "sticker_id": "col-team",
+    "code": "COL 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Colombia",
+    "team_code": "COL",
+    "team_color": "#FCD116",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 880,
+    "group": "K"
+  },
+  {
     "sticker_id": "col-2-vargas",
     "code": "COL 2",
     "name": "Camilo Vargas",
@@ -11449,7 +11462,7 @@
     "team_color": "#FCD116",
     "number": 2,
     "type": "player",
-    "sort_order": 880,
+    "sort_order": 881,
     "group": "K"
   },
   {
@@ -11462,7 +11475,7 @@
     "team_color": "#FCD116",
     "number": 3,
     "type": "player",
-    "sort_order": 881,
+    "sort_order": 882,
     "group": "K"
   },
   {
@@ -11475,7 +11488,7 @@
     "team_color": "#FCD116",
     "number": 4,
     "type": "player",
-    "sort_order": 882,
+    "sort_order": 883,
     "group": "K"
   },
   {
@@ -11488,7 +11501,7 @@
     "team_color": "#FCD116",
     "number": 5,
     "type": "player",
-    "sort_order": 883,
+    "sort_order": 884,
     "group": "K"
   },
   {
@@ -11501,7 +11514,7 @@
     "team_color": "#FCD116",
     "number": 6,
     "type": "player",
-    "sort_order": 884,
+    "sort_order": 885,
     "group": "K"
   },
   {
@@ -11514,7 +11527,7 @@
     "team_color": "#FCD116",
     "number": 7,
     "type": "player",
-    "sort_order": 885,
+    "sort_order": 886,
     "group": "K"
   },
   {
@@ -11527,7 +11540,7 @@
     "team_color": "#FCD116",
     "number": 8,
     "type": "player",
-    "sort_order": 886,
+    "sort_order": 887,
     "group": "K"
   },
   {
@@ -11540,7 +11553,7 @@
     "team_color": "#FCD116",
     "number": 9,
     "type": "player",
-    "sort_order": 887,
+    "sort_order": 888,
     "group": "K"
   },
   {
@@ -11553,7 +11566,7 @@
     "team_color": "#FCD116",
     "number": 10,
     "type": "player",
-    "sort_order": 888,
+    "sort_order": 889,
     "group": "K"
   },
   {
@@ -11566,7 +11579,7 @@
     "team_color": "#FCD116",
     "number": 11,
     "type": "player",
-    "sort_order": 889,
+    "sort_order": 890,
     "group": "K"
   },
   {
@@ -11579,7 +11592,7 @@
     "team_color": "#FCD116",
     "number": 12,
     "type": "player",
-    "sort_order": 890,
+    "sort_order": 891,
     "group": "K"
   },
   {
@@ -11592,7 +11605,7 @@
     "team_color": "#FCD116",
     "number": 14,
     "type": "player",
-    "sort_order": 891,
+    "sort_order": 892,
     "group": "K"
   },
   {
@@ -11605,7 +11618,7 @@
     "team_color": "#FCD116",
     "number": 15,
     "type": "player",
-    "sort_order": 892,
+    "sort_order": 893,
     "group": "K"
   },
   {
@@ -11618,7 +11631,7 @@
     "team_color": "#FCD116",
     "number": 16,
     "type": "player",
-    "sort_order": 893,
+    "sort_order": 894,
     "group": "K"
   },
   {
@@ -11631,7 +11644,7 @@
     "team_color": "#FCD116",
     "number": 17,
     "type": "player",
-    "sort_order": 894,
+    "sort_order": 895,
     "group": "K"
   },
   {
@@ -11644,7 +11657,7 @@
     "team_color": "#FCD116",
     "number": 18,
     "type": "player",
-    "sort_order": 895,
+    "sort_order": 896,
     "group": "K"
   },
   {
@@ -11657,7 +11670,7 @@
     "team_color": "#FCD116",
     "number": 19,
     "type": "player",
-    "sort_order": 896,
+    "sort_order": 897,
     "group": "K"
   },
   {
@@ -11670,19 +11683,6 @@
     "team_color": "#FCD116",
     "number": 20,
     "type": "player",
-    "sort_order": 897,
-    "group": "K"
-  },
-  {
-    "sticker_id": "col-team",
-    "code": "COL 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Colombia",
-    "team_code": "COL",
-    "team_color": "#FCD116",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 898,
     "group": "K"
   },
@@ -11700,6 +11700,19 @@
     "group": "L"
   },
   {
+    "sticker_id": "eng-team",
+    "code": "ENG 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "England",
+    "team_code": "ENG",
+    "team_color": "#FFFFFF",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 900,
+    "group": "L"
+  },
+  {
     "sticker_id": "eng-2-pickford",
     "code": "ENG 2",
     "name": "Jordan Pickford",
@@ -11709,7 +11722,7 @@
     "team_color": "#FFFFFF",
     "number": 2,
     "type": "player",
-    "sort_order": 900,
+    "sort_order": 901,
     "group": "L"
   },
   {
@@ -11722,7 +11735,7 @@
     "team_color": "#FFFFFF",
     "number": 3,
     "type": "player",
-    "sort_order": 901,
+    "sort_order": 902,
     "group": "L"
   },
   {
@@ -11735,7 +11748,7 @@
     "team_color": "#FFFFFF",
     "number": 4,
     "type": "player",
-    "sort_order": 902,
+    "sort_order": 903,
     "group": "L"
   },
   {
@@ -11748,7 +11761,7 @@
     "team_color": "#FFFFFF",
     "number": 5,
     "type": "player",
-    "sort_order": 903,
+    "sort_order": 904,
     "group": "L"
   },
   {
@@ -11761,7 +11774,7 @@
     "team_color": "#FFFFFF",
     "number": 6,
     "type": "player",
-    "sort_order": 904,
+    "sort_order": 905,
     "group": "L"
   },
   {
@@ -11774,7 +11787,7 @@
     "team_color": "#FFFFFF",
     "number": 7,
     "type": "player",
-    "sort_order": 905,
+    "sort_order": 906,
     "group": "L"
   },
   {
@@ -11787,7 +11800,7 @@
     "team_color": "#FFFFFF",
     "number": 8,
     "type": "player",
-    "sort_order": 906,
+    "sort_order": 907,
     "group": "L"
   },
   {
@@ -11800,7 +11813,7 @@
     "team_color": "#FFFFFF",
     "number": 9,
     "type": "player",
-    "sort_order": 907,
+    "sort_order": 908,
     "group": "L"
   },
   {
@@ -11813,7 +11826,7 @@
     "team_color": "#FFFFFF",
     "number": 10,
     "type": "player",
-    "sort_order": 908,
+    "sort_order": 909,
     "group": "L"
   },
   {
@@ -11826,7 +11839,7 @@
     "team_color": "#FFFFFF",
     "number": 11,
     "type": "player",
-    "sort_order": 909,
+    "sort_order": 910,
     "group": "L"
   },
   {
@@ -11839,7 +11852,7 @@
     "team_color": "#FFFFFF",
     "number": 12,
     "type": "player",
-    "sort_order": 910,
+    "sort_order": 911,
     "group": "L"
   },
   {
@@ -11852,7 +11865,7 @@
     "team_color": "#FFFFFF",
     "number": 14,
     "type": "player",
-    "sort_order": 911,
+    "sort_order": 912,
     "group": "L"
   },
   {
@@ -11865,7 +11878,7 @@
     "team_color": "#FFFFFF",
     "number": 15,
     "type": "player",
-    "sort_order": 912,
+    "sort_order": 913,
     "group": "L"
   },
   {
@@ -11878,7 +11891,7 @@
     "team_color": "#FFFFFF",
     "number": 16,
     "type": "player",
-    "sort_order": 913,
+    "sort_order": 914,
     "group": "L"
   },
   {
@@ -11891,7 +11904,7 @@
     "team_color": "#FFFFFF",
     "number": 17,
     "type": "player",
-    "sort_order": 914,
+    "sort_order": 915,
     "group": "L"
   },
   {
@@ -11904,7 +11917,7 @@
     "team_color": "#FFFFFF",
     "number": 18,
     "type": "player",
-    "sort_order": 915,
+    "sort_order": 916,
     "group": "L"
   },
   {
@@ -11917,7 +11930,7 @@
     "team_color": "#FFFFFF",
     "number": 19,
     "type": "player",
-    "sort_order": 916,
+    "sort_order": 917,
     "group": "L"
   },
   {
@@ -11930,19 +11943,6 @@
     "team_color": "#FFFFFF",
     "number": 20,
     "type": "player",
-    "sort_order": 917,
-    "group": "L"
-  },
-  {
-    "sticker_id": "eng-team",
-    "code": "ENG 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "England",
-    "team_code": "ENG",
-    "team_color": "#FFFFFF",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 918,
     "group": "L"
   },
@@ -11960,6 +11960,19 @@
     "group": "L"
   },
   {
+    "sticker_id": "cro-team",
+    "code": "CRO 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Croatia",
+    "team_code": "CRO",
+    "team_color": "#FF0000",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 920,
+    "group": "L"
+  },
+  {
     "sticker_id": "cro-2-livakovic",
     "code": "CRO 2",
     "name": "Dominik Livaković",
@@ -11969,7 +11982,7 @@
     "team_color": "#FF0000",
     "number": 2,
     "type": "player",
-    "sort_order": 920,
+    "sort_order": 921,
     "group": "L"
   },
   {
@@ -11982,7 +11995,7 @@
     "team_color": "#FF0000",
     "number": 3,
     "type": "player",
-    "sort_order": 921,
+    "sort_order": 922,
     "group": "L"
   },
   {
@@ -11995,7 +12008,7 @@
     "team_color": "#FF0000",
     "number": 4,
     "type": "player",
-    "sort_order": 922,
+    "sort_order": 923,
     "group": "L"
   },
   {
@@ -12008,7 +12021,7 @@
     "team_color": "#FF0000",
     "number": 5,
     "type": "player",
-    "sort_order": 923,
+    "sort_order": 924,
     "group": "L"
   },
   {
@@ -12021,7 +12034,7 @@
     "team_color": "#FF0000",
     "number": 6,
     "type": "player",
-    "sort_order": 924,
+    "sort_order": 925,
     "group": "L"
   },
   {
@@ -12034,7 +12047,7 @@
     "team_color": "#FF0000",
     "number": 7,
     "type": "player",
-    "sort_order": 925,
+    "sort_order": 926,
     "group": "L"
   },
   {
@@ -12047,7 +12060,7 @@
     "team_color": "#FF0000",
     "number": 8,
     "type": "player",
-    "sort_order": 926,
+    "sort_order": 927,
     "group": "L"
   },
   {
@@ -12060,7 +12073,7 @@
     "team_color": "#FF0000",
     "number": 9,
     "type": "player",
-    "sort_order": 927,
+    "sort_order": 928,
     "group": "L"
   },
   {
@@ -12073,7 +12086,7 @@
     "team_color": "#FF0000",
     "number": 10,
     "type": "player",
-    "sort_order": 928,
+    "sort_order": 929,
     "group": "L"
   },
   {
@@ -12086,7 +12099,7 @@
     "team_color": "#FF0000",
     "number": 11,
     "type": "player",
-    "sort_order": 929,
+    "sort_order": 930,
     "group": "L"
   },
   {
@@ -12099,7 +12112,7 @@
     "team_color": "#FF0000",
     "number": 12,
     "type": "player",
-    "sort_order": 930,
+    "sort_order": 931,
     "group": "L"
   },
   {
@@ -12112,7 +12125,7 @@
     "team_color": "#FF0000",
     "number": 14,
     "type": "player",
-    "sort_order": 931,
+    "sort_order": 932,
     "group": "L"
   },
   {
@@ -12125,7 +12138,7 @@
     "team_color": "#FF0000",
     "number": 15,
     "type": "player",
-    "sort_order": 932,
+    "sort_order": 933,
     "group": "L"
   },
   {
@@ -12138,7 +12151,7 @@
     "team_color": "#FF0000",
     "number": 16,
     "type": "player",
-    "sort_order": 933,
+    "sort_order": 934,
     "group": "L"
   },
   {
@@ -12151,7 +12164,7 @@
     "team_color": "#FF0000",
     "number": 17,
     "type": "player",
-    "sort_order": 934,
+    "sort_order": 935,
     "group": "L"
   },
   {
@@ -12164,7 +12177,7 @@
     "team_color": "#FF0000",
     "number": 18,
     "type": "player",
-    "sort_order": 935,
+    "sort_order": 936,
     "group": "L"
   },
   {
@@ -12177,7 +12190,7 @@
     "team_color": "#FF0000",
     "number": 19,
     "type": "player",
-    "sort_order": 936,
+    "sort_order": 937,
     "group": "L"
   },
   {
@@ -12190,19 +12203,6 @@
     "team_color": "#FF0000",
     "number": 20,
     "type": "player",
-    "sort_order": 937,
-    "group": "L"
-  },
-  {
-    "sticker_id": "cro-team",
-    "code": "CRO 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Croatia",
-    "team_code": "CRO",
-    "team_color": "#FF0000",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 938,
     "group": "L"
   },
@@ -12220,6 +12220,19 @@
     "group": "L"
   },
   {
+    "sticker_id": "gha-team",
+    "code": "GHA 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Ghana",
+    "team_code": "GHA",
+    "team_color": "#FCD116",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 940,
+    "group": "L"
+  },
+  {
     "sticker_id": "gha-2-zigi",
     "code": "GHA 2",
     "name": "Lawrence Ati Zigi",
@@ -12229,7 +12242,7 @@
     "team_color": "#FCD116",
     "number": 2,
     "type": "player",
-    "sort_order": 940,
+    "sort_order": 941,
     "group": "L"
   },
   {
@@ -12242,7 +12255,7 @@
     "team_color": "#FCD116",
     "number": 3,
     "type": "player",
-    "sort_order": 941,
+    "sort_order": 942,
     "group": "L"
   },
   {
@@ -12255,7 +12268,7 @@
     "team_color": "#FCD116",
     "number": 4,
     "type": "player",
-    "sort_order": 942,
+    "sort_order": 943,
     "group": "L"
   },
   {
@@ -12268,7 +12281,7 @@
     "team_color": "#FCD116",
     "number": 5,
     "type": "player",
-    "sort_order": 943,
+    "sort_order": 944,
     "group": "L"
   },
   {
@@ -12281,7 +12294,7 @@
     "team_color": "#FCD116",
     "number": 6,
     "type": "player",
-    "sort_order": 944,
+    "sort_order": 945,
     "group": "L"
   },
   {
@@ -12294,7 +12307,7 @@
     "team_color": "#FCD116",
     "number": 7,
     "type": "player",
-    "sort_order": 945,
+    "sort_order": 946,
     "group": "L"
   },
   {
@@ -12307,7 +12320,7 @@
     "team_color": "#FCD116",
     "number": 8,
     "type": "player",
-    "sort_order": 946,
+    "sort_order": 947,
     "group": "L"
   },
   {
@@ -12320,7 +12333,7 @@
     "team_color": "#FCD116",
     "number": 9,
     "type": "player",
-    "sort_order": 947,
+    "sort_order": 948,
     "group": "L"
   },
   {
@@ -12333,7 +12346,7 @@
     "team_color": "#FCD116",
     "number": 10,
     "type": "player",
-    "sort_order": 948,
+    "sort_order": 949,
     "group": "L"
   },
   {
@@ -12346,7 +12359,7 @@
     "team_color": "#FCD116",
     "number": 11,
     "type": "player",
-    "sort_order": 949,
+    "sort_order": 950,
     "group": "L"
   },
   {
@@ -12359,7 +12372,7 @@
     "team_color": "#FCD116",
     "number": 12,
     "type": "player",
-    "sort_order": 950,
+    "sort_order": 951,
     "group": "L"
   },
   {
@@ -12372,7 +12385,7 @@
     "team_color": "#FCD116",
     "number": 14,
     "type": "player",
-    "sort_order": 951,
+    "sort_order": 952,
     "group": "L"
   },
   {
@@ -12385,7 +12398,7 @@
     "team_color": "#FCD116",
     "number": 15,
     "type": "player",
-    "sort_order": 952,
+    "sort_order": 953,
     "group": "L"
   },
   {
@@ -12398,7 +12411,7 @@
     "team_color": "#FCD116",
     "number": 16,
     "type": "player",
-    "sort_order": 953,
+    "sort_order": 954,
     "group": "L"
   },
   {
@@ -12411,7 +12424,7 @@
     "team_color": "#FCD116",
     "number": 17,
     "type": "player",
-    "sort_order": 954,
+    "sort_order": 955,
     "group": "L"
   },
   {
@@ -12424,7 +12437,7 @@
     "team_color": "#FCD116",
     "number": 18,
     "type": "player",
-    "sort_order": 955,
+    "sort_order": 956,
     "group": "L"
   },
   {
@@ -12437,7 +12450,7 @@
     "team_color": "#FCD116",
     "number": 19,
     "type": "player",
-    "sort_order": 956,
+    "sort_order": 957,
     "group": "L"
   },
   {
@@ -12450,19 +12463,6 @@
     "team_color": "#FCD116",
     "number": 20,
     "type": "player",
-    "sort_order": 957,
-    "group": "L"
-  },
-  {
-    "sticker_id": "gha-team",
-    "code": "GHA 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Ghana",
-    "team_code": "GHA",
-    "team_color": "#FCD116",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 958,
     "group": "L"
   },
@@ -12480,6 +12480,19 @@
     "group": "L"
   },
   {
+    "sticker_id": "pan-team",
+    "code": "PAN 13",
+    "name": "Team Photo",
+    "display_name": "TEAM PHOTO",
+    "team": "Panama",
+    "team_code": "PAN",
+    "team_color": "#D21034",
+    "number": 13,
+    "type": "team_photo",
+    "sort_order": 960,
+    "group": "L"
+  },
+  {
     "sticker_id": "pan-2-mosquera",
     "code": "PAN 2",
     "name": "Orlando Mosquera",
@@ -12489,7 +12502,7 @@
     "team_color": "#D21034",
     "number": 2,
     "type": "player",
-    "sort_order": 960,
+    "sort_order": 961,
     "group": "L"
   },
   {
@@ -12502,7 +12515,7 @@
     "team_color": "#D21034",
     "number": 3,
     "type": "player",
-    "sort_order": 961,
+    "sort_order": 962,
     "group": "L"
   },
   {
@@ -12515,7 +12528,7 @@
     "team_color": "#D21034",
     "number": 4,
     "type": "player",
-    "sort_order": 962,
+    "sort_order": 963,
     "group": "L"
   },
   {
@@ -12528,7 +12541,7 @@
     "team_color": "#D21034",
     "number": 5,
     "type": "player",
-    "sort_order": 963,
+    "sort_order": 964,
     "group": "L"
   },
   {
@@ -12541,7 +12554,7 @@
     "team_color": "#D21034",
     "number": 6,
     "type": "player",
-    "sort_order": 964,
+    "sort_order": 965,
     "group": "L"
   },
   {
@@ -12554,7 +12567,7 @@
     "team_color": "#D21034",
     "number": 7,
     "type": "player",
-    "sort_order": 965,
+    "sort_order": 966,
     "group": "L"
   },
   {
@@ -12567,7 +12580,7 @@
     "team_color": "#D21034",
     "number": 8,
     "type": "player",
-    "sort_order": 966,
+    "sort_order": 967,
     "group": "L"
   },
   {
@@ -12580,7 +12593,7 @@
     "team_color": "#D21034",
     "number": 9,
     "type": "player",
-    "sort_order": 967,
+    "sort_order": 968,
     "group": "L"
   },
   {
@@ -12593,7 +12606,7 @@
     "team_color": "#D21034",
     "number": 10,
     "type": "player",
-    "sort_order": 968,
+    "sort_order": 969,
     "group": "L"
   },
   {
@@ -12606,7 +12619,7 @@
     "team_color": "#D21034",
     "number": 11,
     "type": "player",
-    "sort_order": 969,
+    "sort_order": 970,
     "group": "L"
   },
   {
@@ -12619,7 +12632,7 @@
     "team_color": "#D21034",
     "number": 12,
     "type": "player",
-    "sort_order": 970,
+    "sort_order": 971,
     "group": "L"
   },
   {
@@ -12632,7 +12645,7 @@
     "team_color": "#D21034",
     "number": 14,
     "type": "player",
-    "sort_order": 971,
+    "sort_order": 972,
     "group": "L"
   },
   {
@@ -12645,7 +12658,7 @@
     "team_color": "#D21034",
     "number": 15,
     "type": "player",
-    "sort_order": 972,
+    "sort_order": 973,
     "group": "L"
   },
   {
@@ -12658,7 +12671,7 @@
     "team_color": "#D21034",
     "number": 16,
     "type": "player",
-    "sort_order": 973,
+    "sort_order": 974,
     "group": "L"
   },
   {
@@ -12671,7 +12684,7 @@
     "team_color": "#D21034",
     "number": 17,
     "type": "player",
-    "sort_order": 974,
+    "sort_order": 975,
     "group": "L"
   },
   {
@@ -12684,7 +12697,7 @@
     "team_color": "#D21034",
     "number": 18,
     "type": "player",
-    "sort_order": 975,
+    "sort_order": 976,
     "group": "L"
   },
   {
@@ -12697,7 +12710,7 @@
     "team_color": "#D21034",
     "number": 19,
     "type": "player",
-    "sort_order": 976,
+    "sort_order": 977,
     "group": "L"
   },
   {
@@ -12710,19 +12723,6 @@
     "team_color": "#D21034",
     "number": 20,
     "type": "player",
-    "sort_order": 977,
-    "group": "L"
-  },
-  {
-    "sticker_id": "pan-team",
-    "code": "PAN 13",
-    "name": "Team Photo",
-    "display_name": "TEAM PHOTO",
-    "team": "Panama",
-    "team_code": "PAN",
-    "team_color": "#D21034",
-    "number": 13,
-    "type": "team_photo",
     "sort_order": 978,
     "group": "L"
   },
