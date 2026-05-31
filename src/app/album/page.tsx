@@ -7,19 +7,61 @@
  * - Tap toggles count: 0→1→2→3→0 (missing→got→repe×1→repe×2→missing)
  * - State persisted in IndexedDB
  * - Header shows progress: X/980
+ * - Stickers are grouped by team with a <TeamHeader> separator
  *
  * Tabs: Todo | Tengo | Me faltan | Repetidas
+ * Team headers respond to active tab: only teams with visible stickers show a header.
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import StickerCard from "@/components/StickerCard";
+import TeamHeader from "@/components/TeamHeader";
 import { getNickname, getAllStickers, toggleSticker } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import type { StickerEntry } from "@/lib/db";
+import { TEAM_CATALOG } from "@/lib/team-catalog";
+import type { TeamCatalogEntry } from "@/lib/team-catalog";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
+
+// ---------------------------------------------------------------------------
+// Team grouping helpers
+// ---------------------------------------------------------------------------
+
+interface TeamGroup {
+  team_code: string;
+  display_name: string;
+  catalogEntry: TeamCatalogEntry;
+  teamColor: string;
+  stickers: Sticker[];
+}
+
+/**
+ * Groups an ordered sticker array into consecutive runs by team_code.
+ * Stickers with team_code="" (Panini-00) are mapped to "_PANINI".
+ * The order of groups reflects the sort_order already baked into the catalog.
+ */
+function groupStickersByTeam(stickers: Sticker[]): TeamGroup[] {
+  const groups: TeamGroup[] = [];
+  for (const sticker of stickers) {
+    const teamKey = sticker.team_code || "_PANINI";
+    const last = groups[groups.length - 1];
+    if (!last || last.team_code !== teamKey) {
+      groups.push({
+        team_code: teamKey,
+        display_name: TEAM_CATALOG[teamKey]?.display_name ?? teamKey,
+        catalogEntry: TEAM_CATALOG[teamKey] ?? TEAM_CATALOG._PANINI,
+        teamColor: sticker.team_color,
+        stickers: [sticker],
+      });
+    } else {
+      last.stickers.push(sticker);
+    }
+  }
+  return groups;
+}
 
 export default function AlbumPage() {
   const router = useRouter();
@@ -159,7 +201,7 @@ export default function AlbumPage() {
         ))}
       </nav>
 
-      {/* Sticker grid */}
+      {/* Sticker grid — grouped by team */}
       <main className="flex-1 px-2 py-3">
         {visibleStickers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-gray-400">
@@ -175,21 +217,29 @@ export default function AlbumPage() {
             </p>
           </div>
         ) : (
-          <div
-            className="grid gap-1.5"
-            style={{
-              gridTemplateColumns: "repeat(auto-fill, minmax(72px, 1fr))",
-            }}
-          >
-            {visibleStickers.map((sticker) => (
-              <StickerCard
-                key={sticker.id}
-                sticker={sticker}
-                count={counts[sticker.id] ?? 0}
-                onTap={handleTap}
+          groupStickersByTeam(visibleStickers).map((group) => (
+            <section key={group.team_code} aria-label={group.display_name}>
+              <TeamHeader
+                entry={group.catalogEntry}
+                teamColor={group.teamColor}
               />
-            ))}
-          </div>
+              <div
+                className="grid gap-1.5 mb-4"
+                style={{
+                  gridTemplateColumns: "repeat(auto-fill, minmax(72px, 1fr))",
+                }}
+              >
+                {group.stickers.map((sticker) => (
+                  <StickerCard
+                    key={sticker.id}
+                    sticker={sticker}
+                    count={counts[sticker.id] ?? 0}
+                    onTap={handleTap}
+                  />
+                ))}
+              </div>
+            </section>
+          ))
         )}
       </main>
 
