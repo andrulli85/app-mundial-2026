@@ -139,7 +139,7 @@ export default function AlbumPage() {
   }
 
   return (
-    <div className="flex flex-col flex-1 max-w-3xl mx-auto w-full">
+    <div className="flex flex-col flex-1 w-full lg:max-w-5xl xl:max-w-6xl mx-auto">
       {/* Header */}
       <header
         className="sticky top-0 z-20 px-4 py-3 shadow-sm"

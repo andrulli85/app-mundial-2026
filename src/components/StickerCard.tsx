@@ -34,7 +34,7 @@ export default function StickerCard({
   return (
     <button
       onClick={() => onTap(sticker.id)}
-      className="relative w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 rounded"
+      className="sticker-cell relative w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 rounded"
       style={{
         aspectRatio: isLandscape ? "4/3" : "3/4",
         gridColumn: isLandscape ? "span 2" : undefined,

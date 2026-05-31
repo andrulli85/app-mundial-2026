@@ -44,3 +44,17 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Touch targets — tablets / coarse pointers (WCAG-aligned) */
+@media (pointer: coarse) {
+  button:not(.sticker-cell),
+  a[role="button"],
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  button:not(.sticker-cell):active,
+  a[role="button"]:active {
+    opacity: 0.7;
+  }
+}
