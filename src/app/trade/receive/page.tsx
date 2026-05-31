@@ -12,7 +12,14 @@
  * Decision #9 / Fase 3 (S124).
  */
 
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import QrScanner from "@/components/QrScanner";
 import {
@@ -64,6 +71,9 @@ function ReceiveInner() {
 
   // raw QR string from scanner — preserved for "Ver inventario" navigation
   const [rawQrString, setRawQrString] = useState("");
+
+  // gallery fallback
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // prevent double-scan
   const processedRef = useRef(false);
@@ -119,6 +129,62 @@ function ReceiveInner() {
       setShowPaste(true);
     }
   }, []);
+
+  // E.2 — deep-link payload: auto-decode without opening camera
+  useEffect(() => {
+    const payloadParam = params.get("payload");
+    if (!payloadParam) return;
+    if (processedRef.current) return;
+    try {
+      const decoded = decodeTradePayload(decodeURIComponent(payloadParam));
+      if (!decoded) {
+        setScanError("El link es inválido o está corrupto");
+        return;
+      }
+      processedRef.current = true;
+      setScanActive(false);
+      setRawQrString(decodeURIComponent(payloadParam));
+      setScanned(decoded);
+    } catch {
+      setScanError("El link es inválido o está corrupto");
+    }
+  // Only run once on mount — params is stable enough for this
+  }, []);
+
+  // E.4 — gallery upload fallback
+  const triggerGalleryPicker = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleImageUpload = useCallback(
+    async (e: ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      await new Promise<void>((r) => {
+        img.onload = () => r();
+      });
+
+      try {
+        const { BrowserQRCodeReader } = await import("@zxing/browser");
+        const reader = new BrowserQRCodeReader();
+        const result = await reader.decodeFromImageElement(img);
+        const qrString = result.getText();
+        handleScanResult(qrString);
+      } catch {
+        setScanError(
+          "No se pudo leer el QR de la imagen. Asegurate que esté nítido."
+        );
+      } finally {
+        URL.revokeObjectURL(img.src);
+        // reset input so the same file can be retried
+        if (fileInputRef.current) fileInputRef.current.value = "";
+      }
+    },
+    [handleScanResult]
+  );
 
   const handlePasteSubmit = () => {
     setPasteError("");
@@ -311,6 +377,21 @@ function ReceiveInner() {
                     {scanError}
                   </p>
                 )}
+                {/* E.4 — gallery upload fallback */}
+                <button
+                  onClick={triggerGalleryPicker}
+                  className="text-xs text-gray-500 underline text-center"
+                >
+                  Subir QR desde galería
+                </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                />
+
                 <button
                   onClick={() => setShowPaste(true)}
                   className="text-xs text-gray-400 underline text-center"

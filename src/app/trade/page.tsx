@@ -33,6 +33,16 @@ export default function TradePage() {
       </header>
 
       <main className="flex-1 flex flex-col justify-center px-5 gap-5 py-8">
+        {/* F.4 — link to trade history */}
+        <div className="flex justify-end">
+          <a
+            href="/trade/history"
+            className="text-sm underline"
+            style={{ color: "#006847" }}
+          >
+            Ver historial
+          </a>
+        </div>
         <p className="text-sm text-gray-500 text-center mb-2">
           ¿Cómo arrancamos este intercambio?
         </p>

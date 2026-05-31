@@ -5,10 +5,13 @@
  *
  * Receives ?payload=<encoded>&give=<csv>&want=<csv> from /trade/propose.
  * Shows the big QR + summary, then offers "Escanear su QR" → /trade/receive?mode=confirm
+ *
+ * E.3 (S124): Web Share API button — generates deep link /scan?p=<payload>
+ * so proposer can share via WhatsApp. Falls back to clipboard copy.
  */
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { Suspense, useMemo } from "react";
+import { Suspense, useMemo, useState } from "react";
 import QrRenderer from "@/components/QrRenderer";
 
 function ProposeQrInner() {
@@ -31,11 +34,38 @@ function ProposeQrInner() {
   const giveSummary = giveList.join(", ");
   const wantSummary = wantList.join(", ");
 
+  const [toastMsg, setToastMsg] = useState("");
+
   const handleScanConfirm = () => {
     // Pass the proposer's payload so /trade/receive can log the trade on A's side
     router.push(
       `/trade/receive?mode=confirm&proposerPayload=${encodeURIComponent(qrString)}`
     );
+  };
+
+  // E.3 — Web Share API: generate deep link and share/copy
+  const handleShare = async () => {
+    const shareUrl = `${window.location.origin}/scan?p=${encodeURIComponent(qrString)}`;
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Albumix · Intercambio de figuritas",
+          text: "Te propuse un intercambio. Tap el link para verlo:",
+          url: shareUrl,
+        });
+      } catch {
+        // user cancelled — ignore
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        setToastMsg("Link copiado al portapapeles");
+        setTimeout(() => setToastMsg(""), 3000);
+      } catch {
+        setToastMsg("No se pudo copiar el link");
+        setTimeout(() => setToastMsg(""), 3000);
+      }
+    }
   };
 
   return (
@@ -99,6 +129,26 @@ function ProposeQrInner() {
             </div>
           </div>
         </div>
+
+        {/* E.3 — Share button (Web Share API or clipboard fallback) */}
+        <button
+          onClick={handleShare}
+          className="w-full rounded-full px-4 py-2.5 text-sm font-semibold border transition-colors active:scale-[0.98]"
+          style={{
+            backgroundColor: "#fff",
+            border: "1.5px solid #d1c9b8",
+            color: "#333",
+          }}
+        >
+          Compartir por WhatsApp
+        </button>
+
+        {/* Toast */}
+        {toastMsg && (
+          <p className="text-xs text-center" style={{ color: "#006847" }}>
+            {toastMsg}
+          </p>
+        )}
 
         {/* CTA — scan friend's acceptance QR */}
         <button

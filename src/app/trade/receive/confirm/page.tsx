@@ -5,9 +5,12 @@
  *
  * Receives ?payload=<encoded>&gave=<csv>&received=<csv> from /trade/receive.
  * Shows QR for proposer (A) to scan, then "Listo, ir al álbum".
+ *
+ * E.3 (S124): Web Share API button — generates deep link /scan?p=<payload>
+ * so acceptor can also share via WhatsApp. Falls back to clipboard copy.
  */
 
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import QrRenderer from "@/components/QrRenderer";
 
@@ -21,6 +24,33 @@ function ReceiveConfirmInner() {
 
   const gaveList = gaveParam.split(",").filter(Boolean);
   const receivedList = receivedParam.split(",").filter(Boolean);
+
+  const [toastMsg, setToastMsg] = useState("");
+
+  // E.3 — Web Share API: generate deep link and share/copy
+  const handleShare = async () => {
+    const shareUrl = `${window.location.origin}/scan?p=${encodeURIComponent(qrString)}`;
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Albumix · Intercambio de figuritas",
+          text: "Acepté tu intercambio. Tap el link para confirmar:",
+          url: shareUrl,
+        });
+      } catch {
+        // user cancelled — ignore
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        setToastMsg("Link copiado al portapapeles");
+        setTimeout(() => setToastMsg(""), 3000);
+      } catch {
+        setToastMsg("No se pudo copiar el link");
+        setTimeout(() => setToastMsg(""), 3000);
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
@@ -80,6 +110,26 @@ function ReceiveConfirmInner() {
             </div>
           </div>
         </div>
+
+        {/* E.3 — Share button (Web Share API or clipboard fallback) */}
+        <button
+          onClick={handleShare}
+          className="w-full rounded-full px-4 py-2.5 text-sm font-semibold border transition-colors active:scale-[0.98]"
+          style={{
+            backgroundColor: "#fff",
+            border: "1.5px solid #d1c9b8",
+            color: "#333",
+          }}
+        >
+          Compartir por WhatsApp
+        </button>
+
+        {/* Toast */}
+        {toastMsg && (
+          <p className="text-xs text-center" style={{ color: "#006847" }}>
+            {toastMsg}
+          </p>
+        )}
 
         {/* CTA */}
         <button
