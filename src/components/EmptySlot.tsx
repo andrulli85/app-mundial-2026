@@ -29,6 +29,7 @@ interface EmptySlotProps {
   stickerCode: string;
   playerName: string;
   teamColor?: string;
+  landscape?: boolean;
 }
 
 /** Lighten a hex color by mixing with white at the given ratio (0-1) */
@@ -46,6 +47,7 @@ export default function EmptySlot({
   stickerCode,
   playerName,
   teamColor = "#9ca3af",
+  landscape = false,
 }: EmptySlotProps) {
   const silhouetteColor = lightenHex(teamColor, 0.6);
 
@@ -53,7 +55,7 @@ export default function EmptySlot({
     <div
       className="relative w-full overflow-hidden rounded"
       style={{
-        aspectRatio: "3/4",
+        aspectRatio: landscape ? "4/3" : "3/4",
         backgroundColor: "#f5f0e8", // cream — matches the physical album page color
         border: "1px solid #d1c9b8",
       }}

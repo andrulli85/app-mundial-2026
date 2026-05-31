@@ -26,13 +26,17 @@ export default function StickerCard({
 }: StickerCardProps) {
   const filled = count > 0;
   const hasPhoto = Boolean(sticker.seed_image);
+  const isLandscape =
+    sticker.type === "team_photo" ||
+    sticker.id === "fwc-01" ||
+    sticker.id === "fwc-02";
 
   return (
     <button
       onClick={() => onTap(sticker.id)}
       className="relative w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 rounded"
       style={{
-        aspectRatio: "3/4",
+        aspectRatio: isLandscape ? "4/3" : "3/4",
         // ring color matches team
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ["--tw-ring-color" as any]: sticker.team_color,
@@ -75,6 +79,7 @@ export default function StickerCard({
             stickerCode={sticker.code}
             playerName={sticker.name}
             teamColor={sticker.team_color}
+            landscape={isLandscape}
           />
           {/* Green "got it" overlay */}
           <div
@@ -100,6 +105,7 @@ export default function StickerCard({
           stickerCode={sticker.code}
           playerName={sticker.name}
           teamColor={sticker.team_color}
+          landscape={isLandscape}
         />
       )}
     </button>
