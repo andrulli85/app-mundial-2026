@@ -3,13 +3,13 @@ import "./globals.css";
 import RegisterSW from "@/components/RegisterSW";
 
 export const metadata: Metadata = {
-  title: "Cromos 2026",
-  description: "Intercambiá figuritas del Mundial 2026 con tus amigos",
+  title: "Albumix",
+  description: "Tu álbum digital del Mundial 2026",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Cromos 2026",
+    title: "Albumix",
   },
   icons: {
     apple: "/icons/apple-touch-icon.png",

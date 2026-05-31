@@ -1,5 +1,5 @@
 /**
- * Service Worker — Cromos 2026
+ * Service Worker — Albumix
  *
  * __CACHE_VERSION__ is replaced at build time by scripts/inject-sw-version.mjs
  * with the first 8 chars of VERCEL_GIT_COMMIT_SHA (or a timestamp fallback).
@@ -13,7 +13,7 @@
  */
 
 const CACHE_VERSION = "__CACHE_VERSION__";
-const CACHE_NAME = `cromos-2026-${CACHE_VERSION}`;
+const CACHE_NAME = `albumix-${CACHE_VERSION}`;
 
 const PRECACHE_URLS = [
   "/album",
@@ -37,7 +37,8 @@ self.addEventListener("activate", (event) => {
           keys
             .filter(
               (key) =>
-                key.startsWith("cromos-2026-") && key !== CACHE_NAME
+                (key.startsWith("cromos-2026-") || key.startsWith("albumix-")) &&
+                key !== CACHE_NAME
             )
             .map((key) => caches.delete(key))
         )

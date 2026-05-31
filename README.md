@@ -1,4 +1,4 @@
-# Cromos 2026
+# Albumix
 
 PWA local-first de intercambio de figuritas Panini FIFA World Cup 2026.
 
