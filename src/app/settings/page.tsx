@@ -198,6 +198,29 @@ export default function SettingsPage() {
           </div>
         </section>
 
+        {/* Import from Figuritas.app */}
+        <section
+          className="rounded-2xl shadow-sm overflow-hidden"
+          style={{ backgroundColor: "#ffffff" }}
+        >
+          <a
+            href="/import"
+            className="flex items-center gap-3 px-4 py-4 active:opacity-70 transition-opacity"
+            style={{ textDecoration: "none" }}
+          >
+            <span className="text-xl leading-none">📥</span>
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-gray-800 text-sm leading-tight">
+                Importar desde otra app
+              </p>
+              <p className="text-xs text-gray-500 leading-tight mt-0.5">
+                Migrá desde Figuritas.app sin re-marcar todo
+              </p>
+            </div>
+            <span className="text-gray-400 text-lg leading-none">›</span>
+          </a>
+        </section>
+
         {/* App info */}
         <section
           className="rounded-2xl p-4 shadow-sm"
