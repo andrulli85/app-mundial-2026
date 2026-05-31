@@ -23,6 +23,7 @@ import type { Sticker } from "@/lib/catalog";
 import type { StickerEntry } from "@/lib/db";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { TeamCatalogEntry } from "@/lib/team-catalog";
+import InstallBanner from "@/components/InstallBanner";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
 
@@ -173,6 +174,9 @@ export default function AlbumPage() {
           />
         </div>
       </header>
+
+      {/* Smart install banner — hidden in standalone, respects 30d dismiss TTL */}
+      <InstallBanner />
 
       {/* Tab bar */}
       <nav className="sticky top-[72px] z-10 flex border-b" style={{ backgroundColor: "#f9f5ee", borderColor: "#d1c9b8" }}>

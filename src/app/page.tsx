@@ -100,6 +100,10 @@ export default function OnboardingPage() {
             style={{
               borderColor: error ? "#c8102e" : "#d1c9b8",
               backgroundColor: "#fafaf8",
+              // Explicit 16px floor prevents iOS Safari auto-zoom on input focus.
+              // text-lg (18px) already satisfies this, but the inline rule makes
+              // the intent clear and guards against config overrides.
+              fontSize: "16px",
             }}
             autoComplete="off"
             autoCapitalize="none"
