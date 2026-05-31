@@ -112,7 +112,7 @@ export default function SettingsPage() {
           style={{ backgroundColor: "#ffffff" }}
         >
           <h2 className="font-bold text-gray-700 mb-3">Tu nombre</h2>
-          <p className="text-xs text-gray-500 mb-3">
+          <p className="text-xs text-gray-600 mb-3">
             Este nombre aparece cuando intercambiás figuritas. Actual:{" "}
             <strong>{nickname}</strong>
           </p>
@@ -156,7 +156,7 @@ export default function SettingsPage() {
           style={{ backgroundColor: "#ffffff" }}
         >
           <h2 className="font-bold text-gray-700 mb-3">Backup de colección</h2>
-          <p className="text-xs text-gray-500 mb-3">
+          <p className="text-xs text-gray-600 mb-3">
             Exportá tu colección para hacer un backup o pasarla a otro dispositivo.
           </p>
 
@@ -204,7 +204,7 @@ export default function SettingsPage() {
           style={{ backgroundColor: "#ffffff" }}
         >
           <h2 className="font-bold text-gray-700 mb-2">Acerca de la app</h2>
-          <dl className="text-sm text-gray-500 flex flex-col gap-1">
+          <dl className="text-sm text-gray-600 flex flex-col gap-1">
             <div className="flex justify-between">
               <dt>Versión</dt>
               <dd className="font-mono">{APP_VERSION}</dd>

@@ -161,7 +161,7 @@ function ProposeQrInner() {
 
         <button
           onClick={() => router.push("/trade/propose")}
-          className="text-sm text-gray-400 underline"
+          className="text-sm text-gray-600 underline"
         >
           Cambiar propuesta
         </button>

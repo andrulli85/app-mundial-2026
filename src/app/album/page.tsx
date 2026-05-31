@@ -132,7 +132,7 @@ export default function AlbumPage() {
             className="w-10 h-10 rounded-full border-4 animate-spin"
             style={{ borderColor: "#006847", borderTopColor: "transparent" }}
           />
-          <p className="text-sm text-gray-500">Cargando álbum...</p>
+          <p className="text-sm text-gray-600">Cargando álbum...</p>
         </div>
       </div>
     );
@@ -208,7 +208,7 @@ export default function AlbumPage() {
       {/* Sticker grid — grouped by team */}
       <main className="flex-1 px-2 py-3">
         {visibleStickers.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-gray-400">
+          <div className="flex flex-col items-center justify-center py-16 text-gray-600">
             <p className="text-4xl mb-3" aria-hidden="true">
               {tab === "tengo" ? "📭" : tab === "repetidas" ? "📋" : "📦"}
             </p>

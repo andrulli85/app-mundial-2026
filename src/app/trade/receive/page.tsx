@@ -367,7 +367,7 @@ function ReceiveInner() {
                   onError={handleScanError}
                   active={scanActive}
                 />
-                <p className="text-sm text-gray-500 text-center">
+                <p className="text-sm text-gray-600 text-center">
                   {mode === "initial"
                     ? "Apuntá al QR que generó tu amigo."
                     : "Apuntá al QR de aceptación de tu amigo."}
@@ -380,7 +380,7 @@ function ReceiveInner() {
                 {/* E.4 — gallery upload fallback */}
                 <button
                   onClick={triggerGalleryPicker}
-                  className="text-xs text-gray-500 underline text-center"
+                  className="text-xs text-gray-600 underline text-center"
                 >
                   Subir QR desde galería
                 </button>
@@ -394,7 +394,7 @@ function ReceiveInner() {
 
                 <button
                   onClick={() => setShowPaste(true)}
-                  className="text-xs text-gray-400 underline text-center"
+                  className="text-xs text-gray-600 underline text-center"
                 >
                   No tengo acceso a la cámara, pegar QR de texto
                 </button>
@@ -426,7 +426,7 @@ function ReceiveInner() {
                 </button>
                 <button
                   onClick={() => setShowPaste(false)}
-                  className="text-sm text-gray-400 underline text-center"
+                  className="text-sm text-gray-600 underline text-center"
                 >
                   Intentar con cámara
                 </button>
@@ -457,7 +457,7 @@ function ReceiveInner() {
               <p className="font-bold text-gray-700 mb-1">
                 QR de {scanned.uid} recibido
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-600">
                 El intercambio se confirmó. Tu colección está actualizada.
               </p>
             </div>

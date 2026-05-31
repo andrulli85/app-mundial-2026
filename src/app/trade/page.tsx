@@ -43,7 +43,7 @@ export default function TradePage() {
             Ver historial
           </a>
         </div>
-        <p className="text-sm text-gray-500 text-center mb-2">
+        <p className="text-sm text-gray-600 text-center mb-2">
           ¿Cómo arrancamos este intercambio?
         </p>
 

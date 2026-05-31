@@ -203,7 +203,7 @@ function ProposeInner() {
           )}
 
           {offerableStickers.length === 0 ? (
-            <p className="text-sm text-gray-400 italic py-4 text-center">
+            <p className="text-sm text-gray-600 italic py-4 text-center">
               Todavía no tenés repes para ofrecer.
             </p>
           ) : (
@@ -275,11 +275,11 @@ function ProposeInner() {
           )}
 
           {wantableStickers.length === 0 ? (
-            <p className="text-sm text-gray-400 italic py-4 text-center">
+            <p className="text-sm text-gray-600 italic py-4 text-center">
               Tu álbum está completo, no falta ninguna figurita.
             </p>
           ) : filteredWantable.length === 0 ? (
-            <p className="text-sm text-gray-400 italic py-4 text-center">
+            <p className="text-sm text-gray-600 italic py-4 text-center">
               No faltan figuritas de este equipo.
             </p>
           ) : (

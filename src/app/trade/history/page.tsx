@@ -93,7 +93,7 @@ function RevertModal({ entry, onConfirm, onCancel }: RevertModalProps) {
               {entry.received.join(", ")}
             </p>
           )}
-          <p className="text-gray-400 text-xs mt-1">
+          <p className="text-gray-600 text-xs mt-1">
             Este intercambio va a desaparecer del historial.
           </p>
         </div>
@@ -138,8 +138,8 @@ function TradeCard({ entry, onRevert }: TradeCardProps) {
     >
       {/* Header row */}
       <div className="flex items-center justify-between gap-2">
-        <p className="text-xs text-gray-400">{relativeTime(entry.ts)}</p>
-        <p className="text-xs font-semibold text-gray-500 truncate max-w-[160px]">
+        <p className="text-xs text-gray-600">{relativeTime(entry.ts)}</p>
+        <p className="text-xs font-semibold text-gray-600 truncate max-w-[160px]">
           con {entry.partner}
         </p>
       </div>
@@ -291,7 +291,7 @@ export default function TradeHistoryPage() {
               <p className="font-bold text-gray-700 mb-1">
                 Todavía no hiciste ningún intercambio
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-600">
                 Cuando hagas uno, va a aparecer acá.
               </p>
             </div>

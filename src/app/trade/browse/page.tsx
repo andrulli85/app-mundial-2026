@@ -354,7 +354,7 @@ function BrowseInner() {
           className="px-4 py-2 flex flex-wrap gap-1.5 border-b"
           style={{ backgroundColor: "#fff", borderColor: "#e5e0d6" }}
         >
-          <p className="w-full text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">
+          <p className="w-full text-xs font-bold text-gray-600 uppercase tracking-wide mb-1">
             Querés:
           </p>
           {Array.from(wants).map((id) => {
@@ -386,7 +386,7 @@ function BrowseInner() {
       <main className="flex-1 overflow-y-auto px-3 py-3 pb-24">
         {visibleStickers.length === 0 ? (
           <div className="flex-1 flex items-center justify-center py-16">
-            <p className="text-sm text-gray-400 italic text-center px-6">
+            <p className="text-sm text-gray-600 italic text-center px-6">
               {filter === "repes"
                 ? `${partnerNickname} no tiene repes en este momento.`
                 : "No hay figuritas que mostrar con este filtro."}

@@ -32,7 +32,7 @@ function ScanDeepLinkInner() {
 
   return (
     <div className="flex-1 flex items-center justify-center">
-      <p className="text-gray-500 text-sm">Abriendo trade...</p>
+      <p className="text-gray-600 text-sm">Abriendo trade...</p>
     </div>
   );
 }
