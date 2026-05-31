@@ -9,8 +9,8 @@
  *   Sticky "Generar QR" disabled until give.size >= 1 && want.size >= 1.
  */
 
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import EmptySlot from "@/components/EmptySlot";
 import Image from "next/image";
 import { getCatalog } from "@/lib/catalog";
@@ -19,8 +19,9 @@ import { encodeTradePayload } from "@/lib/qr-engine";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { Sticker } from "@/lib/catalog";
 
-export default function ProposePage() {
+function ProposeInner() {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [catalog, setCatalog] = useState<Sticker[]>([]);
   const [counts, setCounts] = useState<Record<string, number>>({});
@@ -49,6 +50,15 @@ export default function ProposePage() {
       setLoading(false);
     })();
   }, [router]);
+
+  // Pre-fill wants from ?wants= query param (coming from /trade/browse)
+  useEffect(() => {
+    const wantsParam = searchParams.get("wants");
+    if (wantsParam) {
+      const ids = wantsParam.split(",").filter(Boolean);
+      setWant(new Set(ids));
+    }
+  }, [searchParams]);
 
   // Stickers I can offer — have at least one duplicate (count >= 2)
   const offerableStickers = useMemo(
@@ -152,9 +162,16 @@ export default function ProposePage() {
         >
           ←
         </button>
-        <h1 className="text-lg font-black text-white leading-none flex-1">
-          Proponer intercambio
-        </h1>
+        <div className="flex-1 min-w-0">
+          <h1 className="text-lg font-black text-white leading-tight">
+            Proponer intercambio
+          </h1>
+          {searchParams.get("partner_uid") && (
+            <p className="text-xs text-white/70 leading-tight">
+              Contrapropuesta para {searchParams.get("partner_uid")}
+            </p>
+          )}
+        </div>
       </header>
 
       <main className="flex-1 overflow-y-auto px-4 py-4 pb-24">
@@ -370,5 +387,24 @@ function TradeSelectCard({ sticker, selected, badge, onTap }: TradeSelectCardPro
         </div>
       )}
     </button>
+  );
+}
+
+// ── Page export ─────────────────────────────────────────────────────
+
+export default function ProposePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex-1 flex items-center justify-center">
+          <div
+            className="w-10 h-10 rounded-full border-4 animate-spin"
+            style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+          />
+        </div>
+      }
+    >
+      <ProposeInner />
+    </Suspense>
   );
 }

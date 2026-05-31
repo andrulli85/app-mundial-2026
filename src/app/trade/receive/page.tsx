@@ -62,6 +62,9 @@ function ReceiveInner() {
   // active state — stop scanner once we have a result
   const [scanActive, setScanActive] = useState(true);
 
+  // raw QR string from scanner — preserved for "Ver inventario" navigation
+  const [rawQrString, setRawQrString] = useState("");
+
   // prevent double-scan
   const processedRef = useRef(false);
 
@@ -101,6 +104,7 @@ function ReceiveInner() {
 
       processedRef.current = true;
       setScanActive(false);
+      setRawQrString(text);
       setScanned(payload);
     },
     [mode]
@@ -125,6 +129,7 @@ function ReceiveInner() {
     }
     processedRef.current = true;
     setScanActive(false);
+    setRawQrString(pasteText.trim());
     setScanned(payload);
   };
 
@@ -353,6 +358,7 @@ function ReceiveInner() {
             payload={scanned}
             missingItems={missingItems}
             accepting={accepting}
+            rawQrString={rawQrString}
             onAccept={handleAccept}
             onDecline={() => {
               processedRef.current = false;
@@ -395,6 +401,7 @@ interface ProposalDisplayProps {
   payload: TradePayload;
   missingItems: string[];
   accepting: boolean;
+  rawQrString: string;
   onAccept: () => void;
   onDecline: () => void;
 }
@@ -403,9 +410,11 @@ function ProposalDisplay({
   payload,
   missingItems,
   accepting,
+  rawQrString,
   onAccept,
   onDecline,
 }: ProposalDisplayProps) {
+  const router = useRouter();
   const canAccept = missingItems.length === 0;
 
   return (
@@ -494,6 +503,21 @@ function ProposalDisplay({
           {accepting ? "Procesando..." : "Aceptar"}
         </button>
       </div>
+
+      {/* Browse partner inventory */}
+      {rawQrString && (
+        <button
+          onClick={() =>
+            router.push(
+              `/trade/browse?payload=${encodeURIComponent(rawQrString)}`
+            )
+          }
+          className="w-full py-3 rounded-xl font-bold text-sm border transition-colors"
+          style={{ borderColor: "#006847", color: "#006847", backgroundColor: "#fff" }}
+        >
+          Ver inventario de {payload.uid}
+        </button>
+      )}
     </div>
   );
 }
