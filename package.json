@@ -5,19 +5,33 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
+    "import-seed": "node scripts/import-seed.mjs",
+    "import-seed:dry": "node scripts/import-seed.mjs --dry-run"
   },
   "dependencies": {
+    "@zxing/browser": "^0.2.0",
+    "@zxing/library": "^0.22.0",
+    "idb": "^8.0.3",
     "next": "16.2.6",
+    "pako": "^2.1.0",
+    "qrcode": "^1.5.4",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^8.60.0"
   }
 }

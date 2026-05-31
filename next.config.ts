@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Sharp used server-side only for seed import script
+  serverExternalPackages: ["sharp"],
+  // Sticker seed images served as-is from public/
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

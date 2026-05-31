@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cromos 2026
 
-## Getting Started
+PWA local-first de intercambio de figuritas Panini FIFA World Cup 2026.
 
-First, run the development server:
+**Uso:** abrir la URL en el browser, instalar en pantalla de inicio, funciona offline.
+
+---
+
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Comandos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev              # servidor de desarrollo
+npm run build            # build de producción
+npm run start            # servidor de producción local
+npm run lint             # ESLint (zero warnings)
+npm run import-seed      # importar + comprimir fotos de figuritas
+npm run import-seed:dry  # preview de la importación sin copiar archivos
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Arquitectura
 
-## Learn More
+**100% local-first. Sin servidor, sin base de datos, sin auth.**
 
-To learn more about Next.js, take a look at the following resources:
+Todo el estado vive en **IndexedDB** del dispositivo. Cerrar o limpiar el browser borra los datos hasta Fase 5 (cloud sync, opcional, post-Mundial).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/
+    page.tsx          — Onboarding (primera vez: pide nickname)
+    album/page.tsx    — Álbum 980 figuritas (tap para marcar)
+    trade/page.tsx    — Intercambio QR (3 pasos)
+    settings/page.tsx — Cambiar nick, backup, info
+  lib/
+    db.ts             — IndexedDB schema + helpers (idb)
+    catalog.ts        — Catálogo 980 figuritas + colores de equipo
+    qr-engine.ts      — Interface QR (placeholder — Stream C implementa)
+  components/
+    EmptySlot.tsx     — Celda vacía estilo álbum físico (Bowlby One + team color)
+    StickerCard.tsx   — Celda del grid (foto real o EmptySlot)
+    QrRenderer.tsx    — Renderiza QR desde payload string
+    QrScanner.tsx     — Escanea QR con cámara (@zxing/browser)
+    RegisterSW.tsx    — Registra service worker
+public/
+  manifest.json       — PWA manifest
+  sw.js               — Service worker (cache-first assets, network-first pages)
+  stickers/seed/      — Fotos comprimidas (generadas por import-seed.mjs)
+  stickers/seed-manifest.json  — sticker_id → filename map
+scripts/
+  import-seed.mjs     — Importa + comprime fotos del seed (requiere sharp)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## IndexedDB Schema
 
-## Deploy on Vercel
+```
+DB: mundial-2026 v1
+├── collection  { sticker_id, count, acquired_at }
+├── profile     { key, value }   (key = "nickname")
+└── trade_log   { trade_id, ts, partner, gave[], received[] }
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Seed de figuritas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+43 fotos reales importadas desde `tools/scripts/mundial-2026-visuals/seed/`.
+Las demás 937 celdas usan el componente `<EmptySlot>` que replica el diseño auténtico del álbum físico.
+
+Para re-importar seed:
+```bash
+npm run import-seed:dry   # verificar mapping primero
+npm run import-seed       # ejecutar
+```
+
+## Despliegue
+
+Vercel free tier. Push a `main` → deploy automático.
+
+## PWA — Instalar en pantalla de inicio
+
+**iPhone (iOS Safari):** botón Compartir → "Agregar a pantalla de inicio"
+
+**Android (Chrome):** banner "Instalar app" aparece automáticamente
+
+## Trade QR — Flujo
+
+```
+Teléfono A                    Teléfono B
+────────────────────────────────────────
+1. A selecciona qué da + qué quiere
+2. A genera QR_A1 (req)
+                    ← B escanea QR_A1
+                       B ve la propuesta, acepta
+                       B genera QR_B2 (acc), actualiza IndexedDB
+3. A escanea QR_B2, actualiza IndexedDB
+   ✅ Listo
+```
+
+## Fases
+
+- **Fase 0** Done — investigación + scrape dataset
+- **Fase 1** Done — co-diseño con sobrino (papel)
+- **Fase 2** Done — scaffold + álbum (este repo)
+- **Fase 3** Pending — motor de intercambio completo
+- **Fase 4** Pending — polish + distribución URL
+- **Fase 5** Deferred — cloud sync (post-Mundial)
+
+**Deadline:** 2026-06-10 (un día antes del partido inaugural)
