@@ -49,7 +49,7 @@ export default function EmptySlot({
   teamColor = "#9ca3af",
   landscape = false,
 }: EmptySlotProps) {
-  const silhouetteColor = lightenHex(teamColor, 0.6);
+  const silhouetteColor = lightenHex(teamColor, 0.4);
 
   return (
     <div
@@ -82,11 +82,11 @@ export default function EmptySlot({
         className={`${bowlby.className} absolute inset-0 flex items-center justify-center select-none pointer-events-none`}
         style={{
           color: silhouetteColor,
-          opacity: 0.28,
+          opacity: 0.45,
           fontSize: "clamp(2.2rem, 10vw, 3.8rem)",
           letterSpacing: "0.25em",
           lineHeight: 1,
-          paddingTop: "7%", // clear the color band
+          paddingTop: "0%", // let it center in the cell — name strip is 18% so no clipping
         }}
         aria-hidden="true"
       >
@@ -97,7 +97,7 @@ export default function EmptySlot({
       <div
         className="absolute bottom-0 left-0 right-0 flex items-center justify-center px-1"
         style={{
-          height: "22%",
+          height: "18%",
           backgroundColor: "rgba(255,255,255,0.85)",
           borderTop: `2px solid ${teamColor}`,
         }}
@@ -105,7 +105,7 @@ export default function EmptySlot({
         <span
           className="text-center font-semibold uppercase leading-tight"
           style={{
-            fontSize: "clamp(0.45rem, 2vw, 0.7rem)",
+            fontSize: "clamp(0.4rem, 1.6vw, 0.55rem)",
             color: "#1a1a1a",
             wordBreak: "break-word",
             display: "-webkit-box",

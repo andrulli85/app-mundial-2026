@@ -37,6 +37,7 @@ export default function StickerCard({
       className="relative w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 rounded"
       style={{
         aspectRatio: isLandscape ? "4/3" : "3/4",
+        gridColumn: isLandscape ? "span 2" : undefined,
         // ring color matches team
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ["--tw-ring-color" as any]: sticker.team_color,

@@ -139,7 +139,7 @@ export default function AlbumPage() {
   }
 
   return (
-    <div className="flex flex-col flex-1 max-w-2xl mx-auto w-full">
+    <div className="flex flex-col flex-1 max-w-3xl mx-auto w-full">
       {/* Header */}
       <header
         className="sticky top-0 z-20 px-4 py-3 shadow-sm"
@@ -230,7 +230,7 @@ export default function AlbumPage() {
               <div
                 className="grid gap-1.5 mb-4"
                 style={{
-                  gridTemplateColumns: "repeat(auto-fill, minmax(72px, 1fr))",
+                  gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
                 }}
               >
                 {group.stickers.map((sticker) => (
