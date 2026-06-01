@@ -12,6 +12,8 @@
  *
  * Read-only. Pure client-side read of IndexedDB trade_log.
  * No schema changes. No chart library.
+ *
+ * Dark theme migration: Phase 2 — white/light surfaces → dark tokens.
  */
 
 import { useEffect, useState } from "react";
@@ -32,6 +34,16 @@ import {
 } from "@/lib/trade-stats";
 import { TradeLogEntry } from "@/lib/db";
 
+// ── Dark theme tokens ──────────────────────────────────────────────────────
+const GOLD = "#F4C84A";
+const GREEN = "#006847";
+const LIME = "#c2ef4e";
+const BG = "#0a0a0a";
+const SURFACE = "rgba(26,26,26,0.95)";
+const BORDER = "rgba(255,255,255,0.08)";
+const TEXT_PRIMARY = "#f5f5f5";
+const TEXT_MUTED = "#9ca3af";
+
 // ── Types ─────────────────────────────────────────────────────────────────
 
 interface StatsData {
@@ -49,7 +61,7 @@ function PartnerAvatar({ initials }: { initials: string }) {
   return (
     <div
       className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-sm font-black text-white"
-      style={{ backgroundColor: "#006847" }}
+      style={{ backgroundColor: GREEN }}
     >
       {initials || "?"}
     </div>
@@ -62,7 +74,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="text-sm font-black uppercase tracking-wider"
-      style={{ color: "#006847" }}
+      style={{ color: LIME }}
     >
       {children}
     </h2>
@@ -76,18 +88,18 @@ function TypeBar({ row, max }: { row: TypeBreakdown; max: number }) {
   return (
     <div className="flex flex-col gap-1">
       <div className="flex justify-between items-baseline">
-        <span className="text-sm text-gray-700">{row.label}</span>
-        <span className="text-xs font-bold" style={{ color: "#006847" }}>
+        <span className="text-sm" style={{ color: TEXT_PRIMARY }}>{row.label}</span>
+        <span className="text-xs font-bold" style={{ color: GOLD }}>
           {row.count}
         </span>
       </div>
       <div
         className="w-full rounded-full overflow-hidden"
-        style={{ height: 8, backgroundColor: "#f0ebe2" }}
+        style={{ height: 8, backgroundColor: "rgba(255,255,255,0.08)" }}
       >
         <div
           className="h-full rounded-full transition-all"
-          style={{ width: `${pct}%`, backgroundColor: "#006847" }}
+          style={{ width: `${pct}%`, backgroundColor: GREEN }}
         />
       </div>
     </div>
@@ -114,14 +126,14 @@ function TimelineSection({ timeline }: { timeline: DayBucket[] }) {
                   className="w-full rounded-t-sm transition-all"
                   style={{
                     height: `${Math.max(heightPct, day.count > 0 ? 6 : 0)}%`,
-                    backgroundColor: day.count > 0 ? "#006847" : "#e5e0d6",
+                    backgroundColor: day.count > 0 ? GREEN : "rgba(255,255,255,0.06)",
                     minHeight: day.count > 0 ? 4 : 0,
                   }}
                   title={`${day.dateLabel}: ${day.count} trade${day.count !== 1 ? "s" : ""}`}
                 />
               </div>
               {day.count > 0 && (
-                <span className="text-[9px] text-gray-400 leading-none">
+                <span className="text-[9px] leading-none" style={{ color: TEXT_MUTED }}>
                   {day.count}
                 </span>
               )}
@@ -162,11 +174,14 @@ export default function TradeStatsPage() {
   }, []);
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
-      {/* Header */}
+    <div
+      className="flex flex-col flex-1 max-w-lg mx-auto w-full"
+      style={{ backgroundColor: BG, minHeight: "100dvh", color: TEXT_PRIMARY }}
+    >
+      {/* Header — keep green brand stripe */}
       <header
         className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        style={{ backgroundColor: GREEN }}
       >
         <button
           onClick={() => router.back()}
@@ -186,7 +201,7 @@ export default function TradeStatsPage() {
           <div className="flex-1 flex items-center justify-center py-16">
             <div
               className="w-8 h-8 rounded-full border-4 animate-spin"
-              style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+              style={{ borderColor: GREEN, borderTopColor: "transparent" }}
             />
           </div>
         ) : data && data.trades.length === 0 ? (
@@ -197,17 +212,17 @@ export default function TradeStatsPage() {
           >
             <span className="text-5xl leading-none">🤝</span>
             <div>
-              <p className="font-bold text-gray-700 mb-1">
+              <p className="font-bold mb-1" style={{ color: TEXT_PRIMARY }}>
                 Aún no hiciste trades.
               </p>
-              <p className="text-sm text-gray-600 max-w-xs mx-auto">
+              <p className="text-sm max-w-xs mx-auto" style={{ color: TEXT_MUTED }}>
                 Vení acá cuando tengas tu primer intercambio para ver tu actividad.
               </p>
             </div>
             <a
               href="/trade"
               className="mt-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white inline-block"
-              style={{ backgroundColor: "#006847" }}
+              style={{ backgroundColor: GREEN }}
             >
               Hacer mi primer trade
             </a>
@@ -250,17 +265,17 @@ export default function TradeStatsPage() {
                     <div
                       key={p.partner}
                       className="flex items-center gap-3 rounded-xl px-4 py-3"
-                      style={{ backgroundColor: "#fff", border: "1px solid #e5e0d6" }}
+                      style={{ backgroundColor: SURFACE, border: `1px solid ${BORDER}` }}
                     >
                       <PartnerAvatar initials={p.initials} />
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-gray-800 truncate text-sm">
+                        <p className="font-bold truncate text-sm" style={{ color: TEXT_PRIMARY }}>
                           {p.partner}
                         </p>
                       </div>
                       <span
                         className="text-xs font-black shrink-0"
-                        style={{ color: "#006847" }}
+                        style={{ color: GOLD }}
                       >
                         {p.tradeCount} trade{p.tradeCount !== 1 ? "s" : ""}
                       </span>
@@ -279,7 +294,7 @@ export default function TradeStatsPage() {
                     <div
                       key={sf.stickerId}
                       className="flex items-center gap-3 rounded-xl px-4 py-3"
-                      style={{ backgroundColor: "#fff", border: "1px solid #e5e0d6" }}
+                      style={{ backgroundColor: SURFACE, border: `1px solid ${BORDER}` }}
                     >
                       <span
                         className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black text-white shrink-0"
@@ -288,16 +303,16 @@ export default function TradeStatsPage() {
                         {i + 1}
                       </span>
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-gray-800 text-sm truncate">
+                        <p className="font-bold text-sm truncate" style={{ color: TEXT_PRIMARY }}>
                           {sf.sticker ? sf.sticker.code : sf.stickerId}
                         </p>
                         {sf.sticker && (
-                          <p className="text-xs text-gray-500 truncate">
+                          <p className="text-xs truncate" style={{ color: TEXT_MUTED }}>
                             {sf.sticker.name}
                           </p>
                         )}
                       </div>
-                      <span className="text-xs text-gray-500 shrink-0">
+                      <span className="text-xs shrink-0" style={{ color: TEXT_MUTED }}>
                         intercambiada {sf.count}{" "}
                         {sf.count === 1 ? "vez" : "veces"}
                       </span>
@@ -313,7 +328,7 @@ export default function TradeStatsPage() {
                 <SectionTitle>Por categoría</SectionTitle>
                 <div
                   className="rounded-xl px-4 py-4 flex flex-col gap-3"
-                  style={{ backgroundColor: "#fff", border: "1px solid #e5e0d6" }}
+                  style={{ backgroundColor: SURFACE, border: `1px solid ${BORDER}` }}
                 >
                   {(() => {
                     const maxCount = Math.max(...data.typeBreakdown.map((r) => r.count), 1);
