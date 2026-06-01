@@ -162,8 +162,8 @@ test("/once — dark theme still works (regression guard)", async ({ page }) => 
   expect(bgColor).not.toBe("rgb(255, 255, 255)");
   expect(bgColor).not.toBe("rgb(249, 245, 238)");
 
-  // The Mi 11 title should be present
-  const title = page.getByText("Mi 11", { exact: false });
+  // The Mi 11 heading should be present (exact match avoids BottomNav label ambiguity)
+  const title = page.getByRole("heading", { name: "Mi 11" });
   await expect(title).toBeVisible({ timeout: 8000 });
 
   await page.screenshot({
