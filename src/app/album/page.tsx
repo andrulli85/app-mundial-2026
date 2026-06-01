@@ -11,6 +11,10 @@
  *
  * Tabs: Todo | Tengo | Me faltan | Repetidas
  * Team headers respond to active tab: only teams with visible stickers show a header.
+ *
+ * Category chips: 🔍 Todos | 🌍 Países | 🏆 Grupos | ✨ Especiales
+ * Search input: case-insensitive match on code / name / team / display_name
+ * Groups chip: shows FIFA 2026 group (A–L) section headers above team headers.
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -26,6 +30,21 @@ import type { TeamCatalogEntry } from "@/lib/team-catalog";
 import InstallBanner from "@/components/InstallBanner";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
+type Category = "todos" | "paises" | "grupos" | "especiales";
+
+// ---------------------------------------------------------------------------
+// Category chip definitions
+// ---------------------------------------------------------------------------
+
+const CATEGORY_CHIPS: { id: Category; label: string }[] = [
+  { id: "todos",     label: "🔍 Todos" },
+  { id: "paises",    label: "🌍 Países" },
+  { id: "grupos",    label: "🏆 Grupos" },
+  { id: "especiales", label: "✨ Especiales" },
+];
+
+// Groups A–L in order
+const FIFA_GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
 
 // ---------------------------------------------------------------------------
 // Team grouping helpers
@@ -37,6 +56,8 @@ interface TeamGroup {
   catalogEntry: TeamCatalogEntry;
   teamColor: string;
   stickers: Sticker[];
+  /** FIFA group letter (A-L) or "_fwc" / "_end" */
+  group: string;
 }
 
 /**
@@ -50,12 +71,14 @@ function groupStickersByTeam(stickers: Sticker[]): TeamGroup[] {
     const teamKey = sticker.team_code || "_PANINI";
     const last = groups[groups.length - 1];
     if (!last || last.team_code !== teamKey) {
+      const catalogEntry = TEAM_CATALOG[teamKey] ?? TEAM_CATALOG._PANINI;
       groups.push({
         team_code: teamKey,
-        display_name: TEAM_CATALOG[teamKey]?.display_name ?? teamKey,
-        catalogEntry: TEAM_CATALOG[teamKey] ?? TEAM_CATALOG._PANINI,
+        display_name: catalogEntry.display_name,
+        catalogEntry,
         teamColor: sticker.team_color,
         stickers: [sticker],
+        group: catalogEntry.group,
       });
     } else {
       last.stickers.push(sticker);
@@ -71,6 +94,8 @@ export default function AlbumPage() {
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState<Tab>("todo");
   const [nickname, setNickname] = useState("");
+  const [category, setCategory] = useState<Category>("todos");
+  const [search, setSearch] = useState("");
 
   // Load catalog + collection on mount
   useEffect(() => {
@@ -103,26 +128,61 @@ export default function AlbumPage() {
     setCounts((prev) => ({ ...prev, [stickerId]: updated.count }));
   }, []);
 
-  // Filtered list by tab
-  const visibleStickers = useMemo(() => {
-    if (tab === "todo") return catalog;
-    if (tab === "tengo") return catalog.filter((s) => (counts[s.id] ?? 0) >= 1);
-    if (tab === "faltan") return catalog.filter((s) => (counts[s.id] ?? 0) === 0);
-    if (tab === "repetidas") return catalog.filter((s) => (counts[s.id] ?? 0) >= 2);
-    return catalog;
-  }, [catalog, counts, tab]);
+  // ---------- Filter pipeline: tab → category → search ----------
+  const filteredStickers = useMemo(() => {
+    // 1. Tab filter
+    let stickers = catalog;
+    if (tab === "tengo")     stickers = stickers.filter((s) => (counts[s.id] ?? 0) >= 1);
+    if (tab === "faltan")    stickers = stickers.filter((s) => (counts[s.id] ?? 0) === 0);
+    if (tab === "repetidas") stickers = stickers.filter((s) => (counts[s.id] ?? 0) >= 2);
 
-  // Stats
+    // 2. Category filter
+    if (category === "paises" || category === "grupos") {
+      // Country teams only: exclude FWC and Panini
+      stickers = stickers.filter(
+        (s) => s.type !== "fwc" && s.type !== "panini_special" && s.team_code !== "" && s.team_code !== "FWC"
+      );
+    } else if (category === "especiales") {
+      stickers = stickers.filter(
+        (s) => s.type === "fwc" || s.type === "panini_special" || s.team_code === "" || s.team_code === "FWC"
+      );
+    }
+
+    // 3. Search filter
+    if (search.trim()) {
+      const q = search.trim().toLowerCase();
+      stickers = stickers.filter(
+        (s) =>
+          s.code.toLowerCase().includes(q) ||
+          s.name.toLowerCase().includes(q) ||
+          s.team.toLowerCase().includes(q) ||
+          s.team_code.toLowerCase().includes(q) ||
+          s.display_name.toLowerCase().includes(q)
+      );
+    }
+
+    return stickers;
+  }, [catalog, counts, tab, category, search]);
+
+  // Stats (always from full catalog)
   const total = catalog.length;
   const owned = catalog.filter((s) => (counts[s.id] ?? 0) >= 1).length;
   const dupes = catalog.filter((s) => (counts[s.id] ?? 0) >= 2).length;
 
   const tabs: { id: Tab; label: string; count?: number }[] = [
-    { id: "todo", label: "Todo", count: total },
-    { id: "tengo", label: "Tengo", count: owned },
-    { id: "faltan", label: "Me faltan", count: total - owned },
+    { id: "todo",      label: "Todo",      count: total },
+    { id: "tengo",     label: "Tengo",     count: owned },
+    { id: "faltan",    label: "Me faltan", count: total - owned },
     { id: "repetidas", label: "Repetidas", count: dupes },
   ];
+
+  // Category label for empty-state
+  const categoryLabel: Record<Category, string> = {
+    todos:     "el álbum",
+    paises:    "Países",
+    grupos:    "Grupos",
+    especiales: "Especiales",
+  };
 
   if (loading) {
     return (
@@ -138,9 +198,14 @@ export default function AlbumPage() {
     );
   }
 
+  // Group the filtered stickers for rendering
+  const teamGroups = groupStickersByTeam(filteredStickers);
+
   return (
     <div className="flex flex-col flex-1 w-full lg:max-w-5xl xl:max-w-6xl mx-auto">
-      {/* Header */}
+      {/* ------------------------------------------------------------------ */}
+      {/* Header — sticky top-0 z-20 */}
+      {/* ------------------------------------------------------------------ */}
       <header
         className="sticky top-0 z-20 px-4 py-3 shadow-sm"
         style={{ backgroundColor: "#006847" }}
@@ -178,12 +243,103 @@ export default function AlbumPage() {
       {/* Smart install banner — hidden in standalone, respects 30d dismiss TTL */}
       <InstallBanner />
 
-      {/* Tab bar */}
-      <nav className="sticky top-[72px] z-10 flex border-b" style={{ backgroundColor: "#f9f5ee", borderColor: "#d1c9b8" }}>
+      {/* ------------------------------------------------------------------ */}
+      {/* Search + Category chips — sticky below header (top-[72px] z-10)   */}
+      {/* ------------------------------------------------------------------ */}
+      <div
+        className="sticky top-[72px] z-10 px-3 pt-2.5 pb-2 border-b"
+        style={{ backgroundColor: "#f9f5ee", borderColor: "#d1c9b8" }}
+        data-testid="search-chips-bar"
+      >
+        {/* Search input */}
+        <div className="relative mb-2">
+          <span
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-base pointer-events-none select-none"
+            aria-hidden="true"
+          >
+            🔍
+          </span>
+          <input
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Buscar MEX 7 / Modric / Brasil…"
+            aria-label="Buscar figuritas"
+            data-testid="search-input"
+            className="w-full rounded-full border pl-9 pr-4 py-2.5 text-sm outline-none transition-shadow"
+            style={{
+              fontSize: "16px", // iOS zoom guard — must be ≥16px
+              backgroundColor: "#ffffff",
+              borderColor: "#d1c9b8",
+              color: "#1f2937",
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.borderColor = "#006847";
+              e.currentTarget.style.boxShadow = "0 0 0 2px rgba(0,104,71,0.15)";
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.borderColor = "#d1c9b8";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          />
+          {search && (
+            <button
+              onClick={() => setSearch("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-lg leading-none"
+              aria-label="Limpiar búsqueda"
+            >
+              ×
+            </button>
+          )}
+        </div>
+
+        {/* Category chip strip — horizontal scroll, snap */}
+        <div
+          className="flex gap-2 overflow-x-auto pb-0.5"
+          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}
+          role="group"
+          aria-label="Filtrar por categoría"
+          data-testid="category-chips"
+        >
+          {CATEGORY_CHIPS.map((chip) => {
+            const isSelected = category === chip.id;
+            return (
+              <button
+                key={chip.id}
+                onClick={() => setCategory(chip.id)}
+                data-testid={`chip-${chip.id}`}
+                aria-pressed={isSelected}
+                className="flex-shrink-0 rounded-full px-4 font-semibold transition-all"
+                style={{
+                  scrollSnapAlign: "start",
+                  height: "44px",
+                  fontSize: "13px",
+                  whiteSpace: "nowrap",
+                  backgroundColor: isSelected ? "#006847" : "transparent",
+                  color: isSelected ? "#ffffff" : "#374151",
+                  border: isSelected ? "2px solid #006847" : "2px solid #d1c9b8",
+                }}
+              >
+                {chip.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* Tab bar — sticky below search+chips                                */}
+      {/* ------------------------------------------------------------------ */}
+      <nav
+        className="sticky top-[176px] z-10 flex border-b"
+        style={{ backgroundColor: "#f9f5ee", borderColor: "#d1c9b8" }}
+        data-testid="tab-bar"
+      >
         {tabs.map((t) => (
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
+            data-testid={`tab-${t.id}`}
             className="flex-1 py-2.5 text-xs font-semibold transition-colors relative"
             style={{
               color: tab === t.id ? "#006847" : "#6b7280",
@@ -205,33 +361,57 @@ export default function AlbumPage() {
         ))}
       </nav>
 
-      {/* Sticker grid — grouped by team */}
-      <main className="flex-1 px-2 py-3">
-        {visibleStickers.length === 0 ? (
+      {/* ------------------------------------------------------------------ */}
+      {/* Sticker grid — grouped by team (+ group headers when chip=Grupos)  */}
+      {/* ------------------------------------------------------------------ */}
+      <main className="flex-1 px-2 py-3" data-testid="sticker-grid">
+        {filteredStickers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-gray-600">
-            <p className="text-4xl mb-3" aria-hidden="true">
-              {tab === "tengo" ? "📭" : tab === "repetidas" ? "📋" : "📦"}
-            </p>
-            <p className="text-sm font-medium">
-              {tab === "tengo"
-                ? "Todavía no tenés ninguna"
-                : tab === "repetidas"
-                ? "No tenés repetidas por ahora"
-                : "No hay figuritas para mostrar"}
-            </p>
+            {search.trim() ? (
+              /* Search empty state */
+              <>
+                <p className="text-4xl mb-3" aria-hidden="true">🔍</p>
+                <p className="text-sm font-medium text-center px-4">
+                  No encontramos &ldquo;{search}&rdquo; en {categoryLabel[category]}
+                </p>
+                <button
+                  onClick={() => setSearch("")}
+                  className="mt-3 text-sm font-semibold underline"
+                  style={{ color: "#006847" }}
+                >
+                  Limpiar búsqueda
+                </button>
+              </>
+            ) : (
+              /* Tab empty state (original) */
+              <>
+                <p className="text-4xl mb-3" aria-hidden="true">
+                  {tab === "tengo" ? "📭" : tab === "repetidas" ? "📋" : "📦"}
+                </p>
+                <p className="text-sm font-medium">
+                  {tab === "tengo"
+                    ? "Todavía no tenés ninguna"
+                    : tab === "repetidas"
+                    ? "No tenés repetidas por ahora"
+                    : "No hay figuritas para mostrar"}
+                </p>
+              </>
+            )}
           </div>
+        ) : category === "grupos" ? (
+          /* Grupos view: group headers (A–L) above team sections */
+          <GroupsView groups={teamGroups} counts={counts} onTap={handleTap} />
         ) : (
-          groupStickersByTeam(visibleStickers).map((group) => (
-            <section key={group.team_code} aria-label={group.display_name}>
+          /* Default view: flat team sections */
+          teamGroups.map((group) => (
+            <section key={group.team_code} aria-label={group.display_name} data-testid={`team-section-${group.team_code}`}>
               <TeamHeader
                 entry={group.catalogEntry}
                 teamColor={group.teamColor}
               />
               <div
                 className="grid gap-1.5 mb-4"
-                style={{
-                  gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
-                }}
+                style={{ gridTemplateColumns: "repeat(5, minmax(0, 1fr))" }}
               >
                 {group.stickers.map((sticker) => (
                   <StickerCard
@@ -253,11 +433,77 @@ export default function AlbumPage() {
   );
 }
 
+// ---------------------------------------------------------------------------
+// GroupsView — renders A-L group headers with teams nested inside
+// ---------------------------------------------------------------------------
+
+interface GroupsViewProps {
+  groups: TeamGroup[];
+  counts: Record<string, number>;
+  onTap: (stickerId: string) => void;
+}
+
+function GroupsView({ groups, counts, onTap }: GroupsViewProps) {
+  // Build a map: FIFA group letter → TeamGroup[]
+  const groupMap: Record<string, TeamGroup[]> = {};
+  for (const tg of groups) {
+    const g = tg.group;
+    if (!groupMap[g]) groupMap[g] = [];
+    groupMap[g].push(tg);
+  }
+
+  // Render groups in canonical order A-L, skip empty
+  const visibleGroups = FIFA_GROUPS.filter((g) => groupMap[g]?.length > 0);
+
+  return (
+    <>
+      {visibleGroups.map((g) => (
+        <section key={g} aria-label={`Grupo ${g}`} data-testid={`group-section-${g}`}>
+          {/* Group header A–L */}
+          <div
+            className="flex items-center gap-2 px-2 py-1.5 mt-3 mb-1 rounded"
+            style={{ backgroundColor: "#006847" }}
+            data-testid={`group-header-${g}`}
+          >
+            <span className="text-xs font-black text-white tracking-widest">
+              GRUPO {g}
+            </span>
+          </div>
+
+          {/* Teams inside this group */}
+          {groupMap[g].map((tg) => (
+            <section key={tg.team_code} aria-label={tg.display_name} data-testid={`team-section-${tg.team_code}`}>
+              <TeamHeader entry={tg.catalogEntry} teamColor={tg.teamColor} />
+              <div
+                className="grid gap-1.5 mb-4"
+                style={{ gridTemplateColumns: "repeat(5, minmax(0, 1fr))" }}
+              >
+                {tg.stickers.map((sticker) => (
+                  <StickerCard
+                    key={sticker.id}
+                    sticker={sticker}
+                    count={counts[sticker.id] ?? 0}
+                    onTap={onTap}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
+        </section>
+      ))}
+    </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// BottomNav
+// ---------------------------------------------------------------------------
+
 function BottomNav({ active }: { active: "album" | "trade" | "settings" }) {
   const items = [
-    { id: "album", href: "/album", label: "Álbum", icon: "📕" },
-    { id: "trade", href: "/trade", label: "Intercambiar", icon: "🤝" },
-    { id: "settings", href: "/settings", label: "Opciones", icon: "⚙️" },
+    { id: "album",    href: "/album",    label: "Álbum",       icon: "📕" },
+    { id: "trade",    href: "/trade",    label: "Intercambiar", icon: "🤝" },
+    { id: "settings", href: "/settings", label: "Opciones",    icon: "⚙️" },
   ];
 
   return (
