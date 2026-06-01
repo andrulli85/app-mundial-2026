@@ -28,7 +28,7 @@ import { getPeersWishing } from "@/lib/peer-mock";
 import ScanPageModal from "@/components/ScanPageModal";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
-type Category = "todos" | "paises" | "grupos" | "especiales" | "legendario";
+type Category = "todos" | "paises" | "grupos" | "especiales" | "legendario" | "hologramas";
 
 // ---------------------------------------------------------------------------
 // Category chip definitions
@@ -40,6 +40,7 @@ const CATEGORY_CHIPS: { id: Category; label: string }[] = [
   { id: "grupos",     label: "🏆 Grupos" },
   { id: "especiales", label: "✨ Especiales" },
   { id: "legendario", label: "✨ Legendario" },
+  { id: "hologramas", label: "💎 Hologramas" },
 ];
 
 // Hidden doradas route (re-enable by restoring the chip)
@@ -172,6 +173,8 @@ export default function AlbumPage() {
       );
     } else if (category === "legendario") {
       stickers = stickers.filter((s) => s.rarity_tier === "legend");
+    } else if (category === "hologramas") {
+      stickers = stickers.filter((s) => s.rarity_tier === "hologram");
     }
 
     // Search filter — accent-insensitive
@@ -225,6 +228,7 @@ export default function AlbumPage() {
     grupos:     "Grupos",
     especiales: "Especiales",
     legendario: "Legendario",
+    hologramas: "Hologramas",
   };
 
   // ── Loading ──────────────────────────────────────────────────────────────────
