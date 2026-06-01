@@ -449,7 +449,7 @@ export default function AlbumPage() {
       {/* ------------------------------------------------------------------ */}
       {/* Sticker grid                                                         */}
       {/* ------------------------------------------------------------------ */}
-      <main className="flex-1 px-2 py-3" data-testid="sticker-grid">
+      <main className="flex-1 px-2 py-3" data-testid="sticker-grid" key={category}>
         {filteredStickers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16" style={{ color: "#6b7280" }}>
             {search.trim() ? (
