@@ -34,6 +34,17 @@ export interface AchievementEntry {
   unlockedAt: number; // unix ms
 }
 
+export type Formation = "4-3-3" | "4-4-2" | "3-5-2";
+export type SquadVariant = "pitch" | "board" | "lines";
+
+export interface SquadEntry {
+  key: "squad";
+  formation: Formation;
+  /** slotId → sticker_id  (e.g. { POR0: "mex-2-malagon", DEF0: "bra-3-..." }) */
+  lineup: Record<string, string>;
+  variant: SquadVariant;
+}
+
 interface MundialDB extends DBSchema {
   collection: {
     key: string;
@@ -53,6 +64,11 @@ interface MundialDB extends DBSchema {
   achievements: {
     key: string;
     value: AchievementEntry;
+    indexes: Record<string, never>;
+  };
+  squad: {
+    key: string;
+    value: SquadEntry;
     indexes: Record<string, never>;
   };
 }
@@ -80,7 +96,7 @@ let dbPromise: Promise<IDBPDatabase<MundialDB>> | null = null;
 
 export function getDB(): Promise<IDBPDatabase<MundialDB>> {
   if (!dbPromise) {
-    dbPromise = openDB<MundialDB>("mundial-2026", 2, {
+    dbPromise = openDB<MundialDB>("mundial-2026", 3, {
       upgrade(db, oldVersion) {
         // v1 stores — create only if they don't exist (safe for existing users)
         if (oldVersion < 1) {
@@ -100,6 +116,11 @@ export function getDB(): Promise<IDBPDatabase<MundialDB>> {
         // v2 — achievements store (new; existing users upgrading from v1 keep all their data)
         if (oldVersion < 2) {
           db.createObjectStore("achievements", { keyPath: "id" });
+        }
+
+        // v3 — squad store for Mi Once (formation + lineup + variant)
+        if (oldVersion < 3) {
+          db.createObjectStore("squad", { keyPath: "key" });
         }
       },
     });
@@ -257,4 +278,24 @@ export async function markBadgeUnlocked(id: string): Promise<void> {
 export async function getUnlockedBadgeEntries(): Promise<AchievementEntry[]> {
   const db = await getDB();
   return db.getAll("achievements");
+}
+
+// --- Squad helpers ---
+
+const SQUAD_DEFAULT: SquadEntry = {
+  key: "squad",
+  formation: "4-3-3",
+  lineup: {},
+  variant: "pitch",
+};
+
+export async function getSquad(): Promise<SquadEntry> {
+  const db = await getDB();
+  const entry = await db.get("squad", "squad");
+  return entry ?? { ...SQUAD_DEFAULT };
+}
+
+export async function saveSquad(entry: Omit<SquadEntry, "key">): Promise<void> {
+  const db = await getDB();
+  await db.put("squad", { ...entry, key: "squad" });
 }
