@@ -23,7 +23,8 @@ import { TEAM_CATALOG } from "@/lib/team-catalog";
 // ---------------------------------------------------------------------------
 
 const IMPORT_JSON_PATH = "/domi-owned-2026-06-01.json";
-const TOTAL_EXPECTED = 480;
+// Dynamic — populated from JSON on load
+let TOTAL_EXPECTED = 520;
 
 // Dark theme colours (matches .home-dark / inicio)
 const BG = "linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%)";
@@ -399,11 +400,11 @@ export default function DomiImportPage() {
             >
               <div className="text-4xl mb-2" aria-hidden="true">✅</div>
               <h2 className="text-xl font-black" style={{ color: "#4ade80" }}>
-                {TOTAL_EXPECTED} figuritas importadas
+                {progressTotal} figuritas importadas
               </h2>
-              {addedCount < TOTAL_EXPECTED && (
+              {addedCount < progressTotal && (
                 <p className="text-xs mt-1" style={{ color: TEXT_MUTED }}>
-                  ({TOTAL_EXPECTED - addedCount} ya estaban en tu álbum, {addedCount} agregadas)
+                  ({progressTotal - addedCount} ya estaban en tu álbum, {addedCount} agregadas)
                 </p>
               )}
             </div>
