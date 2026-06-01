@@ -98,7 +98,7 @@ test("/mercado renders full marketplace (Phase C — no redirect)", async ({ pag
 test("/once placeholder renders", async ({ page }) => {
   await seedNickname(page);
   await page.goto(`${BASE}/once`);
-  await expect(page.getByText("Mi Once")).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole("heading", { name: "Mi once" })).toBeVisible({ timeout: 15000 });
   // BottomNav present
   const nav = page.locator("nav[aria-label='Navegación principal']");
   await expect(nav).toBeVisible();

@@ -47,7 +47,7 @@ test("/once renders Squad Builder with header and stats", async ({ page }) => {
   await page.goto(`${BASE}/once`);
 
   // Main heading
-  await expect(page.getByText("Mi once", { exact: false })).toBeVisible({
+  await expect(page.getByRole("heading", { name: "Mi once" })).toBeVisible({
     timeout: 15000,
   });
 
@@ -90,7 +90,7 @@ test("variant board switches to chalkboard view", async ({ page }) => {
   await expect(page.getByTestId("variant-board")).toBeVisible({ timeout: 15000 });
   await page.getByTestId("variant-board").click();
   // Board variant is active — page still renders without crash
-  await expect(page.getByText("Mi once", { exact: false })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Mi once" })).toBeVisible();
 });
 
 test("variant lines switches to grouped rows view", async ({ page }) => {
