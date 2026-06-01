@@ -233,13 +233,23 @@ export default function AlbumPage() {
               {nickname} · {owned}/{total} figuritas
             </p>
           </div>
-          <a
-            href="/trade"
-            className="rounded-full px-4 py-1.5 text-sm font-bold text-green-800"
-            style={{ backgroundColor: "#c2ef4e" }}
-          >
-            Intercambiar
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href="/stats"
+              className="rounded-full p-2 text-white hover:bg-green-700 transition-colors"
+              aria-label="Ver estadísticas"
+              title="Estadísticas"
+            >
+              <span className="text-xl leading-none" aria-hidden="true">📊</span>
+            </a>
+            <a
+              href="/trade"
+              className="rounded-full px-4 py-1.5 text-sm font-bold text-green-800"
+              style={{ backgroundColor: "#c2ef4e" }}
+            >
+              Intercambiar
+            </a>
+          </div>
         </div>
 
         {/* Progress bar */}
