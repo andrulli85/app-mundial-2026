@@ -162,6 +162,10 @@ export default function AlbumPage() {
       stickers = stickers.filter((s) => s.rarity_tier === "legend");
     }
 
+    if (typeof window !== "undefined") {
+      console.log(`[ALBUM_FILTER] cat=${category} tab=${tab} in=${catalog.length} out=${stickers.length}`);
+    }
+
     // Search filter — accent-insensitive
     if (search.trim()) {
       const q = normalize(search.trim());
