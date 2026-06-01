@@ -39,6 +39,8 @@ import {
 import type { Position } from "@/lib/player-meta";
 import BottomNav from "@/components/BottomNav";
 import EmptySlotCard from "@/components/EmptySlot";
+import { MY_POINTS, pointsLeaderboard } from "@/lib/fantasy";
+import { FRIENDS } from "@/data/friends";
 
 // ---------------------------------------------------------------------------
 // Constants / colors
@@ -795,6 +797,406 @@ function StatPod({
 }
 
 // ---------------------------------------------------------------------------
+// Results + Last-round data (verbatim from data.jsx lines 44-61)
+// ---------------------------------------------------------------------------
+
+interface MatchResult {
+  id: string;
+  stage: string;
+  when: string;
+  home: { n: string; f: string; s: number };
+  away: { n: string; f: string; s: number };
+  myPts: number;
+  fav?: boolean;
+}
+
+const RESULTS: MatchResult[] = [
+  { id: "r1", stage: "Grupo D · Fecha 3", when: "Hoy 18:00", home: { n: "Chile", f: "🇨🇱", s: 2 }, away: { n: "México", f: "🇲🇽", s: 1 }, myPts: 86, fav: true },
+  { id: "r2", stage: "Grupo B · Fecha 3", when: "Hoy 15:00", home: { n: "Argentina", f: "🇦🇷", s: 3 }, away: { n: "Japón", f: "🇯🇵", s: 0 }, myPts: 54 },
+  { id: "r3", stage: "Grupo C · Fecha 3", when: "Ayer 20:00", home: { n: "Francia", f: "🇫🇷", s: 1 }, away: { n: "Portugal", f: "🇵🇹", s: 1 }, myPts: 41 },
+  { id: "r4", stage: "Grupo A · Fecha 2", when: "Ayer 17:00", home: { n: "Brasil", f: "🇧🇷", s: 2 }, away: { n: "Corea", f: "🇰🇷", s: 2 }, myPts: 33 },
+];
+
+const LAST_ROUND = {
+  total: 214,
+  round: "Fecha 3",
+  top: [
+    { id: "r1", pts: 86 },
+    { id: "r2", pts: 54 },
+    { id: "r3", pts: 41 },
+  ],
+};
+
+// ---------------------------------------------------------------------------
+// PointsView — MY_POINTS headline + friends leaderboard (from squad.jsx)
+// ---------------------------------------------------------------------------
+function PointsView() {
+  const board = pointsLeaderboard("Yo", MY_POINTS, FRIENDS);
+
+  const medalColors = [`${GOLD}`, "#C0C7D1", "#CD7F4B"];
+
+  return (
+    <div style={{ padding: "14px 0 0" }}>
+      {/* Total points card */}
+      <div
+        data-testid="puntos-total-card"
+        style={{
+          background: "linear-gradient(135deg,#1b1606,#0d0f13)",
+          border: `1px solid ${GOLD}55`,
+          borderRadius: 16,
+          padding: 16,
+          boxShadow: `0 0 24px -8px ${GOLD}33`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: 20,
+        }}
+      >
+        <div>
+          <div
+            style={{
+              fontSize: 10,
+              fontWeight: 800,
+              letterSpacing: "0.1em",
+              color: GOLD,
+              textTransform: "uppercase",
+              fontFamily: "system-ui, sans-serif",
+            }}
+          >
+            Mis puntos totales
+          </div>
+          <div
+            style={{
+              fontSize: 40,
+              fontWeight: 900,
+              color: "#f3f4f6",
+              lineHeight: 1,
+              marginTop: 4,
+              fontFamily: "system-ui, sans-serif",
+            }}
+            data-testid="my-points-value"
+          >
+            {MY_POINTS.toLocaleString("es-CL")}
+          </div>
+        </div>
+        <span style={{ fontSize: 34 }} aria-hidden="true">⚡</span>
+      </div>
+
+      {/* Last round breakdown */}
+      <div
+        style={{
+          fontSize: 10,
+          fontWeight: 800,
+          letterSpacing: "0.08em",
+          color: "#6b7280",
+          textTransform: "uppercase",
+          fontFamily: "system-ui, sans-serif",
+          marginBottom: 8,
+        }}
+      >
+        {LAST_ROUND.round} · +{LAST_ROUND.total} pts
+      </div>
+      <div
+        style={{
+          background: "#1a1e29",
+          border: "1px solid #2d3344",
+          borderRadius: 16,
+          overflow: "hidden",
+          marginBottom: 22,
+        }}
+      >
+        {LAST_ROUND.top.map((item, i) => {
+          const match = RESULTS.find((r) => r.id === item.id);
+          return (
+            <div
+              key={item.id}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                padding: "11px 14px",
+                borderTop: i > 0 ? "1px solid #2d3344" : "none",
+              }}
+            >
+              <span style={{ fontSize: 18 }} aria-hidden="true">
+                {match?.home.f ?? "⚽"}
+              </span>
+              <span
+                style={{
+                  flex: 1,
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "#d1d5db",
+                  fontFamily: "system-ui, sans-serif",
+                }}
+              >
+                {match ? `${match.home.n} vs ${match.away.n}` : item.id}
+              </span>
+              <span
+                style={{
+                  fontSize: 14,
+                  fontWeight: 800,
+                  color: GOLD,
+                  fontFamily: "system-ui, sans-serif",
+                }}
+              >
+                +{item.pts} pts
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Friends leaderboard */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 7,
+          marginBottom: 10,
+        }}
+      >
+        <span style={{ fontSize: 15 }} aria-hidden="true">🏆</span>
+        <span
+          style={{
+            fontSize: 10,
+            fontWeight: 800,
+            letterSpacing: "0.08em",
+            color: "#6b7280",
+            textTransform: "uppercase",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          Tabla de amigos · por puntos
+        </span>
+      </div>
+
+      <div
+        style={{ display: "flex", flexDirection: "column", gap: 8 }}
+        data-testid="leaderboard-table"
+      >
+        {board.map((row, i) => {
+          const medalColor = medalColors[i] ?? "#6b7280";
+          return (
+            <div
+              key={row.name}
+              data-testid={row.you ? "leaderboard-you" : `leaderboard-${row.name.toLowerCase()}`}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "11px 14px",
+                borderRadius: 14,
+                background: row.you ? `${GOLD}12` : "#1a1e29",
+                border: `1px solid ${row.you ? GOLD + "44" : "#2d3344"}`,
+              }}
+            >
+              {/* Rank */}
+              <span
+                style={{
+                  width: 22,
+                  textAlign: "center",
+                  fontSize: 18,
+                  fontWeight: 900,
+                  color: i < 3 ? medalColor : "#6b7280",
+                  fontFamily: "system-ui, sans-serif",
+                }}
+              >
+                {i + 1}
+              </span>
+
+              {/* Avatar */}
+              <div
+                style={{
+                  width: 34,
+                  height: 34,
+                  borderRadius: "50%",
+                  background: "#2d3344",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  color: "#f3f4f6",
+                  fontFamily: "system-ui, sans-serif",
+                }}
+                aria-hidden="true"
+              >
+                {row.name[0]}
+              </div>
+
+              {/* Name */}
+              <span
+                style={{
+                  flex: 1,
+                  fontWeight: 700,
+                  fontSize: 14,
+                  color: row.you ? GOLD : "#f3f4f6",
+                  fontFamily: "system-ui, sans-serif",
+                }}
+              >
+                {row.name}
+              </span>
+
+              {/* Points */}
+              <span
+                style={{
+                  fontWeight: 800,
+                  fontSize: 15,
+                  color: "#d1d5db",
+                  fontFamily: "system-ui, sans-serif",
+                }}
+              >
+                {row.pts.toLocaleString("es-CL")}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// ResultsView — official match results feed (from squad.jsx ResultsView)
+// ---------------------------------------------------------------------------
+function ResultsView() {
+  return (
+    <div style={{ padding: "14px 0 0" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          background: "#1a1e29",
+          border: "1px solid #2d3344",
+          borderRadius: 12,
+          padding: "10px 14px",
+          marginBottom: 14,
+        }}
+      >
+        <span style={{ fontSize: 15 }} aria-hidden="true">⚽</span>
+        <span style={{ fontSize: 12, color: "#9ca3af", fontWeight: 600, fontFamily: "system-ui, sans-serif" }}>
+          Resultados oficiales · se sincronizan al terminar cada partido
+        </span>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {RESULTS.map((r) => (
+          <div
+            key={r.id}
+            data-testid={`result-card-${r.id}`}
+            style={{
+              background: r.fav ? "linear-gradient(135deg,#1b1606,#0d0f13)" : "#1a1e29",
+              border: `1px solid ${r.fav ? GOLD + "44" : "#2d3344"}`,
+              borderRadius: 16,
+              padding: 14,
+            }}
+          >
+            {/* Stage + time */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 10,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 10,
+                  fontWeight: 800,
+                  letterSpacing: "0.06em",
+                  color: "#9ca3af",
+                  textTransform: "uppercase",
+                  fontFamily: "system-ui, sans-serif",
+                }}
+              >
+                {r.stage}
+              </span>
+              <span style={{ fontSize: 11, color: "#9ca3af", fontWeight: 600 }}>{r.when}</span>
+            </div>
+
+            {/* Score row */}
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 22 }}>{r.home.f}</span>
+                <span style={{ fontWeight: 700, fontSize: 14, color: "#f3f4f6", fontFamily: "system-ui, sans-serif" }}>{r.home.n}</span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  fontSize: 24,
+                  fontWeight: 900,
+                  color: "#f3f4f6",
+                  fontFamily: "system-ui, sans-serif",
+                }}
+              >
+                <span>{r.home.s}</span>
+                <span style={{ color: "#6b7280", fontSize: 16 }}>:</span>
+                <span>{r.away.s}</span>
+              </div>
+
+              <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 8, justifyContent: "flex-end" }}>
+                <span style={{ fontWeight: 700, fontSize: 14, color: "#f3f4f6", fontFamily: "system-ui, sans-serif" }}>{r.away.n}</span>
+                <span style={{ fontSize: 22 }}>{r.away.f}</span>
+              </div>
+            </div>
+
+            {/* Points footer */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 6,
+                marginTop: 12,
+                paddingTop: 10,
+                borderTop: "1px solid #2d3344",
+              }}
+            >
+              <span style={{ fontSize: 13 }} aria-hidden="true">⚡</span>
+              <span style={{ fontSize: 12, color: "#9ca3af", fontWeight: 600, fontFamily: "system-ui, sans-serif" }}>Tu 11 sumó</span>
+              <span
+                style={{
+                  fontWeight: 800,
+                  fontSize: 14,
+                  color: GOLD,
+                  fontFamily: "system-ui, sans-serif",
+                }}
+              >
+                +{r.myPts} pts
+              </span>
+              {r.fav && (
+                <span
+                  style={{
+                    marginLeft: 6,
+                    fontSize: 9,
+                    fontWeight: 800,
+                    color: GOLD,
+                    background: `${GOLD}18`,
+                    border: `1px solid ${GOLD}44`,
+                    borderRadius: 99,
+                    padding: "2px 7px",
+                    letterSpacing: "0.04em",
+                    fontFamily: "system-ui, sans-serif",
+                  }}
+                >
+                  TU SELECCIÓN 🇨🇱
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Main page component
 // ---------------------------------------------------------------------------
 export default function OncePage() {
@@ -816,6 +1218,9 @@ export default function OncePage() {
     slotId: string;
     moved: boolean;
   } | null>(null);
+
+  // ---- Tab state (Equipo | Puntos | Resultados) ----
+  const [onceTab, setOnceTab] = useState<"equipo" | "puntos" | "resultados">("equipo");
 
   // ---- Lock state ----
   const [now, setNow] = useState<Date>(() => new Date());
@@ -1142,7 +1547,7 @@ export default function OncePage() {
           Tu equipo
         </div>
 
-        {/* Title + Auto button */}
+        {/* Title + Auto button (only shown in Equipo tab) */}
         <div
           style={{
             display: "flex",
@@ -1162,188 +1567,241 @@ export default function OncePage() {
           >
             Mi 11
           </h1>
-          <button
-            onClick={autoFill}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              background: "#1a1e29",
-              border: "1px solid #3a3f4c",
-              borderRadius: 99,
-              padding: "7px 13px",
-              color: "#f3f4f6",
-              fontWeight: 700,
-              fontSize: 12,
-              cursor: "pointer",
-              fontFamily: "system-ui, sans-serif",
-            }}
-          >
-            ⚡ Auto
-          </button>
+          {onceTab === "equipo" && (
+            <button
+              onClick={autoFill}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                background: "#1a1e29",
+                border: "1px solid #3a3f4c",
+                borderRadius: 99,
+                padding: "7px 13px",
+                color: "#f3f4f6",
+                fontWeight: 700,
+                fontSize: 12,
+                cursor: "pointer",
+                fontFamily: "system-ui, sans-serif",
+              }}
+            >
+              ⚡ Auto
+            </button>
+          )}
         </div>
 
-        {/* Stat pods */}
+        {/* Tab segmented control — Equipo | Puntos | Resultados */}
         <div
-          style={{ display: "flex", gap: 10, marginTop: 12 }}
-        >
-          <StatPod label="OVR equipo" value={ovr || "—"} big />
-          <StatPod label="Química" value={chem || "—"} suffix={chem ? "%" : ""} chemValue={chem} />
-          <StatPod label="Titulares" value={`${filled}/${slots.length}`} />
-        </div>
-
-        {/* Formation chips */}
-        <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-          {FORMATION_KEYS.map((f) => {
-            const active = f === formation;
-            return (
-              <button
-                key={f}
-                onClick={() => handleFormationChange(f)}
-                data-testid={`formation-${f}`}
-                style={{
-                  flex: 1,
-                  padding: "9px 0",
-                  borderRadius: 10,
-                  fontWeight: 800,
-                  fontSize: 14,
-                  cursor: "pointer",
-                  border: `1px solid ${active ? "transparent" : "#3a3f4c"}`,
-                  background: active ? LIME : "#1a1e29",
-                  color: active ? "#0d0f13" : "#9ca3af",
-                  fontFamily: "system-ui, sans-serif",
-                  transition: "all 0.15s",
-                }}
-              >
-                {f}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Variant switcher */}
-        <div
+          data-testid="once-tab-bar"
           style={{
             display: "flex",
-            gap: 6,
-            marginTop: 10,
+            gap: 4,
             background: "#1a1e29",
             border: "1px solid #2d3344",
-            borderRadius: 10,
+            borderRadius: 12,
             padding: 4,
+            marginTop: 12,
           }}
         >
           {(
             [
-              { id: "pitch" as SquadVariant, label: "Cancha" },
-              { id: "board" as SquadVariant, label: "Pizarra" },
-              { id: "lines" as SquadVariant, label: "Líneas" },
-            ] as const
-          ).map((v) => (
+              { k: "equipo" as const, label: "Equipo" },
+              { k: "puntos" as const, label: "Puntos" },
+              { k: "resultados" as const, label: "Resultados" },
+            ]
+          ).map((t) => (
             <button
-              key={v.id}
-              onClick={() => setVariant(v.id)}
-              data-testid={`variant-${v.id}`}
+              key={t.k}
+              data-testid={`once-tab-${t.k}`}
+              onClick={() => setOnceTab(t.k)}
               style={{
                 flex: 1,
-                padding: "7px 0",
-                borderRadius: 7,
+                padding: "9px 0",
+                borderRadius: 9,
                 fontWeight: 700,
-                fontSize: 12,
+                fontSize: 13,
                 cursor: "pointer",
                 border: "none",
-                background: variant === v.id ? "#2d3344" : "transparent",
-                color: variant === v.id ? "#f3f4f6" : "#6b7280",
+                background: onceTab === t.k ? "#2d3344" : "transparent",
+                color: onceTab === t.k ? "#f3f4f6" : "#6b7280",
                 fontFamily: "system-ui, sans-serif",
                 transition: "all 0.15s",
               }}
             >
-              {v.label}
+              {t.label}
             </button>
           ))}
         </div>
+
+        {/* Stat pods + formation chips + variant — only in Equipo tab */}
+        {onceTab === "equipo" && (
+          <>
+            <div style={{ display: "flex", gap: 10, marginTop: 12 }}>
+              <StatPod label="OVR equipo" value={ovr || "—"} big />
+              <StatPod label="Química" value={chem || "—"} suffix={chem ? "%" : ""} chemValue={chem} />
+              <StatPod label="Titulares" value={`${filled}/${slots.length}`} />
+            </div>
+
+            <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+              {FORMATION_KEYS.map((f) => {
+                const active = f === formation;
+                return (
+                  <button
+                    key={f}
+                    onClick={() => handleFormationChange(f)}
+                    data-testid={`formation-${f}`}
+                    style={{
+                      flex: 1,
+                      padding: "9px 0",
+                      borderRadius: 10,
+                      fontWeight: 800,
+                      fontSize: 14,
+                      cursor: "pointer",
+                      border: `1px solid ${active ? "transparent" : "#3a3f4c"}`,
+                      background: active ? LIME : "#1a1e29",
+                      color: active ? "#0d0f13" : "#9ca3af",
+                      fontFamily: "system-ui, sans-serif",
+                      transition: "all 0.15s",
+                    }}
+                  >
+                    {f}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                gap: 6,
+                marginTop: 10,
+                background: "#1a1e29",
+                border: "1px solid #2d3344",
+                borderRadius: 10,
+                padding: 4,
+              }}
+            >
+              {(
+                [
+                  { id: "pitch" as SquadVariant, label: "Cancha" },
+                  { id: "board" as SquadVariant, label: "Pizarra" },
+                  { id: "lines" as SquadVariant, label: "Líneas" },
+                ] as const
+              ).map((v) => (
+                <button
+                  key={v.id}
+                  onClick={() => setVariant(v.id)}
+                  data-testid={`variant-${v.id}`}
+                  style={{
+                    flex: 1,
+                    padding: "7px 0",
+                    borderRadius: 7,
+                    fontWeight: 700,
+                    fontSize: 12,
+                    cursor: "pointer",
+                    border: "none",
+                    background: variant === v.id ? "#2d3344" : "transparent",
+                    color: variant === v.id ? "#f3f4f6" : "#6b7280",
+                    fontFamily: "system-ui, sans-serif",
+                    transition: "all 0.15s",
+                  }}
+                >
+                  {v.label}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
-      {/* ---- Main area: pitch / lines ---- */}
+      {/* ---- Main content area — tabs ---- */}
       <div
         className="flex-1 overflow-y-auto px-4 pb-4"
         style={{ paddingTop: 4 }}
       >
-        {(variant === "pitch" || variant === "board") ? (
-          <PitchView variant={variant} slots={slots} renderSlot={renderSlot} />
-        ) : (
-          <LinesView slots={slots} renderSlot={renderSlot} />
-        )}
-
-        {/* Action buttons — changes based on lock state */}
-        {locked ? (
-          /* Locked: show a muted read-only indicator instead of the save button */
-          <div
-            style={{
-              width: "100%",
-              marginTop: 16,
-              padding: "16px 0",
-              borderRadius: 14,
-              background: "#1a1e29",
-              border: `1px solid ${GOLD}44`,
-              color: GOLD,
-              fontWeight: 800,
-              fontSize: 14,
-              textAlign: "center",
-              fontFamily: "system-ui, sans-serif",
-              letterSpacing: "0.04em",
-              opacity: 0.75,
-            }}
-          >
-            🔒 11 bloqueado
-          </div>
-        ) : (
+        {/* ---- EQUIPO tab ---- */}
+        {onceTab === "equipo" && (
           <>
-            {/* Save draft button */}
-            <button
-              onClick={saveAndFlash}
-              style={{
-                width: "100%",
-                marginTop: 16,
-                padding: "14px 0",
-                borderRadius: 14,
-                background: GREEN,
-                color: "#fff",
-                fontWeight: 800,
-                fontSize: 14,
-                border: "none",
-                cursor: "pointer",
-                fontFamily: "system-ui, sans-serif",
-                letterSpacing: "0.04em",
-              }}
-            >
-              Guardar borrador
-            </button>
+            {(variant === "pitch" || variant === "board") ? (
+              <PitchView variant={variant} slots={slots} renderSlot={renderSlot} />
+            ) : (
+              <LinesView slots={slots} renderSlot={renderSlot} />
+            )}
 
-            {/* Confirmar 11 — only shown when in an editable window */}
-            <button
-              onClick={confirmXI}
-              data-testid="confirmar-11"
-              style={{
-                width: "100%",
-                marginTop: 10,
-                padding: "16px 0",
-                borderRadius: 14,
-                background: GOLD,
-                color: "#0d0f13",
-                fontWeight: 900,
-                fontSize: 15,
-                border: "none",
-                cursor: "pointer",
-                fontFamily: "system-ui, sans-serif",
-                letterSpacing: "0.04em",
-                boxShadow: `0 4px 18px -4px ${GOLD}66`,
-              }}
-            >
-              {confirmedXI ? "Actualizar mi 11 ✓" : "Confirmar 11"}
-            </button>
+            {/* Action buttons — changes based on lock state */}
+            {locked ? (
+              <div
+                style={{
+                  width: "100%",
+                  marginTop: 16,
+                  padding: "16px 0",
+                  borderRadius: 14,
+                  background: "#1a1e29",
+                  border: `1px solid ${GOLD}44`,
+                  color: GOLD,
+                  fontWeight: 800,
+                  fontSize: 14,
+                  textAlign: "center",
+                  fontFamily: "system-ui, sans-serif",
+                  letterSpacing: "0.04em",
+                  opacity: 0.75,
+                }}
+              >
+                🔒 11 bloqueado
+              </div>
+            ) : (
+              <>
+                <button
+                  onClick={saveAndFlash}
+                  style={{
+                    width: "100%",
+                    marginTop: 16,
+                    padding: "14px 0",
+                    borderRadius: 14,
+                    background: GREEN,
+                    color: "#fff",
+                    fontWeight: 800,
+                    fontSize: 14,
+                    border: "none",
+                    cursor: "pointer",
+                    fontFamily: "system-ui, sans-serif",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  Guardar borrador
+                </button>
+
+                <button
+                  onClick={confirmXI}
+                  data-testid="confirmar-11"
+                  style={{
+                    width: "100%",
+                    marginTop: 10,
+                    padding: "16px 0",
+                    borderRadius: 14,
+                    background: GOLD,
+                    color: "#0d0f13",
+                    fontWeight: 900,
+                    fontSize: 15,
+                    border: "none",
+                    cursor: "pointer",
+                    fontFamily: "system-ui, sans-serif",
+                    letterSpacing: "0.04em",
+                    boxShadow: `0 4px 18px -4px ${GOLD}66`,
+                  }}
+                >
+                  {confirmedXI ? "Actualizar mi 11 ✓" : "Confirmar 11"}
+                </button>
+              </>
+            )}
           </>
         )}
+
+        {/* ---- PUNTOS tab ---- */}
+        {onceTab === "puntos" && <PointsView />}
+
+        {/* ---- RESULTADOS tab ---- */}
+        {onceTab === "resultados" && <ResultsView />}
       </div>
 
       {/* ---- Drag ghost ---- */}
@@ -1411,27 +1869,29 @@ export default function OncePage() {
 
       <BottomNav active="once" />
 
-      {/* Limpiar button floated */}
-      <button
-        onClick={() => { setLineup({}); flash("Plantel limpiado"); }}
-        style={{
-          position: "fixed",
-          bottom: 90,
-          right: 16,
-          zIndex: 30,
-          background: "#1a1e29",
-          border: "1px solid #3a3f4c",
-          borderRadius: 99,
-          padding: "8px 14px",
-          color: "#9ca3af",
-          fontWeight: 700,
-          fontSize: 12,
-          cursor: "pointer",
-          fontFamily: "system-ui, sans-serif",
-        }}
-      >
-        Limpiar
-      </button>
+      {/* Limpiar button floated — only in Equipo tab */}
+      {onceTab === "equipo" && (
+        <button
+          onClick={() => { setLineup({}); flash("Plantel limpiado"); }}
+          style={{
+            position: "fixed",
+            bottom: 90,
+            right: 16,
+            zIndex: 30,
+            background: "#1a1e29",
+            border: "1px solid #3a3f4c",
+            borderRadius: 99,
+            padding: "8px 14px",
+            color: "#9ca3af",
+            fontWeight: 700,
+            fontSize: 12,
+            cursor: "pointer",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          Limpiar
+        </button>
+      )}
     </div>
   );
 }
