@@ -4,10 +4,14 @@ import { test, expect } from "@playwright/test";
  * whitelist-grant-access — submitting a whitelisted email sets cookie + redirects to /.
  *
  * Uses WHITELIST_EMAILS=test@example.com,andy@test.com (set in playwright.config.ts env).
+ * Requires ALBUMIX_INVITE_SECRET and WHITELIST_EMAILS to be set.
  */
 
 const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
 const WHITELISTED_EMAIL = "test@example.com";
+
+// Gate tests only run when secrets are configured.
+test.skip(!process.env.ALBUMIX_INVITE_SECRET, "ALBUMIX_INVITE_SECRET not set — gate is inactive");
 
 test.use({ viewport: { width: 390, height: 844 } });
 

@@ -5,9 +5,13 @@ import { test, expect } from "@playwright/test";
  *
  * Hits /api/invite/verify directly (bypasses UI) to avoid DOM click overhead.
  * Uses a distinct email per run to avoid sharing the bucket with other specs.
+ * Requires ALBUMIX_INVITE_SECRET to be set (endpoint returns 500 without it).
  */
 
 const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+
+// Gate tests only run when secrets are configured.
+test.skip(!process.env.ALBUMIX_INVITE_SECRET, "ALBUMIX_INVITE_SECRET not set — gate is inactive");
 
 test.use({ viewport: { width: 390, height: 844 } });
 

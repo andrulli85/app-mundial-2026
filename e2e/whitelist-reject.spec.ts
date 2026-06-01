@@ -2,10 +2,14 @@ import { test, expect } from "@playwright/test";
 
 /**
  * whitelist-reject — non-whitelisted email shows "no estás invitado" + WhatsApp CTA.
+ * Requires ALBUMIX_INVITE_SECRET to be set (verify endpoint returns 500 without it).
  */
 
 const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
 const NON_WHITELISTED_EMAIL = "random@example.com";
+
+// Gate tests only run when secrets are configured.
+test.skip(!process.env.ALBUMIX_INVITE_SECRET, "ALBUMIX_INVITE_SECRET not set — gate is inactive");
 
 test.use({ viewport: { width: 390, height: 844 } });
 
