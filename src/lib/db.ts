@@ -45,6 +45,23 @@ export interface SquadEntry {
   variant: SquadVariant;
 }
 
+/**
+ * UserXI — the user's confirmed XI snapshot, distinct from the in-progress draft
+ * in the "squad" store. Written only when the user taps "Confirmar 11" during
+ * an unlock window. Persisted even after subsequent lock periods.
+ */
+export interface UserXIEntry {
+  key: "userXI";
+  formation: Formation;
+  /** slotId → sticker_id */
+  lineup: Record<string, string>;
+  variant: SquadVariant;
+  /** ISO 8601 UTC — when the user confirmed their XI */
+  locked_at: string;
+  /** Lock phase during which this XI was confirmed */
+  phase: string;
+}
+
 interface MundialDB extends DBSchema {
   collection: {
     key: string;
@@ -69,6 +86,11 @@ interface MundialDB extends DBSchema {
   squad: {
     key: string;
     value: SquadEntry;
+    indexes: Record<string, never>;
+  };
+  userXI: {
+    key: string;
+    value: UserXIEntry;
     indexes: Record<string, never>;
   };
 }
@@ -96,7 +118,7 @@ let dbPromise: Promise<IDBPDatabase<MundialDB>> | null = null;
 
 export function getDB(): Promise<IDBPDatabase<MundialDB>> {
   if (!dbPromise) {
-    dbPromise = openDB<MundialDB>("mundial-2026", 3, {
+    dbPromise = openDB<MundialDB>("mundial-2026", 4, {
       upgrade(db, oldVersion) {
         // v1 stores — create only if they don't exist (safe for existing users)
         if (oldVersion < 1) {
@@ -121,6 +143,11 @@ export function getDB(): Promise<IDBPDatabase<MundialDB>> {
         // v3 — squad store for Mi Once (formation + lineup + variant)
         if (oldVersion < 3) {
           db.createObjectStore("squad", { keyPath: "key" });
+        }
+
+        // v4 — userXI store for confirmed locked XI + transfer-window state (Epic 2 Phase B)
+        if (oldVersion < 4) {
+          db.createObjectStore("userXI", { keyPath: "key" });
         }
       },
     });

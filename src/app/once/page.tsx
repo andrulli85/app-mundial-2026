@@ -19,6 +19,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getNickname, getSquad, saveSquad, getAllStickers } from "@/lib/db";
 import type { Formation, SquadVariant } from "@/lib/db";
+import {
+  getCurrentPhase,
+  isLocked,
+  nextUnlockAt,
+  lockEngagesAt,
+  saveXI,
+  loadXI,
+} from "@/lib/userXI";
+import type { LockPhase, UserXI } from "@/lib/userXI";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import {
@@ -111,6 +120,122 @@ const RARITY_COLORS: Record<string, { bg: string; border: string; text: string }
   epic:      { bg: "#241433", border: "#9333ea", text: "#c084fc" },
   legendary: { bg: "#2b2410", border: GOLD, text: GOLD },
 };
+
+// ---------------------------------------------------------------------------
+// Lock-state helpers
+// ---------------------------------------------------------------------------
+
+/** Formats a duration in ms as "Xd Yh Zm" or "Yh Zm" or "Zm" depending on magnitude. */
+function formatCountdown(ms: number): string {
+  if (ms <= 0) return "ahora";
+  const totalSec = Math.floor(ms / 1000);
+  const d = Math.floor(totalSec / 86400);
+  const h = Math.floor((totalSec % 86400) / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  if (d > 0) return `${d}d ${h}h ${m}m`;
+  if (h > 0) return `${h}h ${m}m`;
+  return `${m}m`;
+}
+
+// ---------------------------------------------------------------------------
+// LockBanner
+// ---------------------------------------------------------------------------
+
+interface LockBannerProps {
+  phase: LockPhase;
+  now: Date;
+}
+
+function LockBanner({ phase, now }: LockBannerProps) {
+  let message: string;
+  let sub: string | null = null;
+
+  if (phase === "before_tournament") {
+    const lockAt = lockEngagesAt(now);
+    const diff = lockAt ? lockAt.getTime() - now.getTime() : 0;
+    message = `Faltan ${formatCountdown(diff)} para el inicio del Mundial`;
+    sub = "Armá tu 11 antes del primer pitazo";
+  } else if (phase === "md1_to_md2_lock") {
+    const unlockAt = nextUnlockAt(now);
+    const diff = unlockAt ? unlockAt.getTime() - now.getTime() : 0;
+    message = "Tu 11 está bloqueado";
+    sub = `Ventana de cambios al cerrar MD2 — ${formatCountdown(diff)}`;
+  } else if (phase === "md2_unlock_window") {
+    const lockAt = lockEngagesAt(now);
+    const diff = lockAt ? lockAt.getTime() - now.getTime() : 0;
+    message = "Ventana de cambios abierta";
+    sub = `Tenés hasta el primer pitazo de MD3 — ${formatCountdown(diff)}`;
+  } else if (phase === "md3_to_final_lock") {
+    message = "Tu 11 está bloqueado hasta el final del torneo";
+    sub = null;
+  } else {
+    // tournament_over
+    message = "Torneo terminado";
+    sub = "Tu 11 quedó fijo para siempre";
+  }
+
+  const locked =
+    phase === "md1_to_md2_lock" ||
+    phase === "md3_to_final_lock" ||
+    phase === "tournament_over";
+
+  const icon =
+    phase === "md2_unlock_window"
+      ? "✨"
+    : phase === "tournament_over"
+      ? "🏆"
+    : phase === "before_tournament"
+      ? "⚽"
+      : "🔒";
+
+  return (
+    <div
+      style={{
+        background: "#111318",
+        border: `1.5px solid ${locked ? GOLD + "66" : GOLD}`,
+        borderRadius: 14,
+        padding: "12px 16px",
+        marginBottom: 12,
+        display: "flex",
+        flexDirection: "column",
+        gap: 4,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+        }}
+      >
+        <span style={{ fontSize: 16 }}>{icon}</span>
+        <span
+          style={{
+            fontSize: 13,
+            fontWeight: 800,
+            color: locked ? GOLD : "#f3f4f6",
+            fontFamily: "system-ui, sans-serif",
+            letterSpacing: "0.01em",
+          }}
+        >
+          {message}
+        </span>
+      </div>
+      {sub && (
+        <div
+          style={{
+            fontSize: 11,
+            color: "#9ca3af",
+            fontFamily: "system-ui, sans-serif",
+            paddingLeft: 24,
+          }}
+        >
+          {sub}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // ---------------------------------------------------------------------------
 // SquadToken — mini player card
@@ -692,22 +817,29 @@ export default function OncePage() {
     moved: boolean;
   } | null>(null);
 
+  // ---- Lock state ----
+  const [now, setNow] = useState<Date>(() => new Date());
+  const [confirmedXI, setConfirmedXI] = useState<UserXI | null>(null);
+  const locked = isLocked(now);
+  const lockPhase = getCurrentPhase(now);
+
   // ---- Toast helper ----
   const flash = useCallback((msg: string) => {
     setToast(msg);
     setTimeout(() => setToast(null), 1800);
   }, []);
 
-  // ---- Load catalog + owned + saved squad on mount ----
+  // ---- Load catalog + owned + saved squad + confirmedXI on mount ----
   useEffect(() => {
     (async () => {
       const nick = await getNickname();
       if (!nick) { router.replace("/"); return; }
 
-      const [cat, allEntries, savedSquad] = await Promise.all([
+      const [cat, allEntries, savedSquad, savedXI] = await Promise.all([
         getCatalog(),
         getAllStickers(),
         getSquad(),
+        loadXI(),
       ]);
 
       const ownedIds = new Set(allEntries.filter((e) => e.count > 0).map((e) => e.sticker_id));
@@ -740,9 +872,18 @@ export default function OncePage() {
       });
       setLineup(validLineup);
 
+      // Restore confirmed XI if any
+      setConfirmedXI(savedXI);
+
       setLoading(false);
     })();
   }, [router]);
+
+  // ---- Tick every 30s so countdown stays fresh ----
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 30_000);
+    return () => clearInterval(id);
+  }, []);
 
   const slots = FORMATIONS[formation];
   const slotIds = slots.map((s) => s.id);
@@ -826,9 +967,30 @@ export default function OncePage() {
     setPicker(null);
   }, []);
 
+  // ---- Confirmar 11 ----
+  const confirmXI = useCallback(async () => {
+    const confirmed: Omit<UserXI, "key"> = {
+      formation,
+      lineup,
+      variant,
+      locked_at: new Date().toISOString(),
+      phase: lockPhase,
+    };
+    await saveXI(confirmed);
+    await saveSquad({ formation, lineup, variant });
+    const saved = await loadXI();
+    setConfirmedXI(saved);
+    flash("11 confirmado ✓");
+  }, [formation, lineup, variant, lockPhase, flash]);
+
   // ---- Drag-to-swap (pointer events) ----
   const onPointerDown = useCallback(
     (e: React.PointerEvent, slotId: string) => {
+      // Drag disabled when locked
+      if (locked) {
+        flash("Tu 11 está bloqueado — no podés cambiarlo ahora");
+        return;
+      }
       if (!lineup[slotId]) return;
       e.preventDefault();
       dragRef.current = { slotId, moved: false };
@@ -897,7 +1059,13 @@ export default function OncePage() {
           <EmptySlot
             pos={s.pos}
             size={size}
-            onClick={() => setPicker({ slotId: s.id, pos: s.pos })}
+            onClick={() => {
+              if (locked) {
+                flash("Tu 11 está bloqueado — no podés cambiarlo ahora");
+                return;
+              }
+              setPicker({ slotId: s.id, pos: s.pos });
+            }}
           />
         );
       }
@@ -913,7 +1081,7 @@ export default function OncePage() {
           onPointerDown={(e) => onPointerDown(e, s.id)}
           style={{
             touchAction: "none",
-            cursor: "grab",
+            cursor: locked ? "default" : "grab",
             opacity: isDragging ? 0.25 : 1,
           }}
         >
@@ -925,7 +1093,7 @@ export default function OncePage() {
         </div>
       );
     },
-    [lineup, catalogMap, drag, onPointerDown]
+    [lineup, catalogMap, drag, onPointerDown, locked, flash]
   );
 
   // ---- Loading state ----
@@ -956,6 +1124,9 @@ export default function OncePage() {
             "linear-gradient(180deg, #0d0f13 80%, rgba(13,15,19,0) 100%)",
         }}
       >
+        {/* Lock banner — always visible above the title */}
+        <LockBanner phase={lockPhase} now={now} />
+
         {/* Kicker */}
         <div
           style={{
@@ -1104,26 +1275,75 @@ export default function OncePage() {
           <LinesView slots={slots} renderSlot={renderSlot} />
         )}
 
-        {/* Save button */}
-        <button
-          onClick={saveAndFlash}
-          style={{
-            width: "100%",
-            marginTop: 16,
-            padding: "16px 0",
-            borderRadius: 14,
-            background: GREEN,
-            color: "#fff",
-            fontWeight: 800,
-            fontSize: 15,
-            border: "none",
-            cursor: "pointer",
-            fontFamily: "system-ui, sans-serif",
-            letterSpacing: "0.04em",
-          }}
-        >
-          Guardar 11
-        </button>
+        {/* Action buttons — changes based on lock state */}
+        {locked ? (
+          /* Locked: show a muted read-only indicator instead of the save button */
+          <div
+            style={{
+              width: "100%",
+              marginTop: 16,
+              padding: "16px 0",
+              borderRadius: 14,
+              background: "#1a1e29",
+              border: `1px solid ${GOLD}44`,
+              color: GOLD,
+              fontWeight: 800,
+              fontSize: 14,
+              textAlign: "center",
+              fontFamily: "system-ui, sans-serif",
+              letterSpacing: "0.04em",
+              opacity: 0.75,
+            }}
+          >
+            🔒 11 bloqueado
+          </div>
+        ) : (
+          <>
+            {/* Save draft button */}
+            <button
+              onClick={saveAndFlash}
+              style={{
+                width: "100%",
+                marginTop: 16,
+                padding: "14px 0",
+                borderRadius: 14,
+                background: GREEN,
+                color: "#fff",
+                fontWeight: 800,
+                fontSize: 14,
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "system-ui, sans-serif",
+                letterSpacing: "0.04em",
+              }}
+            >
+              Guardar borrador
+            </button>
+
+            {/* Confirmar 11 — only shown when in an editable window */}
+            <button
+              onClick={confirmXI}
+              data-testid="confirmar-11"
+              style={{
+                width: "100%",
+                marginTop: 10,
+                padding: "16px 0",
+                borderRadius: 14,
+                background: GOLD,
+                color: "#0d0f13",
+                fontWeight: 900,
+                fontSize: 15,
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "system-ui, sans-serif",
+                letterSpacing: "0.04em",
+                boxShadow: `0 4px 18px -4px ${GOLD}66`,
+              }}
+            >
+              {confirmedXI ? "Actualizar mi 11 ✓" : "Confirmar 11"}
+            </button>
+          </>
+        )}
       </div>
 
       {/* ---- Drag ghost ---- */}
