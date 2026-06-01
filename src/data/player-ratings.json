@@ -1,1 +1,4196 @@
-{}
+{
+  "mex-3-vasquez": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Johan Vásquez",
+    "match_confidence": "high"
+  },
+  "mex-4-sanchez": {
+    "ovr": 80,
+    "position": "DEF",
+    "real_name": "Davinson Sánchez",
+    "match_confidence": "low"
+  },
+  "mex-5-montes": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "César Montes",
+    "match_confidence": "high"
+  },
+  "mex-6-gallardo": {
+    "ovr": 66,
+    "position": "DEF",
+    "real_name": "Nahuel Gallardo",
+    "match_confidence": "low"
+  },
+  "mex-7-reyes": {
+    "ovr": 68,
+    "position": "DEF",
+    "real_name": "Andrés Reyes",
+    "match_confidence": "low"
+  },
+  "mex-9-rodriguez": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Guido Rodríguez",
+    "match_confidence": "low"
+  },
+  "mex-10-alvarez": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Edson Álvarez",
+    "match_confidence": "high"
+  },
+  "mex-11-pineda": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Orbelín Pineda",
+    "match_confidence": "high"
+  },
+  "mex-12-ruiz": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Fabián Ruiz",
+    "match_confidence": "low"
+  },
+  "mex-14-sanchez": {
+    "ovr": 80,
+    "position": "DEF",
+    "real_name": "Davinson Sánchez",
+    "match_confidence": "low"
+  },
+  "mex-15-lozano": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Hirving Lozano",
+    "match_confidence": "high"
+  },
+  "mex-16-gimenez": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Santiago Giménez",
+    "match_confidence": "high"
+  },
+  "mex-17-jimenez": {
+    "ovr": 74,
+    "position": "DEL",
+    "real_name": "Raúl Jiménez",
+    "match_confidence": "high"
+  },
+  "mex-18-vega": {
+    "ovr": 74,
+    "position": "DEL",
+    "real_name": "Pedro De la Vega",
+    "match_confidence": "low"
+  },
+  "mex-19-alvarado": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Jaime Alvarado",
+    "match_confidence": "low"
+  },
+  "mex-20-huerta": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "Valber Huerta",
+    "match_confidence": "low"
+  },
+  "rsa-2-williams": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Nico Williams",
+    "match_confidence": "low"
+  },
+  "rsa-8-ngezana": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Siyabonga Ngezana",
+    "match_confidence": "high"
+  },
+  "rsa-15-sithole": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Sphephelo Sithole",
+    "match_confidence": "high"
+  },
+  "rsa-17-foster": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Lyle Foster",
+    "match_confidence": "high"
+  },
+  "kor-2-jo": {
+    "ovr": 75,
+    "position": "POR",
+    "real_name": "Jo Hyeon Woo",
+    "match_confidence": "high"
+  },
+  "kor-3-kim": {
+    "ovr": 73,
+    "position": "POR",
+    "real_name": "Kim Seung Gyu",
+    "match_confidence": "high"
+  },
+  "kor-4-kim": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Kim Min Jae",
+    "match_confidence": "high"
+  },
+  "kor-5-cho": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Cho Gue Sung",
+    "match_confidence": "high"
+  },
+  "kor-7-lee": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Lee Han Beom",
+    "match_confidence": "high"
+  },
+  "kor-8-lee": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Lee Kang In",
+    "match_confidence": "high"
+  },
+  "kor-9-lee": {
+    "ovr": 68,
+    "position": "DEF",
+    "real_name": "Lee Myung Jae",
+    "match_confidence": "high"
+  },
+  "kor-10-lee": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Lee Jae Sung",
+    "match_confidence": "high"
+  },
+  "kor-11-hwang": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Hwang Hee Chan",
+    "match_confidence": "high"
+  },
+  "kor-12-lee": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Lee Kang In",
+    "match_confidence": "high"
+  },
+  "kor-14-paik": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Paik Seung Ho",
+    "match_confidence": "high"
+  },
+  "kor-15-castrop": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Jens Castrop",
+    "match_confidence": "low"
+  },
+  "kor-16-lee": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Lee Kang In",
+    "match_confidence": "high"
+  },
+  "kor-17-cho": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Cho Gue Sung",
+    "match_confidence": "high"
+  },
+  "kor-18-son": {
+    "ovr": 87,
+    "position": "DEL",
+    "real_name": "Heung Min Son",
+    "match_confidence": "high"
+  },
+  "kor-19-hwang": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Hwang Hee Chan",
+    "match_confidence": "high"
+  },
+  "kor-20-oh": {
+    "ovr": 69,
+    "position": "DEL",
+    "real_name": "Oh Hyeon Gyu",
+    "match_confidence": "high"
+  },
+  "cze-2-kovar": {
+    "ovr": 76,
+    "position": "POR",
+    "real_name": "Matěj Kovář",
+    "match_confidence": "high"
+  },
+  "cze-3-stanek": {
+    "ovr": 76,
+    "position": "POR",
+    "real_name": "Jindřich Staněk",
+    "match_confidence": "high"
+  },
+  "cze-4-krejci": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Ladislav Krejčí",
+    "match_confidence": "high"
+  },
+  "cze-5-coufal": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Vladimír Coufal",
+    "match_confidence": "high"
+  },
+  "cze-6-zeleny": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Jaroslav Zelený",
+    "match_confidence": "high"
+  },
+  "cze-7-holes": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Tomáš Holeš",
+    "match_confidence": "high"
+  },
+  "cze-8-zima": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "David Zima",
+    "match_confidence": "high"
+  },
+  "cze-9-sadilek": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Michal Sadílek",
+    "match_confidence": "high"
+  },
+  "cze-10-provod": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Lukáš Provod",
+    "match_confidence": "high"
+  },
+  "cze-11-cerv": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Lukáš Červ",
+    "match_confidence": "high"
+  },
+  "cze-12-soucek": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Tomáš Souček",
+    "match_confidence": "high"
+  },
+  "cze-14-sulc": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Pavel Šulc",
+    "match_confidence": "high"
+  },
+  "cze-15-vydra": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Matěj Vydra",
+    "match_confidence": "high"
+  },
+  "cze-17-chory": {
+    "ovr": 74,
+    "position": "DEL",
+    "real_name": "Tomáš Chorý",
+    "match_confidence": "high"
+  },
+  "cze-18-cerny": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Václav Černý",
+    "match_confidence": "high"
+  },
+  "cze-19-hlozek": {
+    "ovr": 76,
+    "position": "DEL",
+    "real_name": "Adam Hložek",
+    "match_confidence": "high"
+  },
+  "cze-20-schick": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Patrik Schick",
+    "match_confidence": "high"
+  },
+  "can-3-davies": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Alphonso Davies",
+    "match_confidence": "high"
+  },
+  "can-4-johnston": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Alistair Johnston",
+    "match_confidence": "high"
+  },
+  "can-5-adekugbe": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Sam Adekugbe",
+    "match_confidence": "high"
+  },
+  "can-7-cornelius": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Derek Cornelius",
+    "match_confidence": "high"
+  },
+  "can-8-bombito": {
+    "ovr": 67,
+    "position": "DEF",
+    "real_name": "Moïse Bombito",
+    "match_confidence": "high"
+  },
+  "can-9-miller": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Kamal Miller",
+    "match_confidence": "high"
+  },
+  "can-10-eustaquio": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Stephen Eustáquio",
+    "match_confidence": "high"
+  },
+  "can-11-kone": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Ismaël Koné",
+    "match_confidence": "high"
+  },
+  "can-12-osorio": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Jonathan Osorio",
+    "match_confidence": "high"
+  },
+  "can-14-shaffelburg": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Jacob Shaffelburg",
+    "match_confidence": "high"
+  },
+  "can-15-choiniere": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Mathieu Choinière",
+    "match_confidence": "high"
+  },
+  "can-16-sigur": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Niko Sigur",
+    "match_confidence": "high"
+  },
+  "can-17-buchanan": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Tajon Buchanan",
+    "match_confidence": "high"
+  },
+  "can-18-millar": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Liam Millar",
+    "match_confidence": "high"
+  },
+  "can-19-larin": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Cyle Larin",
+    "match_confidence": "high"
+  },
+  "can-20-david": {
+    "ovr": 81,
+    "position": "DEL",
+    "real_name": "Jonathan David",
+    "match_confidence": "high"
+  },
+  "bih-2-vasilj": {
+    "ovr": 70,
+    "position": "POR",
+    "real_name": "Nikola Vasilj",
+    "match_confidence": "high"
+  },
+  "bih-3-dedic": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Amar Dedić",
+    "match_confidence": "high"
+  },
+  "bih-4-kolasinac": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Sead Kolašinac",
+    "match_confidence": "high"
+  },
+  "bih-7-katic": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Nikola Katić",
+    "match_confidence": "low"
+  },
+  "bih-8-hadziahmetovic": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Amir Hadžiahmetović",
+    "match_confidence": "high"
+  },
+  "bih-9-tahirovic": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Benjamin Tahirović",
+    "match_confidence": "high"
+  },
+  "bih-10-gigovic": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Armin Gigović",
+    "match_confidence": "high"
+  },
+  "bih-12-basic": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Denis Huseinbašić",
+    "match_confidence": "high"
+  },
+  "bih-14-burnic": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Dženis Burnić",
+    "match_confidence": "low"
+  },
+  "bih-15-bajraktarevic": {
+    "ovr": 63,
+    "position": "MED",
+    "real_name": "Esmir Bajraktarevic",
+    "match_confidence": "low"
+  },
+  "bih-17-demirovic": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Ermedin Demirović",
+    "match_confidence": "high"
+  },
+  "bih-18-dzeko": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Edin Džeko",
+    "match_confidence": "high"
+  },
+  "bih-20-tabakovic": {
+    "ovr": 73,
+    "position": "DEL",
+    "real_name": "Haris Tabaković",
+    "match_confidence": "high"
+  },
+  "qat-4-mendes": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Nuno Mendes",
+    "match_confidence": "low"
+  },
+  "qat-5-ahmed": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Anel Ahmedhodžić",
+    "match_confidence": "low"
+  },
+  "qat-7-miguel": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Pedro Rebocho",
+    "match_confidence": "low"
+  },
+  "qat-17-edmilson": {
+    "ovr": 90,
+    "position": "DEL",
+    "real_name": "Vini Jr.",
+    "match_confidence": "low"
+  },
+  "qat-20-ali": {
+    "ovr": 89,
+    "position": "POR",
+    "real_name": "Alisson",
+    "match_confidence": "low"
+  },
+  "sui-2-kobel": {
+    "ovr": 88,
+    "position": "POR",
+    "real_name": "Gregor Kobel",
+    "match_confidence": "high"
+  },
+  "sui-3-mvogo": {
+    "ovr": 77,
+    "position": "POR",
+    "real_name": "Yvon Mvogo",
+    "match_confidence": "high"
+  },
+  "sui-4-akanji": {
+    "ovr": 84,
+    "position": "DEF",
+    "real_name": "Manuel Akanji",
+    "match_confidence": "high"
+  },
+  "sui-5-rodriguez": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Ricardo Rodríguez",
+    "match_confidence": "high"
+  },
+  "sui-6-elvedi": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Nico Elvedi",
+    "match_confidence": "high"
+  },
+  "sui-7-amenda": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "Aurèle Amenda",
+    "match_confidence": "high"
+  },
+  "sui-8-widmer": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Silvan Widmer",
+    "match_confidence": "high"
+  },
+  "sui-9-xhaka": {
+    "ovr": 86,
+    "position": "MED",
+    "real_name": "Granit Xhaka",
+    "match_confidence": "high"
+  },
+  "sui-10-zakaria": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Denis Zakaria",
+    "match_confidence": "high"
+  },
+  "sui-11-freuler": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Remo Freuler",
+    "match_confidence": "high"
+  },
+  "sui-12-rieder": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Fabian Rieder",
+    "match_confidence": "high"
+  },
+  "sui-14-jashari": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Ardon Jashari",
+    "match_confidence": "high"
+  },
+  "sui-15-manzambi": {
+    "ovr": 58,
+    "position": "MED",
+    "real_name": "Johan Manzambi",
+    "match_confidence": "high"
+  },
+  "sui-16-aebischer": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Michel Aebischer",
+    "match_confidence": "high"
+  },
+  "sui-17-embolo": {
+    "ovr": 77,
+    "position": "DEL",
+    "real_name": "Breel Embolo",
+    "match_confidence": "high"
+  },
+  "sui-18-vargas": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Ruben Vargas",
+    "match_confidence": "high"
+  },
+  "sui-19-ndoye": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Dan Ndoye",
+    "match_confidence": "high"
+  },
+  "sui-20-amdouni": {
+    "ovr": 73,
+    "position": "DEL",
+    "real_name": "Zeki Amdouni",
+    "match_confidence": "high"
+  },
+  "bra-2-alisson": {
+    "ovr": 89,
+    "position": "POR",
+    "real_name": "Alisson",
+    "match_confidence": "high"
+  },
+  "bra-3-bento": {
+    "ovr": 80,
+    "position": "POR",
+    "real_name": "Bento",
+    "match_confidence": "high"
+  },
+  "bra-4-marquinhos": {
+    "ovr": 87,
+    "position": "DEF",
+    "real_name": "Marquinhos",
+    "match_confidence": "high"
+  },
+  "bra-5-militao": {
+    "ovr": 85,
+    "position": "DEF",
+    "real_name": "Éder Militão",
+    "match_confidence": "high"
+  },
+  "bra-6-magalhaes": {
+    "ovr": 86,
+    "position": "DEF",
+    "real_name": "Gabriel",
+    "match_confidence": "high"
+  },
+  "bra-7-danilo": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Danilo",
+    "match_confidence": "high"
+  },
+  "bra-8-wesley": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Wesley Fofana",
+    "match_confidence": "low"
+  },
+  "bra-9-paqueta": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Lucas Paquetá",
+    "match_confidence": "high"
+  },
+  "bra-10-casemiro": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Casemiro",
+    "match_confidence": "high"
+  },
+  "bra-11-guimaraes": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Bruno Guimarães",
+    "match_confidence": "high"
+  },
+  "bra-12-henrique": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Casemiro",
+    "match_confidence": "high"
+  },
+  "bra-14-junior": {
+    "ovr": 90,
+    "position": "DEL",
+    "real_name": "Vini Jr.",
+    "match_confidence": "high"
+  },
+  "bra-15-rodrygo": {
+    "ovr": 86,
+    "position": "DEL",
+    "real_name": "Rodrygo",
+    "match_confidence": "high"
+  },
+  "bra-16-pedro": {
+    "ovr": 77,
+    "position": "DEL",
+    "real_name": "João Pedro",
+    "match_confidence": "high"
+  },
+  "bra-17-cunha": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Matheus Cunha",
+    "match_confidence": "high"
+  },
+  "bra-18-martinelli": {
+    "ovr": 83,
+    "position": "DEL",
+    "real_name": "Gabriel Martinelli",
+    "match_confidence": "high"
+  },
+  "bra-19-raphinha": {
+    "ovr": 84,
+    "position": "DEL",
+    "real_name": "Raphinha",
+    "match_confidence": "high"
+  },
+  "bra-20-estevao": {
+    "ovr": 61,
+    "position": "POR",
+    "real_name": "Tiago Estevão",
+    "match_confidence": "low"
+  },
+  "mar-2-bounou": {
+    "ovr": 84,
+    "position": "POR",
+    "real_name": "Yassine Bounou",
+    "match_confidence": "high"
+  },
+  "mar-4-hakimi": {
+    "ovr": 84,
+    "position": "DEF",
+    "real_name": "Achraf Hakimi",
+    "match_confidence": "high"
+  },
+  "mar-5-mazraoui": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "Noussair Mazraoui",
+    "match_confidence": "high"
+  },
+  "mar-6-aguerd": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Nayef Aguerd",
+    "match_confidence": "high"
+  },
+  "mar-9-masina": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Adam Masina",
+    "match_confidence": "high"
+  },
+  "mar-10-amrabat": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Sofyan Amrabat",
+    "match_confidence": "high"
+  },
+  "mar-11-ounahi": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Azzedine Ounahi",
+    "match_confidence": "high"
+  },
+  "mar-12-seghir": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Eliesse Ben Seghir",
+    "match_confidence": "high"
+  },
+  "mar-14-khannouss": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Bilal El Khannouss",
+    "match_confidence": "high"
+  },
+  "mar-15-saibari": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Ismael Saibari",
+    "match_confidence": "high"
+  },
+  "mar-16-en-nesyri": {
+    "ovr": 83,
+    "position": "DEL",
+    "real_name": "Youssef En-Nesyri",
+    "match_confidence": "high"
+  },
+  "mar-17-ezzalzouli": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Abdessamad Ezzalzouli",
+    "match_confidence": "high"
+  },
+  "mar-18-rahimi": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Soufiane Rahimi",
+    "match_confidence": "high"
+  },
+  "mar-19-diaz": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Brahim",
+    "match_confidence": "high"
+  },
+  "mar-20-kaabi": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Ayoub El Kaabi",
+    "match_confidence": "high"
+  },
+  "hai-2-placide": {
+    "ovr": 67,
+    "position": "POR",
+    "real_name": "Johny Placide",
+    "match_confidence": "high"
+  },
+  "hai-3-arcus": {
+    "ovr": 68,
+    "position": "DEF",
+    "real_name": "Carlens Arcus",
+    "match_confidence": "high"
+  },
+  "hai-5-duverne": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Jean-Kévin Duverne",
+    "match_confidence": "high"
+  },
+  "hai-6-ade": {
+    "ovr": 84,
+    "position": "POR",
+    "real_name": "Lukáš Hrádecký",
+    "match_confidence": "low"
+  },
+  "hai-7-lacroix": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Maxence Lacroix",
+    "match_confidence": "low"
+  },
+  "hai-9-delcroix": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Hannes Delcroix",
+    "match_confidence": "low"
+  },
+  "hai-10-pierre": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Pierre-Emerick Aubameyang",
+    "match_confidence": "low"
+  },
+  "hai-11-jacques": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Danley Jean Jacques",
+    "match_confidence": "high"
+  },
+  "hai-12-bellegarde": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Jean-Ricner Bellegarde",
+    "match_confidence": "low"
+  },
+  "hai-15-etienne": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Derrick Etienne Jr.",
+    "match_confidence": "high"
+  },
+  "hai-16-casimir": {
+    "ovr": 71,
+    "position": "MED",
+    "real_name": "Josué Casimir",
+    "match_confidence": "low"
+  },
+  "hai-17-providence": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Ruben Providence",
+    "match_confidence": "low"
+  },
+  "hai-18-nazon": {
+    "ovr": 68,
+    "position": "DEL",
+    "real_name": "Duckens Nazon",
+    "match_confidence": "high"
+  },
+  "hai-20-pierrot": {
+    "ovr": 57,
+    "position": "DEL",
+    "real_name": "Frantz Pierrot",
+    "match_confidence": "high"
+  },
+  "sco-2-gunn": {
+    "ovr": 74,
+    "position": "POR",
+    "real_name": "Angus Gunn",
+    "match_confidence": "high"
+  },
+  "sco-3-hendry": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Jack Hendry",
+    "match_confidence": "high"
+  },
+  "sco-4-tierney": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Kieran Tierney",
+    "match_confidence": "high"
+  },
+  "sco-5-hickey": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Aaron Hickey",
+    "match_confidence": "high"
+  },
+  "sco-6-robertson": {
+    "ovr": 85,
+    "position": "DEF",
+    "real_name": "Andrew Robertson",
+    "match_confidence": "high"
+  },
+  "sco-7-mckenna": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Scott McKenna",
+    "match_confidence": "high"
+  },
+  "sco-8-souttar": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "John Souttar",
+    "match_confidence": "high"
+  },
+  "sco-9-ralston": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Anthony Ralston",
+    "match_confidence": "high"
+  },
+  "sco-10-hanley": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Grant Hanley",
+    "match_confidence": "high"
+  },
+  "sco-11-mctominay": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Scott McTominay",
+    "match_confidence": "high"
+  },
+  "sco-12-gilmour": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Billy Gilmour",
+    "match_confidence": "high"
+  },
+  "sco-14-ferguson": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Lewis Ferguson",
+    "match_confidence": "high"
+  },
+  "sco-15-christie": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Ryan Christie",
+    "match_confidence": "high"
+  },
+  "sco-16-mclean": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Kenny McLean",
+    "match_confidence": "high"
+  },
+  "sco-17-mcginn": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "John McGinn",
+    "match_confidence": "high"
+  },
+  "sco-18-dykes": {
+    "ovr": 69,
+    "position": "DEL",
+    "real_name": "Lyndon Dykes",
+    "match_confidence": "high"
+  },
+  "sco-19-adams": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Ché Adams",
+    "match_confidence": "high"
+  },
+  "sco-20-gannon-doak": {
+    "ovr": 66,
+    "position": "DEL",
+    "real_name": "Ben Doak",
+    "match_confidence": "high"
+  },
+  "usa-2-freese": {
+    "ovr": 67,
+    "position": "POR",
+    "real_name": "Matt Freese",
+    "match_confidence": "high"
+  },
+  "usa-3-richards": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Chris Richards",
+    "match_confidence": "high"
+  },
+  "usa-4-ream": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Tim Ream",
+    "match_confidence": "high"
+  },
+  "usa-5-mckenzie": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Mark McKenzie",
+    "match_confidence": "high"
+  },
+  "usa-6-freeman": {
+    "ovr": 52,
+    "position": "DEF",
+    "real_name": "Alexander Freeman",
+    "match_confidence": "high"
+  },
+  "usa-7-robinson": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Antonee Robinson",
+    "match_confidence": "high"
+  },
+  "usa-8-adams": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Tyler Adams",
+    "match_confidence": "high"
+  },
+  "usa-9-tessmann": {
+    "ovr": 71,
+    "position": "MED",
+    "real_name": "Tanner Tessmann",
+    "match_confidence": "high"
+  },
+  "usa-11-roldan": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Cristian Roldan",
+    "match_confidence": "high"
+  },
+  "usa-12-weah": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Timothy Weah",
+    "match_confidence": "high"
+  },
+  "usa-14-luna": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Diego Luna",
+    "match_confidence": "high"
+  },
+  "usa-15-tillman": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Malik Tillman",
+    "match_confidence": "high"
+  },
+  "usa-16-pulisic": {
+    "ovr": 83,
+    "position": "DEL",
+    "real_name": "Christian Pulisic",
+    "match_confidence": "high"
+  },
+  "usa-17-aaronson": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Brenden Aaronson",
+    "match_confidence": "high"
+  },
+  "usa-18-pepi": {
+    "ovr": 73,
+    "position": "DEL",
+    "real_name": "Ricardo Pepi",
+    "match_confidence": "high"
+  },
+  "usa-19-wright": {
+    "ovr": 73,
+    "position": "DEL",
+    "real_name": "Haji Wright",
+    "match_confidence": "high"
+  },
+  "usa-20-balogun": {
+    "ovr": 77,
+    "position": "DEL",
+    "real_name": "Folarin Balogun",
+    "match_confidence": "high"
+  },
+  "par-2-fernandez": {
+    "ovr": 66,
+    "position": "DEL",
+    "real_name": "Roberto",
+    "match_confidence": "low"
+  },
+  "par-3-gill": {
+    "ovr": 69,
+    "position": "DEL",
+    "real_name": "Jon Bautista",
+    "match_confidence": "low"
+  },
+  "par-4-gomez": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Diego Gómez",
+    "match_confidence": "high"
+  },
+  "par-6-caceres": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Juan José Cáceres",
+    "match_confidence": "high"
+  },
+  "par-7-alderete": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Omar Alderete",
+    "match_confidence": "high"
+  },
+  "par-8-alonso": {
+    "ovr": 62,
+    "position": "DEF",
+    "real_name": "Wildo Alonso",
+    "match_confidence": "high"
+  },
+  "par-10-gomez": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Diego Gómez",
+    "match_confidence": "high"
+  },
+  "par-12-cubas": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Andrés Cubas",
+    "match_confidence": "high"
+  },
+  "par-15-enciso": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Julio César Enciso",
+    "match_confidence": "high"
+  },
+  "par-16-gamarra": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Kaku",
+    "match_confidence": "high"
+  },
+  "par-17-almiron": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Miguel Almirón",
+    "match_confidence": "high"
+  },
+  "par-18-sosa": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Ramón Sosa",
+    "match_confidence": "high"
+  },
+  "par-19-romero": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Kaku",
+    "match_confidence": "high"
+  },
+  "par-20-sanabria": {
+    "ovr": 77,
+    "position": "DEL",
+    "real_name": "Antonio Sanabria",
+    "match_confidence": "high"
+  },
+  "aus-2-ryan": {
+    "ovr": 78,
+    "position": "POR",
+    "real_name": "Mathew Ryan",
+    "match_confidence": "high"
+  },
+  "aus-3-gauci": {
+    "ovr": 68,
+    "position": "POR",
+    "real_name": "Joe Gauci",
+    "match_confidence": "high"
+  },
+  "aus-4-souttar": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Harry Souttar",
+    "match_confidence": "high"
+  },
+  "aus-5-circati": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Alessandro Circati",
+    "match_confidence": "high"
+  },
+  "aus-6-bos": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Jordan Bos",
+    "match_confidence": "high"
+  },
+  "aus-7-behich": {
+    "ovr": 67,
+    "position": "DEF",
+    "real_name": "Aziz Behich",
+    "match_confidence": "high"
+  },
+  "aus-8-burgess": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Cameron Burgess",
+    "match_confidence": "high"
+  },
+  "aus-9-miller": {
+    "ovr": 67,
+    "position": "DEF",
+    "real_name": "Lewis Miller",
+    "match_confidence": "high"
+  },
+  "aus-11-irvine": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Jackson Irvine",
+    "match_confidence": "high"
+  },
+  "aus-12-mcgree": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Riley McGree",
+    "match_confidence": "high"
+  },
+  "aus-15-metcalfe": {
+    "ovr": 69,
+    "position": "MED",
+    "real_name": "Connor Metcalfe",
+    "match_confidence": "high"
+  },
+  "aus-16-yazbek": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Patrick Yazbek",
+    "match_confidence": "high"
+  },
+  "aus-17-goodwin": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Craig Goodwin",
+    "match_confidence": "high"
+  },
+  "aus-19-irankunda": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Nestory Irankunda",
+    "match_confidence": "high"
+  },
+  "aus-20-toure": {
+    "ovr": 64,
+    "position": "DEL",
+    "real_name": "Mohamed Touré",
+    "match_confidence": "high"
+  },
+  "tur-2-cakir": {
+    "ovr": 77,
+    "position": "POR",
+    "real_name": "Uğurcan Çakır",
+    "match_confidence": "high"
+  },
+  "tur-3-muldur": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Mert Müldür",
+    "match_confidence": "high"
+  },
+  "tur-4-celik": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Zeki Çelik",
+    "match_confidence": "high"
+  },
+  "tur-5-bardakci": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Abdülkerim Bardakcı",
+    "match_confidence": "high"
+  },
+  "tur-6-soyuncu": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Çağlar Söyüncü",
+    "match_confidence": "high"
+  },
+  "tur-7-demiral": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Merih Demiral",
+    "match_confidence": "high"
+  },
+  "tur-8-kadioglu": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "Ferdi Kadıoğlu",
+    "match_confidence": "high"
+  },
+  "tur-9-ayhan": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Kaan Ayhan",
+    "match_confidence": "high"
+  },
+  "tur-10-yuksek": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "İsmail Yüksek",
+    "match_confidence": "high"
+  },
+  "tur-11-calhanoglu": {
+    "ovr": 86,
+    "position": "MED",
+    "real_name": "Hakan Çalhanoğlu",
+    "match_confidence": "high"
+  },
+  "tur-12-kokcu": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Orkun Kökçü",
+    "match_confidence": "high"
+  },
+  "tur-14-guler": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Arda Güler",
+    "match_confidence": "high"
+  },
+  "tur-15-kahveci": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "İrfan Can Kahveci",
+    "match_confidence": "high"
+  },
+  "tur-16-akgun": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Yunus Akgün",
+    "match_confidence": "high"
+  },
+  "tur-17-uzun": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Can Uzun",
+    "match_confidence": "high"
+  },
+  "tur-18-yilmaz": {
+    "ovr": 80,
+    "position": "MED",
+    "real_name": "Barış Alper Yılmaz",
+    "match_confidence": "high"
+  },
+  "tur-19-akturkoglu": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Kerem Aktürkoğlu",
+    "match_confidence": "high"
+  },
+  "tur-20-yildiz": {
+    "ovr": 70,
+    "position": "DEL",
+    "real_name": "Kenan Yıldız",
+    "match_confidence": "high"
+  },
+  "ger-2-stegen": {
+    "ovr": 89,
+    "position": "POR",
+    "real_name": "Marc-André ter Stegen",
+    "match_confidence": "high"
+  },
+  "ger-3-tah": {
+    "ovr": 86,
+    "position": "DEF",
+    "real_name": "Jonathan Tah",
+    "match_confidence": "high"
+  },
+  "ger-4-raum": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "David Raum",
+    "match_confidence": "high"
+  },
+  "ger-5-schlotterbeck": {
+    "ovr": 85,
+    "position": "DEF",
+    "real_name": "Nico Schlotterbeck",
+    "match_confidence": "high"
+  },
+  "ger-6-rudiger": {
+    "ovr": 88,
+    "position": "DEF",
+    "real_name": "Antonio Rüdiger",
+    "match_confidence": "high"
+  },
+  "ger-7-anton": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "Waldemar Anton",
+    "match_confidence": "high"
+  },
+  "ger-8-baku": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Ridle Baku",
+    "match_confidence": "high"
+  },
+  "ger-9-mittelstadt": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Maximilian Mittelstädt",
+    "match_confidence": "high"
+  },
+  "ger-10-kimmich": {
+    "ovr": 86,
+    "position": "DEF",
+    "real_name": "Joshua Kimmich",
+    "match_confidence": "high"
+  },
+  "ger-11-wirtz": {
+    "ovr": 88,
+    "position": "MED",
+    "real_name": "Florian Wirtz",
+    "match_confidence": "high"
+  },
+  "ger-12-nmecha": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Felix Nmecha",
+    "match_confidence": "high"
+  },
+  "ger-14-goretzka": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Leon Goretzka",
+    "match_confidence": "high"
+  },
+  "ger-15-musiala": {
+    "ovr": 87,
+    "position": "MED",
+    "real_name": "Jamal Musiala",
+    "match_confidence": "high"
+  },
+  "ger-16-gnabry": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Serge Gnabry",
+    "match_confidence": "high"
+  },
+  "ger-17-havertz": {
+    "ovr": 83,
+    "position": "DEL",
+    "real_name": "Kai Havertz",
+    "match_confidence": "high"
+  },
+  "ger-18-sane": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Leroy Sané",
+    "match_confidence": "high"
+  },
+  "ger-19-adeyemi": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Karim Adeyemi",
+    "match_confidence": "high"
+  },
+  "ger-20-woltemade": {
+    "ovr": 69,
+    "position": "DEL",
+    "real_name": "Nick Woltemade",
+    "match_confidence": "high"
+  },
+  "cuw-2-room": {
+    "ovr": 64,
+    "position": "MED",
+    "real_name": "Ryan Broom",
+    "match_confidence": "low"
+  },
+  "cuw-3-obispo": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Armando Obispo",
+    "match_confidence": "low"
+  },
+  "cuw-4-floranus": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Sherel Floranus",
+    "match_confidence": "low"
+  },
+  "cuw-7-eijma": {
+    "ovr": 63,
+    "position": "DEF",
+    "real_name": "Roshon van Eijma",
+    "match_confidence": "low"
+  },
+  "cuw-8-sambo": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Shurandy Sambo",
+    "match_confidence": "low"
+  },
+  "cuw-10-roemeratoe": {
+    "ovr": 65,
+    "position": "MED",
+    "real_name": "Godfried Roemeratoe",
+    "match_confidence": "low"
+  },
+  "cuw-11-bacuna": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Juninho Bacuna",
+    "match_confidence": "low"
+  },
+  "cuw-12-bacuna": {
+    "ovr": 68,
+    "position": "DEF",
+    "real_name": "Leandro Bacuna",
+    "match_confidence": "low"
+  },
+  "cuw-14-chong": {
+    "ovr": 71,
+    "position": "MED",
+    "real_name": "Tahith Chong",
+    "match_confidence": "low"
+  },
+  "cuw-18-antonisse": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Jeremy Antonisse",
+    "match_confidence": "low"
+  },
+  "cuw-20-hansen": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Sontje Hansen",
+    "match_confidence": "low"
+  },
+  "civ-2-fofana": {
+    "ovr": 72,
+    "position": "POR",
+    "real_name": "Yahia Fofana",
+    "match_confidence": "low"
+  },
+  "civ-3-konan": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Konan N'Dri",
+    "match_confidence": "low"
+  },
+  "civ-4-singo": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Wilfried Singo",
+    "match_confidence": "low"
+  },
+  "civ-5-kossounou": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "Odilon Kossounou",
+    "match_confidence": "low"
+  },
+  "civ-6-ndicka": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Evan Ndicka",
+    "match_confidence": "low"
+  },
+  "civ-7-boly": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Willy Boly",
+    "match_confidence": "low"
+  },
+  "civ-8-agbadou": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Emmanuel Agbadou",
+    "match_confidence": "low"
+  },
+  "civ-9-diomande": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Ousmane Diomande",
+    "match_confidence": "low"
+  },
+  "civ-10-kessie": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Franck Yannick Kessié",
+    "match_confidence": "low"
+  },
+  "civ-11-fofana": {
+    "ovr": 80,
+    "position": "MED",
+    "real_name": "Seko Fofana",
+    "match_confidence": "low"
+  },
+  "civ-12-sangare": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Ibrahim Sangaré",
+    "match_confidence": "low"
+  },
+  "civ-15-diallo": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Amad Diallo",
+    "match_confidence": "low"
+  },
+  "civ-16-haller": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Sébastien Haller",
+    "match_confidence": "low"
+  },
+  "civ-17-adingra": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Simon Adingra",
+    "match_confidence": "low"
+  },
+  "civ-18-diomande": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Ousmane Diomande",
+    "match_confidence": "low"
+  },
+  "civ-19-guessand": {
+    "ovr": 74,
+    "position": "DEL",
+    "real_name": "Evann Guessand",
+    "match_confidence": "low"
+  },
+  "civ-20-diakite": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Oumar Diakité",
+    "match_confidence": "low"
+  },
+  "ecu-2-galindez": {
+    "ovr": 74,
+    "position": "POR",
+    "real_name": "Hernán Galíndez",
+    "match_confidence": "high"
+  },
+  "ecu-3-valle": {
+    "ovr": 66,
+    "position": "POR",
+    "real_name": "Gonzalo Valle",
+    "match_confidence": "high"
+  },
+  "ecu-4-hincapie": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "Piero Hincapié",
+    "match_confidence": "high"
+  },
+  "ecu-5-estupinan": {
+    "ovr": 80,
+    "position": "DEF",
+    "real_name": "Pervis Estupiñán",
+    "match_confidence": "high"
+  },
+  "ecu-6-pacho": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Willian Pacho",
+    "match_confidence": "high"
+  },
+  "ecu-7-preciado": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Ángelo Preciado",
+    "match_confidence": "high"
+  },
+  "ecu-8-ordonez": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Joel Ordoñez",
+    "match_confidence": "high"
+  },
+  "ecu-9-caicedo": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Moisés Caicedo",
+    "match_confidence": "high"
+  },
+  "ecu-10-franco": {
+    "ovr": 77,
+    "position": "POR",
+    "real_name": "Franco Armani",
+    "match_confidence": "low"
+  },
+  "ecu-11-paez": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Kendry Páez",
+    "match_confidence": "high"
+  },
+  "ecu-12-vite": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Pedro Vite",
+    "match_confidence": "high"
+  },
+  "ecu-15-campana": {
+    "ovr": 70,
+    "position": "DEL",
+    "real_name": "Leonardo Campana",
+    "match_confidence": "high"
+  },
+  "ecu-16-plata": {
+    "ovr": 64,
+    "position": "MED",
+    "real_name": "Nono",
+    "match_confidence": "low"
+  },
+  "ecu-17-angulo": {
+    "ovr": 67,
+    "position": "DEL",
+    "real_name": "Nilson Angulo",
+    "match_confidence": "high"
+  },
+  "ecu-18-minda": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Alan Minda",
+    "match_confidence": "high"
+  },
+  "ecu-19-rodriguez": {
+    "ovr": 68,
+    "position": "DEL",
+    "real_name": "Kevin Rodríguez",
+    "match_confidence": "high"
+  },
+  "ecu-20-valencia": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Anthony Valencia",
+    "match_confidence": "high"
+  },
+  "ned-2-verbruggen": {
+    "ovr": 76,
+    "position": "POR",
+    "real_name": "Bart Verbruggen",
+    "match_confidence": "low"
+  },
+  "ned-3-dijk": {
+    "ovr": 89,
+    "position": "DEF",
+    "real_name": "Virgil van Dijk",
+    "match_confidence": "low"
+  },
+  "ned-4-ven": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Micky van de Ven",
+    "match_confidence": "low"
+  },
+  "ned-5-timber": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Jurriën Timber",
+    "match_confidence": "low"
+  },
+  "ned-6-dumfries": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Denzel Dumfries",
+    "match_confidence": "low"
+  },
+  "ned-7-ake": {
+    "ovr": 84,
+    "position": "DEF",
+    "real_name": "Nathan Aké",
+    "match_confidence": "low"
+  },
+  "ned-8-frimpong": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Jeremie Frimpong",
+    "match_confidence": "low"
+  },
+  "ned-9-hecke": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Jan Paul van Hecke",
+    "match_confidence": "low"
+  },
+  "ned-10-reijnders": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Tijjani Reijnders",
+    "match_confidence": "low"
+  },
+  "ned-11-gravenberch": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Ryan Gravenberch",
+    "match_confidence": "low"
+  },
+  "ned-12-koopmeiners": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Teun Koopmeiners",
+    "match_confidence": "low"
+  },
+  "ned-14-jong": {
+    "ovr": 87,
+    "position": "MED",
+    "real_name": "Frenkie de Jong",
+    "match_confidence": "low"
+  },
+  "ned-15-simons": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Xavi Simons",
+    "match_confidence": "low"
+  },
+  "ned-16-kluivert": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Justin Kluivert",
+    "match_confidence": "low"
+  },
+  "ned-18-malen": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Donyell Malen",
+    "match_confidence": "low"
+  },
+  "ned-19-weghorst": {
+    "ovr": 77,
+    "position": "DEL",
+    "real_name": "Wout Weghorst",
+    "match_confidence": "low"
+  },
+  "ned-20-gakpo": {
+    "ovr": 83,
+    "position": "DEL",
+    "real_name": "Cody Gakpo",
+    "match_confidence": "low"
+  },
+  "jpn-2-suzuki": {
+    "ovr": 71,
+    "position": "POR",
+    "real_name": "Zion Suzuki",
+    "match_confidence": "high"
+  },
+  "jpn-4-seko": {
+    "ovr": 66,
+    "position": "DEF",
+    "real_name": "Ayumu Seko",
+    "match_confidence": "high"
+  },
+  "jpn-5-suzuki": {
+    "ovr": 71,
+    "position": "POR",
+    "real_name": "Zion Suzuki",
+    "match_confidence": "high"
+  },
+  "jpn-6-taniguchi": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Shogo Taniguchi",
+    "match_confidence": "high"
+  },
+  "jpn-7-watanabe": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Tsuyoshi Watanabe",
+    "match_confidence": "high"
+  },
+  "jpn-8-sano": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Kaishū Sano",
+    "match_confidence": "high"
+  },
+  "jpn-10-tanaka": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Ao Tanaka",
+    "match_confidence": "high"
+  },
+  "jpn-11-kamada": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Daichi Kamada",
+    "match_confidence": "high"
+  },
+  "jpn-12-kubo": {
+    "ovr": 81,
+    "position": "DEL",
+    "real_name": "Takefusa Kubo",
+    "match_confidence": "high"
+  },
+  "jpn-14-doan": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Ritsu Doan",
+    "match_confidence": "high"
+  },
+  "jpn-15-nakamura": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Keito Nakamura",
+    "match_confidence": "high"
+  },
+  "jpn-16-minamino": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Takumi Minamino",
+    "match_confidence": "high"
+  },
+  "jpn-17-machino": {
+    "ovr": 69,
+    "position": "DEL",
+    "real_name": "Shuto Machino",
+    "match_confidence": "high"
+  },
+  "jpn-18-ito": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Junya Ito",
+    "match_confidence": "high"
+  },
+  "jpn-19-ogawa": {
+    "ovr": 69,
+    "position": "DEL",
+    "real_name": "Koki Ogawa",
+    "match_confidence": "high"
+  },
+  "jpn-20-ueda": {
+    "ovr": 74,
+    "position": "DEL",
+    "real_name": "Ayase Ueda",
+    "match_confidence": "high"
+  },
+  "swe-2-johansson": {
+    "ovr": 74,
+    "position": "POR",
+    "real_name": "Viktor Johansson",
+    "match_confidence": "high"
+  },
+  "swe-3-hien": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Isak Hien",
+    "match_confidence": "high"
+  },
+  "swe-4-gudmundsson": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Gabriel Gudmundsson",
+    "match_confidence": "high"
+  },
+  "swe-5-holm": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Emil Holm",
+    "match_confidence": "high"
+  },
+  "swe-6-lindelof": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Victor Lindelöf",
+    "match_confidence": "high"
+  },
+  "swe-7-lagerbielke": {
+    "ovr": 67,
+    "position": "DEF",
+    "real_name": "Gustaf Lagerbielke",
+    "match_confidence": "high"
+  },
+  "swe-8-bergvall": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Lucas Bergvall",
+    "match_confidence": "high"
+  },
+  "swe-9-larsson": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Hugo Larsson",
+    "match_confidence": "high"
+  },
+  "swe-10-karlstrom": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Jesper Karlström",
+    "match_confidence": "high"
+  },
+  "swe-11-ayari": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Yasin Ayari",
+    "match_confidence": "high"
+  },
+  "swe-12-svanberg": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Mattias Svanberg",
+    "match_confidence": "high"
+  },
+  "swe-14-svensson": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Daniel Svensson",
+    "match_confidence": "high"
+  },
+  "swe-15-sema": {
+    "ovr": 70,
+    "position": "DEL",
+    "real_name": "Ken Sema",
+    "match_confidence": "high"
+  },
+  "swe-16-bardghji": {
+    "ovr": 70,
+    "position": "DEL",
+    "real_name": "Roony Bardghji",
+    "match_confidence": "high"
+  },
+  "swe-17-kulusevski": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Dejan Kulusevski",
+    "match_confidence": "high"
+  },
+  "swe-18-elanga": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Anthony Elanga",
+    "match_confidence": "high"
+  },
+  "swe-19-isak": {
+    "ovr": 85,
+    "position": "DEL",
+    "real_name": "Alexander Isak",
+    "match_confidence": "high"
+  },
+  "swe-20-gyokeres": {
+    "ovr": 84,
+    "position": "DEL",
+    "real_name": "Viktor Gyökeres",
+    "match_confidence": "high"
+  },
+  "tun-2-said": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Saïd Benrahma",
+    "match_confidence": "low"
+  },
+  "tun-3-dahmen": {
+    "ovr": 74,
+    "position": "POR",
+    "real_name": "Finn Dahmen",
+    "match_confidence": "low"
+  },
+  "tun-4-valery": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Yan Valery",
+    "match_confidence": "high"
+  },
+  "tun-5-talbi": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Montassar Talbi",
+    "match_confidence": "high"
+  },
+  "tun-7-abdi": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Ali Abdi",
+    "match_confidence": "high"
+  },
+  "tun-8-bronn": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "Dylan Bronn",
+    "match_confidence": "high"
+  },
+  "tun-9-skhiri": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Ellyes Skhiri",
+    "match_confidence": "high"
+  },
+  "tun-12-romdhane": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Mohamed Ali Ben Romdhane",
+    "match_confidence": "high"
+  },
+  "tun-14-mejbri": {
+    "ovr": 69,
+    "position": "MED",
+    "real_name": "Hannibal",
+    "match_confidence": "high"
+  },
+  "tun-15-achouri": {
+    "ovr": 73,
+    "position": "DEL",
+    "real_name": "Elias Achouri",
+    "match_confidence": "high"
+  },
+  "tun-16-saad": {
+    "ovr": 71,
+    "position": "DEL",
+    "real_name": "Elias Saad",
+    "match_confidence": "high"
+  },
+  "tun-18-gharbi": {
+    "ovr": 68,
+    "position": "DEL",
+    "real_name": "Ismaël Gharbi",
+    "match_confidence": "low"
+  },
+  "tun-19-ltaief": {
+    "ovr": 71,
+    "position": "MED",
+    "real_name": "Sayfallah Ltaief",
+    "match_confidence": "high"
+  },
+  "bel-2-courtois": {
+    "ovr": 89,
+    "position": "POR",
+    "real_name": "Thibaut Courtois",
+    "match_confidence": "high"
+  },
+  "bel-3-theate": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Arthur Theate",
+    "match_confidence": "high"
+  },
+  "bel-4-castagne": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Timothy Castagne",
+    "match_confidence": "high"
+  },
+  "bel-5-debast": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Zeno Debast",
+    "match_confidence": "high"
+  },
+  "bel-6-mechele": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Brandon Mechele",
+    "match_confidence": "high"
+  },
+  "bel-7-cuyper": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Maxim De Cuyper",
+    "match_confidence": "high"
+  },
+  "bel-8-meunier": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Thomas Meunier",
+    "match_confidence": "high"
+  },
+  "bel-9-tielemans": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Youri Tielemans",
+    "match_confidence": "high"
+  },
+  "bel-10-onana": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Amadou Onana",
+    "match_confidence": "high"
+  },
+  "bel-11-raskin": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Nicolas Raskin",
+    "match_confidence": "high"
+  },
+  "bel-12-saelemaekers": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Alexis Saelemaekers",
+    "match_confidence": "high"
+  },
+  "bel-14-vanaken": {
+    "ovr": 80,
+    "position": "MED",
+    "real_name": "Hans Vanaken",
+    "match_confidence": "high"
+  },
+  "bel-15-bruyne": {
+    "ovr": 90,
+    "position": "MED",
+    "real_name": "Kevin De Bruyne",
+    "match_confidence": "high"
+  },
+  "bel-16-doku": {
+    "ovr": 80,
+    "position": "DEL",
+    "real_name": "Jérémy Doku",
+    "match_confidence": "high"
+  },
+  "bel-17-ketelaere": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Charles De Ketelaere",
+    "match_confidence": "high"
+  },
+  "bel-18-trossard": {
+    "ovr": 83,
+    "position": "DEL",
+    "real_name": "Leandro Trossard",
+    "match_confidence": "high"
+  },
+  "bel-19-openda": {
+    "ovr": 85,
+    "position": "DEL",
+    "real_name": "Loïs Openda",
+    "match_confidence": "high"
+  },
+  "bel-20-lukaku": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Romelu Lukaku",
+    "match_confidence": "high"
+  },
+  "egy-3-hany": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Hany Mukhtar",
+    "match_confidence": "low"
+  },
+  "egy-5-ibrahim": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Ibrahima Konaté",
+    "match_confidence": "low"
+  },
+  "egy-7-rabia": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Pablo Sarabia",
+    "match_confidence": "low"
+  },
+  "egy-10-attia": {
+    "ovr": 83,
+    "position": "DEL",
+    "real_name": "Mattia Zaccagni",
+    "match_confidence": "low"
+  },
+  "egy-16-faisal": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Faisal Al Ghamdi",
+    "match_confidence": "low"
+  },
+  "egy-17-salah": {
+    "ovr": 89,
+    "position": "DEL",
+    "real_name": "Mohamed Salah",
+    "match_confidence": "high"
+  },
+  "egy-18-mohamed": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Mostafa Mohamed",
+    "match_confidence": "high"
+  },
+  "egy-20-marmoush": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Omar Marmoush",
+    "match_confidence": "high"
+  },
+  "irn-9-moharrami": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "Sadegh Moharrami",
+    "match_confidence": "high"
+  },
+  "irn-18-taremi": {
+    "ovr": 80,
+    "position": "DEL",
+    "real_name": "Mehdi Taremi",
+    "match_confidence": "high"
+  },
+  "irn-20-gholizadeh": {
+    "ovr": 69,
+    "position": "MED",
+    "real_name": "Ali Gholizadeh",
+    "match_confidence": "high"
+  },
+  "nzl-2-payne": {
+    "ovr": 67,
+    "position": "DEF",
+    "real_name": "Tim Payne",
+    "match_confidence": "high"
+  },
+  "nzl-3-paulsen": {
+    "ovr": 70,
+    "position": "POR",
+    "real_name": "Alex Paulsen",
+    "match_confidence": "high"
+  },
+  "nzl-4-boxall": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Michael Boxall",
+    "match_confidence": "high"
+  },
+  "nzl-5-cacace": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Liberato Cacace",
+    "match_confidence": "high"
+  },
+  "nzl-6-payne": {
+    "ovr": 67,
+    "position": "DEF",
+    "real_name": "Tim Payne",
+    "match_confidence": "high"
+  },
+  "nzl-7-bindon": {
+    "ovr": 67,
+    "position": "DEF",
+    "real_name": "Tyler Bindon",
+    "match_confidence": "high"
+  },
+  "nzl-8-vries": {
+    "ovr": 64,
+    "position": "DEF",
+    "real_name": "Francis de Vries",
+    "match_confidence": "high"
+  },
+  "nzl-9-surman": {
+    "ovr": 66,
+    "position": "DEF",
+    "real_name": "Finn Surman",
+    "match_confidence": "high"
+  },
+  "nzl-10-bell": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Joe Bell",
+    "match_confidence": "high"
+  },
+  "nzl-11-singh": {
+    "ovr": 64,
+    "position": "POR",
+    "real_name": "Gurpreet Singh Sandhu",
+    "match_confidence": "low"
+  },
+  "nzl-12-thomas": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Ryan Thomas",
+    "match_confidence": "high"
+  },
+  "nzl-14-garbett": {
+    "ovr": 64,
+    "position": "MED",
+    "real_name": "Matthew Garbett",
+    "match_confidence": "high"
+  },
+  "nzl-15-stamenic": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Marko Stamenić",
+    "match_confidence": "high"
+  },
+  "nzl-16-old": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Ben Old",
+    "match_confidence": "high"
+  },
+  "nzl-17-wood": {
+    "ovr": 76,
+    "position": "DEL",
+    "real_name": "Chris Wood",
+    "match_confidence": "high"
+  },
+  "nzl-18-just": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Medrán",
+    "match_confidence": "low"
+  },
+  "nzl-19-mccowatt": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Callum McCowatt",
+    "match_confidence": "high"
+  },
+  "nzl-20-barbarouses": {
+    "ovr": 68,
+    "position": "DEL",
+    "real_name": "Kosta Barbarouses",
+    "match_confidence": "high"
+  },
+  "esp-2-simon": {
+    "ovr": 86,
+    "position": "POR",
+    "real_name": "Unai Simón",
+    "match_confidence": "high"
+  },
+  "esp-3-normand": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Robin Le Normand",
+    "match_confidence": "high"
+  },
+  "esp-4-laporte": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Aymeric Laporte",
+    "match_confidence": "high"
+  },
+  "esp-5-huijsen": {
+    "ovr": 68,
+    "position": "DEF",
+    "real_name": "Dean Huijsen",
+    "match_confidence": "high"
+  },
+  "esp-6-porro": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Pedro Porro",
+    "match_confidence": "high"
+  },
+  "esp-7-carvajal": {
+    "ovr": 86,
+    "position": "DEF",
+    "real_name": "Carvajal",
+    "match_confidence": "high"
+  },
+  "esp-8-cucurella": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Marc Cucurella",
+    "match_confidence": "high"
+  },
+  "esp-9-zubimendi": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Zubimendi",
+    "match_confidence": "high"
+  },
+  "esp-10-rodri": {
+    "ovr": 91,
+    "position": "MED",
+    "real_name": "Rodri",
+    "match_confidence": "high"
+  },
+  "esp-11-pedri": {
+    "ovr": 86,
+    "position": "MED",
+    "real_name": "Pedri",
+    "match_confidence": "high"
+  },
+  "esp-12-ruiz": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Fabián Ruiz",
+    "match_confidence": "high"
+  },
+  "esp-14-merino": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Mikel Merino",
+    "match_confidence": "high"
+  },
+  "esp-15-yamal": {
+    "ovr": 81,
+    "position": "DEL",
+    "real_name": "Lamine Yamal",
+    "match_confidence": "high"
+  },
+  "esp-16-olmo": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Dani Olmo",
+    "match_confidence": "high"
+  },
+  "esp-17-williams": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Nico Williams",
+    "match_confidence": "high"
+  },
+  "esp-18-torres": {
+    "ovr": 80,
+    "position": "DEL",
+    "real_name": "Ferran Torres",
+    "match_confidence": "high"
+  },
+  "esp-19-morata": {
+    "ovr": 83,
+    "position": "DEL",
+    "real_name": "Morata",
+    "match_confidence": "high"
+  },
+  "esp-20-oyarzabal": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Oyarzabal",
+    "match_confidence": "high"
+  },
+  "cpv-3-costa": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Logan Costa",
+    "match_confidence": "low"
+  },
+  "cpv-6-moreira": {
+    "ovr": 69,
+    "position": "DEF",
+    "real_name": "Steven Moreira",
+    "match_confidence": "low"
+  },
+  "cpv-7-pina": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Wagner Pina",
+    "match_confidence": "low"
+  },
+  "cpv-8-paulo": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "João Paulo",
+    "match_confidence": "low"
+  },
+  "cpv-9-semedo": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Nélson Semedo",
+    "match_confidence": "low"
+  },
+  "cpv-10-pina": {
+    "ovr": 80,
+    "position": "DEF",
+    "real_name": "Pervis Estupiñán",
+    "match_confidence": "low"
+  },
+  "cpv-11-andrade": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Patrick Andrade",
+    "match_confidence": "low"
+  },
+  "cpv-12-monteiro": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Otávio",
+    "match_confidence": "low"
+  },
+  "cpv-14-duarte": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Mário Rui",
+    "match_confidence": "low"
+  },
+  "cpv-15-rodrigues": {
+    "ovr": 76,
+    "position": "DEL",
+    "real_name": "Igor Thiago",
+    "match_confidence": "low"
+  },
+  "cpv-16-cabral": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Nélson Semedo",
+    "match_confidence": "low"
+  },
+  "cpv-17-mendes": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Nuno Mendes",
+    "match_confidence": "low"
+  },
+  "cpv-18-livramento": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Tino Livramento",
+    "match_confidence": "low"
+  },
+  "cpv-19-semedo": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Nélson Semedo",
+    "match_confidence": "low"
+  },
+  "cpv-20-bebe": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Bebé",
+    "match_confidence": "low"
+  },
+  "ksa-3-al-sanbi": {
+    "ovr": 55,
+    "position": "POR",
+    "real_name": "Abdulrahman Al Sanbi",
+    "match_confidence": "high"
+  },
+  "ksa-4-abdulhamid": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Saud Abdulhamid",
+    "match_confidence": "high"
+  },
+  "ksa-7-al-harbi": {
+    "ovr": 68,
+    "position": "DEF",
+    "real_name": "Muteb Al Harbi",
+    "match_confidence": "high"
+  },
+  "ksa-20-al-hamdan": {
+    "ovr": 61,
+    "position": "DEL",
+    "real_name": "Abdullah Al Hamdan",
+    "match_confidence": "high"
+  },
+  "uru-3-mele": {
+    "ovr": 73,
+    "position": "POR",
+    "real_name": "Santiago Mele",
+    "match_confidence": "high"
+  },
+  "uru-4-araujo": {
+    "ovr": 85,
+    "position": "DEF",
+    "real_name": "Ronald Araujo",
+    "match_confidence": "high"
+  },
+  "uru-5-gimenez": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "José María Giménez",
+    "match_confidence": "high"
+  },
+  "uru-6-caceres": {
+    "ovr": 68,
+    "position": "DEF",
+    "real_name": "Martín Cáceres",
+    "match_confidence": "high"
+  },
+  "uru-7-olivera": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Mathías Olivera",
+    "match_confidence": "high"
+  },
+  "uru-8-varela": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "José Varela",
+    "match_confidence": "high"
+  },
+  "uru-9-nandez": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Nahitan Nández",
+    "match_confidence": "high"
+  },
+  "uru-10-valverde": {
+    "ovr": 88,
+    "position": "MED",
+    "real_name": "Federico Valverde",
+    "match_confidence": "high"
+  },
+  "uru-12-bentancur": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Rodrigo Bentancur",
+    "match_confidence": "high"
+  },
+  "uru-14-ugarte": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Manuel Ugarte",
+    "match_confidence": "high"
+  },
+  "uru-15-cruz": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Juan Cruz",
+    "match_confidence": "low"
+  },
+  "uru-16-araujo": {
+    "ovr": 85,
+    "position": "DEF",
+    "real_name": "Ronald Araujo",
+    "match_confidence": "high"
+  },
+  "uru-17-nunez": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Darwin Núñez",
+    "match_confidence": "high"
+  },
+  "uru-18-vinas": {
+    "ovr": 66,
+    "position": "POR",
+    "real_name": "Edvinas Gertmonas",
+    "match_confidence": "low"
+  },
+  "uru-19-aguirre": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "Juan Felipe Aguirre",
+    "match_confidence": "low"
+  },
+  "uru-20-pellistri": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Facundo Pellistri",
+    "match_confidence": "high"
+  },
+  "fra-2-maignan": {
+    "ovr": 87,
+    "position": "POR",
+    "real_name": "Mike Maignan",
+    "match_confidence": "high"
+  },
+  "fra-3-hernandez": {
+    "ovr": 87,
+    "position": "DEF",
+    "real_name": "Theo Hernández",
+    "match_confidence": "high"
+  },
+  "fra-4-saliba": {
+    "ovr": 87,
+    "position": "DEF",
+    "real_name": "William Saliba",
+    "match_confidence": "high"
+  },
+  "fra-5-kounde": {
+    "ovr": 85,
+    "position": "DEF",
+    "real_name": "Jules Koundé",
+    "match_confidence": "high"
+  },
+  "fra-6-konate": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Ibrahima Konaté",
+    "match_confidence": "high"
+  },
+  "fra-7-upamecano": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Dayot Upamecano",
+    "match_confidence": "high"
+  },
+  "fra-8-digne": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Lucas Digne",
+    "match_confidence": "high"
+  },
+  "fra-9-tchouameni": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Aurélien Tchouaméni",
+    "match_confidence": "high"
+  },
+  "fra-10-camavinga": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Eduardo Camavinga",
+    "match_confidence": "high"
+  },
+  "fra-11-kone": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Kouadio Manu Koné",
+    "match_confidence": "high"
+  },
+  "fra-14-olise": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Michael Olise",
+    "match_confidence": "high"
+  },
+  "fra-15-dembele": {
+    "ovr": 86,
+    "position": "DEL",
+    "real_name": "Ousmane Dembélé",
+    "match_confidence": "high"
+  },
+  "fra-16-barcola": {
+    "ovr": 80,
+    "position": "DEL",
+    "real_name": "Bradley Barcola",
+    "match_confidence": "high"
+  },
+  "fra-17-doue": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Désiré Doué",
+    "match_confidence": "high"
+  },
+  "fra-18-coman": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Kingsley Coman",
+    "match_confidence": "high"
+  },
+  "fra-19-ekitike": {
+    "ovr": 76,
+    "position": "DEL",
+    "real_name": "Hugo Ekitike",
+    "match_confidence": "high"
+  },
+  "fra-20-mbappe": {
+    "ovr": 91,
+    "position": "DEL",
+    "real_name": "Kylian Mbappé",
+    "match_confidence": "high"
+  },
+  "sen-2-mendy": {
+    "ovr": 80,
+    "position": "POR",
+    "real_name": "Édouard Mendy",
+    "match_confidence": "high"
+  },
+  "sen-3-diouf": {
+    "ovr": 77,
+    "position": "POR",
+    "real_name": "Yehvann Diouf",
+    "match_confidence": "low"
+  },
+  "sen-4-niakhate": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Moussa Niakhaté",
+    "match_confidence": "high"
+  },
+  "sen-5-seck": {
+    "ovr": 66,
+    "position": "MED",
+    "real_name": "Demba Seck",
+    "match_confidence": "high"
+  },
+  "sen-6-jakobs": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Ismail Jakobs",
+    "match_confidence": "high"
+  },
+  "sen-7-diouf": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "El Hadji Malick Diouf",
+    "match_confidence": "high"
+  },
+  "sen-8-koulibaly": {
+    "ovr": 84,
+    "position": "DEF",
+    "real_name": "Kalidou Koulibaly",
+    "match_confidence": "high"
+  },
+  "sen-9-gueye": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Idrissa Gueye",
+    "match_confidence": "high"
+  },
+  "sen-10-sarr": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Pape Matar Sarr",
+    "match_confidence": "high"
+  },
+  "sen-11-gueye": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Pape Gueye",
+    "match_confidence": "high"
+  },
+  "sen-12-diarra": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Habib Diarra",
+    "match_confidence": "high"
+  },
+  "sen-14-camara": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Lamine Camara",
+    "match_confidence": "high"
+  },
+  "sen-15-mane": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Sadio Mané",
+    "match_confidence": "high"
+  },
+  "sen-16-sarr": {
+    "ovr": 76,
+    "position": "DEL",
+    "real_name": "Ismaïla Sarr",
+    "match_confidence": "high"
+  },
+  "sen-17-dia": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Boulaye Dia",
+    "match_confidence": "high"
+  },
+  "sen-18-ndiaye": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Iliman Ndiaye",
+    "match_confidence": "high"
+  },
+  "sen-19-jackson": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Nicolas Jackson",
+    "match_confidence": "high"
+  },
+  "sen-20-diatta": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Krépin Diatta",
+    "match_confidence": "high"
+  },
+  "irq-2-hassan": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Hassane Kamara",
+    "match_confidence": "low"
+  },
+  "irq-4-ali": {
+    "ovr": 62,
+    "position": "DEF",
+    "real_name": "Hussein Ali",
+    "match_confidence": "high"
+  },
+  "irq-8-younis": {
+    "ovr": 55,
+    "position": "MED",
+    "real_name": "Marcus Younis",
+    "match_confidence": "low"
+  },
+  "irq-9-iqbal": {
+    "ovr": 63,
+    "position": "MED",
+    "real_name": "Zidane Iqbal",
+    "match_confidence": "high"
+  },
+  "irq-10-al-ammari": {
+    "ovr": 65,
+    "position": "MED",
+    "real_name": "Amir Al-Ammari",
+    "match_confidence": "high"
+  },
+  "irq-14-amyn": {
+    "ovr": 64,
+    "position": "MED",
+    "real_name": "Youssef Amyn",
+    "match_confidence": "high"
+  },
+  "irq-15-sher": {
+    "ovr": 64,
+    "position": "MED",
+    "real_name": "Aimar Sher",
+    "match_confidence": "low"
+  },
+  "irq-17-rashid": {
+    "ovr": 63,
+    "position": "DEF",
+    "real_name": "Mukhair Al Rashidi",
+    "match_confidence": "low"
+  },
+  "irq-18-al-hamadi": {
+    "ovr": 66,
+    "position": "DEL",
+    "real_name": "Ali Al Hamadi",
+    "match_confidence": "high"
+  },
+  "irq-19-hussein": {
+    "ovr": 62,
+    "position": "DEF",
+    "real_name": "Hussein Ali",
+    "match_confidence": "high"
+  },
+  "irq-20-ali": {
+    "ovr": 89,
+    "position": "POR",
+    "real_name": "Alisson",
+    "match_confidence": "low"
+  },
+  "nor-2-nyland": {
+    "ovr": 76,
+    "position": "POR",
+    "real_name": "Ørjan Nyland",
+    "match_confidence": "high"
+  },
+  "nor-3-ryerson": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Julian Ryerson",
+    "match_confidence": "high"
+  },
+  "nor-4-ostigard": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Leo Østigård",
+    "match_confidence": "high"
+  },
+  "nor-5-ajer": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Kristoffer Ajer",
+    "match_confidence": "high"
+  },
+  "nor-6-pedersen": {
+    "ovr": 73,
+    "position": "MED",
+    "real_name": "Marcus Holmgren Pedersen",
+    "match_confidence": "high"
+  },
+  "nor-7-wolfe": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "David Møller Wolfe",
+    "match_confidence": "high"
+  },
+  "nor-8-heggem": {
+    "ovr": 65,
+    "position": "DEF",
+    "real_name": "Torbjørn L. Heggem",
+    "match_confidence": "high"
+  },
+  "nor-9-thorsby": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Morten Thorsby",
+    "match_confidence": "high"
+  },
+  "nor-10-degaard": {
+    "ovr": 89,
+    "position": "MED",
+    "real_name": "Martin Ødegaard",
+    "match_confidence": "high"
+  },
+  "nor-11-berge": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Sander Berge",
+    "match_confidence": "high"
+  },
+  "nor-12-schjelderup": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Andreas Schjelderup",
+    "match_confidence": "high"
+  },
+  "nor-14-berg": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Patrick Berg",
+    "match_confidence": "high"
+  },
+  "nor-15-haaland": {
+    "ovr": 91,
+    "position": "DEL",
+    "real_name": "Erling Haaland",
+    "match_confidence": "high"
+  },
+  "nor-16-s-rloth": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Alexander Sørloth",
+    "match_confidence": "high"
+  },
+  "nor-17-d-nnum": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Aron Dønnum",
+    "match_confidence": "high"
+  },
+  "nor-18-larsen": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Jørgen Strand Larsen",
+    "match_confidence": "high"
+  },
+  "nor-19-nusa": {
+    "ovr": 72,
+    "position": "MED",
+    "real_name": "Antonio Nusa",
+    "match_confidence": "high"
+  },
+  "nor-20-bobb": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Oscar Bobb",
+    "match_confidence": "high"
+  },
+  "arg-2-martinez": {
+    "ovr": 87,
+    "position": "POR",
+    "real_name": "Emiliano Martínez",
+    "match_confidence": "high"
+  },
+  "arg-3-molina": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Nahuel Molina",
+    "match_confidence": "high"
+  },
+  "arg-4-romero": {
+    "ovr": 84,
+    "position": "DEF",
+    "real_name": "Cristian Romero",
+    "match_confidence": "high"
+  },
+  "arg-5-otamendi": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "Nicolás Otamendi",
+    "match_confidence": "high"
+  },
+  "arg-6-tagliafico": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Nicolás Tagliafico",
+    "match_confidence": "high"
+  },
+  "arg-7-balerdi": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Leonardo Balerdi",
+    "match_confidence": "high"
+  },
+  "arg-8-fernandez": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Enzo Fernández",
+    "match_confidence": "high"
+  },
+  "arg-9-allister": {
+    "ovr": 86,
+    "position": "MED",
+    "real_name": "Alexis Mac Allister",
+    "match_confidence": "high"
+  },
+  "arg-10-paul": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Rodrigo De Paul",
+    "match_confidence": "high"
+  },
+  "arg-11-palacios": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Exequiel Palacios",
+    "match_confidence": "high"
+  },
+  "arg-12-paredes": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Leandro Paredes",
+    "match_confidence": "high"
+  },
+  "arg-14-paz": {
+    "ovr": 69,
+    "position": "MED",
+    "real_name": "Nico Paz",
+    "match_confidence": "high"
+  },
+  "arg-15-mastantuono": {
+    "ovr": 69,
+    "position": "MED",
+    "real_name": "Franco Mastantuono",
+    "match_confidence": "high"
+  },
+  "arg-16-gonzalez": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Nico González",
+    "match_confidence": "low"
+  },
+  "arg-17-messi": {
+    "ovr": 88,
+    "position": "DEL",
+    "real_name": "Lionel Messi",
+    "match_confidence": "high"
+  },
+  "arg-18-martinez": {
+    "ovr": 89,
+    "position": "DEL",
+    "real_name": "Lautaro Martínez",
+    "match_confidence": "high"
+  },
+  "arg-19-alvarez": {
+    "ovr": 84,
+    "position": "DEL",
+    "real_name": "Julián Álvarez",
+    "match_confidence": "high"
+  },
+  "arg-20-simeone": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Giuliano Simeone",
+    "match_confidence": "high"
+  },
+  "alg-2-guendouz": {
+    "ovr": 80,
+    "position": "MED",
+    "real_name": "Mattéo Guendouzi",
+    "match_confidence": "low"
+  },
+  "alg-3-bensebaini": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Ramy Bensebaini",
+    "match_confidence": "high"
+  },
+  "alg-4-atal": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Danilo Cataldi",
+    "match_confidence": "low"
+  },
+  "alg-5-ait-nouri": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Rayan Aït-Nouri",
+    "match_confidence": "high"
+  },
+  "alg-7-mandi": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Aïssa Mandi",
+    "match_confidence": "high"
+  },
+  "alg-8-bennacer": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Ismaël Bennacer",
+    "match_confidence": "high"
+  },
+  "alg-10-boudaoui": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Hicham Boudaoui",
+    "match_confidence": "high"
+  },
+  "alg-11-zerrouki": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Ramiz Zerrouki",
+    "match_confidence": "high"
+  },
+  "alg-14-chaibi": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Farès Chaïbi",
+    "match_confidence": "high"
+  },
+  "alg-15-mahrez": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Riyad Mahrez",
+    "match_confidence": "high"
+  },
+  "alg-16-benrahma": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Saïd Benrahma",
+    "match_confidence": "high"
+  },
+  "alg-17-moussa": {
+    "ovr": 67,
+    "position": "DEL",
+    "real_name": "Anis Hadj-Moussa",
+    "match_confidence": "high"
+  },
+  "alg-18-gouiri": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Amine Gouiri",
+    "match_confidence": "high"
+  },
+  "alg-20-amoura": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Mohamed Amoura",
+    "match_confidence": "high"
+  },
+  "aut-2-schlager": {
+    "ovr": 74,
+    "position": "POR",
+    "real_name": "Alexander Schlager",
+    "match_confidence": "high"
+  },
+  "aut-3-pentz": {
+    "ovr": 74,
+    "position": "POR",
+    "real_name": "Patrick Pentz",
+    "match_confidence": "high"
+  },
+  "aut-4-alaba": {
+    "ovr": 85,
+    "position": "DEF",
+    "real_name": "David Alaba",
+    "match_confidence": "high"
+  },
+  "aut-5-danso": {
+    "ovr": 80,
+    "position": "DEF",
+    "real_name": "Kevin Danso",
+    "match_confidence": "high"
+  },
+  "aut-6-lienhart": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Philipp Lienhart",
+    "match_confidence": "high"
+  },
+  "aut-7-posch": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Stefan Posch",
+    "match_confidence": "high"
+  },
+  "aut-8-mwene": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Phillipp Mwene",
+    "match_confidence": "high"
+  },
+  "aut-9-prass": {
+    "ovr": 74,
+    "position": "MED",
+    "real_name": "Alexander Prass",
+    "match_confidence": "high"
+  },
+  "aut-10-schlager": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Xaver Schlager",
+    "match_confidence": "high"
+  },
+  "aut-11-sabitzer": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Marcel Sabitzer",
+    "match_confidence": "high"
+  },
+  "aut-12-laimer": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Konrad Laimer",
+    "match_confidence": "high"
+  },
+  "aut-14-grillitsch": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Florian Grillitsch",
+    "match_confidence": "high"
+  },
+  "aut-15-seiwald": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Nicolas Seiwald",
+    "match_confidence": "high"
+  },
+  "aut-16-schmid": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Romano Schmid",
+    "match_confidence": "high"
+  },
+  "aut-17-wimmer": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Patrick Wimmer",
+    "match_confidence": "high"
+  },
+  "aut-18-baumgartner": {
+    "ovr": 80,
+    "position": "MED",
+    "real_name": "Christoph Baumgartner",
+    "match_confidence": "high"
+  },
+  "aut-19-gregoritsch": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Michael Gregoritsch",
+    "match_confidence": "high"
+  },
+  "aut-20-arnautovic": {
+    "ovr": 80,
+    "position": "DEL",
+    "real_name": "Marko Arnautović",
+    "match_confidence": "high"
+  },
+  "jor-5-al-arab": {
+    "ovr": 62,
+    "position": "DEF",
+    "real_name": "Yazan Al-Arab",
+    "match_confidence": "high"
+  },
+  "jor-7-obaid": {
+    "ovr": 63,
+    "position": "DEF",
+    "real_name": "Saad Balobaid",
+    "match_confidence": "low"
+  },
+  "jor-12-taha": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Taha Abdi Ali",
+    "match_confidence": "low"
+  },
+  "por-2-costa": {
+    "ovr": 84,
+    "position": "POR",
+    "real_name": "Diogo Costa",
+    "match_confidence": "high"
+  },
+  "por-3-sa": {
+    "ovr": 79,
+    "position": "POR",
+    "real_name": "José Sá",
+    "match_confidence": "high"
+  },
+  "por-4-dias": {
+    "ovr": 88,
+    "position": "DEF",
+    "real_name": "Rúben Dias",
+    "match_confidence": "high"
+  },
+  "por-5-cancelo": {
+    "ovr": 86,
+    "position": "DEF",
+    "real_name": "João Cancelo",
+    "match_confidence": "high"
+  },
+  "por-6-dalot": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Diogo Dalot",
+    "match_confidence": "high"
+  },
+  "por-7-mendes": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Nuno Mendes",
+    "match_confidence": "high"
+  },
+  "por-8-inacio": {
+    "ovr": 80,
+    "position": "DEF",
+    "real_name": "Gonçalo Inácio",
+    "match_confidence": "high"
+  },
+  "por-9-silva": {
+    "ovr": 88,
+    "position": "MED",
+    "real_name": "Bernardo Silva",
+    "match_confidence": "high"
+  },
+  "por-10-fernandes": {
+    "ovr": 87,
+    "position": "MED",
+    "real_name": "Bruno Fernandes",
+    "match_confidence": "high"
+  },
+  "por-11-neves": {
+    "ovr": 84,
+    "position": "MED",
+    "real_name": "Rúben Neves",
+    "match_confidence": "high"
+  },
+  "por-12-vitinha": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Vitinha",
+    "match_confidence": "high"
+  },
+  "por-14-neves": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "João Neves",
+    "match_confidence": "high"
+  },
+  "por-15-ronaldo": {
+    "ovr": 86,
+    "position": "DEL",
+    "real_name": "Cristiano Ronaldo",
+    "match_confidence": "high"
+  },
+  "por-16-trincao": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Trincão",
+    "match_confidence": "high"
+  },
+  "por-17-felix": {
+    "ovr": 80,
+    "position": "DEL",
+    "real_name": "João Félix",
+    "match_confidence": "high"
+  },
+  "por-18-ramos": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Gonçalo Ramos",
+    "match_confidence": "high"
+  },
+  "por-19-neto": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Pedro Neto",
+    "match_confidence": "high"
+  },
+  "por-20-leao": {
+    "ovr": 86,
+    "position": "DEL",
+    "real_name": "Rafael Leão",
+    "match_confidence": "high"
+  },
+  "cod-2-mpasi": {
+    "ovr": 68,
+    "position": "POR",
+    "real_name": "Lionel Mpasi",
+    "match_confidence": "low"
+  },
+  "cod-3-wan-bissaka": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Aaron Wan-Bissaka",
+    "match_confidence": "low"
+  },
+  "cod-4-tuanzebe": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Axel Tuanzebe",
+    "match_confidence": "low"
+  },
+  "cod-5-masuaku": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Arthur Masuaku",
+    "match_confidence": "low"
+  },
+  "cod-6-mbemba": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Chancel Mbemba",
+    "match_confidence": "low"
+  },
+  "cod-7-kayembe": {
+    "ovr": 73,
+    "position": "DEF",
+    "real_name": "Joris Kayembe",
+    "match_confidence": "low"
+  },
+  "cod-8-pickel": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Charles Pickel",
+    "match_confidence": "low"
+  },
+  "cod-9-mukau": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Ngal'ayel Mukau",
+    "match_confidence": "low"
+  },
+  "cod-10-kayembe": {
+    "ovr": 71,
+    "position": "MED",
+    "real_name": "Edo Kayembe",
+    "match_confidence": "low"
+  },
+  "cod-12-sadiki": {
+    "ovr": 67,
+    "position": "MED",
+    "real_name": "Noah Sadiki",
+    "match_confidence": "low"
+  },
+  "cod-15-elia": {
+    "ovr": 85,
+    "position": "DEL",
+    "real_name": "Khvicha Kvaratskhelia",
+    "match_confidence": "low"
+  },
+  "cod-16-wissa": {
+    "ovr": 79,
+    "position": "DEL",
+    "real_name": "Yoane Wissa",
+    "match_confidence": "low"
+  },
+  "cod-17-cipenga": {
+    "ovr": 66,
+    "position": "DEL",
+    "real_name": "Brian Cipenga",
+    "match_confidence": "low"
+  },
+  "cod-19-bakambu": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Cédric Bakambu",
+    "match_confidence": "low"
+  },
+  "cod-20-mbuku": {
+    "ovr": 71,
+    "position": "MED",
+    "real_name": "Nathanaël Mbuku",
+    "match_confidence": "low"
+  },
+  "uzb-9-khusanov": {
+    "ovr": 72,
+    "position": "DEF",
+    "real_name": "Abdukodir Khusanov",
+    "match_confidence": "high"
+  },
+  "uzb-11-shukurov": {
+    "ovr": 69,
+    "position": "MED",
+    "real_name": "Otabek Shukurov",
+    "match_confidence": "high"
+  },
+  "uzb-16-shomurodov": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Eldor Shomurodov",
+    "match_confidence": "high"
+  },
+  "col-2-vargas": {
+    "ovr": 68,
+    "position": "DEL",
+    "real_name": "Kerwin Vargas",
+    "match_confidence": "high"
+  },
+  "col-3-ospina": {
+    "ovr": 77,
+    "position": "POR",
+    "real_name": "David Ospina",
+    "match_confidence": "high"
+  },
+  "col-4-sanchez": {
+    "ovr": 80,
+    "position": "DEF",
+    "real_name": "Davinson Sánchez",
+    "match_confidence": "high"
+  },
+  "col-5-mina": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Yerry Mina",
+    "match_confidence": "high"
+  },
+  "col-6-munoz": {
+    "ovr": 80,
+    "position": "DEF",
+    "real_name": "Daniel Muñoz",
+    "match_confidence": "high"
+  },
+  "col-7-mojica": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Johan Mojica",
+    "match_confidence": "high"
+  },
+  "col-8-lucumi": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Jhon Lucumí",
+    "match_confidence": "high"
+  },
+  "col-9-arias": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "Jorge Arias",
+    "match_confidence": "high"
+  },
+  "col-10-lerma": {
+    "ovr": 79,
+    "position": "MED",
+    "real_name": "Jefferson Lerma",
+    "match_confidence": "high"
+  },
+  "col-12-rios": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Cristian Barrios",
+    "match_confidence": "high"
+  },
+  "col-14-rodriguez": {
+    "ovr": 64,
+    "position": "DEL",
+    "real_name": "Steven Rodríguez",
+    "match_confidence": "high"
+  },
+  "col-15-quintero": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Juan Fernando Quintero",
+    "match_confidence": "high"
+  },
+  "col-16-carrascal": {
+    "ovr": 68,
+    "position": "MED",
+    "real_name": "Rafael Carrascal",
+    "match_confidence": "high"
+  },
+  "col-17-arias": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "Jorge Arias",
+    "match_confidence": "high"
+  },
+  "col-18-cordova": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Bobby De Cordova-Reid",
+    "match_confidence": "low"
+  },
+  "col-19-suarez": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Luis Suárez",
+    "match_confidence": "low"
+  },
+  "col-20-diaz": {
+    "ovr": 84,
+    "position": "DEL",
+    "real_name": "Luis Díaz",
+    "match_confidence": "high"
+  },
+  "eng-2-pickford": {
+    "ovr": 83,
+    "position": "POR",
+    "real_name": "Jordan Pickford",
+    "match_confidence": "high"
+  },
+  "eng-3-stones": {
+    "ovr": 85,
+    "position": "DEF",
+    "real_name": "John Stones",
+    "match_confidence": "high"
+  },
+  "eng-4-guehi": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "Marc Guéhi",
+    "match_confidence": "high"
+  },
+  "eng-5-konsa": {
+    "ovr": 81,
+    "position": "DEF",
+    "real_name": "Ezri Konsa",
+    "match_confidence": "high"
+  },
+  "eng-6-alexander-arnold": {
+    "ovr": 86,
+    "position": "DEF",
+    "real_name": "Trent Alexander-Arnold",
+    "match_confidence": "high"
+  },
+  "eng-7-james": {
+    "ovr": 82,
+    "position": "DEF",
+    "real_name": "Reece James",
+    "match_confidence": "high"
+  },
+  "eng-8-burn": {
+    "ovr": 78,
+    "position": "DEF",
+    "real_name": "Dan Burn",
+    "match_confidence": "high"
+  },
+  "eng-9-henderson": {
+    "ovr": 80,
+    "position": "MED",
+    "real_name": "Jordan Henderson",
+    "match_confidence": "high"
+  },
+  "eng-10-rice": {
+    "ovr": 87,
+    "position": "MED",
+    "real_name": "Declan Rice",
+    "match_confidence": "high"
+  },
+  "eng-11-bellingham": {
+    "ovr": 90,
+    "position": "MED",
+    "real_name": "Jude Bellingham",
+    "match_confidence": "high"
+  },
+  "eng-12-palmer": {
+    "ovr": 85,
+    "position": "MED",
+    "real_name": "Cole Palmer",
+    "match_confidence": "high"
+  },
+  "eng-14-rogers": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Morgan Rogers",
+    "match_confidence": "high"
+  },
+  "eng-15-gordon": {
+    "ovr": 82,
+    "position": "DEL",
+    "real_name": "Anthony Gordon",
+    "match_confidence": "high"
+  },
+  "eng-16-foden": {
+    "ovr": 88,
+    "position": "DEL",
+    "real_name": "Phil Foden",
+    "match_confidence": "high"
+  },
+  "eng-17-saka": {
+    "ovr": 87,
+    "position": "DEL",
+    "real_name": "Bukayo Saka",
+    "match_confidence": "high"
+  },
+  "eng-18-kane": {
+    "ovr": 90,
+    "position": "DEL",
+    "real_name": "Harry Kane",
+    "match_confidence": "high"
+  },
+  "eng-19-rashford": {
+    "ovr": 81,
+    "position": "MED",
+    "real_name": "Marcus Rashford",
+    "match_confidence": "high"
+  },
+  "eng-20-watkins": {
+    "ovr": 85,
+    "position": "DEL",
+    "real_name": "Ollie Watkins",
+    "match_confidence": "high"
+  },
+  "cro-2-livakovic": {
+    "ovr": 80,
+    "position": "POR",
+    "real_name": "Dominik Livaković",
+    "match_confidence": "high"
+  },
+  "cro-3-caleta-car": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Duje Ćaleta-Car",
+    "match_confidence": "high"
+  },
+  "cro-4-gvardiol": {
+    "ovr": 83,
+    "position": "DEF",
+    "real_name": "Joško Gvardiol",
+    "match_confidence": "high"
+  },
+  "cro-5-stanisic": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Josip Stanišić",
+    "match_confidence": "high"
+  },
+  "cro-6-vuskovic": {
+    "ovr": 64,
+    "position": "DEF",
+    "real_name": "Luka Vušković",
+    "match_confidence": "high"
+  },
+  "cro-7-sutalo": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Josip Šutalo",
+    "match_confidence": "high"
+  },
+  "cro-8-jakic": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Kristijan Jakić",
+    "match_confidence": "high"
+  },
+  "cro-9-modric": {
+    "ovr": 86,
+    "position": "MED",
+    "real_name": "Luka Modrić",
+    "match_confidence": "high"
+  },
+  "cro-10-kovacic": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Mateo Kovačić",
+    "match_confidence": "high"
+  },
+  "cro-11-baturina": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Martin Baturina",
+    "match_confidence": "high"
+  },
+  "cro-12-majer": {
+    "ovr": 78,
+    "position": "MED",
+    "real_name": "Lovro Majer",
+    "match_confidence": "high"
+  },
+  "cro-14-pasalic": {
+    "ovr": 80,
+    "position": "MED",
+    "real_name": "Mario Pašalić",
+    "match_confidence": "high"
+  },
+  "cro-15-sucic": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Petar Sučić",
+    "match_confidence": "high"
+  },
+  "cro-17-pasalic": {
+    "ovr": 80,
+    "position": "MED",
+    "real_name": "Mario Pašalić",
+    "match_confidence": "high"
+  },
+  "cro-18-budimir": {
+    "ovr": 78,
+    "position": "DEL",
+    "real_name": "Ante Budimir",
+    "match_confidence": "high"
+  },
+  "cro-19-kramaric": {
+    "ovr": 81,
+    "position": "DEL",
+    "real_name": "Andrej Kramarić",
+    "match_confidence": "high"
+  },
+  "gha-2-zigi": {
+    "ovr": 73,
+    "position": "POR",
+    "real_name": "Lawrence Ati Zigi",
+    "match_confidence": "high"
+  },
+  "gha-3-lamptey": {
+    "ovr": 75,
+    "position": "DEF",
+    "real_name": "Tariq Lamptey",
+    "match_confidence": "high"
+  },
+  "gha-4-salisu": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Mohammed Salisu",
+    "match_confidence": "high"
+  },
+  "gha-5-seidu": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Alidu Seidu",
+    "match_confidence": "high"
+  },
+  "gha-6-djiku": {
+    "ovr": 79,
+    "position": "DEF",
+    "real_name": "Alexander Djiku",
+    "match_confidence": "high"
+  },
+  "gha-7-mensah": {
+    "ovr": 70,
+    "position": "DEF",
+    "real_name": "Gideon Mensah",
+    "match_confidence": "high"
+  },
+  "gha-9-fatawu": {
+    "ovr": 76,
+    "position": "DEL",
+    "real_name": "Abdul Fatawu",
+    "match_confidence": "high"
+  },
+  "gha-10-partey": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Thomas Partey",
+    "match_confidence": "high"
+  },
+  "gha-11-samed": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Salis Abdul Samed",
+    "match_confidence": "high"
+  },
+  "gha-12-sulemana": {
+    "ovr": 71,
+    "position": "DEL",
+    "real_name": "Kamaldeen Sulemana",
+    "match_confidence": "high"
+  },
+  "gha-14-kudus": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Mohammed Kudus",
+    "match_confidence": "high"
+  },
+  "gha-15-williams": {
+    "ovr": 82,
+    "position": "MED",
+    "real_name": "Iñaki Williams",
+    "match_confidence": "high"
+  },
+  "gha-16-ayew": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Jordan Ayew",
+    "match_confidence": "high"
+  },
+  "gha-17-ayew": {
+    "ovr": 75,
+    "position": "DEL",
+    "real_name": "Jordan Ayew",
+    "match_confidence": "high"
+  },
+  "gha-18-paintsil": {
+    "ovr": 75,
+    "position": "MED",
+    "real_name": "Joseph Paintsil",
+    "match_confidence": "high"
+  },
+  "gha-19-bukari": {
+    "ovr": 72,
+    "position": "DEL",
+    "real_name": "Osman Bukari",
+    "match_confidence": "high"
+  },
+  "gha-20-semenyo": {
+    "ovr": 76,
+    "position": "MED",
+    "real_name": "Antoine Semenyo",
+    "match_confidence": "high"
+  },
+  "pan-2-mosquera": {
+    "ovr": 77,
+    "position": "DEF",
+    "real_name": "Mosquera",
+    "match_confidence": "low"
+  },
+  "pan-3-mejia": {
+    "ovr": 70,
+    "position": "POR",
+    "real_name": "Luis Mejía",
+    "match_confidence": "high"
+  },
+  "pan-4-escobar": {
+    "ovr": 68,
+    "position": "DEF",
+    "real_name": "Franco Escobar",
+    "match_confidence": "low"
+  },
+  "pan-5-andrade": {
+    "ovr": 71,
+    "position": "DEF",
+    "real_name": "Andrés Andrade",
+    "match_confidence": "high"
+  },
+  "pan-6-murillo": {
+    "ovr": 74,
+    "position": "DEF",
+    "real_name": "Amir Murillo",
+    "match_confidence": "high"
+  },
+  "pan-7-davis": {
+    "ovr": 76,
+    "position": "DEF",
+    "real_name": "Leif Davis",
+    "match_confidence": "low"
+  },
+  "pan-8-cordoba": {
+    "ovr": 66,
+    "position": "DEF",
+    "real_name": "José Córdoba",
+    "match_confidence": "high"
+  },
+  "pan-10-martinez": {
+    "ovr": 55,
+    "position": "MED",
+    "real_name": "Cristian Martínez",
+    "match_confidence": "low"
+  },
+  "pan-11-godoy": {
+    "ovr": 70,
+    "position": "MED",
+    "real_name": "Aníbal Godoy",
+    "match_confidence": "high"
+  },
+  "pan-12-carrasquilla": {
+    "ovr": 71,
+    "position": "MED",
+    "real_name": "Adalberto Carrasquilla",
+    "match_confidence": "high"
+  },
+  "pan-15-harvey": {
+    "ovr": 56,
+    "position": "MED",
+    "real_name": "Carlos Harvey",
+    "match_confidence": "high"
+  },
+  "pan-16-diaz": {
+    "ovr": 74,
+    "position": "DEL",
+    "real_name": "Ismael Díaz",
+    "match_confidence": "high"
+  },
+  "pan-17-fajardo": {
+    "ovr": 70,
+    "position": "DEL",
+    "real_name": "José Fajardo",
+    "match_confidence": "high"
+  },
+  "pan-18-waterman": {
+    "ovr": 67,
+    "position": "DEF",
+    "real_name": "Joel Waterman",
+    "match_confidence": "low"
+  },
+  "pan-19-rodriguez": {
+    "ovr": 83,
+    "position": "MED",
+    "real_name": "Guido Rodríguez",
+    "match_confidence": "low"
+  },
+  "pan-20-quintero": {
+    "ovr": 77,
+    "position": "MED",
+    "real_name": "Juan Fernando Quintero",
+    "match_confidence": "low"
+  }
+}
