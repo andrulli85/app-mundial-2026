@@ -322,6 +322,7 @@ export default function SettingsPage() {
         <section
           className="rounded-2xl shadow-sm overflow-hidden"
           style={{ backgroundColor: "#ffffff" }}
+          data-testid="settings-row-logros"
         >
           <a
             href="/achievements"
@@ -345,6 +346,7 @@ export default function SettingsPage() {
         <section
           className="rounded-2xl shadow-sm overflow-hidden"
           style={{ backgroundColor: "#ffffff" }}
+          data-testid="settings-row-import"
         >
           <a
             href="/import"

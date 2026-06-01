@@ -104,9 +104,9 @@ test("golden-path smoke — all major routes", async ({ page }) => {
   await page.waitForSelector('[data-testid="world-map-container"]', { timeout: 15000 });
   await expect(page.locator('[data-testid="world-map-container"]')).toBeVisible();
 
-  // ── /settings — Cuenta + Logros + Importar rows present ──────────────────────
+  // ── /settings — Logros + Importar rows present ───────────────────────────────
   await page.goto(`${BASE}/settings`);
   await page.waitForLoadState("networkidle");
-  await expect(page.locator("text=Logros")).toBeVisible({ timeout: 8000 });
-  await expect(page.locator("text=Importar")).toBeVisible({ timeout: 5000 });
+  await expect(page.locator('[data-testid="settings-row-logros"]')).toBeVisible({ timeout: 8000 });
+  await expect(page.locator('[data-testid="settings-row-import"]')).toBeVisible({ timeout: 5000 });
 });

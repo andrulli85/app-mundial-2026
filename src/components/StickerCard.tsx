@@ -34,6 +34,7 @@ export default function StickerCard({
   return (
     <button
       onClick={() => onTap(sticker.id)}
+      data-testid={`sticker-${sticker.id}`}
       className="sticker-cell relative w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 rounded"
       style={{
         aspectRatio: isLandscape ? "4/3" : "3/4",

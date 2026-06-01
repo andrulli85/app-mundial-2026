@@ -24,7 +24,9 @@ test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 async function getCount(page: import("@playwright/test").Page, stickerId: string): Promise<number> {
   return page.evaluate((id: string) => {
     return new Promise<number>((resolve) => {
-      const req = indexedDB.open("mundial-2026", 1);
+      // Version must match the app's DB version (currently 2 — achievements store added in v2)
+      const req = indexedDB.open("mundial-2026", 2);
+      req.onupgradeneeded = () => { /* allow upgrade if needed */ };
       req.onsuccess = () => {
         const db = req.result;
         if (!db.objectStoreNames.contains("collection")) {
@@ -41,8 +43,8 @@ async function getCount(page: import("@playwright/test").Page, stickerId: string
 }
 
 /**
- * Taps the sticker card for TARGET_STICKER_ID within its team section.
- * Uses search to isolate the team section first.
+ * Taps the sticker card for TARGET_STICKER_ID using its data-testid attribute.
+ * Uses search to ensure the section is visible and the sticker is in viewport.
  */
 async function tapTargetSticker(page: import("@playwright/test").Page): Promise<void> {
   // Ensure we are on /album with the search-input visible
@@ -51,13 +53,14 @@ async function tapTargetSticker(page: import("@playwright/test").Page): Promise<
   await searchInput.fill(TARGET_TEAM);
   await page.waitForTimeout(400);
 
+  // Wait for the team section to be visible so the sticker card is in the DOM
   const teamSection = page.locator(`[data-testid="team-section-${TARGET_TEAM}"]`);
   await expect(teamSection).toBeVisible({ timeout: 8000 });
 
-  // Cards are plain <button> elements inside the team section grid.
-  // MEX 5 (Montes) is the 5th sticker in the MEX section (0-indexed → index 4).
-  const cards = teamSection.locator("button");
-  await cards.nth(4).click();
+  // Use the specific sticker testid (data-testid="sticker-<id>") for a reliable tap.
+  const stickerCard = page.locator(`[data-testid="sticker-${TARGET_STICKER_ID}"]`);
+  await stickerCard.scrollIntoViewIfNeeded();
+  await stickerCard.click();
   await page.waitForTimeout(300);
 }
 

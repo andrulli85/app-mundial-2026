@@ -87,6 +87,18 @@ function groupStickersByTeam(stickers: Sticker[]): TeamGroup[] {
   return groups;
 }
 
+// ---------------------------------------------------------------------------
+// Search normalization — strips diacritics so "Modric" matches "Modrić",
+// "Sao Paulo" matches "São Paulo", "Sudafrica" matches "Sudáfrica", etc.
+// ---------------------------------------------------------------------------
+
+function normalize(s: string): string {
+  return s
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase();
+}
+
 export default function AlbumPage() {
   const router = useRouter();
   const [catalog, setCatalog] = useState<Sticker[]>([]);
@@ -148,20 +160,22 @@ export default function AlbumPage() {
       );
     }
 
-    // 3. Search filter — matches code, name, English team, team_code, sticker
-    //    display_name, AND the Spanish display_name from TEAM_CATALOG so that
-    //    queries like "Estados Unidos" or "Sudáfrica" resolve correctly.
+    // 3. Search filter — accent-insensitive, matches code, name, English team,
+    //    team_code, sticker display_name, AND the Spanish display_name from
+    //    TEAM_CATALOG so that "Estados Unidos", "Sudáfrica", "Modric" (→ Modrić)
+    //    all resolve correctly regardless of diacritics.
     if (search.trim()) {
-      const q = search.trim().toLowerCase();
+      const q = normalize(search.trim());
       stickers = stickers.filter((s) => {
-        const spanishTeamName =
-          (TEAM_CATALOG[s.team_code || "_PANINI"]?.display_name ?? "").toLowerCase();
+        const spanishTeamName = normalize(
+          TEAM_CATALOG[s.team_code || "_PANINI"]?.display_name ?? ""
+        );
         return (
-          s.code.toLowerCase().includes(q) ||
-          s.name.toLowerCase().includes(q) ||
-          s.team.toLowerCase().includes(q) ||
-          s.team_code.toLowerCase().includes(q) ||
-          s.display_name.toLowerCase().includes(q) ||
+          normalize(s.code).includes(q) ||
+          normalize(s.name).includes(q) ||
+          normalize(s.team).includes(q) ||
+          normalize(s.team_code).includes(q) ||
+          normalize(s.display_name).includes(q) ||
           spanishTeamName.includes(q)
         );
       });

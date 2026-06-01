@@ -67,13 +67,15 @@ async function getIDBSticker(
 ): Promise<{ sticker_id: string; count: number; acquired_at: number } | null> {
   return page.evaluate((id: string) => {
     return new Promise<{ sticker_id: string; count: number; acquired_at: number } | null>((resolve) => {
-      const req = indexedDB.open("mundial-2026", 1);
+      // Version must match the app's DB version (currently 2 — achievements store added in v2)
+      const req = indexedDB.open("mundial-2026", 2);
+      req.onupgradeneeded = () => { /* allow upgrade if needed */ };
       req.onsuccess = () => {
         const db = req.result;
         const tx = db.transaction("collection", "readonly");
         const get = tx.objectStore("collection").get(id);
-        get.onsuccess = () => resolve(get.result ?? null);
-        get.onerror = () => resolve(null);
+        get.onsuccess = () => { db.close(); resolve(get.result ?? null); };
+        get.onerror = () => { db.close(); resolve(null); };
       };
       req.onerror = () => resolve(null);
     });
@@ -89,7 +91,9 @@ async function setIDBSticker(
   await page.evaluate(
     ({ id, cnt }: { id: string; cnt: number }) => {
       return new Promise<void>((resolve, reject) => {
-        const req = indexedDB.open("mundial-2026", 1);
+        // Version must match the app's DB version (currently 2 — achievements store added in v2)
+        const req = indexedDB.open("mundial-2026", 2);
+        req.onupgradeneeded = () => { /* allow upgrade if needed */ };
         req.onsuccess = () => {
           const db = req.result;
           const tx = db.transaction("collection", "readwrite");
@@ -98,8 +102,8 @@ async function setIDBSticker(
             count: cnt,
             acquired_at: Date.now(),
           });
-          tx.oncomplete = () => resolve();
-          tx.onerror = () => reject(new Error("IDB write failed"));
+          tx.oncomplete = () => { db.close(); resolve(); };
+          tx.onerror = () => { db.close(); reject(new Error("IDB write failed")); };
         };
         req.onerror = () => reject(new Error("IDB open failed"));
       });
