@@ -24,7 +24,7 @@ import { TEAM_CATALOG } from "@/lib/team-catalog";
 
 const IMPORT_JSON_PATH = "/domi-owned-2026-06-01.json";
 // Dynamic — populated from JSON on load
-let TOTAL_EXPECTED = 520;
+const TOTAL_EXPECTED = 520;
 
 // Dark theme colours (matches .home-dark / inicio)
 const BG = "linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%)";

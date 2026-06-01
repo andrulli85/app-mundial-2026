@@ -1,26 +1,20 @@
 "use client";
 
 /**
- * Album screen — 980-cell sticker grid.
+ * Album screen — FUT Champions card style (redesigned 2026-06-01).
  *
- * - Each cell is a <StickerCard> (filled photo or <EmptySlot>)
- * - Tap toggles count: 0→1→2→3→0 (missing→got→repe×1→repe×2→missing)
- * - State persisted in IndexedDB
- * - Header shows progress: X/980
- * - Stickers are grouped by team with a <TeamHeader> separator
+ * Dark theme scoped to this page via .home-dark wrapper.
+ * Grid renders <StickerCardFut> (photo + rarity border + rating + position + flag).
+ * StickerCard.tsx is preserved for /trade routes — DO NOT delete it.
  *
- * Tabs: Todo | Tengo | Me faltan | Repetidas
- * Team headers respond to active tab: only teams with visible stickers show a header.
- *
- * Category chips: 🔍 Todos | 🌍 Países | 🏆 Grupos | ✨ Especiales
- * Search input: case-insensitive match on code / name / team / display_name
- * Groups chip: shows FIFA 2026 group (A–L) section headers above team headers.
+ * Chips: 🔍 Todos | 🌍 Países | 🏆 Grupos | ✨ Especiales | ✨ Legendario
+ * Tabs: Todo | Tengo | Me faltan | Repetidas  (gold underline active)
+ * "Doradas" chip stays hidden (route /album/doradas still accessible).
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import StickerCard from "@/components/StickerCard";
-import TeamHeader from "@/components/TeamHeader";
+import StickerCardFut from "@/components/StickerCardFut";
 import { getNickname, getAllStickers, toggleSticker } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
@@ -32,25 +26,21 @@ import BottomNav from "@/components/BottomNav";
 import { getPeersWishing } from "@/lib/peer-mock";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
-type Category = "todos" | "paises" | "grupos" | "especiales";
+type Category = "todos" | "paises" | "grupos" | "especiales" | "legendario";
 
 // ---------------------------------------------------------------------------
 // Category chip definitions
 // ---------------------------------------------------------------------------
 
 const CATEGORY_CHIPS: { id: Category; label: string }[] = [
-  { id: "todos",     label: "🔍 Todos" },
-  { id: "paises",    label: "🌍 Países" },
-  { id: "grupos",    label: "🏆 Grupos" },
+  { id: "todos",      label: "🔍 Todos" },
+  { id: "paises",     label: "🌍 Países" },
+  { id: "grupos",     label: "🏆 Grupos" },
   { id: "especiales", label: "✨ Especiales" },
+  { id: "legendario", label: "✨ Legendario" },
 ];
 
-/**
- * External chip — navigates away from the album grid.
- * Chip is hidden from strip (2026-06-01, Andy paused doradas focus).
- * Route /album/doradas remains accessible. Re-enable chip by restoring the
- * <a> block in the category-chips group below.
- */
+// Hidden doradas route (re-enable by restoring the chip)
 const _DORADAS_CHIP_HREF = "/album/doradas";
 
 // Groups A–L in order
@@ -66,15 +56,9 @@ interface TeamGroup {
   catalogEntry: TeamCatalogEntry;
   teamColor: string;
   stickers: Sticker[];
-  /** FIFA group letter (A-L) or "_fwc" / "_end" */
   group: string;
 }
 
-/**
- * Groups an ordered sticker array into consecutive runs by team_code.
- * Stickers with team_code="" (Panini-00) are mapped to "_PANINI".
- * The order of groups reflects the sort_order already baked into the catalog.
- */
 function groupStickersByTeam(stickers: Sticker[]): TeamGroup[] {
   const groups: TeamGroup[] = [];
   for (const sticker of stickers) {
@@ -98,8 +82,7 @@ function groupStickersByTeam(stickers: Sticker[]): TeamGroup[] {
 }
 
 // ---------------------------------------------------------------------------
-// Search normalization — strips diacritics so "Modric" matches "Modrić",
-// "Sao Paulo" matches "São Paulo", "Sudafrica" matches "Sudáfrica", etc.
+// Search normalization — strips diacritics
 // ---------------------------------------------------------------------------
 
 function normalize(s: string): string {
@@ -118,10 +101,8 @@ export default function AlbumPage() {
   const [nickname, setNickname] = useState("");
   const [category, setCategory] = useState<Category>("todos");
   const [search, setSearch] = useState("");
-  // demand map: sticker_id → number of friends who wishlisted it (used for demand badge)
-  const [demandMap, setDemandMap] = useState<Record<string, number>>({});
+  const [_demandMap, setDemandMap] = useState<Record<string, number>>({});
 
-  // Load catalog + collection on mount
   useEffect(() => {
     (async () => {
       const nick = await getNickname();
@@ -145,7 +126,6 @@ export default function AlbumPage() {
       setCounts(countMap);
       setLoading(false);
 
-      // Build demand map: for each sticker I own ≥2, count how many friends wish it
       const demand: Record<string, number> = {};
       for (const s of cat) {
         const peers = getPeersWishing(s.id);
@@ -162,15 +142,15 @@ export default function AlbumPage() {
 
   // ---------- Filter pipeline: tab → category → search ----------
   const filteredStickers = useMemo(() => {
-    // 1. Tab filter
     let stickers = catalog;
+
+    // Tab filter
     if (tab === "tengo")     stickers = stickers.filter((s) => (counts[s.id] ?? 0) >= 1);
     if (tab === "faltan")    stickers = stickers.filter((s) => (counts[s.id] ?? 0) === 0);
     if (tab === "repetidas") stickers = stickers.filter((s) => (counts[s.id] ?? 0) >= 2);
 
-    // 2. Category filter
+    // Category filter
     if (category === "paises" || category === "grupos") {
-      // Country teams only: exclude FWC and Panini
       stickers = stickers.filter(
         (s) => s.type !== "fwc" && s.type !== "panini_special" && s.team_code !== "" && s.team_code !== "FWC"
       );
@@ -178,12 +158,11 @@ export default function AlbumPage() {
       stickers = stickers.filter(
         (s) => s.type === "fwc" || s.type === "panini_special" || s.team_code === "" || s.team_code === "FWC"
       );
+    } else if (category === "legendario") {
+      stickers = stickers.filter((s) => s.rarity_tier === "legend");
     }
 
-    // 3. Search filter — accent-insensitive, matches code, name, English team,
-    //    team_code, sticker display_name, AND the Spanish display_name from
-    //    TEAM_CATALOG so that "Estados Unidos", "Sudáfrica", "Modric" (→ Modrić)
-    //    all resolve correctly regardless of diacritics.
+    // Search filter — accent-insensitive
     if (search.trim()) {
       const q = normalize(search.trim());
       stickers = stickers.filter((s) => {
@@ -209,8 +188,6 @@ export default function AlbumPage() {
   const owned = catalog.filter((s) => (counts[s.id] ?? 0) >= 1).length;
   const dupes = catalog.filter((s) => (counts[s.id] ?? 0) >= 2).length;
 
-  // Per-team completion stats from the FULL catalog (not the filtered view),
-  // so "X / 20" stays consistent regardless of active tab or search.
   const teamStats = useMemo(() => {
     const map = new Map<string, { owned: number; total: number }>();
     for (const sticker of catalog) {
@@ -230,53 +207,70 @@ export default function AlbumPage() {
     { id: "repetidas", label: "Repetidas", count: dupes },
   ];
 
-  // Category label for empty-state
   const categoryLabel: Record<Category, string> = {
-    todos:     "el álbum",
-    paises:    "Países",
-    grupos:    "Grupos",
+    todos:      "el álbum",
+    paises:     "Países",
+    grupos:     "Grupos",
     especiales: "Especiales",
+    legendario: "Legendario",
   };
+
+  // ── Loading ──────────────────────────────────────────────────────────────────
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center home-dark">
         <div className="flex flex-col items-center gap-3">
           <div
             className="w-10 h-10 rounded-full border-4 animate-spin"
-            style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+            style={{ borderColor: "#facc15", borderTopColor: "transparent" }}
           />
-          <p className="text-sm text-gray-600">Cargando álbum...</p>
+          <p className="text-sm" style={{ color: "#9ca3af" }}>Cargando álbum...</p>
         </div>
       </div>
     );
   }
 
-  // Group the filtered stickers for rendering
   const teamGroups = groupStickersByTeam(filteredStickers);
 
   return (
-    <div className="flex flex-col flex-1 w-full lg:max-w-5xl xl:max-w-6xl mx-auto">
+    <div
+      className="flex flex-col flex-1 w-full lg:max-w-5xl xl:max-w-6xl mx-auto home-dark"
+      data-testid="album-dark-root"
+    >
       {/* ------------------------------------------------------------------ */}
-      {/* Header — sticky top-[54px] z-20 */}
+      {/* Header — dark + gold accent                                         */}
       {/* ------------------------------------------------------------------ */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3"
+        style={{
+          backgroundColor: "#111111",
+          borderBottom: "1px solid rgba(250,204,21,0.2)",
+          boxShadow: "0 1px 12px rgba(0,0,0,0.6)",
+        }}
       >
         <div className="flex items-center justify-between mb-2">
           <div>
-            <h1 className="text-lg font-black text-white leading-none">
-              Mi Álbum
+            <h1
+              className="text-lg font-black leading-none uppercase tracking-wider"
+              style={{
+                background: "linear-gradient(135deg, #fde047 0%, #facc15 50%, #f59e0b 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              MI ÁLBUM
             </h1>
-            <p className="text-xs text-green-200 mt-0.5">
+            <p className="text-xs mt-0.5" style={{ color: "#9ca3af" }}>
               {nickname} · {owned}/{total} figuritas
             </p>
           </div>
           <div className="flex items-center gap-2">
             <a
               href="/stats"
-              className="rounded-full p-2 text-white hover:bg-green-700 transition-colors"
+              className="rounded-full p-2 transition-colors"
+              style={{ color: "#9ca3af" }}
               aria-label="Ver estadísticas"
               title="Estadísticas"
             >
@@ -284,35 +278,40 @@ export default function AlbumPage() {
             </a>
             <a
               href="/trade"
-              className="rounded-full px-4 py-1.5 text-sm font-bold text-green-800"
-              style={{ backgroundColor: "#c2ef4e" }}
+              className="rounded-full px-4 py-1.5 text-sm font-bold"
+              style={{ backgroundColor: "#facc15", color: "#0a0a0a" }}
             >
               Intercambiar
             </a>
           </div>
         </div>
 
-        {/* Progress bar */}
-        <div className="w-full h-1.5 bg-green-900 rounded-full overflow-hidden">
+        {/* Progress bar — gold */}
+        <div
+          className="w-full h-1.5 rounded-full overflow-hidden"
+          style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+        >
           <div
             className="h-full rounded-full transition-all duration-300"
             style={{
               width: total > 0 ? `${(owned / total) * 100}%` : "0%",
-              backgroundColor: "#c2ef4e",
+              background: "linear-gradient(90deg, #facc15, #f59e0b)",
             }}
           />
         </div>
       </header>
 
-      {/* Smart install banner — hidden in standalone, respects 30d dismiss TTL */}
       <InstallBanner />
 
       {/* ------------------------------------------------------------------ */}
-      {/* Search + Category chips — sticky below header (top-[72px] z-10)   */}
+      {/* Search + Category chips                                              */}
       {/* ------------------------------------------------------------------ */}
       <div
-        className="sticky top-[126px] z-10 px-3 pt-2.5 pb-2 border-b"
-        style={{ backgroundColor: "#f9f5ee", borderColor: "#d1c9b8" }}
+        className="sticky top-[126px] z-10 px-3 pt-2.5 pb-2"
+        style={{
+          backgroundColor: "#0a0a0a",
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
+        }}
         data-testid="search-chips-bar"
       >
         {/* Search input */}
@@ -330,26 +329,27 @@ export default function AlbumPage() {
             placeholder="Buscar Estados Unidos / Modric / FWC…"
             aria-label="Buscar figuritas"
             data-testid="search-input"
-            className="w-full rounded-full border pl-9 pr-4 py-2.5 text-sm outline-none transition-shadow"
+            className="w-full rounded-full pl-9 pr-4 py-2.5 outline-none transition-shadow"
             style={{
               fontSize: "16px", // iOS zoom guard — must be ≥16px
-              backgroundColor: "#ffffff",
-              borderColor: "#d1c9b8",
-              color: "#1f2937",
+              backgroundColor: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "#f5f5f5",
             }}
             onFocus={(e) => {
-              e.currentTarget.style.borderColor = "#006847";
-              e.currentTarget.style.boxShadow = "0 0 0 2px rgba(0,104,71,0.15)";
+              e.currentTarget.style.borderColor = "#facc15";
+              e.currentTarget.style.boxShadow = "0 0 0 2px rgba(250,204,21,0.15)";
             }}
             onBlur={(e) => {
-              e.currentTarget.style.borderColor = "#d1c9b8";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
               e.currentTarget.style.boxShadow = "none";
             }}
           />
           {search && (
             <button
               onClick={() => setSearch("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-lg leading-none"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-lg leading-none"
+              style={{ color: "#6b7280" }}
               aria-label="Limpiar búsqueda"
             >
               ×
@@ -357,7 +357,7 @@ export default function AlbumPage() {
           )}
         </div>
 
-        {/* Category chip strip — horizontal scroll, snap */}
+        {/* Category chip strip */}
         <div
           className="flex gap-2 overflow-x-auto pb-0.5"
           style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}
@@ -376,12 +376,13 @@ export default function AlbumPage() {
                 className="flex-shrink-0 rounded-full px-4 font-semibold transition-all"
                 style={{
                   scrollSnapAlign: "start",
-                  height: "44px",
+                  height: "36px",
                   fontSize: "13px",
                   whiteSpace: "nowrap",
-                  backgroundColor: isSelected ? "#006847" : "transparent",
-                  color: isSelected ? "#ffffff" : "#374151",
-                  border: isSelected ? "2px solid #006847" : "2px solid #d1c9b8",
+                  backgroundColor: isSelected ? "#facc15" : "rgba(255,255,255,0.06)",
+                  color: isSelected ? "#0a0a0a" : "#d1d5db",
+                  border: isSelected ? "none" : "1px solid rgba(255,255,255,0.12)",
+                  fontWeight: isSelected ? 700 : 500,
                 }}
               >
                 {chip.label}
@@ -390,16 +391,19 @@ export default function AlbumPage() {
           })}
           {/* Doradas chip — hidden from chip strip (route /album/doradas still accessible).
                Andy paused doradas focus 2026-06-01; re-enable by restoring this block. */}
-          {/* <a href={DORADAS_CHIP_HREF} data-testid="chip-doradas" ... >Doradas ✨</a> */}
+          {/* <a href={_DORADAS_CHIP_HREF} data-testid="chip-doradas" ... >Doradas ✨</a> */}
         </div>
       </div>
 
       {/* ------------------------------------------------------------------ */}
-      {/* Tab bar — sticky below search+chips                                */}
+      {/* Tab bar                                                              */}
       {/* ------------------------------------------------------------------ */}
       <nav
-        className="sticky top-[230px] z-10 flex border-b"
-        style={{ backgroundColor: "#f9f5ee", borderColor: "#d1c9b8" }}
+        className="sticky top-[218px] z-10 flex"
+        style={{
+          backgroundColor: "#0a0a0a",
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
+        }}
         data-testid="tab-bar"
       >
         {tabs.map((t) => (
@@ -409,7 +413,7 @@ export default function AlbumPage() {
             data-testid={`tab-${t.id}`}
             className="flex-1 py-2.5 text-xs font-semibold transition-colors relative"
             style={{
-              color: tab === t.id ? "#006847" : "#6b7280",
+              color: tab === t.id ? "#facc15" : "#6b7280",
             }}
           >
             {t.label}
@@ -421,7 +425,7 @@ export default function AlbumPage() {
             {tab === t.id && (
               <div
                 className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                style={{ backgroundColor: "#006847" }}
+                style={{ background: "linear-gradient(90deg, #facc15, #f59e0b)" }}
               />
             )}
           </button>
@@ -429,33 +433,31 @@ export default function AlbumPage() {
       </nav>
 
       {/* ------------------------------------------------------------------ */}
-      {/* Sticker grid — grouped by team (+ group headers when chip=Grupos)  */}
+      {/* Sticker grid                                                         */}
       {/* ------------------------------------------------------------------ */}
       <main className="flex-1 px-2 py-3" data-testid="sticker-grid">
         {filteredStickers.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-gray-600">
+          <div className="flex flex-col items-center justify-center py-16" style={{ color: "#6b7280" }}>
             {search.trim() ? (
-              /* Search empty state */
               <>
                 <p className="text-4xl mb-3" aria-hidden="true">🔍</p>
-                <p className="text-sm font-medium text-center px-4">
+                <p className="text-sm font-medium text-center px-4" style={{ color: "#9ca3af" }}>
                   No encontramos &ldquo;{search}&rdquo; en {categoryLabel[category]}
                 </p>
                 <button
                   onClick={() => setSearch("")}
                   className="mt-3 text-sm font-semibold underline"
-                  style={{ color: "#006847" }}
+                  style={{ color: "#facc15" }}
                 >
                   Limpiar búsqueda
                 </button>
               </>
             ) : (
-              /* Tab empty state (original) */
               <>
                 <p className="text-4xl mb-3" aria-hidden="true">
                   {tab === "tengo" ? "📭" : tab === "repetidas" ? "📋" : "📦"}
                 </p>
-                <p className="text-sm font-medium">
+                <p className="text-sm font-medium" style={{ color: "#9ca3af" }}>
                   {tab === "tengo"
                     ? "Todavía no tenés ninguna"
                     : tab === "repetidas"
@@ -466,29 +468,24 @@ export default function AlbumPage() {
             )}
           </div>
         ) : category === "grupos" ? (
-          /* Grupos view: group headers (A–L) above team sections */
-          <GroupsView groups={teamGroups} counts={counts} onTap={handleTap} teamStats={teamStats} demandMap={demandMap} />
+          <GroupsView groups={teamGroups} counts={counts} onTap={handleTap} teamStats={teamStats} />
         ) : (
-          /* Default view: flat team sections */
           teamGroups.map((group) => (
             <section key={group.team_code} aria-label={group.display_name} data-testid={`team-section-${group.team_code}`}>
-              <TeamHeader
+              {/* Dark-themed team header */}
+              <DarkTeamHeader
                 entry={group.catalogEntry}
                 teamColor={group.teamColor}
                 owned={teamStats.get(group.team_code)?.owned ?? 0}
                 total={teamStats.get(group.team_code)?.total ?? group.stickers.length}
               />
-              <div
-                className="grid gap-1.5 mb-4"
-                style={{ gridTemplateColumns: "repeat(5, minmax(0, 1fr))" }}
-              >
+              <div className="grid grid-cols-3 gap-2 mb-4 md:grid-cols-5 lg:grid-cols-6">
                 {group.stickers.map((sticker) => (
-                  <StickerCard
+                  <StickerCardFut
                     key={sticker.id}
                     sticker={sticker}
                     count={counts[sticker.id] ?? 0}
                     onTap={handleTap}
-                    friendsWanting={demandMap[sticker.id] ?? 0}
                   />
                 ))}
               </div>
@@ -497,8 +494,54 @@ export default function AlbumPage() {
         )}
       </main>
 
-      {/* Bottom nav — shared 5-tab component */}
       <BottomNav active="album" />
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// DarkTeamHeader — dark-themed team section header
+// ---------------------------------------------------------------------------
+
+interface DarkTeamHeaderProps {
+  entry: TeamCatalogEntry;
+  teamColor: string;
+  owned: number;
+  total: number;
+}
+
+function DarkTeamHeader({ entry, teamColor, owned, total }: DarkTeamHeaderProps) {
+  const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
+  const complete = owned === total;
+
+  return (
+    <div
+      className="flex items-center gap-2 px-2.5 py-2 mb-2 mt-3 rounded-lg"
+      style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}
+    >
+      <span className="text-base leading-none">{entry.flag}</span>
+      <span className="text-xs font-bold flex-1 uppercase tracking-wide" style={{ color: "#e5e7eb" }}>
+        {entry.display_name}
+      </span>
+      <span
+        className="text-[11px] font-bold"
+        style={{ color: complete ? "#facc15" : "#6b7280" }}
+      >
+        {owned}/{total}
+        {complete && <span className="ml-1">✓</span>}
+      </span>
+      <div
+        className="w-16 h-1 rounded-full overflow-hidden"
+        style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+      >
+        <div
+          className="h-full rounded-full transition-all duration-300"
+          style={{
+            width: `${pct}%`,
+            backgroundColor: complete ? "#facc15" : teamColor,
+          }}
+        />
+      </div>
     </div>
   );
 }
@@ -512,11 +555,9 @@ interface GroupsViewProps {
   counts: Record<string, number>;
   onTap: (stickerId: string) => void;
   teamStats: Map<string, { owned: number; total: number }>;
-  demandMap: Record<string, number>;
 }
 
-function GroupsView({ groups, counts, onTap, teamStats, demandMap }: GroupsViewProps) {
-  // Build a map: FIFA group letter → TeamGroup[]
+function GroupsView({ groups, counts, onTap, teamStats }: GroupsViewProps) {
   const groupMap: Record<string, TeamGroup[]> = {};
   for (const tg of groups) {
     const g = tg.group;
@@ -524,44 +565,41 @@ function GroupsView({ groups, counts, onTap, teamStats, demandMap }: GroupsViewP
     groupMap[g].push(tg);
   }
 
-  // Render groups in canonical order A-L, skip empty
   const visibleGroups = FIFA_GROUPS.filter((g) => groupMap[g]?.length > 0);
 
   return (
     <>
       {visibleGroups.map((g) => (
         <section key={g} aria-label={`Grupo ${g}`} data-testid={`group-section-${g}`}>
-          {/* Group header A–L */}
+          {/* Group header */}
           <div
             className="flex items-center gap-2 px-2 py-1.5 mt-3 mb-1 rounded"
-            style={{ backgroundColor: "#006847" }}
+            style={{
+              backgroundColor: "rgba(250,204,21,0.1)",
+              border: "1px solid rgba(250,204,21,0.2)",
+            }}
             data-testid={`group-header-${g}`}
           >
-            <span className="text-xs font-black text-white tracking-widest">
+            <span className="text-xs font-black tracking-widest" style={{ color: "#facc15" }}>
               GRUPO {g}
             </span>
           </div>
 
-          {/* Teams inside this group */}
           {groupMap[g].map((tg) => (
             <section key={tg.team_code} aria-label={tg.display_name} data-testid={`team-section-${tg.team_code}`}>
-              <TeamHeader
-                  entry={tg.catalogEntry}
-                  teamColor={tg.teamColor}
-                  owned={teamStats.get(tg.team_code)?.owned ?? 0}
-                  total={teamStats.get(tg.team_code)?.total ?? tg.stickers.length}
-                />
-              <div
-                className="grid gap-1.5 mb-4"
-                style={{ gridTemplateColumns: "repeat(5, minmax(0, 1fr))" }}
-              >
+              <DarkTeamHeader
+                entry={tg.catalogEntry}
+                teamColor={tg.teamColor}
+                owned={teamStats.get(tg.team_code)?.owned ?? 0}
+                total={teamStats.get(tg.team_code)?.total ?? tg.stickers.length}
+              />
+              <div className="grid grid-cols-3 gap-2 mb-4 md:grid-cols-5 lg:grid-cols-6">
                 {tg.stickers.map((sticker) => (
-                  <StickerCard
+                  <StickerCardFut
                     key={sticker.id}
                     sticker={sticker}
                     count={counts[sticker.id] ?? 0}
                     onTap={onTap}
-                    friendsWanting={demandMap[sticker.id] ?? 0}
                   />
                 ))}
               </div>
@@ -572,4 +610,3 @@ function GroupsView({ groups, counts, onTap, teamStats, demandMap }: GroupsViewP
     </>
   );
 }
-
