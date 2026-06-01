@@ -29,6 +29,7 @@ import {
 } from "@/lib/player-meta";
 import type { Position } from "@/lib/player-meta";
 import BottomNav from "@/components/BottomNav";
+import EmptySlotCard from "@/components/EmptySlot";
 
 // ---------------------------------------------------------------------------
 // Constants / colors
@@ -113,35 +114,21 @@ const RARITY_COLORS: Record<string, { bg: string; border: string; text: string }
 
 // ---------------------------------------------------------------------------
 // SquadToken — mini player card
+// Renders the Panini sticker photo full-bleed when sticker.seed_image is
+// available, or the authentic EmptySlot design from the Album as fallback.
+// The outer frame keeps rarity_border + dragging style as the only overlay.
 // ---------------------------------------------------------------------------
 interface SquadTokenProps {
   sticker: Sticker;
-  ovr: number;
   rarity: string;
   size?: number;
   dragging?: boolean;
 }
 
-function SquadToken({ sticker, ovr, rarity, size = 60, dragging = false }: SquadTokenProps) {
+function SquadToken({ sticker, rarity, size = 60, dragging = false }: SquadTokenProps) {
   const c = RARITY_COLORS[rarity] ?? RARITY_COLORS.common;
   const height = Math.round(size * 1.18);
-
-  // Derive country flag emoji from team_code (best-effort)
-  const flagMap: Record<string, string> = {
-    MEX: "🇲🇽", ARG: "🇦🇷", BRA: "🇧🇷", FRA: "🇫🇷", ESP: "🇪🇸",
-    GER: "🇩🇪", ENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", ITA: "🇮🇹", POR: "🇵🇹", USA: "🇺🇸",
-    CHI: "🇨🇱", COL: "🇨🇴", URU: "🇺🇾", ECU: "🇪🇨", PER: "🇵🇪",
-    VEN: "🇻🇪", BOL: "🇧🇴", PAR: "🇵🇾", CAN: "🇨🇦", CRC: "🇨🇷",
-    PAN: "🇵🇦", HON: "🇭🇳", JAM: "🇯🇲", CUB: "🇨🇺", TRI: "🇹🇹",
-    MAR: "🇲🇦", SEN: "🇸🇳", NGA: "🇳🇬", CMR: "🇨🇲", CIV: "🇨🇮",
-    GHA: "🇬🇭", TUN: "🇹🇳", DRC: "🇨🇩", ALG: "🇩🇿", EGY: "🇪🇬",
-    RSA: "🇿🇦", MAD: "🇲🇬", MOR: "🇲🇦", JPN: "🇯🇵", KOR: "🇰🇷",
-    AUS: "🇦🇺", NZL: "🇳🇿", IRN: "🇮🇷", SAU: "🇸🇦", QAT: "🇶🇦",
-    SUI: "🇨🇭", NED: "🇳🇱", BEL: "🇧🇪", POL: "🇵🇱", CZE: "🇨🇿",
-    SRB: "🇷🇸", CRO: "🇭🇷", SLO: "🇸🇮", SVK: "🇸🇰", AUT: "🇦🇹",
-    SCO: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", WAL: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", IRL: "🇮🇪", UKR: "🇺🇦",
-  };
-  const flag = flagMap[sticker.team_code] ?? "🏳️";
+  const innerRadius = 8; // outer radius (11) minus ~border width
 
   return (
     <div
@@ -149,68 +136,41 @@ function SquadToken({ sticker, ovr, rarity, size = 60, dragging = false }: Squad
         width: size,
         height,
         borderRadius: 11,
-        padding: "5px 4px 6px",
         position: "relative",
         overflow: "hidden",
-        backgroundColor: c.bg,
         border: `1.5px solid ${c.border}`,
         boxShadow: dragging
           ? `0 0 0 2px ${c.border}, 0 14px 26px -8px rgba(0,0,0,0.7)`
           : `0 0 0 1px ${c.border}`,
         transform: dragging ? "scale(1.08)" : "none",
         transition: "transform 0.12s",
-        display: "flex",
-        flexDirection: "column",
-        gap: 2,
         flexShrink: 0,
       }}
     >
-      {/* OVR + flag row */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span
+      {sticker.seed_image ? (
+        // Full-bleed sticker photo
+        <img
+          src={sticker.seed_image}
+          alt={sticker.display_name}
+          loading="lazy"
           style={{
-            fontSize: 18,
-            fontWeight: 900,
-            lineHeight: 0.8,
-            color: c.text,
-            fontFamily: "system-ui, sans-serif",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            borderRadius: innerRadius,
+            display: "block",
           }}
-        >
-          {ovr}
-        </span>
-        <span style={{ fontSize: 13 }}>{flag}</span>
-      </div>
-
-      {/* Photo placeholder */}
-      <div
-        style={{
-          flex: 1,
-          borderRadius: 5,
-          background:
-            "repeating-linear-gradient(45deg,#0d0f13,#0d0f13 5px,#12151c 5px,#12151c 10px)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: 18,
-        }}
-      />
-
-      {/* Name */}
-      <div
-        style={{
-          fontSize: 9.5,
-          fontWeight: 800,
-          color: "#e5e7eb",
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          lineHeight: 1,
-          letterSpacing: "0.02em",
-          fontFamily: "system-ui, sans-serif",
-        }}
-      >
-        {sticker.display_name.split(" ").at(-1) ?? sticker.display_name}
-      </div>
+        />
+      ) : (
+        // Authentic Panini empty-slot fallback
+        <div style={{ width: "100%", height: "100%", borderRadius: innerRadius, overflow: "hidden" }}>
+          <EmptySlotCard
+            stickerCode={sticker.code}
+            playerName={sticker.display_name}
+            teamColor={sticker.team_color}
+          />
+        </div>
+      )}
     </div>
   );
 }
@@ -556,7 +516,6 @@ function PickerSheet({
         >
           {options.map((p) => {
             const meta = getPlayerMeta(p);
-            const ovr = meta?.ovr ?? 75;
             const rarity = meta?.rarity ?? "common";
             const inUse = usedElsewhere.has(p.id);
             const selected = p.id === current;
@@ -572,7 +531,6 @@ function PickerSheet({
               >
                 <SquadToken
                   sticker={p}
-                  ovr={ovr}
                   rarity={rarity}
                   size={68}
                 />
@@ -947,7 +905,6 @@ export default function OncePage() {
       const sticker = catalogMap.get(pid);
       if (!sticker) return null;
       const meta = getPlayerMeta(sticker);
-      const ovrVal = meta?.ovr ?? 75;
       const rarityVal = meta?.rarity ?? "common";
 
       return (
@@ -962,7 +919,6 @@ export default function OncePage() {
         >
           <SquadToken
             sticker={sticker}
-            ovr={ovrVal}
             rarity={rarityVal}
             size={size}
           />
@@ -1187,7 +1143,6 @@ export default function OncePage() {
           >
             <SquadToken
               sticker={sticker}
-              ovr={meta?.ovr ?? 75}
               rarity={meta?.rarity ?? "common"}
               size={64}
               dragging
