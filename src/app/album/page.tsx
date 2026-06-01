@@ -163,7 +163,10 @@ export default function AlbumPage() {
     }
 
     if (typeof window !== "undefined") {
-      console.log(`[ALBUM_FILTER] cat=${category} tab=${tab} in=${catalog.length} out=${stickers.length}`);
+      console.log(`[ALBUM_FILTER] cat=${category} tab=${tab} in=${catalog.length} out=${stickers.length} t=${Date.now()}`);
+      if (stickers.length <= 20) {
+        console.log(`[ALBUM_FILTER_RESULT] ids=${stickers.slice(0,5).map(s=>s.id).join(',')}`);
+      }
     }
 
     // Search filter — accent-insensitive
@@ -236,6 +239,9 @@ export default function AlbumPage() {
   }
 
   const teamGroups = groupStickersByTeam(filteredStickers);
+  if (typeof window !== "undefined") {
+    console.log(`[ALBUM_RENDER] filteredStickers=${filteredStickers.length} teamGroups=${teamGroups.length} cat=${category} t=${Date.now()}`);
+  }
 
   return (
     <div
