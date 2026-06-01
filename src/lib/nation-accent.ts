@@ -39,8 +39,7 @@ export const NATION_ACCENT: Record<string, string> = {
   "Catar":                "#8D1B3D",
   "Suiza":                "#FF0000",
 
-  // Group C
-  "Marruecos":   "#C8102E",
+  // Group C (Marruecos already defined above)
   "Haití":       "#00209F",
   "Escocia":     "#005EB8",
 
