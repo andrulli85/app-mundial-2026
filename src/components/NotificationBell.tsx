@@ -16,27 +16,38 @@ interface NotificationBellProps {
   color?: string;
   /** Icon size in px. Defaults to 24. */
   size?: number;
+  /**
+   * Hard-code the badge count instead of reading from localStorage.
+   * Used on /inicio for the mock "3" badge.
+   * TODO(notifications): remove once /notifications unread count is wired to real data.
+   */
+  mockCount?: number;
 }
 
 export default function NotificationBell({
   color = "#ffffff",
   size = 24,
+  mockCount,
 }: NotificationBellProps) {
   const router = useRouter();
   const [unreadCount, setUnreadCount] = useState<number>(0);
 
-  // Read initial count + subscribe to changes
+  // Read initial count + subscribe to changes (skipped when mockCount is provided)
   useEffect(() => {
+    if (mockCount !== undefined) return;
     setUnreadCount(notificationsLib.getUnreadCount());
     const unsubscribe = notificationsLib.subscribe((all) => {
       setUnreadCount(all.filter((n) => !n.read).length);
     });
     return unsubscribe;
-  }, []);
+  }, [mockCount]);
+
+  // Resolved count: prefer mockCount when provided
+  const displayCount = mockCount !== undefined ? mockCount : unreadCount;
 
   return (
     <button
-      aria-label={`Notificaciones${unreadCount > 0 ? `, ${unreadCount} sin leer` : ""}`}
+      aria-label={`Notificaciones${displayCount > 0 ? `, ${displayCount} sin leer` : ""}`}
       data-testid="notification-bell"
       onClick={() => router.push("/notifications")}
       style={{
@@ -69,10 +80,10 @@ export default function NotificationBell({
         <path d="M13.73 21a2 2 0 0 1-3.46 0" />
       </svg>
 
-      {/* Unread badge — only render when count > 0 */}
-      {unreadCount > 0 && (
+      {/* Unread badge — only render when displayCount > 0 */}
+      {displayCount > 0 && (
         <span
-          data-testid="notification-badge"
+          data-testid="bell-badge"
           style={{
             position: "absolute",
             top: 2,
@@ -80,7 +91,7 @@ export default function NotificationBell({
             minWidth: 16,
             height: 16,
             borderRadius: 999,
-            backgroundColor: "#E4002B",
+            backgroundColor: "#ef4444",
             color: "#ffffff",
             fontSize: 10,
             fontWeight: 800,
@@ -91,7 +102,7 @@ export default function NotificationBell({
             pointerEvents: "none",
           }}
         >
-          {unreadCount > 9 ? "9+" : unreadCount}
+          {displayCount > 9 ? "9+" : displayCount}
         </span>
       )}
     </button>

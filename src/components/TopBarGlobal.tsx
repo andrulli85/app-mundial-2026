@@ -13,6 +13,12 @@
  *   2. A 54px in-flow spacer div so page content doesn't slide under the bar.
  *
  * Returning null for suppressed paths ensures those pages get zero extra space.
+ *
+ * Route-specific props (scoped to /inicio only):
+ *   coinsLabel   — gold coins pill in the right side of the TopBar
+ *   mockNotifCount — mock notification badge count (3) on the bell
+ * TODO(economy): replace INICIO_COINS with real wallet query.
+ * TODO(notifications): replace INICIO_NOTIF_COUNT with real /notifications count.
  */
 
 import { usePathname } from "next/navigation";
@@ -21,14 +27,26 @@ import TopBar from "@/components/TopBar";
 /** Paths where the global TopBar must NOT render. */
 const SUPPRESS_PATHS = new Set(["/", "/notifications"]);
 
+// ── /inicio mock values (Phase 1) ────────────────────────────────────────────
+// TODO(economy): replace with real user wallet query
+const INICIO_COINS = 1240;
+// TODO(notifications): replace with real unread count from /api/notifications
+const INICIO_NOTIF_COUNT = 3;
+
 export default function TopBarGlobal() {
   const pathname = usePathname();
 
   if (SUPPRESS_PATHS.has(pathname)) return null;
 
+  const isInicio = pathname === "/inicio";
+
   return (
     <>
-      <TopBar variant="fixed" />
+      <TopBar
+        variant="fixed"
+        coinsLabel={isInicio ? INICIO_COINS.toLocaleString("es-CL") : undefined}
+        mockNotifCount={isInicio ? INICIO_NOTIF_COUNT : undefined}
+      />
       {/* In-flow spacer: occupies the 54px that TopBar covers with position:fixed */}
       <div style={{ height: 54, flexShrink: 0 }} aria-hidden="true" />
     </>

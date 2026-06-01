@@ -31,6 +31,18 @@ export interface TopBarProps {
   showBackButton?: boolean;
   /** Centered title shown when showBackButton=true. */
   title?: string;
+  /**
+   * Coins pill displayed right of the logo, left of the bell.
+   * Pass a pre-formatted string (e.g. "1.240") — component renders the pill with 🪙 prefix.
+   * TODO(economy): wire to real user wallet query.
+   */
+  coinsLabel?: string;
+  /**
+   * Override the notification badge count shown on the bell.
+   * When undefined, the bell reads the real unread count from localStorage.
+   * TODO(notifications): remove override once /notifications count is wired.
+   */
+  mockNotifCount?: number;
 }
 
 const GOLD = "#F4C84A";
@@ -41,6 +53,8 @@ export default function TopBar({
   variant = "fixed",
   showBackButton = false,
   title,
+  coinsLabel,
+  mockNotifCount,
 }: TopBarProps) {
   const router = useRouter();
 
@@ -140,8 +154,31 @@ export default function TopBar({
         </span>
       )}
 
-      {/* Right side — bell only (coins economy skipped per spec) */}
-      <NotificationBell color="#ffffff" size={24} />
+      {/* Right side — optional coins pill + bell */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        {coinsLabel && (
+          <div
+            data-testid="topbar-coins"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+              padding: "4px 10px",
+              borderRadius: 9999,
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(252,211,77,0.3)",
+            }}
+          >
+            <span style={{ fontSize: 12 }} aria-hidden="true">🪙</span>
+            <span
+              style={{ fontWeight: 700, fontSize: 14, color: "#facc15", lineHeight: 1 }}
+            >
+              {coinsLabel}
+            </span>
+          </div>
+        )}
+        <NotificationBell color="#ffffff" size={24} mockCount={mockNotifCount} />
+      </div>
     </div>
   );
 }

@@ -204,17 +204,29 @@ export default function InicioPage() {
         teamMap.set(code, existing);
       }
 
-      // Pick top 3: from PRIORITY_TEAMS that exist in catalog, prefer those with owned > 0
-      const withOwned = PRIORITY_TEAMS.filter(
-        (c) => (teamMap.get(c)?.owned ?? 0) > 0
+      // Sort ALL teams by completion % descending, take top 3.
+      // Ties broken alphabetically by code.
+      // If all teams are at 0%, fall back to the Domi-friendly defaults.
+      const allTeamCodes = Array.from(teamMap.keys()).filter(
+        (code) => (teamMap.get(code)?.total ?? 0) > 0
       );
+      allTeamCodes.sort((a, b) => {
+        const statsA = teamMap.get(a)!;
+        const statsB = teamMap.get(b)!;
+        const pctA = statsA.owned / statsA.total;
+        const pctB = statsB.owned / statsB.total;
+        if (pctB !== pctA) return pctB - pctA;
+        return a.localeCompare(b);
+      });
+
+      const top3 = allTeamCodes.slice(0, 3);
+      const anyOwned = top3.some((c) => (teamMap.get(c)?.owned ?? 0) > 0);
+
+      // Fall back to defaults when no stickers owned yet
       const candidates =
-        withOwned.length >= 3
-          ? withOwned.slice(0, 3)
-          : [
-              ...withOwned,
-              ...PRIORITY_TEAMS.filter((c) => !withOwned.includes(c)),
-            ].slice(0, 3);
+        anyOwned && top3.length >= 3
+          ? top3
+          : PRIORITY_TEAMS.filter((c) => teamMap.has(c)).slice(0, 3);
 
       const progress: CountryProgress[] = candidates.map((code) => {
         const entry = TEAM_CATALOG[code];
@@ -296,9 +308,9 @@ export default function InicioPage() {
               <div className="flex justify-center">
                 <span
                   className="px-3 py-1 rounded-full text-xs font-black tracking-wide"
-                  style={{ backgroundColor: "#facc15", color: "#111111" }}
+                  style={{ backgroundColor: "#facc15", color: "#1a1a1a" }}
                 >
-                  SOBRE DIARIO GRATIS
+                  ⚡ SOBRE DIARIO GRATIS
                 </span>
               </div>
 
@@ -329,7 +341,7 @@ export default function InicioPage() {
                   color: "#111111",
                 }}
               >
-                ABRIR SOBRE
+                🎁 ABRIR SOBRE
               </button>
             </div>
           </section>

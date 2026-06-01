@@ -16,6 +16,12 @@ import { grantAccess } from "../_invite";
  *  6. "COMPLETA TU ÁLBUM" section + at least 1 country row with X/Y pattern
  *  7. Doradas chip NOT present on /album
  *  8. Screenshot → /tmp/albumix-home-redesign.png
+ *
+ * Mockup-parity assertions (2026-06-01 fixes):
+ *  9. Coins pill in topbar: [data-testid="topbar-coins"] present, contains "1.240"
+ * 10. Bell badge: [data-testid="bell-badge"] present, text = "3"
+ * 11. Pack header chip contains ⚡ AND "SOBRE DIARIO GRATIS"
+ * 12. Pack CTA button contains 🎁 AND "ABRIR SOBRE"
  */
 
 const BASE = "https://app-mundial-2026-lemon.vercel.app";
@@ -99,9 +105,31 @@ test("FUT-style home — dark theme + hero + stats + country progress", async ({
   const chipStripText = await page.getByTestId("category-chips").textContent();
   expect(chipStripText ?? "").not.toContain("Doradas");
 
-  // Assertion 8: Screenshot
-  await page.goto(`${BASE}/inicio`);
-  await page.waitForLoadState("networkidle");
-  await page.waitForSelector('[data-testid="home-dark-root"]', { timeout: 10000 });
+  // ── Mockup-parity assertions (2026-06-01 fixes) ──────────────────────────
+
+  // Assertion 9: Coins pill in topbar
+  const coinsPill = page.getByTestId("topbar-coins");
+  await expect(coinsPill).toBeVisible({ timeout: 8000 });
+  const coinsText = await coinsPill.textContent() ?? "";
+  expect(coinsText).toContain("1.240");
+
+  // Assertion 10: Bell badge shows "3"
+  const bellBadge = page.getByTestId("bell-badge");
+  await expect(bellBadge).toBeVisible({ timeout: 8000 });
+  const badgeText = await bellBadge.textContent() ?? "";
+  expect(badgeText.trim()).toBe("3");
+
+  // Assertion 11: Pack header chip contains ⚡ and "SOBRE DIARIO GRATIS"
+  const packHero = page.getByTestId("pack-hero");
+  const packHeroText = await packHero.textContent() ?? "";
+  expect(packHeroText).toContain("⚡");
+  expect(packHeroText).toContain("SOBRE DIARIO GRATIS");
+
+  // Assertion 12: Pack CTA button contains 🎁 and "ABRIR SOBRE"
+  const openPackBtnText = await openPackBtn.textContent() ?? "";
+  expect(openPackBtnText).toContain("🎁");
+  expect(openPackBtnText).toContain("ABRIR SOBRE");
+
+  // Assertion 8: Screenshot (moved to end after all assertions pass)
   await page.screenshot({ path: "/tmp/albumix-home-redesign.png", fullPage: false });
 });
