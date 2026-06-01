@@ -380,27 +380,30 @@ export default function AlbumMapPage() {
   const showEmpty = !loading && !hasAny;
 
   return (
-    <div className="flex flex-col min-h-screen" style={{ backgroundColor: "#f9f5ee" }}>
+    <div className="home-dark flex flex-col min-h-screen">
       {/* ------------------------------------------------------------------ */}
       {/* Header */}
       {/* ------------------------------------------------------------------ */}
       <header
         className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
-        style={{ backgroundColor: "#006847" }}
+        style={{
+          background: "linear-gradient(180deg, #111827 0%, #0d1117 100%)",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
+        }}
       >
         <a
           href="/album"
           aria-label="Volver al álbum"
-          className="flex items-center justify-center w-9 h-9 rounded-full text-white"
-          style={{ backgroundColor: "rgba(255,255,255,0.18)" }}
+          className="flex items-center justify-center w-9 h-9 rounded-full"
+          style={{ backgroundColor: "rgba(255,255,255,0.08)", color: "#f5f5f5" }}
         >
           ←
         </a>
         <div>
-          <h1 className="text-lg font-black text-white leading-none">
+          <h1 className="text-lg font-black leading-none" style={{ color: "#f5f5f5" }}>
             Mapa del Mundial
           </h1>
-          <p className="text-xs text-green-200 mt-0.5">
+          <p className="text-xs mt-0.5" style={{ color: "#9ca3af" }}>
             Tus países pintados
           </p>
         </div>
@@ -421,11 +424,11 @@ export default function AlbumMapPage() {
           /* Empty state */
           <div
             className="mx-4 mt-10 rounded-2xl p-6 text-center"
-            style={{ backgroundColor: "#ffffff", border: "1px solid #d1c9b8" }}
+            style={{ backgroundColor: "rgba(26,26,26,0.95)", border: "1px solid rgba(255,255,255,0.08)" }}
             data-testid="map-empty-state"
           >
             <p className="text-3xl mb-3" aria-hidden="true">🗺️</p>
-            <p className="text-sm font-medium text-gray-600 leading-relaxed">
+            <p className="text-sm font-medium leading-relaxed" style={{ color: "#9ca3af" }}>
               Aún no hay países pintados.
               <br />
               Marcá una figurita para iluminar el mapa.
@@ -452,17 +455,17 @@ export default function AlbumMapPage() {
               ref={svgRef}
               viewBox="0 0 1000 500"
               preserveAspectRatio="xMidYMid meet"
-              className="w-full rounded-xl shadow-sm"
+              className="w-full rounded-xl"
               style={{
-                backgroundColor: "#a8d5e2",
-                border: "1px solid #d1c9b8",
+                backgroundColor: "#0d1a2a",
+                border: "1px solid rgba(255,255,255,0.08)",
               }}
               onClick={handleMapBackground}
               role="img"
               aria-label="Mapa del mundial con países coloreados por tu colección"
             >
               {/* Ocean label */}
-              <text x="500" y="470" textAnchor="middle" fontSize="10" fill="#6b7280" fontFamily="sans-serif" opacity="0.6">
+              <text x="500" y="470" textAnchor="middle" fontSize="10" fill="#9ca3af" fontFamily="sans-serif" opacity="0.6">
                 FIFA World Cup 2026
               </text>
 
@@ -519,8 +522,8 @@ export default function AlbumMapPage() {
                 <div
                   className="rounded-xl px-4 py-3 shadow-lg text-center"
                   style={{
-                    backgroundColor: "#ffffff",
-                    border: "1.5px solid #d1c9b8",
+                    backgroundColor: "rgba(26,26,26,0.97)",
+                    border: "1.5px solid rgba(255,255,255,0.12)",
                     minWidth: "140px",
                     maxWidth: "180px",
                   }}
@@ -528,15 +531,15 @@ export default function AlbumMapPage() {
                   <div className="text-2xl mb-0.5" aria-hidden="true">
                     {catalogEntry.flag}
                   </div>
-                  <p className="font-bold text-gray-800 text-sm leading-tight">
+                  <p className="font-bold text-sm leading-tight" style={{ color: "#f5f5f5" }}>
                     {catalogEntry.display_name}
                   </p>
                   {tooltip.stat ? (
-                    <p className="text-xs text-gray-500 mt-0.5">
+                    <p className="text-xs mt-0.5" style={{ color: "#9ca3af" }}>
                       {tooltip.stat.owned}/{tooltip.stat.total} figuritas · {tooltip.stat.pct}%
                     </p>
                   ) : (
-                    <p className="text-xs text-gray-400 mt-0.5">0 figuritas</p>
+                    <p className="text-xs mt-0.5" style={{ color: "#6b7280" }}>0 figuritas</p>
                   )}
                   <button
                     onClick={handleNavigateToTeam}
@@ -558,20 +561,20 @@ export default function AlbumMapPage() {
       {!loading && (
         <div
           className="px-4 py-4 mx-2 mb-4 rounded-xl"
-          style={{ backgroundColor: "#ffffff", border: "1px solid #d1c9b8" }}
+          style={{ backgroundColor: "rgba(26,26,26,0.95)", border: "1px solid rgba(255,255,255,0.08)" }}
           data-testid="map-legend"
         >
-          <p className="text-xs font-bold text-gray-600 mb-2 uppercase tracking-wide">
+          <p className="text-xs font-bold mb-2 uppercase tracking-wide" style={{ color: "#9ca3af" }}>
             Escala de completitud
           </p>
           <div className="flex items-center gap-2 flex-wrap">
-            <LegendItem color="#e5e7eb" label="0%" border="1px solid #d1d5db" />
+            <LegendItem color="#2d3344" label="0%" border="1px solid rgba(255,255,255,0.1)" />
             <LegendItem color="#b3cce0" label="1–29%" />
             <LegendItem color="#6aa6cc" label="30–69%" />
             <LegendItem color="#1a6faf" label="70–99%" />
             <LegendItem color="#1a6faf" label="100%" border="2px solid #fbbf24" />
           </div>
-          <p className="text-[0.6rem] text-gray-400 mt-2">
+          <p className="text-[0.6rem] mt-2" style={{ color: "#6b7280" }}>
             El color real varía por equipo · Borde dorado = álbum completo
           </p>
         </div>
@@ -607,9 +610,9 @@ function LegendItem({
     <div className="flex items-center gap-1">
       <div
         className="w-4 h-4 rounded-sm flex-shrink-0"
-        style={{ backgroundColor: color, border: border ?? "1px solid #9ca3af" }}
+        style={{ backgroundColor: color, border: border ?? "1px solid rgba(255,255,255,0.15)" }}
       />
-      <span className="text-[0.65rem] text-gray-500">{label}</span>
+      <span className="text-[0.65rem]" style={{ color: "#9ca3af" }}>{label}</span>
     </div>
   );
 }
@@ -630,7 +633,7 @@ function StatsStrip({ stats }: { stats: Map<string, TeamStat> }) {
 
   return (
     <div className="px-2 pb-3">
-      <p className="text-xs font-bold text-gray-500 uppercase tracking-wide px-2 mb-2">
+      <p className="text-xs font-bold uppercase tracking-wide px-2 mb-2" style={{ color: "#9ca3af" }}>
         Tu progreso — top equipos
       </p>
       <div className="flex gap-2">
@@ -642,19 +645,19 @@ function StatsStrip({ stats }: { stats: Map<string, TeamStat> }) {
               key={teamCode}
               href={`/album#${teamCode.toLowerCase()}`}
               className="flex-1 rounded-xl p-2.5 text-center"
-              style={{ backgroundColor: "#ffffff", border: "1px solid #d1c9b8" }}
+              style={{ backgroundColor: "rgba(26,26,26,0.95)", border: "1px solid rgba(255,255,255,0.08)" }}
               data-testid={`stat-strip-${teamCode}`}
             >
               <div className="text-xl" aria-hidden="true">{entry.flag}</div>
-              <p className="text-[0.65rem] font-bold text-gray-700 mt-0.5 truncate">
+              <p className="text-[0.65rem] font-bold mt-0.5 truncate" style={{ color: "#f5f5f5" }}>
                 {entry.display_name}
               </p>
-              <p className="text-[0.6rem] text-gray-500">
+              <p className="text-[0.6rem]" style={{ color: "#9ca3af" }}>
                 {stat.owned}/{stat.total} · {stat.pct}%
               </p>
               <div
                 className="mt-1.5 w-full h-1 rounded-full overflow-hidden"
-                style={{ backgroundColor: "#e5e7eb" }}
+                style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
               >
                 <div
                   className="h-full rounded-full"
@@ -688,8 +691,8 @@ function BottomNav() {
     <nav
       className="flex border-t"
       style={{
-        backgroundColor: "#ffffff",
-        borderColor: "#d1c9b8",
+        backgroundColor: "#0d0f13",
+        borderColor: "rgba(255,255,255,0.08)",
         paddingBottom: "env(safe-area-inset-bottom, 0)",
       }}
     >

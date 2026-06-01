@@ -37,8 +37,8 @@ export default function BottomNav({ active }: BottomNavProps) {
     <nav
       className="flex items-start border-t"
       style={{
-        backgroundColor: "#ffffff",
-        borderColor: "#d1c9b8",
+        backgroundColor: "#0d0f13",
+        borderColor: "rgba(255,255,255,0.08)",
         paddingBottom: "env(safe-area-inset-bottom, 0)",
         paddingTop: 10,
         paddingLeft: 6,

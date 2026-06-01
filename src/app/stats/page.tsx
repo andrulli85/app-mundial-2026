@@ -10,8 +10,7 @@
  *   4. Top 5 equipos / Equipos pendientes
  *   5. Footer mini-stats row (marcadas, repes, completados, días)
  *
- * Empty state: if 0 stickers owned → friendly message + link to /album
- * Palette: #006847 (green) / #f5f0e8 (cream) / #c2ef4e (lime accent)
+ * Dark theme: FUT dark palette matching /inicio + /album
  */
 
 import { useEffect, useState } from "react";
@@ -21,18 +20,21 @@ import { getAllStickers, getNickname } from "@/lib/db";
 import type { StickerEntry } from "@/lib/db";
 import { computeAllStats } from "@/lib/stats";
 import type { AllStats, GroupStats, TeamStats } from "@/lib/stats";
+import BottomNav from "@/components/BottomNav";
 
 // ---------------------------------------------------------------------------
-// Constants
+// Constants — dark palette
 // ---------------------------------------------------------------------------
 
+const BG = "#0a0a0a";
+const SURFACE = "rgba(26,26,26,0.95)";
+const BORDER = "rgba(255,255,255,0.08)";
 const GREEN = "#006847";
-const CREAM = "#f5f0e8";
-const CREAM_DARK = "#e8e0d0";
 const LIME = "#c2ef4e";
-const TEXT_DARK = "#1a2e1a";
-const TEXT_MID = "#4b5563";
-const TRACK_COLOR = "#e2ddd3";
+const GOLD = "#F4C84A";
+const TEXT_PRIMARY = "#f5f5f5";
+const TEXT_MUTED = "#9ca3af";
+const TRACK = "rgba(255,255,255,0.08)";
 
 // Donut geometry
 const DONUT_RADIUS = 72;
@@ -53,7 +55,6 @@ function HeroDonut({ percent, ownedCount, totalCount }: DonutProps) {
   const [animatedPercent, setAnimatedPercent] = useState(0);
 
   useEffect(() => {
-    // Trigger animation after mount
     const id = requestAnimationFrame(() => {
       setTimeout(() => setAnimatedPercent(percent), 50);
     });
@@ -79,7 +80,7 @@ function HeroDonut({ percent, ownedCount, totalCount }: DonutProps) {
           cy={center}
           r={DONUT_RADIUS}
           fill="none"
-          stroke={TRACK_COLOR}
+          stroke="rgba(255,255,255,0.08)"
           strokeWidth={DONUT_STROKE}
         />
         {/* Progress arc */}
@@ -88,7 +89,7 @@ function HeroDonut({ percent, ownedCount, totalCount }: DonutProps) {
           cy={center}
           r={DONUT_RADIUS}
           fill="none"
-          stroke={GREEN}
+          stroke={LIME}
           strokeWidth={DONUT_STROKE}
           strokeLinecap="round"
           strokeDasharray={DONUT_CIRCUMFERENCE}
@@ -104,7 +105,7 @@ function HeroDonut({ percent, ownedCount, totalCount }: DonutProps) {
           dominantBaseline="middle"
           fontSize="32"
           fontWeight="900"
-          fill={TEXT_DARK}
+          fill={TEXT_PRIMARY}
           fontFamily="system-ui, -apple-system, sans-serif"
         >
           {animatedPercent}%
@@ -116,7 +117,7 @@ function HeroDonut({ percent, ownedCount, totalCount }: DonutProps) {
           dominantBaseline="middle"
           fontSize="13"
           fontWeight="600"
-          fill={TEXT_MID}
+          fill={TEXT_MUTED}
           fontFamily="system-ui, -apple-system, sans-serif"
         >
           {ownedCount} / {totalCount}
@@ -128,7 +129,7 @@ function HeroDonut({ percent, ownedCount, totalCount }: DonutProps) {
           dominantBaseline="middle"
           fontSize="10"
           fontWeight="500"
-          fill={TEXT_MID}
+          fill={TEXT_MUTED}
           fontFamily="system-ui, -apple-system, sans-serif"
           letterSpacing="0.5"
         >
@@ -152,7 +153,7 @@ interface BarProps {
   flag?: string;
 }
 
-function HBar({ label, owned, total, percent, color = GREEN, flag }: BarProps) {
+function HBar({ label, owned, total, percent, color = LIME, flag }: BarProps) {
   return (
     <div className="mb-3">
       <div className="flex items-center justify-between mb-1.5">
@@ -160,18 +161,21 @@ function HBar({ label, owned, total, percent, color = GREEN, flag }: BarProps) {
           {flag && <span className="text-base leading-none">{flag}</span>}
           <span
             className="text-sm font-semibold truncate"
-            style={{ color: TEXT_DARK }}
+            style={{ color: TEXT_PRIMARY }}
           >
             {label}
           </span>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0 ml-2">
-          <span className="text-xs font-medium" style={{ color: TEXT_MID }}>
+          <span className="text-xs font-medium" style={{ color: TEXT_MUTED }}>
             {owned}/{total}
           </span>
           <span
             className="text-xs font-bold rounded-full px-2 py-0.5"
-            style={{ backgroundColor: color, color: color === LIME ? TEXT_DARK : "#fff" }}
+            style={{
+              backgroundColor: color,
+              color: color === LIME ? "#0d0f13" : "#fff",
+            }}
           >
             {percent}%
           </span>
@@ -179,7 +183,7 @@ function HBar({ label, owned, total, percent, color = GREEN, flag }: BarProps) {
       </div>
       <div
         className="w-full rounded-full overflow-hidden"
-        style={{ height: "8px", backgroundColor: TRACK_COLOR }}
+        style={{ height: "8px", backgroundColor: TRACK }}
       >
         <div
           className="h-full rounded-full"
@@ -201,14 +205,14 @@ function HBar({ label, owned, total, percent, color = GREEN, flag }: BarProps) {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div
-      className="mx-4 mb-4 rounded-2xl overflow-hidden shadow-sm"
-      style={{ backgroundColor: "#fff", border: `1px solid ${CREAM_DARK}` }}
+      className="mx-4 mb-4 rounded-2xl overflow-hidden"
+      style={{ backgroundColor: SURFACE, border: `1px solid ${BORDER}` }}
     >
       <div
         className="px-4 py-3 border-b"
-        style={{ borderColor: CREAM_DARK }}
+        style={{ borderColor: BORDER }}
       >
-        <h2 className="text-sm font-black tracking-wide uppercase" style={{ color: GREEN }}>
+        <h2 className="text-sm font-black tracking-wide uppercase" style={{ color: GOLD }}>
           {title}
         </h2>
       </div>
@@ -231,13 +235,13 @@ function MiniCard({ icon, label, value }: MiniCardProps) {
   return (
     <div
       className="flex-1 flex flex-col items-center py-4 rounded-2xl"
-      style={{ backgroundColor: "#fff", border: `1px solid ${CREAM_DARK}` }}
+      style={{ backgroundColor: SURFACE, border: `1px solid ${BORDER}` }}
     >
       <span className="text-2xl mb-1" aria-hidden="true">{icon}</span>
-      <span className="text-xl font-black leading-none mb-1" style={{ color: TEXT_DARK }}>
+      <span className="text-xl font-black leading-none mb-1" style={{ color: TEXT_PRIMARY }}>
         {value}
       </span>
-      <span className="text-[10px] font-semibold text-center leading-tight px-1" style={{ color: TEXT_MID }}>
+      <span className="text-[10px] font-semibold text-center leading-tight px-1" style={{ color: TEXT_MUTED }}>
         {label}
       </span>
     </div>
@@ -254,17 +258,27 @@ function TeamRow({ t }: { t: TeamStats }) {
       <span className="text-xl leading-none w-7 text-center flex-shrink-0" aria-hidden="true">
         {t.flag_emoji}
       </span>
-      <span className="text-sm font-semibold flex-1 truncate" style={{ color: TEXT_DARK }}>
+      <span className="text-sm font-semibold flex-1 truncate" style={{ color: TEXT_PRIMARY }}>
         {t.team_name}
       </span>
-      <span className="text-xs font-medium mr-1" style={{ color: TEXT_MID }}>
+      <span className="text-xs font-medium mr-1" style={{ color: TEXT_MUTED }}>
         {t.ownedCount}/{t.totalCount}
       </span>
       <span
         className="text-xs font-bold rounded-full px-2 py-0.5 flex-shrink-0"
         style={{
-          backgroundColor: t.percent === 100 ? LIME : t.percent >= 50 ? "#dcfce7" : "#fee2e2",
-          color: t.percent === 100 ? TEXT_DARK : t.percent >= 50 ? "#166534" : "#991b1b",
+          backgroundColor:
+            t.percent === 100
+              ? GOLD + "33"
+              : t.percent >= 50
+              ? "rgba(74,222,128,0.15)"
+              : "rgba(248,113,113,0.15)",
+          color:
+            t.percent === 100
+              ? GOLD
+              : t.percent >= 50
+              ? "#4ade80"
+              : "#f87171",
         }}
       >
         {t.percent}%
@@ -281,9 +295,9 @@ export default function StatsPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<AllStats | null>(null);
+
   useEffect(() => {
     (async () => {
-      // Redirect to onboarding if not set up yet
       const nick = await getNickname();
       if (!nick) {
         router.replace("/");
@@ -302,7 +316,6 @@ export default function StatsPage() {
       });
 
       const firstTs = isFinite(earliest) ? earliest : undefined;
-
       const computed = computeAllStats(catalog, counts, firstTs);
       setStats(computed);
       setLoading(false);
@@ -314,14 +327,14 @@ export default function StatsPage() {
     return (
       <div
         className="min-h-screen flex items-center justify-center"
-        style={{ backgroundColor: CREAM }}
+        style={{ backgroundColor: BG }}
       >
         <div className="flex flex-col items-center gap-3">
           <div
             className="w-10 h-10 rounded-full border-4 animate-spin"
-            style={{ borderColor: GREEN, borderTopColor: "transparent" }}
+            style={{ borderColor: LIME, borderTopColor: "transparent" }}
           />
-          <p className="text-sm font-medium" style={{ color: TEXT_MID }}>
+          <p className="text-sm font-medium" style={{ color: TEXT_MUTED }}>
             Calculando estadísticas…
           </p>
         </div>
@@ -335,8 +348,7 @@ export default function StatsPage() {
   if (s.overall.ownedCount === 0) {
     return (
       <div
-        className="min-h-screen flex flex-col"
-        style={{ backgroundColor: CREAM }}
+        className="home-dark min-h-screen flex flex-col"
         data-testid="stats-empty-state"
       >
         <StatsHeader />
@@ -344,12 +356,12 @@ export default function StatsPage() {
           <span className="text-6xl mb-5" aria-hidden="true">🌟</span>
           <p
             className="text-lg font-black mb-2"
-            style={{ color: TEXT_DARK }}
+            style={{ color: TEXT_PRIMARY }}
             data-testid="stats-empty-message"
           >
             ¡Empezá a marcar figuritas!
           </p>
-          <p className="text-sm mb-8" style={{ color: TEXT_MID }}>
+          <p className="text-sm mb-8" style={{ color: TEXT_MUTED }}>
             Tu álbum aún está vacío.
           </p>
           <a
@@ -360,7 +372,7 @@ export default function StatsPage() {
             Ir al álbum
           </a>
         </div>
-        <BottomNav active="stats" />
+        <BottomNav active="album" />
       </div>
     );
   }
@@ -368,8 +380,7 @@ export default function StatsPage() {
   // ---- Full dashboard ----
   return (
     <div
-      className="min-h-screen flex flex-col"
-      style={{ backgroundColor: CREAM }}
+      className="home-dark min-h-screen flex flex-col"
       data-testid="stats-page"
     >
       <StatsHeader />
@@ -389,14 +400,14 @@ export default function StatsPage() {
             owned={s.byType.paises.ownedCount}
             total={s.byType.paises.totalCount}
             percent={s.byType.paises.percent}
-            color={GREEN}
+            color={LIME}
           />
           <HBar
             label="Especiales Mundial"
             owned={s.byType.especiales.ownedCount}
             total={s.byType.especiales.totalCount}
             percent={s.byType.especiales.percent}
-            color="#f59e0b"
+            color={GOLD}
           />
         </Section>
 
@@ -409,7 +420,7 @@ export default function StatsPage() {
               owned={g.ownedCount}
               total={g.totalCount}
               percent={g.percent}
-              color={GREEN}
+              color={LIME}
             />
           ))}
         </Section>
@@ -445,7 +456,7 @@ export default function StatsPage() {
         </div>
       </main>
 
-      <BottomNav active="stats" />
+      <BottomNav active="album" />
     </div>
   );
 }
@@ -457,20 +468,24 @@ export default function StatsPage() {
 function StatsHeader() {
   return (
     <header
-      className="sticky top-[54px] z-20 px-4 py-3 shadow-sm"
-      style={{ backgroundColor: GREEN }}
+      className="sticky top-[54px] z-20 px-4 py-3"
+      style={{
+        background: "linear-gradient(180deg, #111827 0%, #0d1117 100%)",
+        borderBottom: `1px solid ${BORDER}`,
+      }}
       data-testid="stats-header"
     >
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-lg font-black text-white leading-none">
+          <h1 className="text-lg font-black leading-none" style={{ color: TEXT_PRIMARY }}>
             Mis estadísticas
           </h1>
-          <p className="text-xs text-green-200 mt-0.5">Mundial 2026</p>
+          <p className="text-xs mt-0.5" style={{ color: TEXT_MUTED }}>Mundial 2026</p>
         </div>
         <a
           href="/album"
-          className="rounded-full p-2 text-white hover:bg-green-700 transition-colors"
+          className="rounded-full p-2 transition-colors"
+          style={{ color: TEXT_PRIMARY }}
           aria-label="Ir al álbum"
           title="Ir al álbum"
         >
@@ -492,42 +507,5 @@ function StatsHeader() {
         </a>
       </div>
     </header>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Bottom nav — mirrors album page but with stats as active
-// ---------------------------------------------------------------------------
-
-function BottomNav({ active }: { active: "album" | "trade" | "settings" | "stats" }) {
-  const items: { id: string; href: string; label: string; icon: string }[] = [
-    { id: "album",    href: "/album",    label: "Álbum",       icon: "📕" },
-    { id: "stats",    href: "/stats",    label: "Stats",       icon: "📊" },
-    { id: "trade",    href: "/trade",    label: "Intercambiar", icon: "🤝" },
-    { id: "settings", href: "/settings", label: "Opciones",    icon: "⚙️" },
-  ];
-
-  return (
-    <nav
-      className="flex border-t"
-      style={{
-        backgroundColor: "#ffffff",
-        borderColor: CREAM_DARK,
-        paddingBottom: "env(safe-area-inset-bottom, 0)",
-      }}
-    >
-      {items.map((item) => (
-        <a
-          key={item.id}
-          href={item.href}
-          className="flex-1 flex flex-col items-center py-2.5 gap-0.5 text-[0.6rem] font-semibold transition-colors"
-          style={{ color: active === item.id ? GREEN : "#9ca3af" }}
-          aria-current={active === item.id ? "page" : undefined}
-        >
-          <span className="text-xl" aria-hidden="true">{item.icon}</span>
-          {item.label}
-        </a>
-      ))}
-    </nav>
   );
 }
