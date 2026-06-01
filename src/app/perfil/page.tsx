@@ -225,8 +225,14 @@ export default function PerfilPage() {
             />
           )}
           <NavTile
-            href="/import"
+            href="/perfil/importar"
             emoji="📥"
+            label="Importar inventario"
+            sublabel="Seed rápido desde lista de Andy"
+          />
+          <NavTile
+            href="/import"
+            emoji="📲"
             label="Importar de Figuritas"
             sublabel="Traé tu colección desde otra app"
           />
