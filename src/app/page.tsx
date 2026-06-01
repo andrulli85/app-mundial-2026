@@ -130,7 +130,8 @@ export default function OnboardingPage() {
   useEffect(() => {
     getNickname().then((name) => {
       if (name) {
-        router.replace("/album");
+        // Redirect to FUT-style home (redesigned 2026-06-01)
+        router.replace("/inicio");
       } else {
         setChecking(false);
       }
@@ -160,7 +161,8 @@ export default function OnboardingPage() {
     }
     setSaving(true);
     await setNickname(trimmed);
-    router.replace("/album");
+    // Go to FUT-style home after completing onboarding (redesigned 2026-06-01)
+    router.replace("/inicio");
   };
 
   // ── Loading state ──────────────────────────────────────────────────

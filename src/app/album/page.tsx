@@ -45,8 +45,13 @@ const CATEGORY_CHIPS: { id: Category; label: string }[] = [
   { id: "especiales", label: "✨ Especiales" },
 ];
 
-/** External chip — navigates away from the album grid */
-const DORADAS_CHIP_HREF = "/album/doradas";
+/**
+ * External chip — navigates away from the album grid.
+ * Chip is hidden from strip (2026-06-01, Andy paused doradas focus).
+ * Route /album/doradas remains accessible. Re-enable chip by restoring the
+ * <a> block in the category-chips group below.
+ */
+const _DORADAS_CHIP_HREF = "/album/doradas";
 
 // Groups A–L in order
 const FIFA_GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
@@ -383,24 +388,9 @@ export default function AlbumPage() {
               </button>
             );
           })}
-          {/* Doradas chip — navigates to /album/doradas (external link) */}
-          <a
-            href={DORADAS_CHIP_HREF}
-            data-testid="chip-doradas"
-            className="flex-shrink-0 rounded-full px-4 font-semibold transition-all flex items-center"
-            style={{
-              scrollSnapAlign: "start",
-              height: "44px",
-              fontSize: "13px",
-              whiteSpace: "nowrap",
-              backgroundColor: "#fef9c3",
-              color: "#92400e",
-              border: "2px solid #fbbf24",
-              textDecoration: "none",
-            }}
-          >
-            Doradas ✨
-          </a>
+          {/* Doradas chip — hidden from chip strip (route /album/doradas still accessible).
+               Andy paused doradas focus 2026-06-01; re-enable by restoring this block. */}
+          {/* <a href={DORADAS_CHIP_HREF} data-testid="chip-doradas" ... >Doradas ✨</a> */}
         </div>
       </div>
 

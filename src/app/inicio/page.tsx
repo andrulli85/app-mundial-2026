@@ -1,131 +1,180 @@
 "use client";
 
 /**
- * /inicio — Home dashboard.
+ * /inicio — FUT Champions-style dark home (redesigned 2026-06-01).
  *
- * - Greeting with nickname
- * - Overall completion stat card (donut SVG + %)
- * - 3 quick-action buttons: Marcar stickers | Cambiar | Armar mi once
- * - "Tu último trade" widget
- * - "Logros recientes" widget (last 2 unlocked)
+ * Design: dark theme (#0a0a0a → #111111), gamification, pack hero, per-country
+ * progress, recent stickers strip. SUPERSEDES the previous light-theme home.
+ *
+ * Mocked data (Phase 1 — TODO comments mark each):
+ *   - coins:    1240  (TODO: wire to economy system)
+ *   - streak:   5     (TODO: wire to daily-login tracker)
+ *   - division: "Oro" (TODO: wire to ranking ladder)
+ *   - ovr:      85    (TODO: compute from getSquad() players)
+ *
+ * Real data:
+ *   - Per-country progress: catalog + getAllStickers()
+ *   - Recent stickers:      last 5 owned entries by acquired_at desc
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { getNickname, getAllStickers, getRecentTrades, getUnlockedBadgeEntries } from "@/lib/db";
+import { getNickname, getAllStickers } from "@/lib/db";
+import type { StickerEntry } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
-import { BADGES } from "@/lib/achievements";
+import type { Sticker } from "@/lib/catalog";
+import { TEAM_CATALOG } from "@/lib/team-catalog";
 import BottomNav from "@/components/BottomNav";
 
-const GREEN = "#006847";
-const LIME = "#c2ef4e";
-const CREAM = "#f5f0e8";
+// ── Mocked constants (Phase 1) ────────────────────────────────────────────────
+// TODO(economy): replace with real user wallet query
+const MOCK_COINS = 1240;
+// TODO(streak): replace with daily-login streak tracker
+const MOCK_STREAK = 5;
+// TODO(ranking): replace with ranking ladder computation
+const MOCK_DIVISION = "Oro";
+// TODO(squad): compute from getSquad() lineup OVR average
+const MOCK_OVR = 85;
 
-// ---------------------------------------------------------------------------
-// Simple donut SVG
-// ---------------------------------------------------------------------------
-function DonutChart({ pct, size = 96 }: { pct: number; size?: number }) {
-  const r = 38;
-  const circ = 2 * Math.PI * r;
-  const dash = (pct / 100) * circ;
+// ── Priority country codes for "Completa tu álbum" section ───────────────────
+const PRIORITY_TEAMS = ["ARG", "BRA", "MEX", "FRA", "ESP", "GER", "USA"];
+
+// ── Country progress bar colors (row 1, 2, 3) ────────────────────────────────
+const ROW_COLORS = ["#ef4444", "#22c55e", "#3b82f6"];
+
+// ── Stat column definitions ───────────────────────────────────────────────────
+const STAT_COLS = [
+  { icon: "🔥", label: "Racha",    valueKey: "streak"   as const },
+  { icon: "💰", label: "Monedas",  valueKey: "coins"    as const },
+  { icon: "🛡️", label: "División", valueKey: "division" as const },
+];
+
+// ── CountryRow ────────────────────────────────────────────────────────────────
+
+interface CountryRowProps {
+  flag: string;
+  name: string;
+  owned: number;
+  total: number;
+  color: string;
+}
+
+function CountryRow({ flag, name, owned, total, color }: CountryRowProps) {
+  const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      {/* Track */}
-      <circle
-        cx="50"
-        cy="50"
-        r={r}
-        fill="none"
-        stroke="#d1c9b8"
-        strokeWidth="10"
-      />
-      {/* Fill */}
-      <circle
-        cx="50"
-        cy="50"
-        r={r}
-        fill="none"
-        stroke={LIME}
-        strokeWidth="10"
-        strokeDasharray={`${dash} ${circ - dash}`}
-        strokeDashoffset={circ * 0.25}
-        strokeLinecap="round"
-        style={{ transition: "stroke-dasharray 0.6s ease" }}
-      />
-      {/* Center text */}
-      <text
-        x="50"
-        y="55"
-        textAnchor="middle"
-        style={{
-          fontSize: 22,
-          fontWeight: 900,
-          fill: GREEN,
-          fontFamily: "system-ui, sans-serif",
-        }}
+    <div className="flex flex-col gap-1">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="text-xl leading-none" aria-hidden="true">{flag}</span>
+          <span className="text-sm font-semibold" style={{ color: "#f5f5f5" }}>{name}</span>
+        </div>
+        <span className="text-xs font-bold" style={{ color: "#9ca3af" }}>
+          {owned}/{total}
+        </span>
+      </div>
+      <div
+        className="w-full h-1.5 rounded-full overflow-hidden"
+        style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
       >
-        {pct}%
-      </text>
-    </svg>
+        <div
+          className="h-full rounded-full transition-all duration-500"
+          style={{ width: `${pct}%`, backgroundColor: color }}
+        />
+      </div>
+    </div>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Quick action button
-// ---------------------------------------------------------------------------
-function QuickAction({
-  href,
-  emoji,
-  label,
-  primary,
-}: {
-  href: string;
-  emoji: string;
-  label: string;
-  primary?: boolean;
-}) {
+// ── RecentStickerChip ─────────────────────────────────────────────────────────
+
+interface RecentStickerChipProps {
+  sticker: Sticker;
+}
+
+function RecentStickerChip({ sticker }: RecentStickerChipProps) {
+  const entry = TEAM_CATALOG[sticker.team_code || "_PANINI"];
   return (
-    <Link
-      href={href}
-      className="flex flex-col items-center gap-2 rounded-2xl py-4 px-3 transition-colors"
+    <div
+      className="flex-shrink-0 flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl"
       style={{
-        backgroundColor: primary ? GREEN : "#ffffff",
-        border: `1.5px solid ${primary ? GREEN : "#d1c9b8"}`,
-        textDecoration: "none",
-        flex: 1,
+        background: "rgba(26,26,26,0.95)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        minWidth: 72,
       }}
     >
-      <span className="text-2xl" aria-hidden="true">
-        {emoji}
+      <span className="text-2xl leading-none" aria-hidden="true">
+        {entry?.flag ?? "⭐"}
       </span>
       <span
-        className="text-xs font-bold text-center leading-tight"
-        style={{ color: primary ? "#ffffff" : "#374151" }}
+        className="text-[0.6rem] font-bold text-center leading-tight"
+        style={{ color: "#d1d5db", maxWidth: 64 }}
       >
-        {label}
+        {sticker.display_name.length > 10
+          ? sticker.display_name.slice(0, 10) + "…"
+          : sticker.display_name}
       </span>
-    </Link>
+      <span
+        className="text-[0.55rem] font-semibold px-1.5 py-0.5 rounded-full"
+        style={{ backgroundColor: "rgba(255,255,255,0.06)", color: "#9ca3af" }}
+      >
+        {sticker.code}
+      </span>
+    </div>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Main page
-// ---------------------------------------------------------------------------
+// ── Toast ─────────────────────────────────────────────────────────────────────
+
+function ProximamenteToast({
+  visible,
+  onClose,
+}: {
+  visible: boolean;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!visible) return;
+    const t = setTimeout(onClose, 2800);
+    return () => clearTimeout(t);
+  }, [visible, onClose]);
+
+  if (!visible) return null;
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className="fixed bottom-24 left-1/2 -translate-x-1/2 px-5 py-3 rounded-2xl text-sm font-bold shadow-2xl z-50"
+      style={{
+        backgroundColor: "#1a1a1a",
+        border: "1px solid rgba(250,204,21,0.4)",
+        color: "#facc15",
+        whiteSpace: "nowrap",
+      }}
+    >
+      Próximamente — ¡la apertura de sobres llega pronto!
+    </div>
+  );
+}
+
+// ── Main page ─────────────────────────────────────────────────────────────────
+
+interface CountryProgress {
+  code: string;
+  flag: string;
+  name: string;
+  owned: number;
+  total: number;
+}
+
 export default function InicioPage() {
   const router = useRouter();
-  const [nickname, setNickname] = useState<string>("");
-  const [owned, setOwned] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [lastTrade, setLastTrade] = useState<{
-    partner: string;
-    gave: string[];
-    received: string[];
-  } | null>(null);
-  const [recentBadges, setRecentBadges] = useState<
-    Array<{ id: string; unlockedAt: number }>
-  >([]);
   const [loading, setLoading] = useState(true);
+  const [countryProgress, setCountryProgress] = useState<CountryProgress[]>([]);
+  const [recentStickers, setRecentStickers] = useState<Sticker[]>([]);
+  const [toastVisible, setToastVisible] = useState(false);
+
+  const hideToast = useCallback(() => setToastVisible(false), []);
 
   useEffect(() => {
     (async () => {
@@ -134,209 +183,315 @@ export default function InicioPage() {
         router.replace("/");
         return;
       }
-      setNickname(nick);
 
-      const [cat, entries, trades, badgeEntries] = await Promise.all([
-        getCatalog(),
-        getAllStickers(),
-        getRecentTrades(1),
-        getUnlockedBadgeEntries(),
-      ]);
+      const [catalog, entries] = await Promise.all([getCatalog(), getAllStickers()]);
 
-      setTotal(cat.length);
-      setOwned(entries.filter((e) => e.count > 0).length);
-      if (trades.length > 0) setLastTrade(trades[0]);
+      // Build ownership map
+      const ownedMap = new Map<string, number>();
+      entries.forEach((e: StickerEntry) => {
+        if (e.count > 0) ownedMap.set(e.sticker_id, e.count);
+      });
 
-      // Sort by unlock time desc, take last 2
-      const sorted = [...badgeEntries].sort((a, b) => b.unlockedAt - a.unlockedAt);
-      setRecentBadges(sorted.slice(0, 2));
+      // ── Per-country progress (real data) ───────────────────────────────────
+      // Build totals map: team_code → { owned, total }
+      const teamMap = new Map<string, { owned: number; total: number }>();
+      for (const sticker of catalog) {
+        const code = sticker.team_code;
+        if (!code || code === "FWC" || code === "") continue;
+        const existing = teamMap.get(code) ?? { owned: 0, total: 0 };
+        existing.total++;
+        if (ownedMap.has(sticker.id)) existing.owned++;
+        teamMap.set(code, existing);
+      }
+
+      // Pick top 3: from PRIORITY_TEAMS that exist in catalog, prefer those with owned > 0
+      const withOwned = PRIORITY_TEAMS.filter(
+        (c) => (teamMap.get(c)?.owned ?? 0) > 0
+      );
+      const candidates =
+        withOwned.length >= 3
+          ? withOwned.slice(0, 3)
+          : [
+              ...withOwned,
+              ...PRIORITY_TEAMS.filter((c) => !withOwned.includes(c)),
+            ].slice(0, 3);
+
+      const progress: CountryProgress[] = candidates.map((code) => {
+        const entry = TEAM_CATALOG[code];
+        const stats = teamMap.get(code) ?? { owned: 0, total: 0 };
+        return {
+          code,
+          flag: entry?.flag ?? "🏳️",
+          name: entry?.display_name ?? code,
+          owned: stats.owned,
+          total: stats.total,
+        };
+      });
+      setCountryProgress(progress);
+
+      // ── Recent stickers (real data) ────────────────────────────────────────
+      // Sort owned entries by acquired_at desc, take 5, map to catalog stickers
+      const catalogById = new Map<string, Sticker>(catalog.map((s) => [s.id, s]));
+      const recent = [...entries]
+        .filter((e) => e.count > 0)
+        .sort((a, b) => b.acquired_at - a.acquired_at)
+        .slice(0, 5)
+        .map((e) => catalogById.get(e.sticker_id))
+        .filter((s): s is Sticker => s !== undefined);
+
+      // Fallback: if no owned stickers, show first 5 from catalog as placeholders
+      setRecentStickers(
+        recent.length > 0 ? recent : catalog.slice(0, 5)
+      );
 
       setLoading(false);
     })();
   }, [router]);
 
-  const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
-
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: CREAM }}>
+      <div
+        className="flex-1 flex items-center justify-center home-dark"
+        style={{ minHeight: "100dvh" }}
+      >
         <div
           className="w-10 h-10 rounded-full border-4 animate-spin"
-          style={{ borderColor: GREEN, borderTopColor: "transparent" }}
+          style={{ borderColor: "#facc15", borderTopColor: "transparent" }}
         />
       </div>
     );
   }
 
+  const statValues: Record<string, string | number> = {
+    streak:   MOCK_STREAK,
+    coins:    MOCK_COINS.toLocaleString("es-AR"),
+    division: MOCK_DIVISION,
+  };
+
   return (
-    <div className="flex flex-col flex-1 w-full max-w-lg mx-auto" style={{ backgroundColor: CREAM }}>
-      {/* ---- Header ---- */}
-      <header
-        className="px-5 pt-6 pb-4"
-        style={{ backgroundColor: GREEN }}
+    <div
+      className="flex flex-col flex-1 w-full home-dark"
+      data-testid="home-dark-root"
+    >
+      {/* ------------------------------------------------------------------ */}
+      {/* Scrollable content area — TopBar (54px fixed) already injected      */}
+      {/* by TopBarGlobal in layout.tsx. Its gradient bg blends with #0a0a0a. */}
+      {/* ------------------------------------------------------------------ */}
+      <main
+        className="flex-1 overflow-y-auto pb-2"
+        style={{ paddingTop: 12 }}
       >
-        <p className="text-green-200 text-xs font-semibold tracking-wide uppercase mb-0.5">
-          Bienvenido
-        </p>
-        <h1 className="text-2xl font-black text-white leading-tight capitalize">
-          Hola, {nickname || "coleccionista"} 👋
-        </h1>
-        <p className="text-green-200 text-xs mt-1">
-          Seguí armando tu álbum del Mundial 2026
-        </p>
-      </header>
+        <div className="px-4 flex flex-col gap-5 max-w-lg mx-auto pb-4">
 
-      <main className="flex-1 px-4 py-5 flex flex-col gap-5 overflow-y-auto">
-        {/* ---- Completion stat card ---- */}
-        <section
-          className="rounded-2xl p-4 flex items-center gap-4 shadow-sm"
-          style={{ backgroundColor: "#ffffff", border: "1.5px solid #d1c9b8" }}
-          aria-label="Progreso del álbum"
-        >
-          <DonutChart pct={pct} />
-          <div className="flex-1">
-            <div className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-1">
-              Tu colección
+          {/* -------------------------------------------------------------- */}
+          {/* Hero Pack Card                                                    */}
+          {/* -------------------------------------------------------------- */}
+          <section
+            aria-label="Sobre diario"
+            className="pack-gradient-border"
+            data-testid="pack-hero"
+          >
+            <div className="p-5 flex flex-col gap-3">
+              {/* Daily pack chip */}
+              <div className="flex justify-center">
+                <span
+                  className="px-3 py-1 rounded-full text-xs font-black tracking-wide"
+                  style={{ backgroundColor: "#facc15", color: "#111111" }}
+                >
+                  SOBRE DIARIO GRATIS
+                </span>
+              </div>
+
+              {/* Title */}
+              <div className="text-center">
+                <h2
+                  className="text-2xl font-black leading-tight gold-text"
+                  data-testid="pack-title"
+                >
+                  SOBRE LEGENDARIO
+                </h2>
+                <p className="text-sm mt-1" style={{ color: "#9ca3af" }}>
+                  5 cartas · garantiza 1 Raro o mejor
+                </p>
+              </div>
+
+              {/* CTA */}
+              <button
+                onClick={() => {
+                  // TODO(packs): wire to pack-opening flow when economy ships
+                  setToastVisible(true);
+                }}
+                data-testid="open-pack-btn"
+                className="w-full py-3 rounded-xl font-black text-sm tracking-wide transition-opacity active:opacity-80"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #c9a35a 0%, #e8c87b 50%, #c9a35a 100%)",
+                  color: "#111111",
+                }}
+              >
+                ABRIR SOBRE
+              </button>
             </div>
-            <div
-              className="text-3xl font-black leading-none"
-              style={{ color: GREEN }}
-            >
-              {owned}
-              <span className="text-base font-semibold text-gray-400">
-                &nbsp;/ {total}
-              </span>
-            </div>
-            <div className="text-sm text-gray-500 mt-1">figuritas marcadas</div>
-            {/* progress bar */}
-            <div className="mt-3 w-full h-2 rounded-full bg-gray-100 overflow-hidden">
+          </section>
+
+          {/* -------------------------------------------------------------- */}
+          {/* Stats row (3 columns — mocked Phase 1)                           */}
+          {/* -------------------------------------------------------------- */}
+          <section
+            aria-label="Estadísticas"
+            className="grid grid-cols-3 gap-3"
+            data-testid="stats-row"
+          >
+            {STAT_COLS.map((col) => (
               <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{ width: `${pct}%`, backgroundColor: LIME }}
-              />
-            </div>
-          </div>
-        </section>
+                key={col.label}
+                className="card-dark flex flex-col items-center py-3 px-2 gap-1"
+                data-testid={`stat-col-${col.label.toLowerCase()}`}
+              >
+                <span className="text-2xl leading-none" aria-hidden="true">
+                  {col.icon}
+                </span>
+                <span
+                  className="text-xl font-black leading-none"
+                  style={{ color: "#f5f5f5" }}
+                >
+                  {statValues[col.valueKey]}
+                </span>
+                <span
+                  className="text-[0.6rem] font-semibold uppercase tracking-wide"
+                  style={{ color: "#6b7280" }}
+                >
+                  {col.label}
+                </span>
+              </div>
+            ))}
+          </section>
 
-        {/* ---- Quick actions ---- */}
-        <section aria-label="Acciones rápidas">
-          <h2 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">
-            Acciones rápidas
-          </h2>
-          <div className="flex gap-3">
-            <QuickAction href="/album" emoji="📕" label="Marcar stickers" primary />
-            <QuickAction href="/mercado" emoji="🤝" label="Cambiar" />
-            <QuickAction href="/once" emoji="⚽" label="Armar mi once" />
-          </div>
-        </section>
-
-        {/* ---- Last trade widget ---- */}
-        <section aria-label="Último intercambio">
-          <h2 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">
-            Tu último intercambio
-          </h2>
-          {lastTrade ? (
+          {/* -------------------------------------------------------------- */}
+          {/* "Arma tu once" card                                              */}
+          {/* -------------------------------------------------------------- */}
+          <Link
+            href="/once"
+            className="card-dark flex items-center gap-3 p-4 active:opacity-80 transition-opacity"
+            style={{ textDecoration: "none" }}
+            data-testid="once-card"
+          >
+            {/* Squad icon */}
             <div
-              className="rounded-2xl p-4 shadow-sm"
-              style={{ backgroundColor: "#ffffff", border: "1.5px solid #d1c9b8" }}
+              className="w-11 h-11 rounded-full flex items-center justify-center text-xl flex-shrink-0"
+              style={{ background: "rgba(250,204,21,0.12)", border: "1px solid rgba(250,204,21,0.3)" }}
+              aria-hidden="true"
             >
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-lg uppercase"
-                  style={{ backgroundColor: GREEN }}
+              ⚽
+            </div>
+            {/* Text */}
+            <div className="flex-1 min-w-0">
+              <div className="font-black text-sm leading-none mb-1" style={{ color: "#f5f5f5" }}>
+                Arma tu once
+              </div>
+              {/* TODO(squad): replace 85 with live OVR from getSquad() calculation */}
+              <div className="text-xs" style={{ color: "#9ca3af" }}>
+                Tu equipo está en{" "}
+                <span
+                  className="font-bold"
+                  style={{ color: "#facc15" }}
+                  data-testid="ovr-text"
                 >
-                  {lastTrade.partner[0]}
-                </div>
-                <div className="flex-1">
-                  <div className="font-bold text-sm text-gray-800">
-                    Con {lastTrade.partner}
-                  </div>
-                  <div className="text-xs text-gray-500 mt-0.5">
-                    Diste {lastTrade.gave.length} · Recibiste {lastTrade.received.length}
-                  </div>
-                </div>
-                <Link
-                  href="/trade/history"
-                  className="text-xs font-semibold underline"
-                  style={{ color: GREEN }}
-                >
-                  Ver más
-                </Link>
+                  {MOCK_OVR} OVR
+                </span>{" "}
+                · mejóralo
               </div>
             </div>
-          ) : (
-            <div
-              className="rounded-2xl p-5 text-center shadow-sm"
-              style={{ backgroundColor: "#ffffff", border: "1.5px solid #d1c9b8" }}
+            {/* Chevron */}
+            <svg
+              width={18}
+              height={18}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#6b7280"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
             >
-              <p className="text-2xl mb-2" aria-hidden="true">🤝</p>
-              <p className="text-sm text-gray-500">
-                Todavía no hiciste ningún intercambio.{" "}
-                <Link href="/mercado" style={{ color: GREEN }} className="font-semibold underline">
-                  ¡Empezá acá!
-                </Link>
-              </p>
-            </div>
-          )}
-        </section>
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </Link>
 
-        {/* ---- Recent achievements ---- */}
-        <section aria-label="Logros recientes">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-xs font-bold uppercase tracking-wide text-gray-500">
-              Logros recientes
-            </h2>
-            <Link
-              href="/achievements"
-              className="text-xs font-semibold underline"
-              style={{ color: GREEN }}
-            >
-              Ver todos
-            </Link>
-          </div>
-          {recentBadges.length > 0 ? (
-            <div className="flex flex-col gap-2">
-              {recentBadges.map((entry) => {
-                const badge = BADGES.find((b) => b.id === entry.id);
-                if (!badge) return null;
-                return (
-                  <div
-                    key={entry.id}
-                    className="rounded-xl p-3 flex items-center gap-3 shadow-sm"
-                    style={{ backgroundColor: "#ffffff", border: "1.5px solid #d1c9b8" }}
-                  >
-                    <span className="text-2xl" aria-hidden="true">
-                      {badge.emoji}
-                    </span>
-                    <div className="flex-1">
-                      <div className="font-bold text-sm text-gray-800">{badge.name}</div>
-                      <div className="text-xs text-gray-500">{badge.description}</div>
-                    </div>
-                    <span className="text-xs font-bold" style={{ color: LIME, backgroundColor: GREEN, padding: "2px 8px", borderRadius: 99 }}>
-                      ✓
-                    </span>
-                  </div>
-                );
-              })}
+          {/* -------------------------------------------------------------- */}
+          {/* "Completa tu álbum" — per-country progress (real data)           */}
+          {/* -------------------------------------------------------------- */}
+          <section aria-label="Completa tu álbum" data-testid="country-progress-section">
+            <div className="flex items-center justify-between mb-3">
+              <h2
+                className="text-xs font-black uppercase tracking-widest"
+                style={{ color: "#f5f5f5" }}
+              >
+                COMPLETA TU ÁLBUM
+              </h2>
+              <Link
+                href="/album"
+                className="text-xs font-semibold"
+                style={{ color: "#facc15", textDecoration: "none" }}
+              >
+                Ver todo
+              </Link>
             </div>
-          ) : (
+
+            <div className="card-dark flex flex-col gap-4 p-4">
+              {countryProgress.map((cp, i) => (
+                <CountryRow
+                  key={cp.code}
+                  flag={cp.flag}
+                  name={cp.name}
+                  owned={cp.owned}
+                  total={cp.total}
+                  color={ROW_COLORS[i] ?? "#6b7280"}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------------- */}
+          {/* "Cartas recientes" — horizontal scroll (real data)               */}
+          {/* -------------------------------------------------------------- */}
+          <section aria-label="Cartas recientes" data-testid="recent-stickers-section">
+            <div className="flex items-center justify-between mb-3">
+              <h2
+                className="text-xs font-black uppercase tracking-widest"
+                style={{ color: "#f5f5f5" }}
+              >
+                CARTAS RECIENTES
+              </h2>
+              <Link
+                href="/album"
+                className="text-xs font-semibold"
+                style={{ color: "#facc15", textDecoration: "none" }}
+              >
+                Mi colección
+              </Link>
+            </div>
+
             <div
-              className="rounded-2xl p-5 text-center shadow-sm"
-              style={{ backgroundColor: "#ffffff", border: "1.5px solid #d1c9b8" }}
+              className="flex gap-2 overflow-x-auto pb-1"
+              style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}
             >
-              <p className="text-2xl mb-2" aria-hidden="true">🏆</p>
-              <p className="text-sm text-gray-500">
-                Todavía no desbloqueaste ningún logro.{" "}
-                <Link href="/album" style={{ color: GREEN }} className="font-semibold underline">
-                  ¡Marcá figuritas!
-                </Link>
-              </p>
+              {recentStickers.map((s) => (
+                <div key={s.id} style={{ scrollSnapAlign: "start" }}>
+                  <RecentStickerChip sticker={s} />
+                </div>
+              ))}
             </div>
-          )}
-        </section>
+          </section>
+
+        </div>
       </main>
 
+      {/* Bottom nav — active tab = "inicio" */}
       <BottomNav active="inicio" />
+
+      {/* Próximamente toast — fires when "ABRIR SOBRE" is tapped */}
+      <ProximamenteToast visible={toastVisible} onClose={hideToast} />
     </div>
   );
 }
