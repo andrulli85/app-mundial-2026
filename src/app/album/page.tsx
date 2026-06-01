@@ -224,6 +224,10 @@ export default function AlbumPage() {
 
   // ── Loading ──────────────────────────────────────────────────────────────────
 
+  if (typeof window !== "undefined") {
+    console.log(`[ALBUM_LOADING_CHECK] loading=${loading} cat=${category} t=${Date.now()}`);
+  }
+
   if (loading) {
     return (
       <div className="flex-1 flex items-center justify-center home-dark">
@@ -240,7 +244,7 @@ export default function AlbumPage() {
 
   const teamGroups = groupStickersByTeam(filteredStickers);
   if (typeof window !== "undefined") {
-    console.log(`[ALBUM_RENDER] filteredStickers=${filteredStickers.length} teamGroups=${teamGroups.length} cat=${category} t=${Date.now()}`);
+    console.log(`[ALBUM_RENDER] fs=${filteredStickers.length} tg=${teamGroups.length} cat=${category} loading=${loading} t=${Date.now()}`);
   }
 
   return (
