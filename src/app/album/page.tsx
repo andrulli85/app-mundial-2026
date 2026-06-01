@@ -148,17 +148,23 @@ export default function AlbumPage() {
       );
     }
 
-    // 3. Search filter
+    // 3. Search filter — matches code, name, English team, team_code, sticker
+    //    display_name, AND the Spanish display_name from TEAM_CATALOG so that
+    //    queries like "Estados Unidos" or "Sudáfrica" resolve correctly.
     if (search.trim()) {
       const q = search.trim().toLowerCase();
-      stickers = stickers.filter(
-        (s) =>
+      stickers = stickers.filter((s) => {
+        const spanishTeamName =
+          (TEAM_CATALOG[s.team_code || "_PANINI"]?.display_name ?? "").toLowerCase();
+        return (
           s.code.toLowerCase().includes(q) ||
           s.name.toLowerCase().includes(q) ||
           s.team.toLowerCase().includes(q) ||
           s.team_code.toLowerCase().includes(q) ||
-          s.display_name.toLowerCase().includes(q)
-      );
+          s.display_name.toLowerCase().includes(q) ||
+          spanishTeamName.includes(q)
+        );
+      });
     }
 
     return stickers;
@@ -287,7 +293,7 @@ export default function AlbumPage() {
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar MEX 7 / Modric / Brasil…"
+            placeholder="Buscar Estados Unidos / Modric / FWC…"
             aria-label="Buscar figuritas"
             data-testid="search-input"
             className="w-full rounded-full border pl-9 pr-4 py-2.5 text-sm outline-none transition-shadow"
