@@ -11,7 +11,7 @@
  * so callers (album page, StickerCard, db.ts) are unaffected.
  */
 
-export type StickerType = "player" | "team_logo" | "team_photo" | "fwc" | "panini_special";
+export type StickerType = "player" | "team_logo" | "team_photo" | "fwc" | "panini_special" | "extra";
 
 export interface Sticker {
   id: string;           // canonical sticker_id (e.g. "mex-3-vasquez")
@@ -20,12 +20,16 @@ export interface Sticker {
   display_name: string; // uppercased display name
   team: string;         // full team name
   team_code: string;    // ISO-ish team code (e.g. "MEX")
-  number: number;       // sticker number within team section
+  number: number | null;  // sticker number within team section (null for extras)
   type: StickerType;
   sort_order: number;   // album display order (0-based)
   seed_image?: string;  // public path e.g. "/stickers/seed/mex-3-vasquez.jpg"
   team_color: string;   // hex — from stickers-enriched.json (authoritative)
   group: string;        // FIFA 2026 group (A-L) or "_fwc" / "_end" for specials
+  // Rarity fields (present on extra-gold stickers; undefined for base stickers)
+  variant?: string;          // "base" | "extra-gold"
+  rarity_tier?: string;      // "common" | "team" | "legend" | "rookie"
+  base_player_id?: string | null;
 }
 
 export const DEFAULT_TEAM_COLOR = "#9ca3af";
@@ -61,10 +65,14 @@ interface RawSticker {
   team: string;
   team_code: string;
   team_color: string;
-  number: number;
+  number: number | null;
   type: string;
   sort_order: number;
   group: string;
+  // New optional rarity fields (present after schema upgrade)
+  variant?: string;
+  rarity_tier?: string;
+  base_player_id?: string | null;
 }
 
 // ---------- Catalog loader ----------
@@ -88,7 +96,7 @@ export async function getCatalog(): Promise<Sticker[]> {
     display_name: s.display_name,
     team: s.team,
     team_code: s.team_code,
-    number: s.number,
+    number: s.number ?? null,
     type: s.type as StickerType,
     sort_order: s.sort_order,
     seed_image: manifest[s.sticker_id]
@@ -96,6 +104,10 @@ export async function getCatalog(): Promise<Sticker[]> {
       : undefined,
     team_color: s.team_color ?? DEFAULT_TEAM_COLOR,
     group: s.group ?? "",
+    // Rarity fields — passed through when present (extra-gold stickers)
+    ...(s.variant !== undefined ? { variant: s.variant } : {}),
+    ...(s.rarity_tier !== undefined ? { rarity_tier: s.rarity_tier } : {}),
+    ...(s.base_player_id !== undefined ? { base_player_id: s.base_player_id } : {}),
   }));
 
   return _catalog;

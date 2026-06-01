@@ -88,6 +88,7 @@ const DEFAULT_OVR = 75;
 
 function computeMeta(sticker: Sticker): PlayerMeta | null {
   if (sticker.type !== "player") return null;
+  if (sticker.number === null) return null;
 
   const n = sticker.number;
 
