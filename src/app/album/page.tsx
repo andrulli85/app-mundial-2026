@@ -15,7 +15,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import StickerCardFut from "@/components/StickerCardFut";
+import StickerCardPanini from "@/components/StickerCardPanini";
 import { getNickname, getAllStickers, toggleSticker } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
@@ -209,6 +209,11 @@ export default function AlbumPage() {
   const owned = catalog.filter((s) => (counts[s.id] ?? 0) >= 1).length;
   const dupes = catalog.filter((s) => (counts[s.id] ?? 0) >= 2).length;
 
+  // x1/x2/x3+ summary counts for the pill row
+  const uniqueOwned = catalog.filter((s) => (counts[s.id] ?? 0) === 1).length;
+  const dupX2 = catalog.filter((s) => (counts[s.id] ?? 0) === 2).length;
+  const dupX3plus = catalog.filter((s) => (counts[s.id] ?? 0) >= 3).length;
+
   const teamStats = useMemo(() => {
     const map = new Map<string, { owned: number; total: number }>();
     for (const sticker of catalog) {
@@ -325,6 +330,27 @@ export default function AlbumPage() {
       </header>
 
       <InstallBanner />
+
+      {/* ------------------------------------------------------------------ */}
+      {/* x1/x2/x3+ summary pill row                                          */}
+      {/* ------------------------------------------------------------------ */}
+      <div
+        className="flex items-center justify-center gap-3 px-4 py-2"
+        style={{ backgroundColor: "#0a0a0a" }}
+        data-testid="dup-summary-row"
+      >
+        <span className="text-xs font-semibold" style={{ color: "#d1d5db" }}>
+          Únicas <span style={{ color: "#f5f5f5", fontWeight: 700 }}>{uniqueOwned}</span>
+        </span>
+        <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
+        <span className="text-xs font-semibold" style={{ color: "#d1d5db" }}>
+          ×2: <span style={{ color: "#C0A85E", fontWeight: 700 }}>{dupX2}</span>
+        </span>
+        <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
+        <span className="text-xs font-semibold" style={{ color: "#d1d5db" }}>
+          ×3+: <span style={{ color: "#C0A85E", fontWeight: 700 }}>{dupX3plus}</span>
+        </span>
+      </div>
 
       {/* ------------------------------------------------------------------ */}
       {/* Search + Category chips                                              */}
@@ -509,11 +535,13 @@ export default function AlbumPage() {
               />
               <div className="grid grid-cols-3 gap-2 mb-4 md:grid-cols-5 lg:grid-cols-6">
                 {group.stickers.map((sticker) => (
-                  <StickerCardFut
+                  <StickerCardPanini
                     key={sticker.id}
                     sticker={sticker}
                     count={counts[sticker.id] ?? 0}
-                    onTap={handleTap}
+                    onClick={() => handleTap(sticker.id)}
+                    favorited={sticker.rarity_tier === "legend"}
+                    size="md"
                   />
                 ))}
               </div>
@@ -629,11 +657,13 @@ function GroupsView({ groups, counts, onTap, teamStats }: GroupsViewProps) {
               />
               <div className="grid grid-cols-3 gap-2 mb-4 md:grid-cols-5 lg:grid-cols-6">
                 {tg.stickers.map((sticker) => (
-                  <StickerCardFut
+                  <StickerCardPanini
                     key={sticker.id}
                     sticker={sticker}
                     count={counts[sticker.id] ?? 0}
-                    onTap={onTap}
+                    onClick={() => onTap(sticker.id)}
+                    favorited={sticker.rarity_tier === "legend"}
+                    size="md"
                   />
                 ))}
               </div>
