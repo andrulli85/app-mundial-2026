@@ -1,25 +1,227 @@
 @import "tailwindcss";
 
-/* App Mundial 2026 — design tokens */
+/* ============================================================
+   ALBUMIX — Design Foundations: Color + Type
+   Trading-card-game brand. Premium black & gold, World Cup 2026
+   tri-color (red/green/blue) used only as accents.
+   Audience: kids 10–14 · Voice: hype, energetic, Chilean Spanish.
+   ============================================================ */
+
 :root {
-  --background: #f9f5ee;   /* warm cream — matches album page background */
-  --foreground: #1a1a1a;
-  --color-primary: #006847; /* Mexico green — main brand color */
-  --color-accent: #c8102e;  /* FIFA red */
-  --color-gold: #C0A85E;    /* World Cup gold */
+  /* ---- Brand fonts (loaded via next/font in layout.tsx) ---- */
+  /* --font-display and --font-archivo are injected as CSS vars by next/font */
+  /* --font-wide uses Archivo at 800+ weight (Archivo Expanded not in next/font catalog) */
+  --font-wide:    var(--font-archivo, 'Archivo', system-ui, sans-serif);  /* premium wide headings */
+  --font-ui:      var(--font-archivo, 'Archivo', system-ui, sans-serif);  /* UI + body */
+  --font-stat:    var(--font-archivo, 'Archivo', system-ui, sans-serif);  /* numerals (tabular) */
+
+  /* ============================================================
+     COLOR — INK / SURFACES (the premium near-black base)
+     ============================================================ */
+  --bg-0:  #07080A;   /* deepest void — app backdrop behind everything */
+  --bg-1:  #0D0F13;   /* base page background */
+  --bg-2:  #15181F;   /* card / surface */
+  --bg-3:  #1D212B;   /* raised surface, inputs, chips */
+  --bg-4:  #272C38;   /* hover / active surface */
+
+  --line:        rgba(255,255,255,0.08);  /* hairline divider */
+  --line-strong: rgba(255,255,255,0.15);  /* visible border */
+  --line-gold:   rgba(244,200,74,0.35);   /* gold-tinted border */
+
+  /* ---- Foreground / text ---- */
+  --fg-1: #F6F8FB;   /* primary text */
+  --fg-2: #AAB2C0;   /* secondary text */
+  --fg-3: #6B7382;   /* tertiary / captions */
+  --fg-onlight: #0D0F13; /* text on gold/light fills */
+
+  /* ============================================================
+     COLOR — GOLD (primary brand accent, the "premium" signal)
+     ============================================================ */
+  --gold:        #F4C84A;   /* core gold */
+  --gold-bright: #FFE17A;   /* highlight */
+  --gold-deep:   #C2913A;   /* shadow side of foil */
+  --gold-ink:    #5A4413;   /* deep gold text on light */
+  /* Foil gradient — use for trophies, legendary cards, CTAs */
+  --foil-gold: linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%);
+  --foil-gold-soft: linear-gradient(180deg,#FBD867 0%,#E0A937 100%);
+
+  /* ============================================================
+     COLOR — WORLD CUP 2026 HOST TRI-COLOR (accents only)
+     CAN = red · MEX = green · USA = blue
+     ============================================================ */
+  --red:    #E4002B;   --red-bright:   #FF274F;   --red-deep:   #A60020;
+  --green:  #00A24B;   --green-bright: #2BD46F;   --green-deep: #00642E;
+  --blue:   #1466FF;   --blue-bright:  #4F8DFF;   --blue-deep:  #0A3FA8;
+
+  /* Tri-color ribbon (We Are 26 flavor) */
+  --ribbon-26: linear-gradient(90deg,#E4002B 0%,#E4002B 33%,#00A24B 33%,#00A24B 66%,#1466FF 66%,#1466FF 100%);
+
+  /* ============================================================
+     COLOR — SEMANTIC
+     ============================================================ */
+  --success: var(--green);
+  --danger:  var(--red);
+  --info:    var(--blue);
+  --warning: var(--gold);
+
+  /* ============================================================
+     COLOR — CARD RARITY TIERS (the collectible heartbeat)
+     ============================================================ */
+  --rarity-common:    #8A94A6;   /* slate */
+  --rarity-rare:      #2E8BFF;   /* blue glow */
+  --rarity-epic:      #B45CFF;   /* violet */
+  --rarity-legendary: #F4C84A;   /* gold */
+  --rarity-icon:      #FF3B5C;   /* hot red — special / ICON cards */
+  --glow-legendary: 0 0 0 1px rgba(244,200,74,.6), 0 0 28px -4px rgba(244,200,74,.55);
+  --glow-icon:      0 0 0 1px rgba(255,59,92,.6),  0 0 28px -4px rgba(255,59,92,.55);
+
+  /* ============================================================
+     RADII
+     ============================================================ */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+  --r-card: 18px;   /* trading card corner */
+
+  /* ============================================================
+     SPACING (4px base)
+     ============================================================ */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px;
+  --s-12: 48px; --s-16: 64px; --s-20: 80px;
+
+  /* ============================================================
+     SHADOWS / ELEVATION (deep, on dark)
+     ============================================================ */
+  --sh-1: 0 1px 2px rgba(0,0,0,.4);
+  --sh-2: 0 4px 14px rgba(0,0,0,.45);
+  --sh-3: 0 12px 30px -6px rgba(0,0,0,.6);
+  --sh-4: 0 24px 60px -12px rgba(0,0,0,.7);
+  --sh-card: 0 18px 40px -12px rgba(0,0,0,.75);
+  --glow-gold: 0 0 24px -4px rgba(244,200,74,.5);
+  --inset-top: inset 0 1px 0 rgba(255,255,255,.06);
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --ease-pop: cubic-bezier(.34,1.56,.64,1);   /* bouncy reveal */
+  --t-fast: .12s;
+  --t-base: .22s;
+  --t-slow: .4s;
+
+  /* ============================================================
+     LEGACY / SAFE-AREA (kept for existing pages)
+     ============================================================ */
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
   --safe-area-top: env(safe-area-inset-top, 0px);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-1);
+  --color-foreground: var(--fg-1);
 }
 
+/* ============================================================
+   SEMANTIC TYPE SCALE
+   ============================================================ */
+.t-hero {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 9vw, 104px);
+  line-height: .92; letter-spacing: .01em;
+  text-transform: uppercase; color: var(--fg-1);
+}
+.t-display {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: .96; letter-spacing: .01em;
+  text-transform: uppercase; color: var(--fg-1);
+}
+.t-h1 {
+  font-family: var(--font-wide);
+  font-weight: 800; font-size: 34px; line-height: 1.05;
+  letter-spacing: -.01em; color: var(--fg-1);
+}
+.t-h2 {
+  font-family: var(--font-wide);
+  font-weight: 800; font-size: 24px; line-height: 1.1; color: var(--fg-1);
+}
+.t-h3 {
+  font-family: var(--font-ui);
+  font-weight: 700; font-size: 18px; line-height: 1.2; color: var(--fg-1);
+}
+.t-body {
+  font-family: var(--font-ui);
+  font-weight: 400; font-size: 15px; line-height: 1.5; color: var(--fg-2);
+}
+.t-body-strong {
+  font-family: var(--font-ui);
+  font-weight: 600; font-size: 15px; line-height: 1.5; color: var(--fg-1);
+}
+.t-small {
+  font-family: var(--font-ui);
+  font-weight: 500; font-size: 13px; line-height: 1.4; color: var(--fg-2);
+}
+.t-eyebrow {
+  font-family: var(--font-ui);
+  font-weight: 800; font-size: 12px; line-height: 1;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--gold);
+}
+.t-label {
+  font-family: var(--font-ui);
+  font-weight: 700; font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--fg-3);
+}
+.t-stat {
+  font-family: var(--font-stat);
+  font-weight: 800; font-variant-numeric: tabular-nums;
+  font-size: 28px; line-height: 1; color: var(--fg-1);
+}
+
+/* Gold text helpers */
+.text-gold { color: var(--gold); }
+.text-foil {
+  background: var(--foil-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ============================================================
+   KEYFRAMES (from Albumix App.html)
+   ============================================================ */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes popin {
+  from { transform: scale(.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@keyframes popcard {
+  from { transform: scale(.97) translateY(8px); }
+  to   { transform: scale(1) translateY(0); }
+}
+@keyframes sheetup {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes rarity-sparkle {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-family: var(--font-ui);
   /* Prevent overscroll rubber-band effect on iOS */
   overscroll-behavior: none;
   /* Safe area support for notched phones */
@@ -59,52 +261,39 @@ html {
   }
 }
 
-/* ---------------------------------------------------------------------------
- * Rarity tier — Gold (R1 extra-gold stickers)
- * --------------------------------------------------------------------------- */
-:root {
-  --rarity-gold-border-gradient: linear-gradient(135deg, #fde047 0%, #facc15 25%, #fbbf24 50%, #f59e0b 75%, #d97706 100%);
-  --rarity-gold-glow: 0 0 32px rgba(252, 211, 77, 0.6);
-  --rarity-gold-sparkle: radial-gradient(circle, rgba(253,224,71,0.9) 0%, transparent 70%);
-}
-
+/* ============================================================
+   LEGACY — rarity gold border (kept for backward compat)
+   ============================================================ */
 .rarity-gold {
   position: relative;
   border-radius: 12px;
   padding: 2px;
-  background: var(--rarity-gold-border-gradient);
-  box-shadow: var(--rarity-gold-glow);
+  background: linear-gradient(135deg, #fde047 0%, #facc15 25%, #fbbf24 50%, #f59e0b 75%, #d97706 100%);
+  box-shadow: 0 0 32px rgba(252, 211, 77, 0.6);
 }
 .rarity-gold > * {
   border-radius: 10px;
   background: white;
 }
 .rarity-gold::before {
-  /* 4 sparkle particles, CSS-only */
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    var(--rarity-gold-sparkle) 12% 22%/16px 16px no-repeat,
-    var(--rarity-gold-sparkle) 88% 18%/12px 12px no-repeat,
-    var(--rarity-gold-sparkle) 15% 78%/14px 14px no-repeat,
-    var(--rarity-gold-sparkle) 85% 82%/18px 18px no-repeat;
+    radial-gradient(circle, rgba(253,224,71,0.9) 0%, transparent 70%) 12% 22%/16px 16px no-repeat,
+    radial-gradient(circle, rgba(253,224,71,0.9) 0%, transparent 70%) 88% 18%/12px 12px no-repeat,
+    radial-gradient(circle, rgba(253,224,71,0.9) 0%, transparent 70%) 15% 78%/14px 14px no-repeat,
+    radial-gradient(circle, rgba(253,224,71,0.9) 0%, transparent 70%) 85% 82%/18px 18px no-repeat;
   animation: rarity-sparkle 3.2s ease-in-out infinite;
-}
-@keyframes rarity-sparkle {
-  0%, 100% { opacity: 0.6; }
-  50%       { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .rarity-gold::before { animation: none; }
 }
 
-/* ---------------------------------------------------------------------------
- * FUT-style dark home — scoped tokens (Task D)
- * Only applied on /inicio via className="home-dark" on the root wrapper.
- * Does NOT affect other pages.
- * --------------------------------------------------------------------------- */
+/* ============================================================
+   FUT-style dark home — scoped tokens (Task D, legacy compat)
+   ============================================================ */
 .home-dark {
   background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
   min-height: 100vh;

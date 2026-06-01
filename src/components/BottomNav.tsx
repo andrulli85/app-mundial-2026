@@ -1,40 +1,34 @@
 "use client";
 
 /**
- * BottomNav — shared 5-tab navigation bar (Fase 2.5, 2026-06-01).
+ * BottomNav — 5-tab navigation bar (Stream A, Phase 4.1).
  *
- * Tab order per canonical design (app.jsx lines 28-34):
- *   Inicio · Mercado · Álbum (CENTER hero pill) · Mi 11 · Perfil
+ * Tab order:
+ *   Home (Inicio) · Album · Mi Once (CENTER hero FAB) · Mercado · Perfil
  *
- * Icons match ICONS map in ui.jsx exactly (Lucide equivalents):
- *   home  → Home
- *   trade → ArrowLeftRight
- *   grid  → Grid3x3
- *   users → Users
- *   user  → User
+ * Center "Mi Once" tab:
+ *   - Gold gradient circle (FAB-style), elevated visually
+ *   - Links to /squad (Stream B will create the route — graceful 404 until then)
  *
- * Hero "Álbum" pill (center):
- *   - 40×40 rounded-full
- *   - Inactive: gold border, dark bg
- *   - Active: var(--foil-gold) gradient bg + glow shadow
- *   - Icon size 22 active / 23 inactive, strokeWidth 2 / 2.4
+ * Active state: --gold fill + weight 800 label
+ * Inactive state: --fg-3 icon + --fg-3 label
+ * Background: --bg-1 with top hairline border
  */
 
 import Link from "next/link";
-import { Home, ArrowLeftRight, Grid3x3, Users, User } from "lucide-react";
+import { Home, Grid3x3, Users, ArrowLeftRight, User } from "lucide-react";
 
-type NavTab = "inicio" | "album" | "once" | "mercado" | "perfil" | "scoreboard";
+export type NavTab = "inicio" | "album" | "once" | "mercado" | "perfil" | "scoreboard";
 
 interface BottomNavProps {
   active: NavTab;
 }
 
 const GOLD = "#F4C84A";
-const INACTIVE = "#9ca3af";
-const ACTIVE_FG = "#f5f5f5";
+const INACTIVE = "#6B7382"; // --fg-3
 
 export default function BottomNav({ active }: BottomNavProps) {
-  const isAlbumActive = active === "album";
+  const isOnceActive = active === "once";
 
   return (
     <nav
@@ -45,104 +39,156 @@ export default function BottomNav({ active }: BottomNavProps) {
         display: "flex",
         alignItems: "flex-end",
         paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 10px)",
-        paddingTop: 10,
+        paddingTop: 8,
         paddingLeft: 4,
         paddingRight: 4,
-        background: "linear-gradient(0deg,rgba(7,8,10,0.98) 60%,transparent)",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
+        background: "var(--bg-1)",
+        borderTop: "1px solid var(--line)",
       }}
     >
-      {/* Inicio */}
-      <Link
+      {/* ── Inicio ── */}
+      <NavItem
         href="/inicio"
-        aria-current={active === "inicio" ? "page" : undefined}
-        style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "4px 2px", color: active === "inicio" ? GOLD : INACTIVE, textDecoration: "none" }}
+        label="Inicio"
+        active={active === "inicio"}
+        activeColor={GOLD}
+        inactiveColor={INACTIVE}
       >
-        <Home size={23} strokeWidth={active === "inicio" ? 2.4 : 2} />
-        <span style={{ fontSize: 10, fontWeight: active === "inicio" ? 800 : 600, letterSpacing: ".02em", color: active === "inicio" ? GOLD : INACTIVE }}>
-          Inicio
-        </span>
-      </Link>
+        <Home size={22} strokeWidth={active === "inicio" ? 2.4 : 1.8} />
+      </NavItem>
 
-      {/* Mercado */}
-      <Link
-        href="/mercado"
-        aria-current={active === "mercado" ? "page" : undefined}
-        style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "4px 2px", color: active === "mercado" ? GOLD : INACTIVE, textDecoration: "none" }}
+      {/* ── Álbum ── */}
+      <NavItem
+        href="/album"
+        label="Álbum"
+        active={active === "album"}
+        activeColor={GOLD}
+        inactiveColor={INACTIVE}
       >
-        <ArrowLeftRight size={23} strokeWidth={active === "mercado" ? 2.4 : 2} />
-        <span style={{ fontSize: 10, fontWeight: active === "mercado" ? 800 : 600, letterSpacing: ".02em", color: active === "mercado" ? GOLD : INACTIVE }}>
-          Mercado
-        </span>
-      </Link>
+        <Grid3x3 size={22} strokeWidth={active === "album" ? 2.4 : 1.8} />
+      </NavItem>
 
-      {/* Álbum — hero pill */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
+      {/* ── Mi Once — FAB center ── */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 4,
+          // Lift the center tab above the bar
+          marginTop: -14,
+        }}
+      >
         <Link
-          href="/album"
-          aria-label="Álbum"
-          aria-current={isAlbumActive ? "page" : undefined}
+          href="/squad"
+          aria-label="Mi Once"
+          aria-current={isOnceActive ? "page" : undefined}
           style={{
-            width: 40,
-            height: 40,
+            width: 52,
+            height: 52,
             borderRadius: "50%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             textDecoration: "none",
             flexShrink: 0,
-            transition: "box-shadow 0.2s",
-            background: isAlbumActive
-              ? `linear-gradient(135deg, ${GOLD}, #d4a017)`
-              : "var(--bg-3, #1a1d22)",
-            border: isAlbumActive ? "none" : `1px solid ${GOLD}`,
-            boxShadow: isAlbumActive
-              ? `0 0 14px -2px ${GOLD}88, 0 4px 12px rgba(0,0,0,0.4)`
-              : "none",
+            background: isOnceActive
+              ? "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)"
+              : "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
+            boxShadow: isOnceActive
+              ? `0 0 0 3px var(--bg-1), 0 0 20px -2px rgba(244,200,74,.7), var(--sh-3)`
+              : `0 0 0 3px var(--bg-1), 0 0 12px -4px rgba(244,200,74,.4), var(--sh-2)`,
+            transition: "box-shadow 0.2s var(--ease-out)",
           }}
         >
-          <Grid3x3
-            size={isAlbumActive ? 22 : 23}
-            strokeWidth={isAlbumActive ? 2 : 2.4}
-            color={isAlbumActive ? "#0d0f13" : GOLD}
+          <Users
+            size={24}
+            strokeWidth={2}
+            color="var(--fg-onlight)"
           />
         </Link>
         <span
           style={{
             fontSize: 10,
-            fontWeight: isAlbumActive ? 800 : 700,
-            letterSpacing: ".02em",
-            marginTop: 4,
-            color: isAlbumActive ? GOLD : ACTIVE_FG,
+            fontWeight: 800,
+            letterSpacing: ".04em",
+            textTransform: "uppercase",
+            color: GOLD,
+            fontFamily: "var(--font-ui)",
           }}
         >
-          Álbum
+          Mi Once
         </span>
       </div>
 
-      {/* Mi 11 */}
-      <Link
-        href="/once"
-        aria-current={active === "once" ? "page" : undefined}
-        style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "4px 2px", color: active === "once" ? GOLD : INACTIVE, textDecoration: "none" }}
+      {/* ── Mercado ── */}
+      <NavItem
+        href="/mercado"
+        label="Mercado"
+        active={active === "mercado"}
+        activeColor={GOLD}
+        inactiveColor={INACTIVE}
       >
-        <Users size={23} strokeWidth={active === "once" ? 2.4 : 2} />
-        <span style={{ fontSize: 10, fontWeight: active === "once" ? 800 : 600, letterSpacing: ".02em", color: active === "once" ? GOLD : INACTIVE }}>
-          Mi 11
-        </span>
-      </Link>
+        <ArrowLeftRight size={22} strokeWidth={active === "mercado" ? 2.4 : 1.8} />
+      </NavItem>
 
-      {/* Perfil */}
-      <Link
+      {/* ── Perfil ── */}
+      <NavItem
         href="/perfil"
-        aria-current={active === "perfil" ? "page" : undefined}
-        style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "4px 2px", color: active === "perfil" ? GOLD : INACTIVE, textDecoration: "none" }}
+        label="Perfil"
+        active={active === "perfil"}
+        activeColor={GOLD}
+        inactiveColor={INACTIVE}
       >
-        <User size={23} strokeWidth={active === "perfil" ? 2.4 : 2} />
-        <span style={{ fontSize: 10, fontWeight: active === "perfil" ? 800 : 600, letterSpacing: ".02em", color: active === "perfil" ? GOLD : INACTIVE }}>
-          Perfil
-        </span>
-      </Link>
+        <User size={22} strokeWidth={active === "perfil" ? 2.4 : 1.8} />
+      </NavItem>
     </nav>
+  );
+}
+
+// ── Shared tab item ──────────────────────────────────────────────────────────
+
+interface NavItemProps {
+  href: string;
+  label: string;
+  active: boolean;
+  activeColor: string;
+  inactiveColor: string;
+  children: React.ReactNode;
+}
+
+function NavItem({ href, label, active, activeColor, inactiveColor, children }: NavItemProps) {
+  const color = active ? activeColor : inactiveColor;
+
+  return (
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 4,
+        padding: "4px 2px",
+        color,
+        textDecoration: "none",
+        transition: "color 0.15s",
+      }}
+    >
+      {children}
+      <span
+        style={{
+          fontSize: 10,
+          fontWeight: active ? 800 : 600,
+          letterSpacing: ".02em",
+          color,
+          fontFamily: "var(--font-ui)",
+        }}
+      >
+        {label}
+      </span>
+    </Link>
   );
 }

@@ -1,0 +1,30 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Albumix mascot placeholder — replace with final character art">
+  <defs>
+    <linearGradient id="mFoil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFE9A8"></stop><stop offset=".45" stop-color="#F4C84A"></stop><stop offset="1" stop-color="#C2913A"></stop>
+    </linearGradient>
+    <radialGradient id="mBall" cx=".35" cy=".3" r=".8">
+      <stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#C9D2DE"></stop>
+    </radialGradient>
+  </defs>
+  
+  <rect x="6" y="6" width="208" height="168" rx="20" fill="#15181F" stroke="#F4C84A" stroke-opacity=".4" stroke-width="2" stroke-dasharray="6 7"></rect>
+  
+  <g transform="translate(110 86)">
+    <ellipse cx="0" cy="58" rx="44" ry="10" fill="#000" opacity=".4"></ellipse>
+    
+    <rect x="-30" y="6" width="60" height="50" rx="22" fill="url(#mFoil)"></rect>
+    
+    <circle cx="0" cy="-14" r="34" fill="url(#mBall)" stroke="#0D0F13" stroke-width="2"></circle>
+    <path d="M0 -30 l11 8 -4 13 -14 0 -4 -13 Z" fill="#0D0F13"></path>
+    <circle cx="0" cy="-14" r="34" fill="none" stroke="#0D0F13" stroke-opacity=".25" stroke-width="1"></circle>
+    
+    <circle cx="-11" cy="-10" r="4.5" fill="#0D0F13"></circle>
+    <circle cx="11" cy="-10" r="4.5" fill="#0D0F13"></circle>
+    <path d="M-9 2 q9 8 18 0" stroke="#0D0F13" stroke-width="3" fill="none" stroke-linecap="round"></path>
+    
+    <rect x="-44" y="18" width="16" height="9" rx="4.5" fill="url(#mFoil)"></rect>
+    <rect x="28" y="18" width="16" height="9" rx="4.5" fill="url(#mFoil)"></rect>
+  </g>
+  <text x="110" y="166" text-anchor="middle" font-family="Archivo, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5" fill="#6B7382">MASCOT · PLACEHOLDER</text>
+</svg>

@@ -3,116 +3,591 @@
 /**
  * Onboarding screen — first launch only.
  *
- * Steps 0-2: kid-friendly micro-tutorial (3 slides, skippable via "Saltar").
- * Step 3: nickname input form (existing flow, Bundle A iOS-zoom fix preserved).
+ * Steps 0-2: premium dark tutorial carousel (3 slides, skippable).
+ * Step 3: nickname input form.
+ *
+ * Visual: premium black & gold from design pack (intro.jsx).
+ * Dark radial gradient bg, foil gold CTA, floating sticker cards.
  *
  * State: step 0..3 via useState — no DB persistence, first-visit only.
- * Redirects to /album if nickname already set (skips everything).
+ * Redirects to /inicio if nickname already set.
  */
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getNickname, setNickname } from "@/lib/db";
-import { isValidNickname } from "@/lib/qr-engine";
+import Image from "next/image";
 
 // ── Tutorial content ─────────────────────────────────────────────────────────
 
-const TUTORIAL_STEPS = [
-  {
-    emoji: "⚽",
-    title: "¡Bienvenido a Albumix!",
-    body: "Tu álbum digital del Mundial 2026. Juntá todas las figuritas y completá tu colección.",
-  },
-  {
-    emoji: "👆",
-    title: "Marcá tus figuritas",
-    body: "Tocá una lámina para marcarla como tuya. Tocala de nuevo para agregar repetidas (repes).",
-  },
-  {
-    emoji: "🔄",
-    title: "Intercambiá con amigos",
-    body: "Usá códigos QR para proponer intercambios con tus amigos. ¡Completá tu álbum juntos!",
-  },
-] as const;
+interface Slide {
+  visual: "fan" | "mark" | "trade";
+  title: React.ReactNode;
+  body: string;
+  cta: string;
+}
 
-// ── Tutorial slide ────────────────────────────────────────────────────────────
+const SLIDES: Slide[] = [
+  {
+    visual: "fan",
+    title: (
+      <>
+        Colecciona
+        <br />
+        <span className="text-foil">el Mundial 2026</span>
+      </>
+    ),
+    body: "Tu álbum digital del Mundial 2026. Junta todas tus cartas y completa la colección.",
+    cta: "Siguiente →",
+  },
+  {
+    visual: "mark",
+    title: (
+      <>
+        Marca{" "}
+        <span className="text-foil">tus cartas</span>
+      </>
+    ),
+    body: "Toca una carta para marcarla como tuya. Tócala de nuevo para sumar tus repetidas.",
+    cta: "Siguiente →",
+  },
+  {
+    visual: "trade",
+    title: (
+      <>
+        Cambia{" "}
+        <span className="text-foil">con amigos</span>
+      </>
+    ),
+    body: "Propón cambios con tus amigos, acepta sus ofertas y completen el álbum juntos.",
+    cta: "¡Empezar!",
+  },
+];
 
-interface TutorialSlideProps {
+// ── Medallion icon wrapper ────────────────────────────────────────────────────
+
+function Medallion({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{ position: "relative", width: 92, height: 92, margin: "0 auto" }}>
+      {/* Glow halo */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: -18,
+          background: "radial-gradient(circle, rgba(244,200,74,.28), transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "relative",
+          width: 92,
+          height: 92,
+          borderRadius: 24,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "linear-gradient(160deg,#211b08,#0d0f13)",
+          border: "1px solid var(--line-gold)",
+          boxShadow: "var(--glow-gold)",
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ── Mini sticker card (matches TradingCard sm from cards.jsx) ─────────────────
+
+interface MiniCardProps {
+  accentColor: string;
+  rotate: number;
+  translateX: number;
+  zIndex?: number;
+  animationDelay?: string;
+}
+
+function MiniCard({ accentColor, rotate, translateX, zIndex = 1, animationDelay = "0s" }: MiniCardProps) {
+  return (
+    <div
+      aria-hidden
+      style={{
+        position: "absolute",
+        left: "50%",
+        top: 0,
+        transform: `translateX(calc(-50% + ${translateX}px)) rotate(${rotate}deg)`,
+        zIndex,
+        width: 104,
+        height: 146,
+        borderRadius: "var(--r-card)",
+        overflow: "hidden",
+        background: "linear-gradient(180deg,#8fe0ef 0%,#6fd0e6 60%,#58c2dc 100%)",
+        boxShadow: "var(--sh-3)",
+        animation: `floaty 3s ease-in-out ${animationDelay} infinite`,
+        flexShrink: 0,
+      }}
+    >
+      {/* Giant "26" */}
+      <span
+        style={{
+          position: "absolute",
+          left: -70 * 0.12,
+          top: -70 * 0.06,
+          fontFamily: "var(--font-display)",
+          fontSize: 70,
+          lineHeight: 0.8,
+          color: "rgba(13,20,24,.9)",
+          letterSpacing: "-.04em",
+          userSelect: "none",
+        }}
+      >
+        2
+      </span>
+      <span
+        style={{
+          position: "absolute",
+          right: -70 * 0.14,
+          top: 70 * 0.18,
+          fontFamily: "var(--font-display)",
+          fontSize: 70,
+          lineHeight: 0.8,
+          color: accentColor,
+          opacity: 0.92,
+          letterSpacing: "-.04em",
+          userSelect: "none",
+        }}
+      >
+        6
+      </span>
+      {/* Name plate */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: accentColor,
+          padding: "5px 7px 6px",
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: 11,
+            lineHeight: 0.95,
+            color: "#fff",
+            textTransform: "uppercase",
+          }}
+        >
+          FIGURITA
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Card fan visual ───────────────────────────────────────────────────────────
+
+function CardFan() {
+  return (
+    <div style={{ position: "relative", height: 168, width: "100%" }}>
+      <MiniCard accentColor="#E4002B" rotate={-15} translateX={-68} animationDelay="0.4s" />
+      <MiniCard accentColor="#1466FF" rotate={15} translateX={68} animationDelay="0.8s" />
+      <MiniCard accentColor="#00A24B" rotate={0} translateX={0} zIndex={2} animationDelay="0s" />
+    </div>
+  );
+}
+
+// ── Slide visual ──────────────────────────────────────────────────────────────
+
+function SlideVisual({ kind }: { kind: "fan" | "mark" | "trade" }) {
+  if (kind === "fan") return <CardFan />;
+
+  if (kind === "mark") {
+    return (
+      <Medallion>
+        <div style={{ position: "relative" }}>
+          {/* Grid icon */}
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          {/* Check badge */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: -10,
+              right: -14,
+              width: 30,
+              height: 30,
+              borderRadius: 99,
+              background: "var(--foil-gold)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "var(--sh-2)",
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--fg-onlight)" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+        </div>
+      </Medallion>
+    );
+  }
+
+  // trade
+  return (
+    <Medallion>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="17 1 21 5 17 9" />
+        <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+        <polyline points="7 23 3 19 7 15" />
+        <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+      </svg>
+    </Medallion>
+  );
+}
+
+// ── Tutorial carousel ─────────────────────────────────────────────────────────
+
+interface CarouselProps {
   step: number;
-  total: number;
   onNext: () => void;
   onSkip: () => void;
 }
 
-function TutorialSlide({ step, total, onNext, onSkip }: TutorialSlideProps) {
-  const slide = TUTORIAL_STEPS[step];
-  const isLast = step === total - 1;
+function TutorialCarousel({ step, onNext, onSkip }: CarouselProps) {
+  const s = SLIDES[step];
 
   return (
-    <main className="flex-1 flex flex-col items-center justify-center px-6 py-12">
-      {/* Progress dots */}
-      <div className="flex gap-2 mb-8" role="tablist" aria-label="Progreso del tutorial">
-        {TUTORIAL_STEPS.map((_, i) => (
-          <div
+    <div
+      style={{
+        minHeight: "100%",
+        display: "flex",
+        flexDirection: "column",
+        padding: "0 24px 36px",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Radial gold glow at top */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: -20,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 360,
+          height: 360,
+          background: "radial-gradient(circle, rgba(244,200,74,.16), transparent 62%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Progress segments */}
+      <div
+        style={{
+          display: "flex",
+          gap: 7,
+          justifyContent: "center",
+          paddingTop: 24,
+          position: "relative",
+          zIndex: 1,
+        }}
+        role="tablist"
+        aria-label="Progreso del tutorial"
+      >
+        {SLIDES.map((_, i) => (
+          <span
             key={i}
             role="tab"
             aria-selected={i === step}
-            aria-label={`Paso ${i + 1} de ${total}`}
-            className="h-2 rounded-full transition-all duration-300"
             style={{
-              width: i === step ? 24 : 8,
-              backgroundColor: i === step ? "#006847" : "#d1c9b8",
+              height: 5,
+              width: i === step ? 26 : 18,
+              borderRadius: 99,
+              background: i === step
+                ? "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)"
+                : "var(--bg-4)",
+              transition: "all .3s var(--ease-out)",
+              display: "inline-block",
             }}
           />
         ))}
       </div>
 
-      {/* Slide card */}
+      <div style={{ flex: 1 }} />
+
+      {/* Slide body */}
       <div
-        className="w-full max-w-sm rounded-2xl p-8 shadow-lg flex flex-col items-center text-center gap-4"
-        style={{ backgroundColor: "#ffffff" }}
+        key={step}
+        style={{
+          textAlign: "center",
+          position: "relative",
+          zIndex: 1,
+          animation: "popcard .35s var(--ease-pop)",
+        }}
       >
-        {/* Big emoji */}
-        <div
-          className="text-6xl select-none leading-none"
-          aria-hidden="true"
-          style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.12))" }}
+        <SlideVisual kind={s.visual} />
+        <h1
+          className="t-display"
+          style={{ margin: "26px 0 0" }}
         >
-          {slide.emoji}
-        </div>
-
-        <h1 className="text-2xl font-black leading-tight" style={{ color: "#006847" }}>
-          {slide.title}
+          {s.title}
         </h1>
-
-        <p className="text-base text-gray-700 leading-relaxed">
-          {slide.body}
+        <p
+          className="t-body"
+          style={{ margin: "14px auto 0", maxWidth: 300 }}
+        >
+          {s.body}
         </p>
       </div>
 
-      {/* Navigation */}
-      <div className="w-full max-w-sm mt-6 flex flex-col gap-3">
-        <button
-          onClick={onNext}
-          className="w-full py-4 rounded-xl font-black text-white text-lg transition-opacity focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2"
+      <div style={{ flex: 1.4 }} />
+
+      {/* CTA button — foil gold pill */}
+      <button
+        onClick={onNext}
+        style={{
+          width: "100%",
+          border: "none",
+          borderRadius: "var(--r-pill)",
+          padding: "16px 0",
+          cursor: "pointer",
+          fontFamily: "var(--font-ui)",
+          fontWeight: 800,
+          fontSize: 16,
+          letterSpacing: ".04em",
+          textTransform: "uppercase",
+          background: "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
+          color: "var(--fg-onlight)",
+          boxShadow: "var(--glow-gold)",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        {s.cta}
+      </button>
+
+      <button
+        onClick={onSkip}
+        style={{
+          background: "none",
+          border: "none",
+          color: "var(--fg-3)",
+          fontFamily: "var(--font-ui)",
+          fontWeight: 600,
+          fontSize: 14,
+          marginTop: 16,
+          cursor: "pointer",
+          position: "relative",
+          zIndex: 1,
+          textDecoration: "underline",
+          textUnderlineOffset: 3,
+        }}
+      >
+        Saltar tutorial
+      </button>
+    </div>
+  );
+}
+
+// ── Nickname form (step 3) ────────────────────────────────────────────────────
+
+interface NicknameFormProps {
+  onDone: (name: string) => void;
+  onBack: () => void;
+}
+
+function NicknameForm({ onDone, onBack }: NicknameFormProps) {
+  const [name, setName] = useState("");
+  const [saving, setSaving] = useState(false);
+  const valid = /^[\p{L}\p{N} ]{3,16}$/u.test(name.trim());
+
+  const handleSubmit = async () => {
+    if (!valid) return;
+    setSaving(true);
+    onDone(name.trim());
+  };
+
+  return (
+    <div
+      style={{
+        minHeight: "100%",
+        display: "flex",
+        flexDirection: "column",
+        padding: "0 24px 40px",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Glow */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: -40,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 340,
+          height: 320,
+          background: "radial-gradient(circle, rgba(244,200,74,.18), transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div style={{ flex: 1 }} />
+
+      {/* Brand */}
+      <div style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
+        <Medallion>
+          <Image
+            src="/assets/logomark.svg"
+            width={50}
+            height={50}
+            alt="Albumix"
+          />
+        </Medallion>
+        <div
           style={{
-            backgroundColor: "#006847",
-            // @ts-expect-error custom CSS property for focus ring color
-            "--tw-ring-color": "#006847",
+            fontFamily: "var(--font-display)",
+            fontSize: 38,
+            letterSpacing: ".02em",
+            color: "var(--fg-1)",
+            marginTop: 16,
           }}
         >
-          {isLast ? "¡Empezar! 🚀" : "Siguiente →"}
-        </button>
+          ALBUMI<span style={{ color: "var(--gold)" }}>X</span>
+        </div>
+        <p
+          className="t-body"
+          style={{ margin: "6px auto 0", maxWidth: 280 }}
+        >
+          Arma tu álbum del Mundial y cambia cartas con tus amigos.
+        </p>
+      </div>
+
+      {/* Name card */}
+      <div
+        style={{
+          background: "var(--bg-2)",
+          border: "1px solid var(--line)",
+          borderRadius: 20,
+          padding: 20,
+          marginTop: 28,
+          position: "relative",
+          zIndex: 1,
+          boxShadow: "var(--sh-card)",
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: 23,
+            color: "var(--fg-1)",
+            textTransform: "uppercase",
+            letterSpacing: ".01em",
+            lineHeight: 1,
+          }}
+        >
+          ¿Cómo te llamás?
+        </div>
+        <div
+          className="t-small"
+          style={{ margin: "4px 0 14px" }}
+        >
+          Esto aparece cuando cambias con un amigo.
+        </div>
+
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && valid) handleSubmit();
+          }}
+          placeholder="Domi Reyman"
+          maxLength={16}
+          autoComplete="off"
+          autoCapitalize="none"
+          autoCorrect="off"
+          inputMode="text"
+          aria-label="Ingresá tu nombre de jugador"
+          style={{
+            width: "100%",
+            boxSizing: "border-box",
+            background: "var(--bg-3)",
+            border: `1px solid ${name && !valid ? "var(--red)" : "var(--line-strong)"}`,
+            borderRadius: 12,
+            padding: "14px 16px",
+            color: "var(--fg-1)",
+            fontFamily: "var(--font-ui)",
+            // 16px floor — prevents iOS Safari auto-zoom on input focus
+            fontSize: 16,
+            fontWeight: 600,
+            outline: "none",
+          }}
+        />
+
+        <div
+          className="t-small"
+          style={{ margin: "10px 0 16px" }}
+        >
+          Solo letras y números, 3-16 caracteres.
+        </div>
 
         <button
-          onClick={onSkip}
-          className="w-full py-2 text-sm font-medium text-gray-600 underline underline-offset-2 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded"
-          style={{ textDecorationColor: "#9ca3af" }}
+          onClick={handleSubmit}
+          disabled={!valid || saving}
+          style={{
+            width: "100%",
+            border: "none",
+            borderRadius: "var(--r-pill)",
+            padding: "15px 0",
+            cursor: valid && !saving ? "pointer" : "default",
+            fontFamily: "var(--font-ui)",
+            fontWeight: 800,
+            fontSize: 15,
+            letterSpacing: ".04em",
+            textTransform: "uppercase",
+            background: valid
+              ? "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)"
+              : "var(--bg-4)",
+            color: valid ? "var(--fg-onlight)" : "var(--fg-3)",
+            boxShadow: valid ? "var(--glow-gold)" : "none",
+            transition: "all .2s",
+          }}
         >
-          Saltar tutorial
+          {saving ? "Guardando..." : "¡Empezar!"}
         </button>
       </div>
-    </main>
+
+      <div style={{ flex: 1.3 }} />
+
+      <button
+        onClick={onBack}
+        style={{
+          background: "none",
+          border: "none",
+          color: "var(--fg-3)",
+          fontFamily: "var(--font-ui)",
+          fontWeight: 600,
+          fontSize: 13,
+          cursor: "pointer",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        ← Ver tutorial
+      </button>
+    </div>
   );
 }
 
@@ -121,16 +596,11 @@ function TutorialSlide({ step, total, onNext, onSkip }: TutorialSlideProps) {
 export default function OnboardingPage() {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
-  const [step, setStep] = useState(0); // 0-2 = tutorial, 3 = nickname form
-  const [input, setInput] = useState("");
-  const [error, setError] = useState("");
-  const [saving, setSaving] = useState(false);
+  const [step, setStep] = useState(0); // 0-2 = carousel, 3 = nickname form
 
-  // Check if nickname already set → skip onboarding entirely
   useEffect(() => {
     getNickname().then((name) => {
       if (name) {
-        // Redirect to FUT-style home (redesigned 2026-06-01)
         router.replace("/inicio");
       } else {
         setChecking(false);
@@ -139,133 +609,74 @@ export default function OnboardingPage() {
   }, [router]);
 
   const handleNext = () => {
-    if (step < TUTORIAL_STEPS.length - 1) {
+    if (step < SLIDES.length - 1) {
       setStep((s) => s + 1);
     } else {
-      setStep(TUTORIAL_STEPS.length); // → nickname form
+      setStep(SLIDES.length); // → nickname form
     }
   };
 
   const handleSkip = () => {
-    setStep(TUTORIAL_STEPS.length); // → nickname form
+    setStep(SLIDES.length); // → nickname form
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmed = input.trim().toLowerCase();
-    if (!isValidNickname(trimmed)) {
-      setError(
-        "Usá solo letras y números, entre 3 y 16 caracteres. Ejemplo: lautaro12"
-      );
-      return;
-    }
-    setSaving(true);
-    await setNickname(trimmed);
-    // Go to FUT-style home after completing onboarding (redesigned 2026-06-01)
+  const handleDone = async (name: string) => {
+    await setNickname(name.toLowerCase());
     router.replace("/inicio");
   };
 
   // ── Loading state ──────────────────────────────────────────────────
   if (checking) {
     return (
-      <div className="flex-1 flex items-center justify-center">
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "radial-gradient(circle at 50% 0%, #14110a 0%, #07080a 60%)",
+          minHeight: "100vh",
+        }}
+      >
         <div
-          className="w-8 h-8 rounded-full border-4 border-t-transparent animate-spin"
-          style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: "50%",
+            border: "4px solid rgba(244,200,74,.3)",
+            borderTopColor: "var(--gold)",
+            animation: "spin 0.8s linear infinite",
+          }}
         />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     );
   }
 
-  // ── Tutorial slides (steps 0-2) ────────────────────────────────────
-  if (step < TUTORIAL_STEPS.length) {
-    return (
-      <TutorialSlide
-        step={step}
-        total={TUTORIAL_STEPS.length}
-        onNext={handleNext}
-        onSkip={handleSkip}
-      />
-    );
-  }
-
-  // ── Nickname form (step 3) ─────────────────────────────────────────
   return (
-    <main className="flex-1 flex flex-col items-center justify-center px-6 py-12">
-      {/* Trophy icon */}
-      <div
-        className="text-6xl mb-6 select-none"
-        style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.15))" }}
-        aria-hidden="true"
-      >
-        🏆
-      </div>
-
-      <h1
-        className="text-3xl font-black text-center mb-2 leading-tight"
-        style={{ color: "#006847" }}
-      >
-        Albumix
-      </h1>
-      <p className="text-center text-gray-600 text-sm mb-8 max-w-xs">
-        Armá tu álbum del Mundial e intercambiá figuritas con tus amigos
-      </p>
-
-      <div
-        className="w-full max-w-sm rounded-2xl p-6 shadow-lg"
-        style={{ backgroundColor: "#ffffff" }}
-      >
-        <h2 className="text-xl font-bold mb-1 text-gray-800">
-          ¿Cómo te llamás?
-        </h2>
-        <p className="text-sm text-gray-600 mb-4">
-          Esto aparece cuando intercambiás con un amigo.
-        </p>
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value.toLowerCase());
-              setError("");
-            }}
-            placeholder="lautaro12"
-            maxLength={16}
-            className="w-full rounded-xl border-2 px-4 py-3 text-lg font-medium focus:outline-none transition-colors"
-            style={{
-              borderColor: error ? "#c8102e" : "#d1c9b8",
-              backgroundColor: "#fafaf8",
-              // Explicit 16px floor prevents iOS Safari auto-zoom on input focus.
-              // text-lg (18px) already satisfies this, but the inline rule makes
-              // the intent clear and guards against config overrides.
-              fontSize: "16px",
-            }}
-            autoComplete="off"
-            autoCapitalize="none"
-            autoCorrect="off"
-            inputMode="text"
-            aria-label="Ingresá tu nombre de jugador"
-          />
-
-          {error && (
-            <p className="text-xs text-red-600 -mt-1">{error}</p>
-          )}
-
-          <p className="text-sm text-gray-600">
-            Solo letras y números, 3-16 caracteres.
-          </p>
-
-          <button
-            type="submit"
-            disabled={saving || input.trim().length < 3}
-            className="w-full py-3 rounded-xl font-bold text-white text-lg transition-opacity disabled:opacity-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2"
-            style={{ backgroundColor: "#006847" }}
-          >
-            {saving ? "Guardando..." : "¡Empezar!"}
-          </button>
-        </form>
-      </div>
+    <main
+      style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100dvh",
+        background: "radial-gradient(circle at 50% 0%, #14110a 0%, #07080a 60%)",
+      }}
+    >
+      {/* Nickname form */}
+      {step >= SLIDES.length ? (
+        <NicknameForm
+          onDone={handleDone}
+          onBack={() => setStep(0)}
+        />
+      ) : (
+        /* Tutorial carousel */
+        <TutorialCarousel
+          step={step}
+          onNext={handleNext}
+          onSkip={handleSkip}
+        />
+      )}
     </main>
   );
 }
