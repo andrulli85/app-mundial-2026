@@ -1,15 +1,16 @@
 "use client";
 
 /**
- * /mercado — Full 3-tab marketplace (Phase C).
+ * /mercado — Full 3-tab marketplace.
  *
- * Tab 1: Ofertas  — incoming trade offers (empty state for MVP)
- * Tab 2: Buscar   — search stickers + filter by rarity / position / country
- * Tab 3: Enviadas — sent trade history from trade_log
+ * Fase 3 tab structure:
+ *   Tab 1: Sobres  — incoming trade offers (was "Ofertas")
+ *   Tab 2: Amigos  — friends list sorted by pts desc + QR Sync sheet (NEW)
+ *   Tab 3: Trades  — sent trade history from trade_log (was "Enviadas")
  *
- * Existing QR trade engine accessible via "Cambiar por QR" button.
- *
- * Design source: market.jsx from Albumix design bundle
+ * Design sources:
+ *   market.jsx — FriendsTab, QRSyncSheet, QRCode visual
+ *   data.jsx   — FRIENDS dataset (imported from friends.ts)
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -20,6 +21,8 @@ import type { Sticker } from "@/lib/catalog";
 import { getAllStickers, getRecentTrades, getNickname } from "@/lib/db";
 import type { TradeLogEntry } from "@/lib/db";
 import { getPlayerMeta } from "@/lib/player-meta";
+import { MY_POINTS } from "@/lib/fantasy";
+import { FRIENDS } from "@/data/friends";
 import BottomNav from "@/components/BottomNav";
 
 // ---------------------------------------------------------------------------
@@ -59,7 +62,7 @@ const CATEGORY_FILTERS: { k: CategoryFilter; label: string }[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// StickerResultCard — compact card for Buscar tab
+// StickerResultCard — compact card for Sobres tab search
 // ---------------------------------------------------------------------------
 interface StickerResultCardProps {
   sticker: Sticker;
@@ -102,7 +105,6 @@ function StickerResultCard({
         gap: 4,
       }}
     >
-      {/* OVR badge */}
       {meta && (
         <div
           style={{
@@ -117,7 +119,6 @@ function StickerResultCard({
         </div>
       )}
 
-      {/* Photo placeholder */}
       <div
         style={{
           flex: 1,
@@ -128,7 +129,6 @@ function StickerResultCard({
         }}
       />
 
-      {/* Name */}
       <div
         style={{
           fontSize: 9,
@@ -144,7 +144,6 @@ function StickerResultCard({
         {sticker.display_name.split(" ").slice(-1)[0]}
       </div>
 
-      {/* Dupe badge */}
       {isDupe && (
         <div
           style={{
@@ -164,7 +163,6 @@ function StickerResultCard({
         </div>
       )}
 
-      {/* LA QUIERO badge */}
       {!owned && isWanted && (
         <div
           style={{
@@ -186,7 +184,6 @@ function StickerResultCard({
         </div>
       )}
 
-      {/* Propose button — show for owned dupes or for stickers you want */}
       {(isDupe || (!owned && isWanted)) && (
         <button
           onClick={() => onPropose(sticker)}
@@ -211,7 +208,7 @@ function StickerResultCard({
 }
 
 // ---------------------------------------------------------------------------
-// TradeHistoryItem — row in Enviadas tab
+// TradeHistoryItem — row in Trades tab
 // ---------------------------------------------------------------------------
 function TradeHistoryItem({ trade }: { trade: TradeLogEntry }) {
   const date = new Date(trade.ts);
@@ -301,13 +298,395 @@ function TradeHistoryItem({ trade }: { trade: TradeLogEntry }) {
 }
 
 // ---------------------------------------------------------------------------
+// QRCode — visual placeholder (from market.jsx lines 132-151)
+// ---------------------------------------------------------------------------
+function QRCode({ size = 158, seed = 7 }: { size?: number; seed?: number }) {
+  const n = 21;
+  const cellSize = size / n;
+
+  function on(r: number, c: number): boolean {
+    // Finder squares in 3 corners
+    const find = (R: number, C: number): boolean =>
+      R < 7 &&
+      C < 7 &&
+      (R === 0 || R === 6 || C === 0 || C === 6 || (R >= 2 && R <= 4 && C >= 2 && C <= 4));
+
+    if (r < 7 && c < 7) return find(r, c);
+    if (r < 7 && c >= n - 7) return find(r, c - (n - 7));
+    if (r >= n - 7 && c < 7) return find(r - (n - 7), c);
+
+    const x = Math.sin((r * 12.9 + c * 78.2 + seed * 3.3)) * 43758.5;
+    return x - Math.floor(x) > 0.55;
+  }
+
+  const rects: React.ReactNode[] = [];
+  for (let r = 0; r < n; r++) {
+    for (let c = 0; c < n; c++) {
+      if (on(r, c)) {
+        rects.push(
+          <rect
+            key={`${r}-${c}`}
+            x={c * cellSize}
+            y={r * cellSize}
+            width={cellSize + 0.5}
+            height={cellSize + 0.5}
+            fill="#0D0F13"
+          />
+        );
+      }
+    }
+  }
+
+  return (
+    <div
+      style={{
+        width: size,
+        height: size,
+        borderRadius: 16,
+        background: "#fff",
+        padding: 10,
+        boxShadow: `0 0 24px -4px ${GOLD}66`,
+      }}
+    >
+      <svg
+        width={size - 20}
+        height={size - 20}
+        viewBox={`0 0 ${size} ${size}`}
+        aria-label="QR Code"
+      >
+        {rects}
+      </svg>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// QRSyncSheet — bottom sheet (from market.jsx lines 154-189)
+// ---------------------------------------------------------------------------
+interface QRSyncSheetProps {
+  friendId: string;
+  friendName: string;
+  onClose: () => void;
+}
+
+function QRSyncSheet({ friendId, friendName, onClose }: QRSyncSheetProps) {
+  // Seed QR from friend id hash for visual variety
+  const seed = friendId.split("").reduce((h, c) => h + c.charCodeAt(0), 0) % 99;
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 300,
+        background: "rgba(7,8,10,0.78)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
+        display: "flex",
+        alignItems: "flex-end",
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        data-testid="qr-sync-sheet"
+        style={{
+          width: "100%",
+          background: "#0d0f13",
+          borderRadius: "22px 22px 0 0",
+          border: `1px solid ${GOLD}44`,
+          borderBottom: "none",
+          padding: "14px 22px 36px",
+          textAlign: "center",
+          animation: "slideUp 0.3s ease-out",
+        }}
+      >
+        {/* Handle */}
+        <div
+          style={{
+            width: 40,
+            height: 4,
+            borderRadius: 99,
+            background: "#3a3f4c",
+            margin: "0 auto 16px",
+          }}
+        />
+
+        <div
+          style={{
+            fontSize: 10,
+            fontWeight: 800,
+            letterSpacing: "0.14em",
+            color: GOLD,
+            textTransform: "uppercase",
+            fontFamily: "system-ui, sans-serif",
+            marginBottom: 4,
+          }}
+        >
+          QR Sync
+        </div>
+
+        <h2
+          style={{
+            fontSize: 24,
+            fontWeight: 900,
+            color: "#f3f4f6",
+            textTransform: "uppercase",
+            fontFamily: "system-ui, sans-serif",
+            margin: "0 0 6px",
+            lineHeight: 1,
+          }}
+        >
+          Cambien estando juntos
+        </h2>
+
+        <p
+          style={{
+            fontSize: 13,
+            color: "#9ca3af",
+            margin: "0 auto 20px",
+            maxWidth: 280,
+            lineHeight: 1.5,
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          Mostrále tu QR a{" "}
+          <strong style={{ color: "#f3f4f6" }}>{friendName}</strong>, o
+          escaneá el suyo para ver al toque qué se pueden cambiar.
+        </p>
+
+        {/* QR visual */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}>
+          <QRCode size={158} seed={seed} />
+        </div>
+
+        <p
+          style={{
+            fontSize: 12,
+            color: "#6b7280",
+            fontFamily: "system-ui, sans-serif",
+            marginBottom: 20,
+          }}
+        >
+          Acercá los códigos para sincronizar inventarios
+        </p>
+
+        <button
+          onClick={onClose}
+          style={{
+            width: "100%",
+            padding: "14px 0",
+            borderRadius: 14,
+            background: "#1a1e29",
+            border: "1px solid #3a3f4c",
+            color: "#f3f4f6",
+            fontWeight: 700,
+            fontSize: 14,
+            cursor: "pointer",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          Cerrar
+        </button>
+      </div>
+
+      <style>{`
+        @keyframes slideUp {
+          from { transform: translateY(100%); }
+          to   { transform: translateY(0); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// AmigosTab — Friends list from FRIENDS constant (market.jsx FriendsTab)
+// ---------------------------------------------------------------------------
+interface AmigosTabProps {
+  onQRSync: (friendId: string, friendName: string) => void;
+}
+
+function AmigosTab({ onQRSync }: AmigosTabProps) {
+  // Sort by pts desc (already sorted in data, but enforce here)
+  const sorted = [...FRIENDS].sort((a, b) => b.pts - a.pts);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <p
+        style={{
+          fontSize: 13,
+          color: "#9ca3af",
+          margin: "0 0 10px",
+          fontFamily: "system-ui, sans-serif",
+        }}
+      >
+        Mira el álbum de tus amigos y cámbiense las repetidas.
+      </p>
+
+      {/* Leaderboard summary row — my pts */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          padding: "10px 14px",
+          borderRadius: 14,
+          background: `${GOLD}10`,
+          border: `1px solid ${GOLD}33`,
+          marginBottom: 6,
+        }}
+      >
+        <div
+          style={{
+            width: 38,
+            height: 38,
+            borderRadius: "50%",
+            background: `${GOLD}22`,
+            border: `1px solid ${GOLD}44`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 16,
+            fontWeight: 900,
+            color: GOLD,
+            fontFamily: "system-ui, sans-serif",
+            flexShrink: 0,
+          }}
+        >
+          Tú
+        </div>
+        <div style={{ flex: 1 }}>
+          <div
+            style={{
+              fontSize: 14,
+              fontWeight: 700,
+              color: GOLD,
+              fontFamily: "system-ui, sans-serif",
+            }}
+          >
+            Tú (tú)
+          </div>
+          <div style={{ fontSize: 11, color: "#9ca3af" }}>Mi puntaje</div>
+        </div>
+        <span
+          style={{
+            fontSize: 15,
+            fontWeight: 800,
+            color: GOLD,
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          {MY_POINTS.toLocaleString("es-CL")} pts
+        </span>
+      </div>
+
+      {sorted.map((f) => (
+        <div
+          key={f.id}
+          data-testid={`friend-row-${f.id}`}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            padding: "12px 14px",
+            borderRadius: 16,
+            background: "#1a1e29",
+            border: "1px solid #2d3344",
+          }}
+        >
+          {/* Avatar */}
+          <div
+            style={{
+              width: 42,
+              height: 42,
+              borderRadius: "50%",
+              background: "#2d3344",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 18,
+              fontWeight: 800,
+              color: "#f3f4f6",
+              fontFamily: "system-ui, sans-serif",
+              flexShrink: 0,
+            }}
+            aria-hidden="true"
+          >
+            {f.name[0]}
+          </div>
+
+          {/* Info */}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div
+              style={{
+                fontSize: 14,
+                fontWeight: 700,
+                color: "#f3f4f6",
+                fontFamily: "system-ui, sans-serif",
+              }}
+            >
+              {f.name}
+            </div>
+            <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 1 }}>
+              {f.dupIds.length} repetidas
+              {f.wantIds.length > 0 && ` · busca ${f.wantIds.length} cartas`}
+            </div>
+          </div>
+
+          {/* Pts pill */}
+          <span
+            style={{
+              fontSize: 12,
+              fontWeight: 800,
+              color: "#f3f4f6",
+              background: "#2d3344",
+              borderRadius: 99,
+              padding: "4px 10px",
+              fontFamily: "system-ui, sans-serif",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {f.pts.toLocaleString("es-CL")} pts
+          </span>
+
+          {/* QR Sync button */}
+          <button
+            onClick={() => onQRSync(f.id, f.name)}
+            aria-label={`QR Sync con ${f.name}`}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 5,
+              background: `${GOLD}15`,
+              border: `1px solid ${GOLD}44`,
+              borderRadius: 99,
+              padding: "7px 11px",
+              color: GOLD,
+              fontWeight: 800,
+              fontSize: 11,
+              cursor: "pointer",
+              fontFamily: "system-ui, sans-serif",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
+          >
+            📷 QR
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Main Page
 // ---------------------------------------------------------------------------
-type Tab = "ofertas" | "buscar" | "enviadas";
+type Tab = "sobres" | "amigos" | "trades";
 
 export default function MercadoPage() {
   const router = useRouter();
-  const [tab, setTab] = useState<Tab>("buscar");
+  const [tab, setTab] = useState<Tab>("amigos");
   const [loading, setLoading] = useState(true);
   const [catalog, setCatalog] = useState<Sticker[]>([]);
   const [counts, setCounts] = useState<Record<string, number>>({});
@@ -316,6 +695,7 @@ export default function MercadoPage() {
   const [rarityFilter, setRarityFilter] = useState<RarityFilter>("all");
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
   const [toast, setToast] = useState<string | null>(null);
+  const [qrFriend, setQrFriend] = useState<{ id: string; name: string } | null>(null);
 
   const flash = useCallback((msg: string) => {
     setToast(msg);
@@ -343,11 +723,10 @@ export default function MercadoPage() {
     })();
   }, [router]);
 
-  // ---- Filtered stickers for Buscar tab ----
+  // ---- Filtered stickers for Sobres tab search ----
   const filteredStickers = useMemo(() => {
     let stickers = catalog;
 
-    // Category filter
     if (categoryFilter === "players") {
       stickers = stickers.filter((s) => s.type === "player");
     } else if (categoryFilter === "speciales") {
@@ -356,7 +735,6 @@ export default function MercadoPage() {
       );
     }
 
-    // Rarity filter (only applies to players)
     if (rarityFilter !== "all") {
       stickers = stickers.filter((s) => {
         if (s.type !== "player") return false;
@@ -365,7 +743,6 @@ export default function MercadoPage() {
       });
     }
 
-    // Search filter
     if (search.trim()) {
       const q = normalize(search.trim());
       stickers = stickers.filter(
@@ -377,14 +754,12 @@ export default function MercadoPage() {
       );
     }
 
-    // Limit results to 60 for performance
     return stickers.slice(0, 60);
   }, [catalog, search, rarityFilter, categoryFilter]);
 
   const handlePropose = useCallback(
     (sticker: Sticker) => {
       flash(`Propuesta para ${sticker.name} preparada`);
-      // TODO: Phase C+ — wire to Firebase trade engine
     },
     [flash]
   );
@@ -402,6 +777,12 @@ export default function MercadoPage() {
       </div>
     );
   }
+
+  const TABS: { k: Tab; label: string }[] = [
+    { k: "sobres", label: "Sobres" },
+    { k: "amigos", label: "Amigos" },
+    { k: "trades", label: "Trades" },
+  ];
 
   return (
     <div
@@ -469,8 +850,9 @@ export default function MercadoPage() {
           </Link>
         </div>
 
-        {/* Tab bar */}
+        {/* Tab bar — Sobres | Amigos | Trades */}
         <div
+          data-testid="mercado-tab-bar"
           style={{
             display: "flex",
             gap: 4,
@@ -481,13 +863,7 @@ export default function MercadoPage() {
             marginTop: 12,
           }}
         >
-          {(
-            [
-              { k: "ofertas" as Tab, label: "Ofertas" },
-              { k: "buscar" as Tab, label: "Buscar" },
-              { k: "enviadas" as Tab, label: "Enviadas" },
-            ] as const
-          ).map((t) => (
+          {TABS.map((t) => (
             <button
               key={t.k}
               data-testid={`mercado-tab-${t.k}`}
@@ -514,71 +890,14 @@ export default function MercadoPage() {
 
       {/* ---- Tab content ---- */}
       <div className="flex-1 overflow-y-auto px-4 pb-4">
-        {/* Tab: Ofertas */}
-        {tab === "ofertas" && (
+
+        {/* Tab: Sobres */}
+        {tab === "sobres" && (
           <div style={{ paddingTop: 4 }}>
-            <p style={{ fontSize: 13, color: "#9ca3af", marginBottom: 16 }}>
+            <p style={{ fontSize: 13, color: "#9ca3af", marginBottom: 16, fontFamily: "system-ui, sans-serif" }}>
               Acá van a aparecer las propuestas de tus amigos.
             </p>
-            {/* Empty state */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "50px 20px",
-                textAlign: "center",
-                background: "#1a1e29",
-                borderRadius: 20,
-                border: "1px solid #2d3344",
-              }}
-            >
-              <span style={{ fontSize: 40, marginBottom: 12 }}>🤝</span>
-              <div
-                style={{
-                  fontWeight: 700,
-                  fontSize: 15,
-                  color: "#d1d5db",
-                  marginBottom: 6,
-                  fontFamily: "system-ui, sans-serif",
-                }}
-              >
-                Aún no tenés ofertas
-              </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  color: "#9ca3af",
-                  maxWidth: 240,
-                  lineHeight: 1.5,
-                }}
-              >
-                Cuando un amigo te proponga un cambio, va a aparecer acá.
-              </div>
-              <Link
-                href="/friends"
-                style={{
-                  marginTop: 16,
-                  padding: "10px 20px",
-                  borderRadius: 10,
-                  background: GREEN,
-                  color: "#fff",
-                  fontWeight: 700,
-                  fontSize: 13,
-                  textDecoration: "none",
-                  fontFamily: "system-ui, sans-serif",
-                }}
-              >
-                Buscar amigos
-              </Link>
-            </div>
-          </div>
-        )}
 
-        {/* Tab: Buscar */}
-        {tab === "buscar" && (
-          <div style={{ paddingTop: 4 }}>
             {/* Search field */}
             <div
               style={{
@@ -605,7 +924,7 @@ export default function MercadoPage() {
                   outline: "none",
                   color: "#f3f4f6",
                   fontFamily: "system-ui, sans-serif",
-                  fontSize: "16px", // iOS zoom guard
+                  fontSize: "16px",
                   fontWeight: 600,
                 }}
               />
@@ -697,7 +1016,6 @@ export default function MercadoPage() {
               ))}
             </div>
 
-            {/* Result count */}
             <div
               style={{
                 fontSize: 12,
@@ -714,7 +1032,6 @@ export default function MercadoPage() {
               )}
             </div>
 
-            {/* Results grid */}
             {filteredStickers.length === 0 ? (
               <div
                 style={{
@@ -737,9 +1054,7 @@ export default function MercadoPage() {
                 >
                   Sin resultados
                 </div>
-                <div
-                  style={{ fontSize: 12, color: "#9ca3af", marginTop: 4 }}
-                >
+                <div style={{ fontSize: 12, color: "#9ca3af", marginTop: 4 }}>
                   Probá con otro nombre o filtro
                 </div>
               </div>
@@ -766,8 +1081,17 @@ export default function MercadoPage() {
           </div>
         )}
 
-        {/* Tab: Enviadas */}
-        {tab === "enviadas" && (
+        {/* Tab: Amigos */}
+        {tab === "amigos" && (
+          <div style={{ paddingTop: 4 }} data-testid="amigos-tab">
+            <AmigosTab
+              onQRSync={(id, name) => setQrFriend({ id, name })}
+            />
+          </div>
+        )}
+
+        {/* Tab: Trades */}
+        {tab === "trades" && (
           <div style={{ paddingTop: 4 }}>
             {trades.length === 0 ? (
               <div
@@ -805,7 +1129,7 @@ export default function MercadoPage() {
                 >
                   Andá a{" "}
                   <button
-                    onClick={() => setTab("buscar")}
+                    onClick={() => setTab("amigos")}
                     style={{
                       background: "none",
                       border: "none",
@@ -816,26 +1140,14 @@ export default function MercadoPage() {
                       padding: 0,
                     }}
                   >
-                    Buscar
+                    Amigos
                   </button>{" "}
                   y ofrecé una repetida
                 </div>
               </div>
             ) : (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 12,
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: "#9ca3af",
-                    marginBottom: 4,
-                  }}
-                >
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <p style={{ fontSize: 13, color: "#9ca3af", marginBottom: 4 }}>
                   {trades.length} intercambios completados
                 </p>
                 {trades.map((t) => (
@@ -846,6 +1158,15 @@ export default function MercadoPage() {
           </div>
         )}
       </div>
+
+      {/* ---- QR Sync Sheet ---- */}
+      {qrFriend && (
+        <QRSyncSheet
+          friendId={qrFriend.id}
+          friendName={qrFriend.name}
+          onClose={() => setQrFriend(null)}
+        />
+      )}
 
       {/* ---- Toast ---- */}
       {toast && (
@@ -874,7 +1195,7 @@ export default function MercadoPage() {
 
       <BottomNav active="mercado" />
 
-      {/* Unused vars to suppress TS — CREAM/GOLD used inline */}
+      {/* Suppress unused var — CREAM used as design token reference */}
       <style>{`/* ${CREAM} */`}</style>
     </div>
   );
