@@ -28,6 +28,7 @@ import type { StickerEntry } from "@/lib/db";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { TeamCatalogEntry } from "@/lib/team-catalog";
 import InstallBanner from "@/components/InstallBanner";
+import BottomNav from "@/components/BottomNav";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
 type Category = "todos" | "paises" | "grupos" | "especiales";
@@ -473,7 +474,7 @@ export default function AlbumPage() {
         )}
       </main>
 
-      {/* Bottom nav */}
+      {/* Bottom nav — shared 5-tab component */}
       <BottomNav active="album" />
     </div>
   );
@@ -547,42 +548,3 @@ function GroupsView({ groups, counts, onTap, teamStats }: GroupsViewProps) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// BottomNav
-// ---------------------------------------------------------------------------
-
-function BottomNav({ active }: { active: "album" | "trade" | "settings" }) {
-  const items = [
-    { id: "album",    href: "/album",    label: "Álbum",       icon: "📕" },
-    { id: "trade",    href: "/trade",    label: "Intercambiar", icon: "🤝" },
-    { id: "settings", href: "/settings", label: "Opciones",    icon: "⚙️" },
-  ];
-
-  return (
-    <nav
-      className="flex border-t"
-      style={{
-        backgroundColor: "#ffffff",
-        borderColor: "#d1c9b8",
-        paddingBottom: "env(safe-area-inset-bottom, 0)",
-      }}
-    >
-      {items.map((item) => (
-        <a
-          key={item.id}
-          href={item.href}
-          className="flex-1 flex flex-col items-center py-2.5 gap-0.5 text-[0.6rem] font-semibold transition-colors"
-          style={{
-            color: active === item.id ? "#006847" : "#9ca3af",
-          }}
-          aria-current={active === item.id ? "page" : undefined}
-        >
-          <span className="text-xl" aria-hidden="true">
-            {item.icon}
-          </span>
-          {item.label}
-        </a>
-      ))}
-    </nav>
-  );
-}
