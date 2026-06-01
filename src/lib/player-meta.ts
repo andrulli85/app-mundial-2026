@@ -26,6 +26,7 @@
  */
 
 import type { Sticker } from "@/lib/catalog";
+import playerRatings from "@/data/player-ratings.json";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -33,6 +34,19 @@ import type { Sticker } from "@/lib/catalog";
 
 export type Position = "POR" | "DEF" | "MED" | "DEL";
 export type Rarity = "common" | "rare" | "epic" | "legendary";
+
+// ---------------------------------------------------------------------------
+// Real-ratings lookup layer
+// ---------------------------------------------------------------------------
+
+interface PlayerRatingEntry {
+  ovr: number;
+  position: Position;
+  real_name?: string;
+  match_confidence?: "high" | "medium" | "low";
+}
+
+const PLAYER_RATINGS = playerRatings as Record<string, PlayerRatingEntry>;
 
 export interface PlayerMeta {
   position: Position;
@@ -89,6 +103,18 @@ const DEFAULT_OVR = 75;
 function computeMeta(sticker: Sticker): PlayerMeta | null {
   if (sticker.type !== "player") return null;
   if (sticker.number === null) return null;
+
+  // Real-ratings lookup — consulted first; falls through to deterministic logic on miss.
+  const rated = PLAYER_RATINGS[sticker.id];
+  if (rated) {
+    const { ovr, position } = rated;
+    let rarity: Rarity;
+    if (ovr >= 89) rarity = "legendary";
+    else if (ovr >= 85) rarity = "epic";
+    else if (ovr >= 78) rarity = "rare";
+    else rarity = "common";
+    return { position, ovr, rarity };
+  }
 
   const n = sticker.number;
 
