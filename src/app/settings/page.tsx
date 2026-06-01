@@ -85,7 +85,7 @@ export default function SettingsPage() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `cromos-2026-backup-${Date.now()}.json`;
+      a.download = `albumix-backup-${Date.now()}.json`;
       a.click();
       URL.revokeObjectURL(url);
       setExportStatus("Backup descargado.");
