@@ -31,6 +31,7 @@ import type { Sticker } from "@/lib/catalog";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import BottomNav from "@/components/BottomNav";
 import SeleccionFavoritaCard from "@/components/SeleccionFavoritaCard";
+import Coachmark from "@/components/Coachmark";
 
 // ── Mocked constants (Phase 1) ────────────────────────────────────────────────
 // TODO(economy): replace with real user wallet query
@@ -601,6 +602,9 @@ export default function InicioPage() {
 
       {/* Bottom nav — active tab = "inicio" */}
       <BottomNav active="inicio" />
+
+      {/* Coachmark — first visit only */}
+      <Coachmark section="inicio" />
     </div>
   );
 }

@@ -41,6 +41,7 @@ import BottomNav from "@/components/BottomNav";
 import EmptySlotCard from "@/components/EmptySlot";
 import { MY_POINTS, pointsLeaderboard } from "@/lib/fantasy";
 import { FRIENDS } from "@/data/friends";
+import Coachmark from "@/components/Coachmark";
 
 // ---------------------------------------------------------------------------
 // Constants / colors
@@ -1868,6 +1869,7 @@ export default function OncePage() {
       )}
 
       <BottomNav active="once" />
+      <Coachmark section="once" />
 
       {/* Limpiar button floated — only in Equipo tab */}
       {onceTab === "equipo" && (

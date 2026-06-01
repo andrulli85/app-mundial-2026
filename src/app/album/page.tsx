@@ -22,6 +22,7 @@ import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { TeamCatalogEntry } from "@/lib/team-catalog";
 import InstallBanner from "@/components/InstallBanner";
 import BottomNav from "@/components/BottomNav";
+import Coachmark from "@/components/Coachmark";
 import { getPeersWishing } from "@/lib/peer-mock";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
@@ -538,6 +539,7 @@ export default function AlbumPage() {
       </main>
 
       <BottomNav active="album" />
+      <Coachmark section="album" />
     </div>
   );
 }
