@@ -1,0 +1,59 @@
+name: Playwright E2E
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Wait for Vercel deploy
+        run: |
+          echo "Waiting for Vercel to serve commit ${GITHUB_SHA:0:8}..."
+          for i in {1..30}; do
+            LIVE=$(curl -s https://app-mundial-2026-lemon.vercel.app/sw.js | grep -oE 'CACHE_VERSION = "[^"]+"' | grep -oE '"[^"]+"' | tr -d '"')
+            EXPECTED="${GITHUB_SHA:0:8}"
+            echo "Attempt $i/30 — live=$LIVE  expected=$EXPECTED"
+            if [ "$LIVE" = "$EXPECTED" ]; then
+              echo "Deploy is live."
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "Deploy never matched commit SHA after 7.5 minutes — proceeding anyway."
+          # Non-fatal: tests will run against whatever is live. The failure will
+          # surface as a test result rather than a CI infrastructure error.
+          exit 0
+
+      - name: Run Playwright tests
+        env:
+          BASE_URL: https://app-mundial-2026-lemon.vercel.app
+        run: npx playwright test
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
