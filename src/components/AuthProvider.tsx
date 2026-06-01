@@ -51,6 +51,10 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     const unsubscribe = onAuthChange((u) => {
       setUser(u);
       setLoading(false);
+      // Initialize RTDB presence when user is authenticated
+      if (u) {
+        import("@/lib/presence").then(({ initPresence }) => initPresence());
+      }
     });
 
     return unsubscribe;
