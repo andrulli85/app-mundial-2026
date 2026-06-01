@@ -25,6 +25,7 @@ export interface Sticker {
   sort_order: number;   // album display order (0-based)
   seed_image?: string;  // public path e.g. "/stickers/seed/mex-3-vasquez.jpg"
   team_color: string;   // hex — from stickers-enriched.json (authoritative)
+  group: string;        // FIFA 2026 group (A-L) or "_fwc" / "_end" for specials
 }
 
 export const DEFAULT_TEAM_COLOR = "#9ca3af";
@@ -63,6 +64,7 @@ interface RawSticker {
   number: number;
   type: string;
   sort_order: number;
+  group: string;
 }
 
 // ---------- Catalog loader ----------
@@ -93,6 +95,7 @@ export async function getCatalog(): Promise<Sticker[]> {
       ? `/stickers/seed/${manifest[s.sticker_id]}`
       : undefined,
     team_color: s.team_color ?? DEFAULT_TEAM_COLOR,
+    group: s.group ?? "",
   }));
 
   return _catalog;
