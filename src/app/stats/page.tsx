@@ -457,7 +457,7 @@ export default function StatsPage() {
 function StatsHeader() {
   return (
     <header
-      className="sticky top-0 z-20 px-4 py-3 shadow-sm"
+      className="sticky top-[54px] z-20 px-4 py-3 shadow-sm"
       style={{ backgroundColor: GREEN }}
       data-testid="stats-header"
     >

@@ -56,7 +56,7 @@ function ReceiveConfirmInner() {
     <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
       {/* Header */}
       <header
-        className="sticky top-0 z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
         style={{ backgroundColor: "#006847" }}
       >
         <h1 className="text-lg font-black text-white leading-none flex-1">

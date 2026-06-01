@@ -22,22 +22,29 @@ test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
 async function seedNickname(page: import("@playwright/test").Page) {
   await page.goto(`${BASE}/`);
-  const url = page.url();
-  if (url.includes("/album") || url.includes("/mercado") || url.includes("/inicio")) return;
 
-  for (let i = 0; i < 3; i++) {
-    const nextBtn = page.getByText(/Siguiente|¡Empezar/);
-    if (await nextBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
-      await nextBtn.click();
-    }
+  // Wait for client-side JS to run: if nickname is set, page redirects to /album.
+  // If not set, onboarding renders "Saltar tutorial" button.
+  // We wait for EITHER condition (whichever comes first).
+  const hasOnboarding = await page
+    .waitForSelector("text=Saltar tutorial", { timeout: 6000 })
+    .then(() => true)
+    .catch(() => false);
+
+  if (!hasOnboarding) {
+    // Already past onboarding (redirected to /album or similar).
+    return;
   }
 
-  const nicknameInput = page.locator('input[type="text"]');
-  if (await nicknameInput.isVisible({ timeout: 3000 }).catch(() => false)) {
-    await nicknameInput.fill(NICKNAME);
-    await page.getByText("¡Empezar!").click();
-    await page.waitForURL(`${BASE}/album`, { timeout: 10000 });
-  }
+  // Skip the tutorial and reach the nickname form.
+  await page.click("text=Saltar tutorial");
+
+  // Fill nickname and submit.
+  await page.waitForSelector("input", { timeout: 8000 });
+  await page.fill("input", NICKNAME);
+  await page.click('button[type="submit"]');
+  await page.waitForURL(`${BASE}/album`, { timeout: 12000 });
+  await page.waitForLoadState("networkidle");
 }
 
 test("/mercado renders full UI (not redirect)", async ({ page }) => {

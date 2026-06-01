@@ -55,7 +55,7 @@ export default function InviteClaimPage({
     <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
       {/* Header */}
       <header
-        className="sticky top-0 z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
         style={{ backgroundColor: "#006847" }}
       >
         <a href="/" className="text-white text-xl leading-none" aria-label="Ir al álbum">

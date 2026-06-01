@@ -19,29 +19,23 @@ const NICKNAME = "navtest";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
-/** Set nickname cookie/IndexedDB so onboarding is skipped */
+/** Set nickname via onboarding so app pages don't redirect back to /. */
 async function seedNickname(page: import("@playwright/test").Page) {
   await page.goto(`${BASE}/`);
-  // Wait for onboarding to render, then use the form
-  const nicknameInput = page.locator('input[type="text"]');
-  // If already set, redirect may happen — just wait
+
+  // If already past onboarding (any app page), nothing to do.
   const url = page.url();
   if (url.includes("/album") || url.includes("/inicio")) return;
 
-  // Skip tutorial steps
-  for (let i = 0; i < 3; i++) {
-    const nextBtn = page.getByText(/Siguiente|¡Empezar/);
-    if (await nextBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
-      await nextBtn.click();
-    }
-  }
+  // Wait for the tutorial to render, then skip straight to the nickname form.
+  await page.waitForSelector("text=Saltar tutorial", { timeout: 15000 });
+  await page.click("text=Saltar tutorial");
 
-  // Fill nickname form if visible
-  if (await nicknameInput.isVisible({ timeout: 3000 }).catch(() => false)) {
-    await nicknameInput.fill(NICKNAME);
-    await page.getByText("¡Empezar!").click();
-    await page.waitForURL(`${BASE}/album`, { timeout: 10000 });
-  }
+  // Fill nickname and submit.
+  await page.waitForSelector("input", { timeout: 8000 });
+  await page.fill("input", NICKNAME);
+  await page.click('button[type="submit"]');
+  await page.waitForURL(`${BASE}/album`, { timeout: 12000 });
 }
 
 test("5-tab BottomNav is visible on /album", async ({ page }) => {
@@ -90,12 +84,15 @@ test("/perfil loads with stat card", async ({ page }) => {
   await expect(page.getByText("Configuración")).toBeVisible();
 });
 
-test("/mercado redirects to /trade", async ({ page }) => {
+test("/mercado renders full marketplace (Phase C — no redirect)", async ({ page }) => {
   await seedNickname(page);
   await page.goto(`${BASE}/mercado`);
-  // Should end up at /trade
-  await page.waitForURL(/\/trade/, { timeout: 10000 });
-  await expect(page.url()).toContain("/trade");
+  // Phase C ships the full 3-tab marketplace — should NOT redirect to /trade.
+  await page.waitForURL(`${BASE}/mercado`, { timeout: 10000 });
+  // Heading "Cambios" confirms the full marketplace is loaded
+  await expect(page.getByText("Cambios", { exact: true })).toBeVisible({
+    timeout: 15000,
+  });
 });
 
 test("/once placeholder renders", async ({ page }) => {

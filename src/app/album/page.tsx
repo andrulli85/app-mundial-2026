@@ -239,10 +239,10 @@ export default function AlbumPage() {
   return (
     <div className="flex flex-col flex-1 w-full lg:max-w-5xl xl:max-w-6xl mx-auto">
       {/* ------------------------------------------------------------------ */}
-      {/* Header — sticky top-0 z-20 */}
+      {/* Header — sticky top-[54px] z-20 */}
       {/* ------------------------------------------------------------------ */}
       <header
-        className="sticky top-0 z-20 px-4 py-3 shadow-sm"
+        className="sticky top-[54px] z-20 px-4 py-3 shadow-sm"
         style={{ backgroundColor: "#006847" }}
       >
         <div className="flex items-center justify-between mb-2">
@@ -292,7 +292,7 @@ export default function AlbumPage() {
       {/* Search + Category chips — sticky below header (top-[72px] z-10)   */}
       {/* ------------------------------------------------------------------ */}
       <div
-        className="sticky top-[72px] z-10 px-3 pt-2.5 pb-2 border-b"
+        className="sticky top-[126px] z-10 px-3 pt-2.5 pb-2 border-b"
         style={{ backgroundColor: "#f9f5ee", borderColor: "#d1c9b8" }}
         data-testid="search-chips-bar"
       >
@@ -376,7 +376,7 @@ export default function AlbumPage() {
       {/* Tab bar — sticky below search+chips                                */}
       {/* ------------------------------------------------------------------ */}
       <nav
-        className="sticky top-[176px] z-10 flex border-b"
+        className="sticky top-[230px] z-10 flex border-b"
         style={{ backgroundColor: "#f9f5ee", borderColor: "#d1c9b8" }}
         data-testid="tab-bar"
       >

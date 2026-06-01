@@ -385,7 +385,7 @@ export default function AlbumMapPage() {
       {/* Header */}
       {/* ------------------------------------------------------------------ */}
       <header
-        className="sticky top-0 z-20 px-4 py-3 flex items-center gap-3"
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
         style={{ backgroundColor: "#006847" }}
       >
         <a

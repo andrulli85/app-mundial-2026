@@ -100,14 +100,8 @@ export default function RootLayout({
               so content doesn't slide under the bar.
             */}
             <TopBarGlobal />
-            {/*
-              pt-[54px]: compensate for the fixed TopBar height.
-              Pages that suppress TopBar (/ and /notifications) still get this
-              padding — onboarding is fullscreen so the extra space is invisible,
-              and /notifications adds its own height-54 spacer so the global one
-              merges cleanly (both are 0-cost in those contexts).
-            */}
-            <div className="flex-1 flex flex-col pt-[54px]">
+            {/* Page content — TopBarGlobal injects its own 54px spacer above */}
+            <div className="flex-1 flex flex-col">
               {children}
             </div>
           </AchievementProvider>

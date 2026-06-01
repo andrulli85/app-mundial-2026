@@ -59,8 +59,8 @@ export default function NotificationsPage() {
       {/* TopBar with back chevron */}
       <TopBar variant="fixed" showBackButton title="Notificaciones" />
 
-      {/* Push content below the fixed TopBar (54px height) */}
-      <div style={{ height: 54, flexShrink: 0 }} />
+      {/* In-flow spacer: accounts for the fixed TopBar height above */}
+      <div style={{ height: 54, flexShrink: 0 }} aria-hidden="true" />
 
       {/* Sticky subheader */}
       <div

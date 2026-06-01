@@ -21,22 +21,25 @@ test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
 async function seedNickname(page: import("@playwright/test").Page) {
   await page.goto(`${BASE}/`);
-  const url = page.url();
-  if (url.includes("/album") || url.includes("/once") || url.includes("/inicio")) return;
 
-  for (let i = 0; i < 3; i++) {
-    const nextBtn = page.getByText(/Siguiente|¡Empezar/);
-    if (await nextBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
-      await nextBtn.click();
-    }
+  // Wait for client-side JS: if nickname is set, page redirects away from onboarding.
+  const hasOnboarding = await page
+    .waitForSelector("text=Saltar tutorial", { timeout: 6000 })
+    .then(() => true)
+    .catch(() => false);
+
+  if (!hasOnboarding) {
+    // Already past onboarding (redirected to /album or similar).
+    return;
   }
 
-  const nicknameInput = page.locator('input[type="text"]');
-  if (await nicknameInput.isVisible({ timeout: 3000 }).catch(() => false)) {
-    await nicknameInput.fill(NICKNAME);
-    await page.getByText("¡Empezar!").click();
-    await page.waitForURL(`${BASE}/album`, { timeout: 10000 });
-  }
+  // Skip the tutorial and fill the nickname form.
+  await page.click("text=Saltar tutorial");
+  await page.waitForSelector("input", { timeout: 8000 });
+  await page.fill("input", NICKNAME);
+  await page.click('button[type="submit"]');
+  await page.waitForURL(`${BASE}/album`, { timeout: 12000 });
+  await page.waitForLoadState("networkidle");
 }
 
 test("/once renders Squad Builder with header and stats", async ({ page }) => {

@@ -1,14 +1,18 @@
 "use client";
 
 /**
- * TopBarGlobal — thin client wrapper that conditionally renders TopBar.
+ * TopBarGlobal — conditionally renders TopBar + in-flow height spacer.
  *
  * Mounted in layout.tsx (Server Component). Uses usePathname() to suppress
- * the bar on pages that either:
- *   a) are fullscreen (onboarding "/")
- *   b) render their own TopBar instance ("/notifications")
+ * the bar on pages that should NOT show it:
+ *   "/" — fullscreen onboarding (no bar needed)
+ *   "/notifications" — has its own TopBar with back button
  *
- * All other pages get the fixed 54px bar with the Albumix logo + bell.
+ * When rendered, the component outputs:
+ *   1. The fixed-position TopBar (position:fixed, top:0, height:54px, z:40)
+ *   2. A 54px in-flow spacer div so page content doesn't slide under the bar.
+ *
+ * Returning null for suppressed paths ensures those pages get zero extra space.
  */
 
 import { usePathname } from "next/navigation";
@@ -22,5 +26,11 @@ export default function TopBarGlobal() {
 
   if (SUPPRESS_PATHS.has(pathname)) return null;
 
-  return <TopBar variant="fixed" />;
+  return (
+    <>
+      <TopBar variant="fixed" />
+      {/* In-flow spacer: occupies the 54px that TopBar covers with position:fixed */}
+      <div style={{ height: 54, flexShrink: 0 }} aria-hidden="true" />
+    </>
+  );
 }

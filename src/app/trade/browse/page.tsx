@@ -253,7 +253,7 @@ function BrowseInner() {
     return (
       <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
         <header
-          className="sticky top-0 z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
+          className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
           style={{ backgroundColor: "#006847" }}
         >
           <button
@@ -278,7 +278,7 @@ function BrowseInner() {
     <div className="flex flex-col flex-1 max-w-lg mx-auto w-full pb-safe">
       {/* Header */}
       <header
-        className="sticky top-0 z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
         style={{ backgroundColor: "#006847" }}
       >
         <button
@@ -309,7 +309,7 @@ function BrowseInner() {
 
       {/* Filters */}
       <div
-        className="sticky top-[52px] z-10 px-4 py-2 flex gap-2 overflow-x-auto"
+        className="sticky top-[106px] z-10 px-4 py-2 flex gap-2 overflow-x-auto"
         style={{ backgroundColor: "#f9f5ee", borderBottom: "1px solid #e5e0d6" }}
       >
         {/* Mode filter */}

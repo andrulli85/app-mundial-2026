@@ -410,7 +410,7 @@ export default function MercadoPage() {
     >
       {/* ---- Header ---- */}
       <div
-        className="sticky top-0 z-20 px-4 pt-4 pb-3"
+        className="sticky top-[54px] z-20 px-4 pt-4 pb-3"
         style={{
           background:
             "linear-gradient(180deg, #0d0f13 80%, rgba(13,15,19,0) 100%)",
