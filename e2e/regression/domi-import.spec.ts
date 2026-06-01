@@ -13,7 +13,6 @@
 
 import { test, expect } from "@playwright/test";
 import { grantAccess } from "../_invite";
-import { ensureOnboarded } from "../_onboard";
 
 const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "DomiTest";
@@ -24,10 +23,37 @@ test.beforeEach(async ({ page }) => {
   await grantAccess(page);
 });
 
+/**
+ * Inline onboarding — handles both /album and /inicio as post-onboard destination
+ * (the app moved from /album to /inicio in a recent update).
+ */
+async function ensureNickname(page: import("@playwright/test").Page): Promise<void> {
+  await page.goto(`${BASE}/`);
+
+  const destination = await Promise.race([
+    page.waitForSelector("text=Saltar tutorial", { timeout: 14000 }).then(() => "tutorial"),
+    page.waitForURL(`${BASE}/inicio`, { timeout: 14000 }).then(() => "inicio"),
+    page.waitForURL(`${BASE}/album`, { timeout: 14000 }).then(() => "album"),
+  ]).catch(() => "tutorial");
+
+  if (destination === "tutorial") {
+    await page.click("text=Saltar tutorial");
+    await page.waitForSelector("input", { timeout: 8000 });
+    await page.fill("input", NICKNAME);
+    await page.click('button[type="submit"]');
+    // Wait for either destination — app may route to /inicio or /album
+    await Promise.race([
+      page.waitForURL(`${BASE}/inicio`, { timeout: 12000 }),
+      page.waitForURL(`${BASE}/album`, { timeout: 12000 }),
+    ]);
+  }
+
+  await page.waitForLoadState("networkidle");
+}
+
 test("domi import flow: onboard → /perfil/importar → import → /inicio has progress", async ({ page }) => {
-  // test timeout handled by playwright.config.ts (60000)
   // Step 1: Ensure onboarded with DomiTest nickname
-  await ensureOnboarded(page, BASE, NICKNAME);
+  await ensureNickname(page);
 
   // Step 2: Navigate to /perfil/importar
   await page.goto(`${BASE}/perfil/importar`);
@@ -39,7 +65,7 @@ test("domi import flow: onboard → /perfil/importar → import → /inicio has 
   ).toBeVisible({ timeout: 15000 });
 
   await expect(
-    page.locator("text=480")
+    page.locator("text=480 figuritas").first()
   ).toBeVisible({ timeout: 10000 });
 
   // Step 4: Per-country preview shows at least 10 country rows
@@ -69,12 +95,15 @@ test("domi import flow: onboard → /perfil/importar → import → /inicio has 
   await page.waitForURL(`${BASE}/inicio`, { timeout: 12000 });
   await page.waitForLoadState("networkidle");
 
-  // Step 8: Assert at least one country shows non-zero progress (format: "X/20" where X > 0)
-  // The /inicio page renders per-country rows with "N/20" text where N is owned count
-  const progressText = page.locator("body");
-  const bodyContent = await progressText.innerText();
-
-  // Look for pattern like "10/20", "14/20", etc. (first number > 0)
-  const progressMatch = bodyContent.match(/\b([1-9]\d*)\/\d+\b/);
-  expect(progressMatch).not.toBeNull();
+  // Step 8: Assert at least one country shows non-zero progress.
+  // /inicio renders CountryRow components with "{owned}/{total}" spans.
+  // Wait for any span matching the pattern Nnn/Nnn where first N >= 1.
+  // Give generous timeout since IDB reads are async client-side.
+  await page.waitForFunction(
+    () => {
+      const allText = document.body.innerText;
+      return /\b[1-9]\d*\/\d+\b/.test(allText);
+    },
+    { timeout: 20000 }
+  );
 });
