@@ -10,81 +10,54 @@ import { test, expect } from "@playwright/test";
  *  4. Tap "🏆 Grupos" → group headers (A-L) visible above team headers
  *
  * Viewport: iPhone 15 Pro (393×852)
- * Target: https://app-mundial-2026-lemon.vercel.app (same alias as other e2e)
+ * Target: https://app-mundial-2026-lemon.vercel.app
  */
 
 const BASE = "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "testchips";
 
-/** Set a nickname directly in IndexedDB to skip the onboarding flow */
-async function setNicknameIDB(
-  page: import("@playwright/test").Page,
-  nick: string
-): Promise<void> {
-  await page.evaluate((nickname: string) => {
-    return new Promise<void>((resolve, reject) => {
-      const req = indexedDB.open("mundial-2026", 1);
-      req.onsuccess = () => {
-        const db = req.result;
-        // Try the "settings" object store (used by getNickname/setNickname)
-        const storeNames = Array.from(db.objectStoreNames);
-        const storeName = storeNames.includes("settings") ? "settings" : storeNames[0];
-        const tx = db.transaction(storeName, "readwrite");
-        tx.objectStore(storeName).put({ key: "nickname", value: nickname });
-        tx.oncomplete = () => resolve();
-        tx.onerror = () => reject(new Error("IDB write failed"));
-      };
-      req.onerror = () => reject(new Error("IDB open failed"));
-    });
-  }, nick);
-}
-
 test.use({ viewport: { width: 393, height: 852 } });
 
+/**
+ * Onboard a fresh browser context to /album.
+ * Mirrors the working pattern in figuritas-import.spec.ts.
+ */
+async function onboardAndGoToAlbum(
+  page: import("@playwright/test").Page
+): Promise<void> {
+  await page.goto(`${BASE}/`);
+  // Tutorial slide has "Saltar tutorial" button
+  await page.waitForSelector("text=Saltar tutorial", { timeout: 15000 });
+  await page.click("text=Saltar tutorial");
+
+  // Nickname input appears after skipping tutorial
+  await page.waitForSelector("input", { timeout: 8000 });
+  await page.fill("input", NICKNAME);
+  await page.click('button[type="submit"]');
+  await page.waitForURL(`${BASE}/album`, { timeout: 10000 });
+
+  // Wait for the search bar to confirm the new UI is loaded
+  await page.waitForSelector('[data-testid="search-input"]', { timeout: 15000 });
+}
+
 test.describe("Album — search bar + category chips", () => {
-  test.beforeEach(async ({ page }) => {
-    // Navigate to homepage first to ensure IDB is initialized
-    await page.goto(`${BASE}/`);
-    // Wait for page to be interactive (tutorial or nickname form)
-    await page.waitForLoadState("domcontentloaded");
-
-    // If we land on the tutorial, skip it first
-    const skipBtn = page.locator("text=Saltar tutorial");
-    if (await skipBtn.isVisible({ timeout: 4000 }).catch(() => false)) {
-      await skipBtn.click();
-    }
-
-    // If a nickname input is shown, fill it
-    const nicknameInput = page.locator("input").first();
-    if (await nicknameInput.isVisible({ timeout: 4000 }).catch(() => false)) {
-      await nicknameInput.fill(NICKNAME);
-      await page.locator('button[type="submit"]').click();
-      await page.waitForURL(`${BASE}/album`, { timeout: 10000 });
-    } else {
-      // IDB is already populated — try to navigate directly
-      await page.goto(`${BASE}/album`);
-      await page.waitForURL(`${BASE}/album`, { timeout: 10000 });
-    }
-
-    // At this point we should be at /album
-    await page.waitForSelector('[data-testid="search-input"]', { timeout: 15000 });
-  });
-
   // --------------------------------------------------------------------------
   // Check 1: Type "MEX" → only Mexico section visible
   // --------------------------------------------------------------------------
   test("search MEX shows only México section", async ({ page }) => {
+    await onboardAndGoToAlbum(page);
+
     const searchInput = page.locator('[data-testid="search-input"]');
     await searchInput.fill("MEX");
 
-    // Wait for DOM to settle
+    // Wait for filtering to settle
     await page.waitForTimeout(300);
 
     // México section should be visible
     const mexSection = page.locator('[data-testid="team-section-MEX"]');
     await expect(mexSection).toBeVisible({ timeout: 5000 });
 
-    // Other country sections (e.g. BRA, ARG) should NOT be present
+    // Other country sections (e.g. BRA, ARG) should NOT be in the DOM
     const braSection = page.locator('[data-testid="team-section-BRA"]');
     await expect(braSection).toHaveCount(0);
 
@@ -96,9 +69,7 @@ test.describe("Album — search bar + category chips", () => {
   // Check 2: Tap "✨ Especiales" → only FWC/Panini stickers, no country teams
   // --------------------------------------------------------------------------
   test("Especiales chip shows only FWC + Panini stickers", async ({ page }) => {
-    // Clear any leftover search
-    const searchInput = page.locator('[data-testid="search-input"]');
-    await searchInput.fill("");
+    await onboardAndGoToAlbum(page);
 
     // Tap Especiales chip
     await page.locator('[data-testid="chip-especiales"]').click();
@@ -108,7 +79,7 @@ test.describe("Album — search bar + category chips", () => {
     const fwcSection = page.locator('[data-testid="team-section-FWC"]');
     await expect(fwcSection).toBeVisible({ timeout: 5000 });
 
-    // Country team sections (MEX, BRA) should NOT be present
+    // Country team sections (MEX, BRA) should NOT be in the DOM
     const mexSection = page.locator('[data-testid="team-section-MEX"]');
     await expect(mexSection).toHaveCount(0);
 
@@ -120,19 +91,21 @@ test.describe("Album — search bar + category chips", () => {
   // Check 3: Tap "🌍 Países" → FWC + Panini sections hidden
   // --------------------------------------------------------------------------
   test("Países chip hides FWC and Panini sections", async ({ page }) => {
+    await onboardAndGoToAlbum(page);
+
     // Tap Países chip
     await page.locator('[data-testid="chip-paises"]').click();
     await page.waitForTimeout(300);
 
-    // FWC section should NOT be present
+    // FWC section should NOT be in the DOM
     const fwcSection = page.locator('[data-testid="team-section-FWC"]');
     await expect(fwcSection).toHaveCount(0);
 
-    // Panini section should NOT be present
+    // Panini section should NOT be in the DOM
     const paniniSection = page.locator('[data-testid="team-section-_PANINI"]');
     await expect(paniniSection).toHaveCount(0);
 
-    // But a real country team should be present
+    // A real country team should be present
     const mexSection = page.locator('[data-testid="team-section-MEX"]');
     await expect(mexSection).toBeVisible({ timeout: 5000 });
   });
@@ -141,6 +114,8 @@ test.describe("Album — search bar + category chips", () => {
   // Check 4: Tap "🏆 Grupos" → group headers (A-L) visible above team headers
   // --------------------------------------------------------------------------
   test("Grupos chip shows group headers A-L above team sections", async ({ page }) => {
+    await onboardAndGoToAlbum(page);
+
     // Tap Grupos chip
     await page.locator('[data-testid="chip-grupos"]').click();
     await page.waitForTimeout(300);
@@ -153,11 +128,11 @@ test.describe("Album — search bar + category chips", () => {
     const groupL = page.locator('[data-testid="group-header-L"]');
     await expect(groupL).toBeVisible({ timeout: 5000 });
 
-    // Team header for MEX (group A) should also be present under the group header
+    // Team header for MEX (in group A) should be present under the group header
     const mexSection = page.locator('[data-testid="team-section-MEX"]');
     await expect(mexSection).toBeVisible({ timeout: 5000 });
 
-    // Group A should appear before Group L in the DOM
+    // Group A should appear above Group L in the DOM
     const groupABox = await groupA.boundingBox();
     const groupLBox = await groupL.boundingBox();
     expect(groupABox!.y).toBeLessThan(groupLBox!.y);
