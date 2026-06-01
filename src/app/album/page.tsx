@@ -7,9 +7,10 @@
  * Grid renders <StickerCardFut> (photo + rarity border + rating + position + flag).
  * StickerCard.tsx is preserved for /trade routes — DO NOT delete it.
  *
- * Chips: 🔍 Todos | 🌍 Países | 🏆 Grupos | ✨ Especiales | ✨ Legendario
+ * Chips: 🔍 Todos | 🌍 Países | 🏆 Grupos | ✨ Especiales | ✨ Legendario | 🏆 Campeones
  * Tabs: Todo | Tengo | Me faltan | Repetidas  (gold underline active)
  * "Doradas" chip stays hidden (route /album/doradas still accessible).
+ * "Campeones" chip navigates to /album/historia (does NOT filter the main grid).
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -24,6 +25,7 @@ import type { TeamCatalogEntry } from "@/lib/team-catalog";
 import InstallBanner from "@/components/InstallBanner";
 import BottomNav from "@/components/BottomNav";
 import { getPeersWishing } from "@/lib/peer-mock";
+import ScanPageModal from "@/components/ScanPageModal";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
 type Category = "todos" | "paises" | "grupos" | "especiales" | "legendario";
@@ -138,6 +140,16 @@ export default function AlbumPage() {
   const handleTap = useCallback(async (stickerId: string) => {
     const updated = await toggleSticker(stickerId);
     setCounts((prev) => ({ ...prev, [stickerId]: updated.count }));
+  }, []);
+
+  const handleScanBulkAdded = useCallback((ids: string[]) => {
+    setCounts((prev) => {
+      const next = { ...prev };
+      for (const id of ids) {
+        next[id] = Math.max(next[id] ?? 0, 1);
+      }
+      return next;
+    });
   }, []);
 
   // ---------- Filter pipeline: tab → category → search ----------
@@ -389,6 +401,25 @@ export default function AlbumPage() {
               </button>
             );
           })}
+          {/* Campeones chip — navigates to /album/historia (prestige timeline) */}
+          <a
+            href="/album/historia"
+            data-testid="chip-campeones"
+            className="flex-shrink-0 rounded-full px-4 font-semibold transition-all flex items-center"
+            style={{
+              scrollSnapAlign: "start",
+              height: "36px",
+              fontSize: "13px",
+              whiteSpace: "nowrap",
+              backgroundColor: "rgba(250,204,21,0.12)",
+              color: "#facc15",
+              border: "1px solid rgba(250,204,21,0.3)",
+              fontWeight: 600,
+              textDecoration: "none",
+            }}
+          >
+            🏆 Campeones
+          </a>
           {/* Doradas chip — hidden from chip strip (route /album/doradas still accessible).
                Andy paused doradas focus 2026-06-01; re-enable by restoring this block. */}
           {/* <a href={_DORADAS_CHIP_HREF} data-testid="chip-doradas" ... >Doradas ✨</a> */}
@@ -493,6 +524,8 @@ export default function AlbumPage() {
           ))
         )}
       </main>
+
+      <ScanPageModal counts={counts} onStickersBulkAdded={handleScanBulkAdded} />
 
       <BottomNav active="album" />
     </div>
