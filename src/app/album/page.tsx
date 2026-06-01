@@ -1,16 +1,14 @@
 "use client";
 
 /**
- * Album screen — FUT Champions card style (redesigned 2026-06-01).
+ * Album screen — Panini TradingCard style (Fase 2, 2026-06-01).
  *
  * Dark theme scoped to this page via .home-dark wrapper.
- * Grid renders <StickerCardFut> (photo + rarity border + rating + position + flag).
- * StickerCard.tsx is preserved for /trade routes — DO NOT delete it.
+ * Grid renders <StickerCardPanini> (light celeste BG, giant 26 motif, photo, flag chip, accent name plate).
  *
- * Chips: 🔍 Todos | 🌍 Países | 🏆 Grupos | ✨ Especiales | ✨ Legendario | 🏆 Campeones
+ * Chips: 🔍 Todos | 🌍 Países | 🏆 Grupos | ✨ Especiales | ⭐ Favoritas
  * Tabs: Todo | Tengo | Me faltan | Repetidas  (gold underline active)
  * "Doradas" chip stays hidden (route /album/doradas still accessible).
- * "Campeones" chip navigates to /album/historia (does NOT filter the main grid).
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -25,7 +23,6 @@ import type { TeamCatalogEntry } from "@/lib/team-catalog";
 import InstallBanner from "@/components/InstallBanner";
 import BottomNav from "@/components/BottomNav";
 import { getPeersWishing } from "@/lib/peer-mock";
-import ScanPageModal from "@/components/ScanPageModal";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
 // "hologramas" kept in type for filter logic but hidden from chips (Fase 1 — 2026-06-01)
@@ -145,16 +142,6 @@ export default function AlbumPage() {
   const handleTap = useCallback(async (stickerId: string) => {
     const updated = await toggleSticker(stickerId);
     setCounts((prev) => ({ ...prev, [stickerId]: updated.count }));
-  }, []);
-
-  const handleScanBulkAdded = useCallback((ids: string[]) => {
-    setCounts((prev) => {
-      const next = { ...prev };
-      for (const id of ids) {
-        next[id] = Math.max(next[id] ?? 0, 1);
-      }
-      return next;
-    });
   }, []);
 
   // ---------- Filter pipeline: tab → category → search ----------
@@ -549,12 +536,6 @@ export default function AlbumPage() {
           ))
         )}
       </main>
-
-      {/* Hidden per Andy 2026-06-01 — Fase 3 may re-surface CV scan */}
-      {/* ScanPageModal and /api/scan-page endpoint remain in code, just unlinked from UI */}
-      {process.env.NEXT_PUBLIC_ENABLE_CV_SCAN === "true" && (
-        <ScanPageModal counts={counts} onStickersBulkAdded={handleScanBulkAdded} />
-      )}
 
       <BottomNav active="album" />
     </div>

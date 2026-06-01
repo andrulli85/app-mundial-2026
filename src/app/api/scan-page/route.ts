@@ -49,7 +49,7 @@ interface GeminiResponse {
 
 const MAX_BYTES = 4 * 1024 * 1024; // 4 MB
 const ALLOWED_MIME = new Set(["image/jpeg", "image/jpg", "image/png", "image/webp"]);
-const GEMINI_MODEL = "gemini-2.0-flash-exp"; // primary; fallback path below
+const _GEMINI_MODEL = "gemini-2.0-flash-exp"; // primary; fallback path below
 const GEMINI_API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent";
 

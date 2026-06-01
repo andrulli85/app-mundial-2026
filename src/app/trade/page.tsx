@@ -12,7 +12,7 @@
 
 import { useRouter } from "next/navigation";
 
-const BG = "#0a0a0a";
+const _BG = "#0a0a0a";
 const SURFACE = "rgba(26,26,26,0.95)";
 const BORDER = "rgba(255,255,255,0.08)";
 const GREEN = "#006847";
