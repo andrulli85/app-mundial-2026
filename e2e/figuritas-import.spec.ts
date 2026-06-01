@@ -67,8 +67,8 @@ async function getIDBSticker(
 ): Promise<{ sticker_id: string; count: number; acquired_at: number } | null> {
   return page.evaluate((id: string) => {
     return new Promise<{ sticker_id: string; count: number; acquired_at: number } | null>((resolve) => {
-      // Version must match the app's DB version (currently 2 — achievements store added in v2)
-      const req = indexedDB.open("mundial-2026", 2);
+      // Version must match the app's DB version (currently 3 — squad store added in v3)
+      const req = indexedDB.open("mundial-2026", 3);
       req.onupgradeneeded = () => { /* allow upgrade if needed */ };
       req.onsuccess = () => {
         const db = req.result;
@@ -91,8 +91,8 @@ async function setIDBSticker(
   await page.evaluate(
     ({ id, cnt }: { id: string; cnt: number }) => {
       return new Promise<void>((resolve, reject) => {
-        // Version must match the app's DB version (currently 2 — achievements store added in v2)
-        const req = indexedDB.open("mundial-2026", 2);
+        // Version must match the app's DB version (currently 3 — squad store added in v3)
+        const req = indexedDB.open("mundial-2026", 3);
         req.onupgradeneeded = () => { /* allow upgrade if needed */ };
         req.onsuccess = () => {
           const db = req.result;

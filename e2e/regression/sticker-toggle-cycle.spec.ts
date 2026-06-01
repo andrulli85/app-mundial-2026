@@ -24,8 +24,8 @@ test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 async function getCount(page: import("@playwright/test").Page, stickerId: string): Promise<number> {
   return page.evaluate((id: string) => {
     return new Promise<number>((resolve) => {
-      // Version must match the app's DB version (currently 2 — achievements store added in v2)
-      const req = indexedDB.open("mundial-2026", 2);
+      // Version must match the app's DB version (currently 3 — squad store added in v3)
+      const req = indexedDB.open("mundial-2026", 3);
       req.onupgradeneeded = () => { /* allow upgrade if needed */ };
       req.onsuccess = () => {
         const db = req.result;

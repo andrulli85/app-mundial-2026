@@ -62,7 +62,7 @@ async function onboard(page: Page): Promise<void> {
 async function writeStickers(page: Page, ids: string[]): Promise<void> {
   await page.evaluate((stickerIds) => {
     return new Promise<void>((resolve, reject) => {
-      const req = indexedDB.open("mundial-2026", 2);
+      const req = indexedDB.open("mundial-2026", 3);
       req.onupgradeneeded = (e) => {
         const db = (e.target as IDBOpenDBRequest).result;
         if (!db.objectStoreNames.contains("collection")) {
@@ -70,6 +70,9 @@ async function writeStickers(page: Page, ids: string[]): Promise<void> {
         }
         if (!db.objectStoreNames.contains("achievements")) {
           db.createObjectStore("achievements", { keyPath: "id" });
+        }
+        if (!db.objectStoreNames.contains("squad")) {
+          db.createObjectStore("squad", { keyPath: "key" });
         }
       };
       req.onsuccess = (e) => {
@@ -89,7 +92,7 @@ async function writeStickers(page: Page, ids: string[]): Promise<void> {
 async function getUnlockedIds(page: Page): Promise<string[]> {
   return page.evaluate(() => {
     return new Promise<string[]>((resolve, reject) => {
-      const req = indexedDB.open("mundial-2026", 2);
+      const req = indexedDB.open("mundial-2026", 3);
       req.onsuccess = (e) => {
         const db = (e.target as IDBOpenDBRequest).result;
         if (!db.objectStoreNames.contains("achievements")) {
