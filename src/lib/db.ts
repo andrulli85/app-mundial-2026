@@ -29,6 +29,11 @@ export interface TradeLogEntry {
   received: string[]; // sticker_ids received
 }
 
+export interface AchievementEntry {
+  id: string;         // badge id
+  unlockedAt: number; // unix ms
+}
+
 interface MundialDB extends DBSchema {
   collection: {
     key: string;
@@ -45,25 +50,57 @@ interface MundialDB extends DBSchema {
     value: TradeLogEntry;
     indexes: { by_ts: number };
   };
+  achievements: {
+    key: string;
+    value: AchievementEntry;
+    indexes: Record<string, never>;
+  };
 }
 
+// ---------------------------------------------------------------------------
+// Collection change event — allows achievement hook to react to sticker mutations
+// without coupling db.ts to React or the achievement system.
+// ---------------------------------------------------------------------------
+type CollectionChangeListener = () => void;
+const collectionChangeListeners = new Set<CollectionChangeListener>();
+
+export function onCollectionChange(fn: CollectionChangeListener): () => void {
+  collectionChangeListeners.add(fn);
+  return () => collectionChangeListeners.delete(fn);
+}
+
+function emitCollectionChange(): void {
+  collectionChangeListeners.forEach((fn) => fn());
+}
+
+// ---------------------------------------------------------------------------
+// DB init
+// ---------------------------------------------------------------------------
 let dbPromise: Promise<IDBPDatabase<MundialDB>> | null = null;
 
 export function getDB(): Promise<IDBPDatabase<MundialDB>> {
   if (!dbPromise) {
-    dbPromise = openDB<MundialDB>("mundial-2026", 1, {
-      upgrade(db) {
-        // Collection store — one entry per sticker
-        db.createObjectStore("collection", { keyPath: "sticker_id" });
+    dbPromise = openDB<MundialDB>("mundial-2026", 2, {
+      upgrade(db, oldVersion) {
+        // v1 stores — create only if they don't exist (safe for existing users)
+        if (oldVersion < 1) {
+          // Collection store — one entry per sticker
+          db.createObjectStore("collection", { keyPath: "sticker_id" });
 
-        // Profile store — key/value pairs for user preferences
-        db.createObjectStore("profile", { keyPath: "key" });
+          // Profile store — key/value pairs for user preferences
+          db.createObjectStore("profile", { keyPath: "key" });
 
-        // Trade log — history of completed trades
-        const tradeStore = db.createObjectStore("trade_log", {
-          keyPath: "trade_id",
-        });
-        tradeStore.createIndex("by_ts", "ts");
+          // Trade log — history of completed trades
+          const tradeStore = db.createObjectStore("trade_log", {
+            keyPath: "trade_id",
+          });
+          tradeStore.createIndex("by_ts", "ts");
+        }
+
+        // v2 — achievements store (new; existing users upgrading from v1 keep all their data)
+        if (oldVersion < 2) {
+          db.createObjectStore("achievements", { keyPath: "id" });
+        }
       },
     });
   }
@@ -98,6 +135,7 @@ export async function toggleSticker(stickerId: string): Promise<StickerEntry> {
     acquired_at: Date.now(),
   };
   await db.put("collection", next);
+  emitCollectionChange();
   return next;
 }
 
@@ -105,6 +143,7 @@ export async function bulkSetStickers(entries: StickerEntry[]): Promise<void> {
   const db = await getDB();
   const tx = db.transaction("collection", "readwrite");
   await Promise.all([...entries.map((e) => tx.store.put(e)), tx.done]);
+  emitCollectionChange();
 }
 
 // --- Profile helpers ---
@@ -197,4 +236,25 @@ export async function importCollection(json: string): Promise<void> {
     ...(data.profile as ProfileEntry[]).map((p) => tx.store.put(p)),
     tx.done,
   ]);
+}
+
+// --- Achievements helpers ---
+
+/** Returns all unlocked badge ids */
+export async function getUnlockedBadges(): Promise<string[]> {
+  const db = await getDB();
+  const all = await db.getAll("achievements");
+  return all.map((e) => e.id);
+}
+
+/** Persists a badge as unlocked (idempotent — safe to call multiple times) */
+export async function markBadgeUnlocked(id: string): Promise<void> {
+  const db = await getDB();
+  await db.put("achievements", { id, unlockedAt: Date.now() });
+}
+
+/** Returns all achievement entries with timestamps */
+export async function getUnlockedBadgeEntries(): Promise<AchievementEntry[]> {
+  const db = await getDB();
+  return db.getAll("achievements");
 }

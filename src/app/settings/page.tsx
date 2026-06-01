@@ -8,29 +8,50 @@
  * - Export / import collection JSON (local backup)
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   getNickname,
   setNickname,
+  setProfile,
   exportCollection,
   importCollection,
 } from "@/lib/db";
 import { isValidNickname } from "@/lib/qr-engine";
 import { useAuth } from "@/components/AuthProvider";
 import SignInButton from "@/components/SignInButton";
+import { triggerAchievementCheck } from "@/hooks/useAchievements";
 
 const APP_VERSION = "0.1.0";
 
 export default function SettingsPage() {
   const router = useRouter();
-  const { user, loading: authLoading, signIn, signOut } = useAuth();
+  const { user, loading: authLoading, signIn: _signIn, signOut } = useAuth();
   const [nickname, setLocalNickname] = useState("");
   const [newNick, setNewNick] = useState("");
   const [nickError, setNickError] = useState("");
   const [nickSaved, setNickSaved] = useState(false);
   const [exportStatus, setExportStatus] = useState("");
   const [importStatus, setImportStatus] = useState("");
+
+  // Easter egg: tap the header title 5 times rapidly to unlock hidden badge
+  const easterTaps = useRef(0);
+  const easterTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleEasterTap = async () => {
+    easterTaps.current += 1;
+    if (easterTimer.current) clearTimeout(easterTimer.current);
+    if (easterTaps.current >= 5) {
+      easterTaps.current = 0;
+      await setProfile("easter_egg_tapped", "1");
+      triggerAchievementCheck();
+    } else {
+      // Reset count if user stops tapping for 2s
+      easterTimer.current = setTimeout(() => {
+        easterTaps.current = 0;
+      }, 2000);
+    }
+  };
 
   useEffect(() => {
     getNickname().then((n) => {
@@ -81,6 +102,9 @@ export default function SettingsPage() {
     try {
       const text = await file.text();
       await importCollection(text);
+      // Mark that user has imported, then trigger achievement check
+      await setProfile("imported_from_app", "1");
+      triggerAchievementCheck();
       setImportStatus("Colección importada correctamente.");
       setTimeout(() => setImportStatus(""), 3000);
     } catch (err) {
@@ -104,7 +128,13 @@ export default function SettingsPage() {
         >
           ←
         </a>
-        <h1 className="text-lg font-black text-white leading-none">
+        {/* Tap 5× to unlock the hidden easter egg badge */}
+        <h1
+          className="text-lg font-black text-white leading-none select-none"
+          onClick={handleEasterTap}
+          style={{ cursor: "default", WebkitUserSelect: "none" }}
+          aria-label="Albumix — Opciones"
+        >
           Opciones
         </h1>
       </header>
@@ -286,6 +316,29 @@ export default function SettingsPage() {
               <p className="text-xs text-green-600">{importStatus}</p>
             )}
           </div>
+        </section>
+
+        {/* Logros */}
+        <section
+          className="rounded-2xl shadow-sm overflow-hidden"
+          style={{ backgroundColor: "#ffffff" }}
+        >
+          <a
+            href="/achievements"
+            className="flex items-center gap-3 px-4 py-4 active:opacity-70 transition-opacity"
+            style={{ textDecoration: "none" }}
+          >
+            <span className="text-xl leading-none">🏆</span>
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-gray-800 text-sm leading-tight">
+                Logros
+              </p>
+              <p className="text-xs text-gray-500 leading-tight mt-0.5">
+                Tus badges y colecciones desbloqueadas
+              </p>
+            </div>
+            <span className="text-gray-400 text-lg leading-none">›</span>
+          </a>
         </section>
 
         {/* Import from Figuritas.app */}

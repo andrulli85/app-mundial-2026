@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import RegisterSW from "@/components/RegisterSW";
 import AuthProvider from "@/components/AuthProvider";
+import AchievementProvider from "@/components/AchievementProvider";
 
 export const metadata: Metadata = {
   title: "Albumix",
@@ -89,7 +90,9 @@ export default function RootLayout({
     <html lang="es" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
         <AuthProvider>
-          {children}
+          <AchievementProvider>
+            {children}
+          </AchievementProvider>
         </AuthProvider>
         <RegisterSW />
       </body>
