@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { grantAccess } from "../_invite";
 
 /**
  * Search — Spanish team name matching regression.
@@ -19,6 +20,11 @@ const BASE = "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "regsearch";
 
 test.use({ viewport: { width: 390, height: 844 } });
+
+// Grant the whitelist cookie before each test so the gate doesn't block navigation.
+test.beforeEach(async ({ page }) => {
+  await grantAccess(page);
+});
 
 async function onboardAndGoToAlbum(page: import("@playwright/test").Page): Promise<void> {
   await page.goto(`${BASE}/`);

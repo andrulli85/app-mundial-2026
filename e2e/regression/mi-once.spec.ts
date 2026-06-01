@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { grantAccess } from "../_invite";
 
 /**
  * Phase B regression — Mi Once / Squad Builder at /once.
@@ -18,6 +19,11 @@ const BASE = "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "oncetest";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
+
+// Grant the whitelist cookie before each test so the gate doesn't block navigation.
+test.beforeEach(async ({ page }) => {
+  await grantAccess(page);
+});
 
 async function seedNickname(page: import("@playwright/test").Page) {
   await page.goto(`${BASE}/`);

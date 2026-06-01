@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { grantAccess } from "../_invite";
 
 /**
  * Golden-path regression smoke — hits every major route in one session.
@@ -24,6 +25,11 @@ const BASE = "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "regfull";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
+
+// Grant the whitelist cookie before each test so the gate doesn't block navigation.
+test.beforeEach(async ({ page }) => {
+  await grantAccess(page);
+});
 
 test("golden-path smoke — all major routes", async ({ page }) => {
   // ── Onboarding ──────────────────────────────────────────────────────────────

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { grantAccess } from "../_invite";
 
 /**
  * Phase A regression — 5-tab BottomNav + /inicio + /perfil + /mercado redirect.
@@ -18,6 +19,11 @@ const BASE = "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "navtest";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
+
+// Grant the whitelist cookie before each test so the gate doesn't block navigation.
+test.beforeEach(async ({ page }) => {
+  await grantAccess(page);
+});
 
 /** Set nickname via onboarding so app pages don't redirect back to /. */
 async function seedNickname(page: import("@playwright/test").Page) {

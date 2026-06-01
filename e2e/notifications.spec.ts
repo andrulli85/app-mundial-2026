@@ -15,6 +15,7 @@
  */
 
 import { test, expect, type Page } from "@playwright/test";
+import { grantAccess } from "./_invite";
 
 const BASE =
   process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
@@ -24,6 +25,11 @@ const STORAGE_KEY = "albumix.notifications";
 test.use({
   viewport: { width: 393, height: 852 },
   hasTouch: true,
+});
+
+// Grant the whitelist cookie before each test so the gate doesn't block navigation.
+test.beforeEach(async ({ page }) => {
+  await grantAccess(page);
 });
 
 // ---------------------------------------------------------------------------

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { grantAccess } from "./_invite";
 
 /**
  * /album/map — World heatmap E2E tests
@@ -18,6 +19,11 @@ const BASE = "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "testmap2026";
 
 test.use({ viewport: { width: 393, height: 852 } });
+
+// Grant the whitelist cookie before each test so the gate doesn't block navigation.
+test.beforeEach(async ({ page }) => {
+  await grantAccess(page);
+});
 
 /**
  * Onboard a fresh browser context and return to a given path.

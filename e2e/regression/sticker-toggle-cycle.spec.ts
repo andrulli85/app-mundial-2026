@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { grantAccess } from "../_invite";
 
 /**
  * Sticker toggle cycle — IndexedDB integrity test.
@@ -17,6 +18,11 @@ const TARGET_STICKER_ID = "mex-5-montes";
 const TARGET_TEAM = "MEX";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
+
+// Grant the whitelist cookie before each test so the gate doesn't block navigation.
+test.beforeEach(async ({ page }) => {
+  await grantAccess(page);
+});
 
 /**
  * Reads a sticker's count directly from IndexedDB in the page context.

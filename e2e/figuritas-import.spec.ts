@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { grantAccess } from "./_invite";
 
 // Use the lemon alias which hosts the latest build with /import live
 const BASE = "https://app-mundial-2026-lemon.vercel.app";
@@ -113,6 +114,11 @@ async function setIDBSticker(
 }
 
 test.describe("Figuritas import — Overwrite Limpio E2E", () => {
+  // Grant the whitelist cookie before each test so the gate doesn't block navigation.
+  test.beforeEach(async ({ page }) => {
+    await grantAccess(page);
+  });
+
   test(
     "full import flow: onboard → mark MEX-5 → import → verify overwrite",
     async ({ page }) => {

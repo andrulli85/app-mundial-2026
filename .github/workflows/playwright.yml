@@ -48,6 +48,11 @@ jobs:
       - name: Run Playwright tests
         env:
           BASE_URL: https://app-mundial-2026-lemon.vercel.app
+          # Whitelist gate: secret must match what is set in Vercel prod.
+          # Set ALBUMIX_INVITE_SECRET as a GitHub Actions secret; _invite.ts
+          # uses it to compute valid HMAC cookies for existing regression specs.
+          ALBUMIX_INVITE_SECRET: ${{ secrets.ALBUMIX_INVITE_SECRET }}
+          WHITELIST_EMAILS: ${{ secrets.WHITELIST_EMAILS }}
         run: npx playwright test
 
       - name: Upload Playwright report

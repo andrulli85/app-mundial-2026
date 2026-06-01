@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { grantAccess } from "./_invite";
 
 /**
  * Album search bar + category chips — E2E
@@ -17,6 +18,11 @@ const BASE = "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "testchips";
 
 test.use({ viewport: { width: 393, height: 852 } });
+
+// Grant the whitelist cookie before each test so the gate doesn't block navigation.
+test.beforeEach(async ({ page }) => {
+  await grantAccess(page);
+});
 
 /**
  * Onboard a fresh browser context to /album.
