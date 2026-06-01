@@ -113,12 +113,26 @@ test("FUT-style /album — dark theme + cards + Legendario chip filter", async (
   // ── Assertion 6: Legendario chip filter → only gold cards ────────────────
   const legendarioChip = page.getByTestId("chip-legendario");
   await expect(legendarioChip).toBeVisible();
+
+  // Record how many cards exist before filter
+  const preFilterCount = await page.locator('[data-testid="fut-card"]').count();
+
   await legendarioChip.click();
 
-  // Wait a tick for the filter to apply
-  await page.waitForTimeout(400);
+  // Wait for the DOM to stabilize: card count must drop from preFilterCount
+  // (legend stickers = 17, full catalog = 1007+, so count changes significantly)
+  const allFutCards = page.locator('[data-testid="fut-card"]');
+  await expect(allFutCards.first()).toBeVisible({ timeout: 5000 }); // ensure at least one remains
+  await page.waitForFunction(
+    (pre) => {
+      const cards = document.querySelectorAll('[data-testid="fut-card"]');
+      return cards.length < pre;
+    },
+    preFilterCount,
+    { timeout: 5000, polling: 100 }
+  );
 
-  // Collect all visible cards after filter
+  // Collect all visible cards after filter has stabilized
   const filteredCards = page.locator('[data-testid="fut-card"]');
   const filteredCount = await filteredCards.count();
 

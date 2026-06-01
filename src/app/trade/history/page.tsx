@@ -68,32 +68,32 @@ function RevertModal({ entry, onConfirm, onCancel }: RevertModalProps) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-end justify-center"
-      style={{ backgroundColor: "rgba(0,0,0,0.45)" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.7)" }}
       onClick={onCancel}
     >
       <div
         className="w-full max-w-lg rounded-t-2xl px-5 py-6 flex flex-col gap-4"
-        style={{ backgroundColor: "#fff" }}
+        style={{ backgroundColor: "#131519", border: "1px solid rgba(255,255,255,0.08)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-lg font-black text-gray-800">
+        <h2 className="text-lg font-black" style={{ color: "#f5f5f5" }}>
           Revertir intercambio?
         </h2>
 
-        <div className="text-sm text-gray-600 flex flex-col gap-1.5">
+        <div className="text-sm flex flex-col gap-1.5" style={{ color: "#9ca3af" }}>
           {entry.gave.length > 0 && (
             <p>
-              <span className="font-semibold">+ Volvés a tener:</span>{" "}
+              <span className="font-semibold" style={{ color: "#f5f5f5" }}>+ Volvés a tener:</span>{" "}
               {entry.gave.join(", ")}
             </p>
           )}
           {entry.received.length > 0 && (
             <p>
-              <span className="font-semibold">− Perdés:</span>{" "}
+              <span className="font-semibold" style={{ color: "#f5f5f5" }}>− Perdés:</span>{" "}
               {entry.received.join(", ")}
             </p>
           )}
-          <p className="text-gray-600 text-xs mt-1">
+          <p className="text-xs mt-1" style={{ color: "#6b7280" }}>
             Este intercambio va a desaparecer del historial.
           </p>
         </div>
@@ -103,9 +103,9 @@ function RevertModal({ entry, onConfirm, onCancel }: RevertModalProps) {
             onClick={onCancel}
             className="flex-1 py-3 rounded-xl font-bold text-sm border"
             style={{
-              borderColor: "#d1c9b8",
-              color: "#555",
-              backgroundColor: "#fff",
+              borderColor: "rgba(255,255,255,0.12)",
+              color: "#9ca3af",
+              backgroundColor: "transparent",
             }}
           >
             Cancelar
@@ -134,12 +134,12 @@ function TradeCard({ entry, onRevert }: TradeCardProps) {
   return (
     <div
       className="rounded-xl p-4 flex flex-col gap-3"
-      style={{ backgroundColor: "#fff", border: "1px solid #e5e0d6" }}
+      style={{ backgroundColor: "rgba(26,26,26,0.95)", border: "1px solid rgba(255,255,255,0.08)" }}
     >
       {/* Header row */}
       <div className="flex items-center justify-between gap-2">
-        <p className="text-xs text-gray-600">{relativeTime(entry.ts)}</p>
-        <p className="text-xs font-semibold text-gray-600 truncate max-w-[160px]">
+        <p className="text-xs" style={{ color: "#6b7280" }}>{relativeTime(entry.ts)}</p>
+        <p className="text-xs font-semibold truncate max-w-[160px]" style={{ color: "#9ca3af" }}>
           con {entry.partner}
         </p>
       </div>
@@ -149,7 +149,7 @@ function TradeCard({ entry, onRevert }: TradeCardProps) {
         <div className="flex flex-col gap-1.5">
           <p
             className="text-xs font-bold uppercase tracking-wide"
-            style={{ color: "#c8102e" }}
+            style={{ color: "#f87171" }}
           >
             Diste
           </p>
@@ -166,7 +166,7 @@ function TradeCard({ entry, onRevert }: TradeCardProps) {
         <div className="flex flex-col gap-1.5">
           <p
             className="text-xs font-bold uppercase tracking-wide"
-            style={{ color: "#006847" }}
+            style={{ color: "#4ade80" }}
           >
             Recibiste
           </p>
@@ -185,8 +185,8 @@ function TradeCard({ entry, onRevert }: TradeCardProps) {
           className="text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors"
           style={{
             borderColor: "#c8102e",
-            color: "#c8102e",
-            backgroundColor: "#fff9f9",
+            color: "#f87171",
+            backgroundColor: "rgba(200,16,46,0.08)",
           }}
         >
           Revertir
@@ -254,20 +254,26 @@ export default function TradeHistoryPage() {
   };
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
+    <div
+      className="home-dark flex flex-col flex-1 max-w-lg mx-auto w-full"
+    >
       {/* Header */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{
+          background: "linear-gradient(180deg, #111827 0%, #0d1117 100%)",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
+        }}
       >
         <button
           onClick={() => router.back()}
-          className="text-white text-xl leading-none"
+          className="text-xl leading-none"
+          style={{ color: "#f5f5f5" }}
           aria-label="Volver"
         >
           ←
         </button>
-        <h1 className="text-lg font-black text-white leading-none flex-1">
+        <h1 className="text-lg font-black leading-none flex-1" style={{ color: "#f5f5f5" }}>
           Historial
         </h1>
       </header>
@@ -278,7 +284,7 @@ export default function TradeHistoryPage() {
             <div
               className="w-8 h-8 rounded-full border-4 animate-spin"
               style={{
-                borderColor: "#006847",
+                borderColor: "#c2ef4e",
                 borderTopColor: "transparent",
               }}
             />
@@ -288,10 +294,10 @@ export default function TradeHistoryPage() {
           <div className="flex-1 flex flex-col items-center justify-center text-center py-16 gap-4">
             <span className="text-5xl leading-none">📭</span>
             <div>
-              <p className="font-bold text-gray-700 mb-1">
+              <p className="font-bold mb-1" style={{ color: "#f5f5f5" }}>
                 Todavía no hiciste ningún intercambio
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm" style={{ color: "#9ca3af" }}>
                 Cuando hagas uno, va a aparecer acá.
               </p>
             </div>

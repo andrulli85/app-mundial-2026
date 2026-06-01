@@ -251,22 +251,26 @@ function BrowseInner() {
 
   if (decodeError) {
     return (
-      <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
+      <div className="home-dark flex flex-col flex-1 max-w-lg mx-auto w-full">
         <header
-          className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-          style={{ backgroundColor: "#006847" }}
+          className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+          style={{
+            background: "linear-gradient(180deg, #111827 0%, #0d1117 100%)",
+            borderBottom: "1px solid rgba(255,255,255,0.08)",
+          }}
         >
           <button
             onClick={() => router.back()}
-            className="text-white text-xl leading-none"
+            className="text-xl leading-none"
+            style={{ color: "#f5f5f5" }}
             aria-label="Volver"
           >
             ←
           </button>
-          <h1 className="text-lg font-black text-white leading-none">Error</h1>
+          <h1 className="text-lg font-black leading-none" style={{ color: "#f5f5f5" }}>Error</h1>
         </header>
         <div className="flex-1 flex items-center justify-center px-6">
-          <p className="text-center text-sm text-gray-600">{decodeError}</p>
+          <p className="text-center text-sm" style={{ color: "#9ca3af" }}>{decodeError}</p>
         </div>
       </div>
     );
@@ -275,11 +279,14 @@ function BrowseInner() {
   const partnerNickname = partnerPayload?.uid ?? "partner";
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full pb-safe">
+    <div className="home-dark flex flex-col flex-1 max-w-lg mx-auto w-full pb-safe">
       {/* Header */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{
+          background: "linear-gradient(180deg, #111827 0%, #0d1117 100%)",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
+        }}
       >
         <button
           onClick={() => router.back()}
@@ -310,7 +317,7 @@ function BrowseInner() {
       {/* Filters */}
       <div
         className="sticky top-[106px] z-10 px-4 py-2 flex gap-2 overflow-x-auto"
-        style={{ backgroundColor: "#f9f5ee", borderBottom: "1px solid #e5e0d6" }}
+        style={{ backgroundColor: "#0d0f13", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
       >
         {/* Mode filter */}
         <select
@@ -319,8 +326,8 @@ function BrowseInner() {
             setFilter(e.target.value as FilterMode);
             setTeamFilter("all");
           }}
-          className="text-sm border rounded-lg px-3 py-1.5 bg-white focus:outline-none shrink-0"
-          style={{ borderColor: "#d1c9b8", color: "#333" }}
+          className="text-sm border rounded-lg px-3 py-1.5 focus:outline-none shrink-0"
+          style={{ borderColor: "rgba(255,255,255,0.12)", color: "#f3f4f6", backgroundColor: "#1a1d24", fontSize: "16px" }}
         >
           <option value="repes">Solo repes</option>
           <option value="all_owned">Todas las que tiene</option>
@@ -331,8 +338,8 @@ function BrowseInner() {
         <select
           value={teamFilter}
           onChange={(e) => setTeamFilter(e.target.value)}
-          className="text-sm border rounded-lg px-3 py-1.5 bg-white focus:outline-none shrink-0"
-          style={{ borderColor: "#d1c9b8", color: "#333" }}
+          className="text-sm border rounded-lg px-3 py-1.5 focus:outline-none shrink-0"
+          style={{ borderColor: "rgba(255,255,255,0.12)", color: "#f3f4f6", backgroundColor: "#1a1d24", fontSize: "16px" }}
         >
           <option value="all">Todos los equipos</option>
           {availableTeams
@@ -352,9 +359,9 @@ function BrowseInner() {
       {wants.size > 0 && (
         <div
           className="px-4 py-2 flex flex-wrap gap-1.5 border-b"
-          style={{ backgroundColor: "#fff", borderColor: "#e5e0d6" }}
+          style={{ backgroundColor: "#131519", borderColor: "rgba(255,255,255,0.08)" }}
         >
-          <p className="w-full text-xs font-bold text-gray-600 uppercase tracking-wide mb-1">
+          <p className="w-full text-xs font-bold uppercase tracking-wide mb-1" style={{ color: "#9ca3af" }}>
             Querés:
           </p>
           {Array.from(wants).map((id) => {
@@ -386,7 +393,7 @@ function BrowseInner() {
       <main className="flex-1 overflow-y-auto px-3 py-3 pb-24">
         {visibleStickers.length === 0 ? (
           <div className="flex-1 flex items-center justify-center py-16">
-            <p className="text-sm text-gray-600 italic text-center px-6">
+            <p className="text-sm italic text-center px-6" style={{ color: "#9ca3af" }}>
               {filter === "repes"
                 ? `${partnerNickname} no tiene repes en este momento.`
                 : "No hay figuritas que mostrar con este filtro."}
@@ -451,8 +458,8 @@ function BrowseInner() {
       <div
         className="fixed bottom-0 left-0 right-0 px-4 py-3 border-t"
         style={{
-          backgroundColor: "#f9f5ee",
-          borderColor: "#e5e0d6",
+          backgroundColor: "#0d0f13",
+          borderColor: "rgba(255,255,255,0.08)",
           paddingBottom: "calc(0.75rem + var(--safe-area-bottom, 0px))",
         }}
       >
