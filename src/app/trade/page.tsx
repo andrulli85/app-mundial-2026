@@ -33,8 +33,16 @@ export default function TradePage() {
       </header>
 
       <main className="flex-1 flex flex-col justify-center px-5 gap-5 py-8">
-        {/* F.4 — link to trade history */}
-        <div className="flex justify-end">
+        {/* F.4 — links to trade history and analytics */}
+        <div className="flex justify-end gap-4">
+          <a
+            href="/trade/stats"
+            className="text-sm underline"
+            style={{ color: "#006847" }}
+            data-testid="trade-stats-link"
+          >
+            Análisis
+          </a>
           <a
             href="/trade/history"
             className="text-sm underline"
