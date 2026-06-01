@@ -34,6 +34,7 @@ function ensureScreenshotDir() {
 }
 
 // Helper: set up a fresh user with nickname (no onboarding modal)
+// Matches pattern from design-fase2.spec.ts
 async function ensureNickname(page: import("@playwright/test").Page): Promise<void> {
   await page.goto(`${BASE}/`);
 
@@ -44,13 +45,28 @@ async function ensureNickname(page: import("@playwright/test").Page): Promise<vo
 
   if (!hasOnboarding) return;
 
-  // Fill nickname if onboarding is present
-  const input = page.locator("input[placeholder]").first();
-  await input.fill("Tester");
-  await page.locator("text=Saltar tutorial").click().catch(() => {});
+  // Click skip tutorial first, then fill nickname
+  await page.click("text=Saltar tutorial");
+  await page.waitForSelector("input", { timeout: 8000 });
+  await page.fill("input", "Tester");
+  const submitBtn = page.locator('button[type="submit"]');
+  if (await submitBtn.isVisible()) {
+    await submitBtn.click();
+  }
+  await page.waitForURL((url) => url.pathname !== "/", { timeout: 12000 }).catch(() => {});
+  await page.waitForLoadState("networkidle");
 }
 
-// Helper: clear coachmark localStorage so it shows fresh
+// Helper: mark all coachmarks as "seen" so overlays never appear
+async function dismissAllCoachmarks(page: import("@playwright/test").Page): Promise<void> {
+  await page.evaluate(() => {
+    ["inicio", "album", "once"].forEach((s) =>
+      localStorage.setItem(`mc_coach_${s}`, "seen")
+    );
+  });
+}
+
+// Helper: clear coachmark localStorage so they show fresh (for coachmark tests only)
 async function clearCoachmarks(page: import("@playwright/test").Page): Promise<void> {
   await page.evaluate(() => {
     ["inicio", "album", "once"].forEach((s) =>
@@ -148,6 +164,9 @@ test.describe("Fase 3 — /once", () => {
   test("3 tabs visible (Equipo/Puntos/Resultados)", async ({ page }) => {
     ensureScreenshotDir();
     await ensureNickname(page);
+    // Pre-dismiss coachmarks so overlay doesn't appear
+    await page.goto(`${BASE}/inicio`);
+    await dismissAllCoachmarks(page);
     await page.goto(`${BASE}/once`);
 
     const tabBar = page.locator('[data-testid="once-tab-bar"]');
@@ -161,7 +180,12 @@ test.describe("Fase 3 — /once", () => {
   test("Puntos tab shows MY_POINTS 1620 and leaderboard with you", async ({ page }) => {
     ensureScreenshotDir();
     await ensureNickname(page);
+
+    // Pre-dismiss coachmarks so overlay never appears on /once
+    await page.goto(`${BASE}/inicio`);
+    await dismissAllCoachmarks(page);
     await page.goto(`${BASE}/once`);
+    await page.waitForSelector('[data-testid="once-tab-bar"]', { timeout: 15000 });
 
     // Click Puntos tab
     await page.locator('[data-testid="once-tab-puntos"]').click();
@@ -189,7 +213,12 @@ test.describe("Fase 3 — /once", () => {
   test("Resultados tab shows 4 match cards", async ({ page }) => {
     ensureScreenshotDir();
     await ensureNickname(page);
+
+    // Pre-dismiss coachmarks so overlay doesn't intercept
+    await page.goto(`${BASE}/inicio`);
+    await dismissAllCoachmarks(page);
     await page.goto(`${BASE}/once`);
+    await page.waitForSelector('[data-testid="once-tab-bar"]', { timeout: 15000 });
 
     await page.locator('[data-testid="once-tab-resultados"]').click();
 
