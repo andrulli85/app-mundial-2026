@@ -35,7 +35,9 @@ async function onboard(page: import("@playwright/test").Page): Promise<void> {
   await page.waitForSelector('[data-testid="search-input"]', { timeout: 15000 });
 }
 
-// Tap first `count` stickers of the given team via search + click on album page
+// Tap first `count` stickers of the given team via search + click on album page.
+// StickerCard renders <button title="CODE — name"> — we locate by the team section
+// and tap button elements directly (no data-testid on StickerCard).
 async function tapStickersByCode(
   page: import("@playwright/test").Page,
   teamCode: string,
@@ -47,19 +49,21 @@ async function tapStickersByCode(
 
   const searchInput = page.locator('[data-testid="search-input"]');
   await searchInput.fill(teamCode);
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(500);
 
-  // Tap first `count` sticker cards in the team section
+  // Wait for the team section to appear after filtering
   const teamSection = page.locator(`[data-testid="team-section-${teamCode}"]`);
-  await expect(teamSection).toBeVisible({ timeout: 5000 });
+  await expect(teamSection).toBeVisible({ timeout: 8000 });
 
-  const cards = teamSection.locator('[data-testid^="sticker-card-"]');
+  // StickerCard renders a plain <button> with a title attribute — no data-testid.
+  // Locate all buttons inside the team section grid.
+  const cards = teamSection.locator("button");
   const cardCount = await cards.count();
   const toTap = Math.min(count, cardCount);
 
   for (let i = 0; i < toTap; i++) {
     await cards.nth(i).click();
-    await page.waitForTimeout(100); // brief pause between taps
+    await page.waitForTimeout(150); // brief pause between taps
   }
 }
 
