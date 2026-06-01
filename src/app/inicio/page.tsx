@@ -30,6 +30,7 @@ import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import BottomNav from "@/components/BottomNav";
+import SeleccionFavoritaCard from "@/components/SeleccionFavoritaCard";
 
 // ── Mocked constants (Phase 1) ────────────────────────────────────────────────
 // TODO(economy): replace with real user wallet query
@@ -433,6 +434,11 @@ export default function InicioPage() {
         style={{ paddingTop: 12 }}
       >
         <div className="px-4 flex flex-col gap-5 max-w-lg mx-auto pb-4">
+
+          {/* -------------------------------------------------------------- */}
+          {/* Selección Favorita (above Carta de la semana — Fase 3)           */}
+          {/* -------------------------------------------------------------- */}
+          <SeleccionFavoritaCard compact />
 
           {/* -------------------------------------------------------------- */}
           {/* Carta de la semana (replaces "SOBRE LEGENDARIO" hero)            */}
