@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import RegisterSW from "@/components/RegisterSW";
+import AuthProvider from "@/components/AuthProvider";
 
 export const metadata: Metadata = {
   title: "Albumix",
@@ -87,7 +88,9 @@ export default function RootLayout({
   return (
     <html lang="es" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
         <RegisterSW />
       </body>
     </html>

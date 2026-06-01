@@ -1,9 +1,10 @@
 "use client";
 
 /**
- * Settings screen — low priority.
+ * Settings screen.
+ * - Cuenta section: Google sign-in / signed-in user card (Phase 1)
+ * - Amigos link (Phase 2, visible when signed in)
  * - Change nickname
- * - View app version
  * - Export / import collection JSON (local backup)
  */
 
@@ -16,11 +17,14 @@ import {
   importCollection,
 } from "@/lib/db";
 import { isValidNickname } from "@/lib/qr-engine";
+import { useAuth } from "@/components/AuthProvider";
+import SignInButton from "@/components/SignInButton";
 
 const APP_VERSION = "0.1.0";
 
 export default function SettingsPage() {
   const router = useRouter();
+  const { user, loading: authLoading, signIn, signOut } = useAuth();
   const [nickname, setLocalNickname] = useState("");
   const [newNick, setNewNick] = useState("");
   const [nickError, setNickError] = useState("");
@@ -106,6 +110,92 @@ export default function SettingsPage() {
       </header>
 
       <main className="flex-1 px-4 py-6 flex flex-col gap-6">
+        {/* Cuenta */}
+        {!authLoading && (
+          <section
+            className="rounded-2xl p-4 shadow-sm"
+            style={{ backgroundColor: "#ffffff" }}
+          >
+            <h2 className="font-bold text-gray-700 mb-3">Cuenta</h2>
+            {user ? (
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  {user.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt={user.displayName ?? "Avatar"}
+                      width={32}
+                      height={32}
+                      className="rounded-full w-8 h-8 object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold"
+                      style={{ backgroundColor: "#006847" }}
+                    >
+                      {(user.displayName ?? user.email ?? "?")[0].toUpperCase()}
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-gray-800 text-sm leading-tight truncate">
+                      {user.displayName}
+                    </p>
+                    {user.email && (
+                      <p className="text-xs text-gray-500 leading-tight truncate">
+                        {user.email}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <button
+                  onClick={signOut}
+                  className="w-full py-2 rounded-xl font-semibold text-sm text-center"
+                  style={{
+                    backgroundColor: "#f0ece3",
+                    color: "#c8102e",
+                    border: "2px solid #d1c9b8",
+                  }}
+                >
+                  Cerrar sesión
+                </button>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-2">
+                <p className="text-xs text-gray-600 mb-1">
+                  Conectate con Google para ver a tus amigos y sus figuritas en tiempo real.
+                </p>
+                <SignInButton />
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* Amigos — visible only when signed in */}
+        {user && (
+          <section
+            className="rounded-2xl shadow-sm overflow-hidden"
+            style={{ backgroundColor: "#ffffff" }}
+          >
+            <a
+              href="/friends"
+              className="flex items-center gap-3 px-4 py-4 active:opacity-70 transition-opacity"
+              style={{ textDecoration: "none" }}
+            >
+              <span className="text-xl leading-none">👥</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-gray-800 text-sm leading-tight">
+                  Amigos
+                </p>
+                <p className="text-xs text-gray-500 leading-tight mt-0.5">
+                  Ver quién está conectado para intercambiar
+                </p>
+              </div>
+              <span className="text-gray-400 text-lg leading-none">›</span>
+            </a>
+          </section>
+        )}
+
         {/* Nickname */}
         <section
           className="rounded-2xl p-4 shadow-sm"
