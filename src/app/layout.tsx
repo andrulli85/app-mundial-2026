@@ -3,6 +3,7 @@ import "./globals.css";
 import RegisterSW from "@/components/RegisterSW";
 import AuthProvider from "@/components/AuthProvider";
 import AchievementProvider from "@/components/AchievementProvider";
+import TopBarGlobal from "@/components/TopBarGlobal";
 
 export const metadata: Metadata = {
   title: "Albumix",
@@ -91,7 +92,24 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <AuthProvider>
           <AchievementProvider>
-            {children}
+            {/*
+              TopBarGlobal renders the fixed 54px header bar.
+              It suppresses itself on "/" (onboarding) and "/notifications"
+              (which has its own TopBar with a back button).
+              All other pages receive a 54px paddingTop via the wrapper below
+              so content doesn't slide under the bar.
+            */}
+            <TopBarGlobal />
+            {/*
+              pt-[54px]: compensate for the fixed TopBar height.
+              Pages that suppress TopBar (/ and /notifications) still get this
+              padding — onboarding is fullscreen so the extra space is invisible,
+              and /notifications adds its own height-54 spacer so the global one
+              merges cleanly (both are 0-cost in those contexts).
+            */}
+            <div className="flex-1 flex flex-col pt-[54px]">
+              {children}
+            </div>
           </AchievementProvider>
         </AuthProvider>
         <RegisterSW />

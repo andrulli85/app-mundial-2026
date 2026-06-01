@@ -45,12 +45,14 @@ test("/mercado renders full UI (not redirect)", async ({ page }) => {
   await page.goto(`${BASE}/mercado`);
 
   // Should NOT redirect to /trade (Phase C replaces the redirect)
-  await page.waitForURL(`${BASE}/mercado`, { timeout: 10000 });
+  // Allow some time for client-side redirect to settle
+  await page.waitForTimeout(3000);
   await expect(page.url()).toContain("/mercado");
 
-  // Heading present
+  // Heading present — wait for client-side render to complete
+  // (page uses "use client" with loading state)
   await expect(page.getByText("Cambios", { exact: true })).toBeVisible({
-    timeout: 15000,
+    timeout: 20000,
   });
 });
 

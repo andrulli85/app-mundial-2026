@@ -18,6 +18,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { buildBadgeContext, syncUnlocks } from "@/lib/achievements";
 import { onCollectionChange } from "@/lib/db";
+import { dispatchAchievementCheckEvent } from "@/hooks/useNotificationFeed";
 
 // Module-level event emitter so any part of the app can trigger a check
 // without prop-drilling. Lightweight alternative to a global store.
@@ -43,6 +44,10 @@ export function useAchievements() {
       if (newIds.length > 0) {
         setToastQueue((q) => [...q, ...newIds]);
       }
+      // Notify the notification feed that a check just completed.
+      // useNotificationFeed diffs against its own seen-set, so this is safe
+      // to call even when newIds is empty (no notification spam).
+      dispatchAchievementCheckEvent();
     } catch (err) {
       // Non-fatal — achievement system should never crash the app
       console.warn("[achievements] sync error:", err);
