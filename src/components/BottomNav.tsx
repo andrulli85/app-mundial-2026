@@ -3,17 +3,22 @@
 /**
  * BottomNav — shared 5-tab navigation bar used across all main pages.
  *
- * Tab order (Fase 1 design alignment 2026-06-01):
- *   Inicio · Mercado · Álbum (CENTER, gold elevated FAB) · Mi 11 · Perfil
+ * Tab order (tournament season 2026-06-11+):
+ *   Inicio · Puntos · Álbum (CENTER, gold elevated FAB) · Mi 11 · Perfil
  *
+ * "Puntos" → /scoreboard replaces "Mercado" during tournament season.
+ * Mercado remains accessible via /mercado deep link.
  * The central "Álbum" button is elevated 30px above the bar with a gold/green
  * accent background and drop shadow, per Fase 1 design spec.
+ *
+ * Decision (Epic 2 Phase D 2026-06-01): 5-tab symmetry is preserved by using
+ * /scoreboard in the Mercado slot. Adding a 6th tab breaks 2+FAB+2 balance.
  * Route /once stays — only the visible label changed ("Mi Once" → "Mi 11").
  */
 
 import Link from "next/link";
 
-type NavTab = "inicio" | "album" | "once" | "mercado" | "perfil";
+type NavTab = "inicio" | "album" | "once" | "mercado" | "perfil" | "scoreboard";
 
 interface BottomNavProps {
   active: NavTab;
@@ -21,7 +26,7 @@ interface BottomNavProps {
 
 const LEFT_TABS = [
   { id: "inicio" as NavTab, href: "/inicio", label: "Inicio", emoji: "📊" },
-  { id: "mercado" as NavTab, href: "/mercado", label: "Mercado", emoji: "🤝" },
+  { id: "scoreboard" as NavTab, href: "/scoreboard", label: "Puntos", emoji: "🏆" },
 ];
 
 const RIGHT_TABS = [
@@ -49,7 +54,7 @@ export default function BottomNav({ active }: BottomNavProps) {
       }}
       aria-label="Navegación principal"
     >
-      {/* Left two tabs: Inicio, Mercado */}
+      {/* Left two tabs: Inicio, Puntos */}
       {LEFT_TABS.map((tab) => {
         const isActive = active === tab.id;
         return (

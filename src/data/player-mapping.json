@@ -1,0 +1,3682 @@
+{
+  "mex-3-vasquez": {
+    "fifa_player_id": 740,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-4-sanchez": {
+    "fifa_player_id": 743,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-5-montes": {
+    "fifa_player_id": 741,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-6-gallardo": {
+    "fifa_player_id": 742,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-7-reyes": {
+    "fifa_player_id": 744,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-8-lainez": {
+    "fifa_player_id": 1472,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-9-rodriguez": {
+    "fifa_player_id": 760,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-10-alvarez": {
+    "fifa_player_id": 1474,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-11-pineda": {
+    "fifa_player_id": 762,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-12-ruiz": {
+    "fifa_player_id": 1470,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-14-sanchez": {
+    "fifa_player_id": 761,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-16-gimenez": {
+    "fifa_player_id": 1485,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-17-jimenez": {
+    "fifa_player_id": 748,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-18-vega": {
+    "fifa_player_id": 751,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-19-alvarado": {
+    "fifa_player_id": 752,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mex-20-huerta": {
+    "fifa_player_id": 1473,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-2-williams": {
+    "fifa_player_id": 1077,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-3-chaine": {
+    "fifa_player_id": 1698,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-4-modiba": {
+    "fifa_player_id": 1063,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-5-kabini": {
+    "fifa_player_id": 1070,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-6-mbokazi": {
+    "fifa_player_id": 1067,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-7-ndamane": {
+    "fifa_player_id": 1068,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-9-mudau": {
+    "fifa_player_id": 1065,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-10-sibisi": {
+    "fifa_player_id": 1066,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-11-mokoena": {
+    "fifa_player_id": 1058,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-12-mbatha": {
+    "fifa_player_id": 1060,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-15-sithole": {
+    "fifa_player_id": 1062,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-17-foster": {
+    "fifa_player_id": 1071,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-18-rayners": {
+    "fifa_player_id": 1707,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "rsa-20-appollis": {
+    "fifa_player_id": 1073,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-2-jo": {
+    "fifa_player_id": 729,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-3-kim": {
+    "fifa_player_id": 730,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-4-kim": {
+    "fifa_player_id": 715,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-5-cho": {
+    "fifa_player_id": 717,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-6-seol": {
+    "fifa_player_id": 716,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-7-lee": {
+    "fifa_player_id": 719,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-8-lee": {
+    "fifa_player_id": 720,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-10-lee": {
+    "fifa_player_id": 737,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-11-hwang": {
+    "fifa_player_id": 1549,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-12-lee": {
+    "fifa_player_id": 736,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-14-paik": {
+    "fifa_player_id": 732,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-15-castrop": {
+    "fifa_player_id": 733,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-17-cho": {
+    "fifa_player_id": 725,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-18-son": {
+    "fifa_player_id": 723,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-19-hwang": {
+    "fifa_player_id": 724,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "kor-20-oh": {
+    "fifa_player_id": 726,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-2-kovar": {
+    "fifa_player_id": 387,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-3-stanek": {
+    "fifa_player_id": 1400,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-4-krejci": {
+    "fifa_player_id": 374,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-5-coufal": {
+    "fifa_player_id": 380,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-6-zeleny": {
+    "fifa_player_id": 379,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-7-holes": {
+    "fifa_player_id": 375,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-8-zima": {
+    "fifa_player_id": 1405,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-9-sadilek": {
+    "fifa_player_id": 395,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-10-provod": {
+    "fifa_player_id": 396,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-11-cerv": {
+    "fifa_player_id": 390,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-12-soucek": {
+    "fifa_player_id": 393,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-14-sulc": {
+    "fifa_player_id": 397,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-17-chory": {
+    "fifa_player_id": 383,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-19-hlozek": {
+    "fifa_player_id": 1427,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cze-20-schick": {
+    "fifa_player_id": 382,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-2-st-clair": {
+    "fifa_player_id": 236,
+    "fbref_id": null,
+    "match_confidence": "medium"
+  },
+  "can-3-davies": {
+    "fifa_player_id": 1961,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-4-johnston": {
+    "fifa_player_id": 1963,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-7-cornelius": {
+    "fifa_player_id": 221,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-8-bombito": {
+    "fifa_player_id": 1964,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-9-miller": {
+    "fifa_player_id": 875,
+    "fbref_id": null,
+    "match_confidence": "low"
+  },
+  "can-10-eustaquio": {
+    "fifa_player_id": 1967,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-11-kone": {
+    "fifa_player_id": 245,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-12-osorio": {
+    "fifa_player_id": 243,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-14-shaffelburg": {
+    "fifa_player_id": 1968,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-15-choiniere": {
+    "fifa_player_id": 242,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-16-sigur": {
+    "fifa_player_id": 240,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-17-buchanan": {
+    "fifa_player_id": 228,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-18-millar": {
+    "fifa_player_id": 229,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-19-larin": {
+    "fifa_player_id": 227,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "can-20-david": {
+    "fifa_player_id": 226,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-2-vasilj": {
+    "fifa_player_id": 153,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-3-dedic": {
+    "fifa_player_id": 140,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-4-kolasinac": {
+    "fifa_player_id": 139,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-5-muharemovic": {
+    "fifa_player_id": 141,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-6-mujakic": {
+    "fifa_player_id": 144,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-7-katic": {
+    "fifa_player_id": 142,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-8-hadziahmetovic": {
+    "fifa_player_id": 162,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-9-tahirovic": {
+    "fifa_player_id": 161,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-10-gigovic": {
+    "fifa_player_id": 159,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-11-sunjic": {
+    "fifa_player_id": 158,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-12-basic": {
+    "fifa_player_id": 160,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-14-burnic": {
+    "fifa_player_id": 157,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-15-bajraktarevic": {
+    "fifa_player_id": 150,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-16-memic": {
+    "fifa_player_id": 156,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-17-demirovic": {
+    "fifa_player_id": 146,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-18-dzeko": {
+    "fifa_player_id": 147,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-19-bazdar": {
+    "fifa_player_id": 151,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bih-20-tabakovic": {
+    "fifa_player_id": 149,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-2-barsham": {
+    "fifa_player_id": 968,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-4-mendes": {
+    "fifa_player_id": 951,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-5-ahmed": {
+    "fifa_player_id": 1506,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-6-khoukhi": {
+    "fifa_player_id": 952,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-7-miguel": {
+    "fifa_player_id": 949,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-8-salman": {
+    "fifa_player_id": 1504,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-9-al-mannai": {
+    "fifa_player_id": 942,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-10-boudiaf": {
+    "fifa_player_id": 946,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-11-madibo": {
+    "fifa_player_id": 947,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-12-fatehi": {
+    "fifa_player_id": 1506,
+    "fbref_id": null,
+    "match_confidence": "medium"
+  },
+  "qat-14-waad": {
+    "fifa_player_id": 948,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-15-hatem": {
+    "fifa_player_id": 1508,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-16-al-haydos": {
+    "fifa_player_id": 961,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-17-edmilson": {
+    "fifa_player_id": 960,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-18-afif": {
+    "fifa_player_id": 958,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-19-ganehi": {
+    "fifa_player_id": 963,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "qat-20-ali": {
+    "fifa_player_id": 959,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-2-kobel": {
+    "fifa_player_id": 1153,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-3-mvogo": {
+    "fifa_player_id": 1154,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-4-akanji": {
+    "fifa_player_id": 1141,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-5-rodriguez": {
+    "fifa_player_id": 1142,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-6-elvedi": {
+    "fifa_player_id": 1143,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-7-amenda": {
+    "fifa_player_id": 1147,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-8-widmer": {
+    "fifa_player_id": 1144,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-9-xhaka": {
+    "fifa_player_id": 1135,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-10-zakaria": {
+    "fifa_player_id": 1157,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-11-freuler": {
+    "fifa_player_id": 1138,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-12-rieder": {
+    "fifa_player_id": 1140,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-14-jashari": {
+    "fifa_player_id": 1139,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-15-manzambi": {
+    "fifa_player_id": 1133,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-16-aebischer": {
+    "fifa_player_id": 1137,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-17-embolo": {
+    "fifa_player_id": 1149,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-18-vargas": {
+    "fifa_player_id": 1158,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-19-ndoye": {
+    "fifa_player_id": 1151,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sui-20-amdouni": {
+    "fifa_player_id": 1582,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-2-alisson": {
+    "fifa_player_id": 183,
+    "fbref_id": null,
+    "match_confidence": "medium"
+  },
+  "bra-4-marquinhos": {
+    "fifa_player_id": 165,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-6-magalhaes": {
+    "fifa_player_id": 164,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-8-wesley": {
+    "fifa_player_id": 1346,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-9-paqueta": {
+    "fifa_player_id": 190,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-10-casemiro": {
+    "fifa_player_id": 188,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-11-guimaraes": {
+    "fifa_player_id": 1361,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-12-henrique": {
+    "fifa_player_id": 177,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-14-junior": {
+    "fifa_player_id": 173,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-17-cunha": {
+    "fifa_player_id": 174,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-18-martinelli": {
+    "fifa_player_id": 176,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bra-19-raphinha": {
+    "fifa_player_id": 1366,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-2-bounou": {
+    "fifa_player_id": 2010,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-3-kajoui": {
+    "fifa_player_id": 1665,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-4-hakimi": {
+    "fifa_player_id": 2012,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-5-mazraoui": {
+    "fifa_player_id": 2014,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-6-aguerd": {
+    "fifa_player_id": 2011,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-10-amrabat": {
+    "fifa_player_id": 2018,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-11-ounahi": {
+    "fifa_player_id": 2021,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-14-khannouss": {
+    "fifa_player_id": 2022,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-15-saibari": {
+    "fifa_player_id": 792,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-17-ezzalzouli": {
+    "fifa_player_id": 2024,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-18-rahimi": {
+    "fifa_player_id": 2023,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-19-diaz": {
+    "fifa_player_id": 2020,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "mar-20-kaabi": {
+    "fifa_player_id": 777,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-2-placide": {
+    "fifa_player_id": 591,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-3-arcus": {
+    "fifa_player_id": 575,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-4-experience": {
+    "fifa_player_id": 578,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-5-duverne": {
+    "fifa_player_id": 574,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-6-ade": {
+    "fifa_player_id": 577,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-7-lacroix": {
+    "fifa_player_id": 581,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-9-delcroix": {
+    "fifa_player_id": 576,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-10-pierre": {
+    "fifa_player_id": 570,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-11-jacques": {
+    "fifa_player_id": 573,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-12-bellegarde": {
+    "fifa_player_id": 571,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-15-etienne": {
+    "fifa_player_id": 585,
+    "fbref_id": null,
+    "match_confidence": "medium"
+  },
+  "hai-16-casimir": {
+    "fifa_player_id": 589,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-17-providence": {
+    "fifa_player_id": 590,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-18-nazon": {
+    "fifa_player_id": 583,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-19-deedson": {
+    "fifa_player_id": 586,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "hai-20-pierrot": {
+    "fifa_player_id": 584,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-2-gunn": {
+    "fifa_player_id": 1025,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-3-hendry": {
+    "fifa_player_id": 1012,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-4-tierney": {
+    "fifa_player_id": 1010,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-5-hickey": {
+    "fifa_player_id": 1577,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-6-robertson": {
+    "fifa_player_id": 1009,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-7-mckenna": {
+    "fifa_player_id": 1014,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-8-souttar": {
+    "fifa_player_id": 1013,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-9-ralston": {
+    "fifa_player_id": 1015,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-10-hanley": {
+    "fifa_player_id": 1018,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-11-mctominay": {
+    "fifa_player_id": 1027,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-12-gilmour": {
+    "fifa_player_id": 1005,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-14-ferguson": {
+    "fifa_player_id": 1028,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-15-christie": {
+    "fifa_player_id": 1007,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-16-mclean": {
+    "fifa_player_id": 1008,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-17-mcginn": {
+    "fifa_player_id": 1003,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-18-dykes": {
+    "fifa_player_id": 1022,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-19-adams": {
+    "fifa_player_id": 1019,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sco-20-gannon-doak": {
+    "fifa_player_id": 1578,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-2-freese": {
+    "fifa_player_id": 1271,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-3-richards": {
+    "fifa_player_id": 1259,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-4-ream": {
+    "fifa_player_id": 1261,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-5-mckenzie": {
+    "fifa_player_id": 1262,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-6-freeman": {
+    "fifa_player_id": 1264,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-7-robinson": {
+    "fifa_player_id": 1258,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-8-adams": {
+    "fifa_player_id": 2033,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-9-tessmann": {
+    "fifa_player_id": 1251,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-11-roldan": {
+    "fifa_player_id": 1249,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-12-weah": {
+    "fifa_player_id": 1265,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-15-tillman": {
+    "fifa_player_id": 1254,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-16-pulisic": {
+    "fifa_player_id": 1274,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-17-aaronson": {
+    "fifa_player_id": 1253,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-18-pepi": {
+    "fifa_player_id": 1266,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-19-wright": {
+    "fifa_player_id": 2034,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "usa-20-balogun": {
+    "fifa_player_id": 1267,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-2-fernandez": {
+    "fifa_player_id": 908,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-3-gill": {
+    "fifa_player_id": 910,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-4-gomez": {
+    "fifa_player_id": 893,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-5-balbuena": {
+    "fifa_player_id": 896,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-6-caceres": {
+    "fifa_player_id": 899,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-7-alderete": {
+    "fifa_player_id": 895,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-8-alonso": {
+    "fifa_player_id": 894,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-9-villasanti": {
+    "fifa_player_id": 1614,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-10-gomez": {
+    "fifa_player_id": 913,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-11-bobadilla": {
+    "fifa_player_id": 911,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-12-cubas": {
+    "fifa_player_id": 1616,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-14-fonda": {
+    "fifa_player_id": 890,
+    "fbref_id": null,
+    "match_confidence": "medium"
+  },
+  "par-15-enciso": {
+    "fifa_player_id": 912,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-16-gamarra": {
+    "fifa_player_id": 1611,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-17-almiron": {
+    "fifa_player_id": 901,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-18-sosa": {
+    "fifa_player_id": 903,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-19-romero": {
+    "fifa_player_id": 1618,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "par-20-sanabria": {
+    "fifa_player_id": 902,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-2-ryan": {
+    "fifa_player_id": 74,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-3-gauci": {
+    "fifa_player_id": 2001,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-4-souttar": {
+    "fifa_player_id": 2002,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-5-circati": {
+    "fifa_player_id": 60,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-6-bos": {
+    "fifa_player_id": 58,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-7-behich": {
+    "fifa_player_id": 63,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-8-burgess": {
+    "fifa_player_id": 61,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-9-miller": {
+    "fifa_player_id": 875,
+    "fbref_id": null,
+    "match_confidence": "low"
+  },
+  "aus-10-degenek": {
+    "fifa_player_id": 62,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-11-irvine": {
+    "fifa_player_id": 2004,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-12-mcgree": {
+    "fifa_player_id": 84,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-15-metcalfe": {
+    "fifa_player_id": 80,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-16-yazbek": {
+    "fifa_player_id": 78,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-19-irankunda": {
+    "fifa_player_id": 68,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aus-20-toure": {
+    "fifa_player_id": 2006,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-2-cakir": {
+    "fifa_player_id": 1211,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-3-muldur": {
+    "fifa_player_id": 1197,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-4-celik": {
+    "fifa_player_id": 1194,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-5-bardakci": {
+    "fifa_player_id": 1200,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-6-soyuncu": {
+    "fifa_player_id": 1586,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-7-demiral": {
+    "fifa_player_id": 1201,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-8-kadioglu": {
+    "fifa_player_id": 1195,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-9-ayhan": {
+    "fifa_player_id": 1193,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-10-yuksek": {
+    "fifa_player_id": 1188,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-11-calhanoglu": {
+    "fifa_player_id": 1216,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-12-kokcu": {
+    "fifa_player_id": 1192,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-14-guler": {
+    "fifa_player_id": 1215,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-15-kahveci": {
+    "fifa_player_id": 1191,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-16-akgun": {
+    "fifa_player_id": 1209,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-17-uzun": {
+    "fifa_player_id": 1589,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-18-yilmaz": {
+    "fifa_player_id": 1206,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-19-akturkoglu": {
+    "fifa_player_id": 1205,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tur-20-yildiz": {
+    "fifa_player_id": 1204,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-3-tah": {
+    "fifa_player_id": 523,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-4-raum": {
+    "fifa_player_id": 521,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-5-schlotterbeck": {
+    "fifa_player_id": 526,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-6-rudiger": {
+    "fifa_player_id": 520,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-7-anton": {
+    "fifa_player_id": 527,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-10-kimmich": {
+    "fifa_player_id": 542,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-11-wirtz": {
+    "fifa_player_id": 543,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-12-nmecha": {
+    "fifa_player_id": 1601,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-14-goretzka": {
+    "fifa_player_id": 540,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-15-musiala": {
+    "fifa_player_id": 1600,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-17-havertz": {
+    "fifa_player_id": 528,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-18-sane": {
+    "fifa_player_id": 529,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ger-20-woltemade": {
+    "fifa_player_id": 532,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-2-room": {
+    "fifa_player_id": 368,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-3-obispo": {
+    "fifa_player_id": 1558,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-4-floranus": {
+    "fifa_player_id": 356,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-5-gaari": {
+    "fifa_player_id": 359,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-6-brenet": {
+    "fifa_player_id": 354,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-7-eijma": {
+    "fifa_player_id": 357,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-8-sambo": {
+    "fifa_player_id": 355,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-9-comenencia": {
+    "fifa_player_id": 360,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-10-roemeratoe": {
+    "fifa_player_id": 351,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-11-bacuna": {
+    "fifa_player_id": 372,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-12-bacuna": {
+    "fifa_player_id": 352,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-14-chong": {
+    "fifa_player_id": 350,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-15-gorre": {
+    "fifa_player_id": 364,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-16-margaritha": {
+    "fifa_player_id": 365,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-17-locadia": {
+    "fifa_player_id": 1560,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-18-antonisse": {
+    "fifa_player_id": 367,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-19-kastaneer": {
+    "fifa_player_id": 366,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cuw-20-hansen": {
+    "fifa_player_id": 363,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-2-fofana": {
+    "fifa_player_id": 317,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-3-konan": {
+    "fifa_player_id": 305,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-4-singo": {
+    "fifa_player_id": 300,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-5-kossounou": {
+    "fifa_player_id": 302,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-6-ndicka": {
+    "fifa_player_id": 299,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-8-agbadou": {
+    "fifa_player_id": 304,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-9-diomande": {
+    "fifa_player_id": 301,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-10-kessie": {
+    "fifa_player_id": 322,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-11-fofana": {
+    "fifa_player_id": 323,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-12-sangare": {
+    "fifa_player_id": 321,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-15-diallo": {
+    "fifa_player_id": 310,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-17-adingra": {
+    "fifa_player_id": 311,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-18-diomande": {
+    "fifa_player_id": 307,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-19-guessand": {
+    "fifa_player_id": 312,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "civ-20-diakite": {
+    "fifa_player_id": 1533,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-2-galindez": {
+    "fifa_player_id": 423,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-3-valle": {
+    "fifa_player_id": 425,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-4-hincapie": {
+    "fifa_player_id": 2052,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-5-estupinan": {
+    "fifa_player_id": 400,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-6-pacho": {
+    "fifa_player_id": 2053,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-7-preciado": {
+    "fifa_player_id": 403,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-8-ordonez": {
+    "fifa_player_id": 404,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-9-caicedo": {
+    "fifa_player_id": 430,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-10-franco": {
+    "fifa_player_id": 428,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-11-paez": {
+    "fifa_player_id": 427,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-12-vite": {
+    "fifa_player_id": 429,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-16-plata": {
+    "fifa_player_id": 413,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-17-angulo": {
+    "fifa_player_id": 1947,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-18-minda": {
+    "fifa_player_id": 416,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-19-rodriguez": {
+    "fifa_player_id": 415,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ecu-20-valencia": {
+    "fifa_player_id": 412,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-2-verbruggen": {
+    "fifa_player_id": 809,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-3-dijk": {
+    "fifa_player_id": 796,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-4-ven": {
+    "fifa_player_id": 797,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-5-timber": {
+    "fifa_player_id": 2037,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-6-dumfries": {
+    "fifa_player_id": 795,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-7-ake": {
+    "fifa_player_id": 798,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-8-frimpong": {
+    "fifa_player_id": 799,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-9-hecke": {
+    "fifa_player_id": 802,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-10-reijnders": {
+    "fifa_player_id": 816,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-11-gravenberch": {
+    "fifa_player_id": 812,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-12-koopmeiners": {
+    "fifa_player_id": 814,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-14-jong": {
+    "fifa_player_id": 2040,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-15-simons": {
+    "fifa_player_id": 815,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-16-kluivert": {
+    "fifa_player_id": 2042,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-17-depay": {
+    "fifa_player_id": 2043,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-18-malen": {
+    "fifa_player_id": 805,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-19-weghorst": {
+    "fifa_player_id": 808,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ned-20-gakpo": {
+    "fifa_player_id": 804,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-2-suzuki": {
+    "fifa_player_id": 677,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-4-seko": {
+    "fifa_player_id": 667,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-5-suzuki": {
+    "fifa_player_id": 668,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-6-taniguchi": {
+    "fifa_player_id": 666,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-7-watanabe": {
+    "fifa_player_id": 663,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-8-sano": {
+    "fifa_player_id": 659,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-10-tanaka": {
+    "fifa_player_id": 681,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-11-kamada": {
+    "fifa_player_id": 682,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-12-kubo": {
+    "fifa_player_id": 1458,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-14-doan": {
+    "fifa_player_id": 684,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-15-nakamura": {
+    "fifa_player_id": 671,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-18-ito": {
+    "fifa_player_id": 669,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-19-ogawa": {
+    "fifa_player_id": 673,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jpn-20-ueda": {
+    "fifa_player_id": 672,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-3-hien": {
+    "fifa_player_id": 1518,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-4-gudmundsson": {
+    "fifa_player_id": 1119,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-5-holm": {
+    "fifa_player_id": 1517,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-6-lindelof": {
+    "fifa_player_id": 1121,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-7-lagerbielke": {
+    "fifa_player_id": 1122,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-8-bergvall": {
+    "fifa_player_id": 1113,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-10-karlstrom": {
+    "fifa_player_id": 1116,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-11-ayari": {
+    "fifa_player_id": 1114,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-12-svanberg": {
+    "fifa_player_id": 1117,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-14-svensson": {
+    "fifa_player_id": 1118,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-15-sema": {
+    "fifa_player_id": 1519,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-18-elanga": {
+    "fifa_player_id": 1125,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-19-isak": {
+    "fifa_player_id": 1520,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "swe-20-gyokeres": {
+    "fifa_player_id": 1124,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-3-dahmen": {
+    "fifa_player_id": 1185,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-4-valery": {
+    "fifa_player_id": 1553,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-5-talbi": {
+    "fifa_player_id": 1551,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-7-abdi": {
+    "fifa_player_id": 1166,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-8-bronn": {
+    "fifa_player_id": 1552,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-9-skhiri": {
+    "fifa_player_id": 1160,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-14-mejbri": {
+    "fifa_player_id": 1555,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-15-achouri": {
+    "fifa_player_id": 1554,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-16-saad": {
+    "fifa_player_id": 1175,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-17-mastouri": {
+    "fifa_player_id": 1178,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "tun-18-gharbi": {
+    "fifa_player_id": 1174,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-2-courtois": {
+    "fifa_player_id": 1522,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-3-theate": {
+    "fifa_player_id": 116,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-4-castagne": {
+    "fifa_player_id": 115,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-5-debast": {
+    "fifa_player_id": 118,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-6-mechele": {
+    "fifa_player_id": 121,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-7-cuyper": {
+    "fifa_player_id": 114,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-8-meunier": {
+    "fifa_player_id": 117,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-9-tielemans": {
+    "fifa_player_id": 137,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-10-onana": {
+    "fifa_player_id": 136,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-11-raskin": {
+    "fifa_player_id": 135,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-12-saelemaekers": {
+    "fifa_player_id": 128,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-14-vanaken": {
+    "fifa_player_id": 1524,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-15-bruyne": {
+    "fifa_player_id": 138,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-16-doku": {
+    "fifa_player_id": 125,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-17-ketelaere": {
+    "fifa_player_id": 129,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-18-trossard": {
+    "fifa_player_id": 1526,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "bel-20-lukaku": {
+    "fifa_player_id": 124,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-2-shenawy": {
+    "fifa_player_id": 451,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-3-hany": {
+    "fifa_player_id": 439,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-4-hamdy": {
+    "fifa_player_id": 438,
+    "fbref_id": null,
+    "match_confidence": "medium"
+  },
+  "egy-5-ibrahim": {
+    "fifa_player_id": 444,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-7-rabia": {
+    "fifa_player_id": 440,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-8-abdelmaguid": {
+    "fifa_player_id": 441,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-9-fatouh": {
+    "fifa_player_id": 438,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-10-attia": {
+    "fifa_player_id": 432,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-11-zizo": {
+    "fifa_player_id": 433,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-12-fathy": {
+    "fifa_player_id": 434,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-14-lasheen": {
+    "fifa_player_id": 455,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-15-ashour": {
+    "fifa_player_id": 435,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-17-salah": {
+    "fifa_player_id": 1597,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-18-mohamed": {
+    "fifa_player_id": 438,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-19-trezeguet": {
+    "fifa_player_id": 447,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "egy-20-marmoush": {
+    "fifa_player_id": 445,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-2-beiranvand": {
+    "fifa_player_id": 620,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-5-mohammadi": {
+    "fifa_player_id": 599,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-6-khalilzadeh": {
+    "fifa_player_id": 600,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-7-rezaeian": {
+    "fifa_player_id": 597,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-10-hardani": {
+    "fifa_player_id": 603,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-11-ezatolahi": {
+    "fifa_player_id": 626,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-12-ghoddos": {
+    "fifa_player_id": 612,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-14-noorafkan": {
+    "fifa_player_id": 624,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-15-cheshmi": {
+    "fifa_player_id": 1561,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-16-mohebi": {
+    "fifa_player_id": 627,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-18-taremi": {
+    "fifa_player_id": 610,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irn-19-jahanbakhsh": {
+    "fifa_player_id": 611,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-2-payne": {
+    "fifa_player_id": 827,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-3-paulsen": {
+    "fifa_player_id": 839,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-4-boxall": {
+    "fifa_player_id": 1488,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-5-cacace": {
+    "fifa_player_id": 1489,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-6-payne": {
+    "fifa_player_id": 827,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-7-bindon": {
+    "fifa_player_id": 825,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-8-vries": {
+    "fifa_player_id": 826,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-9-surman": {
+    "fifa_player_id": 830,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-10-bell": {
+    "fifa_player_id": 821,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-11-singh": {
+    "fifa_player_id": 1494,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-12-thomas": {
+    "fifa_player_id": 822,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-14-garbett": {
+    "fifa_player_id": 1492,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-15-stamenic": {
+    "fifa_player_id": 823,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-16-old": {
+    "fifa_player_id": 834,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-17-wood": {
+    "fifa_player_id": 1493,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-18-just": {
+    "fifa_player_id": 832,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-19-mccowatt": {
+    "fifa_player_id": 818,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nzl-20-barbarouses": {
+    "fifa_player_id": 831,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-2-simon": {
+    "fifa_player_id": 1099,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-4-laporte": {
+    "fifa_player_id": 1086,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-6-porro": {
+    "fifa_player_id": 1085,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-8-cucurella": {
+    "fifa_player_id": 1088,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-9-zubimendi": {
+    "fifa_player_id": 1084,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-10-rodri": {
+    "fifa_player_id": 1104,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-11-pedri": {
+    "fifa_player_id": 1106,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-12-ruiz": {
+    "fifa_player_id": 1998,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-14-merino": {
+    "fifa_player_id": 1997,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-15-yamal": {
+    "fifa_player_id": 1092,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-16-olmo": {
+    "fifa_player_id": 1105,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-17-williams": {
+    "fifa_player_id": 2000,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-18-torres": {
+    "fifa_player_id": 1093,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "esp-20-oyarzabal": {
+    "fifa_player_id": 1094,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-2-vozinha": {
+    "fifa_player_id": 214,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-3-costa": {
+    "fifa_player_id": 1529,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-4-pico": {
+    "fifa_player_id": 201,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-5-diney": {
+    "fifa_player_id": 205,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-6-moreira": {
+    "fifa_player_id": 199,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-7-pina": {
+    "fifa_player_id": 200,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-8-paulo": {
+    "fifa_player_id": 195,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-9-semedo": {
+    "fifa_player_id": 196,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-10-pina": {
+    "fifa_player_id": 198,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-11-andrade": {
+    "fifa_player_id": 874,
+    "fbref_id": null,
+    "match_confidence": "low"
+  },
+  "cpv-12-monteiro": {
+    "fifa_player_id": 1530,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-14-duarte": {
+    "fifa_player_id": 218,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-15-rodrigues": {
+    "fifa_player_id": 210,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-16-cabral": {
+    "fifa_player_id": 207,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-17-mendes": {
+    "fifa_player_id": 206,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-18-livramento": {
+    "fifa_player_id": 208,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cpv-19-semedo": {
+    "fifa_player_id": 211,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ksa-3-al-sanbi": {
+    "fifa_player_id": 2059,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ksa-4-abdulhamid": {
+    "fifa_player_id": 983,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "ksa-7-al-harbi": {
+    "fifa_player_id": 1954,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-2-rochet": {
+    "fifa_player_id": 1244,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-3-mele": {
+    "fifa_player_id": 1246,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-4-araujo": {
+    "fifa_player_id": 1226,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-5-gimenez": {
+    "fifa_player_id": 1227,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-6-caceres": {
+    "fifa_player_id": 1231,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-7-olivera": {
+    "fifa_player_id": 1229,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-8-varela": {
+    "fifa_player_id": 1230,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-10-valverde": {
+    "fifa_player_id": 1248,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-11-arrascaeta": {
+    "fifa_player_id": 1247,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-12-bentancur": {
+    "fifa_player_id": 2064,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-14-ugarte": {
+    "fifa_player_id": 1224,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-15-cruz": {
+    "fifa_player_id": 1225,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-16-araujo": {
+    "fifa_player_id": 1223,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-17-nunez": {
+    "fifa_player_id": 1236,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-18-vinas": {
+    "fifa_player_id": 1237,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-19-aguirre": {
+    "fifa_player_id": 1239,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uru-20-pellistri": {
+    "fifa_player_id": 1222,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-2-maignan": {
+    "fifa_player_id": 506,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-3-hernandez": {
+    "fifa_player_id": 492,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-4-saliba": {
+    "fifa_player_id": 1429,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-5-kounde": {
+    "fifa_player_id": 1430,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-6-konate": {
+    "fifa_player_id": 495,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-7-upamecano": {
+    "fifa_player_id": 494,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-8-digne": {
+    "fifa_player_id": 498,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-9-tchouameni": {
+    "fifa_player_id": 515,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-11-kone": {
+    "fifa_player_id": 512,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-12-rabiot": {
+    "fifa_player_id": 510,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-14-olise": {
+    "fifa_player_id": 517,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-15-dembele": {
+    "fifa_player_id": 501,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-16-barcola": {
+    "fifa_player_id": 1431,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-17-doue": {
+    "fifa_player_id": 505,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "fra-20-mbappe": {
+    "fifa_player_id": 500,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-2-mendy": {
+    "fifa_player_id": 1051,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-3-diouf": {
+    "fifa_player_id": 1052,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-4-niakhate": {
+    "fifa_player_id": 1034,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-5-seck": {
+    "fifa_player_id": 1038,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-6-jakobs": {
+    "fifa_player_id": 1036,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-7-diouf": {
+    "fifa_player_id": 1035,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-8-koulibaly": {
+    "fifa_player_id": 1037,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-9-gueye": {
+    "fifa_player_id": 1029,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-10-sarr": {
+    "fifa_player_id": 1030,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-11-gueye": {
+    "fifa_player_id": 1032,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-12-diarra": {
+    "fifa_player_id": 1056,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-14-camara": {
+    "fifa_player_id": 1055,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-15-mane": {
+    "fifa_player_id": 1696,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-16-sarr": {
+    "fifa_player_id": 1043,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-18-ndiaye": {
+    "fifa_player_id": 1042,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-19-jackson": {
+    "fifa_player_id": 1041,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "sen-20-diatta": {
+    "fifa_player_id": 1054,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-2-hassan": {
+    "fifa_player_id": 1563,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-3-sulaka": {
+    "fifa_player_id": 639,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-4-ali": {
+    "fifa_player_id": 641,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-6-doski": {
+    "fifa_player_id": 637,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-7-tahseen": {
+    "fifa_player_id": 642,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-9-iqbal": {
+    "fifa_player_id": 656,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-10-al-ammari": {
+    "fifa_player_id": 635,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-12-jasim": {
+    "fifa_player_id": 648,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-14-amyn": {
+    "fifa_player_id": 650,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-15-sher": {
+    "fifa_player_id": 636,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-16-farji": {
+    "fifa_player_id": 631,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-18-al-hamadi": {
+    "fifa_player_id": 649,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-19-hussein": {
+    "fifa_player_id": 646,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "irq-20-ali": {
+    "fifa_player_id": 647,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-2-nyland": {
+    "fifa_player_id": 859,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-3-ryerson": {
+    "fifa_player_id": 847,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-5-ajer": {
+    "fifa_player_id": 846,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-6-pedersen": {
+    "fifa_player_id": 848,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-7-wolfe": {
+    "fifa_player_id": 850,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-8-heggem": {
+    "fifa_player_id": 852,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-9-thorsby": {
+    "fifa_player_id": 844,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-10-degaard": {
+    "fifa_player_id": 1684,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-11-berge": {
+    "fifa_player_id": 841,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-12-schjelderup": {
+    "fifa_player_id": 857,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-14-berg": {
+    "fifa_player_id": 845,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-15-haaland": {
+    "fifa_player_id": 855,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-16-s-rloth": {
+    "fifa_player_id": 856,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-18-larsen": {
+    "fifa_player_id": 858,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-19-nusa": {
+    "fifa_player_id": 863,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "nor-20-bobb": {
+    "fifa_player_id": 843,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-2-martinez": {
+    "fifa_player_id": 45,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-3-molina": {
+    "fifa_player_id": 30,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-4-romero": {
+    "fifa_player_id": 28,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-5-otamendi": {
+    "fifa_player_id": 31,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-6-tagliafico": {
+    "fifa_player_id": 34,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-7-balerdi": {
+    "fifa_player_id": 1325,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-8-fernandez": {
+    "fifa_player_id": 57,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-9-allister": {
+    "fifa_player_id": 56,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-10-paul": {
+    "fifa_player_id": 50,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-11-palacios": {
+    "fifa_player_id": 54,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-12-paredes": {
+    "fifa_player_id": 48,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-14-paz": {
+    "fifa_player_id": 51,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-15-mastantuono": {
+    "fifa_player_id": 44,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-16-gonzalez": {
+    "fifa_player_id": 42,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-17-messi": {
+    "fifa_player_id": 38,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-18-martinez": {
+    "fifa_player_id": 1338,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-19-alvarez": {
+    "fifa_player_id": 39,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "arg-20-simeone": {
+    "fifa_player_id": 41,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-3-bensebaini": {
+    "fifa_player_id": 2,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-5-ait-nouri": {
+    "fifa_player_id": 1,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-6-tougai": {
+    "fifa_player_id": 2048,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-7-mandi": {
+    "fifa_player_id": 3,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-10-boudaoui": {
+    "fifa_player_id": 24,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-11-zerrouki": {
+    "fifa_player_id": 23,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-14-chaibi": {
+    "fifa_player_id": 27,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-15-mahrez": {
+    "fifa_player_id": 11,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-17-moussa": {
+    "fifa_player_id": 13,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-18-gouiri": {
+    "fifa_player_id": 10,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "alg-20-amoura": {
+    "fifa_player_id": 9,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-2-schlager": {
+    "fifa_player_id": 98,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-3-pentz": {
+    "fifa_player_id": 99,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-4-alaba": {
+    "fifa_player_id": 85,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-5-danso": {
+    "fifa_player_id": 88,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-6-lienhart": {
+    "fifa_player_id": 86,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-7-posch": {
+    "fifa_player_id": 90,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-8-mwene": {
+    "fifa_player_id": 91,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-9-prass": {
+    "fifa_player_id": 87,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-10-schlager": {
+    "fifa_player_id": 111,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-11-sabitzer": {
+    "fifa_player_id": 107,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-12-laimer": {
+    "fifa_player_id": 103,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-14-grillitsch": {
+    "fifa_player_id": 105,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-15-seiwald": {
+    "fifa_player_id": 106,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-16-schmid": {
+    "fifa_player_id": 108,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-17-wimmer": {
+    "fifa_player_id": 109,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-18-baumgartner": {
+    "fifa_player_id": 112,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-19-gregoritsch": {
+    "fifa_player_id": 96,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "aut-20-arnautovic": {
+    "fifa_player_id": 95,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-2-abulaila": {
+    "fifa_player_id": 709,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-3-haddad": {
+    "fifa_player_id": 1543,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-5-al-arab": {
+    "fifa_player_id": 690,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-6-nasib": {
+    "fifa_player_id": 691,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-7-obaid": {
+    "fifa_player_id": 698,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-10-al-rashdan": {
+    "fifa_player_id": 689,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-11-al-rawabdeh": {
+    "fifa_player_id": 688,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-12-taha": {
+    "fifa_player_id": 692,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-14-jamous": {
+    "fifa_player_id": 700,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-17-al-mardi": {
+    "fifa_player_id": 703,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-18-olwan": {
+    "fifa_player_id": 1547,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "jor-20-sabra": {
+    "fifa_player_id": 705,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-2-costa": {
+    "fifa_player_id": 1569,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-3-sa": {
+    "fifa_player_id": 932,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-4-dias": {
+    "fifa_player_id": 1570,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-5-cancelo": {
+    "fifa_player_id": 917,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-6-dalot": {
+    "fifa_player_id": 918,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-7-mendes": {
+    "fifa_player_id": 916,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-8-inacio": {
+    "fifa_player_id": 919,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-9-silva": {
+    "fifa_player_id": 1572,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-10-fernandes": {
+    "fifa_player_id": 939,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-11-neves": {
+    "fifa_player_id": 934,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-12-vitinha": {
+    "fifa_player_id": 936,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-14-neves": {
+    "fifa_player_id": 937,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-15-ronaldo": {
+    "fifa_player_id": 1573,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-16-trincao": {
+    "fifa_player_id": 926,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-17-felix": {
+    "fifa_player_id": 924,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-18-ramos": {
+    "fifa_player_id": 923,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-19-neto": {
+    "fifa_player_id": 925,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "por-20-leao": {
+    "fifa_player_id": 1574,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-2-mpasi": {
+    "fifa_player_id": 289,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-3-wan-bissaka": {
+    "fifa_player_id": 272,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-4-tuanzebe": {
+    "fifa_player_id": 275,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-5-masuaku": {
+    "fifa_player_id": 273,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-6-mbemba": {
+    "fifa_player_id": 274,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-7-kayembe": {
+    "fifa_player_id": 276,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-8-pickel": {
+    "fifa_player_id": 295,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-9-mukau": {
+    "fifa_player_id": 292,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-10-kayembe": {
+    "fifa_player_id": 296,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-11-moutoussamy": {
+    "fifa_player_id": 293,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-12-sadiki": {
+    "fifa_player_id": 294,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-14-bongonda": {
+    "fifa_player_id": 297,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-15-elia": {
+    "fifa_player_id": 284,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-16-wissa": {
+    "fifa_player_id": 281,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-17-cipenga": {
+    "fifa_player_id": 288,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-18-mayele": {
+    "fifa_player_id": 285,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-19-bakambu": {
+    "fifa_player_id": 283,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cod-20-mbuku": {
+    "fifa_player_id": 287,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-2-yusupov": {
+    "fifa_player_id": 1312,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-4-nasrullaev": {
+    "fifa_player_id": 1295,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-5-eshmurodov": {
+    "fifa_player_id": 1300,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-7-ashurmatov": {
+    "fifa_player_id": 1294,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-8-alijonov": {
+    "fifa_player_id": 1297,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-9-khusanov": {
+    "fifa_player_id": 1293,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-10-hamrobekov": {
+    "fifa_player_id": 1288,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-11-shukurov": {
+    "fifa_player_id": 1284,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-12-iskanderov": {
+    "fifa_player_id": 1290,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-16-shomurodov": {
+    "fifa_player_id": 1306,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-17-urunov": {
+    "fifa_player_id": 1289,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-18-masharipov": {
+    "fifa_player_id": 1291,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-19-sergeev": {
+    "fifa_player_id": 1307,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "uzb-20-fayzullaev": {
+    "fifa_player_id": 1292,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-2-vargas": {
+    "fifa_player_id": 262,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-3-ospina": {
+    "fifa_player_id": 263,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-4-sanchez": {
+    "fifa_player_id": 250,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-5-mina": {
+    "fifa_player_id": 1374,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-6-munoz": {
+    "fifa_player_id": 248,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-7-mojica": {
+    "fifa_player_id": 252,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-8-lucumi": {
+    "fifa_player_id": 249,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-9-arias": {
+    "fifa_player_id": 253,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-10-lerma": {
+    "fifa_player_id": 265,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-11-castano": {
+    "fifa_player_id": 246,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-12-rios": {
+    "fifa_player_id": 247,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-14-rodriguez": {
+    "fifa_player_id": 270,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-15-quintero": {
+    "fifa_player_id": 267,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-16-carrascal": {
+    "fifa_player_id": 271,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-19-suarez": {
+    "fifa_player_id": 259,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "col-20-diaz": {
+    "fifa_player_id": 256,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-2-pickford": {
+    "fifa_player_id": 477,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-3-stones": {
+    "fifa_player_id": 466,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-4-guehi": {
+    "fifa_player_id": 461,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-5-konsa": {
+    "fifa_player_id": 463,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-7-james": {
+    "fifa_player_id": 1709,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-8-burn": {
+    "fifa_player_id": 462,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-9-henderson": {
+    "fifa_player_id": 482,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-10-rice": {
+    "fifa_player_id": 488,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-11-bellingham": {
+    "fifa_player_id": 491,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-14-rogers": {
+    "fifa_player_id": 475,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-15-gordon": {
+    "fifa_player_id": 474,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-17-saka": {
+    "fifa_player_id": 469,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-18-kane": {
+    "fifa_player_id": 468,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-19-rashford": {
+    "fifa_player_id": 471,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "eng-20-watkins": {
+    "fifa_player_id": 1711,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-2-livakovic": {
+    "fifa_player_id": 338,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-3-caleta-car": {
+    "fifa_player_id": 327,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-4-gvardiol": {
+    "fifa_player_id": 1536,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-5-stanisic": {
+    "fifa_player_id": 325,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-6-vuskovic": {
+    "fifa_player_id": 330,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-7-sutalo": {
+    "fifa_player_id": 326,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-8-jakic": {
+    "fifa_player_id": 344,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-9-modric": {
+    "fifa_player_id": 346,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-10-kovacic": {
+    "fifa_player_id": 1537,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-11-baturina": {
+    "fifa_player_id": 348,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-14-pasalic": {
+    "fifa_player_id": 347,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-15-sucic": {
+    "fifa_player_id": 324,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-16-perisic": {
+    "fifa_player_id": 334,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-17-pasalic": {
+    "fifa_player_id": 335,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-18-budimir": {
+    "fifa_player_id": 332,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "cro-19-kramaric": {
+    "fifa_player_id": 333,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-2-zigi": {
+    "fifa_player_id": 1971,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-5-seidu": {
+    "fifa_player_id": 1974,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-6-djiku": {
+    "fifa_player_id": 1978,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-7-mensah": {
+    "fifa_player_id": 1981,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-8-yirenkyi": {
+    "fifa_player_id": 1982,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-9-fatawu": {
+    "fifa_player_id": 1990,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-10-partey": {
+    "fifa_player_id": 1983,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-12-sulemana": {
+    "fifa_player_id": 1994,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-15-williams": {
+    "fifa_player_id": 1987,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-16-ayew": {
+    "fifa_player_id": 1986,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-17-ayew": {
+    "fifa_player_id": 1986,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "gha-20-semenyo": {
+    "fifa_player_id": 1992,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-2-mosquera": {
+    "fifa_player_id": 885,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-3-mejia": {
+    "fifa_player_id": 884,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-4-escobar": {
+    "fifa_player_id": 2026,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-5-andrade": {
+    "fifa_player_id": 874,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-7-davis": {
+    "fifa_player_id": 872,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-8-cordoba": {
+    "fifa_player_id": 871,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-9-blackman": {
+    "fifa_player_id": 873,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-10-martinez": {
+    "fifa_player_id": 866,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-11-godoy": {
+    "fifa_player_id": 869,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-12-carrasquilla": {
+    "fifa_player_id": 887,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-14-barcenas": {
+    "fifa_player_id": 867,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-15-harvey": {
+    "fifa_player_id": 865,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-16-diaz": {
+    "fifa_player_id": 879,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-17-fajardo": {
+    "fifa_player_id": 880,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-18-waterman": {
+    "fifa_player_id": 881,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-19-rodriguez": {
+    "fifa_player_id": 868,
+    "fbref_id": null,
+    "match_confidence": "high"
+  },
+  "pan-20-quintero": {
+    "fifa_player_id": 2028,
+    "fbref_id": null,
+    "match_confidence": "high"
+  }
+}
