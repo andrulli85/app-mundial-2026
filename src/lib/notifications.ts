@@ -17,7 +17,13 @@
 
 export interface Notification {
   id: string;
-  type: "achievement" | "friend_online" | "trade_proposal" | "system";
+  type:
+    | "achievement"
+    | "friend_online"
+    | "trade_proposal"
+    | "system"
+    | "friend_has_wishlist_item"
+    | "friend_wants_yours";
   title: string;
   body: string;
   emoji: string;

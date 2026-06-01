@@ -17,12 +17,18 @@ interface StickerCardProps {
   sticker: Sticker;
   count: number;
   onTap: (stickerId: string) => void;
+  /** Number of friends who have wishlisted this sticker and you own count ≥ 2. */
+  friendsWanting?: number;
+  /** Callback when the demand badge is tapped (opens friend-wants modal). */
+  onDemandBadgeTap?: (stickerId: string) => void;
 }
 
 export default function StickerCard({
   sticker,
   count,
   onTap,
+  friendsWanting = 0,
+  onDemandBadgeTap,
 }: StickerCardProps) {
   const filled = count > 0;
   const hasPhoto = Boolean(sticker.seed_image);
@@ -109,6 +115,37 @@ export default function StickerCard({
           teamColor={sticker.team_color}
           landscape={isLandscape}
         />
+      )}
+
+      {/* Demand badge — shown when ≥1 friend wishlisted this AND you own ≥2 */}
+      {friendsWanting > 0 && count >= 2 && (
+        <button
+          data-testid={`wishlist-demand-badge-${sticker.id}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDemandBadgeTap?.(sticker.id);
+          }}
+          aria-label={`${friendsWanting} amigo${friendsWanting > 1 ? "s" : ""} quieren esta lámina`}
+          style={{
+            position: "absolute",
+            top: 2,
+            left: 2,
+            backgroundColor: "#F4C84A",
+            color: "#0d0f13",
+            fontSize: "0.5rem",
+            fontWeight: 900,
+            padding: "1px 4px",
+            borderRadius: 99,
+            lineHeight: 1.4,
+            border: "none",
+            cursor: "pointer",
+            zIndex: 20,
+            minWidth: 18,
+            textAlign: "center",
+          }}
+        >
+          ⭐{friendsWanting}
+        </button>
       )}
     </button>
   );

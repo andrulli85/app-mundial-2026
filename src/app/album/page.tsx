@@ -29,6 +29,7 @@ import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { TeamCatalogEntry } from "@/lib/team-catalog";
 import InstallBanner from "@/components/InstallBanner";
 import BottomNav from "@/components/BottomNav";
+import { getPeersWishing } from "@/lib/peer-mock";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
 type Category = "todos" | "paises" | "grupos" | "especiales";
@@ -109,6 +110,8 @@ export default function AlbumPage() {
   const [nickname, setNickname] = useState("");
   const [category, setCategory] = useState<Category>("todos");
   const [search, setSearch] = useState("");
+  // demand map: sticker_id → number of friends who wishlisted it (used for demand badge)
+  const [demandMap, setDemandMap] = useState<Record<string, number>>({});
 
   // Load catalog + collection on mount
   useEffect(() => {
@@ -133,6 +136,14 @@ export default function AlbumPage() {
       setCatalog(cat);
       setCounts(countMap);
       setLoading(false);
+
+      // Build demand map: for each sticker I own ≥2, count how many friends wish it
+      const demand: Record<string, number> = {};
+      for (const s of cat) {
+        const peers = getPeersWishing(s.id);
+        if (peers.length > 0) demand[s.id] = peers.length;
+      }
+      setDemandMap(demand);
     })();
   }, [router]);
 
@@ -445,7 +456,7 @@ export default function AlbumPage() {
           </div>
         ) : category === "grupos" ? (
           /* Grupos view: group headers (A–L) above team sections */
-          <GroupsView groups={teamGroups} counts={counts} onTap={handleTap} teamStats={teamStats} />
+          <GroupsView groups={teamGroups} counts={counts} onTap={handleTap} teamStats={teamStats} demandMap={demandMap} />
         ) : (
           /* Default view: flat team sections */
           teamGroups.map((group) => (
@@ -466,6 +477,7 @@ export default function AlbumPage() {
                     sticker={sticker}
                     count={counts[sticker.id] ?? 0}
                     onTap={handleTap}
+                    friendsWanting={demandMap[sticker.id] ?? 0}
                   />
                 ))}
               </div>
@@ -489,9 +501,10 @@ interface GroupsViewProps {
   counts: Record<string, number>;
   onTap: (stickerId: string) => void;
   teamStats: Map<string, { owned: number; total: number }>;
+  demandMap: Record<string, number>;
 }
 
-function GroupsView({ groups, counts, onTap, teamStats }: GroupsViewProps) {
+function GroupsView({ groups, counts, onTap, teamStats, demandMap }: GroupsViewProps) {
   // Build a map: FIFA group letter → TeamGroup[]
   const groupMap: Record<string, TeamGroup[]> = {};
   for (const tg of groups) {
@@ -537,6 +550,7 @@ function GroupsView({ groups, counts, onTap, teamStats }: GroupsViewProps) {
                     sticker={sticker}
                     count={counts[sticker.id] ?? 0}
                     onTap={onTap}
+                    friendsWanting={demandMap[sticker.id] ?? 0}
                   />
                 ))}
               </div>

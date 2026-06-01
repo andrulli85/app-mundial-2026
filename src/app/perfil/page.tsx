@@ -193,6 +193,12 @@ export default function PerfilPage() {
         {/* ---- Nav tiles ---- */}
         <div className="flex flex-col gap-2">
           <NavTile
+            href="/wishlist"
+            emoji="⭐"
+            label="Mi Wishlist"
+            sublabel="Tus 10 láminas más buscadas"
+          />
+          <NavTile
             href="/achievements"
             emoji="🏆"
             label="Logros"

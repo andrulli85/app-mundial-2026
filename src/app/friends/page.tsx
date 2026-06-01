@@ -10,14 +10,17 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 import PresenceDot from "@/components/PresenceDot";
 import { listFriends, createInvite, type Friend } from "@/lib/friends";
+import { getMockPeers, type MockPeer } from "@/lib/peer-mock";
 
 export default function FriendsPage() {
   const router = useRouter();
   const { user, loading } = useAuth();
   const [friends, setFriends] = useState<Friend[]>([]);
+  const mockPeers: MockPeer[] = getMockPeers();
 
   // Redirect unauthenticated users to settings to sign in
   useEffect(() => {
@@ -112,6 +115,49 @@ export default function FriendsPage() {
             Escanear QR
           </a>
         </div>
+
+        {/* Demo friends (mock peers — Phase A) */}
+        <section>
+          <h2 className="font-bold text-gray-700 mb-1">
+            Demo · Amigos (simulado)
+          </h2>
+          <p className="text-xs text-gray-400 mb-3">
+            Interacción de prueba hasta que actives Firebase
+          </p>
+          <div
+            className="rounded-2xl overflow-hidden shadow-sm"
+            style={{ backgroundColor: "#ffffff" }}
+          >
+            {mockPeers.map((peer, i) => (
+              <Link
+                key={peer.uid}
+                href={`/friends/${peer.uid}`}
+                data-testid={`friend-row-${peer.uid}`}
+                className={`flex items-center gap-3 px-4 py-3 ${i < mockPeers.length - 1 ? "border-b" : ""}`}
+                style={{ borderColor: "#f0ece3", textDecoration: "none" }}
+              >
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+                  style={{ backgroundColor: "#006847" }}
+                >
+                  {peer.displayName[0].toUpperCase()}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-gray-800 text-sm leading-tight truncate">
+                    {peer.displayName}
+                  </p>
+                  <p className="text-xs text-gray-400 mt-0.5">
+                    {peer.wishlist.length} en wishlist
+                  </p>
+                </div>
+                <span style={{ fontSize: 16 }}>
+                  {peer.status === "online" ? "🟢" : "🟡"}
+                </span>
+                <span className="text-gray-300 text-sm" aria-hidden="true">›</span>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* Friends list */}
         <section>

@@ -10,6 +10,7 @@
 
 import { test, expect, type Page } from "@playwright/test";
 import { grantAccess } from "../_invite";
+import { ensureOnboarded } from "../_onboard";
 
 const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "testwlbulk";
@@ -24,14 +25,7 @@ test.beforeEach(async ({ page }) => {
 // Tomás's wishlist: ["esp-10", "fra-7", "ger-9", "arg-10-messi", "bra-10"]
 
 async function onboard(page: Page): Promise<void> {
-  await page.goto(`${BASE}/`);
-  await page.waitForSelector("text=Saltar tutorial", { timeout: 15000 });
-  await page.click("text=Saltar tutorial");
-  await page.waitForSelector("input", { timeout: 8000 });
-  await page.fill("input", NICKNAME);
-  await page.click('button[type="submit"]');
-  await page.waitForURL(`${BASE}/album`, { timeout: 10000 });
-  await page.waitForLoadState("networkidle");
+  await ensureOnboarded(page, BASE, NICKNAME);
 }
 
 /**

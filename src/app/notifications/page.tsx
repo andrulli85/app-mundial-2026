@@ -12,9 +12,11 @@
  */
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import * as notificationsLib from "@/lib/notifications";
 import type { Notification } from "@/lib/notifications";
 import NotificationItem from "@/components/NotificationItem";
+import WishlistNotificationItem from "@/components/WishlistNotificationItem";
 import TopBar from "@/components/TopBar";
 
 const BG = "#0d0f13";
@@ -22,7 +24,12 @@ const SURFACE = "#131519";
 const GOLD = "#F4C84A";
 const RED = "#E4002B";
 
+function isWishlistType(type: Notification["type"]): boolean {
+  return type === "friend_has_wishlist_item" || type === "friend_wants_yours";
+}
+
 export default function NotificationsPage() {
+  const router = useRouter();
   const [items, setItems] = useState<Notification[]>([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -182,9 +189,21 @@ export default function NotificationsPage() {
             data-testid="notifications-list"
             style={{ backgroundColor: SURFACE, margin: "12px 16px", borderRadius: 16, overflow: "hidden" }}
           >
-            {items.map((n) => (
-              <NotificationItem key={n.id} notification={n} />
-            ))}
+            {items.map((n) =>
+              isWishlistType(n.type) ? (
+                <WishlistNotificationItem
+                  key={n.id}
+                  notification={n}
+                  onPropose={() => {
+                    notificationsLib.markRead(n.id);
+                    if (n.link) router.push(n.link);
+                  }}
+                  onDismiss={() => notificationsLib.markRead(n.id)}
+                />
+              ) : (
+                <NotificationItem key={n.id} notification={n} />
+              )
+            )}
           </div>
         )}
 
