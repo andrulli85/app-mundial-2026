@@ -268,6 +268,14 @@ export default function PerfilPage() {
         {/* Version footer */}
         <div className="text-center text-xs text-gray-400 pt-2 pb-4">
           Albumix · Mundial 2026
+          <span className="mx-2">·</span>
+          <Link
+            href="/legal/disclaimer"
+            className="underline"
+            style={{ color: "#aaa" }}
+          >
+            Legal
+          </Link>
         </div>
       </main>
 

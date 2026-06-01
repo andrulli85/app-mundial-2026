@@ -119,7 +119,16 @@ created → both_present → mutating ↔ proposing ↔ confirming
 
 ---
 
-## R3 · Sticker Extraction Phase 2 (post-revert)
+## R3 · Sticker Extraction Phase 2 (post-revert) — REJECTED 2026-06-01
+
+> [!danger] Permanently rejected on IP grounds
+> An IP risk analysis on 2026-06-01 concluded that re-shipping the Phase 2 PDF extraction at any public scale is unsafe. The 2002 *FAPL v Panini UK Ltd* precedent (Chancery Division, Smith J) directly establishes that reproducing crests + player photos in a sticker context is **not "incidental"** — Panini's "incidental use" defense was rejected by the same court, in reverse, in 2003.
+>
+> The 795 derivative JPEGs sliced from a Panini-distributed PDF would be the exact artifact a takedown notice would target: static, enumerable, attributable, and reproducible-on-discovery. A polite C&D from Panini Legal would likely succeed.
+>
+> **Safer alternatives kept:** user-photographed stickers only (current Phase 1 posture), stylized CSS placeholders with team band + sticker code + name typography, deep-link out to Panini's official album for previews.
+>
+> Full analysis: `docs/notes/research/2026-06-01-albumix-ip-trademark-exposure.md` in the Mission Control vault. See section "R1 — Phase 2 PDF extraction".
 
 **Status.** Phase 1 shipped + reverted same session. Commits `3ef3d18`, `dabd302`, `20b4822` reverted at `8af2fe4`, `82fa965`, `deedfda`. CACHE_VERSION rolled back from `20b48226` to `deedfdab`. Manual 50 crops preserved.
 
