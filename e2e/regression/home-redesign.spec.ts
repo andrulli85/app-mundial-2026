@@ -4,24 +4,27 @@ import { grantAccess } from "../_invite";
 /**
  * Regression spec — FUT-style dark home redesign (2026-06-01).
  *
+ * Updated for Fase 1 design alignment (2026-06-01):
+ *  - "ABRIR SOBRE" / "SOBRE LEGENDARIO" hero removed — "CARTA DE LA SEMANA" present instead
+ *  - Coins pill removed from topbar
+ *  - "Arma tu once" renamed to "Arma tu 11"
+ *  - Doradas + Campeones + Hologramas chips removed from /album
+ *
  * Viewport: iPhone 15 (390×844)
  * Target:   https://app-mundial-2026-lemon.vercel.app
  *
  * Assertions:
  *  1. Post-onboarding lands on /inicio (not /album)
  *  2. Dark theme: root element has dark computed background
- *  3. "ABRIR SOBRE" CTA button exists
+ *  3. "CARTA DE LA SEMANA" hero present (replaces SOBRE LEGENDARIO)
  *  4. Stat columns: Racha, Monedas, División
- *  5. "Arma tu once" card + "85 OVR" text
+ *  5. "Arma tu 11" card + "85 OVR" text
  *  6. "COMPLETA TU ÁLBUM" section + at least 1 country row with X/Y pattern
- *  7. Doradas chip NOT present on /album
+ *  7. Doradas / Campeones / Hologramas chips NOT present on /album
  *  8. Screenshot → /tmp/albumix-home-redesign.png
- *
- * Mockup-parity assertions (2026-06-01 fixes):
- *  9. Coins pill in topbar: [data-testid="topbar-coins"] present, contains "1.240"
- * 10. Bell badge: [data-testid="bell-badge"] present, text = "3"
- * 11. Pack header chip contains ⚡ AND "SOBRE DIARIO GRATIS"
- * 12. Pack CTA button contains 🎁 AND "ABRIR SOBRE"
+ *  9. Coins pill NOT in topbar (removed Fase 1)
+ * 10. Bell badge: [data-testid="bell-badge"] still present
+ * 11. "SOBRE LEGENDARIO" / "ABRIR SOBRE" text NOT present
  */
 
 const BASE = "https://app-mundial-2026-lemon.vercel.app";
@@ -33,11 +36,10 @@ test.beforeEach(async ({ page }) => {
   await grantAccess(page);
 });
 
-test("FUT-style home — dark theme + hero + stats + country progress", async ({ page }) => {
+test("FUT-style home — dark theme + carta semana + stats + country progress", async ({ page }) => {
   // ── Onboarding → /inicio ──────────────────────────────────────────────────
   await page.goto(`${BASE}/`);
 
-  // Handle both: returning user (already has nickname → redirect) or fresh user
   const result = await Promise.race([
     page
       .waitForSelector("text=Saltar tutorial", { timeout: 15000 })
@@ -57,21 +59,26 @@ test("FUT-style home — dark theme + hero + stats + country progress", async ({
   await page.waitForURL(`${BASE}/inicio`, { timeout: 15000 });
   await page.waitForLoadState("networkidle");
 
-  // Assertion 2: dark theme — root wrapper has low-lightness background
+  // Assertion 2: dark theme
   await page.waitForSelector('[data-testid="home-dark-root"]', { timeout: 10000 });
   const bgColor = await page.evaluate(() => {
     const el = document.querySelector<HTMLElement>('[data-testid="home-dark-root"]');
     if (!el) return "";
     return window.getComputedStyle(el).background || window.getComputedStyle(el).backgroundColor;
   });
-  // The home-dark CSS sets a dark gradient/color — confirm it's not the warm cream (#f9f5ee)
-  // We check that it does NOT contain the light cream value
   expect(bgColor).not.toContain("249, 245, 238");  // rgb of #f9f5ee
 
-  // Assertion 3: "ABRIR SOBRE" button exists
-  const openPackBtn = page.getByTestId("open-pack-btn");
-  await expect(openPackBtn).toBeVisible({ timeout: 8000 });
-  expect(await openPackBtn.textContent()).toContain("ABRIR SOBRE");
+  // Assertion 3: "CARTA DE LA SEMANA" hero (replaces SOBRE LEGENDARIO)
+  const cartaHero = page.getByTestId("carta-semana-hero");
+  await expect(cartaHero).toBeVisible({ timeout: 8000 });
+  const cartaText = await cartaHero.textContent() ?? "";
+  expect(cartaText).toContain("CARTA DE LA SEMANA");
+
+  // Assertion 11: "SOBRE LEGENDARIO" / "ABRIR SOBRE" NOT present
+  const sobreCount = await page.getByText("SOBRE LEGENDARIO").count();
+  expect(sobreCount).toBe(0);
+  const abrirCount = await page.getByText("ABRIR SOBRE").count();
+  expect(abrirCount).toBe(0);
 
   // Assertion 4: stat columns — Racha, Monedas, División
   await expect(page.getByTestId("stats-row")).toBeVisible();
@@ -79,57 +86,42 @@ test("FUT-style home — dark theme + hero + stats + country progress", async ({
   await expect(page.getByTestId("stat-col-monedas")).toBeVisible();
   await expect(page.getByTestId("stat-col-división")).toBeVisible();
 
-  // Assertion 5: "Arma tu once" card + OVR text
+  // Assertion 5: "Arma tu 11" card (renamed from "Arma tu once")
   const onceCard = page.getByTestId("once-card");
   await expect(onceCard).toBeVisible();
+  const oncText = await onceCard.textContent() ?? "";
+  expect(oncText).toContain("Arma tu 11");
+  expect(oncText).not.toContain("Arma tu once");
   const ovrText = page.getByTestId("ovr-text");
   await expect(ovrText).toBeVisible();
   const ovrContent = await ovrText.textContent();
   expect(ovrContent).toContain("85 OVR");
 
-  // Assertion 6: "COMPLETA TU ÁLBUM" section + at least 1 country row with X/Y pattern
+  // Assertion 6: "COMPLETA TU ÁLBUM" section + at least 1 country row
   const albumSection = page.getByTestId("country-progress-section");
   await expect(albumSection).toBeVisible();
-  // X/Y pattern: e.g. "0/20" or "3/18"
   const sectionText = await albumSection.textContent() ?? "";
   expect(sectionText).toMatch(/\d+\/\d+/);
 
-  // Assertion 7: Doradas chip NOT on /album
+  // Assertion 9: Coins pill NOT in topbar (removed Fase 1)
+  const coinsCount = await page.locator('[data-testid="topbar-coins"]').count();
+  expect(coinsCount).toBe(0);
+
+  // Assertion 10: Bell badge still present
+  const bellBadge = page.getByTestId("bell-badge");
+  await expect(bellBadge).toBeVisible({ timeout: 8000 });
+
+  // Assertion 7: Chips check on /album
   await page.goto(`${BASE}/album`);
   await page.waitForLoadState("networkidle");
   await page.waitForSelector('[data-testid="category-chips"]', { timeout: 12000 });
-  // chip-doradas should no longer exist in the DOM
-  const doradasCount = await page.locator('[data-testid="chip-doradas"]').count();
-  expect(doradasCount).toBe(0);
-  // Also check no visible text "Doradas" in the chip strip
-  const chipStripText = await page.getByTestId("category-chips").textContent();
-  expect(chipStripText ?? "").not.toContain("Doradas");
+  const chipStripText = await page.getByTestId("category-chips").textContent() ?? "";
+  expect(chipStripText).not.toContain("Doradas");
+  expect(chipStripText).not.toContain("Hologramas");
+  expect(chipStripText).not.toContain("Campeones");
+  // "Favoritas" is now present
+  expect(chipStripText).toContain("Favoritas");
 
-  // ── Mockup-parity assertions (2026-06-01 fixes) ──────────────────────────
-
-  // Assertion 9: Coins pill in topbar
-  const coinsPill = page.getByTestId("topbar-coins");
-  await expect(coinsPill).toBeVisible({ timeout: 8000 });
-  const coinsText = await coinsPill.textContent() ?? "";
-  expect(coinsText).toContain("1.240");
-
-  // Assertion 10: Bell badge shows "3"
-  const bellBadge = page.getByTestId("bell-badge");
-  await expect(bellBadge).toBeVisible({ timeout: 8000 });
-  const badgeText = await bellBadge.textContent() ?? "";
-  expect(badgeText.trim()).toBe("3");
-
-  // Assertion 11: Pack header chip contains ⚡ and "SOBRE DIARIO GRATIS"
-  const packHero = page.getByTestId("pack-hero");
-  const packHeroText = await packHero.textContent() ?? "";
-  expect(packHeroText).toContain("⚡");
-  expect(packHeroText).toContain("SOBRE DIARIO GRATIS");
-
-  // Assertion 12: Pack CTA button contains 🎁 and "ABRIR SOBRE"
-  const openPackBtnText = await openPackBtn.textContent() ?? "";
-  expect(openPackBtnText).toContain("🎁");
-  expect(openPackBtnText).toContain("ABRIR SOBRE");
-
-  // Assertion 8: Screenshot (moved to end after all assertions pass)
+  // Assertion 8: Screenshot
   await page.screenshot({ path: "/tmp/albumix-home-redesign.png", fullPage: false });
 });

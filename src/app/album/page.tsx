@@ -28,19 +28,23 @@ import { getPeersWishing } from "@/lib/peer-mock";
 import ScanPageModal from "@/components/ScanPageModal";
 
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
-type Category = "todos" | "paises" | "grupos" | "especiales" | "legendario" | "hologramas";
+// "hologramas" kept in type for filter logic but hidden from chips (Fase 1 — 2026-06-01)
+type Category = "todos" | "paises" | "grupos" | "especiales" | "legendario" | "hologramas" | "favoritas";
 
 // ---------------------------------------------------------------------------
 // Category chip definitions
 // ---------------------------------------------------------------------------
 
+// Fase 1 chip strip: exactly 5 chips visible — Todos / Países / Grupos / Especiales / Favoritas
+// "💎 Hologramas" — removed per Fase 1 design alignment 2026-06-01 (route /album/hologramas stays in code)
+// "🏆 Campeones"  — removed per Fase 1 design alignment 2026-06-01 (route /album/historia stays in code)
+// "✨ Legendario" → renamed "⭐ Favoritas" (filter logic stays on rarity_tier==="legend" for now — Fase 2 will refine)
 const CATEGORY_CHIPS: { id: Category; label: string }[] = [
   { id: "todos",      label: "🔍 Todos" },
   { id: "paises",     label: "🌍 Países" },
   { id: "grupos",     label: "🏆 Grupos" },
   { id: "especiales", label: "✨ Especiales" },
-  { id: "legendario", label: "✨ Legendario" },
-  { id: "hologramas", label: "💎 Hologramas" },
+  { id: "favoritas",  label: "⭐ Favoritas" },
 ];
 
 // Hidden doradas route (re-enable by restoring the chip)
@@ -171,9 +175,11 @@ export default function AlbumPage() {
       stickers = stickers.filter(
         (s) => s.type === "fwc" || s.type === "panini_special" || s.team_code === "" || s.team_code === "FWC"
       );
-    } else if (category === "legendario") {
+    } else if (category === "legendario" || category === "favoritas") {
+      // "favoritas" is the Fase 1 rename of "legendario" — filter stays on rarity_tier==="legend"
       stickers = stickers.filter((s) => s.rarity_tier === "legend");
     } else if (category === "hologramas") {
+      // "hologramas" chip is hidden from UI (Fase 1) but filter preserved for direct URL access
       stickers = stickers.filter((s) => s.rarity_tier === "hologram");
     }
 
@@ -227,7 +233,8 @@ export default function AlbumPage() {
     paises:     "Países",
     grupos:     "Grupos",
     especiales: "Especiales",
-    legendario: "Legendario",
+    legendario: "Favoritas",
+    favoritas:  "Favoritas",
     hologramas: "Hologramas",
   };
 
@@ -405,25 +412,11 @@ export default function AlbumPage() {
               </button>
             );
           })}
-          {/* Campeones chip — navigates to /album/historia (prestige timeline) */}
-          <a
-            href="/album/historia"
-            data-testid="chip-campeones"
-            className="flex-shrink-0 rounded-full px-4 font-semibold transition-all flex items-center"
-            style={{
-              scrollSnapAlign: "start",
-              height: "36px",
-              fontSize: "13px",
-              whiteSpace: "nowrap",
-              backgroundColor: "rgba(250,204,21,0.12)",
-              color: "#facc15",
-              border: "1px solid rgba(250,204,21,0.3)",
-              fontWeight: 600,
-              textDecoration: "none",
-            }}
-          >
-            🏆 Campeones
-          </a>
+          {/* Campeones chip — hidden per Fase 1 design alignment 2026-06-01.
+               Route /album/historia stays in code but is unlinked from main chip strip.
+               Re-enable by restoring the <a> block below:
+          <a href="/album/historia" data-testid="chip-campeones" ...>🏆 Campeones</a>
+          */}
           {/* Doradas chip — hidden from chip strip (route /album/doradas still accessible).
                Andy paused doradas focus 2026-06-01; re-enable by restoring this block. */}
           {/* <a href={_DORADAS_CHIP_HREF} data-testid="chip-doradas" ... >Doradas ✨</a> */}
@@ -529,7 +522,11 @@ export default function AlbumPage() {
         )}
       </main>
 
-      <ScanPageModal counts={counts} onStickersBulkAdded={handleScanBulkAdded} />
+      {/* Hidden per Andy 2026-06-01 — Fase 3 may re-surface CV scan */}
+      {/* ScanPageModal and /api/scan-page endpoint remain in code, just unlinked from UI */}
+      {process.env.NEXT_PUBLIC_ENABLE_CV_SCAN === "true" && (
+        <ScanPageModal counts={counts} onStickersBulkAdded={handleScanBulkAdded} />
+      )}
 
       <BottomNav active="album" />
     </div>

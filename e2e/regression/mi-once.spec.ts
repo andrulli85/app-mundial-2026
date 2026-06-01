@@ -2,17 +2,21 @@ import { test, expect } from "@playwright/test";
 import { grantAccess } from "../_invite";
 
 /**
- * Phase B regression — Mi Once / Squad Builder at /once.
+ * Phase B regression — Mi 11 / Squad Builder at /once.
+ *
+ * Updated for Fase 1 design alignment (2026-06-01):
+ *   - Page heading renamed "Mi once" → "Mi 11"
+ *   - BottomNav label "Mi Once" → "Mi 11"
+ *   - Route /once stays unchanged
  *
  * Viewport: iPhone 15 (390×844)
  * Target:   https://app-mundial-2026-lemon.vercel.app
  *
  * Tests:
- *  - /once renders Squad Builder UI (heading, formation chips, variant switcher)
+ *  - /once renders Squad Builder UI (heading "Mi 11", formation chips, variant switcher)
  *  - Formation chip tap cycles to a different formation
- *  - Auto-fill populates slots
  *  - Variant chips switch the view (pitch/board/lines)
- *  - BottomNav present with Mi Once active
+ *  - BottomNav present with Mi 11 active
  */
 
 const BASE = "https://app-mundial-2026-lemon.vercel.app";
@@ -20,7 +24,6 @@ const NICKNAME = "oncetest";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
-// Grant the whitelist cookie before each test so the gate doesn't block navigation.
 test.beforeEach(async ({ page }) => {
   await grantAccess(page);
 });
@@ -28,18 +31,15 @@ test.beforeEach(async ({ page }) => {
 async function seedNickname(page: import("@playwright/test").Page) {
   await page.goto(`${BASE}/`);
 
-  // Wait for client-side JS: if nickname is set, page redirects away from onboarding.
   const hasOnboarding = await page
     .waitForSelector("text=Saltar tutorial", { timeout: 6000 })
     .then(() => true)
     .catch(() => false);
 
   if (!hasOnboarding) {
-    // Already past onboarding (redirected to /album or similar).
     return;
   }
 
-  // Skip the tutorial and fill the nickname form.
   await page.click("text=Saltar tutorial");
   await page.waitForSelector("input", { timeout: 8000 });
   await page.fill("input", NICKNAME);
@@ -48,12 +48,12 @@ async function seedNickname(page: import("@playwright/test").Page) {
   await page.waitForLoadState("networkidle");
 }
 
-test("/once renders Squad Builder with header and stats", async ({ page }) => {
+test("/once renders Squad Builder with header Mi 11 and stats", async ({ page }) => {
   await seedNickname(page);
   await page.goto(`${BASE}/once`);
 
-  // Main heading
-  await expect(page.getByRole("heading", { name: "Mi once" })).toBeVisible({
+  // Main heading — "Mi 11" (renamed from "Mi once" in Fase 1)
+  await expect(page.getByRole("heading", { name: /mi 11/i })).toBeVisible({
     timeout: 15000,
   });
 
@@ -67,15 +67,8 @@ test("formation chip tap changes active formation", async ({ page }) => {
   await seedNickname(page);
   await page.goto(`${BASE}/once`);
 
-  // Wait for page load
   await expect(page.getByTestId("formation-4-3-3")).toBeVisible({ timeout: 15000 });
-
-  // Tap 4-4-2
   await page.getByTestId("formation-4-4-2").click();
-
-  // The 4-4-2 button should now look selected (lime background from CSS)
-  // Verify by clicking 4-4-2 and checking 4-3-3 is no longer the active one
-  // We confirm via test id presence (both are still rendered)
   await expect(page.getByTestId("formation-4-4-2")).toBeVisible();
   await expect(page.getByTestId("formation-3-5-2")).toBeVisible();
 });
@@ -96,7 +89,7 @@ test("variant board switches to chalkboard view", async ({ page }) => {
   await expect(page.getByTestId("variant-board")).toBeVisible({ timeout: 15000 });
   await page.getByTestId("variant-board").click();
   // Board variant is active — page still renders without crash
-  await expect(page.getByRole("heading", { name: "Mi once" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /mi 11/i })).toBeVisible();
 });
 
 test("variant lines switches to grouped rows view", async ({ page }) => {
@@ -105,15 +98,17 @@ test("variant lines switches to grouped rows view", async ({ page }) => {
 
   await expect(page.getByTestId("variant-lines")).toBeVisible({ timeout: 15000 });
   await page.getByTestId("variant-lines").click();
-  // Lines variant should show row labels
   await expect(page.getByText("Ataque")).toBeVisible();
 });
 
-test("BottomNav shows on /once with once active", async ({ page }) => {
+test("BottomNav shows Mi 11 label on /once", async ({ page }) => {
   await seedNickname(page);
   await page.goto(`${BASE}/once`);
 
   const nav = page.locator("nav[aria-label='Navegación principal']");
   await expect(nav).toBeVisible({ timeout: 15000 });
-  await expect(nav.getByText("Mi Once")).toBeVisible();
+  // "Mi 11" is the Fase 1 label (renamed from "Mi Once")
+  await expect(nav.getByText("Mi 11")).toBeVisible();
+  // Confirm "Mi Once" label is gone
+  expect(await nav.getByText("Mi Once").count()).toBe(0);
 });

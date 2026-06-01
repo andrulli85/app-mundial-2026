@@ -66,7 +66,7 @@ async function getRootBgAverageRGB(
 }
 
 const ROUTES: { path: string; slug: string; waitFor?: string }[] = [
-  { path: "/once",           slug: "once",          waitFor: "Mi once" },
+  { path: "/once",           slug: "once",          waitFor: "Mi 11" },   // renamed Fase 1 2026-06-01
   { path: "/mercado",        slug: "mercado",        waitFor: "Cambios" },
   { path: "/wishlist",       slug: "wishlist",       waitFor: "WISHLIST" },
   { path: "/notifications",  slug: "notifications",  waitFor: "Notificaciones" },

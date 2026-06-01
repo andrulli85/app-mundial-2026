@@ -1,10 +1,14 @@
 "use client";
 
 /**
- * /inicio — FUT Champions-style dark home (redesigned 2026-06-01).
+ * /inicio — FUT Champions-style dark home.
  *
- * Design: dark theme (#0a0a0a → #111111), gamification, pack hero, per-country
- * progress, recent stickers strip. SUPERSEDES the previous light-theme home.
+ * Fase 1 design alignment (2026-06-01):
+ *   - "SOBRE LEGENDARIO" hero pack removed — replaced with "Carta de la semana"
+ *   - "Arma tu once" → "Arma tu 11"
+ *   - "Ver todo" link removed from "Completa tu álbum"
+ *   - "Mi colección" link in Cartas recientes routes to /album
+ *   - New section: "ÚLTIMOS PUNTOS · FECHA 3" after "Arma tu 11" card
  *
  * Mocked data (Phase 1 — TODO comments mark each):
  *   - coins:    1240  (TODO: wire to economy system)
@@ -17,7 +21,7 @@
  *   - Recent stickers:      last 5 owned entries by acquired_at desc
  */
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getNickname, getAllStickers } from "@/lib/db";
@@ -36,6 +40,17 @@ const MOCK_STREAK = 5;
 const MOCK_DIVISION = "Oro";
 // TODO(squad): compute from getSquad() lineup OVR average
 const MOCK_OVR = 85;
+
+// ── Last round mock data (inline — Phase 1) ───────────────────────────────────
+const LAST_ROUND = {
+  round: "Fecha 3",
+  total: 214,
+  top: [
+    { initials: "RS", name: "R. Santos", pos: "DEL", pts: 34 },
+    { initials: "EP", name: "E. Pérez",  pos: "MED", pts: 28 },
+    { initials: "MA", name: "M. Araya",  pos: "MED", pts: 22 },
+  ],
+};
 
 // ── Priority country codes for "Completa tu álbum" section ───────────────────
 const PRIORITY_TEAMS = ["ARG", "BRA", "MEX", "FRA", "ESP", "GER", "USA"];
@@ -124,36 +139,163 @@ function RecentStickerChip({ sticker }: RecentStickerChipProps) {
   );
 }
 
-// ── Toast ─────────────────────────────────────────────────────────────────────
+// ── CartaSemannaHero — "Carta de la semana" card ──────────────────────────────
 
-function ProximamenteToast({
-  visible,
-  onClose,
-}: {
-  visible: boolean;
-  onClose: () => void;
-}) {
-  useEffect(() => {
-    if (!visible) return;
-    const t = setTimeout(onClose, 2800);
-    return () => clearTimeout(t);
-  }, [visible, onClose]);
+interface CartaSemanaHeroProps {
+  sticker: Sticker | null;
+}
 
-  if (!visible) return null;
+function CartaSemanaHero({ sticker }: CartaSemanaHeroProps) {
+  // Fallback when no sticker available yet
+  const name = sticker?.display_name ?? "MESSI";
+  const position = sticker?.type === "player" ? (sticker.team || "DEL") : "DEL";
+  const href = "/album";
+
   return (
-    <div
-      role="status"
-      aria-live="polite"
-      className="fixed bottom-24 left-1/2 -translate-x-1/2 px-5 py-3 rounded-2xl text-sm font-bold shadow-2xl z-50"
-      style={{
-        backgroundColor: "#1a1a1a",
-        border: "1px solid rgba(250,204,21,0.4)",
-        color: "#facc15",
-        whiteSpace: "nowrap",
-      }}
+    <section
+      aria-label="Carta de la semana"
+      className="pack-gradient-border"
+      data-testid="carta-semana-hero"
     >
-      Próximamente — ¡la apertura de sobres llega pronto!
-    </div>
+      <div className="p-5 flex flex-col gap-3">
+        {/* Top label */}
+        <div className="flex justify-center">
+          <span
+            className="px-3 py-1 rounded-full text-xs font-black tracking-wide"
+            style={{ backgroundColor: "rgba(244,200,74,0.15)", color: "#F4C84A", border: "1px solid rgba(244,200,74,0.4)" }}
+          >
+            CARTA DE LA SEMANA
+          </span>
+        </div>
+
+        {/* Featured sticker visual */}
+        <div className="flex flex-col items-center gap-2">
+          {sticker?.seed_image ? (
+            <img
+              src={sticker.seed_image}
+              alt={name}
+              className="w-24 h-28 object-cover rounded-xl"
+              style={{ border: "2px solid rgba(244,200,74,0.6)", boxShadow: "0 0 20px rgba(244,200,74,0.2)" }}
+            />
+          ) : (
+            <div
+              className="w-24 h-28 rounded-xl flex items-center justify-center text-5xl"
+              style={{
+                background: "rgba(244,200,74,0.08)",
+                border: "2px solid rgba(244,200,74,0.4)",
+                boxShadow: "0 0 20px rgba(244,200,74,0.15)",
+              }}
+              aria-hidden="true"
+            >
+              ⭐
+            </div>
+          )}
+
+          {/* Name + position */}
+          <div className="text-center">
+            <div
+              className="text-xl font-black leading-tight uppercase tracking-wide gold-text"
+              data-testid="carta-semana-name"
+            >
+              {name}
+            </div>
+            <div className="text-xs mt-0.5 font-semibold uppercase tracking-widest" style={{ color: "#9ca3af" }}>
+              {position}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <Link
+          href={href}
+          className="w-full py-3 rounded-xl font-black text-sm tracking-wide text-center transition-opacity active:opacity-80 block"
+          style={{
+            background: "linear-gradient(135deg, #c9a35a 0%, #e8c87b 50%, #c9a35a 100%)",
+            color: "#111111",
+            textDecoration: "none",
+          }}
+          data-testid="carta-semana-cta"
+        >
+          Ver carta
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+// ── ÚltimosPuntos — last round scorers section ────────────────────────────────
+
+function UltimosPuntosSection() {
+  return (
+    <section aria-label="Últimos puntos" data-testid="ultimos-puntos-section">
+      {/* Section header */}
+      <div className="flex items-center justify-between mb-3">
+        <h2
+          className="text-xs font-black uppercase tracking-widest"
+          style={{ color: "#f5f5f5" }}
+        >
+          ÚLTIMOS PUNTOS · {LAST_ROUND.round.toUpperCase()}
+        </h2>
+        <span
+          className="text-xl font-black"
+          style={{ color: "#a3e635", lineHeight: 1 }}
+          data-testid="ultimos-puntos-total"
+        >
+          +{LAST_ROUND.total}
+        </span>
+      </div>
+
+      {/* Scorers list */}
+      <div className="card-dark flex flex-col divide-y divide-white/5">
+        {LAST_ROUND.top.map((player) => (
+          <div
+            key={player.initials}
+            className="flex items-center gap-3 px-4 py-3"
+          >
+            {/* Avatar circle with initials */}
+            <div
+              className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0"
+              style={{
+                background: "linear-gradient(135deg, rgba(244,200,74,0.3), rgba(244,200,74,0.1))",
+                border: "1px solid rgba(244,200,74,0.4)",
+                color: "#F4C84A",
+              }}
+              aria-hidden="true"
+            >
+              {player.initials}
+            </div>
+
+            {/* Name + position */}
+            <div className="flex-1 min-w-0">
+              <div
+                className="text-sm font-bold leading-none"
+                style={{ color: "#f5f5f5" }}
+                data-testid={`player-name-${player.initials.toLowerCase()}`}
+              >
+                {player.name}
+              </div>
+              <div className="mt-0.5">
+                <span
+                  className="text-[0.6rem] font-semibold px-1.5 py-0.5 rounded-full"
+                  style={{ backgroundColor: "rgba(255,255,255,0.08)", color: "#9ca3af" }}
+                >
+                  {player.pos}
+                </span>
+              </div>
+            </div>
+
+            {/* Points badge */}
+            <span
+              className="text-sm font-black"
+              style={{ color: "#F4C84A" }}
+              data-testid={`player-pts-${player.initials.toLowerCase()}`}
+            >
+              +{player.pts}
+            </span>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -172,9 +314,7 @@ export default function InicioPage() {
   const [loading, setLoading] = useState(true);
   const [countryProgress, setCountryProgress] = useState<CountryProgress[]>([]);
   const [recentStickers, setRecentStickers] = useState<Sticker[]>([]);
-  const [toastVisible, setToastVisible] = useState(false);
-
-  const hideToast = useCallback(() => setToastVisible(false), []);
+  const [featuredSticker, setFeaturedSticker] = useState<Sticker | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -192,8 +332,13 @@ export default function InicioPage() {
         if (e.count > 0) ownedMap.set(e.sticker_id, e.count);
       });
 
+      // ── Featured sticker for "Carta de la semana" ──────────────────────────
+      // Pick first owned legend, else first owned sticker, else first catalog entry
+      const ownedStickers = catalog.filter((s) => ownedMap.has(s.id));
+      const featuredLegend = ownedStickers.find((s) => s.rarity_tier === "legend");
+      setFeaturedSticker(featuredLegend ?? ownedStickers[0] ?? catalog[0] ?? null);
+
       // ── Per-country progress (real data) ───────────────────────────────────
-      // Build totals map: team_code → { owned, total }
       const teamMap = new Map<string, { owned: number; total: number }>();
       for (const sticker of catalog) {
         const code = sticker.team_code;
@@ -204,9 +349,6 @@ export default function InicioPage() {
         teamMap.set(code, existing);
       }
 
-      // Sort ALL teams by completion % descending, take top 3.
-      // Ties broken alphabetically by code.
-      // If all teams are at 0%, fall back to the Domi-friendly defaults.
       const allTeamCodes = Array.from(teamMap.keys()).filter(
         (code) => (teamMap.get(code)?.total ?? 0) > 0
       );
@@ -222,7 +364,6 @@ export default function InicioPage() {
       const top3 = allTeamCodes.slice(0, 3);
       const anyOwned = top3.some((c) => (teamMap.get(c)?.owned ?? 0) > 0);
 
-      // Fall back to defaults when no stickers owned yet
       const candidates =
         anyOwned && top3.length >= 3
           ? top3
@@ -242,7 +383,6 @@ export default function InicioPage() {
       setCountryProgress(progress);
 
       // ── Recent stickers (real data) ────────────────────────────────────────
-      // Sort owned entries by acquired_at desc, take 5, map to catalog stickers
       const catalogById = new Map<string, Sticker>(catalog.map((s) => [s.id, s]));
       const recent = [...entries]
         .filter((e) => e.count > 0)
@@ -251,7 +391,6 @@ export default function InicioPage() {
         .map((e) => catalogById.get(e.sticker_id))
         .filter((s): s is Sticker => s !== undefined);
 
-      // Fallback: if no owned stickers, show first 5 from catalog as placeholders
       setRecentStickers(
         recent.length > 0 ? recent : catalog.slice(0, 5)
       );
@@ -296,55 +435,9 @@ export default function InicioPage() {
         <div className="px-4 flex flex-col gap-5 max-w-lg mx-auto pb-4">
 
           {/* -------------------------------------------------------------- */}
-          {/* Hero Pack Card                                                    */}
+          {/* Carta de la semana (replaces "SOBRE LEGENDARIO" hero)            */}
           {/* -------------------------------------------------------------- */}
-          <section
-            aria-label="Sobre diario"
-            className="pack-gradient-border"
-            data-testid="pack-hero"
-          >
-            <div className="p-5 flex flex-col gap-3">
-              {/* Daily pack chip */}
-              <div className="flex justify-center">
-                <span
-                  className="px-3 py-1 rounded-full text-xs font-black tracking-wide"
-                  style={{ backgroundColor: "#facc15", color: "#1a1a1a" }}
-                >
-                  ⚡ SOBRE DIARIO GRATIS
-                </span>
-              </div>
-
-              {/* Title */}
-              <div className="text-center">
-                <h2
-                  className="text-2xl font-black leading-tight gold-text"
-                  data-testid="pack-title"
-                >
-                  SOBRE LEGENDARIO
-                </h2>
-                <p className="text-sm mt-1" style={{ color: "#9ca3af" }}>
-                  5 cartas · garantiza 1 Raro o mejor
-                </p>
-              </div>
-
-              {/* CTA */}
-              <button
-                onClick={() => {
-                  // TODO(packs): wire to pack-opening flow when economy ships
-                  setToastVisible(true);
-                }}
-                data-testid="open-pack-btn"
-                className="w-full py-3 rounded-xl font-black text-sm tracking-wide transition-opacity active:opacity-80"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #c9a35a 0%, #e8c87b 50%, #c9a35a 100%)",
-                  color: "#111111",
-                }}
-              >
-                🎁 ABRIR SOBRE
-              </button>
-            </div>
-          </section>
+          <CartaSemanaHero sticker={featuredSticker} />
 
           {/* -------------------------------------------------------------- */}
           {/* Stats row (3 columns — mocked Phase 1)                           */}
@@ -380,7 +473,7 @@ export default function InicioPage() {
           </section>
 
           {/* -------------------------------------------------------------- */}
-          {/* "Arma tu once" card                                              */}
+          {/* "Arma tu 11" card (renamed from "Arma tu once" — Fase 1)         */}
           {/* -------------------------------------------------------------- */}
           <Link
             href="/once"
@@ -399,7 +492,7 @@ export default function InicioPage() {
             {/* Text */}
             <div className="flex-1 min-w-0">
               <div className="font-black text-sm leading-none mb-1" style={{ color: "#f5f5f5" }}>
-                Arma tu once
+                Arma tu 11
               </div>
               {/* TODO(squad): replace 85 with live OVR from getSquad() calculation */}
               <div className="text-xs" style={{ color: "#9ca3af" }}>
@@ -431,23 +524,23 @@ export default function InicioPage() {
           </Link>
 
           {/* -------------------------------------------------------------- */}
+          {/* "Últimos puntos" — last round scores (mock, Fase 1)              */}
+          {/* -------------------------------------------------------------- */}
+          <UltimosPuntosSection />
+
+          {/* -------------------------------------------------------------- */}
           {/* "Completa tu álbum" — per-country progress (real data)           */}
+          {/* "Ver todo" link removed per Fase 1 design alignment               */}
           {/* -------------------------------------------------------------- */}
           <section aria-label="Completa tu álbum" data-testid="country-progress-section">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center mb-3">
               <h2
                 className="text-xs font-black uppercase tracking-widest"
                 style={{ color: "#f5f5f5" }}
               >
                 COMPLETA TU ÁLBUM
               </h2>
-              <Link
-                href="/album"
-                className="text-xs font-semibold"
-                style={{ color: "#facc15", textDecoration: "none" }}
-              >
-                Ver todo
-              </Link>
+              {/* "Ver todo" removed per Fase 1 — Andy 2026-06-01 */}
             </div>
 
             <div className="card-dark flex flex-col gap-4 p-4">
@@ -466,6 +559,7 @@ export default function InicioPage() {
 
           {/* -------------------------------------------------------------- */}
           {/* "Cartas recientes" — horizontal scroll (real data)               */}
+          {/* "Mi colección" link routes to /album (Fase 1)                    */}
           {/* -------------------------------------------------------------- */}
           <section aria-label="Cartas recientes" data-testid="recent-stickers-section">
             <div className="flex items-center justify-between mb-3">
@@ -501,9 +595,6 @@ export default function InicioPage() {
 
       {/* Bottom nav — active tab = "inicio" */}
       <BottomNav active="inicio" />
-
-      {/* Próximamente toast — fires when "ABRIR SOBRE" is tapped */}
-      <ProximamenteToast visible={toastVisible} onClose={hideToast} />
     </div>
   );
 }

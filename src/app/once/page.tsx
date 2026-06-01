@@ -761,7 +761,7 @@ export default function OncePage() {
       }
     });
     setLineup(next);
-    flash("Once ideal armado ⚡");
+    flash("11 ideal armado ⚡");
   }, [slots, ownedPlayersByPos, flash]);
 
   // ---- Formation change: remap lineup preserving positions ----
@@ -878,7 +878,7 @@ export default function OncePage() {
   // ---- Save squad ----
   const saveAndFlash = useCallback(async () => {
     await saveSquad({ formation, lineup, variant });
-    flash("Once guardado ⚽");
+    flash("11 guardado ⚽");
   }, [formation, lineup, variant, flash]);
 
   // ---- Calculations ----
@@ -989,7 +989,7 @@ export default function OncePage() {
               fontFamily: "system-ui, sans-serif",
             }}
           >
-            Mi once
+            Mi 11
           </h1>
           <button
             onClick={autoFill}
@@ -1122,7 +1122,7 @@ export default function OncePage() {
             letterSpacing: "0.04em",
           }}
         >
-          Guardar once
+          Guardar 11
         </button>
       </div>
 

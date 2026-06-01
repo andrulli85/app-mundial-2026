@@ -3,11 +3,12 @@
 /**
  * BottomNav — shared 5-tab navigation bar used across all main pages.
  *
- * Tabs: Inicio | Álbum | Mi Once (center elevated FAB) | Mercado | Perfil
+ * Tab order (Fase 1 design alignment 2026-06-01):
+ *   Inicio · Mercado · Álbum (CENTER, gold elevated FAB) · Mi 11 · Perfil
  *
- * Design source: app.jsx → TabBar from Albumix design bundle
- * The central "Mi Once" button is elevated 30px above the bar with a gold/green
- * accent background and drop shadow, per design spec.
+ * The central "Álbum" button is elevated 30px above the bar with a gold/green
+ * accent background and drop shadow, per Fase 1 design spec.
+ * Route /once stays — only the visible label changed ("Mi Once" → "Mi 11").
  */
 
 import Link from "next/link";
@@ -20,11 +21,11 @@ interface BottomNavProps {
 
 const LEFT_TABS = [
   { id: "inicio" as NavTab, href: "/inicio", label: "Inicio", emoji: "📊" },
-  { id: "album" as NavTab, href: "/album", label: "Álbum", emoji: "📕" },
+  { id: "mercado" as NavTab, href: "/mercado", label: "Mercado", emoji: "🤝" },
 ];
 
 const RIGHT_TABS = [
-  { id: "mercado" as NavTab, href: "/mercado", label: "Mercado", emoji: "🤝" },
+  { id: "once" as NavTab, href: "/once", label: "Mi 11", emoji: "⚽" },
   { id: "perfil" as NavTab, href: "/perfil", label: "Perfil", emoji: "👤" },
 ];
 
@@ -48,7 +49,7 @@ export default function BottomNav({ active }: BottomNavProps) {
       }}
       aria-label="Navegación principal"
     >
-      {/* Left two tabs */}
+      {/* Left two tabs: Inicio, Mercado */}
       {LEFT_TABS.map((tab) => {
         const isActive = active === tab.id;
         return (
@@ -75,26 +76,26 @@ export default function BottomNav({ active }: BottomNavProps) {
         );
       })}
 
-      {/* Center: Mi Once — elevated FAB */}
+      {/* Center: Álbum — elevated FAB */}
       <div className="flex-1 flex flex-col items-center">
         <Link
-          href="/once"
-          aria-label="Mi Once"
-          aria-current={active === "once" ? "page" : undefined}
+          href="/album"
+          aria-label="Álbum"
+          aria-current={active === "album" ? "page" : undefined}
           style={{
             marginTop: -30,
             width: 58,
             height: 58,
             borderRadius: "50%",
             background:
-              active === "once"
+              active === "album"
                 ? `linear-gradient(135deg, ${GOLD}, #e6b800)`
                 : GREEN,
             boxShadow:
-              active === "once"
+              active === "album"
                 ? `0 0 0 3px ${GOLD}55, 0 8px 20px -4px rgba(244,200,74,0.5)`
                 : "0 6px 16px -4px rgba(0,0,0,0.25)",
-            border: `1px solid ${active === "once" ? GOLD : "#005a3c"}`,
+            border: `1px solid ${active === "album" ? GOLD : "#005a3c"}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -104,21 +105,21 @@ export default function BottomNav({ active }: BottomNavProps) {
           }}
         >
           <span className="text-2xl leading-none" aria-hidden="true">
-            ⚽
+            📕
           </span>
         </Link>
         <span
           className="text-[0.6rem] mt-1"
           style={{
-            fontWeight: active === "once" ? 800 : 700,
-            color: active === "once" ? GOLD : INACTIVE,
+            fontWeight: active === "album" ? 800 : 700,
+            color: active === "album" ? GOLD : INACTIVE,
           }}
         >
-          Mi Once
+          Álbum
         </span>
       </div>
 
-      {/* Right two tabs */}
+      {/* Right two tabs: Mi 11, Perfil */}
       {RIGHT_TABS.map((tab) => {
         const isActive = active === tab.id;
         return (
