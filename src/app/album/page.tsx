@@ -162,13 +162,6 @@ export default function AlbumPage() {
       stickers = stickers.filter((s) => s.rarity_tier === "legend");
     }
 
-    if (typeof window !== "undefined") {
-      console.log(`[ALBUM_FILTER] cat=${category} tab=${tab} in=${catalog.length} out=${stickers.length} t=${Date.now()}`);
-      if (stickers.length <= 20) {
-        console.log(`[ALBUM_FILTER_RESULT] ids=${stickers.slice(0,5).map(s=>s.id).join(',')}`);
-      }
-    }
-
     // Search filter — accent-insensitive
     if (search.trim()) {
       const q = normalize(search.trim());
@@ -224,10 +217,6 @@ export default function AlbumPage() {
 
   // ── Loading ──────────────────────────────────────────────────────────────────
 
-  if (typeof window !== "undefined") {
-    console.log(`[ALBUM_LOADING_CHECK] loading=${loading} cat=${category} t=${Date.now()}`);
-  }
-
   if (loading) {
     return (
       <div className="flex-1 flex items-center justify-center home-dark">
@@ -243,9 +232,6 @@ export default function AlbumPage() {
   }
 
   const teamGroups = groupStickersByTeam(filteredStickers);
-  if (typeof window !== "undefined") {
-    console.log(`[ALBUM_RENDER] fs=${filteredStickers.length} tg=${teamGroups.length} cat=${category} loading=${loading} t=${Date.now()}`);
-  }
 
   return (
     <div
