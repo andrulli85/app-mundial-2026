@@ -169,6 +169,20 @@ export default function AlbumPage() {
   const owned = catalog.filter((s) => (counts[s.id] ?? 0) >= 1).length;
   const dupes = catalog.filter((s) => (counts[s.id] ?? 0) >= 2).length;
 
+  // Per-team completion stats from the FULL catalog (not the filtered view),
+  // so "X / 20" stays consistent regardless of active tab or search.
+  const teamStats = useMemo(() => {
+    const map = new Map<string, { owned: number; total: number }>();
+    for (const sticker of catalog) {
+      const code = sticker.team_code || "_PANINI";
+      const m = map.get(code) ?? { owned: 0, total: 0 };
+      m.total++;
+      if ((counts[sticker.id] ?? 0) >= 1) m.owned++;
+      map.set(code, m);
+    }
+    return map;
+  }, [catalog, counts]);
+
   const tabs: { id: Tab; label: string; count?: number }[] = [
     { id: "todo",      label: "Todo",      count: total },
     { id: "tengo",     label: "Tengo",     count: owned },
@@ -400,7 +414,7 @@ export default function AlbumPage() {
           </div>
         ) : category === "grupos" ? (
           /* Grupos view: group headers (A–L) above team sections */
-          <GroupsView groups={teamGroups} counts={counts} onTap={handleTap} />
+          <GroupsView groups={teamGroups} counts={counts} onTap={handleTap} teamStats={teamStats} />
         ) : (
           /* Default view: flat team sections */
           teamGroups.map((group) => (
@@ -408,6 +422,8 @@ export default function AlbumPage() {
               <TeamHeader
                 entry={group.catalogEntry}
                 teamColor={group.teamColor}
+                owned={teamStats.get(group.team_code)?.owned ?? 0}
+                total={teamStats.get(group.team_code)?.total ?? group.stickers.length}
               />
               <div
                 className="grid gap-1.5 mb-4"
@@ -441,9 +457,10 @@ interface GroupsViewProps {
   groups: TeamGroup[];
   counts: Record<string, number>;
   onTap: (stickerId: string) => void;
+  teamStats: Map<string, { owned: number; total: number }>;
 }
 
-function GroupsView({ groups, counts, onTap }: GroupsViewProps) {
+function GroupsView({ groups, counts, onTap, teamStats }: GroupsViewProps) {
   // Build a map: FIFA group letter → TeamGroup[]
   const groupMap: Record<string, TeamGroup[]> = {};
   for (const tg of groups) {
@@ -473,7 +490,12 @@ function GroupsView({ groups, counts, onTap }: GroupsViewProps) {
           {/* Teams inside this group */}
           {groupMap[g].map((tg) => (
             <section key={tg.team_code} aria-label={tg.display_name} data-testid={`team-section-${tg.team_code}`}>
-              <TeamHeader entry={tg.catalogEntry} teamColor={tg.teamColor} />
+              <TeamHeader
+                  entry={tg.catalogEntry}
+                  teamColor={tg.teamColor}
+                  owned={teamStats.get(tg.team_code)?.owned ?? 0}
+                  total={teamStats.get(tg.team_code)?.total ?? tg.stickers.length}
+                />
               <div
                 className="grid gap-1.5 mb-4"
                 style={{ gridTemplateColumns: "repeat(5, minmax(0, 1fr))" }}
