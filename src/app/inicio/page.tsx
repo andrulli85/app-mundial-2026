@@ -30,7 +30,6 @@ import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import BottomNav from "@/components/BottomNav";
-import SeleccionFavoritaCard from "@/components/SeleccionFavoritaCard";
 import Coachmark from "@/components/Coachmark";
 
 // ── Mocked constants (Phase 1) ────────────────────────────────────────────────
@@ -437,12 +436,8 @@ export default function InicioPage() {
         <div className="px-4 flex flex-col gap-5 max-w-lg mx-auto pb-4">
 
           {/* -------------------------------------------------------------- */}
-          {/* Selección Favorita (above Carta de la semana — Fase 3)           */}
-          {/* -------------------------------------------------------------- */}
-          <SeleccionFavoritaCard compact />
-
-          {/* -------------------------------------------------------------- */}
           {/* Carta de la semana (replaces "SOBRE LEGENDARIO" hero)            */}
+          {/* Selección Favorita moved to /album (Fase 2.5, 2026-06-01)        */}
           {/* -------------------------------------------------------------- */}
           <CartaSemanaHero sticker={featuredSticker} />
 

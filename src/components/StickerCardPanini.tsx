@@ -14,6 +14,7 @@
  *   showXBadge   — override: force-show the ×N badge regardless of dup count
  *   count        — how many copies the user owns (drives ×N badge + owned border)
  *   favorited    — shows ⭐ in top-right corner when true
+ *   posColor     — position-coded border color (Fase 2.5); renders as inset ring
  */
 
 import Image from "next/image";
@@ -63,6 +64,7 @@ export interface StickerCardPaniniProps {
   showXBadge?: boolean;
   count?: number;
   favorited?: boolean;
+  posColor?: string;
 }
 
 export default function StickerCardPanini({
@@ -74,6 +76,7 @@ export default function StickerCardPanini({
   showXBadge = false,
   count = 0,
   favorited = false,
+  posColor,
 }: StickerCardPaniniProps) {
   const dims = DIMS[size];
   const accent = getAccent(sticker.team);
@@ -97,9 +100,19 @@ export default function StickerCardPanini({
   // Owned+duplicate badge (top-left, dark pill with gold border)
   const dupFontSize = size === "sm" ? 9 : 10;
 
-  // Gold ring for selected/favorite
-  const boxShadowSelected = "0 0 0 3px var(--gold, #C0A85E), var(--sh-3, 0 8px 24px rgba(0,0,0,0.5))";
-  const boxShadowBase = "var(--sh-2, 0 4px 12px rgba(0,0,0,0.35))";
+  // Gold ring for selected/favorite; position-coded border underneath
+  // posColor ring: 0 0 0 3px <posColor>  (outermost)
+  // selected gold ring: 0 0 0 6px var(--gold) when posColor is also present
+  const posShadow = posColor ? `0 0 0 3px ${posColor}` : "";
+  const goldRing = selected
+    ? (posColor
+        ? `0 0 0 6px var(--gold, #C0A85E), var(--sh-3, 0 8px 24px rgba(0,0,0,0.5))`
+        : `0 0 0 3px var(--gold, #C0A85E), var(--sh-3, 0 8px 24px rgba(0,0,0,0.5))`)
+    : "var(--sh-2, 0 4px 12px rgba(0,0,0,0.35))";
+  const boxShadowSelected = posShadow ? `${posShadow}, ${goldRing}` : goldRing;
+  const boxShadowBase = posShadow
+    ? `${posShadow}, var(--sh-2, 0 4px 12px rgba(0,0,0,0.35))`
+    : "var(--sh-2, 0 4px 12px rgba(0,0,0,0.35))";
 
   return (
     <button
@@ -122,6 +135,7 @@ export default function StickerCardPanini({
           ? "linear-gradient(180deg,#2a3036,#1b2024)"
           : "linear-gradient(180deg,#8fe0ef 0%,#6fd0e6 60%,#58c2dc 100%)",
         boxShadow: selected ? boxShadowSelected : boxShadowBase,
+        // posColor border: handled via boxShadow ring above (overflow:hidden-safe)
         transition: "transform .15s var(--ease-pop, cubic-bezier(0.34,1.56,0.64,1))",
         opacity: locked ? 0.5 : 1,
         filter: locked ? "grayscale(0.6)" : "none",

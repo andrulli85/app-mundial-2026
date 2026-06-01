@@ -1,22 +1,27 @@
 "use client";
 
 /**
- * BottomNav — shared 5-tab navigation bar used across all main pages.
+ * BottomNav — shared 5-tab navigation bar (Fase 2.5, 2026-06-01).
  *
- * Tab order (tournament season 2026-06-11+):
- *   Inicio · Puntos · Álbum (CENTER, gold elevated FAB) · Mi 11 · Perfil
+ * Tab order per canonical design (app.jsx lines 28-34):
+ *   Inicio · Mercado · Álbum (CENTER hero pill) · Mi 11 · Perfil
  *
- * "Puntos" → /scoreboard replaces "Mercado" during tournament season.
- * Mercado remains accessible via /mercado deep link.
- * The central "Álbum" button is elevated 30px above the bar with a gold/green
- * accent background and drop shadow, per Fase 1 design spec.
+ * Icons match ICONS map in ui.jsx exactly (Lucide equivalents):
+ *   home  → Home
+ *   trade → ArrowLeftRight
+ *   grid  → Grid3x3
+ *   users → Users
+ *   user  → User
  *
- * Decision (Epic 2 Phase D 2026-06-01): 5-tab symmetry is preserved by using
- * /scoreboard in the Mercado slot. Adding a 6th tab breaks 2+FAB+2 balance.
- * Route /once stays — only the visible label changed ("Mi Once" → "Mi 11").
+ * Hero "Álbum" pill (center):
+ *   - 40×40 rounded-full
+ *   - Inactive: gold border, dark bg
+ *   - Active: var(--foil-gold) gradient bg + glow shadow
+ *   - Icon size 22 active / 23 inactive, strokeWidth 2 / 2.4
  */
 
 import Link from "next/link";
+import { Home, ArrowLeftRight, Grid3x3, Users, User } from "lucide-react";
 
 type NavTab = "inicio" | "album" | "once" | "mercado" | "perfil" | "scoreboard";
 
@@ -24,132 +29,120 @@ interface BottomNavProps {
   active: NavTab;
 }
 
-const LEFT_TABS = [
-  { id: "inicio" as NavTab, href: "/inicio", label: "Inicio", emoji: "📊" },
-  { id: "scoreboard" as NavTab, href: "/scoreboard", label: "Puntos", emoji: "🏆" },
-];
-
-const RIGHT_TABS = [
-  { id: "once" as NavTab, href: "/once", label: "Mi 11", emoji: "⚽" },
-  { id: "perfil" as NavTab, href: "/perfil", label: "Perfil", emoji: "👤" },
-];
-
-const GREEN = "#006847";
 const GOLD = "#F4C84A";
 const INACTIVE = "#9ca3af";
+const ACTIVE_FG = "#f5f5f5";
 
 export default function BottomNav({ active }: BottomNavProps) {
+  const isAlbumActive = active === "album";
+
   return (
     <nav
-      className="flex items-start border-t"
+      aria-label="Navegación principal"
       style={{
-        backgroundColor: "#0d0f13",
-        borderColor: "rgba(255,255,255,0.08)",
-        paddingBottom: "env(safe-area-inset-bottom, 0)",
-        paddingTop: 10,
-        paddingLeft: 6,
-        paddingRight: 6,
         position: "relative",
         zIndex: 40,
+        display: "flex",
+        alignItems: "flex-end",
+        paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 10px)",
+        paddingTop: 10,
+        paddingLeft: 4,
+        paddingRight: 4,
+        background: "linear-gradient(0deg,rgba(7,8,10,0.98) 60%,transparent)",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
       }}
-      aria-label="Navegación principal"
     >
-      {/* Left two tabs: Inicio, Puntos */}
-      {LEFT_TABS.map((tab) => {
-        const isActive = active === tab.id;
-        return (
-          <Link
-            key={tab.id}
-            href={tab.href}
-            className="flex-1 flex flex-col items-center gap-1 py-1"
-            style={{ color: isActive ? GREEN : INACTIVE, textDecoration: "none" }}
-            aria-current={isActive ? "page" : undefined}
-          >
-            <span className="text-xl leading-none" aria-hidden="true">
-              {tab.emoji}
-            </span>
-            <span
-              className="text-[0.6rem] font-semibold"
-              style={{
-                fontWeight: isActive ? 800 : 600,
-                color: isActive ? GREEN : INACTIVE,
-              }}
-            >
-              {tab.label}
-            </span>
-          </Link>
-        );
-      })}
+      {/* Inicio */}
+      <Link
+        href="/inicio"
+        aria-current={active === "inicio" ? "page" : undefined}
+        style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "4px 2px", color: active === "inicio" ? GOLD : INACTIVE, textDecoration: "none" }}
+      >
+        <Home size={23} strokeWidth={active === "inicio" ? 2.4 : 2} />
+        <span style={{ fontSize: 10, fontWeight: active === "inicio" ? 800 : 600, letterSpacing: ".02em", color: active === "inicio" ? GOLD : INACTIVE }}>
+          Inicio
+        </span>
+      </Link>
 
-      {/* Center: Álbum — elevated FAB */}
-      <div className="flex-1 flex flex-col items-center">
+      {/* Mercado */}
+      <Link
+        href="/mercado"
+        aria-current={active === "mercado" ? "page" : undefined}
+        style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "4px 2px", color: active === "mercado" ? GOLD : INACTIVE, textDecoration: "none" }}
+      >
+        <ArrowLeftRight size={23} strokeWidth={active === "mercado" ? 2.4 : 2} />
+        <span style={{ fontSize: 10, fontWeight: active === "mercado" ? 800 : 600, letterSpacing: ".02em", color: active === "mercado" ? GOLD : INACTIVE }}>
+          Mercado
+        </span>
+      </Link>
+
+      {/* Álbum — hero pill */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Link
           href="/album"
           aria-label="Álbum"
-          aria-current={active === "album" ? "page" : undefined}
+          aria-current={isAlbumActive ? "page" : undefined}
           style={{
-            marginTop: -30,
-            width: 58,
-            height: 58,
+            width: 40,
+            height: 40,
             borderRadius: "50%",
-            background:
-              active === "album"
-                ? `linear-gradient(135deg, ${GOLD}, #e6b800)`
-                : GREEN,
-            boxShadow:
-              active === "album"
-                ? `0 0 0 3px ${GOLD}55, 0 8px 20px -4px rgba(244,200,74,0.5)`
-                : "0 6px 16px -4px rgba(0,0,0,0.25)",
-            border: `1px solid ${active === "album" ? GOLD : "#005a3c"}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             textDecoration: "none",
             flexShrink: 0,
             transition: "box-shadow 0.2s",
+            background: isAlbumActive
+              ? `linear-gradient(135deg, ${GOLD}, #d4a017)`
+              : "var(--bg-3, #1a1d22)",
+            border: isAlbumActive ? "none" : `1px solid ${GOLD}`,
+            boxShadow: isAlbumActive
+              ? `0 0 14px -2px ${GOLD}88, 0 4px 12px rgba(0,0,0,0.4)`
+              : "none",
           }}
         >
-          <span className="text-2xl leading-none" aria-hidden="true">
-            📕
-          </span>
+          <Grid3x3
+            size={isAlbumActive ? 22 : 23}
+            strokeWidth={isAlbumActive ? 2 : 2.4}
+            color={isAlbumActive ? "#0d0f13" : GOLD}
+          />
         </Link>
         <span
-          className="text-[0.6rem] mt-1"
           style={{
-            fontWeight: active === "album" ? 800 : 700,
-            color: active === "album" ? GOLD : INACTIVE,
+            fontSize: 10,
+            fontWeight: isAlbumActive ? 800 : 700,
+            letterSpacing: ".02em",
+            marginTop: 4,
+            color: isAlbumActive ? GOLD : ACTIVE_FG,
           }}
         >
           Álbum
         </span>
       </div>
 
-      {/* Right two tabs: Mi 11, Perfil */}
-      {RIGHT_TABS.map((tab) => {
-        const isActive = active === tab.id;
-        return (
-          <Link
-            key={tab.id}
-            href={tab.href}
-            className="flex-1 flex flex-col items-center gap-1 py-1"
-            style={{ color: isActive ? GREEN : INACTIVE, textDecoration: "none" }}
-            aria-current={isActive ? "page" : undefined}
-          >
-            <span className="text-xl leading-none" aria-hidden="true">
-              {tab.emoji}
-            </span>
-            <span
-              className="text-[0.6rem] font-semibold"
-              style={{
-                fontWeight: isActive ? 800 : 600,
-                color: isActive ? GREEN : INACTIVE,
-              }}
-            >
-              {tab.label}
-            </span>
-          </Link>
-        );
-      })}
+      {/* Mi 11 */}
+      <Link
+        href="/once"
+        aria-current={active === "once" ? "page" : undefined}
+        style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "4px 2px", color: active === "once" ? GOLD : INACTIVE, textDecoration: "none" }}
+      >
+        <Users size={23} strokeWidth={active === "once" ? 2.4 : 2} />
+        <span style={{ fontSize: 10, fontWeight: active === "once" ? 800 : 600, letterSpacing: ".02em", color: active === "once" ? GOLD : INACTIVE }}>
+          Mi 11
+        </span>
+      </Link>
+
+      {/* Perfil */}
+      <Link
+        href="/perfil"
+        aria-current={active === "perfil" ? "page" : undefined}
+        style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "4px 2px", color: active === "perfil" ? GOLD : INACTIVE, textDecoration: "none" }}
+      >
+        <User size={23} strokeWidth={active === "perfil" ? 2.4 : 2} />
+        <span style={{ fontSize: 10, fontWeight: active === "perfil" ? 800 : 600, letterSpacing: ".02em", color: active === "perfil" ? GOLD : INACTIVE }}>
+          Perfil
+        </span>
+      </Link>
     </nav>
   );
 }

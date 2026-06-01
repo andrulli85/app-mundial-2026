@@ -1,14 +1,14 @@
 "use client";
 
 /**
- * Album screen — Panini TradingCard style (Fase 2, 2026-06-01).
+ * Album screen — Panini TradingCard style (Fase 2.5, 2026-06-01).
  *
- * Dark theme scoped to this page via .home-dark wrapper.
- * Grid renders <StickerCardPanini> (light celeste BG, giant 26 motif, photo, flag chip, accent name plate).
- *
- * Chips: 🔍 Todos | 🌍 Países | 🏆 Grupos | ✨ Especiales | ⭐ Favoritas
- * Tabs: Todo | Tengo | Me faltan | Repetidas  (gold underline active)
- * "Doradas" chip stays hidden (route /album/doradas still accessible).
+ * Design alignment patch (Fase 2.5):
+ *   Fix 1 — Header: "MI ÁLBUM X/Y · Completado N% · gold progress bar"
+ *   Fix 2 — 3 stat tiles: Favoritas / Dobles / Triples  (replace pill row)
+ *   Fix 3 — SeleccionFavoritaCard moved here from /inicio
+ *   Fix 4 — Chip strip: Todos / Favoritas / Chile / Repetidas  (4 chips)
+ *   Fix 5 — StickerCardPanini outer border = position color (POS_COLORS)
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -20,36 +20,31 @@ import type { Sticker } from "@/lib/catalog";
 import type { StickerEntry } from "@/lib/db";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { TeamCatalogEntry } from "@/lib/team-catalog";
+import { getPosColor } from "@/lib/pos-color";
+import { getFavorites, toggleFavorite } from "@/lib/favorites";
+import { FAV_TEAM } from "@/lib/fav-team";
+import SeleccionFavoritaCard from "@/components/SeleccionFavoritaCard";
 import InstallBanner from "@/components/InstallBanner";
 import BottomNav from "@/components/BottomNav";
 import Coachmark from "@/components/Coachmark";
 import { getPeersWishing } from "@/lib/peer-mock";
+import { Star } from "lucide-react";
 
+// Fase 2.5: 4-chip strip (per screens.jsx line 135)
+type ChipFilter = "todos" | "favoritas" | "chile" | "repetidas";
+
+// Tab bar (Tengo / Me faltan / Todo) — kept for search/nav purposes
 type Tab = "todo" | "tengo" | "faltan" | "repetidas";
-// "hologramas" kept in type for filter logic but hidden from chips (Fase 1 — 2026-06-01)
-type Category = "todos" | "paises" | "grupos" | "especiales" | "legendario" | "hologramas" | "favoritas";
 
-// ---------------------------------------------------------------------------
-// Category chip definitions
-// ---------------------------------------------------------------------------
-
-// Fase 1 chip strip: exactly 5 chips visible — Todos / Países / Grupos / Especiales / Favoritas
-// "💎 Hologramas" — removed per Fase 1 design alignment 2026-06-01 (route /album/hologramas stays in code)
-// "🏆 Campeones"  — removed per Fase 1 design alignment 2026-06-01 (route /album/historia stays in code)
-// "✨ Legendario" → renamed "⭐ Favoritas" (filter logic stays on rarity_tier==="legend" for now — Fase 2 will refine)
-const CATEGORY_CHIPS: { id: Category; label: string }[] = [
-  { id: "todos",      label: "🔍 Todos" },
-  { id: "paises",     label: "🌍 Países" },
-  { id: "grupos",     label: "🏆 Grupos" },
-  { id: "especiales", label: "✨ Especiales" },
-  { id: "favoritas",  label: "⭐ Favoritas" },
+const CHIP_DEFS: { id: ChipFilter; label: string }[] = [
+  { id: "todos",      label: "Todos" },
+  { id: "favoritas",  label: "Favoritas" },
+  { id: "chile",      label: `${FAV_TEAM.flag} ${FAV_TEAM.name}` },
+  { id: "repetidas",  label: "Repetidas" },
 ];
 
-// Hidden doradas route (re-enable by restoring the chip)
-const _DORADAS_CHIP_HREF = "/album/doradas";
-
-// Groups A–L in order
-const FIFA_GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
+// Groups A–L in order (reserved for GroupsView — not active in Fase 2.5)
+// const _FIFA_GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
 
 // ---------------------------------------------------------------------------
 // Team grouping helpers
@@ -103,10 +98,16 @@ export default function AlbumPage() {
   const [counts, setCounts] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState<Tab>("todo");
-  const [nickname, setNickname] = useState("");
-  const [category, setCategory] = useState<Category>("todos");
+  const [_nickname, setNickname] = useState("");
+  const [chip, setChip] = useState<ChipFilter>("todos");
   const [search, setSearch] = useState("");
+  const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [_demandMap, setDemandMap] = useState<Record<string, number>>({});
+
+  // Load favorites from localStorage on mount
+  useEffect(() => {
+    setFavorites(getFavorites());
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -145,30 +146,26 @@ export default function AlbumPage() {
     setCounts((prev) => ({ ...prev, [stickerId]: updated.count }));
   }, []);
 
-  // ---------- Filter pipeline: tab → category → search ----------
+  const handleToggleFav = useCallback((stickerId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleFavorite(stickerId);
+    setFavorites(getFavorites());
+  }, []);
+
+  // ---------- Filter pipeline: chip → tab → search ----------
   const filteredStickers = useMemo(() => {
     let stickers = catalog;
 
-    // Tab filter
-    if (tab === "tengo")     stickers = stickers.filter((s) => (counts[s.id] ?? 0) >= 1);
-    if (tab === "faltan")    stickers = stickers.filter((s) => (counts[s.id] ?? 0) === 0);
-    if (tab === "repetidas") stickers = stickers.filter((s) => (counts[s.id] ?? 0) >= 2);
+    // Chip filter (primary, replaces category system)
+    if (chip === "favoritas")  stickers = stickers.filter((s) => favorites.has(s.id));
+    if (chip === "chile")      stickers = stickers.filter((s) => s.team_code === FAV_TEAM.name || s.team === FAV_TEAM.name);
+    if (chip === "repetidas")  stickers = stickers.filter((s) => (counts[s.id] ?? 0) > 1);
 
-    // Category filter
-    if (category === "paises" || category === "grupos") {
-      stickers = stickers.filter(
-        (s) => s.type !== "fwc" && s.type !== "panini_special" && s.team_code !== "" && s.team_code !== "FWC"
-      );
-    } else if (category === "especiales") {
-      stickers = stickers.filter(
-        (s) => s.type === "fwc" || s.type === "panini_special" || s.team_code === "" || s.team_code === "FWC"
-      );
-    } else if (category === "legendario" || category === "favoritas") {
-      // "favoritas" is the Fase 1 rename of "legendario" — filter stays on rarity_tier==="legend"
-      stickers = stickers.filter((s) => s.rarity_tier === "legend");
-    } else if (category === "hologramas") {
-      // "hologramas" chip is hidden from UI (Fase 1) but filter preserved for direct URL access
-      stickers = stickers.filter((s) => s.rarity_tier === "hologram");
+    // Tab sub-filter (only relevant for "todos" chip to further narrow)
+    if (chip === "todos") {
+      if (tab === "tengo")     stickers = stickers.filter((s) => (counts[s.id] ?? 0) >= 1);
+      if (tab === "faltan")    stickers = stickers.filter((s) => (counts[s.id] ?? 0) === 0);
+      if (tab === "repetidas") stickers = stickers.filter((s) => (counts[s.id] ?? 0) >= 2);
     }
 
     // Search filter — accent-insensitive
@@ -190,15 +187,15 @@ export default function AlbumPage() {
     }
 
     return stickers;
-  }, [catalog, counts, tab, category, search]);
+  }, [catalog, counts, tab, chip, search, favorites]);
 
-  // Stats (always from full catalog)
+  // Stats (always from full catalog / all counts)
   const total = catalog.length;
   const owned = catalog.filter((s) => (counts[s.id] ?? 0) >= 1).length;
-  const dupes = catalog.filter((s) => (counts[s.id] ?? 0) >= 2).length;
+  const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
 
-  // x1/x2/x3+ summary counts for the pill row
-  const uniqueOwned = catalog.filter((s) => (counts[s.id] ?? 0) === 1).length;
+  // Fix 2 stat tiles: Favoritas / Dobles / Triples
+  const favCount = favorites.size;
   const dupX2 = catalog.filter((s) => (counts[s.id] ?? 0) === 2).length;
   const dupX3plus = catalog.filter((s) => (counts[s.id] ?? 0) >= 3).length;
 
@@ -218,18 +215,8 @@ export default function AlbumPage() {
     { id: "todo",      label: "Todo",      count: total },
     { id: "tengo",     label: "Tengo",     count: owned },
     { id: "faltan",    label: "Me faltan", count: total - owned },
-    { id: "repetidas", label: "Repetidas", count: dupes },
+    { id: "repetidas", label: "Repetidas", count: catalog.filter((s) => (counts[s.id] ?? 0) >= 2).length },
   ];
-
-  const categoryLabel: Record<Category, string> = {
-    todos:      "el álbum",
-    paises:     "Países",
-    grupos:     "Grupos",
-    especiales: "Especiales",
-    legendario: "Favoritas",
-    favoritas:  "Favoritas",
-    hologramas: "Hologramas",
-  };
 
   // ── Loading ──────────────────────────────────────────────────────────────────
 
@@ -255,62 +242,60 @@ export default function AlbumPage() {
       data-testid="album-dark-root"
     >
       {/* ------------------------------------------------------------------ */}
-      {/* Header — dark + gold accent                                         */}
+      {/* Fix 1 — Header: MI ÁLBUM X/Y · Completado N% · gold progress bar    */}
       {/* ------------------------------------------------------------------ */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3"
+        className="sticky top-[54px] z-20 px-4 pb-3 pt-4"
         style={{
           backgroundColor: "#111111",
           borderBottom: "1px solid rgba(250,204,21,0.2)",
           boxShadow: "0 1px 12px rgba(0,0,0,0.6)",
         }}
+        data-testid="album-header"
       >
-        <div className="flex items-center justify-between mb-2">
+        {/* Title row */}
+        <div className="flex items-flex-end justify-between mb-2">
           <div>
-            <h1
-              className="text-lg font-black leading-none uppercase tracking-wider"
-              style={{
-                background: "linear-gradient(135deg, #fde047 0%, #facc15 50%, #f59e0b 100%)",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-              }}
+            <div
+              className="text-[12px] font-extrabold uppercase tracking-widest"
+              style={{ color: "#F4C84A" }}
+              data-testid="album-title"
             >
-              MI ÁLBUM
-            </h1>
-            <p className="text-xs mt-0.5" style={{ color: "#9ca3af" }}>
-              {nickname} · {owned}/{total} figuritas
-            </p>
+              Mi álbum
+            </div>
+            <div className="flex items-baseline gap-0.5" style={{ fontFamily: "var(--font-display, 'Impact', sans-serif)", lineHeight: 1 }}>
+              <span className="text-3xl font-black" style={{ color: "#f5f5f5" }} data-testid="album-owned-count">
+                {owned}
+              </span>
+              <span className="text-xl" style={{ color: "#6b7280" }} data-testid="album-total-count">
+                /{total}
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <a
-              href="/stats"
-              className="rounded-full p-2 transition-colors"
-              style={{ color: "#9ca3af" }}
-              aria-label="Ver estadísticas"
-              title="Estadísticas"
+          <div className="text-right">
+            <div className="text-[11px] font-semibold" style={{ color: "#6b7280" }}>
+              Completado
+            </div>
+            <div
+              className="font-extrabold text-2xl leading-none"
+              style={{ color: "#a3e635", fontFamily: "var(--font-stat, 'Roboto Mono', monospace)" }}
+              data-testid="album-pct"
             >
-              <span className="text-xl leading-none" aria-hidden="true">📊</span>
-            </a>
-            <a
-              href="/trade"
-              className="rounded-full px-4 py-1.5 text-sm font-bold"
-              style={{ backgroundColor: "#facc15", color: "#0a0a0a" }}
-            >
-              Intercambiar
-            </a>
+              {pct}%
+            </div>
           </div>
         </div>
 
-        {/* Progress bar — gold */}
+        {/* Gold gradient progress bar */}
         <div
-          className="w-full h-1.5 rounded-full overflow-hidden"
-          style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+          className="w-full rounded-full overflow-hidden"
+          style={{ height: 8, backgroundColor: "rgba(255,255,255,0.08)" }}
+          data-testid="album-progress-bar"
         >
           <div
             className="h-full rounded-full transition-all duration-300"
             style={{
-              width: total > 0 ? `${(owned / total) * 100}%` : "0%",
+              width: total > 0 ? `${pct}%` : "0%",
               background: "linear-gradient(90deg, #facc15, #f59e0b)",
             }}
           />
@@ -320,36 +305,62 @@ export default function AlbumPage() {
       <InstallBanner />
 
       {/* ------------------------------------------------------------------ */}
-      {/* x1/x2/x3+ summary pill row                                          */}
+      {/* Fix 2 — 3 stat tiles: ⭐ Favoritas / ×2 Dobles / ×3+ Triples       */}
       {/* ------------------------------------------------------------------ */}
       <div
-        className="flex items-center justify-center gap-3 px-4 py-2"
+        className="grid grid-cols-3 gap-2 px-4 py-3"
         style={{ backgroundColor: "#0a0a0a" }}
-        data-testid="dup-summary-row"
+        data-testid="stat-tiles"
       >
-        <span className="text-xs font-semibold" style={{ color: "#d1d5db" }}>
-          Únicas <span style={{ color: "#f5f5f5", fontWeight: 700 }}>{uniqueOwned}</span>
-        </span>
-        <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
-        <span className="text-xs font-semibold" style={{ color: "#d1d5db" }}>
-          ×2: <span style={{ color: "#C0A85E", fontWeight: 700 }}>{dupX2}</span>
-        </span>
-        <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
-        <span className="text-xs font-semibold" style={{ color: "#d1d5db" }}>
-          ×3+: <span style={{ color: "#C0A85E", fontWeight: 700 }}>{dupX3plus}</span>
-        </span>
+        {[
+          { label: "Favoritas", value: favCount,    prefix: "⭐" },
+          { label: "Dobles",    value: dupX2,        prefix: "×2" },
+          { label: "Triples",   value: dupX3plus,    prefix: "×3+" },
+        ].map(({ label, value, prefix }) => (
+          <div
+            key={label}
+            className="flex flex-col items-center py-2.5 px-2 rounded-xl"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(250,204,21,0.25)",
+              textAlign: "center",
+            }}
+            data-testid={`stat-tile-${label.toLowerCase()}`}
+          >
+            <span
+              className="font-extrabold leading-none"
+              style={{ fontSize: 18, color: "#F4C84A", fontFamily: "var(--font-stat, 'Roboto Mono', monospace)" }}
+            >
+              {value}
+            </span>
+            <span
+              className="font-bold mt-1"
+              style={{ fontSize: 10, color: "#6b7280" }}
+            >
+              {prefix} · {label}
+            </span>
+          </div>
+        ))}
       </div>
 
       {/* ------------------------------------------------------------------ */}
-      {/* Search + Category chips                                              */}
+      {/* Fix 3 — Selección Favorita Chile FIJA                               */}
+      {/* (moved from /inicio — per screens.jsx line 174-195)                  */}
+      {/* ------------------------------------------------------------------ */}
+      <div className="px-4 pb-2" style={{ backgroundColor: "#0a0a0a" }} data-testid="seleccion-favorita-section">
+        <SeleccionFavoritaCard compact />
+      </div>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* Fix 4 — Chip strip: 4 chips (Todos / Favoritas / Chile / Repetidas)  */}
       {/* ------------------------------------------------------------------ */}
       <div
-        className="sticky top-[126px] z-10 px-3 pt-2.5 pb-2"
+        className="sticky top-[54px] z-10 px-3 pt-2.5 pb-2"
         style={{
           backgroundColor: "#0a0a0a",
           borderBottom: "1px solid rgba(255,255,255,0.06)",
         }}
-        data-testid="search-chips-bar"
+        data-testid="chip-strip"
       >
         {/* Search input */}
         <div className="relative mb-2">
@@ -363,7 +374,7 @@ export default function AlbumPage() {
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar Estados Unidos / Modric / FWC…"
+            placeholder="Buscar jugador, equipo, código…"
             aria-label="Buscar figuritas"
             data-testid="search-input"
             className="w-full rounded-full pl-9 pr-4 py-2.5 outline-none transition-shadow"
@@ -394,23 +405,23 @@ export default function AlbumPage() {
           )}
         </div>
 
-        {/* Category chip strip */}
+        {/* 4 chips — Todos / Favoritas / Chile / Repetidas */}
         <div
           className="flex gap-2 overflow-x-auto pb-0.5"
           style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}
           role="group"
-          aria-label="Filtrar por categoría"
+          aria-label="Filtrar figuritas"
           data-testid="category-chips"
         >
-          {CATEGORY_CHIPS.map((chip) => {
-            const isSelected = category === chip.id;
+          {CHIP_DEFS.map((c) => {
+            const isSelected = chip === c.id;
             return (
               <button
-                key={chip.id}
-                onClick={() => setCategory(chip.id)}
-                data-testid={`chip-${chip.id}`}
+                key={c.id}
+                onClick={() => setChip(c.id)}
+                data-testid={`chip-${c.id}`}
                 aria-pressed={isSelected}
-                className="flex-shrink-0 rounded-full px-4 font-semibold transition-all"
+                className="flex-shrink-0 rounded-full px-4 font-semibold transition-all flex items-center gap-1.5"
                 style={{
                   scrollSnapAlign: "start",
                   height: "36px",
@@ -422,69 +433,72 @@ export default function AlbumPage() {
                   fontWeight: isSelected ? 700 : 500,
                 }}
               >
-                {chip.label}
+                {c.id === "favoritas" && (
+                  <Star
+                    size={13}
+                    strokeWidth={0}
+                    fill={isSelected ? "#0a0a0a" : "#F4C84A"}
+                    style={{ flexShrink: 0 }}
+                    aria-hidden
+                  />
+                )}
+                {c.label}
               </button>
             );
           })}
-          {/* Campeones chip — hidden per Fase 1 design alignment 2026-06-01.
-               Route /album/historia stays in code but is unlinked from main chip strip.
-               Re-enable by restoring the <a> block below:
-          <a href="/album/historia" data-testid="chip-campeones" ...>🏆 Campeones</a>
-          */}
-          {/* Doradas chip — hidden from chip strip (route /album/doradas still accessible).
-               Andy paused doradas focus 2026-06-01; re-enable by restoring this block. */}
-          {/* <a href={_DORADAS_CHIP_HREF} data-testid="chip-doradas" ... >Doradas ✨</a> */}
         </div>
       </div>
 
       {/* ------------------------------------------------------------------ */}
-      {/* Tab bar                                                              */}
+      {/* Tab bar (shows only under "Todos" chip — full sub-filter)            */}
       {/* ------------------------------------------------------------------ */}
-      <nav
-        className="sticky top-[218px] z-10 flex"
-        style={{
-          backgroundColor: "#0a0a0a",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
-        }}
-        data-testid="tab-bar"
-      >
-        {tabs.map((t) => (
-          <button
-            key={t.id}
-            onClick={() => setTab(t.id)}
-            data-testid={`tab-${t.id}`}
-            className="flex-1 py-2.5 text-xs font-semibold transition-colors relative"
-            style={{
-              color: tab === t.id ? "#facc15" : "#6b7280",
-            }}
-          >
-            {t.label}
-            {t.count !== undefined && (
-              <span className="ml-1 text-[0.6rem] opacity-70">
-                ({t.count})
-              </span>
-            )}
-            {tab === t.id && (
-              <div
-                className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                style={{ background: "linear-gradient(90deg, #facc15, #f59e0b)" }}
-              />
-            )}
-          </button>
-        ))}
-      </nav>
+      {chip === "todos" && (
+        <nav
+          className="sticky top-[126px] z-10 flex"
+          style={{
+            backgroundColor: "#0a0a0a",
+            borderBottom: "1px solid rgba(255,255,255,0.06)",
+          }}
+          data-testid="tab-bar"
+        >
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              data-testid={`tab-${t.id}`}
+              className="flex-1 py-2.5 text-xs font-semibold transition-colors relative"
+              style={{
+                color: tab === t.id ? "#facc15" : "#6b7280",
+              }}
+            >
+              {t.label}
+              {t.count !== undefined && (
+                <span className="ml-1 text-[0.6rem] opacity-70">
+                  ({t.count})
+                </span>
+              )}
+              {tab === t.id && (
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
+                  style={{ background: "linear-gradient(90deg, #facc15, #f59e0b)" }}
+                />
+              )}
+            </button>
+          ))}
+        </nav>
+      )}
 
       {/* ------------------------------------------------------------------ */}
-      {/* Sticker grid                                                         */}
+      {/* Fix 5 — Sticker grid with position-coded borders                     */}
       {/* ------------------------------------------------------------------ */}
-      <main className="flex-1 px-2 py-3" data-testid="sticker-grid" key={category}>
+      <main className="flex-1 px-2 py-3" data-testid="sticker-grid" key={chip}>
         {filteredStickers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16" style={{ color: "#6b7280" }}>
             {search.trim() ? (
               <>
                 <p className="text-4xl mb-3" aria-hidden="true">🔍</p>
                 <p className="text-sm font-medium text-center px-4" style={{ color: "#9ca3af" }}>
-                  No encontramos &ldquo;{search}&rdquo; en {categoryLabel[category]}
+                  No encontramos &ldquo;{search}&rdquo;
                 </p>
                 <button
                   onClick={() => setSearch("")}
@@ -497,41 +511,72 @@ export default function AlbumPage() {
             ) : (
               <>
                 <p className="text-4xl mb-3" aria-hidden="true">
-                  {tab === "tengo" ? "📭" : tab === "repetidas" ? "📋" : "📦"}
+                  {chip === "favoritas" ? "⭐" : chip === "repetidas" ? "📋" : "📦"}
                 </p>
                 <p className="text-sm font-medium" style={{ color: "#9ca3af" }}>
-                  {tab === "tengo"
-                    ? "Todavía no tenés ninguna"
-                    : tab === "repetidas"
+                  {chip === "favoritas"
+                    ? "Todavía no marcaste favoritas"
+                    : chip === "repetidas"
                     ? "No tenés repetidas por ahora"
                     : "No hay figuritas para mostrar"}
                 </p>
               </>
             )}
           </div>
-        ) : category === "grupos" ? (
-          <GroupsView groups={teamGroups} counts={counts} onTap={handleTap} teamStats={teamStats} />
         ) : (
           teamGroups.map((group) => (
             <section key={group.team_code} aria-label={group.display_name} data-testid={`team-section-${group.team_code}`}>
-              {/* Dark-themed team header */}
               <DarkTeamHeader
                 entry={group.catalogEntry}
                 teamColor={group.teamColor}
                 owned={teamStats.get(group.team_code)?.owned ?? 0}
                 total={teamStats.get(group.team_code)?.total ?? group.stickers.length}
               />
-              <div className="grid grid-cols-3 gap-2 mb-4 md:grid-cols-5 lg:grid-cols-6">
-                {group.stickers.map((sticker) => (
-                  <StickerCardPanini
-                    key={sticker.id}
-                    sticker={sticker}
-                    count={counts[sticker.id] ?? 0}
-                    onClick={() => handleTap(sticker.id)}
-                    favorited={sticker.rarity_tier === "legend"}
-                    size="md"
-                  />
-                ))}
+              <div className="grid grid-cols-3 gap-3 mb-4 md:grid-cols-5 lg:grid-cols-6">
+                {group.stickers.map((sticker) => {
+                  const isFav = favorites.has(sticker.id);
+                  const posColor = getPosColor(sticker);
+                  return (
+                    <div key={sticker.id} className="relative" data-sticker-pos-color={posColor}>
+                      <StickerCardPanini
+                        sticker={sticker}
+                        count={counts[sticker.id] ?? 0}
+                        onClick={() => handleTap(sticker.id)}
+                        favorited={isFav}
+                        posColor={posColor}
+                        size="md"
+                      />
+                      {/* Favorite toggle — shown on owned stickers */}
+                      {(counts[sticker.id] ?? 0) > 0 && (
+                        <button
+                          onClick={(e) => handleToggleFav(sticker.id, e)}
+                          aria-label={isFav ? "Quitar de favoritas" : "Añadir a favoritas"}
+                          data-testid={`fav-btn-${sticker.id}`}
+                          className="absolute flex items-center justify-center"
+                          style={{
+                            top: 7,
+                            left: 7,
+                            width: 26,
+                            height: 26,
+                            borderRadius: 99,
+                            border: "none",
+                            cursor: "pointer",
+                            zIndex: 5,
+                            background: "rgba(7,8,10,0.6)",
+                            backdropFilter: "blur(4px)",
+                          }}
+                        >
+                          <Star
+                            size={14}
+                            strokeWidth={isFav ? 0 : 2}
+                            fill={isFav ? "#F4C84A" : "none"}
+                            color={isFav ? "#F4C84A" : "#6b7280"}
+                          />
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </section>
           ))
@@ -588,72 +633,5 @@ function DarkTeamHeader({ entry, teamColor, owned, total }: DarkTeamHeaderProps)
         />
       </div>
     </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// GroupsView — renders A-L group headers with teams nested inside
-// ---------------------------------------------------------------------------
-
-interface GroupsViewProps {
-  groups: TeamGroup[];
-  counts: Record<string, number>;
-  onTap: (stickerId: string) => void;
-  teamStats: Map<string, { owned: number; total: number }>;
-}
-
-function GroupsView({ groups, counts, onTap, teamStats }: GroupsViewProps) {
-  const groupMap: Record<string, TeamGroup[]> = {};
-  for (const tg of groups) {
-    const g = tg.group;
-    if (!groupMap[g]) groupMap[g] = [];
-    groupMap[g].push(tg);
-  }
-
-  const visibleGroups = FIFA_GROUPS.filter((g) => groupMap[g]?.length > 0);
-
-  return (
-    <>
-      {visibleGroups.map((g) => (
-        <section key={g} aria-label={`Grupo ${g}`} data-testid={`group-section-${g}`}>
-          {/* Group header */}
-          <div
-            className="flex items-center gap-2 px-2 py-1.5 mt-3 mb-1 rounded"
-            style={{
-              backgroundColor: "rgba(250,204,21,0.1)",
-              border: "1px solid rgba(250,204,21,0.2)",
-            }}
-            data-testid={`group-header-${g}`}
-          >
-            <span className="text-xs font-black tracking-widest" style={{ color: "#facc15" }}>
-              GRUPO {g}
-            </span>
-          </div>
-
-          {groupMap[g].map((tg) => (
-            <section key={tg.team_code} aria-label={tg.display_name} data-testid={`team-section-${tg.team_code}`}>
-              <DarkTeamHeader
-                entry={tg.catalogEntry}
-                teamColor={tg.teamColor}
-                owned={teamStats.get(tg.team_code)?.owned ?? 0}
-                total={teamStats.get(tg.team_code)?.total ?? tg.stickers.length}
-              />
-              <div className="grid grid-cols-3 gap-2 mb-4 md:grid-cols-5 lg:grid-cols-6">
-                {tg.stickers.map((sticker) => (
-                  <StickerCardPanini
-                    key={sticker.id}
-                    sticker={sticker}
-                    count={counts[sticker.id] ?? 0}
-                    onClick={() => onTap(sticker.id)}
-                    favorited={sticker.rarity_tier === "legend"}
-                    size="md"
-                  />
-                ))}
-              </div>
-            </section>
-          ))}
-        </section>
-      ))}
-    </>
   );
 }
