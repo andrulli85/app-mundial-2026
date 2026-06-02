@@ -27,6 +27,21 @@ const APP_VERSION = "0.1.0";
 export default function SettingsPage() {
   const router = useRouter();
   const { user, loading: authLoading, signIn: _signIn, signOut } = useAuth();
+
+  // Full logout: Firebase signOut + clear server-side HMAC cookie + clear the
+  // handshake guard so a re-login on the same device works cleanly.
+  async function handleLogout() {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } catch {
+      // Network failure shouldn't block the client-side signOut path.
+    }
+    await signOut();
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("albumix_handshake_attempted");
+    }
+    router.push("/login");
+  }
   const [nickname, setLocalNickname] = useState("");
   const [newNick, setNewNick] = useState("");
   const [nickError, setNickError] = useState("");
@@ -179,12 +194,13 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <button
-                  onClick={signOut}
-                  className="w-full py-2 rounded-xl font-semibold text-sm text-center"
+                  onClick={handleLogout}
+                  className="w-full py-3 rounded-xl font-semibold text-sm text-center transition-opacity active:opacity-70"
                   style={{
-                    backgroundColor: "#f0ece3",
-                    color: "#c8102e",
-                    border: "2px solid #d1c9b8",
+                    backgroundColor: "var(--bg-3)",
+                    color: "var(--red-bright)",
+                    border: "1px solid var(--line-strong)",
+                    minHeight: 44,
                   }}
                 >
                   Cerrar sesión
