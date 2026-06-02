@@ -61,7 +61,7 @@ interface Slot {
 
 const FORMATIONS: Record<FormationKey, Slot[]> = {
   "4-3-3": [
-    { id: "POR0", pos: "POR", x: 50, y: 85 },
+    { id: "POR0", pos: "POR", x: 50, y: 90 },
     { id: "DEF0", pos: "DEF", x: 15, y: 70 },
     { id: "DEF1", pos: "DEF", x: 38, y: 73 },
     { id: "DEF2", pos: "DEF", x: 62, y: 73 },
@@ -74,7 +74,7 @@ const FORMATIONS: Record<FormationKey, Slot[]> = {
     { id: "DEL2", pos: "DEL", x: 78, y: 33 },
   ],
   "4-4-2": [
-    { id: "POR0", pos: "POR", x: 50, y: 85 },
+    { id: "POR0", pos: "POR", x: 50, y: 90 },
     { id: "DEF0", pos: "DEF", x: 15, y: 70 },
     { id: "DEF1", pos: "DEF", x: 38, y: 73 },
     { id: "DEF2", pos: "DEF", x: 62, y: 73 },
@@ -87,7 +87,7 @@ const FORMATIONS: Record<FormationKey, Slot[]> = {
     { id: "DEL1", pos: "DEL", x: 66, y: 32 },
   ],
   "3-5-2": [
-    { id: "POR0", pos: "POR", x: 50, y: 85 },
+    { id: "POR0", pos: "POR", x: 50, y: 90 },
     { id: "DEF0", pos: "DEF", x: 26, y: 72 },
     { id: "DEF1", pos: "DEF", x: 50, y: 74 },
     { id: "DEF2", pos: "DEF", x: 74, y: 72 },
@@ -112,12 +112,12 @@ const LINE_LABEL: Record<Position, string> = {
 
 // ---------------------------------------------------------------------------
 // Position color map (from squad.jsx POS_COLOR; tokens from globals.css)
-// POR: --rarity-icon (#FF3B5C), DEF: --red (#E4002B),
+// POR: --rarity-epic (#B45CFF), DEF: --red (#E4002B),
 // MED: --gold-bright (#FFE17A), DEL: --green (#00A24B)
 // ---------------------------------------------------------------------------
 
 const POS_COLOR: Record<Position, string> = {
-  POR: "var(--rarity-icon)",
+  POR: "var(--rarity-epic)",
   DEF: "var(--red)",
   MED: "var(--gold-bright)",
   DEL: "var(--green)",
@@ -258,6 +258,8 @@ function SquadToken({ player, size = 78, dragging = false, posColor }: SquadToke
         transition: "transform .12s var(--ease-pop)",
         transform: dragging ? "scale(1.08)" : "none",
         flexShrink: 0,
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       {/* Foil ring for icon rarity */}
@@ -303,10 +305,11 @@ function SquadToken({ player, size = 78, dragging = false, posColor }: SquadToke
       </div>
 
       {/* Photo strip — real photo when available, stripe pattern fallback */}
+      {/* Name plate removed from card: now rendered below by renderSlot */}
       <div
         style={{
-          height: 22,
-          margin: "4px 0 3px",
+          flex: 1,
+          margin: "4px 0 0",
           borderRadius: 5,
           position: "relative",
           zIndex: 2,
@@ -330,24 +333,6 @@ function SquadToken({ player, size = 78, dragging = false, posColor }: SquadToke
             }}
           />
         )}
-      </div>
-
-      {/* Name */}
-      <div
-        style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 10.5,
-          lineHeight: 0.95,
-          letterSpacing: ".02em",
-          color: "var(--fg-1)",
-          position: "relative",
-          zIndex: 2,
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-        }}
-      >
-        {player.name}
       </div>
     </div>
   );
@@ -1425,11 +1410,15 @@ export default function SquadPage() {
       const isDragging = drag?.slotId === s.id;
       if (!pid) {
         return (
-          <EmptySlot
-            pos={s.pos}
-            size={size}
-            onClick={() => setPicker({ slotId: s.id, pos: s.pos })}
-          />
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+            <EmptySlot
+              pos={s.pos}
+              size={size}
+              onClick={() => setPicker({ slotId: s.id, pos: s.pos })}
+            />
+            {/* Spacer to match the height of the name plate below filled tokens */}
+            <span style={{ height: 14, display: "block" }} />
+          </div>
         );
       }
       const player = byId(pid);
@@ -1442,9 +1431,30 @@ export default function SquadPage() {
             touchAction: "none",
             cursor: "grab",
             opacity: isDragging ? 0.25 : 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 3,
           }}
         >
           <SquadToken player={player} size={size} posColor={POS_COLOR[s.pos]} dragging={isDragging} />
+          <span
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 11,
+              color: "var(--fg-1)",
+              textTransform: "uppercase",
+              letterSpacing: ".04em",
+              textAlign: "center",
+              maxWidth: size,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              lineHeight: 1.1,
+            }}
+          >
+            {player.name.split(" ").slice(-1)[0]}
+          </span>
         </div>
       );
     },
@@ -1488,14 +1498,15 @@ export default function SquadPage() {
 
   return (
     <div
-      className="flex flex-col flex-1 w-full max-w-lg mx-auto"
+      className="flex flex-col w-full max-w-lg mx-auto"
       style={{ backgroundColor: "var(--bg-1)", color: "var(--fg-1)" }}
     >
       {/* ---- Header ---- */}
+      {/* Note: not sticky — scrolls naturally with page content (Fix 2) */}
       <div
-        className="sticky top-[54px] z-20 px-[18px] pt-4 pb-3"
+        className="px-[18px] pt-4 pb-3"
         style={{
-          background: "linear-gradient(180deg,var(--bg-1) 80%,rgba(13,15,19,0) 100%)",
+          background: "var(--bg-1)",
         }}
       >
         {/* Eyebrow */}
@@ -1687,7 +1698,8 @@ export default function SquadPage() {
       </div>
 
       {/* ---- Main content ---- */}
-      <div className="flex-1 overflow-y-auto px-[18px] pb-4" style={{ paddingTop: 4 }}>
+      {/* overflow-y-auto removed — page scrolls naturally via document flow (Fix 2) */}
+      <div className="px-[18px] pb-28" style={{ paddingTop: 4 }}>
         {tab === "equipo" && (
           <>
             <PitchView slots={slots} renderSlot={renderSlot} />
