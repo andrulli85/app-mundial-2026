@@ -22,7 +22,7 @@ import { applyDomiSeedIfNeeded } from "@/lib/domi-seed";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { TeamCatalogEntry } from "@/lib/team-catalog";
 import { getPosColor } from "@/lib/pos-color";
-import { getFavorites, toggleFavorite } from "@/lib/favorites";
+import { getFavorites } from "@/lib/favorites";
 import { FAV_TEAM } from "@/lib/fav-team";
 import SeleccionFavoritaCard from "@/components/SeleccionFavoritaCard";
 import InstallBanner from "@/components/InstallBanner";
@@ -150,12 +150,6 @@ export default function AlbumPage() {
   const handleTap = useCallback(async (stickerId: string) => {
     const updated = await toggleSticker(stickerId);
     setCounts((prev) => ({ ...prev, [stickerId]: updated.count }));
-  }, []);
-
-  const handleToggleFav = useCallback((stickerId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    toggleFavorite(stickerId);
-    setFavorites(getFavorites());
   }, []);
 
   // ---------- Filter pipeline: chip → tab → search ----------
@@ -556,34 +550,6 @@ export default function AlbumPage() {
                         posColor={posColor}
                         size="sm"
                       />
-                      {/* Favorite toggle — shown on owned stickers */}
-                      {(counts[sticker.id] ?? 0) > 0 && (
-                        <button
-                          onClick={(e) => handleToggleFav(sticker.id, e)}
-                          aria-label={isFav ? "Quitar de favoritas" : "Añadir a favoritas"}
-                          data-testid={`fav-btn-${sticker.id}`}
-                          className="absolute flex items-center justify-center"
-                          style={{
-                            top: 7,
-                            left: 7,
-                            width: 26,
-                            height: 26,
-                            borderRadius: 99,
-                            border: "none",
-                            cursor: "pointer",
-                            zIndex: 5,
-                            background: "rgba(7,8,10,0.6)",
-                            backdropFilter: "blur(4px)",
-                          }}
-                        >
-                          <Star
-                            size={14}
-                            strokeWidth={isFav ? 0 : 2}
-                            fill={isFav ? "#F4C84A" : "none"}
-                            color={isFav ? "#F4C84A" : "#6b7280"}
-                          />
-                        </button>
-                      )}
                     </div>
                   );
                 })}
