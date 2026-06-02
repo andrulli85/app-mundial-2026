@@ -24,7 +24,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronRight, Download, Trophy, Users } from "lucide-react";
+import { ChevronRight, Download } from "lucide-react";
 import {
   getNickname,
   setNickname,
@@ -164,21 +164,6 @@ function LinkRow({
 
       <ChevronRight size={18} color="var(--fg-3)" />
     </a>
-  );
-}
-
-// ── Hairline divider ──────────────────────────────────────────────────────────
-
-function Divider() {
-  return (
-    <div
-      aria-hidden
-      style={{
-        height: 1,
-        margin: "0 16px",
-        background: "var(--line)",
-      }}
-    />
   );
 }
 
@@ -474,29 +459,10 @@ export default function SettingsPage() {
           </section>
         )}
 
-        {/* ── LINKS group (Amigos · Logros · Importar desde otra app) ──────── */}
+        {/* ── LINKS group (Importar desde otra app) ──────────────────────────
+            Amigos + Logros moved to /perfil (social/self-display belongs there;
+            /settings stays focused on config/data actions). */}
         <SettingsCard>
-          {user && (
-            <>
-              <LinkRow
-                href="/friends"
-                icon={<Users size={20} />}
-                title="Amigos"
-                sub="Ver quién está conectado para intercambiar"
-              />
-              <Divider />
-            </>
-          )}
-
-          <LinkRow
-            href="/achievements"
-            icon={<Trophy size={20} />}
-            title="Logros"
-            sub="Tus badges y colecciones desbloqueadas"
-            testId="settings-row-logros"
-          />
-          <Divider />
-
           <LinkRow
             href="/import"
             icon={<Download size={20} />}

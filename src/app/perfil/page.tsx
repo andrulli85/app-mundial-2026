@@ -25,10 +25,10 @@ import {
   BarChart3,
   Map,
   Upload,
-  Download,
   Settings,
   Shield,
   ChevronRight,
+  Users,
 } from "lucide-react";
 import { getNickname, getAllStickers } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
@@ -414,6 +414,12 @@ export default function PerfilPage() {
           sub="Tus 10 cartas más buscadas"
         />
         <ProfileTile
+          href="/friends"
+          icon={<Users size={21} />}
+          title="Amigos"
+          sub="Ver quién está conectado para intercambiar"
+        />
+        <ProfileTile
           href="/achievements"
           icon={<Star size={21} />}
           title="Logros"
@@ -438,12 +444,6 @@ export default function PerfilPage() {
           icon={<Upload size={21} />}
           title="Importar inventario"
           sub="Seed rápido desde lista de Andy"
-        />
-        <ProfileTile
-          href="/import"
-          icon={<Download size={21} />}
-          title="Importar de Figuritas"
-          sub="Trae tu colección desde otra app"
         />
         <ProfileTile
           href="/settings"
