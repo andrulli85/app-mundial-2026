@@ -6,7 +6,7 @@ import { test, expect } from "@playwright/test";
  * Requires ALBUMIX_INVITE_SECRET to be set (gate is inactive without it).
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 
 // Gate tests only run when the secret is configured. Without it, the middleware
 // is a no-op and the redirect will never happen.

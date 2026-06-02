@@ -8,13 +8,13 @@
  *   3. Save screenshot to /tmp/albumix-phase2-<route>.png
  *
  * Viewport: iPhone 15 (390×844)
- * Target: https://app-mundial-2026-lemon.vercel.app
+ * Target: https://albumix-app.vercel.app
  */
 
 import { test, expect } from "@playwright/test";
 import { grantAccess } from "../_invite";
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const NICKNAME = "TestPhase2";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

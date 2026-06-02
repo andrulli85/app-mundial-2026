@@ -21,7 +21,7 @@ function getSecret(): string {
 }
 
 function getBaseUrl(): string {
-  return process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+  return process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 }
 
 /**

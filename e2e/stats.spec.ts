@@ -5,7 +5,7 @@ import { grantAccess } from "./_invite";
  * /stats dashboard — E2E
  *
  * Viewport: iPhone 15 Pro (393×852)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  *
  * Test matrix:
  *  1. Navigate to /stats directly (after onboarding) — empty state visible
@@ -16,7 +16,7 @@ import { grantAccess } from "./_invite";
  *  5. "Grupo A" bar shows 5 / 80 (Mexico is in Group A, 4 teams × 20 = 80)
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "teststats";
 
 test.use({ viewport: { width: 393, height: 852 } });

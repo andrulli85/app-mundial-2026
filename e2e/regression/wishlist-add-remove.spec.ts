@@ -2,7 +2,7 @@
  * Playwright — wishlist add / remove / persistence
  *
  * Viewport: iPhone 15 Pro (393×852)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  *
  * Tests:
  *  1. /wishlist renders — header present
@@ -16,7 +16,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { grantAccess } from "../_invite";
 import { ensureOnboarded } from "../_onboard";
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const WISHLIST_KEY = "albumix.wishlist";
 const NICKNAME = "testwl";
 

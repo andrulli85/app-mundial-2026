@@ -5,7 +5,7 @@ import { grantAccess } from "../_invite";
  * Golden-path regression smoke — hits every major route in one session.
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  *
  * Covered routes:
  *  - Onboarding (3-step tutorial skip + nickname)
@@ -21,7 +21,7 @@ import { grantAccess } from "../_invite";
  *  - /settings     → Cuenta + Logros + Importar rows present
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "regfull";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

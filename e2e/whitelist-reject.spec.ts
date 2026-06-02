@@ -11,7 +11,7 @@ import { test, expect } from "@playwright/test";
  * Requires ALBUMIX_INVITE_SECRET to be set (endpoint returns 500 without it).
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 
 // Gate tests only run when secrets are configured.
 test.skip(!process.env.ALBUMIX_INVITE_SECRET, "ALBUMIX_INVITE_SECRET not set — gate is inactive");

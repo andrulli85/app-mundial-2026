@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { grantAccess } from "./_invite";
 
 // Use the lemon alias which hosts the latest build with /import live
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "testimport";
 
 const FIGURITAS_INPUT = `Figuritas App - Lista

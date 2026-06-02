@@ -5,7 +5,7 @@ import { grantAccess } from "../_invite";
  * Regression spec — FUT-style /album redesign (2026-06-01).
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  *
  * Assertions:
  *  1. /album page has dark background (.home-dark wrapper or dark computed color)
@@ -17,7 +17,7 @@ import { grantAccess } from "../_invite";
  *  7. Screenshot → /tmp/albumix-album-fut.png
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const NICKNAME = "futtest1";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

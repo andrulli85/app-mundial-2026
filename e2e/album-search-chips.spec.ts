@@ -11,10 +11,10 @@ import { grantAccess } from "./_invite";
  *  4. Tap "🏆 Grupos" → group headers (A-L) visible above team headers
  *
  * Viewport: iPhone 15 Pro (393×852)
- * Target: https://app-mundial-2026-lemon.vercel.app
+ * Target: https://albumix-app.vercel.app
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "testchips";
 
 test.use({ viewport: { width: 393, height: 852 } });

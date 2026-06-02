@@ -2,7 +2,7 @@
  * Playwright — Notification bell + /notifications page E2E tests.
  *
  * Viewport: iPhone 15 Pro (393×852)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  *
  * Test matrix (7 checks):
  *  1. TopBar renders on /notifications — bell icon visible
@@ -18,7 +18,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { grantAccess } from "./_invite";
 
 const BASE =
-  process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+  process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const NICKNAME = "testnotifs";
 const STORAGE_KEY = "albumix.notifications";
 

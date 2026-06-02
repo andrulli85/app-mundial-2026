@@ -5,7 +5,7 @@ import { grantAccess } from "../_invite";
  * Phase C regression — /mercado 3-tab marketplace.
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  *
  * Tests:
  *  - /mercado renders with Buscar tab active by default
@@ -16,7 +16,7 @@ import { grantAccess } from "../_invite";
  *  - BottomNav present with Mercado active
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "mercadotest";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

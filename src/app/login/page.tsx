@@ -269,14 +269,8 @@ export default function LoginPage() {
       // user will be set by AuthProvider → the useEffect above fires.
       // On mobile (redirect): page navigates away; on return AuthProvider
       // calls handleRedirectResult and sets the user → useEffect fires.
-    } catch (err) {
-      // Surface the actual Firebase error code so we can diagnose iOS PWA
-      // standalone failures (auth/popup-blocked, auth/operation-not-supported-
-      // in-this-environment, auth/unauthorized-domain, etc).
-      const code = (err as { code?: string })?.code;
-      const message = (err as { message?: string })?.message ?? String(err);
-      const detail = code ? `[${code}]` : `[no-code] ${message.slice(0, 140)}`;
-      setErrorMsg(`No se pudo iniciar sesion. ${detail}`);
+    } catch {
+      setErrorMsg("No se pudo iniciar sesion con Google. Intentá de nuevo.");
       setState("error");
     }
   }

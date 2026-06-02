@@ -13,10 +13,10 @@ import { grantAccess } from "../_invite";
  *  6. Mixed-case "estados unidos"       → USA section visible (case-insensitive)
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "regsearch";
 
 test.use({ viewport: { width: 390, height: 844 } });

@@ -12,7 +12,7 @@ import InviteLinkCard from "@/components/InviteLinkCard";
 import { claimInvite } from "@/lib/friends";
 import { useAuth } from "@/components/AuthProvider";
 
-const BASE_URL = "https://app-mundial-2026-lemon.vercel.app";
+const BASE_URL = "https://albumix-app.vercel.app";
 
 function extractToken(text: string): string | null {
   // Accept both full URL and raw token

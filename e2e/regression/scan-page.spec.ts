@@ -19,7 +19,7 @@
 import { test, expect } from "@playwright/test";
 import { grantAccess } from "../_invite";
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const NICKNAME = "TestScan";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

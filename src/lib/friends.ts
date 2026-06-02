@@ -33,7 +33,7 @@ export interface InviteResult {
   url: string;
 }
 
-const BASE_URL = "https://app-mundial-2026-lemon.vercel.app";
+const BASE_URL = "https://albumix-app.vercel.app";
 const INVITE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 function randomToken(): string {

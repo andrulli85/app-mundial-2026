@@ -9,7 +9,7 @@
 
 import { test, expect, Page } from "@playwright/test";
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 
 // Known sticker IDs in MD-1 mock that have even fifa_player_id → non-zero mock scores
 // These are also in player-mapping.json

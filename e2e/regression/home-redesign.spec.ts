@@ -11,7 +11,7 @@ import { grantAccess } from "../_invite";
  *  - Doradas + Campeones + Hologramas chips removed from /album
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  *
  * Assertions:
  *  1. Post-onboarding lands on /inicio (not /album)
@@ -27,7 +27,7 @@ import { grantAccess } from "../_invite";
  * 11. "SOBRE LEGENDARIO" / "ABRIR SOBRE" text NOT present
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "futdesign1";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

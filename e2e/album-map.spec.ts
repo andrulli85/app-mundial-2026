@@ -12,10 +12,10 @@ import { grantAccess } from "./_invite";
  *  5. Navigate back to /album from back-arrow
  *
  * Viewport: iPhone 15 Pro (393×852)
- * Target: https://app-mundial-2026-lemon.vercel.app
+ * Target: https://albumix-app.vercel.app
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "testmap2026";
 
 test.use({ viewport: { width: 393, height: 852 } });

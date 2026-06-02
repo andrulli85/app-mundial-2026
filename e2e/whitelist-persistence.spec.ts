@@ -5,7 +5,7 @@ import { grantAccess } from "./_invite";
  * whitelist-persistence — access granted via cookie persists across reload and new tab.
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 
 test.use({ viewport: { width: 390, height: 844 } });
 

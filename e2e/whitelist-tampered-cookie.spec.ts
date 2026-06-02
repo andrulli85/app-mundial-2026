@@ -6,7 +6,7 @@ import { setTamperedCookie } from "./_invite";
  * Requires ALBUMIX_INVITE_SECRET to be set (gate is inactive without it).
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 
 // Gate tests only run when secrets are configured.
 test.skip(!process.env.ALBUMIX_INVITE_SECRET, "ALBUMIX_INVITE_SECRET not set — gate is inactive");

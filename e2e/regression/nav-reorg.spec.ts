@@ -10,7 +10,7 @@ import { grantAccess } from "../_invite";
  *   - "Armar mi once" quick action on /inicio removed (replaced by Carta de la semana)
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  *
  * Tests:
  *  - /album renders the 5-tab BottomNav with new Fase 1 order
@@ -20,7 +20,7 @@ import { grantAccess } from "../_invite";
  *  - /once placeholder renders with "Mi 11" heading
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "navtest";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

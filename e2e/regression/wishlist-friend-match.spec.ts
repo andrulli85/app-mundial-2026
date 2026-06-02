@@ -11,7 +11,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { grantAccess } from "../_invite";
 import { ensureOnboarded } from "../_onboard";
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const WISHLIST_KEY = "albumix.wishlist";
 const NOTIF_KEY = "albumix.notifications";
 const NICKNAME = "testwlmatch";

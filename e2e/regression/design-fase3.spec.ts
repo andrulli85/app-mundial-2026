@@ -15,11 +15,11 @@ import * as fs from "fs";
  *  6. Coachmark renders first visit to /inicio + dismisses on click
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   prod alias via BASE_URL env (defaults to app-mundial-2026-lemon.vercel.app)
+ * Target:   prod alias via BASE_URL env (defaults to albumix-app.vercel.app)
  * Screenshots: screenshots-fase3/
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const SS_DIR = path.resolve(__dirname, "../../screenshots-fase3");
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

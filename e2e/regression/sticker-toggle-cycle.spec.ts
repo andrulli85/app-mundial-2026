@@ -8,10 +8,10 @@ import { grantAccess } from "../_invite";
  * confirming IndexedDB writes are durable and the read-on-mount path is correct.
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://app-mundial-2026-lemon.vercel.app
+ * Target:   https://albumix-app.vercel.app
  */
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "regtoggle";
 // A stable sticker ID: MEX 5 (Montes) — always present in the catalog.
 const TARGET_STICKER_ID = "mex-5-montes";

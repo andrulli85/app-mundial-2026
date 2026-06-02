@@ -13,11 +13,11 @@ import * as path from "path";
  *  5. /once still renders dark-theme cards (regression guard — dark BG)
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://app-mundial-2026-lemon.vercel.app (or BASE_URL env)
+ * Target:   https://albumix-app.vercel.app (or BASE_URL env)
  * Screenshots: screenshots-fase2/
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const NICKNAME = "Fase2";
 const SS_DIR = path.resolve(__dirname, "../../screenshots-fase2");
 

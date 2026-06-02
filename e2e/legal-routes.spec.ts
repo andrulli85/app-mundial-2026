@@ -10,10 +10,10 @@ import { grantAccess } from "./_invite";
  *  3. The footer link on /perfil reaches /legal/disclaimer
  *
  * Viewport: iPhone 15 (390×844) to match PWA use-case.
- * Target:   BASE_URL env (defaults to https://app-mundial-2026-lemon.vercel.app)
+ * Target:   BASE_URL env (defaults to https://albumix-app.vercel.app)
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 

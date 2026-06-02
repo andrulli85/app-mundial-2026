@@ -11,7 +11,7 @@ import { grantAccess } from "./_invite";
  * Requires ALBUMIX_INVITE_SECRET to match the deployed secret for cookie HMAC to verify.
  */
 
-const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 const WHITELISTED_EMAIL = "test@example.com";
 
 test.use({ viewport: { width: 390, height: 844 } });

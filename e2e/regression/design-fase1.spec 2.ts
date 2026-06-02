@@ -16,10 +16,10 @@ import { grantAccess } from "../_invite";
  *  9. Screenshots → /tmp/albumix-fase1-inicio.png + /tmp/albumix-fase1-album.png
  *
  * Viewport: iPhone 15 (390×844)
- * Target:   https://albumix-app.vercel.app
+ * Target:   https://app-mundial-2026-lemon.vercel.app
  */
 
-const BASE = process.env.BASE_URL ?? "https://albumix-app.vercel.app";
+const BASE = process.env.BASE_URL ?? "https://app-mundial-2026-lemon.vercel.app";
 const NICKNAME = "Fase1";
 
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });

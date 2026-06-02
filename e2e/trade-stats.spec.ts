@@ -15,7 +15,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import { grantAccess } from "./_invite";
 
-const BASE = "https://app-mundial-2026-lemon.vercel.app";
+const BASE = "https://albumix-app.vercel.app";
 const NICKNAME = "domitest";
 
 test.use({
