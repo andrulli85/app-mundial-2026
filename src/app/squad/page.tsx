@@ -69,9 +69,9 @@ const FORMATIONS: Record<FormationKey, Slot[]> = {
     { id: "MED0", pos: "MED", x: 27, y: 52 },
     { id: "MED1", pos: "MED", x: 50, y: 48 },
     { id: "MED2", pos: "MED", x: 73, y: 52 },
-    { id: "DEL0", pos: "DEL", x: 22, y: 27 },
-    { id: "DEL1", pos: "DEL", x: 50, y: 22 },
-    { id: "DEL2", pos: "DEL", x: 78, y: 27 },
+    { id: "DEL0", pos: "DEL", x: 22, y: 33 },
+    { id: "DEL1", pos: "DEL", x: 50, y: 30 },
+    { id: "DEL2", pos: "DEL", x: 78, y: 33 },
   ],
   "4-4-2": [
     { id: "POR0", pos: "POR", x: 50, y: 85 },
@@ -83,8 +83,8 @@ const FORMATIONS: Record<FormationKey, Slot[]> = {
     { id: "MED1", pos: "MED", x: 38, y: 50 },
     { id: "MED2", pos: "MED", x: 62, y: 50 },
     { id: "MED3", pos: "MED", x: 85, y: 52 },
-    { id: "DEL0", pos: "DEL", x: 34, y: 25 },
-    { id: "DEL1", pos: "DEL", x: 66, y: 25 },
+    { id: "DEL0", pos: "DEL", x: 34, y: 32 },
+    { id: "DEL1", pos: "DEL", x: 66, y: 32 },
   ],
   "3-5-2": [
     { id: "POR0", pos: "POR", x: 50, y: 85 },
@@ -96,8 +96,8 @@ const FORMATIONS: Record<FormationKey, Slot[]> = {
     { id: "MED2", pos: "MED", x: 50, y: 46 },
     { id: "MED3", pos: "MED", x: 67, y: 50 },
     { id: "MED4", pos: "MED", x: 88, y: 54 },
-    { id: "DEL0", pos: "DEL", x: 34, y: 25 },
-    { id: "DEL1", pos: "DEL", x: 66, y: 25 },
+    { id: "DEL0", pos: "DEL", x: 34, y: 32 },
+    { id: "DEL1", pos: "DEL", x: 66, y: 32 },
   ],
 };
 
