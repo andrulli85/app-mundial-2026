@@ -538,7 +538,7 @@ export default function AlbumPage() {
                 owned={teamStats.get(group.team_code)?.owned ?? 0}
                 total={teamStats.get(group.team_code)?.total ?? group.stickers.length}
               />
-              <div className="grid grid-cols-3 gap-3 mb-4 md:grid-cols-5 lg:grid-cols-6">
+              <div className="grid grid-cols-3 gap-x-2 gap-y-4 mb-4 md:grid-cols-5 lg:grid-cols-6">
                 {group.stickers.map((sticker) => {
                   const isFav = favorites.has(sticker.id);
                   const posColor = getPosColor(sticker);
@@ -550,7 +550,7 @@ export default function AlbumPage() {
                         onClick={() => handleTap(sticker.id)}
                         favorited={isFav}
                         posColor={posColor}
-                        size="md"
+                        size="sm"
                       />
                       {/* Favorite toggle — shown on owned stickers */}
                       {(counts[sticker.id] ?? 0) > 0 && (
