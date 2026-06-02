@@ -60,15 +60,15 @@ export default function TopBar({
 
   const containerStyle: React.CSSProperties = {
     position: variant,
-    top: variant === "fixed" ? 0 : 50,
+    top: variant === "fixed" ? 0 : "calc(50px + env(safe-area-inset-top, 0px))",
     left: 0,
     right: 0,
-    height: 54,
+    height: "calc(54px + env(safe-area-inset-top, 0px))",
     zIndex: 40,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "0 18px",
+    padding: "env(safe-area-inset-top, 0px) 18px 0 18px",
     background: BG_GRADIENT,
     backdropFilter: "blur(8px)",
     WebkitBackdropFilter: "blur(8px)",

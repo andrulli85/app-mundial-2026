@@ -44,8 +44,8 @@ export default function TopBarGlobal() {
         // coinsLabel intentionally omitted for all routes — removed per Fase 1 design alignment
         mockNotifCount={isInicio ? INICIO_NOTIF_COUNT : undefined}
       />
-      {/* In-flow spacer: occupies the 54px that TopBar covers with position:fixed */}
-      <div style={{ height: 54, flexShrink: 0 }} aria-hidden="true" />
+      {/* In-flow spacer: occupies the height TopBar covers with position:fixed (54px + safe-area-top) */}
+      <div style={{ height: "calc(54px + env(safe-area-inset-top, 0px))", flexShrink: 0 }} aria-hidden="true" />
     </>
   );
 }

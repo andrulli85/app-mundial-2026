@@ -15,6 +15,7 @@
  */
 
 import { useEffect, useState } from "react";
+import BottomNav from "@/components/BottomNav";
 import {
   Sparkles,
   Star,
@@ -627,6 +628,7 @@ export default function AchievementsPage() {
       {xpToast && (
         <XpToast message={xpToast} onDone={() => setXpToast(null)} />
       )}
+      <BottomNav active="perfil" />
     </div>
   );
 }
