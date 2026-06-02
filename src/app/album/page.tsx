@@ -240,7 +240,11 @@ export default function AlbumPage() {
     );
   }
 
-  const teamGroups = groupStickersByTeam(filteredStickers);
+  const rawTeamGroups = groupStickersByTeam(filteredStickers);
+  const teamGroups = [
+    ...rawTeamGroups.filter(g => !g.group.startsWith("_")),
+    ...rawTeamGroups.filter(g => g.group.startsWith("_")),
+  ];
 
   return (
     <div
