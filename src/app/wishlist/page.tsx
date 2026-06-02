@@ -32,16 +32,16 @@ import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 
 // ---------------------------------------------------------------------------
-// Constants
+// Constants — map legacy vars to design system tokens
 // ---------------------------------------------------------------------------
-const BG = "#0d0f13";
-const SURFACE = "#131519";
-const SURFACE2 = "#1a1d24";
-const GOLD = "#F4C84A";
-const GREEN = "#006847";
-const LIME = "#c2ef4e";
-const RED = "#E4002B";
-const MUTED = "rgba(240,236,227,0.4)";
+const BG = "var(--bg-1)";
+const SURFACE = "var(--bg-2)";
+const SURFACE2 = "var(--bg-3)";
+const GOLD = "var(--gold)";
+const GREEN = "var(--green)";
+const LIME = "#c2ef4e";   // scoring accent — not in design system
+const RED = "var(--red-bright)";
+const MUTED = "var(--fg-3)";
 
 // ---------------------------------------------------------------------------
 // Priority badge
@@ -160,7 +160,7 @@ function StickerPickerModal({ catalog, currentIds, onSelect, onClose }: StickerP
         <div
           style={{
             padding: "16px 16px 8px",
-            borderBottom: `1px solid rgba(255,255,255,0.07)`,
+            borderBottom: "1px solid var(--line)",
             display: "flex",
             alignItems: "center",
             gap: 12,
@@ -176,10 +176,10 @@ function StickerPickerModal({ catalog, currentIds, onSelect, onClose }: StickerP
             style={{
               flex: 1,
               backgroundColor: SURFACE2,
-              border: `1px solid rgba(255,255,255,0.12)`,
+              border: "1px solid var(--line-strong)",
               borderRadius: 10,
               padding: "10px 14px",
-              color: "#f0ece3",
+              color: "var(--fg-1)",
               fontSize: 16, // iOS zoom prevention
               outline: "none",
             }}
@@ -223,7 +223,7 @@ function StickerPickerModal({ catalog, currentIds, onSelect, onClose }: StickerP
                   padding: "10px 16px",
                   background: "none",
                   border: "none",
-                  borderBottom: `1px solid rgba(255,255,255,0.04)`,
+                  borderBottom: "1px solid var(--line)",
                   cursor: already ? "default" : "pointer",
                   opacity: already ? 0.4 : 1,
                   textAlign: "left",
@@ -252,7 +252,7 @@ function StickerPickerModal({ catalog, currentIds, onSelect, onClose }: StickerP
                 </div>
                 {/* Text */}
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "#f0ece3", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fg-1)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {s.display_name}
                   </div>
                   <div style={{ fontSize: 11, color: MUTED, marginTop: 1 }}>
@@ -316,8 +316,8 @@ function WishlistFullModal({ wishlist, catalog, pendingAdd, onSwap, onClose }: F
           padding: "20px 0 env(safe-area-inset-bottom,12px)",
         }}
       >
-        <div style={{ padding: "0 16px 12px", borderBottom: `1px solid rgba(255,255,255,0.07)` }}>
-          <h2 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "#f0ece3" }}>
+        <div style={{ padding: "0 16px 12px", borderBottom: "1px solid var(--line)" }}>
+          <h2 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "var(--fg-1)" }}>
             Tu wishlist está llena
           </h2>
           <p style={{ margin: "6px 0 0", fontSize: 13, color: MUTED }}>
@@ -344,14 +344,14 @@ function WishlistFullModal({ wishlist, catalog, pendingAdd, onSwap, onClose }: F
                   padding: "12px 16px",
                   background: "none",
                   border: "none",
-                  borderBottom: `1px solid rgba(255,255,255,0.05)`,
+                  borderBottom: "1px solid var(--line)",
                   cursor: "pointer",
                   textAlign: "left",
                 }}
               >
                 <PriorityBadge priority={item.priority} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "#f0ece3", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fg-1)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {s?.display_name ?? item.sticker_id}
                   </div>
                   <div style={{ fontSize: 11, color: MUTED, marginTop: 1 }}>
@@ -391,7 +391,7 @@ function WishlistRow({ item, sticker, status, isDragging, onDragStart, onRemove,
         gap: 10,
         padding: "10px 12px",
         backgroundColor: isDragging ? SURFACE2 : SURFACE,
-        borderBottom: `1px solid rgba(255,255,255,0.05)`,
+        borderBottom: "1px solid var(--line)",
         opacity: isDragging ? 0.7 : 1,
         transition: "background-color 0.1s",
       }}
@@ -457,7 +457,7 @@ function WishlistRow({ item, sticker, status, isDragging, onDragStart, onRemove,
 
       {/* Text block */}
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "#f0ece3", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+        <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fg-1)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
           {sticker?.display_name ?? item.sticker_id}
         </div>
         <div style={{ fontSize: 11, color: MUTED, marginTop: 1 }}>
@@ -475,7 +475,7 @@ function WishlistRow({ item, sticker, status, isDragging, onDragStart, onRemove,
         aria-label={`Proponer trade para ${sticker?.display_name ?? item.sticker_id}`}
         style={{
           background: "none",
-          border: `1px solid rgba(255,255,255,0.18)`,
+          border: "1px solid var(--line-strong)",
           borderRadius: 8,
           color: LIME,
           fontSize: 11,
@@ -657,13 +657,13 @@ export default function WishlistPage() {
           top: 54,
           zIndex: 30,
           backgroundColor: BG,
-          borderBottom: `1px solid rgba(255,255,255,0.07)`,
+          borderBottom: "1px solid var(--line)",
           padding: "12px 16px 10px",
         }}
       >
         <h1
           data-testid="wishlist-header"
-          style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#f0ece3", letterSpacing: ".01em" }}
+          style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "var(--fg-1)", letterSpacing: ".01em" }}
         >
           MI WISHLIST{" "}
           <span style={{ color: wishlist.length >= 10 ? GOLD : GREEN }}>
@@ -698,7 +698,7 @@ export default function WishlistPage() {
             }}
           >
             <span style={{ fontSize: 48 }} aria-hidden="true">⭐</span>
-            <p style={{ margin: 0, fontSize: 16, fontWeight: 700, color: "#f0ece3" }}>
+            <p style={{ margin: 0, fontSize: 16, fontWeight: 700, color: "var(--fg-1)" }}>
               Tu wishlist está vacía
             </p>
             <p style={{ margin: 0, fontSize: 13, color: MUTED, maxWidth: 280 }}>
@@ -744,7 +744,7 @@ export default function WishlistPage() {
               padding: "14px 16px",
               backgroundColor: "transparent",
               border: "none",
-              borderTop: wishlist.length > 0 ? `1px solid rgba(255,255,255,0.06)` : "none",
+              borderTop: wishlist.length > 0 ? "1px solid var(--line)" : "none",
               cursor: "pointer",
               color: GREEN,
               fontSize: 14,

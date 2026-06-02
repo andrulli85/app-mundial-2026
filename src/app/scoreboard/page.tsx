@@ -10,8 +10,9 @@
  * Phase C will replace src/data/match-scores/MD-1.json with real FIFA
  * Fantasy data after each matchday — zero code change needed here.
  *
- * Design matches /once palette: bg #0d0f13, GREEN #006847, LIME #c2ef4e,
- * GOLD #F4C84A.
+ * Design: dark/gold system — bg --bg-1, surfaces --bg-2/--bg-3,
+ * LIME (#c2ef4e) kept as scoring accent (distinct from --green brand),
+ * GOLD = --gold token.
  */
 
 import { useEffect, useState } from "react";
@@ -29,18 +30,16 @@ import BottomNav from "@/components/BottomNav";
 import playerMapping from "@/data/player-mapping.json";
 
 // ---------------------------------------------------------------------------
-// Constants
+// Constants — only LIME stays hardcoded (scoring accent, not in design system)
 // ---------------------------------------------------------------------------
 
-const GREEN = "#006847";
 const LIME = "#c2ef4e";
-const GOLD = "#F4C84A";
 
 const RARITY_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  common:    { bg: "#1b1f27", border: "#3a3f4c", text: "#c8cdd9" },
-  rare:      { bg: "#0f2033", border: "#2563eb", text: "#60a5fa" },
-  epic:      { bg: "#241433", border: "#9333ea", text: "#c084fc" },
-  legendary: { bg: "#2b2410", border: GOLD,      text: GOLD },
+  common:    { bg: "var(--bg-2)",  border: "var(--line-strong)", text: "var(--fg-2)" },
+  rare:      { bg: "#0f2033",      border: "#2563eb",             text: "#60a5fa" },
+  epic:      { bg: "#241433",      border: "#9333ea",             text: "#c084fc" },
+  legendary: { bg: "var(--bg-3)",  border: "var(--gold)",         text: "var(--gold)" },
 };
 
 const POSITION_LABEL: Record<string, string> = {
@@ -78,21 +77,21 @@ function StatPod({
   big?: boolean;
   accent?: string;
 }) {
-  const textColor = accent ?? (big ? GOLD : "#f3f4f6");
+  const textColor = accent ?? (big ? "var(--gold)" : "var(--fg-1)");
 
   return (
     <div
       style={{
         flex: 1,
-        background: "#1a1e29",
-        border: `1px solid ${big ? GOLD + "55" : "#2d3344"}`,
+        background: "var(--bg-2)",
+        border: `1px solid ${big ? "var(--line-gold)" : "var(--line)"}`,
         borderRadius: 14,
         padding: "11px 12px",
       }}
     >
       <div
         style={{
-          fontFamily: "system-ui, sans-serif",
+          fontFamily: "var(--font-stat)",
           fontWeight: 900,
           fontSize: big ? 32 : 22,
           color: textColor,
@@ -104,17 +103,7 @@ function StatPod({
           <span style={{ fontSize: 13, fontWeight: 700, marginLeft: 2 }}>{suffix}</span>
         )}
       </div>
-      <div
-        style={{
-          fontSize: 9,
-          color: "#9ca3af",
-          fontWeight: 700,
-          marginTop: 3,
-          letterSpacing: "0.04em",
-          textTransform: "uppercase",
-          fontFamily: "system-ui, sans-serif",
-        }}
-      >
+      <div className="t-label" style={{ marginTop: 3 }}>
         {label}
       </div>
     </div>
@@ -137,24 +126,14 @@ function MatchdayTimeline({
   return (
     <div
       style={{
-        background: "#111318",
-        border: "1px solid #2d3344",
+        background: "var(--bg-2)",
+        border: "1px solid var(--line)",
         borderRadius: 16,
         padding: "14px 16px",
         marginBottom: 14,
       }}
     >
-      <div
-        style={{
-          fontSize: 10,
-          fontWeight: 800,
-          color: "#9ca3af",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          fontFamily: "system-ui, sans-serif",
-          marginBottom: 12,
-        }}
-      >
+      <div className="t-label" style={{ marginBottom: 12 }}>
         Puntaje por jornada
       </div>
       <div
@@ -193,10 +172,10 @@ function MatchdayTimeline({
                   borderRadius: 4,
                   background: hasData
                     ? pts > 0
-                      ? `linear-gradient(to top, ${GREEN}, ${LIME})`
-                      : "#2d3344"
-                    : "#1e2230",
-                  border: hasData ? "none" : "1px dashed #2d3344",
+                      ? `linear-gradient(to top, var(--green-deep), ${LIME})`
+                      : "var(--bg-3)"
+                    : "var(--bg-3)",
+                  border: hasData ? "none" : "1px dashed var(--line-strong)",
                   transition: "height 0.3s ease",
                   display: "flex",
                   alignItems: "center",
@@ -212,7 +191,7 @@ function MatchdayTimeline({
                       fontSize: 9,
                       fontWeight: 800,
                       color: LIME,
-                      fontFamily: "system-ui, sans-serif",
+                      fontFamily: "var(--font-stat)",
                       whiteSpace: "nowrap",
                     }}
                   >
@@ -225,8 +204,8 @@ function MatchdayTimeline({
                 style={{
                   fontSize: 8,
                   fontWeight: 700,
-                  color: hasData ? "#9ca3af" : "#3a3f4c",
-                  fontFamily: "system-ui, sans-serif",
+                  color: hasData ? "var(--fg-3)" : "var(--line-strong)",
+                  fontFamily: "var(--font-ui)",
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
                 }}
@@ -269,8 +248,8 @@ function PlayerRow({
           alignItems: "center",
           gap: 10,
           padding: "10px 14px",
-          background: "#111318",
-          border: "1px solid #1e2230",
+          background: "var(--bg-2)",
+          border: "1px solid var(--line)",
           borderRadius: 12,
           opacity: 0.5,
         }}
@@ -279,11 +258,11 @@ function PlayerRow({
           style={{
             fontSize: 9,
             fontWeight: 800,
-            color: "#4b5563",
-            background: "#1e2230",
+            color: "var(--fg-3)",
+            background: "var(--bg-3)",
             borderRadius: 6,
             padding: "3px 6px",
-            fontFamily: "system-ui, sans-serif",
+            fontFamily: "var(--font-ui)",
             letterSpacing: "0.06em",
             minWidth: 32,
             textAlign: "center",
@@ -295,8 +274,8 @@ function PlayerRow({
           style={{
             flex: 1,
             fontSize: 12,
-            color: "#4b5563",
-            fontFamily: "system-ui, sans-serif",
+            color: "var(--fg-3)",
+            fontFamily: "var(--font-ui)",
           }}
         >
           Vacío
@@ -305,8 +284,8 @@ function PlayerRow({
           style={{
             fontSize: 14,
             fontWeight: 800,
-            color: "#4b5563",
-            fontFamily: "system-ui, sans-serif",
+            color: "var(--fg-3)",
+            fontFamily: "var(--font-ui)",
           }}
         >
           —
@@ -344,11 +323,11 @@ function PlayerRow({
         style={{
           fontSize: 9,
           fontWeight: 800,
-          color: "#9ca3af",
-          background: "#0d0f13",
+          color: "var(--fg-3)",
+          background: "var(--bg-1)",
           borderRadius: 6,
           padding: "3px 6px",
-          fontFamily: "system-ui, sans-serif",
+          fontFamily: "var(--font-ui)",
           letterSpacing: "0.06em",
           minWidth: 32,
           textAlign: "center",
@@ -363,9 +342,9 @@ function PlayerRow({
         <div
           style={{
             fontSize: 10,
-            color: "#6b7280",
+            color: "var(--fg-3)",
             fontWeight: 700,
-            fontFamily: "system-ui, sans-serif",
+            fontFamily: "var(--font-ui)",
             letterSpacing: "0.04em",
           }}
         >
@@ -376,7 +355,7 @@ function PlayerRow({
             fontSize: 14,
             fontWeight: 800,
             color: colors.text,
-            fontFamily: "system-ui, sans-serif",
+            fontFamily: "var(--font-ui)",
             textOverflow: "ellipsis",
             overflow: "hidden",
             whiteSpace: "nowrap",
@@ -395,8 +374,8 @@ function PlayerRow({
             style={{
               fontSize: 18,
               fontWeight: 900,
-              color: points > 0 ? LIME : "#9ca3af",
-              fontFamily: "system-ui, sans-serif",
+              color: points > 0 ? LIME : "var(--fg-3)",
+              fontFamily: "var(--font-stat)",
             }}
           >
             {points}
@@ -405,8 +384,8 @@ function PlayerRow({
           <span
             style={{
               fontSize: 13,
-              color: "#4b5563",
-              fontFamily: "system-ui, sans-serif",
+              color: "var(--fg-3)",
+              fontFamily: "var(--font-ui)",
             }}
             title="Sin datos aún"
           >
@@ -467,7 +446,7 @@ export default function ScoreboardPage() {
       <div
         style={{
           minHeight: "100dvh",
-          background: "#0d0f13",
+          background: "var(--bg-1)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -478,7 +457,7 @@ export default function ScoreboardPage() {
             width: 32,
             height: 32,
             borderRadius: "50%",
-            border: `3px solid ${GREEN}`,
+            border: "3px solid var(--gold)",
             borderTopColor: "transparent",
             animation: "spin 0.9s linear infinite",
           }}
@@ -494,7 +473,7 @@ export default function ScoreboardPage() {
       <div
         style={{
           minHeight: "100dvh",
-          background: "#0d0f13",
+          background: "var(--bg-1)",
           display: "flex",
           flexDirection: "column",
         }}
@@ -510,13 +489,32 @@ export default function ScoreboardPage() {
             gap: 20,
           }}
         >
-          <span style={{ fontSize: 56 }}>🏆</span>
+          {/* Trophy icon in gold */}
           <div
             style={{
-              fontFamily: "system-ui, sans-serif",
+              width: 72,
+              height: 72,
+              borderRadius: "var(--r-pill)",
+              background: "rgba(244,200,74,0.12)",
+              border: "1px solid rgba(244,200,74,0.3)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            aria-hidden="true"
+          >
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="8 21 12 17 16 21" />
+              <rect x="2" y="3" width="20" height="11" rx="2" />
+              <path d="M2 6h20M12 14v3" />
+            </svg>
+          </div>
+          <div
+            style={{
+              fontFamily: "var(--font-wide)",
               fontWeight: 900,
               fontSize: 22,
-              color: "#f3f4f6",
+              color: "var(--fg-1)",
               textAlign: "center",
               lineHeight: 1.25,
             }}
@@ -526,9 +524,9 @@ export default function ScoreboardPage() {
           <div
             style={{
               fontSize: 13,
-              color: "#9ca3af",
+              color: "var(--fg-3)",
               textAlign: "center",
-              fontFamily: "system-ui, sans-serif",
+              fontFamily: "var(--font-ui)",
               lineHeight: 1.5,
             }}
           >
@@ -541,12 +539,12 @@ export default function ScoreboardPage() {
               alignItems: "center",
               gap: 8,
               padding: "12px 24px",
-              background: GREEN,
-              color: "#fff",
-              fontFamily: "system-ui, sans-serif",
+              background: "var(--foil-gold-soft)",
+              color: "var(--fg-onlight)",
+              fontFamily: "var(--font-ui)",
               fontWeight: 800,
               fontSize: 14,
-              borderRadius: 12,
+              borderRadius: "var(--r-md)",
               textDecoration: "none",
               letterSpacing: "0.04em",
               textTransform: "uppercase",
@@ -587,10 +585,10 @@ export default function ScoreboardPage() {
     <div
       style={{
         minHeight: "100dvh",
-        background: "#0d0f13",
+        background: "var(--bg-1)",
         display: "flex",
         flexDirection: "column",
-        fontFamily: "system-ui, sans-serif",
+        fontFamily: "var(--font-ui)",
       }}
     >
       {/* ---- Sticky header ---- */}
@@ -599,8 +597,8 @@ export default function ScoreboardPage() {
           position: "sticky",
           top: 0,
           zIndex: 50,
-          background: "#0d0f13",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          background: "var(--bg-1)",
+          borderBottom: "1px solid var(--line)",
           padding: "14px 18px 12px",
           display: "flex",
           alignItems: "center",
@@ -608,26 +606,18 @@ export default function ScoreboardPage() {
         }}
       >
         <div>
-          <div
-            style={{
-              fontSize: 10,
-              fontWeight: 800,
-              color: LIME,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              marginBottom: 2,
-            }}
-          >
+          <div className="t-eyebrow" style={{ marginBottom: 2 }}>
             Tu puntaje
           </div>
           <div
             style={{
               fontSize: 24,
               fontWeight: 900,
-              color: "#f3f4f6",
+              color: "var(--fg-1)",
               letterSpacing: "-0.02em",
               lineHeight: 1,
               textTransform: "uppercase",
+              fontFamily: "var(--font-wide)",
             }}
           >
             Scoreboard
@@ -637,8 +627,8 @@ export default function ScoreboardPage() {
         {/* Total points pod */}
         <div
           style={{
-            background: "#1a1e29",
-            border: `1.5px solid ${GOLD}66`,
+            background: "var(--bg-2)",
+            border: "1.5px solid var(--line-gold)",
             borderRadius: 14,
             padding: "8px 16px",
             textAlign: "center",
@@ -649,22 +639,14 @@ export default function ScoreboardPage() {
             style={{
               fontSize: 32,
               fontWeight: 900,
-              color: GOLD,
+              color: "var(--gold)",
               lineHeight: 1,
+              fontFamily: "var(--font-stat)",
             }}
           >
             {result.total}
           </div>
-          <div
-            style={{
-              fontSize: 8,
-              fontWeight: 700,
-              color: "#9ca3af",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginTop: 2,
-            }}
-          >
+          <div className="t-label" style={{ marginTop: 2 }}>
             pts
           </div>
         </div>
@@ -698,7 +680,7 @@ export default function ScoreboardPage() {
             label="Top scorer"
             value={topPerformer ? topPerformerName : "—"}
             suffix={topPerformer ? ` (${topPerformer.points})` : ""}
-            accent="#f3f4f6"
+            accent="var(--fg-1)"
           />
         </div>
 
@@ -710,16 +692,7 @@ export default function ScoreboardPage() {
 
         {/* Per-player breakdown */}
         <div>
-          <div
-            style={{
-              fontSize: 10,
-              fontWeight: 800,
-              color: "#9ca3af",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: 10,
-            }}
-          >
+          <div className="t-label" style={{ marginBottom: 10 }}>
             Jugadores · {filledSlots}/11
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -745,8 +718,8 @@ export default function ScoreboardPage() {
         {/* CTA */}
         <div
           style={{
-            background: "#111318",
-            border: `1.5px solid ${locked ? GOLD + "44" : GREEN + "88"}`,
+            background: "var(--bg-2)",
+            border: `1.5px solid ${locked ? "var(--line-gold)" : "var(--line-strong)"}`,
             borderRadius: 14,
             padding: "14px 16px",
             display: "flex",
@@ -762,8 +735,8 @@ export default function ScoreboardPage() {
               style={{
                 fontSize: 13,
                 fontWeight: 800,
-                color: locked ? GOLD : "#f3f4f6",
-                fontFamily: "system-ui, sans-serif",
+                color: locked ? "var(--gold)" : "var(--fg-1)",
+                fontFamily: "var(--font-ui)",
               }}
             >
               {locked
@@ -784,7 +757,7 @@ export default function ScoreboardPage() {
                   marginTop: 6,
                   fontSize: 12,
                   fontWeight: 700,
-                  color: GREEN,
+                  color: "var(--gold)",
                   textDecoration: "none",
                   letterSpacing: "0.04em",
                 }}
@@ -800,9 +773,9 @@ export default function ScoreboardPage() {
           <div
             style={{
               fontSize: 11,
-              color: "#4b5563",
+              color: "var(--fg-3)",
               textAlign: "center",
-              fontFamily: "system-ui, sans-serif",
+              fontFamily: "var(--font-ui)",
               padding: "0 8px",
               lineHeight: 1.5,
             }}

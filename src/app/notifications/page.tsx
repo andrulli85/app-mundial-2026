@@ -19,11 +19,6 @@ import NotificationItem from "@/components/NotificationItem";
 import WishlistNotificationItem from "@/components/WishlistNotificationItem";
 import TopBar from "@/components/TopBar";
 
-const BG = "#0d0f13";
-const SURFACE = "#131519";
-const GOLD = "#F4C84A";
-const RED = "#E4002B";
-
 function isWishlistType(type: Notification["type"]): boolean {
   return type === "friend_has_wishlist_item" || type === "friend_wants_yours";
 }
@@ -58,7 +53,7 @@ export default function NotificationsPage() {
     <div
       style={{
         minHeight: "100dvh",
-        backgroundColor: BG,
+        backgroundColor: "var(--bg-1)",
         display: "flex",
         flexDirection: "column",
       }}
@@ -75,8 +70,8 @@ export default function NotificationsPage() {
           position: "sticky",
           top: 54,
           zIndex: 30,
-          backgroundColor: BG,
-          borderBottom: "1px solid rgba(255,255,255,0.07)",
+          backgroundColor: "var(--bg-1)",
+          borderBottom: "1px solid var(--line)",
           padding: "12px 16px",
           display: "flex",
           alignItems: "center",
@@ -88,8 +83,9 @@ export default function NotificationsPage() {
             margin: 0,
             fontSize: 17,
             fontWeight: 800,
-            color: "#f0ece3",
+            color: "var(--fg-1)",
             letterSpacing: ".01em",
+            fontFamily: "var(--font-ui)",
           }}
         >
           Notificaciones
@@ -99,7 +95,7 @@ export default function NotificationsPage() {
                 marginLeft: 8,
                 fontSize: 12,
                 fontWeight: 700,
-                color: RED,
+                color: "var(--red-bright)",
               }}
             >
               {unreadCount} nuevas
@@ -117,7 +113,7 @@ export default function NotificationsPage() {
               cursor: "pointer",
               fontSize: 13,
               fontWeight: 600,
-              color: GOLD,
+              color: "var(--gold)",
               padding: "4px 0",
               textDecoration: "underline",
               textUnderlineOffset: "2px",
@@ -139,7 +135,7 @@ export default function NotificationsPage() {
                 style={{
                   height: 72,
                   borderRadius: 12,
-                  backgroundColor: SURFACE,
+                  backgroundColor: "var(--bg-2)",
                   marginBottom: 10,
                   opacity: 0.6,
                 }}
@@ -155,20 +151,36 @@ export default function NotificationsPage() {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: 12,
+              gap: 16,
               padding: "80px 24px",
               textAlign: "center",
             }}
           >
-            <span style={{ fontSize: 48 }} aria-hidden="true">
-              📭
-            </span>
+            {/* Bell icon in gold */}
+            <div
+              style={{
+                width: 64,
+                height: 64,
+                borderRadius: "var(--r-pill)",
+                background: "rgba(244,200,74,0.12)",
+                border: "1px solid rgba(244,200,74,0.3)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              aria-hidden="true"
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+              </svg>
+            </div>
             <p
               style={{
                 margin: 0,
                 fontSize: 15,
-                fontWeight: 600,
-                color: "rgba(240,236,227,0.5)",
+                fontWeight: 700,
+                color: "var(--fg-1)",
               }}
             >
               Aún no tenes notificaciones
@@ -177,7 +189,7 @@ export default function NotificationsPage() {
               style={{
                 margin: 0,
                 fontSize: 13,
-                color: "rgba(240,236,227,0.3)",
+                color: "var(--fg-3)",
               }}
             >
               Te avisaremos cuando desbloquees logros o recibas propuestas.
@@ -187,7 +199,13 @@ export default function NotificationsPage() {
           // Notification list
           <div
             data-testid="notifications-list"
-            style={{ backgroundColor: SURFACE, margin: "12px 16px", borderRadius: 16, overflow: "hidden" }}
+            style={{
+              backgroundColor: "var(--bg-2)",
+              margin: "12px 16px",
+              borderRadius: 16,
+              overflow: "hidden",
+              border: "1px solid var(--line)",
+            }}
           >
             {items.map((n) =>
               isWishlistType(n.type) ? (
@@ -221,12 +239,12 @@ export default function NotificationsPage() {
               onClick={handleClearAll}
               style={{
                 background: "none",
-                border: "1px solid rgba(255,255,255,0.15)",
+                border: "1px solid var(--line-strong)",
                 borderRadius: 99,
                 cursor: "pointer",
                 fontSize: 13,
                 fontWeight: 600,
-                color: "rgba(240,236,227,0.45)",
+                color: "var(--fg-3)",
                 padding: "10px 24px",
               }}
             >

@@ -68,11 +68,17 @@ export default function ImportPage() {
   };
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
+    <div
+      className="flex flex-col flex-1 max-w-lg mx-auto w-full"
+      style={{ background: "var(--bg-1)" }}
+    >
       {/* Header */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{
+          backgroundColor: "var(--bg-1)",
+          borderBottom: "1px solid var(--line)",
+        }}
       >
         <button
           onClick={() => {
@@ -82,12 +88,33 @@ export default function ImportPage() {
               router.back();
             }
           }}
-          className="text-white text-xl leading-none"
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "var(--fg-2)",
+            fontSize: 20,
+            lineHeight: 1,
+            padding: "4px 8px",
+            minWidth: 44,
+            minHeight: 44,
+            display: "flex",
+            alignItems: "center",
+          }}
           aria-label="Volver"
         >
           ←
         </button>
-        <h1 className="text-lg font-black text-white leading-none">
+        <h1
+          style={{
+            fontSize: 17,
+            fontWeight: 900,
+            color: "var(--fg-1)",
+            fontFamily: "var(--font-ui)",
+            lineHeight: 1,
+            margin: 0,
+          }}
+        >
           Importar desde Figuritas.app
         </h1>
       </header>
@@ -97,11 +124,29 @@ export default function ImportPage() {
           <>
             {/* Instructions */}
             <section
-              className="rounded-2xl p-4 shadow-sm"
-              style={{ backgroundColor: "#ffffff" }}
+              style={{
+                backgroundColor: "var(--bg-2)",
+                border: "1px solid var(--line)",
+                borderRadius: "var(--r-lg)",
+                padding: "var(--s-4)",
+                boxShadow: "var(--sh-2)",
+              }}
             >
-              <h2 className="font-bold text-gray-700 mb-2">Cómo importar</h2>
-              <ol className="text-sm text-gray-600 flex flex-col gap-1.5 list-decimal list-inside">
+              <h2
+                style={{
+                  fontWeight: 700,
+                  fontSize: 15,
+                  color: "var(--fg-1)",
+                  marginBottom: 8,
+                  fontFamily: "var(--font-ui)",
+                }}
+              >
+                Cómo importar
+              </h2>
+              <ol
+                className="flex flex-col gap-1.5 list-decimal list-inside"
+                style={{ fontSize: 13, color: "var(--fg-2)" }}
+              >
                 <li>Abrí la app Figuritas en tu celular.</li>
                 <li>Entrá a tu lista "Me faltan" y usá el botón compartir.</li>
                 <li>Copiá el texto completo que empieza con "Figuritas App - Lista".</li>
@@ -109,14 +154,27 @@ export default function ImportPage() {
               </ol>
             </section>
 
-            {/* Textarea */}
+            {/* Textarea drop zone */}
             <section
-              className="rounded-2xl p-4 shadow-sm flex flex-col gap-3"
-              style={{ backgroundColor: "#ffffff" }}
+              style={{
+                backgroundColor: "var(--bg-2)",
+                border: "1px solid var(--line-gold)",
+                borderRadius: "var(--r-lg)",
+                padding: "var(--s-4)",
+                boxShadow: "var(--sh-2)",
+                display: "flex",
+                flexDirection: "column",
+                gap: 12,
+              }}
             >
               <label
                 htmlFor="figuritas-text"
-                className="font-bold text-gray-700"
+                style={{
+                  fontWeight: 700,
+                  fontSize: 15,
+                  color: "var(--fg-1)",
+                  fontFamily: "var(--font-ui)",
+                }}
               >
                 Pegá tu lista "Me faltan"
               </label>
@@ -126,26 +184,46 @@ export default function ImportPage() {
                 onChange={(e) => setText(e.target.value)}
                 placeholder={PLACEHOLDER}
                 rows={10}
-                className="w-full rounded-xl border-2 px-3 py-2 focus:outline-none resize-none font-mono"
+                className="w-full resize-none font-mono"
                 style={{
-                  borderColor: "#d1c9b8",
-                  backgroundColor: "#fafaf8",
+                  backgroundColor: "var(--bg-3)",
+                  border: "1.5px solid var(--line-strong)",
+                  borderRadius: "var(--r-md)",
+                  padding: "12px 14px",
                   fontSize: "16px", // Prevents iOS zoom on focus
                   lineHeight: "1.4",
-                  color: "#333",
+                  color: "var(--fg-1)",
+                  outline: "none",
                 }}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "var(--gold)")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "var(--line-strong)")}
                 autoCapitalize="none"
                 autoCorrect="off"
                 spellCheck={false}
               />
               {error && (
-                <p className="text-sm text-red-600">{error}</p>
+                <p style={{ fontSize: 13, color: "var(--red-bright)" }}>{error}</p>
               )}
               <button
                 onClick={handleParse}
                 disabled={!text.trim() || loading}
-                className="w-full py-3 rounded-xl font-bold text-white text-base disabled:opacity-40"
-                style={{ backgroundColor: "#006847" }}
+                style={{
+                  width: "100%",
+                  padding: "14px 0",
+                  borderRadius: "var(--r-md)",
+                  fontFamily: "var(--font-ui)",
+                  fontWeight: 800,
+                  fontSize: 15,
+                  letterSpacing: ".04em",
+                  background: loading || !text.trim() ? "var(--bg-3)" : "var(--foil-gold-soft)",
+                  color: loading || !text.trim() ? "var(--fg-3)" : "var(--fg-onlight)",
+                  border: loading || !text.trim() ? "1px solid var(--line-strong)" : "none",
+                  cursor: loading || !text.trim() ? "default" : "pointer",
+                  opacity: loading || !text.trim() ? 0.5 : 1,
+                  minHeight: 44,
+                  textTransform: "uppercase",
+                  transition: "opacity 0.15s",
+                }}
               >
                 {loading ? "Procesando..." : "Parsear lista"}
               </button>
@@ -157,43 +235,70 @@ export default function ImportPage() {
           <>
             {/* Summary card */}
             <section
-              className="rounded-2xl p-4 shadow-sm"
-              style={{ backgroundColor: "#ffffff" }}
+              style={{
+                backgroundColor: "var(--bg-2)",
+                border: "1px solid var(--line)",
+                borderRadius: "var(--r-lg)",
+                padding: "var(--s-4)",
+                boxShadow: "var(--sh-2)",
+              }}
             >
-              <h2 className="font-bold text-gray-700 mb-3">Resumen de la importación</h2>
+              <h2
+                style={{
+                  fontWeight: 700,
+                  fontSize: 15,
+                  color: "var(--fg-1)",
+                  marginBottom: 12,
+                  fontFamily: "var(--font-ui)",
+                }}
+              >
+                Resumen de la importación
+              </h2>
 
               <div className="flex flex-col gap-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Equipos reconocidos</span>
-                  <span className="font-bold text-gray-800">
+                <div
+                  className="flex justify-between text-sm"
+                  style={{ color: "var(--fg-2)" }}
+                >
+                  <span>Equipos reconocidos</span>
+                  <span style={{ fontWeight: 700, color: "var(--fg-1)" }}>
                     {preview.affectedTeamCodes.length}
                   </span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Figuritas reconocidas en total</span>
-                  <span className="font-bold text-gray-800">
+                <div
+                  className="flex justify-between text-sm"
+                  style={{ color: "var(--fg-2)" }}
+                >
+                  <span>Figuritas reconocidas en total</span>
+                  <span style={{ fontWeight: 700, color: "var(--fg-1)" }}>
                     {preview.totalResolved}
                   </span>
                 </div>
                 <div
                   className="flex justify-between text-sm py-2 px-3 rounded-xl"
-                  style={{ backgroundColor: "#fff4e5" }}
+                  style={{
+                    backgroundColor: "rgba(228,0,43,0.1)",
+                    border: "1px solid rgba(228,0,43,0.2)",
+                  }}
                 >
-                  <span className="font-semibold" style={{ color: "#b45309" }}>
+                  <span style={{ fontWeight: 600, color: "var(--red-bright)" }}>
                     Te faltan
                   </span>
-                  <span className="font-bold" style={{ color: "#b45309" }}>
+                  <span style={{ fontWeight: 700, color: "var(--red-bright)" }}>
                     {preview.missingCount}
                   </span>
                 </div>
                 <div
                   className="flex justify-between text-sm py-2 px-3 rounded-xl"
-                  style={{ backgroundColor: "#f0fdf4" }}
+                  style={{
+                    backgroundColor: "rgba(0,162,75,0.1)",
+                    border: "1px solid rgba(0,162,75,0.2)",
+                  }}
                 >
-                  <span className="font-semibold" style={{ color: "#166534" }}>
+                  <span style={{ fontWeight: 600, color: "var(--green-bright)" }}>
                     Se marcarán como tenidas
                   </span>
-                  <span className="font-bold" style={{ color: "#166534" }}>
+                  <span style={{ fontWeight: 700, color: "var(--green-bright)" }}>
                     {preview.ownedCount}
                   </span>
                 </div>
@@ -203,13 +308,17 @@ export default function ImportPage() {
             {/* Warnings */}
             {preview.unknownTeamCodes.length > 0 && (
               <section
-                className="rounded-2xl p-4 shadow-sm"
-                style={{ backgroundColor: "#fff4e5" }}
+                style={{
+                  backgroundColor: "rgba(244,200,74,0.08)",
+                  border: "1px solid rgba(244,200,74,0.25)",
+                  borderRadius: "var(--r-lg)",
+                  padding: "var(--s-4)",
+                }}
               >
-                <h3 className="font-bold text-amber-700 mb-1 text-sm">
+                <h3 style={{ fontWeight: 700, color: "var(--gold)", marginBottom: 4, fontSize: 13 }}>
                   Equipos no reconocidos (se ignoran)
                 </h3>
-                <p className="text-xs text-amber-600">
+                <p style={{ fontSize: 12, color: "var(--fg-3)" }}>
                   {preview.unknownTeamCodes.join(", ")}
                 </p>
               </section>
@@ -217,15 +326,19 @@ export default function ImportPage() {
 
             {preview.unmatchedLines.length > 0 && (
               <section
-                className="rounded-2xl p-4 shadow-sm"
-                style={{ backgroundColor: "#fff4e5" }}
+                style={{
+                  backgroundColor: "rgba(244,200,74,0.08)",
+                  border: "1px solid rgba(244,200,74,0.25)",
+                  borderRadius: "var(--r-lg)",
+                  padding: "var(--s-4)",
+                }}
               >
-                <h3 className="font-bold text-amber-700 mb-1 text-sm">
+                <h3 style={{ fontWeight: 700, color: "var(--gold)", marginBottom: 4, fontSize: 13 }}>
                   Líneas no parseadas
                 </h3>
-                <ul className="text-xs text-amber-600 flex flex-col gap-0.5">
+                <ul className="flex flex-col gap-0.5">
                   {preview.unmatchedLines.map((line, i) => (
-                    <li key={i} className="font-mono">
+                    <li key={i} className="font-mono" style={{ fontSize: 12, color: "var(--fg-3)" }}>
                       {line}
                     </li>
                   ))}
@@ -236,20 +349,24 @@ export default function ImportPage() {
             {/* Untouched teams */}
             {preview.untouchedTeamCodes.length > 0 && (
               <section
-                className="rounded-2xl p-4 shadow-sm"
-                style={{ backgroundColor: "#f8f8f6" }}
+                style={{
+                  backgroundColor: "var(--bg-2)",
+                  border: "1px solid var(--line)",
+                  borderRadius: "var(--r-lg)",
+                  padding: "var(--s-4)",
+                }}
               >
-                <h3 className="font-bold text-gray-500 mb-1 text-sm">
+                <h3 style={{ fontWeight: 700, color: "var(--fg-3)", marginBottom: 4, fontSize: 13 }}>
                   Equipos no afectados ({preview.untouchedTeamCodes.length})
                 </h3>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p style={{ fontSize: 12, color: "var(--fg-3)", lineHeight: 1.6 }}>
                   {preview.untouchedTeamCodes.join(", ")}
                 </p>
               </section>
             )}
 
             {error && (
-              <p className="text-sm text-red-600 px-1">{error}</p>
+              <p style={{ fontSize: 13, color: "var(--red-bright)", padding: "0 4px" }}>{error}</p>
             )}
 
             {/* Confirm button */}
@@ -257,22 +374,47 @@ export default function ImportPage() {
               <button
                 onClick={handleConfirm}
                 disabled={loading || preview.affectedTeamCodes.length === 0}
-                className="w-full py-4 rounded-2xl font-black text-white text-lg disabled:opacity-40 shadow"
-                style={{ backgroundColor: "#c8102e" }}
+                style={{
+                  width: "100%",
+                  padding: "16px 0",
+                  borderRadius: "var(--r-lg)",
+                  fontFamily: "var(--font-ui)",
+                  fontWeight: 900,
+                  fontSize: 17,
+                  letterSpacing: ".04em",
+                  textTransform: "uppercase",
+                  background: loading || preview.affectedTeamCodes.length === 0 ? "var(--bg-3)" : "var(--foil-gold-soft)",
+                  color: loading || preview.affectedTeamCodes.length === 0 ? "var(--fg-3)" : "var(--fg-onlight)",
+                  border: loading || preview.affectedTeamCodes.length === 0 ? "1px solid var(--line-strong)" : "none",
+                  cursor: loading || preview.affectedTeamCodes.length === 0 ? "default" : "pointer",
+                  opacity: loading || preview.affectedTeamCodes.length === 0 ? 0.5 : 1,
+                  minHeight: 54,
+                  boxShadow: "var(--sh-2)",
+                }}
               >
                 {loading ? "Importando..." : "Confirmar e importar"}
               </button>
-              <p className="text-center text-xs text-gray-400">
+              <p
+                className="text-center"
+                style={{ fontSize: 12, color: "var(--fg-3)" }}
+              >
                 Esta acción sobreescribirá los {preview.affectedTeamCodes.length} equipos importados.
               </p>
               <button
                 onClick={() => setStep("paste")}
                 disabled={loading}
-                className="w-full py-2.5 rounded-xl font-semibold text-sm"
                 style={{
-                  backgroundColor: "#f0ece3",
-                  color: "#555",
-                  border: "2px solid #d1c9b8",
+                  width: "100%",
+                  padding: "12px 0",
+                  borderRadius: "var(--r-md)",
+                  fontFamily: "var(--font-ui)",
+                  fontWeight: 600,
+                  fontSize: 14,
+                  backgroundColor: "var(--bg-3)",
+                  color: "var(--fg-2)",
+                  border: "1px solid var(--line-strong)",
+                  cursor: loading ? "default" : "pointer",
+                  minHeight: 44,
                 }}
               >
                 Editar texto
@@ -283,19 +425,47 @@ export default function ImportPage() {
 
         {step === "done" && (
           <section
-            className="rounded-2xl p-6 shadow-sm flex flex-col items-center gap-3 text-center"
-            style={{ backgroundColor: "#ffffff" }}
+            style={{
+              backgroundColor: "var(--bg-2)",
+              border: "1px solid var(--line-gold)",
+              borderRadius: "var(--r-xl)",
+              padding: "var(--s-8)",
+              boxShadow: "var(--sh-3), var(--glow-gold)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 12,
+              textAlign: "center",
+            }}
           >
             <div
-              className="w-16 h-16 rounded-full flex items-center justify-center text-3xl"
-              style={{ backgroundColor: "#f0fdf4" }}
+              style={{
+                width: 64,
+                height: 64,
+                borderRadius: "var(--r-pill)",
+                background: "rgba(0,162,75,0.15)",
+                border: "1px solid rgba(0,162,75,0.4)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              aria-hidden="true"
             >
-              ✓
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green-bright)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
             </div>
-            <h2 className="font-black text-xl text-gray-800">
+            <h2
+              style={{
+                fontWeight: 900,
+                fontSize: 20,
+                color: "var(--fg-1)",
+                fontFamily: "var(--font-ui)",
+              }}
+            >
               Importado correctamente
             </h2>
-            <p className="text-sm text-gray-600">
+            <p style={{ fontSize: 14, color: "var(--fg-3)" }}>
               Redirigiendo al álbum...
             </p>
           </section>

@@ -70,44 +70,90 @@ export default function FriendsAddPage() {
   );
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
+    <div
+      className="flex flex-col flex-1 max-w-lg mx-auto w-full"
+      style={{ background: "var(--bg-1)" }}
+    >
       {/* Header */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{
+          backgroundColor: "var(--bg-1)",
+          borderBottom: "1px solid var(--line)",
+        }}
       >
         <a
           href="/friends"
-          className="text-white text-xl leading-none"
+          style={{
+            color: "var(--fg-2)",
+            fontSize: 20,
+            lineHeight: 1,
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: 44,
+            minHeight: 44,
+          }}
           aria-label="Volver a amigos"
         >
           ←
         </a>
-        <h1 className="text-lg font-black text-white leading-none">
+        <h1
+          style={{
+            fontSize: 17,
+            fontWeight: 900,
+            color: "var(--fg-1)",
+            fontFamily: "var(--font-ui)",
+            lineHeight: 1,
+            margin: 0,
+          }}
+        >
           Agregar amigo
         </h1>
       </header>
 
       {/* Tabs */}
       <div
-        className="flex border-b"
-        style={{ borderColor: "#d1c9b8", backgroundColor: "#fafaf8" }}
+        style={{
+          display: "flex",
+          borderBottom: "1px solid var(--line-strong)",
+          backgroundColor: "var(--bg-2)",
+        }}
       >
         <button
           onClick={() => setTab("scan")}
-          className={`flex-1 py-3 text-sm font-semibold transition-colors ${
-            tab === "scan" ? "text-green-700 border-b-2 border-green-700" : "text-gray-500"
-          }`}
-          style={tab === "scan" ? { borderBottomColor: "#006847", color: "#006847" } : {}}
+          style={{
+            flex: 1,
+            padding: "12px 0",
+            fontSize: 14,
+            fontWeight: 600,
+            fontFamily: "var(--font-ui)",
+            background: "none",
+            border: "none",
+            borderBottom: tab === "scan" ? "2px solid var(--gold)" : "2px solid transparent",
+            color: tab === "scan" ? "var(--gold)" : "var(--fg-3)",
+            cursor: "pointer",
+            transition: "color 0.15s",
+          }}
         >
           📷 Escanear QR
         </button>
         <button
           onClick={() => setTab("show")}
-          className={`flex-1 py-3 text-sm font-semibold transition-colors ${
-            tab === "show" ? "text-green-700 border-b-2 border-green-700" : "text-gray-500"
-          }`}
-          style={tab === "show" ? { borderBottomColor: "#006847", color: "#006847" } : {}}
+          style={{
+            flex: 1,
+            padding: "12px 0",
+            fontSize: 14,
+            fontWeight: 600,
+            fontFamily: "var(--font-ui)",
+            background: "none",
+            border: "none",
+            borderBottom: tab === "show" ? "2px solid var(--gold)" : "2px solid transparent",
+            color: tab === "show" ? "var(--gold)" : "var(--fg-3)",
+            cursor: "pointer",
+            transition: "color 0.15s",
+          }}
         >
           Mi QR
         </button>
@@ -116,7 +162,13 @@ export default function FriendsAddPage() {
       <main className="flex-1 px-4 py-6 flex flex-col gap-4">
         {tab === "scan" ? (
           <>
-            <p className="text-sm text-gray-600 text-center">
+            <p
+              style={{
+                fontSize: 14,
+                color: "var(--fg-3)",
+                textAlign: "center",
+              }}
+            >
               Apuntá la cámara al QR de tu amigo para agregarlo.
             </p>
 
@@ -127,10 +179,15 @@ export default function FriendsAddPage() {
               />
             ) : (
               <div
-                className="rounded-2xl p-6 text-center"
-                style={{ backgroundColor: "#fff3cd", border: "2px solid #ffc107" }}
+                style={{
+                  backgroundColor: "var(--bg-2)",
+                  border: "1px solid var(--line-gold)",
+                  borderRadius: "var(--r-lg)",
+                  padding: "var(--s-6)",
+                  textAlign: "center",
+                }}
               >
-                <p className="text-sm text-yellow-800">
+                <p style={{ fontSize: 14, color: "var(--fg-2)" }}>
                   Iniciá sesión con Google en Opciones para usar esta función.
                 </p>
               </div>
@@ -138,13 +195,33 @@ export default function FriendsAddPage() {
 
             {message && (
               <div
-                className={`rounded-xl px-4 py-3 text-sm text-center font-semibold ${
-                  scanState === "success"
-                    ? "bg-green-50 text-green-700"
-                    : scanState === "error"
-                    ? "bg-red-50 text-red-700"
-                    : "bg-gray-50 text-gray-600"
-                }`}
+                style={{
+                  borderRadius: "var(--r-md)",
+                  padding: "12px 16px",
+                  fontSize: 14,
+                  textAlign: "center",
+                  fontWeight: 600,
+                  fontFamily: "var(--font-ui)",
+                  backgroundColor:
+                    scanState === "success"
+                      ? "rgba(0,162,75,0.12)"
+                      : scanState === "error"
+                      ? "rgba(228,0,43,0.12)"
+                      : "var(--bg-3)",
+                  border: `1px solid ${
+                    scanState === "success"
+                      ? "rgba(0,162,75,0.3)"
+                      : scanState === "error"
+                      ? "rgba(228,0,43,0.3)"
+                      : "var(--line-strong)"
+                  }`,
+                  color:
+                    scanState === "success"
+                      ? "var(--green-bright)"
+                      : scanState === "error"
+                      ? "var(--red-bright)"
+                      : "var(--fg-2)",
+                }}
               >
                 {message}
               </div>
@@ -152,17 +229,28 @@ export default function FriendsAddPage() {
           </>
         ) : (
           <>
-            <p className="text-sm text-gray-600 text-center">
+            <p
+              style={{
+                fontSize: 14,
+                color: "var(--fg-3)",
+                textAlign: "center",
+              }}
+            >
               Mostrá tu QR para que tu amigo te escanee.
             </p>
             {user ? (
               <InviteLinkCard />
             ) : (
               <div
-                className="rounded-2xl p-6 text-center"
-                style={{ backgroundColor: "#fff3cd", border: "2px solid #ffc107" }}
+                style={{
+                  backgroundColor: "var(--bg-2)",
+                  border: "1px solid var(--line-gold)",
+                  borderRadius: "var(--r-lg)",
+                  padding: "var(--s-6)",
+                  textAlign: "center",
+                }}
               >
-                <p className="text-sm text-yellow-800">
+                <p style={{ fontSize: 14, color: "var(--fg-2)" }}>
                   Iniciá sesión con Google en Opciones para generar tu QR.
                 </p>
               </div>

@@ -7,25 +7,31 @@ export const metadata = {
 
 export default function DisclaimerPage() {
   return (
-    <div className="flex flex-col flex-1 w-full max-w-2xl mx-auto px-4 py-6">
+    <div
+      className="flex flex-col flex-1 w-full mx-auto px-4 py-6"
+      style={{ maxWidth: 640, background: "var(--bg-1)", color: "var(--fg-2)" }}
+    >
       {/* Back link */}
       <Link
         href="/perfil"
-        className="inline-flex items-center gap-1 text-sm mb-6"
-        style={{ color: "#006847" }}
+        className="inline-flex items-center gap-1 text-sm mb-6 transition-opacity active:opacity-70"
+        style={{ color: "var(--gold)", textDecoration: "none" }}
       >
         <span aria-hidden="true">‹</span> Volver al perfil
       </Link>
 
       {/* 3-tab legal nav */}
       <nav
-        className="flex rounded-xl overflow-hidden mb-8 border"
-        style={{ borderColor: "#d1c9b8" }}
+        className="flex rounded-xl overflow-hidden mb-8"
+        style={{ border: "1px solid var(--line-strong)" }}
         aria-label="Secciones legales"
       >
         <span
           className="flex-1 text-center py-2 text-sm font-bold"
-          style={{ backgroundColor: "#006847", color: "#fff" }}
+          style={{
+            background: "var(--foil-gold-soft)",
+            color: "var(--fg-onlight)",
+          }}
           aria-current="page"
         >
           Aviso legal
@@ -33,25 +39,30 @@ export default function DisclaimerPage() {
         <Link
           href="/legal/terms"
           className="flex-1 text-center py-2 text-sm font-medium transition-colors"
-          style={{ backgroundColor: "#fff", color: "#555" }}
+          style={{
+            backgroundColor: "var(--bg-2)",
+            color: "var(--fg-3)",
+            textDecoration: "none",
+          }}
         >
           Términos
         </Link>
         <Link
           href="/legal/privacy"
           className="flex-1 text-center py-2 text-sm font-medium transition-colors"
-          style={{ backgroundColor: "#fff", color: "#555" }}
+          style={{
+            backgroundColor: "var(--bg-2)",
+            color: "var(--fg-3)",
+            textDecoration: "none",
+          }}
         >
           Privacidad
         </Link>
       </nav>
 
       {/* Content */}
-      <article
-        className="leading-relaxed text-sm flex flex-col gap-4"
-        style={{ color: "#1a1a1a" }}
-      >
-        <h1 className="text-2xl font-bold" style={{ color: "#006847" }}>
+      <article className="leading-relaxed text-sm flex flex-col gap-4">
+        <h1 className="t-h1" style={{ color: "var(--fg-1)" }}>
           Aviso legal
         </h1>
 
@@ -60,10 +71,10 @@ export default function DisclaimerPage() {
           del álbum del Mundial. Es un proyecto personal sin fines de lucro.
         </p>
 
-        <h2 className="text-lg font-bold mt-4">No estamos afiliados con nadie</h2>
+        <h2 className="t-h3" style={{ marginTop: "var(--s-4)" }}>No estamos afiliados con nadie</h2>
 
         <p>
-          Albumix <strong>no está afiliada, patrocinada, avalada ni asociada</strong> con la FIFA,
+          Albumix <strong style={{ color: "var(--fg-1)" }}>no está afiliada, patrocinada, avalada ni asociada</strong> con la FIFA,
           Panini S.p.A., Coca-Cola, ni con ninguna federación de fútbol nacional
           (AFA, CBF, RFEF, USSF, FMF, ni cualquier otra).
         </p>
@@ -75,7 +86,7 @@ export default function DisclaimerPage() {
           asociación con ningún titular de marca.
         </p>
 
-        <h2 className="text-lg font-bold mt-4">Marcas y derechos de autor</h2>
+        <h2 className="t-h3" style={{ marginTop: "var(--s-4)" }}>Marcas y derechos de autor</h2>
 
         <p>
           Todas las marcas, logos, nombres comerciales y cromos mencionados en
@@ -83,11 +94,11 @@ export default function DisclaimerPage() {
         </p>
         <ul className="list-disc pl-5 flex flex-col gap-1">
           <li>
-            <strong>FIFA®</strong>, <strong>FIFA World Cup™</strong>, y marcas asociadas son propiedad de
+            <strong style={{ color: "var(--fg-1)" }}>FIFA®</strong>, <strong style={{ color: "var(--fg-1)" }}>FIFA World Cup™</strong>, y marcas asociadas son propiedad de
             Fédération Internationale de Football Association (FIFA).
           </li>
           <li>
-            <strong>Panini®</strong> y las imágenes de cromos publicadas por Panini son
+            <strong style={{ color: "var(--fg-1)" }}>Panini®</strong> y las imágenes de cromos publicadas por Panini son
             propiedad de Panini S.p.A.
           </li>
           <li>
@@ -100,7 +111,7 @@ export default function DisclaimerPage() {
           </li>
         </ul>
 
-        <h2 className="text-lg font-bold mt-4">Contenido de usuarios</h2>
+        <h2 className="t-h3" style={{ marginTop: "var(--s-4)" }}>Contenido de usuarios</h2>
 
         <p>
           Las fotografías de cromos que aparecen en Albumix fueron tomadas por
@@ -109,14 +120,14 @@ export default function DisclaimerPage() {
           teléfono). Cada usuario es responsable del contenido que sube.
         </p>
 
-        <h2 className="text-lg font-bold mt-4">Política de retirada (notice &amp; takedown)</h2>
+        <h2 className="t-h3" style={{ marginTop: "var(--s-4)" }}>Política de retirada (notice &amp; takedown)</h2>
 
         <p>
           Si sos titular de derechos y considerás que algún contenido en Albumix
           debe ser removido, escribinos a{" "}
           <a
             href={`mailto:${LEGAL_CONTACT_EMAIL}`}
-            style={{ color: "#006847", textDecoration: "underline" }}
+            style={{ color: "var(--gold)", textDecoration: "underline" }}
           >
             {LEGAL_CONTACT_EMAIL}
           </a>{" "}
@@ -124,17 +135,23 @@ export default function DisclaimerPage() {
           en menos de 48 horas. No hace falta proceso legal — basta tu pedido.
         </p>
 
-        <hr style={{ borderColor: "#d1c9b8", marginTop: "1rem" }} />
+        <hr style={{ borderColor: "var(--line-strong)", marginTop: "var(--s-4)" }} />
 
-        <p className="text-xs" style={{ color: "#888" }}>
+        <p className="t-small" style={{ color: "var(--fg-3)" }}>
           Última actualización: 1 de junio de 2026.
         </p>
       </article>
 
       {/* Global footer */}
-      <footer className="mt-10 text-xs text-center pb-6" style={{ color: "#aaa" }}>
+      <footer
+        className="mt-10 text-xs text-center pb-6"
+        style={{ color: "var(--fg-3)" }}
+      >
         Albumix · App independiente · No afiliada con FIFA, Panini o Coca-Cola ·{" "}
-        <Link href="/legal/disclaimer" style={{ color: "#888", textDecoration: "underline" }}>
+        <Link
+          href="/legal/disclaimer"
+          style={{ color: "var(--fg-3)", textDecoration: "underline" }}
+        >
           Legal
         </Link>
       </footer>
