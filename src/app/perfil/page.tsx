@@ -23,7 +23,6 @@ import {
   Heart,
   Star,
   BarChart3,
-  Map,
   Upload,
   Settings,
   Shield,
@@ -432,12 +431,6 @@ export default function PerfilPage() {
           icon={<BarChart3 size={21} />}
           title="Estadísticas"
           sub="Progreso detallado de tu álbum"
-        />
-        <ProfileTile
-          href="/album/map"
-          icon={<Map size={21} />}
-          title="Mapa del Mundial"
-          sub="Grupos y clasificación"
         />
         <ProfileTile
           href="/perfil/importar"
