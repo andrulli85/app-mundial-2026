@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      { source: "/trade", destination: "/market", permanent: true },
+      { source: "/mercado", destination: "/market", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
