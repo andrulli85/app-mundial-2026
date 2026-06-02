@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="400" height="520">
+  <!-- Background -->
+  <rect width="400" height="520" fill="#0d0f13" rx="16"/>
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+  </pattern>
+  <rect width="400" height="520" fill="url(#grid)"/>
+  <!-- Border -->
+  <rect x="2" y="2" width="396" height="516" rx="14" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <!-- Center circle background -->
+  <circle cx="200" cy="240" r="70" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <!-- Question mark -->
+  <text
+    x="200"
+    y="270"
+    text-anchor="middle"
+    font-family="Impact, Arial Black, sans-serif"
+    font-size="96"
+    font-weight="900"
+    fill="#F4C84A"
+    opacity="0.6"
+  >?</text>
+  <!-- Bottom label -->
+  <rect x="0" y="440" width="400" height="80" rx="0" fill="rgba(244,200,74,0.08)"/>
+  <rect x="0" y="438" width="400" height="2" fill="rgba(244,200,74,0.2)"/>
+  <text
+    x="200"
+    y="488"
+    text-anchor="middle"
+    font-family="Impact, Arial, sans-serif"
+    font-size="20"
+    letter-spacing="3"
+    fill="rgba(244,200,74,0.5)"
+  >SIN FOTO</text>
+</svg>

@@ -29,6 +29,7 @@ import type { StickerEntry } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
+import { photoUrlFor } from "@/lib/squad/photo";
 import BottomNav from "@/components/BottomNav";
 import Coachmark from "@/components/Coachmark";
 
@@ -171,26 +172,30 @@ function CartaSemanaHero({ sticker }: CartaSemanaHeroProps) {
 
         {/* Featured sticker visual */}
         <div className="flex flex-col items-center gap-2">
-          {sticker?.seed_image ? (
-            <img
-              src={sticker.seed_image}
-              alt={name}
-              className="w-24 h-28 object-cover rounded-xl"
-              style={{ border: "2px solid rgba(244,200,74,0.6)", boxShadow: "0 0 20px rgba(244,200,74,0.2)" }}
-            />
-          ) : (
-            <div
-              className="w-24 h-28 rounded-xl flex items-center justify-center text-5xl"
-              style={{
-                background: "rgba(244,200,74,0.08)",
-                border: "2px solid rgba(244,200,74,0.4)",
-                boxShadow: "0 0 20px rgba(244,200,74,0.15)",
-              }}
-              aria-hidden="true"
-            >
-              ⭐
-            </div>
-          )}
+          {(() => {
+            const photoSrc = sticker ? photoUrlFor(sticker.id) : null;
+            const hasRealPhoto = photoSrc && !photoSrc.endsWith("placeholder.svg");
+            return hasRealPhoto ? (
+              <img
+                src={photoSrc}
+                alt={name}
+                className="w-24 h-28 object-cover rounded-xl"
+                style={{ border: "2px solid rgba(244,200,74,0.6)", boxShadow: "0 0 20px rgba(244,200,74,0.2)" }}
+              />
+            ) : (
+              <div
+                className="w-24 h-28 rounded-xl flex items-center justify-center text-5xl"
+                style={{
+                  background: "rgba(244,200,74,0.08)",
+                  border: "2px solid rgba(244,200,74,0.4)",
+                  boxShadow: "0 0 20px rgba(244,200,74,0.15)",
+                }}
+                aria-hidden="true"
+              >
+                ⭐
+              </div>
+            );
+          })()}
 
           {/* Name + position */}
           <div className="text-center">
@@ -392,9 +397,24 @@ export default function InicioPage() {
         .map((e) => catalogById.get(e.sticker_id))
         .filter((s): s is Sticker => s !== undefined);
 
-      setRecentStickers(
-        recent.length > 0 ? recent : catalog.slice(0, 5)
-      );
+      // Deterministic fallback: first 7 owned player stickers in catalog order.
+      // "Owned" mirrors the squad/data.ts hash rule (simpleHash % 100 < 60).
+      const fallbackRecent = recent.length > 0
+        ? recent
+        : catalog
+            .filter((s) => {
+              if (s.type !== "player") return false;
+              let h = 5381;
+              const str = s.id;
+              for (let i = 0; i < str.length; i++) {
+                h = ((h << 5) + h) ^ str.charCodeAt(i);
+                h = h >>> 0;
+              }
+              return h % 100 < 60;
+            })
+            .slice(0, 7);
+
+      setRecentStickers(fallbackRecent);
 
       setLoading(false);
     })();

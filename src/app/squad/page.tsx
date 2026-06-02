@@ -290,7 +290,7 @@ function SquadToken({ player, size = 60, dragging = false, posColor }: SquadToke
         <span style={{ fontSize: 13 }}>{player.flag}</span>
       </div>
 
-      {/* Photo placeholder strip */}
+      {/* Photo strip — real photo when available, stripe pattern fallback */}
       <div
         style={{
           height: 22,
@@ -298,10 +298,27 @@ function SquadToken({ player, size = 60, dragging = false, posColor }: SquadToke
           borderRadius: 5,
           position: "relative",
           zIndex: 2,
+          overflow: "hidden",
           background:
             "repeating-linear-gradient(45deg,#0d0f13,#0d0f13 5px,#12151c 5px,#12151c 10px)",
         }}
-      />
+      >
+        {player.photo && !player.photo.endsWith("placeholder.svg") && (
+          <img
+            src={player.photo}
+            alt=""
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top center",
+            }}
+          />
+        )}
+      </div>
 
       {/* Name */}
       <div

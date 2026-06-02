@@ -22,9 +22,9 @@ import {
   FRIENDS,
   INCOMING_OFFERS,
   type Player,
+  type Friend,
   type IncomingOffer,
 } from "@/lib/market/data";
-import type { Friend } from "@/data/friends";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -97,6 +97,24 @@ function MiniCard({ player, locked = false }: MiniCardProps) {
       >
         6
       </span>
+
+      {/* Player photo — real photo when available */}
+      {!locked && player.photo && !player.photo.endsWith("placeholder.svg") && (
+        <img
+          src={player.photo}
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "top center",
+            zIndex: 1,
+          }}
+        />
+      )}
 
       {/* Flag + OVR row */}
       <div
@@ -578,14 +596,12 @@ interface FriendAlbumSheetProps {
 }
 
 function FriendAlbumSheet({ friend, onPropose, onClose }: FriendAlbumSheetProps) {
-  // Map friend.dupIds to PLAYERS (by sticker code prefix match or index fallback)
-  const dups = friend.dupIds
-    .map((sid, i) => PLAYERS[i % PLAYERS.length])
-    .filter(Boolean);
+  // Map friend.dupIds / wantIds to PLAYERS by real sticker_id, fallback to index.
+  const playerById = (sid: string, fallbackIdx: number) =>
+    PLAYERS.find((p) => p.id === sid) ?? PLAYERS[fallbackIdx % PLAYERS.length];
 
-  const wants = friend.wantIds
-    .map((sid, i) => PLAYERS[(i + 4) % PLAYERS.length])
-    .filter(Boolean);
+  const dups = friend.dupIds.map((sid, i) => playerById(sid, i)).filter(Boolean);
+  const wants = friend.wantIds.map((sid, i) => playerById(sid, i + 4)).filter(Boolean);
 
   return (
     <div

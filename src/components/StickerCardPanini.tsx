@@ -22,6 +22,7 @@ import type { Sticker } from "@/lib/catalog";
 import { getAccent } from "@/lib/nation-accent";
 import { getBio } from "@/lib/sticker-bio";
 import { getFlag } from "@/lib/team-flags";
+import { photoUrlFor } from "@/lib/squad/photo";
 
 // ---------------------------------------------------------------------------
 // Dimensions (verbatim from cards.jsx)
@@ -86,7 +87,9 @@ export default function StickerCardPanini({
   const showDup = (count > 1 || showXBadge) && !locked;
   const flag = getFlag(sticker.team_code || "FWC");
   const bio = showBio && !locked ? getBio(sticker.id, sticker.team_code) : null;
-  const hasPhoto = Boolean(sticker.seed_image);
+  // Resolve photo: originales → seed → placeholder. Falls back to seed_image from catalog.
+  const resolvedPhoto = sticker.type === "player" ? photoUrlFor(sticker.id) : (sticker.seed_image ?? null);
+  const hasPhoto = Boolean(resolvedPhoto) && !resolvedPhoto?.endsWith("placeholder.svg");
 
   // Flag chip position — matches cards.jsx line 84
   const flagTop = isLg ? 92 : size === "md" ? 58 : 40;
@@ -227,7 +230,7 @@ export default function StickerCardPanini({
           </div>
         ) : hasPhoto ? (
           <Image
-            src={sticker.seed_image!}
+            src={resolvedPhoto!}
             alt={`${sticker.code} ${sticker.display_name || sticker.name}`}
             fill
             className="object-cover object-top"
