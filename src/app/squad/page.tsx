@@ -443,7 +443,7 @@ function PitchView({ slots, renderSlot }: PitchViewProps) {
       style={{
         position: "relative",
         width: "100%",
-        aspectRatio: "0.80",
+        aspectRatio: "0.60",
         borderRadius: 20,
         overflow: "hidden",
         background: "linear-gradient(180deg,#0f3d24,#0a2d1a 55%,#082616)",
