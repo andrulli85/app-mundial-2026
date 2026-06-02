@@ -31,21 +31,27 @@ export default function BottomNav({ active }: BottomNavProps) {
   const isOnceActive = active === "once";
 
   return (
-    <nav
-      aria-label="Navegación principal"
-      style={{
-        position: "relative",
-        zIndex: 40,
-        display: "flex",
-        alignItems: "flex-end",
-        paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 10px)",
-        paddingTop: 8,
-        paddingLeft: 4,
-        paddingRight: 4,
-        background: "var(--bg-1)",
-        borderTop: "1px solid var(--line)",
-      }}
-    >
+    <>
+      {/* Spacer — reserves layout space equal to nav height so content isn't hidden */}
+      <div aria-hidden style={{ height: 88, flexShrink: 0 }} />
+      <nav
+        aria-label="Navegación principal"
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 40,
+          display: "flex",
+          alignItems: "flex-end",
+          paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 10px)",
+          paddingTop: 8,
+          paddingLeft: 4,
+          paddingRight: 4,
+          background: "var(--bg-1)",
+          borderTop: "1px solid var(--line)",
+        }}
+      >
       {/* ── Inicio ── */}
       <NavItem
         href="/inicio"
@@ -144,6 +150,7 @@ export default function BottomNav({ active }: BottomNavProps) {
         <User size={22} strokeWidth={active === "perfil" ? 2.4 : 1.8} />
       </NavItem>
     </nav>
+    </>
   );
 }
 
