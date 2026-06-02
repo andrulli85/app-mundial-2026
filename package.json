@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
     "import-seed": "node scripts/import-seed.mjs",
-    "import-seed:dry": "node scripts/import-seed.mjs --dry-run"
+    "import-seed:dry": "node scripts/import-seed.mjs --dry-run",
+    "icons:generate": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "@zxing/browser": "^0.2.0",
