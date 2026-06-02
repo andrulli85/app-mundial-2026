@@ -150,14 +150,15 @@ interface CartaSemanaHeroProps {
 function CartaSemanaHero({ sticker }: CartaSemanaHeroProps) {
   // Fallback when no sticker available yet
   const name = sticker?.display_name ?? "MESSI";
-  const position = sticker?.type === "player" ? (sticker.team || "DEL") : "DEL";
-  const href = "/album";
+  const href = sticker ? `/album?sticker=${sticker.id}` : "/album";
 
   return (
-    <section
-      aria-label="Carta de la semana"
-      className="pack-gradient-border"
+    <Link
+      href={href}
+      aria-label="Carta de la semana — ver detalle"
+      className="pack-gradient-border cursor-pointer active:opacity-80 transition-opacity block"
       data-testid="carta-semana-hero"
+      style={{ textDecoration: "none" }}
     >
       <div className="p-5 flex flex-col gap-3">
         {/* Top label */}
@@ -197,7 +198,7 @@ function CartaSemanaHero({ sticker }: CartaSemanaHeroProps) {
             );
           })()}
 
-          {/* Name + position */}
+          {/* Name only — position subtitle removed */}
           <div className="text-center">
             <div
               className="text-xl font-black leading-tight uppercase tracking-wide gold-text"
@@ -205,27 +206,10 @@ function CartaSemanaHero({ sticker }: CartaSemanaHeroProps) {
             >
               {name}
             </div>
-            <div className="text-xs mt-0.5 font-semibold uppercase tracking-widest" style={{ color: "#9ca3af" }}>
-              {position}
-            </div>
           </div>
         </div>
-
-        {/* CTA */}
-        <Link
-          href={href}
-          className="w-full py-3 rounded-xl font-black text-sm tracking-wide text-center transition-opacity active:opacity-80 block"
-          style={{
-            background: "linear-gradient(135deg, #c9a35a 0%, #e8c87b 50%, #c9a35a 100%)",
-            color: "#111111",
-            textDecoration: "none",
-          }}
-          data-testid="carta-semana-cta"
-        >
-          Ver carta
-        </Link>
       </div>
-    </section>
+    </Link>
   );
 }
 

@@ -160,6 +160,7 @@ export default function StickerDetailModal({
       role="dialog"
       aria-modal="true"
       aria-label={`Detalle: ${sticker.display_name}`}
+      data-testid="sticker-detail-modal"
     >
       {/* ------------------------------------------------------------------ */}
       {/* Content container                                                   */}

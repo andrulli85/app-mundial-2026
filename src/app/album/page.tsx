@@ -149,6 +149,18 @@ export default function AlbumPage() {
     })();
   }, [router]);
 
+  // Deep-link: /album?sticker=<id> → open detail modal for that sticker.
+  // Uses window.location.search (client-only) to avoid the useSearchParams
+  // Suspense requirement — this component is already fully client-side.
+  useEffect(() => {
+    if (loading || catalog.length === 0) return;
+    const params = new URLSearchParams(window.location.search);
+    const stickerId = params.get("sticker");
+    if (!stickerId) return;
+    const found = catalog.find((s) => s.id === stickerId);
+    if (found) setActiveSticker(found);
+  }, [catalog, loading]);
+
   const handleTap = useCallback((sticker: Sticker) => {
     setActiveSticker(sticker);
   }, []);
