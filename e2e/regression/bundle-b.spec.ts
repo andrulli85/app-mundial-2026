@@ -7,11 +7,10 @@ import * as fs from "fs";
  * Bundle B regression spec (2026-06-02).
  *
  * Validates:
- *  1. StickerDetailModal — no standalone name/team/position header block
- *  2. StickerDetailModal — CAMBIAR button has gold linear-gradient background
- *  3. StickerDetailModal — Sumar repetida button has gold linear-gradient background
- *  4. /perfil — avatar renders: img[data-testid="avatar-photo"] when user has photoURL,
- *               else div[data-testid="avatar-initial"]
+ *  1. StickerDetailModal — no standalone Anton 26px name header between card and table
+ *  2. StickerDetailModal — CAMBIAR button has gold linear-gradient + active:scale-95
+ *  3. StickerDetailModal — Sumar repetida button has gold linear-gradient (when count=1)
+ *  4. /perfil — avatar renders: img[data-testid="avatar-photo"] or div[data-testid="avatar-initial"]
  *
  * Viewport: iPhone 15 (390×844)
  * Target:   https://albumix-app.vercel.app
@@ -30,54 +29,122 @@ function ensureDir() {
   if (!fs.existsSync(SS_DIR)) fs.mkdirSync(SS_DIR, { recursive: true });
 }
 
-// ---------------------------------------------------------------------------
-// Helper: open a player sticker modal via deep-link
-// ---------------------------------------------------------------------------
-async function openStickerModal(page: import("@playwright/test").Page, stickerId: string) {
-  await page.goto(`${BASE}/album?sticker=${stickerId}`, { waitUntil: "networkidle" });
+/**
+ * Completes onboarding if needed so /album does not redirect back to /.
+ * Same pattern as carta-semana-deeplink.spec.ts.
+ */
+async function ensureNickname(page: import("@playwright/test").Page) {
+  await page.goto(`${BASE}/`, { waitUntil: "domcontentloaded" });
+
+  const hasOnboarding = await page
+    .waitForSelector("text=Saltar tutorial", { timeout: 8000 })
+    .then(() => true)
+    .catch(() => false);
+
+  if (!hasOnboarding) return;
+
+  await page.click("text=Saltar tutorial");
+  await page.waitForSelector('input[aria-label="Ingresá tu nombre de jugador"]', { timeout: 8000 });
+
+  const input = page.locator('input[aria-label="Ingresá tu nombre de jugador"]');
+  await input.click();
+  await input.pressSequentially("pw-bundle-b", { delay: 50 });
+
+  const submitBtn = page.locator('button[type="submit"]');
+  await submitBtn.waitFor({ state: "visible" });
+  await submitBtn.click();
+
+  await page.waitForURL((url) => url.pathname !== "/", { timeout: 12000 }).catch(() => {});
+  await page.waitForLoadState("networkidle");
+}
+
+/**
+ * Opens /album, waits for the sticker grid, taps the first card to open modal.
+ * Uses the same pattern as carta-semana-deeplink.spec.ts test 5.
+ */
+async function openFirstStickerModal(page: import("@playwright/test").Page) {
+  await page.goto(`${BASE}/album`, { waitUntil: "domcontentloaded" });
+
+  // Wait for either the sticker grid (success) or a redirect to / (nickname not set).
+  // If redirected, go through onboarding again and retry.
+  const url = await page.waitForURL(
+    (u) => u.pathname === "/album" || u.pathname === "/",
+    { timeout: 15000 }
+  ).then(() => page.url()).catch(() => page.url());
+
+  if (new URL(url).pathname !== "/album") {
+    // Re-run ensureNickname inline and try again
+    const hasOnboarding = await page
+      .waitForSelector("text=Saltar tutorial", { timeout: 8000 })
+      .then(() => true)
+      .catch(() => false);
+
+    if (hasOnboarding) {
+      await page.click("text=Saltar tutorial");
+      await page.waitForSelector('input[aria-label="Ingresá tu nombre de jugador"]', { timeout: 8000 });
+      const input = page.locator('input[aria-label="Ingresá tu nombre de jugador"]');
+      await input.click();
+      await input.pressSequentially("pw-bundle-b2", { delay: 50 });
+      const submitBtn = page.locator('button[type="submit"]');
+      await submitBtn.waitFor({ state: "visible" });
+      await submitBtn.click();
+      await page.waitForURL((u) => u.pathname !== "/", { timeout: 12000 }).catch(() => {});
+      await page.waitForLoadState("networkidle");
+    }
+
+    await page.goto(`${BASE}/album`, { waitUntil: "domcontentloaded" });
+  }
+
+  await page.waitForSelector('[data-testid="sticker-grid"]', { timeout: 40000 });
+
+  const firstCard = page.locator('[data-sticker-pos-color]').first();
+  await firstCard.waitFor({ state: "visible", timeout: 10000 });
+  await firstCard.click();
+
   await page.waitForSelector('[data-testid="sticker-detail-modal"]', { timeout: 10000 });
 }
 
 // ---------------------------------------------------------------------------
-// Test 1 — No standalone name/team·position header in modal
+// Test 1 — No standalone name/team·position header (Anton 26px) in modal
 // ---------------------------------------------------------------------------
 test("StickerDetailModal has no redundant name/team/position header", async ({ page }) => {
   ensureDir();
+  await ensureNickname(page);
+  await openFirstStickerModal(page);
 
-  // Use first visible sticker — navigate to album, open a sticker via deep-link
-  // We use a known player sticker id (MEX-1 is always in catalog)
-  const stickerId = "MEX-1";
-  await openStickerModal(page, stickerId);
-
-  // The header block that was removed had the pattern: {displayName} · {position}
-  // e.g. "México · Delantero" — assert it does NOT appear as a standalone text node
-  // We check that no element outside the Panini card itself contains this pattern
   const modal = page.locator('[data-testid="sticker-detail-modal"]');
+  await expect(modal).toBeVisible();
 
-  // The pattern "· Delantero" / "· Arquero" / "· Defensa" / "· Mediocampo"
-  // should not appear as visible text in the modal OUTSIDE the card
-  const headerPatterns = ["· Delantero", "· Arquero", "· Defensa", "· Mediocampo"];
-  for (const pattern of headerPatterns) {
-    // Using locator text matching — if found in the standalone header div, this fails
+  // The removed header was a div with fontFamily Anton and fontSize 26px containing the player name,
+  // with a sibling div showing "{teamName} · {position}".
+  // Check: no element with text matching " · Delantero" / "· Arquero" / "· Defensa" / "· Mediocampo"
+  // that has a computed fontSize of 13px (the sub-line was 13px in the old header).
+  // We simply assert the header block (which had marginTop: 20 as a flex container) is gone.
+  //
+  // Practical approach: count elements that contain " · " with position words AND have fontSize ≤ 14px.
+  // The stats TABLE has rows like "Delantero" as a value, but not " · Delantero" as text.
+  const posPatterns = ["· Delantero", "· Arquero", "· Defensa", "· Mediocampo"];
+
+  for (const pattern of posPatterns) {
     const matches = modal.getByText(pattern, { exact: false });
-    // The lámina internal text is inside an img/canvas; standalone text block is what
-    // we removed. We check no standalone text element (p/div/span) has this pattern.
     const count = await matches.count();
     if (count > 0) {
-      // Allow it only if it's within the StickerCardPanini container (the card image area)
-      // The removed header was a sibling div AFTER the card, not inside it.
-      // We verify the text is NOT a direct child of the modal content wrapper.
-      const directText = modal
-        .locator("div")
-        .filter({ hasText: pattern })
-        .first();
-      // Check that the matching element has a parent that is inside the card, not standalone
-      // Simple check: the element should not have fontSize 26px (old header was 26px Anton)
-      const fontSize = await directText.evaluate((el) => {
-        return window.getComputedStyle(el).fontSize;
+      // Verify it's not a standalone header div (old header had width: 100%, gap: 10, marginTop: 20)
+      // The stats table row with "Posición" contains "Delantero" WITHOUT the " · " prefix.
+      // So any " · Posición" pattern being present means the old header is still there.
+      const first = matches.first();
+      const tagName = await first.evaluate((el) => el.tagName.toLowerCase());
+      // Old header sub-text was a <div>, not a table cell. Either way, this pattern
+      // should only appear in the modal's header section (which we deleted).
+      // Assert the element is NOT at position between card and table
+      const parentIsHeader = await first.evaluate((el) => {
+        // The old header had a parent flex div with justifyContent: center
+        const parent = el.parentElement;
+        if (!parent) return false;
+        return window.getComputedStyle(parent).justifyContent === "center" &&
+               window.getComputedStyle(parent).flexDirection !== "column";
       });
-      // Old header was 26px — if we find it at that size outside the card, fail
-      expect(fontSize).not.toBe("26px");
+      expect(parentIsHeader).toBe(false);
     }
   }
 
@@ -85,13 +152,12 @@ test("StickerDetailModal has no redundant name/team/position header", async ({ p
 });
 
 // ---------------------------------------------------------------------------
-// Test 2 — CAMBIAR button has gold gradient
+// Test 2 — CAMBIAR button has gold gradient + active:scale-95
 // ---------------------------------------------------------------------------
 test("CAMBIAR button has gold linear-gradient background", async ({ page }) => {
   ensureDir();
-
-  const stickerId = "MEX-1";
-  await openStickerModal(page, stickerId);
+  await ensureNickname(page);
+  await openFirstStickerModal(page);
 
   const cambiarBtn = page.locator('[data-testid="btn-cambiar"]');
   await expect(cambiarBtn).toBeVisible();
@@ -103,23 +169,20 @@ test("CAMBIAR button has gold linear-gradient background", async ({ page }) => {
   // Must contain a linear-gradient (gold foil)
   expect(bg).toContain("linear-gradient");
 
-  // Also verify active:scale-95 class is present (Tailwind press effect)
+  // active:scale-95 class must be present (Tailwind press effect)
   const classList = await cambiarBtn.getAttribute("class");
   expect(classList).toContain("active:scale-95");
+
+  await page.screenshot({ path: path.join(SS_DIR, "modal-active-press.png"), fullPage: false });
 });
 
 // ---------------------------------------------------------------------------
-// Test 3 — Sumar repetida button has gold gradient (count=1 state)
+// Test 3 — Sumar repetida button has gold gradient when visible (count=1)
 // ---------------------------------------------------------------------------
-test("Sumar repetida button has gold linear-gradient background when count=1", async ({ page }) => {
+test("Sumar repetida button — gold gradient when count=1", async ({ page }) => {
   ensureDir();
-
-  // Navigate to album with a sticker that has count=1 requires owning it.
-  // We can't control IDB state easily in prod, so we verify the button styling
-  // by checking the CSS class on btn-sumar-repetida if it's present.
-  // If count=0 we won't see it — skip gracefully if not visible.
-  const stickerId = "MEX-1";
-  await openStickerModal(page, stickerId);
+  await ensureNickname(page);
+  await openFirstStickerModal(page);
 
   const sumarBtn = page.locator('[data-testid="btn-sumar-repetida"]');
   const isVisible = await sumarBtn.isVisible().catch(() => false);
@@ -133,12 +196,16 @@ test("Sumar repetida button has gold linear-gradient background when count=1", a
     const classList = await sumarBtn.getAttribute("class");
     expect(classList).toContain("active:scale-95");
 
-    await page.screenshot({ path: path.join(SS_DIR, "modal-active-press.png"), fullPage: false });
+    // Text color should be dark (#111111) on gold background
+    const color = await sumarBtn.evaluate((el) => window.getComputedStyle(el).color);
+    // rgb(17, 17, 17) = #111111
+    expect(color).toBe("rgb(17, 17, 17)");
   } else {
-    // Button not visible (count=0 or count>=2) — just confirm CAMBIAR has gold (already tested above)
-    // and save screenshot
-    await page.screenshot({ path: path.join(SS_DIR, "modal-active-press.png"), fullPage: false });
-    console.log("btn-sumar-repetida not visible (count != 1) — gradient verified via CSS class on CAMBIAR");
+    // count != 1 (0 or >=2) — confirm CAMBIAR still has gold (already tested above)
+    const cambiarBtn = page.locator('[data-testid="btn-cambiar"]');
+    const bg = await cambiarBtn.evaluate((el) => window.getComputedStyle(el).backgroundImage);
+    expect(bg).toContain("linear-gradient");
+    console.log("btn-sumar-repetida not visible (count != 1) — CAMBIAR gradient verified as proxy");
   }
 });
 
@@ -147,6 +214,7 @@ test("Sumar repetida button has gold linear-gradient background when count=1", a
 // ---------------------------------------------------------------------------
 test("/perfil renders avatar — photo or initial fallback", async ({ page }) => {
   ensureDir();
+  await ensureNickname(page);
 
   await page.goto(`${BASE}/perfil`, { waitUntil: "networkidle" });
 
@@ -161,15 +229,14 @@ test("/perfil renders avatar — photo or initial fallback", async ({ page }) =>
   expect(hasPhoto || hasInitial).toBe(true);
 
   if (hasPhoto) {
-    // Verify img src starts with Google's CDN
     const src = await photoAvatar.getAttribute("src");
     expect(src).toBeTruthy();
-    // alt must be set for a11y
     const alt = await photoAvatar.getAttribute("alt");
     expect(alt).toBe("Profile photo");
     console.log("Google profile photo rendered:", src?.substring(0, 60));
   } else {
     console.log("No Google photo — initial avatar rendered (expected for test user without Firebase auth)");
+    await expect(initialAvatar).toBeVisible();
   }
 
   await page.screenshot({ path: path.join(SS_DIR, "perfil-google-photo.png"), fullPage: false });
