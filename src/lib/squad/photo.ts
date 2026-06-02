@@ -4,7 +4,8 @@
  * Resolution priority:
  *   1. originales-manifest.json   — 720+ BULK-processed photos (full quality)
  *   2. seed-manifest.json         — 52 manually-cropped photos
- *   3. /stickers/placeholder.svg  — gold "?" card for any sticker without a photo
+ *   3. /api/sticker-placeholder/[stickerId] — branded dynamic SVG per sticker
+ *   4. /stickers/placeholder.svg  — static fallback for unknown sticker IDs (404 guard)
  *
  * originales-manifest.json is written by BULK's PNG-processing pipeline.
  * The file may not exist during early development — the import is wrapped in a
@@ -41,8 +42,10 @@ export function photoUrlFor(stickerId: string): string {
   const seed = seedMap[stickerId];
   if (seed) return `/stickers/seed/${seed}`;
 
-  // 3. placeholder
-  return "/stickers/placeholder.svg";
+  // 3. branded dynamic SVG placeholder (per-sticker, uses metadata)
+  return `/api/sticker-placeholder/${stickerId}`;
+  // Note: /stickers/placeholder.svg remains as a browser-level fallback
+  // if the above 404s (stickerId unknown to catalog).
 }
 
 /**
