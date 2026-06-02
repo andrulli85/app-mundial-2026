@@ -41,7 +41,7 @@ type Tab = "todo" | "tengo" | "faltan" | "repetidas";
 const CHIP_DEFS: { id: ChipFilter; label: string }[] = [
   { id: "todos",      label: "Todos" },
   { id: "favoritas",  label: "Favoritas" },
-  { id: "chile",      label: `${FAV_TEAM.flag} ${FAV_TEAM.name}` },
+  { id: "chile",      label: `${FAV_TEAM.flag} ${FAV_TEAM.displayName}` },
   { id: "repetidas",  label: "Repetidas" },
 ];
 

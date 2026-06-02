@@ -12,13 +12,15 @@ export interface FavTier {
 }
 
 export interface FavTeam {
-  name: string;
+  name: string;         // data-match key (e.g., "France" — matches sticker.team)
+  displayName: string;  // Spanish UI label (e.g., "Francia")
   flag: string;
   tiers: FavTier[];
 }
 
 export const FAV_TEAM: FavTeam = {
   name: "France",
+  displayName: "Francia",
   flag: "🇫🇷",
   tiers: [
     { stage: "Cuartos de final", detail: "Top 8",       pts: 200, reached: true  },

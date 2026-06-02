@@ -73,7 +73,7 @@ export default function SeleccionFavoritaCard({ compact = false }: Props) {
               }}
               data-testid="fav-team-name"
             >
-              {FAV_TEAM.name}
+              {FAV_TEAM.displayName}
             </div>
           </div>
         </div>
