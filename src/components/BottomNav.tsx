@@ -4,11 +4,11 @@
  * BottomNav — 5-tab navigation bar (Stream A, Phase 4.1).
  *
  * Tab order:
- *   Home (Inicio) · Album · Mi Once (CENTER hero FAB) · Mercado · Perfil
+ *   Inicio · Mercado · Álbum (CENTER hero FAB) · Mi 11 · Perfil
  *
- * Center "Mi Once" tab:
+ * Center "Álbum" tab:
  *   - Gold gradient circle (FAB-style), elevated visually
- *   - Links to /squad (Stream B will create the route — graceful 404 until then)
+ *   - Links to /album
  *
  * Active state: --gold fill + weight 800 label
  * Inactive state: --fg-3 icon + --fg-3 label
@@ -28,7 +28,7 @@ const GOLD = "#F4C84A";
 const INACTIVE = "#6B7382"; // --fg-3
 
 export default function BottomNav({ active }: BottomNavProps) {
-  const isOnceActive = active === "once";
+  const isAlbumActive = active === "album";
 
   return (
     <>
@@ -63,18 +63,18 @@ export default function BottomNav({ active }: BottomNavProps) {
         <Home size={22} strokeWidth={active === "inicio" ? 2.4 : 1.8} />
       </NavItem>
 
-      {/* ── Álbum ── */}
+      {/* ── Mercado ── */}
       <NavItem
-        href="/album"
-        label="Álbum"
-        active={active === "album"}
+        href="/mercado"
+        label="Mercado"
+        active={active === "mercado"}
         activeColor={GOLD}
         inactiveColor={INACTIVE}
       >
-        <Grid3x3 size={22} strokeWidth={active === "album" ? 2.4 : 1.8} />
+        <ArrowLeftRight size={22} strokeWidth={active === "mercado" ? 2.4 : 1.8} />
       </NavItem>
 
-      {/* ── Mi Once — FAB center ── */}
+      {/* ── Álbum — FAB center ── */}
       <div
         style={{
           flex: 1,
@@ -87,9 +87,9 @@ export default function BottomNav({ active }: BottomNavProps) {
         }}
       >
         <Link
-          href="/squad"
-          aria-label="Mi Once"
-          aria-current={isOnceActive ? "page" : undefined}
+          href="/album"
+          aria-label="Álbum"
+          aria-current={isAlbumActive ? "page" : undefined}
           style={{
             width: 52,
             height: 52,
@@ -99,16 +99,16 @@ export default function BottomNav({ active }: BottomNavProps) {
             justifyContent: "center",
             textDecoration: "none",
             flexShrink: 0,
-            background: isOnceActive
+            background: isAlbumActive
               ? "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)"
               : "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
-            boxShadow: isOnceActive
+            boxShadow: isAlbumActive
               ? `0 0 0 3px var(--bg-1), 0 0 20px -2px rgba(244,200,74,.7), var(--sh-3)`
               : `0 0 0 3px var(--bg-1), 0 0 12px -4px rgba(244,200,74,.4), var(--sh-2)`,
             transition: "box-shadow 0.2s var(--ease-out)",
           }}
         >
-          <Users
+          <Grid3x3
             size={24}
             strokeWidth={2}
             color="var(--fg-onlight)"
@@ -124,19 +124,19 @@ export default function BottomNav({ active }: BottomNavProps) {
             fontFamily: "var(--font-ui)",
           }}
         >
-          Mi Once
+          Álbum
         </span>
       </div>
 
-      {/* ── Mercado ── */}
+      {/* ── Mi 11 ── */}
       <NavItem
-        href="/mercado"
-        label="Mercado"
-        active={active === "mercado"}
+        href="/squad"
+        label="Mi 11"
+        active={active === "once"}
         activeColor={GOLD}
         inactiveColor={INACTIVE}
       >
-        <ArrowLeftRight size={22} strokeWidth={active === "mercado" ? 2.4 : 1.8} />
+        <Users size={22} strokeWidth={active === "once" ? 2.4 : 1.8} />
       </NavItem>
 
       {/* ── Perfil ── */}

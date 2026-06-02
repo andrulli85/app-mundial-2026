@@ -1,81 +1,140 @@
 "use client";
 
 /**
- * /perfil — User space aggregator.
+ * /perfil — User space aggregator (Albumix dark/gold redesign).
  *
- * - Avatar + nickname + login state
- * - Mi colección stat card: X / 660 · YY%
- * - Nav tiles: Logros, Estadísticas, Mapa, Amigos, Importar, Configuración
- * - Sign-in widget if not signed in
+ * Sections (top → bottom):
+ *   - Header: radial glow halo, 88px foil avatar, Anton name, División Oro · Nivel 14,
+ *             Conectar con Google button (when signed out) or email (when signed in)
+ *   - Mi Colección stat card: owned / total · pct% · foil gold progress bar
+ *   - ProfileTile list: Wishlist · Logros · Estadísticas · Mapa · Importar (×2) · Config
+ *   - Footer: "Albumix · Mundial 2026" muted text
  *
- * Dark theme: FUT dark palette matching /inicio + /album
+ * Data plumbing (unchanged):
+ *   - getNickname / getAllStickers / getCatalog drive owned + total
+ *   - useAuth drives user / authLoading / signIn
+ *   - Missing nickname → router.replace("/")
  */
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import {
+  Heart,
+  Star,
+  BarChart3,
+  Map,
+  Upload,
+  Download,
+  Settings,
+  Shield,
+  ChevronRight,
+} from "lucide-react";
 import { getNickname, getAllStickers } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import { useAuth } from "@/components/AuthProvider";
 import BottomNav from "@/components/BottomNav";
 
-const GOLD = "#F4C84A";
-const GREEN = "#006847";
-const LIME = "#c2ef4e";
-const BG = "#0a0a0a";
-const SURFACE = "rgba(26,26,26,0.95)";
-const BORDER = "rgba(255,255,255,0.08)";
-const TEXT_PRIMARY = "#f5f5f5";
-const TEXT_MUTED = "#9ca3af";
+// ---------------------------------------------------------------------------
+// Google "G" multicolor SVG (verbatim from profile_screens.jsx lines 6-15)
+// ---------------------------------------------------------------------------
+function GoogleG({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48" style={{ flexShrink: 0 }}>
+      <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z" />
+      <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z" />
+      <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z" />
+      <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z" />
+    </svg>
+  );
+}
 
 // ---------------------------------------------------------------------------
-// Row tile component
+// ProfileTile
 // ---------------------------------------------------------------------------
-function NavTile({
-  href,
-  emoji,
-  label,
-  sublabel,
-  badge,
-}: {
+interface ProfileTileProps {
+  icon: React.ReactNode;
+  color?: string;
+  title: string;
+  sub: string;
+  badge?: number;
+  featured?: boolean;
   href: string;
-  emoji: string;
-  label: string;
-  sublabel?: string;
-  badge?: string | number;
-}) {
+}
+
+function ProfileTile({ icon, color = "var(--gold)", title, sub, badge, featured, href }: ProfileTileProps) {
   return (
     <Link
       href={href}
-      className="flex items-center gap-4 rounded-2xl p-4 transition-colors"
       style={{
-        backgroundColor: SURFACE,
-        border: `1.5px solid ${BORDER}`,
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        gap: 13,
+        padding: 14,
+        borderRadius: 16,
+        background: "var(--bg-2)",
+        border: `1px solid ${featured ? "var(--line-gold)" : "var(--line)"}`,
         textDecoration: "none",
+        cursor: "pointer",
       }}
     >
+      {/* Icon slot */}
       <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-        style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
-        aria-hidden="true"
+        style={{
+          width: 42,
+          height: 42,
+          borderRadius: 12,
+          background: "var(--bg-3)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexShrink: 0,
+          color,
+        }}
       >
-        {emoji}
+        {icon}
       </div>
-      <div className="flex-1 min-w-0">
-        <div className="font-bold text-sm" style={{ color: TEXT_PRIMARY }}>{label}</div>
-        {sublabel && (
-          <div className="text-xs mt-0.5 truncate" style={{ color: TEXT_MUTED }}>{sublabel}</div>
-        )}
+
+      {/* Text */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontWeight: 800, fontSize: 15, color: "var(--fg-1)" }}>{title}</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: "var(--fg-3)",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {sub}
+        </div>
       </div>
-      {badge !== undefined && (
+
+      {/* Badge */}
+      {badge !== undefined && badge > 0 && (
         <span
-          className="text-xs font-bold px-2 py-0.5 rounded-full"
-          style={{ backgroundColor: GREEN, color: "#fff", minWidth: 20, textAlign: "center" }}
+          style={{
+            minWidth: 20,
+            height: 20,
+            padding: "0 6px",
+            borderRadius: 99,
+            background: "var(--red, #FF3B5C)",
+            color: "#fff",
+            fontSize: 11,
+            fontWeight: 800,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           {badge}
         </span>
       )}
-      <span className="text-sm" style={{ color: TEXT_MUTED }} aria-hidden="true">›</span>
+
+      {/* Chevron */}
+      <ChevronRight size={20} color="var(--fg-3)" />
     </Link>
   );
 }
@@ -90,6 +149,9 @@ export default function PerfilPage() {
   const [owned, setOwned] = useState(0);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  // claimable achievements — stubbed 0 until achievements store exposes a helper
+  const claimable = 0;
 
   useEffect(() => {
     (async () => {
@@ -109,184 +171,302 @@ export default function PerfilPage() {
 
   const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
 
+  // Loading skeleton
   if (loading) {
     return (
       <div
         className="flex-1 flex items-center justify-center"
-        style={{ backgroundColor: BG }}
+        style={{ background: "var(--bg-1)" }}
       >
         <div
           className="w-10 h-10 rounded-full border-4 animate-spin"
-          style={{ borderColor: GREEN, borderTopColor: "transparent" }}
+          style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
         />
       </div>
     );
   }
 
+  const initial = (nickname[0] ?? "?").toUpperCase();
+
   return (
-    <div
-      className="home-dark flex flex-col flex-1 w-full max-w-lg mx-auto"
-    >
-      {/* ---- Header with avatar ---- */}
-      <header
-        className="px-5 pt-6 pb-6 flex flex-col items-center text-center"
+    <div className="home-dark flex flex-col flex-1 w-full max-w-lg mx-auto">
+      {/* ------------------------------------------------------------------ */}
+      {/* Header                                                               */}
+      {/* ------------------------------------------------------------------ */}
+      <div
         style={{
-          background: "linear-gradient(180deg, #111827 0%, #0d1117 100%)",
-          borderBottom: `1px solid ${BORDER}`,
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: "4px 18px 0",
+          overflow: "hidden",
         }}
       >
+        {/* Radial gold glow halo */}
         <div
-          className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-black text-white uppercase mb-3"
+          aria-hidden
           style={{
-            background: `linear-gradient(135deg, ${GOLD}44, ${GOLD}22)`,
-            border: `2px solid ${GOLD}66`,
-            boxShadow: `0 0 24px ${GOLD}33`,
+            position: "absolute",
+            top: -70,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 320,
+            height: 240,
+            background: "radial-gradient(circle, rgba(244,200,74,.18), transparent 65%)",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* 88px foil avatar */}
+        <div
+          style={{
+            position: "relative",
+            width: 88,
+            height: 88,
+            borderRadius: 99,
+            background: "var(--foil-gold)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontFamily: "var(--font-display)",
+            fontSize: 38,
+            color: "var(--fg-onlight)",
+            boxShadow: "var(--glow-gold)",
           }}
         >
-          {nickname[0] ?? "?"}
+          {initial}
         </div>
-        <h1 className="text-xl font-black capitalize" style={{ color: TEXT_PRIMARY }}>{nickname}</h1>
+
+        {/* Name */}
+        <h1
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: 28,
+            color: "var(--fg-1)",
+            marginTop: 14,
+            textTransform: "uppercase",
+            position: "relative",
+            margin: "14px 0 0",
+          }}
+        >
+          {nickname}
+        </h1>
+
+        {/* División Oro · Nivel 14 */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            marginTop: 4,
+            position: "relative",
+          }}
+        >
+          <Shield size={15} color="#3b9ae1" />
+          <span style={{ fontSize: 13, color: "var(--fg-2)", fontWeight: 600 }}>
+            División Oro · Nivel 14
+          </span>
+        </div>
+
+        {/* Auth row */}
         {authLoading ? null : user ? (
-          <div className="flex items-center gap-1.5 mt-1">
-            <span className="text-xs font-medium" style={{ color: TEXT_MUTED }}>{user.email}</span>
-          </div>
+          <span
+            style={{
+              marginTop: 6,
+              fontSize: 12,
+              color: "var(--fg-3)",
+              position: "relative",
+            }}
+          >
+            {user.email}
+          </span>
         ) : (
           <button
             onClick={signIn}
-            className="mt-2 text-xs font-bold px-3 py-1.5 rounded-full"
-            style={{ backgroundColor: LIME, color: "#0d0f13" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 14,
+              padding: "9px 16px",
+              borderRadius: "var(--r-pill)",
+              background: "var(--bg-2)",
+              border: "1px solid var(--line-gold)",
+              color: "var(--fg-1)",
+              fontWeight: 700,
+              fontSize: 13,
+              cursor: "pointer",
+              position: "relative",
+            }}
           >
+            <GoogleG size={16} />
             Conectar con Google
           </button>
         )}
-      </header>
+      </div>
 
-      <main className="flex-1 px-4 py-5 flex flex-col gap-3 overflow-y-auto">
-        {/* ---- Mi colección stat card ---- */}
-        <section
-          className="rounded-2xl p-4"
-          style={{ backgroundColor: SURFACE, border: `1.5px solid ${BORDER}` }}
+      {/* ------------------------------------------------------------------ */}
+      {/* Mi Colección stat card                                               */}
+      {/* ------------------------------------------------------------------ */}
+      <div style={{ padding: "22px 18px 0" }}>
+        <div
+          style={{
+            background: "var(--bg-2)",
+            border: "1px solid var(--line)",
+            borderRadius: 18,
+            padding: 16,
+          }}
           aria-label="Mi colección"
         >
-          <div className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: TEXT_MUTED }}>
-            Mi colección
+          {/* Eyebrow */}
+          <div
+            style={{
+              fontSize: 11,
+              fontWeight: 800,
+              letterSpacing: ".1em",
+              color: "var(--fg-3)",
+              textTransform: "uppercase",
+            }}
+          >
+            MI COLECCIÓN
           </div>
-          <div className="flex items-center justify-between mb-2">
-            <div>
-              <div
-                className="text-3xl font-black leading-none"
-                style={{ color: LIME }}
-              >
-                {owned}
-                <span className="text-base font-semibold" style={{ color: TEXT_MUTED }}>
-                  &nbsp;/ {total}
-                </span>
-              </div>
-              <div className="text-xs mt-1" style={{ color: TEXT_MUTED }}>figuritas · {pct}% completado</div>
+
+          {/* Owned / total + pct row */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              margin: "6px 0 4px",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: 34,
+                color: "var(--fg-1)",
+                lineHeight: 1,
+              }}
+            >
+              {owned}
+              <span style={{ color: "var(--fg-3)", fontSize: 20 }}> / {total}</span>
             </div>
             <div
-              className="text-2xl font-black"
-              style={{ color: pct >= 100 ? GOLD : LIME }}
+              style={{
+                fontFamily: "var(--font-stat, 'Archivo', monospace)",
+                fontWeight: 800,
+                fontSize: 26,
+                color: "var(--gold)",
+              }}
             >
               {pct}%
             </div>
           </div>
-          <div className="w-full h-2 rounded-full overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+
+          {/* Subtitle */}
+          <div
+            style={{
+              fontSize: 12,
+              color: "var(--fg-3)",
+              fontWeight: 600,
+              marginBottom: 10,
+            }}
+          >
+            cartas · {pct}% completado
+          </div>
+
+          {/* Progress bar */}
+          <div
+            style={{
+              height: 8,
+              borderRadius: 99,
+              background: "var(--bg-3)",
+              overflow: "hidden",
+            }}
+          >
             <div
-              className="h-full rounded-full transition-all duration-500"
-              style={{ width: `${pct}%`, backgroundColor: LIME }}
+              style={{
+                height: "100%",
+                width: `${pct}%`,
+                background: "var(--foil-gold)",
+              }}
             />
           </div>
-        </section>
-
-        {/* ---- Nav tiles ---- */}
-        <div className="flex flex-col gap-2">
-          <NavTile
-            href="/wishlist"
-            emoji="⭐"
-            label="Mi Wishlist"
-            sublabel="Tus 10 láminas más buscadas"
-          />
-          <NavTile
-            href="/achievements"
-            emoji="🏆"
-            label="Logros"
-            sublabel="Coleccionables y recompensas"
-          />
-          <NavTile
-            href="/stats"
-            emoji="📊"
-            label="Estadísticas"
-            sublabel="Progreso detallado de tu álbum"
-          />
-          <NavTile
-            href="/album/map"
-            emoji="🗺️"
-            label="Mapa del Mundial"
-            sublabel="Grupos y clasificación"
-          />
-          {user && (
-            <NavTile
-              href="/friends"
-              emoji="👥"
-              label="Amigos"
-              sublabel="Conectá con tus amigos"
-            />
-          )}
-          <NavTile
-            href="/perfil/importar"
-            emoji="📥"
-            label="Importar inventario"
-            sublabel="Seed rápido desde lista de Andy"
-          />
-          <NavTile
-            href="/import"
-            emoji="📲"
-            label="Importar de Figuritas"
-            sublabel="Traé tu colección desde otra app"
-          />
-          <NavTile
-            href="/settings"
-            emoji="⚙️"
-            label="Configuración"
-            sublabel="Apodo, cuenta, exportar datos"
-          />
         </div>
+      </div>
 
-        {/* ---- Sign-in CTA (if not signed in) ---- */}
-        {!authLoading && !user && (
-          <section
-            className="rounded-2xl p-5 text-center"
-            style={{ backgroundColor: SURFACE, border: `1.5px solid ${BORDER}` }}
-          >
-            <p className="text-2xl mb-2" aria-hidden="true">🔐</p>
-            <p className="text-sm font-bold mb-1" style={{ color: TEXT_PRIMARY }}>Conectá tu cuenta</p>
-            <p className="text-xs mb-4" style={{ color: TEXT_MUTED }}>
-              Guardá tu progreso en la nube y jugá con amigos
-            </p>
-            <button
-              onClick={signIn}
-              className="w-full py-3 rounded-xl font-bold text-white text-sm"
-              style={{ backgroundColor: GREEN }}
-            >
-              Iniciar sesión con Google
-            </button>
-          </section>
-        )}
+      {/* ------------------------------------------------------------------ */}
+      {/* Tile list                                                            */}
+      {/* ------------------------------------------------------------------ */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          padding: "14px 18px 0",
+        }}
+      >
+        <ProfileTile
+          href="/wishlist"
+          icon={<Heart size={21} />}
+          title="Mi Wishlist"
+          sub="Tus 10 cartas más buscadas"
+        />
+        <ProfileTile
+          href="/achievements"
+          icon={<Star size={21} />}
+          title="Logros"
+          sub="Coleccionables y recompensas"
+          badge={claimable || undefined}
+          featured={claimable > 0}
+        />
+        <ProfileTile
+          href="/stats"
+          icon={<BarChart3 size={21} />}
+          title="Estadísticas"
+          sub="Progreso detallado de tu álbum"
+        />
+        <ProfileTile
+          href="/album/map"
+          icon={<Map size={21} />}
+          title="Mapa del Mundial"
+          sub="Grupos y clasificación"
+        />
+        <ProfileTile
+          href="/perfil/importar"
+          icon={<Upload size={21} />}
+          title="Importar inventario"
+          sub="Seed rápido desde lista de Andy"
+        />
+        <ProfileTile
+          href="/import"
+          icon={<Download size={21} />}
+          title="Importar de Figuritas"
+          sub="Trae tu colección desde otra app"
+        />
+        <ProfileTile
+          href="/settings"
+          icon={<Settings size={21} />}
+          title="Configuración"
+          sub="Apodo, cuenta, exportar datos"
+        />
+      </div>
 
-        {/* Version footer */}
-        <div className="text-center text-xs pt-2 pb-4" style={{ color: TEXT_MUTED }}>
-          Albumix · Mundial 2026
-          <span className="mx-2">·</span>
-          <Link
-            href="/legal/disclaimer"
-            className="underline"
-            style={{ color: TEXT_MUTED }}
-          >
-            Legal
-          </Link>
-        </div>
-      </main>
+      {/* ------------------------------------------------------------------ */}
+      {/* Footer                                                               */}
+      {/* ------------------------------------------------------------------ */}
+      <div
+        style={{
+          textAlign: "center",
+          padding: "24px 18px 0",
+          color: "var(--fg-3)",
+          fontSize: 12,
+          fontWeight: 600,
+        }}
+      >
+        Albumix · Mundial 2026
+      </div>
 
       <BottomNav active="perfil" />
     </div>

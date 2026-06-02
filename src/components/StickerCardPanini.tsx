@@ -13,7 +13,7 @@
  *   onClick      — tap handler
  *   showXBadge   — override: force-show the ×N badge regardless of dup count
  *   count        — how many copies the user owns (drives ×N badge + owned border)
- *   favorited    — shows ⭐ in top-right corner when true
+ *   favorited    — (prop retained for callers; star glyph removed)
  *   posColor     — position-coded border color (Fase 2.5); renders as inset ring
  */
 
@@ -360,25 +360,6 @@ export default function StickerCardPanini({
           }}
         >
           ×{count > 1 ? count : dup + 1}
-        </div>
-      )}
-
-      {/* ------------------------------------------------------------------ */}
-      {/* Favorited star — top-right corner                                    */}
-      {/* ------------------------------------------------------------------ */}
-      {favorited && !locked && (
-        <div
-          style={{
-            position: "absolute",
-            top: 6,
-            right: flagRight + flagWidth + 4,
-            zIndex: 5,
-            fontSize: size === "sm" ? 10 : 12,
-            lineHeight: 1,
-          }}
-          aria-hidden
-        >
-          ⭐
         </div>
       )}
 
