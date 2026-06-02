@@ -105,14 +105,10 @@ test("golden-path smoke — all major routes", async ({ page }) => {
   const statsPage = page.locator('[data-testid="stats-empty-state"], [data-testid="stats-content"]');
   await expect(statsPage.first()).toBeVisible({ timeout: 12000 });
 
-  // ── /album/map — world SVG container present ──────────────────────────────────
-  await page.goto(`${BASE}/album/map`);
-  await page.waitForSelector('[data-testid="world-map-container"]', { timeout: 15000 });
-  await expect(page.locator('[data-testid="world-map-container"]')).toBeVisible();
-
-  // ── /settings — Logros + Importar rows present ───────────────────────────────
+  // ── /settings — Importar row present ────────────────────────────────────────
+  // Note: /album/map removed (2026-06-02) and Logros moved from /settings to
+  // /perfil in the same session — both checks dropped from the regression.
   await page.goto(`${BASE}/settings`);
   await page.waitForLoadState("networkidle");
-  await expect(page.locator('[data-testid="settings-row-logros"]')).toBeVisible({ timeout: 8000 });
   await expect(page.locator('[data-testid="settings-row-import"]')).toBeVisible({ timeout: 5000 });
 });
