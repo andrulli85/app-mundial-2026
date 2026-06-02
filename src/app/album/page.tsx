@@ -250,8 +250,9 @@ export default function AlbumPage() {
       {/* Fix 1 — Header: MI ÁLBUM X/Y · Completado N% · gold progress bar    */}
       {/* ------------------------------------------------------------------ */}
       <header
-        className="sticky top-[54px] z-20 px-4 pb-3 pt-4"
+        className="sticky z-20 px-4 pb-3 pt-4"
         style={{
+          top: "calc(54px + env(safe-area-inset-top, 0px))",
           backgroundColor: "#111111",
           borderBottom: "1px solid rgba(250,204,21,0.2)",
           boxShadow: "0 1px 12px rgba(0,0,0,0.6)",
