@@ -383,18 +383,32 @@ export default function StickerCardPanini({
       )}
 
       {/* ------------------------------------------------------------------ */}
-      {/* Missing overlay — dark tint when count === 0 (not locked)            */}
+      {/* Missing overlay — dark tint + dashed border when count === 0         */}
+      {/* Opacity 0.45 dark overlay + dashed border signal "you don't have     */}
+      {/* this" per Albumix design spec (Domi missing-card demo).              */}
       {/* ------------------------------------------------------------------ */}
       {count === 0 && !locked && (
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(0,0,0,0.45)",
-            zIndex: 6,
-            pointerEvents: "none",
-          }}
-        />
+        <>
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "rgba(0,0,0,0.45)",
+              zIndex: 6,
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 2,
+              borderRadius: "var(--r-card, 10px)",
+              border: "2px dashed rgba(255,255,255,0.35)",
+              zIndex: 7,
+              pointerEvents: "none",
+            }}
+          />
+        </>
       )}
     </button>
   );

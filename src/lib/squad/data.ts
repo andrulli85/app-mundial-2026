@@ -4,21 +4,44 @@
  * Sources:
  *   - src/data/stickers.json        — 980-sticker canonical catalog (all types)
  *   - src/data/player-ratings.json  — 699 SoFIFA real OVR + position entries
+ *   - src/data/domi-missing.json    — Demo data: Domi's missing cards from figuritas.app
  *   - src/lib/player-meta.ts        — deterministic fallback for unrated players
  *   - src/lib/team-catalog.ts       — team display names + flag emojis
  *   - src/lib/squad/photo.ts        — photo URL resolution (originales → seed → placeholder)
  *
  * Ownership model (demo — no Firebase):
- *   owned: simpleHash(sticker_id) % 100 < 60   (~60% of players)
- *   dup:   simpleHash(sticker_id) % 100 < 15   (~15% as duplicates)
+ *   Priority 1: DOMI_MISSING set — if (team_code, number) is in Domi's missing list
+ *               → owned: false, dup: 0.
+ *   Priority 2: Deterministic hash fallback — simpleHash(sticker_id) % 100 < 60 (~60% owned)
+ *               dup: simpleHash(sticker_id) % 100 < 15 (~15% as duplicates)
+ *
+ * Demo data: Domi's missing cards from figuritas.app — replace with real Firebase
+ * user state in Phase 5b.
  *
  * This is the single source of truth. market/data.ts re-exports PLAYERS + FRIENDS.
  */
 
 import rawStickers from "@/data/stickers.json";
 import rawRatings from "@/data/player-ratings.json";
+import domiMissing from "@/data/domi-missing.json";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import { photoUrlFor } from "@/lib/squad/photo";
+
+// ---------------------------------------------------------------------------
+// Domi missing set — (team_code)-(number) tuples where owned must be false.
+// Demo data: Domi's missing cards from figuritas.app — replace with real
+// Firebase user state in Phase 5b.
+// ---------------------------------------------------------------------------
+
+type DomiMissingJson = Record<string, number[] | string>;
+
+const MISSING: Set<string> = new Set(
+  Object.entries(domiMissing as DomiMissingJson)
+    .filter(([key]) => !key.startsWith("_")) // skip meta-keys like "_comment"
+    .flatMap(([teamCode, numbers]) =>
+      (numbers as number[]).map((n) => `${teamCode}-${n}`)
+    )
+);
 
 // ---------------------------------------------------------------------------
 // Types (exported — consumed by squad/page.tsx and market/data.ts)
@@ -171,9 +194,14 @@ function buildPlayers(): Player[] {
     const pts = ovr * 2 + (hashVal % 40);
 
     // Ownership (demo, no Firebase)
-    const owned = hashVal % 100 < 60;
+    // Priority 1: Domi's missing list overrides the hash rule.
+    // Demo data: Domi's missing cards from figuritas.app — replace with real
+    // Firebase user state in Phase 5b.
+    const domiKey = `${s.team_code}-${n}`;
+    const isDomiMissing = MISSING.has(domiKey);
+    const owned = isDomiMissing ? false : hashVal % 100 < 60;
     const dupRaw = hashVal % 100 < 15 ? 1 + (hashVal % 2) : 0; // 1 or 2 dupes
-    const dup = owned ? dupRaw : 0;
+    const dup = isDomiMissing ? 0 : owned ? dupRaw : 0;
 
     // Team display
     const catalogEntry = TEAM_CATALOG[s.team_code];

@@ -18,6 +18,7 @@ import { getNickname, getAllStickers, toggleSticker } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import type { StickerEntry } from "@/lib/db";
+import { applyDomiSeedIfNeeded } from "@/lib/domi-seed";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { TeamCatalogEntry } from "@/lib/team-catalog";
 import { getPosColor } from "@/lib/pos-color";
@@ -117,6 +118,11 @@ export default function AlbumPage() {
         return;
       }
       setNickname(nick);
+
+      // Demo data: seed Domi's missing-card collection on first load.
+      // Idempotent — guarded by profile key "domi_seed_v1" in IndexedDB.
+      // Replace with real Firebase user state in Phase 5b.
+      await applyDomiSeedIfNeeded();
 
       const [cat, entries] = await Promise.all([
         getCatalog(),
