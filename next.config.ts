@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/trade", destination: "/market", permanent: true },
       { source: "/mercado", destination: "/market", permanent: true },
+      { source: "/once", destination: "/squad", permanent: true },
     ];
   },
 };

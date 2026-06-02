@@ -535,7 +535,7 @@ export default function ScoreboardPage() {
             Tu puntaje aparecerá aquí una vez que hayas armado y confirmado tu 11 en Mi Once.
           </div>
           <Link
-            href="/once"
+            href="/squad"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -778,7 +778,7 @@ export default function ScoreboardPage() {
             </div>
             {!locked && (
               <Link
-                href="/once"
+                href="/squad"
                 style={{
                   display: "inline-block",
                   marginTop: 6,

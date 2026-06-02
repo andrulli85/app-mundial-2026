@@ -3,8 +3,8 @@
 /**
  * /squad — Mi Once: Squad Builder
  *
- * Phase 4.2 (Stream B). Self-contained with mock data from src/lib/squad/data.ts.
- * Real Firebase integration deferred to Phase 5.
+ * Phase 4.2 (Stream B) + Phase 5 Firebase persistence.
+ * Real catalog data from src/lib/squad/data.ts.
  *
  * Design source: squad.jsx from Albumix design pack (497 lines).
  * Formations, geometry, and chemistry formula ported verbatim.
@@ -18,7 +18,10 @@
  *   - Tap empty/filled slot opens PickerSheet bottom sheet
  *   - Live OVR, Chemistry, Points stats
  *   - Auto-fill best XI
- *   - Persist to localStorage under albumix.miOnce
+ *   - Dual-mode persistence:
+ *     - Authenticated: Firestore users/{uid}/squad/current (cross-device sync)
+ *     - Anonymous: localStorage under albumix.miOnce (no regression)
+ *     - localStorage migrated to Firestore on first authenticated session
  *   - Segmented tabs: Equipo / Puntos / Resultados
  */
 
@@ -32,7 +35,16 @@ import {
   persistSquad,
   pointsLeaderboard,
 } from "@/lib/squad/data";
-import type { Player, Position } from "@/lib/squad/data";
+import type { Player, Position, SavedSquad } from "@/lib/squad/data";
+import { useAuth } from "@/components/AuthProvider";
+import { getFirebase } from "@/lib/firebase";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  onSnapshot,
+  type Unsubscribe,
+} from "firebase/firestore";
 
 // ---------------------------------------------------------------------------
 // Formation geometry (verbatim from squad.jsx lines 8-27)
@@ -1149,12 +1161,55 @@ function ResultsView() {
 }
 
 // ---------------------------------------------------------------------------
+// Firestore persistence helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Loads squad from Firestore for the given uid.
+ * Returns null if the document does not exist or Firebase is unavailable.
+ */
+async function loadSquadFromFirestore(uid: string): Promise<SavedSquad | null> {
+  const fb = getFirebase();
+  if (!fb) return null;
+  try {
+    const ref = doc(fb.db, "users", uid, "squad", "current");
+    const snap = await getDoc(ref);
+    if (!snap.exists()) return null;
+    return snap.data() as SavedSquad;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Writes squad to Firestore. Adds migrated_at timestamp when migrating from
+ * localStorage (migration = true).
+ */
+async function saveSquadToFirestore(
+  uid: string,
+  data: SavedSquad,
+  migration = false,
+): Promise<void> {
+  const fb = getFirebase();
+  if (!fb) return;
+  const payload: Record<string, unknown> = {
+    formation: data.formation,
+    lineup: data.lineup,
+    updated_at: new Date().toISOString(),
+  };
+  if (migration) payload.migrated_at = new Date().toISOString();
+  await setDoc(doc(fb.db, "users", uid, "squad", "current"), payload, { merge: true });
+}
+
+// ---------------------------------------------------------------------------
 // Main page
 // ---------------------------------------------------------------------------
 
 type TabKey = "equipo" | "puntos" | "resultados";
 
 export default function SquadPage() {
+  const { user } = useAuth();
+
   const [formation, setFormation] = useState<FormationKey>("4-3-3");
   const [lineup, setLineup] = useState<Record<string, string>>({});
   const [picker, setPicker] = useState<{ slotId: string; pos: Position } | null>(null);
@@ -1166,18 +1221,70 @@ export default function SquadPage() {
   const dragRef = useRef<{ slotId: string; moved: boolean } | null>(null);
   const slots = FORMATIONS[formation];
 
-  // ---- Restore from localStorage on mount ----
+  // ---- Load on mount / auth change: Firestore (authed) or localStorage (anon) ----
   useEffect(() => {
-    const saved = loadSavedSquad();
-    if (saved) {
-      setFormation(saved.formation);
-      setLineup(saved.lineup);
-    } else {
-      // Auto-fill on first visit
-      setLineup(doAutoFill(FORMATIONS["4-3-3"]));
-    }
-    setHydrated(true);
-  }, []);
+    let unsubFirestore: Unsubscribe | null = null;
+    let cancelled = false;
+
+    (async () => {
+      if (user) {
+        // --- Authenticated path ---
+        const remote = await loadSquadFromFirestore(user.uid);
+
+        if (cancelled) return;
+
+        if (remote) {
+          // Firestore has data — use it as source of truth
+          setFormation(remote.formation as FormationKey);
+          setLineup(remote.lineup);
+        } else {
+          // No Firestore doc yet — check for localStorage to migrate
+          const local = loadSavedSquad();
+          if (local) {
+            // Migrate localStorage → Firestore (one-shot)
+            setFormation(local.formation as FormationKey);
+            setLineup(local.lineup);
+            await saveSquadToFirestore(user.uid, local, true);
+            // Clear localStorage after successful migration
+            try { localStorage.removeItem("albumix.miOnce"); } catch { /* noop */ }
+          } else {
+            // Fresh authenticated user — auto-fill
+            const filled = doAutoFill(FORMATIONS["4-3-3"]);
+            setLineup(filled);
+          }
+        }
+
+        // Set up real-time listener for cross-device sync
+        const fb = getFirebase();
+        if (fb && !cancelled) {
+          const ref = doc(fb.db, "users", user.uid, "squad", "current");
+          unsubFirestore = onSnapshot(ref, (snap) => {
+            if (!snap.exists() || cancelled) return;
+            const data = snap.data() as SavedSquad;
+            setFormation(data.formation as FormationKey);
+            setLineup(data.lineup);
+          });
+        }
+      } else {
+        // --- Anonymous path (localStorage) ---
+        const saved = loadSavedSquad();
+        if (saved) {
+          setFormation(saved.formation as FormationKey);
+          setLineup(saved.lineup);
+        } else {
+          setLineup(doAutoFill(FORMATIONS["4-3-3"]));
+        }
+      }
+
+      if (!cancelled) setHydrated(true);
+    })();
+
+    return () => {
+      cancelled = true;
+      if (unsubFirestore) unsubFirestore();
+    };
+    // Re-run when auth state changes (user signs in / out)
+  }, [user?.uid]);
 
   // ---- Toast helper ----
   const flash = useCallback((msg: string) => {
@@ -1251,11 +1358,16 @@ export default function SquadPage() {
     flash("11 ideal armado ⚡");
   }, [slots, flash]);
 
-  // ---- Save to localStorage ----
-  const saveSquad = useCallback(() => {
-    persistSquad({ formation, lineup });
+  // ---- Save squad — Firestore for authed users, localStorage for anonymous ----
+  const saveSquad = useCallback(async () => {
+    const data: SavedSquad = { formation, lineup };
+    if (user) {
+      await saveSquadToFirestore(user.uid, data);
+    } else {
+      persistSquad(data);
+    }
     flash("11 guardado 🔥");
-  }, [formation, lineup, flash]);
+  }, [formation, lineup, user, flash]);
 
   // ---- Drag-to-swap (pointer events — ANDY's Rule) ----
   const onPointerDown = useCallback(

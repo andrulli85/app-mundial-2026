@@ -498,7 +498,7 @@ export default function InicioPage() {
           {/* "Arma tu 11" card (renamed from "Arma tu once" — Fase 1)         */}
           {/* -------------------------------------------------------------- */}
           <Link
-            href="/once"
+            href="/squad"
             className="card-dark flex items-center gap-3 p-4 active:opacity-80 transition-opacity"
             style={{ textDecoration: "none" }}
             data-testid="once-card"
