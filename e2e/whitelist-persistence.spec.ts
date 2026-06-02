@@ -12,13 +12,13 @@ test.use({ viewport: { width: 390, height: 844 } });
 test("granted access persists across reload", async ({ page }) => {
   await grantAccess(page, "test@example.com");
 
-  // First visit — should not redirect to /invite
+  // First visit — should not redirect to /login
   await page.goto(`${BASE}/album`);
-  await expect(page).not.toHaveURL(/\/invite/, { timeout: 10000 });
+  await expect(page).not.toHaveURL(/\/login/, { timeout: 10000 });
 
   // Reload — cookie should still be valid
   await page.reload();
-  await expect(page).not.toHaveURL(/\/invite/, { timeout: 10000 });
+  await expect(page).not.toHaveURL(/\/login/, { timeout: 10000 });
 });
 
 test("granted access persists in new tab (same context)", async ({ context }) => {
@@ -28,7 +28,7 @@ test("granted access persists in new tab (same context)", async ({ context }) =>
   // Open second tab in same context — cookies are shared
   const page2 = await context.newPage();
   await page2.goto(`${BASE}/album`);
-  await expect(page2).not.toHaveURL(/\/invite/, { timeout: 10000 });
+  await expect(page2).not.toHaveURL(/\/login/, { timeout: 10000 });
 
   await page1.close();
   await page2.close();

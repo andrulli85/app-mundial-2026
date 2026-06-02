@@ -29,11 +29,19 @@ test("public assets return 200 without invite cookie", async ({ page }) => {
   }
 });
 
-test("/invite page itself is accessible without cookie", async ({ page }) => {
+test("/login page itself is accessible without cookie", async ({ page }) => {
+  await page.context().clearCookies();
+
+  await page.goto(`${BASE}/login`);
+  // Should render the login form, not redirect (infinite loop prevention)
+  await expect(page.locator('[data-testid="login-form"]')).toBeVisible({ timeout: 8000 });
+  await expect(page).toHaveURL(/\/login/);
+});
+
+test("/invite redirects to /login (308 backward compat)", async ({ page }) => {
   await page.context().clearCookies();
 
   await page.goto(`${BASE}/invite`);
-  // Should render the form, not redirect (infinite loop prevention)
-  await expect(page.locator('[data-testid="invite-form"]')).toBeVisible({ timeout: 8000 });
-  await expect(page).toHaveURL(/\/invite/);
+  // 308 redirect lands us on /login
+  await expect(page).toHaveURL(/\/login/, { timeout: 8000 });
 });

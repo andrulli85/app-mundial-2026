@@ -15,7 +15,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import StickerCardPanini from "@/components/StickerCardPanini";
 import StickerDetailModal from "@/components/StickerDetailModal";
-import { getNickname, getAllStickers, toggleSticker } from "@/lib/db";
+import { getNickname, getAllStickers } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import type { StickerEntry } from "@/lib/db";

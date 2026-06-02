@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
       { source: "/trade", destination: "/market", permanent: true },
       { source: "/mercado", destination: "/market", permanent: true },
       { source: "/once", destination: "/squad", permanent: true },
+      // Legacy invite path — 308 preserves the HTTP method (safe for GET links/QR codes)
+      { source: "/invite", destination: "/login", permanent: true },
     ];
   },
 };

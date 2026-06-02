@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 /**
- * whitelist-unauthorized — visiting a gated route without a cookie redirects to /invite.
+ * whitelist-unauthorized — visiting a gated route without a cookie redirects to /login.
  *
  * Requires ALBUMIX_INVITE_SECRET to be set (gate is inactive without it).
  */
@@ -14,17 +14,17 @@ test.skip(!process.env.ALBUMIX_INVITE_SECRET, "ALBUMIX_INVITE_SECRET not set —
 
 test.use({ viewport: { width: 390, height: 844 } });
 
-test("visit /album without cookie → redirected to /invite", async ({ page }) => {
+test("visit /album without cookie → redirected to /login", async ({ page }) => {
   // Ensure no albumix_invited cookie exists
   await page.context().clearCookies();
 
   await page.goto(`${BASE}/album`);
 
-  // Should land on /invite
-  await expect(page).toHaveURL(/\/invite/, { timeout: 10000 });
+  // Should land on /login
+  await expect(page).toHaveURL(/\/login/, { timeout: 10000 });
 
-  // The invite form must be visible
-  await expect(page.locator('[data-testid="invite-form"]')).toBeVisible({
+  // The login form must be visible
+  await expect(page.locator('[data-testid="login-form"]')).toBeVisible({
     timeout: 8000,
   });
 });

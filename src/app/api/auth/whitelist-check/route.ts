@@ -1,16 +1,21 @@
 /**
- * POST /api/invite/verify
+ * POST /api/auth/whitelist-check
  *
- * Body: { email: string }
+ * Validates a Firebase ID token and grants the albumix_invited cookie if the
+ * token's email is in the whitelist.
  *
- * 200 + Set-Cookie   → email is whitelisted; cookie granted
- * 403                → email not in whitelist
- * 429                → rate-limit exceeded (5 attempts per IP per 5 min)
- * 400                → malformed request
- * 500                → missing server configuration (ALBUMIX_INVITE_SECRET)
+ * Body: { idToken: string }
+ *
+ * 200 + Set-Cookie    → token valid, email whitelisted; cookie granted
+ * 401                 → idToken invalid or unverifiable
+ * 403 not_invited     → email not in WHITELIST_EMAILS
+ * 403 email_not_verified → Google account email is not verified
+ * 429                 → rate-limit exceeded (5 attempts per IP per 5 min)
+ * 500 server_misconfigured → ALBUMIX_INVITE_SECRET not set
  */
 
 import { NextRequest, NextResponse } from "next/server";
+import { verifyFirebaseIdToken } from "@/lib/firebase-id-token";
 import {
   isWhitelisted,
   signCookieValue,
@@ -19,10 +24,10 @@ import {
 } from "@/lib/invite";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
-// Simple token bucket — fine for ~10 users. Resets on cold-start, which is
-// acceptable for this scale. Each IP gets 5 attempts per 5-minute window.
+// Simple token bucket — same parameters as the old invite/verify route: 5 attempts / 5 min / IP.
+// Resets on cold-start — acceptable for ~10 users.
 
-const RATE_WINDOW_MS = 5 * 60 * 1000; // 5 min
+const RATE_WINDOW_MS = 5 * 60 * 1000;
 const RATE_MAX_ATTEMPTS = 5;
 
 interface BucketEntry {
@@ -40,40 +45,39 @@ function getClientIp(req: NextRequest): string {
   );
 }
 
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
+function checkRateLimit(ip: string): { allowed: boolean } {
   const now = Date.now();
   const entry = rateBuckets.get(ip);
 
   if (!entry || now >= entry.resetAt) {
     rateBuckets.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
-    return { allowed: true, remaining: RATE_MAX_ATTEMPTS - 1 };
+    return { allowed: true };
   }
 
   if (entry.count >= RATE_MAX_ATTEMPTS) {
-    return { allowed: false, remaining: 0 };
+    return { allowed: false };
   }
 
   entry.count += 1;
-  return { allowed: true, remaining: RATE_MAX_ATTEMPTS - entry.count };
+  return { allowed: true };
 }
 
 // ── Handler ───────────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  // Configuration guard — fail closed if secret is missing
+  // Configuration guard — fail with a clear error if secret is missing
   const secret = process.env.ALBUMIX_INVITE_SECRET;
   if (!secret) {
-    console.error("[invite/verify] ALBUMIX_INVITE_SECRET is not set");
+    console.error("[whitelist-check] ALBUMIX_INVITE_SECRET is not set");
     return NextResponse.json(
-      { error: "Server configuration error" },
+      { error: "server_misconfigured" },
       { status: 500 }
     );
   }
 
-  // Rate limit check
+  // Rate limit by IP
   const ip = getClientIp(req);
-  const { allowed } = checkRateLimit(ip);
-  if (!allowed) {
+  if (!checkRateLimit(ip).allowed) {
     return NextResponse.json(
       { error: "Demasiados intentos. Esperá 5 minutos e intentá de nuevo." },
       {
@@ -88,31 +92,39 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   // Parse body
-  let email: string;
+  let idToken: string;
   try {
     const body = await req.json();
-    email = typeof body?.email === "string" ? body.email.trim() : "";
+    idToken = typeof body?.idToken === "string" ? body.idToken.trim() : "";
   } catch {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  if (!email) {
-    return NextResponse.json(
-      { error: "Email requerido" },
-      { status: 400 }
-    );
+  if (!idToken) {
+    return NextResponse.json({ error: "idToken requerido" }, { status: 400 });
   }
 
-  // Whitelist check
-  if (!isWhitelisted(email)) {
+  // Verify Firebase ID token via JWKS (no firebase-admin needed)
+  const tokenPayload = await verifyFirebaseIdToken(idToken);
+  if (!tokenPayload) {
+    return NextResponse.json({ error: "invalid_token" }, { status: 401 });
+  }
+
+  // Email must be verified by Google before we accept it
+  if (!tokenPayload.emailVerified) {
     return NextResponse.json(
-      { error: "not_invited" },
+      { error: "email_not_verified" },
       { status: 403 }
     );
   }
 
-  // Sign cookie
-  const cookieValue = await signCookieValue(email, secret);
+  // Whitelist check
+  if (!isWhitelisted(tokenPayload.email)) {
+    return NextResponse.json({ error: "not_invited" }, { status: 403 });
+  }
+
+  // All checks passed — sign the HMAC cookie
+  const cookieValue = await signCookieValue(tokenPayload.email, secret);
   const isSecure = process.env.NODE_ENV === "production";
 
   const response = NextResponse.json({ ok: true });
