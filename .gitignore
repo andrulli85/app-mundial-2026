@@ -42,3 +42,6 @@ public/sw.js
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Source sticker PNGs — 498MB, gitignored (use originales-manifest.json for references)
+/originales/

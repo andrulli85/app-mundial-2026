@@ -1,0 +1,3874 @@
+{
+  "matched": [
+    {
+      "sticker_id": "kor-16-lee",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Dongyeong Lee.png",
+      "confidence": "levenshtein_2"
+    },
+    {
+      "sticker_id": "kor-logo",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Escudo Corea del Sur.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "kor-17-cho",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Guesung Cho.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-7-lee",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Hanbeom Lee.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-18-son",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Heungmin Son.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-2-jo",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Hyeonwoo Jo.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-11-hwang",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Inbeom Hwang.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-10-lee",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Jaesung Lee.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-12-lee",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Kangin Lee.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-4-kim",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Minjae Kim.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-9-lee",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Myungjae Lee.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "kor-3-kim",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Seungkyu Kim.png",
+      "confidence": "levenshtein_2"
+    },
+    {
+      "sticker_id": "kor-8-lee",
+      "source": "Grupo A/COREA DEL SUR/Corea del Sur - Taeseok Lee.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "mex-18-vega",
+      "source": "Grupo A/MEXICO/México - Alexis Vega.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-9-rodriguez",
+      "source": "Grupo A/MEXICO/México - Carlos Rodríguez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-20-huerta",
+      "source": "Grupo A/MEXICO/México - César Huerta.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-5-montes",
+      "source": "Grupo A/MEXICO/México - César Montes.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-8-lainez",
+      "source": "Grupo A/MEXICO/México - Diego Lainez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-10-alvarez",
+      "source": "Grupo A/MEXICO/México - Edson Álvarez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-logo",
+      "source": "Grupo A/MEXICO/México - Escudo México.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-15-lozano",
+      "source": "Grupo A/MEXICO/México - Hirving Lozano.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-7-reyes",
+      "source": "Grupo A/MEXICO/México - Israel Reyes.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-6-gallardo",
+      "source": "Grupo A/MEXICO/México - Jesús Gallardo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-3-vasquez",
+      "source": "Grupo A/MEXICO/México - Johan Vásquez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-4-sanchez",
+      "source": "Grupo A/MEXICO/México - Jorge Sánchez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-2-malagon",
+      "source": "Grupo A/MEXICO/México - Luis Malagón.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-12-ruiz",
+      "source": "Grupo A/MEXICO/México - Marcel Ruiz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-11-pineda",
+      "source": "Grupo A/MEXICO/México - Orbelín Pineda.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-17-jimenez",
+      "source": "Grupo A/MEXICO/México - Raúl Jiménez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-19-alvarado",
+      "source": "Grupo A/MEXICO/México - Roberto Alvarado.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-16-gimenez",
+      "source": "Grupo A/MEXICO/México - Santiago Giménez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-team",
+      "source": "Grupo A/MEXICO/México - Team Photo México.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mex-14-sanchez",
+      "source": "Grupo A/MEXICO/México - Érick Sánchez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-19-hlozek",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Adam Hložek.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-8-zima",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - David Zima.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-logo",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Escudo República Checa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-6-zeleny",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Jaroslav Zelený.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-10-provod",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Lukáš Provod.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-2-kovar",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Matěj Kovář.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-15-vydra",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Matěj Vydra.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-9-sadilek",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Michal Sadílek.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-14-sulc",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Pavel Šulc.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-17-chory",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Tomáš Chorý.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-7-holes",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Tomáš Holeš.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-12-soucek",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Tomáš Souček.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-16-kusej",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Vasil Kušej.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-5-coufal",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Vladimír Coufal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cze-18-cerny",
+      "source": "Grupo A/REPUBLICA CHECA/República Checa - Václav Černý.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-4-modiba",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Aubrey Modiba.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-14-aubaas",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Bathusi Aubaas.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "rsa-logo",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Escudo Sudáfrica.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-18-rayners",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Iqraam Rayners.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-9-mudau",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Khuliso Mudau.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-17-foster",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Lyle Foster.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-6-mbokazi",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Mbekezeli Mbokazi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-19-nkota",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Mohau Nkota.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-20-appollis",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Oswin Appollis.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-5-kabini",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Samukele Kabini.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-3-chaine",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Sipho Chaine.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-16-mbule",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Sipho Mbule.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-team",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Team Photo Sudáfrica.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-11-mokoena",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Teboho Mokoena.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "rsa-12-mbatha",
+      "source": "Grupo A/SUDAFRICA/Sudáfrica - Thalente Mbatha.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-16-memic",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Amar Memić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-8-hadziahmetovic",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Amir Hadžiahmetović.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-9-tahirovic",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Benjamin Tahirović.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-18-dzeko",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Edin Džeko.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-logo",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Escudo Bosnia y Herzegovina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-20-tabakovic",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Haris Tabaković.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-12-basic",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Ivan Bašić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-11-sunjic",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Ivan Šunjić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-6-mujakic",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Nihad Mujakić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-2-vasilj",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Nikola Vasilj.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-19-bazdar",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Samed Baždar.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-4-kolasinac",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Sead Kolašinac.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bih-5-muharemovic",
+      "source": "Grupo B/BOSNIA Y HERZEGOVINA/Bosnia y Herzegovina - Tarik Muharemović.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-4-johnston",
+      "source": "Grupo B/CANADA/Canadá - Alistair Johnston.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-3-davies",
+      "source": "Grupo B/CANADA/Canadá - Alphonso Davies.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-19-larin",
+      "source": "Grupo B/CANADA/Canadá - Cyle Larin.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-2-st-clair",
+      "source": "Grupo B/CANADA/Canadá - Dayne St. Clair.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "can-7-cornelius",
+      "source": "Grupo B/CANADA/Canadá - Derek Cornelius.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-logo",
+      "source": "Grupo B/CANADA/Canadá - Escudo Canadá.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-14-shaffelburg",
+      "source": "Grupo B/CANADA/Canadá - Jacob Shaffelburg.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-20-david",
+      "source": "Grupo B/CANADA/Canadá - Jonathan David.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-12-osorio",
+      "source": "Grupo B/CANADA/Canadá - Jonathan Osorio.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-9-miller",
+      "source": "Grupo B/CANADA/Canadá - Kamal Miller.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-15-choiniere",
+      "source": "Grupo B/CANADA/Canadá - Mathieu Choinière.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-8-bombito",
+      "source": "Grupo B/CANADA/Canadá - Moïse Bombito.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-16-sigur",
+      "source": "Grupo B/CANADA/Canadá - Niko Sigur.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-5-adekugbe",
+      "source": "Grupo B/CANADA/Canadá - Samuel Adekugbe.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-10-eustaquio",
+      "source": "Grupo B/CANADA/Canadá - Stephen Eustáquio.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "can-17-buchanan",
+      "source": "Grupo B/CANADA/Canadá - Tajon Buchanan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-15-hatem",
+      "source": "Grupo B/CATAR/Catar - Abdulaziz Hatem.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-19-ganehi",
+      "source": "Grupo B/CATAR/Catar - Ahmed Al-Ganehi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-20-ali",
+      "source": "Grupo B/CATAR/Catar - Almoez Ali.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-11-madibo",
+      "source": "Grupo B/CATAR/Catar - Assim Madibo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-6-khoukhi",
+      "source": "Grupo B/CATAR/Catar - Boualem Khoukhi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-16-al-haydos",
+      "source": "Grupo B/CATAR/Catar - Hassan Al-Haydos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-5-ahmed",
+      "source": "Grupo B/CATAR/Catar - Homam Ahmed.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-10-boudiaf",
+      "source": "Grupo B/CATAR/Catar - Karim Boudiaf.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-4-mendes",
+      "source": "Grupo B/CATAR/Catar - Lucas Mendes.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-14-waad",
+      "source": "Grupo B/CATAR/Catar - Mohammed Waad.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-7-miguel",
+      "source": "Grupo B/CATAR/Catar - Pedro Miguel.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-3-albrake",
+      "source": "Grupo B/CATAR/Catar - Sultan Albrake.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "qat-8-salman",
+      "source": "Grupo B/CATAR/Catar - Tarek Salman.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-7-amenda",
+      "source": "Grupo B/SUIZA/Suiza - Aurèle Amenda.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-19-ndoye",
+      "source": "Grupo B/SUIZA/Suiza - Dan Ndoye.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-10-zakaria",
+      "source": "Grupo B/SUIZA/Suiza - Denis Zakaria.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-logo",
+      "source": "Grupo B/SUIZA/Suiza - Escudo Suiza.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-12-rieder",
+      "source": "Grupo B/SUIZA/Suiza - Fabian Rieder.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-9-xhaka",
+      "source": "Grupo B/SUIZA/Suiza - Granit Xhaka.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-2-kobel",
+      "source": "Grupo B/SUIZA/Suiza - Gregor Kobel.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-15-manzambi",
+      "source": "Grupo B/SUIZA/Suiza - Johan Manzambi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-4-akanji",
+      "source": "Grupo B/SUIZA/Suiza - Manuel Akanji.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-16-aebischer",
+      "source": "Grupo B/SUIZA/Suiza - Michel Aebischer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-6-elvedi",
+      "source": "Grupo B/SUIZA/Suiza - Nico Elvedi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-11-freuler",
+      "source": "Grupo B/SUIZA/Suiza - Remo Freuler.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-5-rodriguez",
+      "source": "Grupo B/SUIZA/Suiza - Ricardo Rodríguez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-18-vargas",
+      "source": "Grupo B/SUIZA/Suiza - Rubén Vargas.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-8-widmer",
+      "source": "Grupo B/SUIZA/Suiza - Silvan Widmer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sui-20-amdouni",
+      "source": "Grupo B/SUIZA/Suiza - Zeki Amdouni.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-2-alisson",
+      "source": "Grupo C/BRASIL/Brasil - Alisson Becker.png",
+      "confidence": "prefix"
+    },
+    {
+      "sticker_id": "bra-3-bento",
+      "source": "Grupo C/BRASIL/Brasil - Bento.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-11-guimaraes",
+      "source": "Grupo C/BRASIL/Brasil - Bruno Guimarães.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-10-casemiro",
+      "source": "Grupo C/BRASIL/Brasil - Casemiro.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-7-danilo",
+      "source": "Grupo C/BRASIL/Brasil - Danilo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-logo",
+      "source": "Grupo C/BRASIL/Brasil - Escudo Brasil.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-20-estevao",
+      "source": "Grupo C/BRASIL/Brasil - Estêvão.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-6-magalhaes",
+      "source": "Grupo C/BRASIL/Brasil - Gabriel Magalhães.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-18-martinelli",
+      "source": "Grupo C/BRASIL/Brasil - Gabriel Martinelli.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-16-pedro",
+      "source": "Grupo C/BRASIL/Brasil - João Pedro.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-9-paqueta",
+      "source": "Grupo C/BRASIL/Brasil - Lucas Paquetá.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-12-henrique",
+      "source": "Grupo C/BRASIL/Brasil - Luiz Henrique.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-4-marquinhos",
+      "source": "Grupo C/BRASIL/Brasil - Marquinhos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-17-cunha",
+      "source": "Grupo C/BRASIL/Brasil - Matheus Cunha.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-19-raphinha",
+      "source": "Grupo C/BRASIL/Brasil - Raphinha.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-15-rodrygo",
+      "source": "Grupo C/BRASIL/Brasil - Rodrygo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-team",
+      "source": "Grupo C/BRASIL/Brasil - Team Photo Brasil.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-14-junior",
+      "source": "Grupo C/BRASIL/Brasil - Vinícius Júnior.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-8-wesley",
+      "source": "Grupo C/BRASIL/Brasil - Wesley.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bra-5-militao",
+      "source": "Grupo C/BRASIL/Brasil - Éder Militão.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-2-gunn",
+      "source": "Grupo C/ESCOCIA/Escocia - Angus Gunn.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-9-ralston",
+      "source": "Grupo C/ESCOCIA/Escocia - Anthony Ralston.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-logo",
+      "source": "Grupo C/ESCOCIA/Escocia - Escudo Escocia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-10-hanley",
+      "source": "Grupo C/ESCOCIA/Escocia - Grant Hanley.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-3-hendry",
+      "source": "Grupo C/ESCOCIA/Escocia - Jack Hendry.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-17-mcginn",
+      "source": "Grupo C/ESCOCIA/Escocia - John McGinn.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-8-souttar",
+      "source": "Grupo C/ESCOCIA/Escocia - John Souttar.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-16-mclean",
+      "source": "Grupo C/ESCOCIA/Escocia - Kenny McLean.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-14-ferguson",
+      "source": "Grupo C/ESCOCIA/Escocia - Lewis Ferguson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-18-dykes",
+      "source": "Grupo C/ESCOCIA/Escocia - Lyndon Dykes.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-15-christie",
+      "source": "Grupo C/ESCOCIA/Escocia - Ryan Christie.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-7-mckenna",
+      "source": "Grupo C/ESCOCIA/Escocia - Scott McKenna.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sco-11-mctominay",
+      "source": "Grupo C/ESCOCIA/Escocia - Scott McTominay.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-3-arcus",
+      "source": "Grupo C/HAITI/Haití - Carlens Arcus.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-14-attys",
+      "source": "Grupo C/HAITI/Haití - Christopher Attys.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-11-jacques",
+      "source": "Grupo C/HAITI/Haití - Danley Jean-Jacques.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-15-etienne",
+      "source": "Grupo C/HAITI/Haití - Derrick Etienne Jr.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-18-nazon",
+      "source": "Grupo C/HAITI/Haití - Duckens Nazon.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-7-lacroix",
+      "source": "Grupo C/HAITI/Haití - Duke Lacroix.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-logo",
+      "source": "Grupo C/HAITI/Haití - Escudo Haití.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-9-delcroix",
+      "source": "Grupo C/HAITI/Haití - Hannes Delcroix.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-5-duverne",
+      "source": "Grupo C/HAITI/Haití - Jean-Kévin Duverne.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-12-bellegarde",
+      "source": "Grupo C/HAITI/Haití - Jean-Ricner Bellegarde.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-2-placide",
+      "source": "Grupo C/HAITI/Haití - Johny Placide.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-16-casimir",
+      "source": "Grupo C/HAITI/Haití - Josué Casimir.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-10-pierre",
+      "source": "Grupo C/HAITI/Haití - Leverton Pierre.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-19-deedson",
+      "source": "Grupo C/HAITI/Haití - Louicius Deedson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-4-experience",
+      "source": "Grupo C/HAITI/Haití - Martin Expérience.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "hai-6-ade",
+      "source": "Grupo C/HAITI/Haití - Ricardo Adé.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-17-ezzalzouli",
+      "source": "Grupo C/MARRUECOS/Marruecos - Abde Ezzalzouli.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-4-hakimi",
+      "source": "Grupo C/MARRUECOS/Marruecos - Achraf Hakimi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-9-masina",
+      "source": "Grupo C/MARRUECOS/Marruecos - Adam Masina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-20-kaabi",
+      "source": "Grupo C/MARRUECOS/Marruecos - Ayoub El Kaabi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-11-ounahi",
+      "source": "Grupo C/MARRUECOS/Marruecos - Azzedine Ounahi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-14-khannouss",
+      "source": "Grupo C/MARRUECOS/Marruecos - Bilal El Khannouss.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-12-seghir",
+      "source": "Grupo C/MARRUECOS/Marruecos - Eliesse Ben Seghir.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-logo",
+      "source": "Grupo C/MARRUECOS/Marruecos - Escudo Marruecos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-15-saibari",
+      "source": "Grupo C/MARRUECOS/Marruecos - Ismael Saibari.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-8-yamio",
+      "source": "Grupo C/MARRUECOS/Marruecos - Jawad El Yamiq.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "mar-3-kajoui",
+      "source": "Grupo C/MARRUECOS/Marruecos - Munir El Kajoui.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-5-mazraoui",
+      "source": "Grupo C/MARRUECOS/Marruecos - Noussair Mazraoui.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-2-bounou",
+      "source": "Grupo C/MARRUECOS/Marruecos - Yassine Bounou.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "mar-16-en-nesyri",
+      "source": "Grupo C/MARRUECOS/Marruecos - Youssef En-Nesyri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-14-o-039-neill",
+      "source": "Grupo D/AUSTRALIA/Australia - Aiden O'Neill.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-5-circati",
+      "source": "Grupo D/AUSTRALIA/Australia - Alessandro Circati.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-7-behich",
+      "source": "Grupo D/AUSTRALIA/Australia - Aziz Behich.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-8-burgess",
+      "source": "Grupo D/AUSTRALIA/Australia - Cameron Burgess.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-17-goodwin",
+      "source": "Grupo D/AUSTRALIA/Australia - Craig Goodwin.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-4-souttar",
+      "source": "Grupo D/AUSTRALIA/Australia - Harry Souttar.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-11-irvine",
+      "source": "Grupo D/AUSTRALIA/Australia - Jackson Irvine.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-6-bos",
+      "source": "Grupo D/AUSTRALIA/Australia - Jordan Bos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-18-vengi",
+      "source": "Grupo D/AUSTRALIA/Australia - Kusini Vengi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-9-miller",
+      "source": "Grupo D/AUSTRALIA/Australia - Lewis Miller.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-2-ryan",
+      "source": "Grupo D/AUSTRALIA/Australia - Mathew Ryan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-10-degenek",
+      "source": "Grupo D/AUSTRALIA/Australia - Milos Degenek.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aus-19-irankunda",
+      "source": "Grupo D/AUSTRALIA/Australia - Nestory Irankunda.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-6-freeman",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Alex Freeman.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-7-robinson",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Antonee Robinson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-17-aaronson",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Brenden Aaronson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-3-richards",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Chris Richards.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-16-pulisic",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Christian Pulisic.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-11-roldan",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Cristian Roldan.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "usa-14-luna",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Diego Luna.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-logo",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Escudo Estados Unidos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-20-balogun",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Folarin Balogun.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-5-mckenzie",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Mark McKenzie.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-2-freese",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Matt Freese.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "usa-18-pepi",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Ricardo Pepi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-9-tessmann",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Tanner Tessmann.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-12-weah",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Timothy Weah.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-8-adams",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Tyler Adams.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "usa-10-mckenny",
+      "source": "Grupo D/ESTADOS UNIDOS/Estados Unidos - Weston McKennie.png",
+      "confidence": "levenshtein_2"
+    },
+    {
+      "sticker_id": "par-12-cubas",
+      "source": "Grupo D/PARAGUAY/Paraguay - Andrés Cubas.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-10-gomez",
+      "source": "Grupo D/PARAGUAY/Paraguay - Diego Gómez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-logo",
+      "source": "Grupo D/PARAGUAY/Paraguay - Escudo Paraguay.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-5-balbuena",
+      "source": "Grupo D/PARAGUAY/Paraguay - Fabián Balbuena.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-4-gomez",
+      "source": "Grupo D/PARAGUAY/Paraguay - Gustavo Gómez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-6-caceres",
+      "source": "Grupo D/PARAGUAY/Paraguay - Juan José Cáceres.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-15-enciso",
+      "source": "Grupo D/PARAGUAY/Paraguay - Julio Enciso.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-8-alonso",
+      "source": "Grupo D/PARAGUAY/Paraguay - Junior Alonso.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-9-villasanti",
+      "source": "Grupo D/PARAGUAY/Paraguay - Mathías Villasanti.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-17-almiron",
+      "source": "Grupo D/PARAGUAY/Paraguay - Miguel Almirón.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-7-alderete",
+      "source": "Grupo D/PARAGUAY/Paraguay - Omar Alderete.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-3-gill",
+      "source": "Grupo D/PARAGUAY/Paraguay - Orlando Gill.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-18-sosa",
+      "source": "Grupo D/PARAGUAY/Paraguay - Ramón Sosa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-2-fernandez",
+      "source": "Grupo D/PARAGUAY/Paraguay - Roberto Fernández.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "par-19-romero",
+      "source": "Grupo D/PARAGUAY/Paraguay - Ángel Romero.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-5-bardakci",
+      "source": "Grupo D/TURQUIA/Turquía - Abdülkerim Bardakcı.png",
+      "confidence": "prefix"
+    },
+    {
+      "sticker_id": "tur-14-guler",
+      "source": "Grupo D/TURQUIA/Turquía - Arda Güler.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-18-yilmaz",
+      "source": "Grupo D/TURQUIA/Turquía - Barış Alper Yılmaz.png",
+      "confidence": "levenshtein_2"
+    },
+    {
+      "sticker_id": "tur-17-uzun",
+      "source": "Grupo D/TURQUIA/Turquía - Can Uzun.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-logo",
+      "source": "Grupo D/TURQUIA/Turquía - Escudo Turquía.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-9-ayhan",
+      "source": "Grupo D/TURQUIA/Turquía - Kaan Ayhan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-20-yildiz",
+      "source": "Grupo D/TURQUIA/Turquía - Kenan Yıldız.png",
+      "confidence": "levenshtein_2"
+    },
+    {
+      "sticker_id": "tur-19-akturkoglu",
+      "source": "Grupo D/TURQUIA/Turquía - Kerem Aktürkoğlu.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-7-demiral",
+      "source": "Grupo D/TURQUIA/Turquía - Merih Demiral.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-3-muldur",
+      "source": "Grupo D/TURQUIA/Turquía - Mert Müldür.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-12-kokcu",
+      "source": "Grupo D/TURQUIA/Turquía - Orkun Kökçü.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-2-cakir",
+      "source": "Grupo D/TURQUIA/Turquía - Uğurcan Çakır.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "tur-16-akgun",
+      "source": "Grupo D/TURQUIA/Turquía - Yunus Akgün.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-4-celik",
+      "source": "Grupo D/TURQUIA/Turquía - Zeki Çelik.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-6-soyuncu",
+      "source": "Grupo D/TURQUIA/Turquía - Çağlar Söyüncü.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tur-15-kahveci",
+      "source": "Grupo D/TURQUIA/Turquía - İrfan Can Kahveci.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-6-rudiger",
+      "source": "Grupo E/ALEMANIA/Alemania - Antonio Rüdiger.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-logo",
+      "source": "Grupo E/ALEMANIA/Alemania - Escudo Alemania.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-12-nmecha",
+      "source": "Grupo E/ALEMANIA/Alemania - Felix Nmecha.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-11-wirtz",
+      "source": "Grupo E/ALEMANIA/Alemania - Florian Wirtz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-15-musiala",
+      "source": "Grupo E/ALEMANIA/Alemania - Jamal Musiala.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-3-tah",
+      "source": "Grupo E/ALEMANIA/Alemania - Jonathan Tah.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-17-havertz",
+      "source": "Grupo E/ALEMANIA/Alemania - Kai Havertz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-14-goretzka",
+      "source": "Grupo E/ALEMANIA/Alemania - Leon Goretzka.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-2-stegen",
+      "source": "Grupo E/ALEMANIA/Alemania - Marc-André ter Stegen.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-9-mittelstadt",
+      "source": "Grupo E/ALEMANIA/Alemania - Maximilian Mittelstädt.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-20-woltemade",
+      "source": "Grupo E/ALEMANIA/Alemania - Nick Woltemade.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-5-schlotterbeck",
+      "source": "Grupo E/ALEMANIA/Alemania - Nico Schlotterbeck.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-8-baku",
+      "source": "Grupo E/ALEMANIA/Alemania - Ridle Baku.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ger-16-gnabry",
+      "source": "Grupo E/ALEMANIA/Alemania - Serge Gnabry.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-15-diallo",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Amad Diallo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-8-agbadou",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Emmanuel Agbadou.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-logo",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Escudo Costa de Marfil.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-6-ndicka",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Evan Ndicka.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-3-konan",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Ghislain Konan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-5-kossounou",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Odilon Kossounou.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-9-diomande",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Ousmane Diomande.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-16-haller",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Sebastien Haller.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-11-fofana",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Seko Fofana.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-17-adingra",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Simon Adingra.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-4-singo",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Wilfried Singo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-7-boly",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Willy Boly.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-2-fofana",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Yahia Fofana.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "civ-18-diomande",
+      "source": "Grupo E/COSTA DE MARFIL/Costa de Marfil - Yan Diomande.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-3-obispo",
+      "source": "Grupo E/CURAZAO/Curazao - Armando Obispo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-2-room",
+      "source": "Grupo E/CURAZAO/Curazao - Eloy Room.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-logo",
+      "source": "Grupo E/CURAZAO/Curazao - Escudo Curazao.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-19-kastaneer",
+      "source": "Grupo E/CURAZAO/Curazao - Gervane Kastaneer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-10-roemeratoe",
+      "source": "Grupo E/CURAZAO/Curazao - Godfried Roemeratoe.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-16-margaritha",
+      "source": "Grupo E/CURAZAO/Curazao - Jearl Margaritha.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-18-antonisse",
+      "source": "Grupo E/CURAZAO/Curazao - Jeremy Antonisse.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-6-brenet",
+      "source": "Grupo E/CURAZAO/Curazao - Joshua Brenet.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-11-bacuna",
+      "source": "Grupo E/CURAZAO/Curazao - Juninho Bacuna.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-17-locadia",
+      "source": "Grupo E/CURAZAO/Curazao - Jurgen Locadia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-5-gaari",
+      "source": "Grupo E/CURAZAO/Curazao - Jurien Gaari.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-15-gorre",
+      "source": "Grupo E/CURAZAO/Curazao - Kenji Gorre.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-7-eijma",
+      "source": "Grupo E/CURAZAO/Curazao - Roshon van Eijma.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-4-floranus",
+      "source": "Grupo E/CURAZAO/Curazao - Sherel Floranus.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-8-sambo",
+      "source": "Grupo E/CURAZAO/Curazao - Shurandy Sambo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cuw-20-hansen",
+      "source": "Grupo E/CURAZAO/Curazao - Sontje Hansen.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-10-franco",
+      "source": "Grupo E/ECUADOR/Ecuador - Alan Franco.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-18-minda",
+      "source": "Grupo E/ECUADOR/Ecuador - Alan Minda.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-7-preciado",
+      "source": "Grupo E/ECUADOR/Ecuador - Angelo Preciado.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-20-valencia",
+      "source": "Grupo E/ECUADOR/Ecuador - Enner Valencia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-logo",
+      "source": "Grupo E/ECUADOR/Ecuador - Escudo Ecuador.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-16-plata",
+      "source": "Grupo E/ECUADOR/Ecuador - Gonzalo Plata.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-3-valle",
+      "source": "Grupo E/ECUADOR/Ecuador - Gonzalo Valle.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-2-galindez",
+      "source": "Grupo E/ECUADOR/Ecuador - Hernan Galindez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-8-ordonez",
+      "source": "Grupo E/ECUADOR/Ecuador - Joel Ordonez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-14-veboah",
+      "source": "Grupo E/ECUADOR/Ecuador - John Yeboah.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "ecu-11-paez",
+      "source": "Grupo E/ECUADOR/Ecuador - Kendry Paez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-19-rodriguez",
+      "source": "Grupo E/ECUADOR/Ecuador - Kevin Rodriguez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-15-campana",
+      "source": "Grupo E/ECUADOR/Ecuador - Leonardo Campana.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-9-caicedo",
+      "source": "Grupo E/ECUADOR/Ecuador - Moises Caicedo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-17-angulo",
+      "source": "Grupo E/ECUADOR/Ecuador - Nilson Angulo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-12-vite",
+      "source": "Grupo E/ECUADOR/Ecuador - Pedro Vite.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-5-estupinan",
+      "source": "Grupo E/ECUADOR/Ecuador - Pervis Estupinan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-4-hincapie",
+      "source": "Grupo E/ECUADOR/Ecuador - Piero Hincapie.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-team",
+      "source": "Grupo E/ECUADOR/Ecuador - Team Photo Ecuador.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ecu-6-pacho",
+      "source": "Grupo E/ECUADOR/Ecuador - Willian Pacho.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-10-tanaka",
+      "source": "Grupo F/JAPON/Japón - Ao Tanaka.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-20-ueda",
+      "source": "Grupo F/JAPON/Japón - Ayase Ueda.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-4-seko",
+      "source": "Grupo F/JAPON/Japón - Ayumu Seko.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-11-kamada",
+      "source": "Grupo F/JAPON/Japón - Daichi Kamada.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-logo",
+      "source": "Grupo F/JAPON/Japón - Escudo Japón.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-3-mochizuki",
+      "source": "Grupo F/JAPON/Japón - Henry Heroki Mochizuki.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-5-suzuki",
+      "source": "Grupo F/JAPON/Japón - Junnosuke Suzuki.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-18-ito",
+      "source": "Grupo F/JAPON/Japón - Junya Itō.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-8-sano",
+      "source": "Grupo F/JAPON/Japón - Kaishu Sano.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-15-nakamura",
+      "source": "Grupo F/JAPON/Japón - Keito Nakamura.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-19-ogawa",
+      "source": "Grupo F/JAPON/Japón - Koki Ogawa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-14-doan",
+      "source": "Grupo F/JAPON/Japón - Ritsu Dōan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-6-taniguchi",
+      "source": "Grupo F/JAPON/Japón - Shogo Taniguchi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-17-machino",
+      "source": "Grupo F/JAPON/Japón - Shuto Machino.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-12-kubo",
+      "source": "Grupo F/JAPON/Japón - Takefusa Kubo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-16-minamino",
+      "source": "Grupo F/JAPON/Japón - Takumi Minamino.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-team",
+      "source": "Grupo F/JAPON/Japón - Team Photo Japón.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-7-watanabe",
+      "source": "Grupo F/JAPON/Japón - Tsuyoshi Watanabe.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-9-soma",
+      "source": "Grupo F/JAPON/Japón - Yuki Soma.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jpn-2-suzuki",
+      "source": "Grupo F/JAPON/Japón - Zion Suzuki.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-2-verbruggen",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Bart Verbruggen.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-20-gakpo",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Cody Gakpo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-6-dumfries",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Denzel Dumfries.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-18-malen",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Donyell Malen.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-logo",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Escudo Países Bajos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-14-jong",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Frenkie de Jong.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-9-hecke",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Jan Paul van Hecke.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-8-frimpong",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Jeremie Frimpong.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-5-timber",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Jurriën Timber.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-16-kluivert",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Justin Kluivert.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-17-depay",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Memphis Depay.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-4-ven",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Micky van de Ven.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-7-ake",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Nathan Aké.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-11-gravenberch",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Ryan Gravenberch.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-team",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Team Photo Países Bajos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-12-koopmeiners",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Teun Koopmeiners.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-10-reijnders",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Tijjani Reijnders.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-3-dijk",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Virgil van Dijk.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-19-weghorst",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Wout Weghorst.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ned-15-simons",
+      "source": "Grupo F/PAISES BAJOS/Países Bajos - Xavi Simons.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-19-isak",
+      "source": "Grupo F/SUECIA/Suecia - Alexander Isak.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-18-elanga",
+      "source": "Grupo F/SUECIA/Suecia - Anthony Elanga.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-14-svensson",
+      "source": "Grupo F/SUECIA/Suecia - Daniel Svensson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-logo",
+      "source": "Grupo F/SUECIA/Suecia - Escudo Suecia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-4-gudmundsson",
+      "source": "Grupo F/SUECIA/Suecia - Gabriel Gudmundsson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-9-larsson",
+      "source": "Grupo F/SUECIA/Suecia - Hugo Larsson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-3-hien",
+      "source": "Grupo F/SUECIA/Suecia - Isak Hien.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-10-karlstrom",
+      "source": "Grupo F/SUECIA/Suecia - Jesper Karlström.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-15-sema",
+      "source": "Grupo F/SUECIA/Suecia - Ken Sema.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-8-bergvall",
+      "source": "Grupo F/SUECIA/Suecia - Lucas Bergvall.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-16-bardghji",
+      "source": "Grupo F/SUECIA/Suecia - Roony Bardghiji.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "swe-6-lindelof",
+      "source": "Grupo F/SUECIA/Suecia - Victor Nilsson Lindelöf.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "swe-2-johansson",
+      "source": "Grupo F/SUECIA/Suecia - Viktor Johansson.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "swe-11-ayari",
+      "source": "Grupo F/SUECIA/Suecia - Yasin Ayari.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-7-abdi",
+      "source": "Grupo F/TUNEZ/Túnez - Ali Abdi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-3-dahmen",
+      "source": "Grupo F/TUNEZ/Túnez - Aymen Dahmen.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-10-laidouni",
+      "source": "Grupo F/TUNEZ/Túnez - Aïssa Laïdouni.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-15-achouri",
+      "source": "Grupo F/TUNEZ/Túnez - Elias Achouri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-16-saad",
+      "source": "Grupo F/TUNEZ/Túnez - Elias Saad.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-9-skhiri",
+      "source": "Grupo F/TUNEZ/Túnez - Ellyes Skhiri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-logo",
+      "source": "Grupo F/TUNEZ/Túnez - Escudo Túnez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-11-sassi",
+      "source": "Grupo F/TUNEZ/Túnez - Ferjani Sassi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-14-mejbri",
+      "source": "Grupo F/TUNEZ/Túnez - Hannibal Mejbri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-17-mastouri",
+      "source": "Grupo F/TUNEZ/Túnez - Hazem Mastouri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-18-gharbi",
+      "source": "Grupo F/TUNEZ/Túnez - Ismaël Gharbi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-5-talbi",
+      "source": "Grupo F/TUNEZ/Túnez - Montassar Talbi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-20-sliti",
+      "source": "Grupo F/TUNEZ/Túnez - Naïm Sliti.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-19-ltaief",
+      "source": "Grupo F/TUNEZ/Túnez - Sayfallah Ltaief.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-4-valery",
+      "source": "Grupo F/TUNEZ/Túnez - Yan Valery.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "tun-6-meriah",
+      "source": "Grupo F/TUNEZ/Túnez - Yassine Meriah.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-12-saelemaekers",
+      "source": "Grupo G/BELGICA/Bélgica - Alexis Saelemaekers.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-10-onana",
+      "source": "Grupo G/BELGICA/Bélgica - Amadou Onana.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-3-theate",
+      "source": "Grupo G/BELGICA/Bélgica - Arthur Theate.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-6-mechele",
+      "source": "Grupo G/BELGICA/Bélgica - Brandon Mechele.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-logo",
+      "source": "Grupo G/BELGICA/Bélgica - Escudo Bélgica.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-14-vanaken",
+      "source": "Grupo G/BELGICA/Bélgica - Hans Vanaken.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-16-doku",
+      "source": "Grupo G/BELGICA/Bélgica - Jérémy Doku.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-15-bruyne",
+      "source": "Grupo G/BELGICA/Bélgica - Kevin De Bruyne.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-19-openda",
+      "source": "Grupo G/BELGICA/Bélgica - Loïs Openda.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-7-cuyper",
+      "source": "Grupo G/BELGICA/Bélgica - Maxim De Cuyper.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-11-raskin",
+      "source": "Grupo G/BELGICA/Bélgica - Nicolas Raskin.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-20-lukaku",
+      "source": "Grupo G/BELGICA/Bélgica - Romelu Lukaku.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-8-meunier",
+      "source": "Grupo G/BELGICA/Bélgica - Thomas Meunier.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-4-castagne",
+      "source": "Grupo G/BELGICA/Bélgica - Timothy Castagne.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-9-tielemans",
+      "source": "Grupo G/BELGICA/Bélgica - Youri Tielemans.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "bel-5-debast",
+      "source": "Grupo G/BELGICA/Bélgica - Zeno Debast.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "egy-9-fatouh",
+      "source": "Grupo G/EGIPTO/Egipto - Ahmed Fatouh.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "egy-logo",
+      "source": "Grupo G/EGIPTO/Egipto - Escudo Egipto.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "egy-6-sobhi",
+      "source": "Grupo G/EGIPTO/Egipto - Khaled Sobhi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "egy-2-shenawy",
+      "source": "Grupo G/EGIPTO/Egipto - Mohamed Elshenawy.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "egy-4-hamdy",
+      "source": "Grupo G/EGIPTO/Egipto - Mohamed Hamdy.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "egy-17-salah",
+      "source": "Grupo G/EGIPTO/Egipto - Mohamed Salah.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "egy-14-lasheen",
+      "source": "Grupo G/EGIPTO/Egipto - Mohanad Lasheen.png",
+      "confidence": "levenshtein_2"
+    },
+    {
+      "sticker_id": "egy-20-marmoush",
+      "source": "Grupo G/EGIPTO/Egipto - Omar Marmoush.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "egy-7-rabia",
+      "source": "Grupo G/EGIPTO/Egipto - Ramy Rabia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "egy-19-trezeguet",
+      "source": "Grupo G/EGIPTO/Egipto - Trezeguet.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-2-beiranvand",
+      "source": "Grupo G/IRAN/Irán - Alireza Beiranvand.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-19-jahanbakhsh",
+      "source": "Grupo G/IRAN/Irán - Alireza Jahanbakhsh.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-logo",
+      "source": "Grupo G/IRAN/Irán - Escudo Irán.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-8-kanaani",
+      "source": "Grupo G/IRAN/Irán - Hossein Kanaani.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-18-taremi",
+      "source": "Grupo G/IRAN/Irán - Mehdi Taremi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-5-mohammadi",
+      "source": "Grupo G/IRAN/Irán - Milad Mohammadi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-16-mohebi",
+      "source": "Grupo G/IRAN/Irán - Mohammad Mohebi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-3-pouraliganji",
+      "source": "Grupo G/IRAN/Irán - Morteza Pouraliganji.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-14-noorafkan",
+      "source": "Grupo G/IRAN/Irán - Omid Noorafkan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-15-cheshmi",
+      "source": "Grupo G/IRAN/Irán - Roozbeh Cheshmi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-11-ezatolahi",
+      "source": "Grupo G/IRAN/Irán - Saeed Ezatolahi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-10-hardani",
+      "source": "Grupo G/IRAN/Irán - Saleh Hardani.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-12-ghoddos",
+      "source": "Grupo G/IRAN/Irán - Saman Ghoddos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-17-azmoun",
+      "source": "Grupo G/IRAN/Irán - Sardar Azmoun.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irn-6-khalilzadeh",
+      "source": "Grupo G/IRAN/Irán - Shojae Khalilzadeh.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-3-paulsen",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Alex Paulsen.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-19-mccowatt",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Callum McCowatt.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-17-wood",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Chris Wood.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-logo",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Escudo Nueva Zelanda.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-9-surman",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Finn Surman.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-8-vries",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Francis de Vries.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-10-bell",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Joe Bell.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-20-barbarouses",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Kosta Barbarouses.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-5-cacace",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Liberato Cacace.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-15-stamenic",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Marko Stamenić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-14-garbett",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Matthew Garbett.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-2-payne",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Max Crocombe.png",
+      "confidence": "prefix"
+    },
+    {
+      "sticker_id": "nzl-4-boxall",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Michael Boxall.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-12-thomas",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Ryan Thomas.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nzl-6-payne",
+      "source": "Grupo G/NUEVA ZELANDA/Nueva Zelanda - Tim Payne.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-11-alkhaibari",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Abdullah Alkhaibari.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-17-al-aboud",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Abdulrahman Alobud.png",
+      "confidence": "token_prefix_100pct"
+    },
+    {
+      "sticker_id": "ksa-3-al-sanbi",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Abdulrahman Alsanbi.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "ksa-logo",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Escudo Arabia Saudita.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-8-altambakti",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Hassan Altambakti.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-6-thakri",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Jehad Thikri.png",
+      "confidence": "levenshtein_2"
+    },
+    {
+      "sticker_id": "ksa-15-alsahafi",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Marwan Alsahafi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-7-al-harbi",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Moteb Alharbi.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "ksa-9-aljuwayr",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Musab Aljuwayr.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-12-aldawsari",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Nasser Aldawsari.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-14-alshamat",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Saleh Abu Alshamat.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-19-alshehri",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Saleh Alshehri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-16-aldawsari",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Salem Aldawsari.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-4-abdulhamid",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Saud Abdulhamid.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "ksa-10-aljohani",
+      "source": "Grupo H/ARABIA SAUDITA/Arabia Saudita - Ziyad Aljohani.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-20-bebe",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Bebé.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-18-livramento",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Dailon Livramento 2.png",
+      "confidence": "prefix"
+    },
+    {
+      "sticker_id": "cpv-18-livramento",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Dailon Livramento.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-14-duarte",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Deroy Duarte.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-5-diney",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Diney.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-16-cabral",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Jovane Cabral.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-8-paulo",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - João Paulo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-3-costa",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Logan Costa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-11-andrade",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Patrick Andrade.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-4-pico",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Pico.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-17-mendes",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Ryan Mendes.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-6-moreira",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Steven Moreira.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-2-vozinha",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Vozinha.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-7-pina",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Wagner Pina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-19-semedo",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Willy Semedo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cpv-9-semedo",
+      "source": "Grupo H/CABO VERDE/Cabo Verde - Yannick Semedo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-4-laporte",
+      "source": "Grupo H/ESPAÑA/España - Aymeric Laporte.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-7-carvajal",
+      "source": "Grupo H/ESPAÑA/España - Dani Carvajal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-16-olmo",
+      "source": "Grupo H/ESPAÑA/España - Dani Olmo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-5-huijsen",
+      "source": "Grupo H/ESPAÑA/España - Dean Huijsen.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-logo",
+      "source": "Grupo H/ESPAÑA/España - Escudo España.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-12-ruiz",
+      "source": "Grupo H/ESPAÑA/España - Fabián Ruiz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-18-torres",
+      "source": "Grupo H/ESPAÑA/España - Ferran Torres.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-15-yamal",
+      "source": "Grupo H/ESPAÑA/España - Lamine Yamal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-8-cucurella",
+      "source": "Grupo H/ESPAÑA/España - Marc Cucurella.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-9-zubimendi",
+      "source": "Grupo H/ESPAÑA/España - Martín Zubimendi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-14-merino",
+      "source": "Grupo H/ESPAÑA/España - Mikel Merino.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-20-oyarzabal",
+      "source": "Grupo H/ESPAÑA/España - Mikel Oyarzabal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-17-williams",
+      "source": "Grupo H/ESPAÑA/España - Nico Williams.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-11-pedri",
+      "source": "Grupo H/ESPAÑA/España - Pedri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-6-porro",
+      "source": "Grupo H/ESPAÑA/España - Pedro Porro.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-3-normand",
+      "source": "Grupo H/ESPAÑA/España - Robin Le Normand.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-10-rodri",
+      "source": "Grupo H/ESPAÑA/España - Rodri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-team",
+      "source": "Grupo H/ESPAÑA/España - Team Photo España.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-2-simon",
+      "source": "Grupo H/ESPAÑA/España - Unai Simón.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "esp-19-morata",
+      "source": "Grupo H/ESPAÑA/España - Álvaro Morata.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-17-nunez",
+      "source": "Grupo H/URUGUAY/Uruguay - Darwin Núñez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-logo",
+      "source": "Grupo H/URUGUAY/Uruguay - Escudo Uruguay.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-20-pellistri",
+      "source": "Grupo H/URUGUAY/Uruguay - Facundo Pellistri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-10-valverde",
+      "source": "Grupo H/URUGUAY/Uruguay - Federico Valverde.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-18-vinas",
+      "source": "Grupo H/URUGUAY/Uruguay - Federico Viñas.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-8-varela",
+      "source": "Grupo H/URUGUAY/Uruguay - Guillermo Varela.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-5-gimenez",
+      "source": "Grupo H/URUGUAY/Uruguay - José María Giménez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-14-ugarte",
+      "source": "Grupo H/URUGUAY/Uruguay - Manuel Ugarte.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-7-olivera",
+      "source": "Grupo H/URUGUAY/Uruguay - Mathías Olivera.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-16-araujo",
+      "source": "Grupo H/URUGUAY/Uruguay - Maxi Araújo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-9-nandez",
+      "source": "Grupo H/URUGUAY/Uruguay - Nahitan Nández.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-12-bentancur",
+      "source": "Grupo H/URUGUAY/Uruguay - Rodrigo Bentancur.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-4-araujo",
+      "source": "Grupo H/URUGUAY/Uruguay - Ronald Araújo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-3-mele",
+      "source": "Grupo H/URUGUAY/Uruguay - Santiago Mele.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-6-caceres",
+      "source": "Grupo H/URUGUAY/Uruguay - Sebastián Cáceres.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uru-2-rochet",
+      "source": "Grupo H/URUGUAY/Uruguay - Sergio Rochet.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-12-rabiot",
+      "source": "Grupo I/FRANCIA/Francia - Adrien Rabiot.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-9-tchouameni",
+      "source": "Grupo I/FRANCIA/Francia - Aurélien Tchouaméni.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-16-barcola",
+      "source": "Grupo I/FRANCIA/Francia - Bradley Barcola.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-7-upamecano",
+      "source": "Grupo I/FRANCIA/Francia - Dayot Upamecano.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-17-doue",
+      "source": "Grupo I/FRANCIA/Francia - Désiré Doué.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-10-camavinga",
+      "source": "Grupo I/FRANCIA/Francia - Eduardo Camavinga.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-logo",
+      "source": "Grupo I/FRANCIA/Francia - Escudo Francia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-19-ekitike",
+      "source": "Grupo I/FRANCIA/Francia - Hugo Ekitiké.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-6-konate",
+      "source": "Grupo I/FRANCIA/Francia - Ibrahima Konaté.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-5-kounde",
+      "source": "Grupo I/FRANCIA/Francia - Jules Koundé.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-18-coman",
+      "source": "Grupo I/FRANCIA/Francia - Kingsley Coman.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-20-mbappe",
+      "source": "Grupo I/FRANCIA/Francia - Kylian Mbappé.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-8-digne",
+      "source": "Grupo I/FRANCIA/Francia - Lucas Digne.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-11-kone",
+      "source": "Grupo I/FRANCIA/Francia - Manu Koné.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-14-olise",
+      "source": "Grupo I/FRANCIA/Francia - Michael Olise.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-2-maignan",
+      "source": "Grupo I/FRANCIA/Francia - Mike Maignan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-15-dembele",
+      "source": "Grupo I/FRANCIA/Francia - Ousmane Dembélé.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-team",
+      "source": "Grupo I/FRANCIA/Francia - Team Photo Francia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-3-hernandez",
+      "source": "Grupo I/FRANCIA/Francia - Théo Hernández.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "fra-4-saliba",
+      "source": "Grupo I/FRANCIA/Francia - William Saliba.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-15-sher",
+      "source": "Grupo I/IRAK/Irak - Aimar Sher.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-5-hashem",
+      "source": "Grupo I/IRAK/Irak - Akam Hashem.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-18-al-hamadi",
+      "source": "Grupo I/IRAK/Irak - Ali Al-Hamadi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-12-jasim",
+      "source": "Grupo I/IRAK/Irak - Ali Jasim.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-logo",
+      "source": "Grupo I/IRAK/Irak - Escudo Irak.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-4-ali",
+      "source": "Grupo I/IRAK/Irak - Hussein Ali.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-11-bavesh",
+      "source": "Grupo I/IRAK/Irak - Ibrahim Bayesh.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "irq-8-younis",
+      "source": "Grupo I/IRAK/Irak - Manaf Younis.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-16-farji",
+      "source": "Grupo I/IRAK/Irak - Marko Farji.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-6-doski",
+      "source": "Grupo I/IRAK/Irak - Merchas Doski.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-20-ali",
+      "source": "Grupo I/IRAK/Irak - Mohanad Ali.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-17-rashid",
+      "source": "Grupo I/IRAK/Irak - Osama Rashid.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-3-sulaka",
+      "source": "Grupo I/IRAK/Irak - Rebin Sulaka.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-14-amyn",
+      "source": "Grupo I/IRAK/Irak - Youssef Amyn.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-7-tahseen",
+      "source": "Grupo I/IRAK/Irak - Zaid Tahseen.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "irq-9-iqbal",
+      "source": "Grupo I/IRAK/Irak - Zidane Iqbal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-12-schjelderup",
+      "source": "Grupo I/NORUEGA/Noruega - Andreas Schjelderup.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-19-nusa",
+      "source": "Grupo I/NORUEGA/Noruega - Antonio Nusa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-17-d-nnum",
+      "source": "Grupo I/NORUEGA/Noruega - Aron Dønnum.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-7-wolfe",
+      "source": "Grupo I/NORUEGA/Noruega - David Møller Wolfe.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-15-haaland",
+      "source": "Grupo I/NORUEGA/Noruega - Erling Haaland.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-logo",
+      "source": "Grupo I/NORUEGA/Noruega - Escudo Noruega.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-18-larsen",
+      "source": "Grupo I/NORUEGA/Noruega - Jørgen Strand Larsen.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "nor-5-ajer",
+      "source": "Grupo I/NORUEGA/Noruega - Kristoffer Vassbakk Ajer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-4-ostigard",
+      "source": "Grupo I/NORUEGA/Noruega - Leo Østigård.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "nor-10-degaard",
+      "source": "Grupo I/NORUEGA/Noruega - Martin Ødegaard.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-9-thorsby",
+      "source": "Grupo I/NORUEGA/Noruega - Morten Thorsby.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-20-bobb",
+      "source": "Grupo I/NORUEGA/Noruega - Oscar Bobb.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-14-berg",
+      "source": "Grupo I/NORUEGA/Noruega - Patrick Berg.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-11-berge",
+      "source": "Grupo I/NORUEGA/Noruega - Sander Berge.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "nor-8-heggem",
+      "source": "Grupo I/NORUEGA/Noruega - Torbjørn Heggem.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-5-seck",
+      "source": "Grupo I/SENEGAL/Senegal - Abdoulaye Seck.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-17-dia",
+      "source": "Grupo I/SENEGAL/Senegal - Boulaye Dia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-7-diouf",
+      "source": "Grupo I/SENEGAL/Senegal - El Hadji Malick Diouf.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-logo",
+      "source": "Grupo I/SENEGAL/Senegal - Escudo Senegal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-12-diarra",
+      "source": "Grupo I/SENEGAL/Senegal - Habib Diarra.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-9-gueye",
+      "source": "Grupo I/SENEGAL/Senegal - Idrissa Gana Gueye.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-18-ndiaye",
+      "source": "Grupo I/SENEGAL/Senegal - Iliman Ndiaye.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-6-jakobs",
+      "source": "Grupo I/SENEGAL/Senegal - Ismail Jakobs.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-16-sarr",
+      "source": "Grupo I/SENEGAL/Senegal - Ismaïla Sarr.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-8-koulibaly",
+      "source": "Grupo I/SENEGAL/Senegal - Kalidou Koulibaly.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-20-diatta",
+      "source": "Grupo I/SENEGAL/Senegal - Krépin Diatta.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-14-camara",
+      "source": "Grupo I/SENEGAL/Senegal - Lamine Camara.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-4-niakhate",
+      "source": "Grupo I/SENEGAL/Senegal - Moussa Niakhaté.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-19-jackson",
+      "source": "Grupo I/SENEGAL/Senegal - Nicolas Jackson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-11-gueye",
+      "source": "Grupo I/SENEGAL/Senegal - Pape Gueye.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-10-sarr",
+      "source": "Grupo I/SENEGAL/Senegal - Pape Matar Sarr.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-15-mane",
+      "source": "Grupo I/SENEGAL/Senegal - Sadio Mané.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-team",
+      "source": "Grupo I/SENEGAL/Senegal - Team Photo Senegal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-3-diouf",
+      "source": "Grupo I/SENEGAL/Senegal - Yehvann Diouf.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "sen-2-mendy",
+      "source": "Grupo I/SENEGAL/Senegal - Édouard Mendy.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-2-guendouz",
+      "source": "Grupo J/ARGELIA/Argelia - Alexis Guendouz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-18-gouiri",
+      "source": "Grupo J/ARGELIA/Argelia - Amine Gouiri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-17-moussa",
+      "source": "Grupo J/ARGELIA/Argelia - Anis Hadj Moussa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-7-mandi",
+      "source": "Grupo J/ARGELIA/Argelia - Aïssa Mandi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-19-bounedjah",
+      "source": "Grupo J/ARGELIA/Argelia - Baghdad Bounedjah.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-logo",
+      "source": "Grupo J/ARGELIA/Argelia - Escudo Argelia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-14-chaibi",
+      "source": "Grupo J/ARGELIA/Argelia - Farès Chaïbi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-10-boudaoui",
+      "source": "Grupo J/ARGELIA/Argelia - Hichem Boudaoui.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "alg-9-aquar",
+      "source": "Grupo J/ARGELIA/Argelia - Houssem Aouar.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "alg-8-bennacer",
+      "source": "Grupo J/ARGELIA/Argelia - Ismaël Bennacer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-11-zerrouki",
+      "source": "Grupo J/ARGELIA/Argelia - Ramiz Zerrouki.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-3-bensebaini",
+      "source": "Grupo J/ARGELIA/Argelia - Ramy Bensebaini.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-5-ait-nouri",
+      "source": "Grupo J/ARGELIA/Argelia - Rayan Aït-Nouri.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-15-mahrez",
+      "source": "Grupo J/ARGELIA/Argelia - Riyad Mahrez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-16-benrahma",
+      "source": "Grupo J/ARGELIA/Argelia - Saïd Benrahma.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "alg-4-atal",
+      "source": "Grupo J/ARGELIA/Argelia - Youcef Atal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-9-allister",
+      "source": "Grupo J/ARGENTINA/Argentina - Alexis Mac Allister.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-4-romero",
+      "source": "Grupo J/ARGENTINA/Argentina - Cristian Romero.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-2-martinez",
+      "source": "Grupo J/ARGENTINA/Argentina - Emiliano Martínez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-8-fernandez",
+      "source": "Grupo J/ARGENTINA/Argentina - Enzo Fernández.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-logo",
+      "source": "Grupo J/ARGENTINA/Argentina - Escudo Argentina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-11-palacios",
+      "source": "Grupo J/ARGENTINA/Argentina - Exequiel Palacios.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-15-mastantuono",
+      "source": "Grupo J/ARGENTINA/Argentina - Franco Mastantuono.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-20-simeone",
+      "source": "Grupo J/ARGENTINA/Argentina - Giuliano Simeone.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-19-alvarez",
+      "source": "Grupo J/ARGENTINA/Argentina - Julián Álvarez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-18-martinez",
+      "source": "Grupo J/ARGENTINA/Argentina - Lautaro Martínez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-12-paredes",
+      "source": "Grupo J/ARGENTINA/Argentina - Leandro Paredes.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-7-balerdi",
+      "source": "Grupo J/ARGENTINA/Argentina - Leonardo Balerdi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-17-messi",
+      "source": "Grupo J/ARGENTINA/Argentina - Lionel Messi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-3-molina",
+      "source": "Grupo J/ARGENTINA/Argentina - Nahuel Molina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-16-gonzalez",
+      "source": "Grupo J/ARGENTINA/Argentina - Nico González.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-14-paz",
+      "source": "Grupo J/ARGENTINA/Argentina - Nico Paz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-5-otamendi",
+      "source": "Grupo J/ARGENTINA/Argentina - Nicolás Otamendi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-6-tagliafico",
+      "source": "Grupo J/ARGENTINA/Argentina - Nicolás Tagliafico.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-10-paul",
+      "source": "Grupo J/ARGENTINA/Argentina - Rodrigo De Paul.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "arg-team",
+      "source": "Grupo J/ARGENTINA/Argentina - Team Photo Argentina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-9-prass",
+      "source": "Grupo J/AUSTRIA/Austria - Alexander Prass.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-2-schlager",
+      "source": "Grupo J/AUSTRIA/Austria - Alexander Schlager.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-18-baumgartner",
+      "source": "Grupo J/AUSTRIA/Austria - Christoph Baumgartner.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-4-alaba",
+      "source": "Grupo J/AUSTRIA/Austria - David Alaba.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-logo",
+      "source": "Grupo J/AUSTRIA/Austria - Escudo Austria.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-5-danso",
+      "source": "Grupo J/AUSTRIA/Austria - Kevin Danso.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-12-laimer",
+      "source": "Grupo J/AUSTRIA/Austria - Konrad Laimer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-11-sabitzer",
+      "source": "Grupo J/AUSTRIA/Austria - Marcel Sabitzer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-19-gregoritsch",
+      "source": "Grupo J/AUSTRIA/Austria - Michael Gregoritsch.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-15-seiwald",
+      "source": "Grupo J/AUSTRIA/Austria - Nicolas Seiwald.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-3-pentz",
+      "source": "Grupo J/AUSTRIA/Austria - Patrick Pentz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-17-wimmer",
+      "source": "Grupo J/AUSTRIA/Austria - Patrick Wimmer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-6-lienhart",
+      "source": "Grupo J/AUSTRIA/Austria - Philipp Lienhart.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-16-schmid",
+      "source": "Grupo J/AUSTRIA/Austria - Romano Schmid.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-7-posch",
+      "source": "Grupo J/AUSTRIA/Austria - Stefan Posch.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "aut-10-schlager",
+      "source": "Grupo J/AUSTRIA/Austria - Xaver Schlager.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-18-olwan",
+      "source": "Grupo J/JORDANIA/Jordania - Ali Olwan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-14-jamous",
+      "source": "Grupo J/JORDANIA/Jordania - Amer Jamous.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-logo",
+      "source": "Grupo J/JORDANIA/Jordania - Escudo Jordania.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-9-saadeh",
+      "source": "Grupo J/JORDANIA/Jordania - Ibrahim Saadeh.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-20-sabra",
+      "source": "Grupo J/JORDANIA/Jordania - Ibrahim Sabra.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-3-haddad",
+      "source": "Grupo J/JORDANIA/Jordania - Ihsan Haddad.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-17-al-mardi",
+      "source": "Grupo J/JORDANIA/Jordania - Mahmoud Al-Mardi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-19-zrayq",
+      "source": "Grupo J/JORDANIA/Jordania - Mohammad Abu Zravq.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "jor-8-abualnadi",
+      "source": "Grupo J/JORDANIA/Jordania - Mohammad Abualnadi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-12-taha",
+      "source": "Grupo J/JORDANIA/Jordania - Mohannad Abu Taha.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-15-al-taamari",
+      "source": "Grupo J/JORDANIA/Jordania - Mousa Al-Taamari.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "jor-10-al-rashdan",
+      "source": "Grupo J/JORDANIA/Jordania - Nizar Al-Rashdan.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-11-al-rawabdeh",
+      "source": "Grupo J/JORDANIA/Jordania - Noor Al-Rawabdeh.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-7-obaid",
+      "source": "Grupo J/JORDANIA/Jordania - Saleem Obaid.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-16-al-naimat",
+      "source": "Grupo J/JORDANIA/Jordania - Yazan Al-Naimat.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "jor-2-abulaila",
+      "source": "Grupo J/JORDANIA/Jordania - Yazeed Abulaila.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-2-vargas",
+      "source": "Grupo K/COLOMBIA/Colombia - Camilo Vargas.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-6-munoz",
+      "source": "Grupo K/COLOMBIA/Colombia - Daniel Muñoz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-3-ospina",
+      "source": "Grupo K/COLOMBIA/Colombia - David Ospina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-4-sanchez",
+      "source": "Grupo K/COLOMBIA/Colombia - Davinson Sánchez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-logo",
+      "source": "Grupo K/COLOMBIA/Colombia - Escudo Colombia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-14-rodriguez",
+      "source": "Grupo K/COLOMBIA/Colombia - James Rodríguez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-10-lerma",
+      "source": "Grupo K/COLOMBIA/Colombia - Jefferson Lerma.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-17-arias",
+      "source": "Grupo K/COLOMBIA/Colombia - Jhon Arias.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "col-18-cordova",
+      "source": "Grupo K/COLOMBIA/Colombia - Jhon Córdoba.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "col-8-lucumi",
+      "source": "Grupo K/COLOMBIA/Colombia - Jhon Lucumí.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-7-mojica",
+      "source": "Grupo K/COLOMBIA/Colombia - Johan Mojica.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-16-carrascal",
+      "source": "Grupo K/COLOMBIA/Colombia - Jorge Carrascal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-15-quintero",
+      "source": "Grupo K/COLOMBIA/Colombia - Juan Fernando Quintero.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-11-castano",
+      "source": "Grupo K/COLOMBIA/Colombia - Kevin Castaño.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-20-diaz",
+      "source": "Grupo K/COLOMBIA/Colombia - Luis Díaz.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-19-suarez",
+      "source": "Grupo K/COLOMBIA/Colombia - Luis Suárez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-12-rios",
+      "source": "Grupo K/COLOMBIA/Colombia - Richard Ríos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-9-arias",
+      "source": "Grupo K/COLOMBIA/Colombia - Santiago Arias.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-team",
+      "source": "Grupo K/COLOMBIA/Colombia - Team Photo Colombia.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "col-5-mina",
+      "source": "Grupo K/COLOMBIA/Colombia - Yerry Mina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-9-silva",
+      "source": "Grupo K/PORTUGAL/Portugal - Bernardo Silva.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-10-fernandes",
+      "source": "Grupo K/PORTUGAL/Portugal - Bruno Fernandes.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-15-ronaldo",
+      "source": "Grupo K/PORTUGAL/Portugal - Cristiano Ronaldo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-2-costa",
+      "source": "Grupo K/PORTUGAL/Portugal - Diogo Costa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-6-dalot",
+      "source": "Grupo K/PORTUGAL/Portugal - Diogo Dalot.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-logo",
+      "source": "Grupo K/PORTUGAL/Portugal - Escudo Portugal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-16-trincao",
+      "source": "Grupo K/PORTUGAL/Portugal - Francisco Trincão.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-8-inacio",
+      "source": "Grupo K/PORTUGAL/Portugal - Gonçalo Inácio.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-18-ramos",
+      "source": "Grupo K/PORTUGAL/Portugal - Gonçalo Ramos.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-3-sa",
+      "source": "Grupo K/PORTUGAL/Portugal - José Sá.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-5-cancelo",
+      "source": "Grupo K/PORTUGAL/Portugal - João Cancelo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-17-felix",
+      "source": "Grupo K/PORTUGAL/Portugal - João Félix.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-14-neves",
+      "source": "Grupo K/PORTUGAL/Portugal - João Neves.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-7-mendes",
+      "source": "Grupo K/PORTUGAL/Portugal - Nuno Mendes.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-19-neto",
+      "source": "Grupo K/PORTUGAL/Portugal - Pedro Neto.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-20-leao",
+      "source": "Grupo K/PORTUGAL/Portugal - Rafael Leão.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-4-dias",
+      "source": "Grupo K/PORTUGAL/Portugal - Rúben Dias.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-11-neves",
+      "source": "Grupo K/PORTUGAL/Portugal - Rúben Neves.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-team",
+      "source": "Grupo K/PORTUGAL/Portugal - Team Photo Portugal.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "por-12-vitinha",
+      "source": "Grupo K/PORTUGAL/Portugal - Vitinha.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-3-wan-bissaka",
+      "source": "Grupo K/RD CONGO/RD Congo - Aaron Wan-Bissaka.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-5-masuaku",
+      "source": "Grupo K/RD CONGO/RD Congo - Arthur Masuaku.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-4-tuanzebe",
+      "source": "Grupo K/RD CONGO/RD Congo - Axel Tuanzebe.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-17-cipenga",
+      "source": "Grupo K/RD CONGO/RD Congo - Brian Cipenga.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-6-mbemba",
+      "source": "Grupo K/RD CONGO/RD Congo - Chancel Mbemba.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-8-pickel",
+      "source": "Grupo K/RD CONGO/RD Congo - Charles Pickel.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-19-bakambu",
+      "source": "Grupo K/RD CONGO/RD Congo - Cédric Bakambu.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-10-kayembe",
+      "source": "Grupo K/RD CONGO/RD Congo - Edo Kayembe.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-logo",
+      "source": "Grupo K/RD CONGO/RD Congo - Escudo RD Congo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-18-mayele",
+      "source": "Grupo K/RD CONGO/RD Congo - Fiston Mavele.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "cod-7-kayembe",
+      "source": "Grupo K/RD CONGO/RD Congo - Joris Kayembe.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-2-mpasi",
+      "source": "Grupo K/RD CONGO/RD Congo - Lionel Mpasi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-15-elia",
+      "source": "Grupo K/RD CONGO/RD Congo - Meschack Elia.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "cod-20-mbuku",
+      "source": "Grupo K/RD CONGO/RD Congo - Nathanaël Mbuku.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-9-mukau",
+      "source": "Grupo K/RD CONGO/RD Congo - Ngal'ayel Mukau.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cod-16-wissa",
+      "source": "Grupo K/RD CONGO/RD Congo - Yoane Wissa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-20-fayzullaev",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Abbosbek Fayzullaev.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-14-turgunboev",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Azizbek Turgunboev.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-16-shomurodov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Eldor Shomurodov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-logo",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Escudo Uzbekistán.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-3-savfiev",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Farrukh Sayfiev.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "uzb-6-aliqulov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Husniddin Aliqulov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-19-sergeev",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Igor Sergeev.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-18-masharipov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Jaloliddin Masharipov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-12-iskanderov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Jamshid Iskanderov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-8-alijonov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Khojiakbar Alijonov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-15-erkinov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Khojimat Erkinov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-17-urunov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Oston Urunov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-11-shukurov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Otabek Shukurov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-7-ashurmatov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Rustam Ashurmatov.png",
+      "confidence": "token_prefix_100pct"
+    },
+    {
+      "sticker_id": "uzb-4-nasrullaev",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Sherzod Nasrullaev.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "uzb-5-eshmurodov",
+      "source": "Grupo K/UZBEKISTAN/Uzbekistán - Umar Eshmurodov.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-19-kramaric",
+      "source": "Grupo L/CROACIA/Croacia - Andrej Kramarić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-18-budimir",
+      "source": "Grupo L/CROACIA/Croacia - Ante Budimir.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-3-caleta-car",
+      "source": "Grupo L/CROACIA/Croacia - Duje Ćaleta-Car.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-20-ivanovic",
+      "source": "Grupo L/CROACIA/Croacia - Franjo Ivanović.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-16-perisic",
+      "source": "Grupo L/CROACIA/Croacia - Ivan Perišić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-4-gvardiol",
+      "source": "Grupo L/CROACIA/Croacia - Joško Gvardiol.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-8-jakic",
+      "source": "Grupo L/CROACIA/Croacia - Kristijan Jakić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-12-majer",
+      "source": "Grupo L/CROACIA/Croacia - Lovro Majer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-9-modric",
+      "source": "Grupo L/CROACIA/Croacia - Luka Modrić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-6-vuskovic",
+      "source": "Grupo L/CROACIA/Croacia - Luka Vušković.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-14-pasalic",
+      "source": "Grupo L/CROACIA/Croacia - Mario Pašalić.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "cro-11-baturina",
+      "source": "Grupo L/CROACIA/Croacia - Martin Baturina.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-9-fatawu",
+      "source": "Grupo L/GHANA/Ghana - Abdul Issahaku Fatawu.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-6-djiku",
+      "source": "Grupo L/GHANA/Ghana - Alexander Djiku.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-5-seidu",
+      "source": "Grupo L/GHANA/Ghana - Alidu Seidu.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-20-semenyo",
+      "source": "Grupo L/GHANA/Ghana - Antoine Semenyo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-8-yirenkyi",
+      "source": "Grupo L/GHANA/Ghana - Caleb Yirenkyi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-logo",
+      "source": "Grupo L/GHANA/Ghana - Escudo Ghana.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-15-williams",
+      "source": "Grupo L/GHANA/Ghana - Inaki Williams.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-18-paintsil",
+      "source": "Grupo L/GHANA/Ghana - Joseph Paintsil.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-12-sulemana",
+      "source": "Grupo L/GHANA/Ghana - Kamaldeen Sulemana.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-4-salisu",
+      "source": "Grupo L/GHANA/Ghana - Mohammed Salisu.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-19-bukari",
+      "source": "Grupo L/GHANA/Ghana - Osman Bukari.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-11-samed",
+      "source": "Grupo L/GHANA/Ghana - Salis Abdul Samed.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-3-lamptey",
+      "source": "Grupo L/GHANA/Ghana - Tariq Lamptey.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "gha-10-partey",
+      "source": "Grupo L/GHANA/Ghana - Thomas Partey.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-15-gordon",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Anthony Gordon.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-12-palmer",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Cole Palmer.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-8-burn",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Dan Burn.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-10-rice",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Declan Rice.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-logo",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Escudo Inglaterra.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-5-konsa",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Ezri Konsa.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-18-kane",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Harry Kane.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-3-stones",
+      "source": "Grupo L/INGLATERRA/Inglaterra - John Stones.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-9-henderson",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Jordan Henderson.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-2-pickford",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Jordan Pickford.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-11-bellingham",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Jude Bellingham.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-4-guehi",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Marc Guéhi.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-19-rashford",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Marcus Rashford.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-14-rogers",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Morgan Rogers.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-20-watkins",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Ollie Watkins.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-16-foden",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Phil Foden.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-7-james",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Reece James.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-team",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Team Photo Inglaterra.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "eng-6-alexander-arnold",
+      "source": "Grupo L/INGLATERRA/Inglaterra - Trent Alexander-Arnold.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-12-carrasquilla",
+      "source": "Grupo L/PANAMA/Panamá - Adalberto Carrasquilla.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-20-quintero",
+      "source": "Grupo L/PANAMA/Panamá - Alberto Quintero.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-11-godoy",
+      "source": "Grupo L/PANAMA/Panamá - Aníbal Godoy.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-15-harvey",
+      "source": "Grupo L/PANAMA/Panamá - Carlos Harvey.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-10-martinez",
+      "source": "Grupo L/PANAMA/Panamá - Cristián Martínez.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-9-blackman",
+      "source": "Grupo L/PANAMA/Panamá - César Blackman.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-7-davis",
+      "source": "Grupo L/PANAMA/Panamá - Eric Davis.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-logo",
+      "source": "Grupo L/PANAMA/Panamá - Escudo Panamá.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-4-escobar",
+      "source": "Grupo L/PANAMA/Panamá - Fidel Escobar.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-8-cordoba",
+      "source": "Grupo L/PANAMA/Panamá - José Córdoba.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-17-fajardo",
+      "source": "Grupo L/PANAMA/Panamá - José Fajardo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-19-rodriguez",
+      "source": "Grupo L/PANAMA/Panamá - José Luis Rodríguez.png",
+      "confidence": "levenshtein_1"
+    },
+    {
+      "sticker_id": "pan-3-mejia",
+      "source": "Grupo L/PANAMA/Panamá - Luis Mejía.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-6-murillo",
+      "source": "Grupo L/PANAMA/Panamá - Michael Amir Murillo.png",
+      "confidence": "exact"
+    },
+    {
+      "sticker_id": "pan-14-barcenas",
+      "source": "Grupo L/PANAMA/Panamá - Édgar Bárcenas.png",
+      "confidence": "exact"
+    }
+  ],
+  "unmatched": [],
+  "duplicates": [
+    {
+      "sticker_id": "cpv-18-livramento",
+      "sources": [
+        "Grupo H/CABO VERDE/Cabo Verde - Dailon Livramento 2.png",
+        "Grupo H/CABO VERDE/Cabo Verde - Dailon Livramento.png"
+      ]
+    }
+  ]
+}
