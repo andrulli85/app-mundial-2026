@@ -14,6 +14,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import StickerCardPanini from "@/components/StickerCardPanini";
+import StickerDetailModal from "@/components/StickerDetailModal";
 import { getNickname, getAllStickers, toggleSticker } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
@@ -104,6 +105,7 @@ export default function AlbumPage() {
   const [search, setSearch] = useState("");
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [_demandMap, setDemandMap] = useState<Record<string, number>>({});
+  const [activeSticker, setActiveSticker] = useState<Sticker | null>(null);
 
   // Load favorites from localStorage on mount
   useEffect(() => {
@@ -147,9 +149,8 @@ export default function AlbumPage() {
     })();
   }, [router]);
 
-  const handleTap = useCallback(async (stickerId: string) => {
-    const updated = await toggleSticker(stickerId);
-    setCounts((prev) => ({ ...prev, [stickerId]: updated.count }));
+  const handleTap = useCallback((sticker: Sticker) => {
+    setActiveSticker(sticker);
   }, []);
 
   // ---------- Filter pipeline: chip → tab → search ----------
@@ -545,7 +546,7 @@ export default function AlbumPage() {
                       <StickerCardPanini
                         sticker={sticker}
                         count={counts[sticker.id] ?? 0}
-                        onClick={() => handleTap(sticker.id)}
+                        onClick={() => handleTap(sticker)}
                         favorited={isFav}
                         posColor={posColor}
                         size="sm"
@@ -561,6 +562,17 @@ export default function AlbumPage() {
 
       <BottomNav active="album" />
       <Coachmark section="album" />
+
+      {activeSticker && (
+        <StickerDetailModal
+          sticker={activeSticker}
+          count={counts[activeSticker.id] ?? 0}
+          onClose={() => setActiveSticker(null)}
+          onCountChange={(newCount) =>
+            setCounts((prev) => ({ ...prev, [activeSticker.id]: newCount }))
+          }
+        />
+      )}
     </div>
   );
 }
