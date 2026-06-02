@@ -1,0 +1,41 @@
+<!-- Albumix logo variant 2 — 3-card fan stack, clean silhouette, collection aesthetic -->
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Albumix logo variant 2">
+  <defs>
+    <linearGradient id="v2FoilL" x1="18" y1="18" x2="62" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE9A8"/><stop offset="0.4" stop-color="#F4C84A"/>
+      <stop offset="0.7" stop-color="#C2913A"/><stop offset="1" stop-color="#FFE9A8"/>
+    </linearGradient>
+    <linearGradient id="v2FoilC" x1="30" y1="14" x2="90" y2="106" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE9A8"/><stop offset="0.4" stop-color="#F4C84A"/>
+      <stop offset="0.7" stop-color="#C2913A"/><stop offset="1" stop-color="#FFE9A8"/>
+    </linearGradient>
+    <linearGradient id="v2FoilR" x1="58" y1="18" x2="102" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE9A8"/><stop offset="0.4" stop-color="#F4C84A"/>
+      <stop offset="0.7" stop-color="#C2913A"/><stop offset="1" stop-color="#FFE9A8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left card — rotated -8deg -->
+  <g transform="rotate(-8 60 60)">
+    <rect x="22" y="16" width="52" height="72" rx="7" fill="#1A1E26"/>
+    <rect x="22" y="16" width="52" height="72" rx="7" fill="none" stroke="url(#v2FoilL)" stroke-width="1.8" stroke-opacity="0.55"/>
+  </g>
+
+  <!-- Right card — rotated +8deg -->
+  <g transform="rotate(8 60 60)">
+    <rect x="46" y="16" width="52" height="72" rx="7" fill="#1A1E26"/>
+    <rect x="46" y="16" width="52" height="72" rx="7" fill="none" stroke="url(#v2FoilR)" stroke-width="1.8" stroke-opacity="0.55"/>
+  </g>
+
+  <!-- Center card — taller, on top, gold border -->
+  <rect x="32" y="12" width="56" height="78" rx="8" fill="#12151C"/>
+  <rect x="32" y="12" width="56" height="78" rx="8" fill="none" stroke="url(#v2FoilC)" stroke-width="2.2"/>
+
+  <!-- Card face lines -->
+  <line x1="40" y1="30" x2="80" y2="30" stroke="rgba(244,200,74,0.18)" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="40" y1="38" x2="80" y2="38" stroke="rgba(244,200,74,0.12)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="40" y1="46" x2="72" y2="46" stroke="rgba(244,200,74,0.10)" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Foil accent dot -->
+  <circle cx="60" cy="22" r="3.5" fill="url(#v2FoilC)" opacity="0.7"/>
+</svg>
