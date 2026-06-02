@@ -273,7 +273,7 @@ function TutorialCarousel({ step, onNext, onSkip }: CarouselProps) {
   return (
     <div
       style={{
-        minHeight: "100%",
+        flex: 1,
         display: "flex",
         flexDirection: "column",
         padding: "0 24px 36px",
@@ -328,7 +328,7 @@ function TutorialCarousel({ step, onNext, onSkip }: CarouselProps) {
         ))}
       </div>
 
-      <div style={{ flex: 1 }} />
+      <div style={{ flex: 1.3 }} />
 
       {/* Slide body */}
       <div
@@ -425,7 +425,7 @@ function NicknameForm({ onDone, onBack }: NicknameFormProps) {
   return (
     <div
       style={{
-        minHeight: "100%",
+        flex: 1,
         display: "flex",
         flexDirection: "column",
         padding: "0 24px 40px",
@@ -448,7 +448,7 @@ function NicknameForm({ onDone, onBack }: NicknameFormProps) {
         }}
       />
 
-      <div style={{ flex: 1 }} />
+      <div style={{ flex: 1.3 }} />
 
       {/* Brand */}
       <div style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
