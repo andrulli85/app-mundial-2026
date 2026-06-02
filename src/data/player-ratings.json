@@ -1587,103 +1587,103 @@
     "ovr": 72,
     "position": "POR",
     "real_name": "Yahia Fofana",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-3-konan": {
     "ovr": 66,
     "position": "MED",
     "real_name": "Konan N'Dri",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-4-singo": {
     "ovr": 79,
     "position": "DEF",
     "real_name": "Wilfried Singo",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-5-kossounou": {
     "ovr": 81,
     "position": "DEF",
     "real_name": "Odilon Kossounou",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-6-ndicka": {
     "ovr": 77,
     "position": "DEF",
     "real_name": "Evan Ndicka",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-7-boly": {
     "ovr": 77,
     "position": "DEF",
     "real_name": "Willy Boly",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-8-agbadou": {
     "ovr": 77,
     "position": "DEF",
     "real_name": "Emmanuel Agbadou",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-9-diomande": {
     "ovr": 78,
     "position": "DEF",
     "real_name": "Ousmane Diomande",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-10-kessie": {
     "ovr": 82,
     "position": "MED",
     "real_name": "Franck Yannick Kessié",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-11-fofana": {
     "ovr": 80,
     "position": "MED",
     "real_name": "Seko Fofana",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-12-sangare": {
     "ovr": 77,
     "position": "MED",
     "real_name": "Ibrahim Sangaré",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-15-diallo": {
     "ovr": 75,
     "position": "MED",
     "real_name": "Amad Diallo",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-16-haller": {
     "ovr": 79,
     "position": "DEL",
     "real_name": "Sébastien Haller",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-17-adingra": {
     "ovr": 76,
     "position": "MED",
     "real_name": "Simon Adingra",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-18-diomande": {
     "ovr": 78,
     "position": "DEF",
     "real_name": "Ousmane Diomande",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-19-guessand": {
     "ovr": 74,
     "position": "DEL",
     "real_name": "Evann Guessand",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "civ-20-diakite": {
     "ovr": 72,
     "position": "DEL",
     "real_name": "Oumar Diakité",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ecu-2-galindez": {
     "ovr": 74,
@@ -1791,103 +1791,103 @@
     "ovr": 76,
     "position": "POR",
     "real_name": "Bart Verbruggen",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-3-dijk": {
     "ovr": 89,
     "position": "DEF",
     "real_name": "Virgil van Dijk",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-4-ven": {
     "ovr": 82,
     "position": "DEF",
     "real_name": "Micky van de Ven",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-5-timber": {
     "ovr": 79,
     "position": "DEF",
     "real_name": "Jurriën Timber",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-6-dumfries": {
     "ovr": 82,
     "position": "DEF",
     "real_name": "Denzel Dumfries",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-7-ake": {
     "ovr": 84,
     "position": "DEF",
     "real_name": "Nathan Aké",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-8-frimpong": {
     "ovr": 84,
     "position": "MED",
     "real_name": "Jeremie Frimpong",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-9-hecke": {
     "ovr": 76,
     "position": "DEF",
     "real_name": "Jan Paul van Hecke",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-10-reijnders": {
     "ovr": 82,
     "position": "MED",
     "real_name": "Tijjani Reijnders",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-11-gravenberch": {
     "ovr": 78,
     "position": "MED",
     "real_name": "Ryan Gravenberch",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-12-koopmeiners": {
     "ovr": 83,
     "position": "MED",
     "real_name": "Teun Koopmeiners",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-14-jong": {
     "ovr": 87,
     "position": "MED",
     "real_name": "Frenkie de Jong",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-15-simons": {
     "ovr": 83,
     "position": "MED",
     "real_name": "Xavi Simons",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-16-kluivert": {
     "ovr": 77,
     "position": "MED",
     "real_name": "Justin Kluivert",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-18-malen": {
     "ovr": 83,
     "position": "MED",
     "real_name": "Donyell Malen",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-19-weghorst": {
     "ovr": 77,
     "position": "DEL",
     "real_name": "Wout Weghorst",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "ned-20-gakpo": {
     "ovr": 83,
     "position": "DEL",
     "real_name": "Cody Gakpo",
-    "match_confidence": "low"
+    "match_confidence": "high"
   },
   "jpn-2-suzuki": {
     "ovr": 71,

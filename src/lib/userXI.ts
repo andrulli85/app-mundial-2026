@@ -36,17 +36,29 @@ export interface LockWindow {
 // ---------------------------------------------------------------------------
 // LOCK_PHASES — hardcoded from FIFA 2026 fixture data
 //
-// Source: Sky Sports UK fixture schedule (BST = UTC+1, converted below)
-// https://www.skysports.com/football/news/11095/13481245/world-cup-2026-fixture-schedule-and-uk-kick-off-times
+// Sources verified 2026-06-02 via Wikipedia + worldcupwiki.com + Fox Sports:
+//   https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_Group_A
+//   https://worldcupwiki.com/schedule/
+//   https://www.foxsports.com/stories/soccer/2026-world-cup-schedule-all-games-dates-matchups-how-watch
 //
-// Opening match: Mexico vs South Africa at Azteca, 8pm BST 11 Jun → 19:00 UTC
-// Last MD2 match: Canada vs Qatar, 11pm BST 18 Jun → 22:00 UTC
-//   + 90 min match + 5 min buffer = last whistle ≈ 23:35 UTC → using 23:45 UTC as safe buffer
-// First MD3 kickoff: Mexico vs South Korea, 2am BST 19 Jun → 01:00 UTC 19 Jun
-// Final: 8pm BST 19 Jul → 19:00 UTC; final whistle ~90 min later = 20:30 UTC
+// Opening match: Mexico vs South Africa at Azteca
+//   → June 11 at 1pm UTC-6 = 19:00 UTC ✓ unchanged
 //
-// NOTE: The MD2-end / MD3-start window is intentionally narrow (~75 min) as spec'd.
-// If FIFA publishes updated times, update these constants and redeploy before MD1.
+// Last MD2 match: Mexico vs South Korea at Estadio Akron (Group A MD2)
+//   → June 18 at 9pm UTC-6 = 03:00 UTC June 19
+//   → final whistle ≈ 04:35 UTC + 5 min buffer = 05:00 UTC June 19 (safe ceiling)
+//   NOTE: The original Sky Sports source cited "Canada vs Qatar 11pm BST" as last MD2
+//   but that is only the last Group B MD2 match (22:00 UTC). The actual final MD2
+//   match across all 12 groups is Mexico vs South Korea (03:00 UTC June 19, Group A).
+//
+// First MD3 kickoff: Switzerland vs Canada at BC Place, Vancouver
+//   → June 24 at 3pm ET (UTC-4) = 19:00 UTC June 24
+//   NOTE: The original comment listed "Mexico vs South Korea" as first MD3 —
+//   that match is actually Group A MD2. MD3 for all groups runs June 24-27.
+//   Transfer window is ~5.5 days (05:00 UTC Jun 19 → 19:00 UTC Jun 24).
+//
+// Final: MetLife Stadium, East Rutherford NJ (UTC-4 in July)
+//   → July 19 at 3pm ET = 19:00 UTC; final whistle ~90 min later = 20:30 UTC ✓ unchanged
 // ---------------------------------------------------------------------------
 
 export const LOCK_PHASES: LockWindow[] = [
@@ -58,20 +70,20 @@ export const LOCK_PHASES: LockWindow[] = [
   },
   {
     // MD1 → end of MD2: XI locked. Cannot edit squad.
-    startsAt: "2026-06-11T19:00:00Z", // MD1 first whistle
-    endsAt:   "2026-06-18T23:45:00Z", // Last MD2 final whistle (Canada vs Qatar ~11pm BST + 90min + buffer)
+    startsAt: "2026-06-11T19:00:00Z", // MD1 first whistle (Mexico vs South Africa, 1pm UTC-6)
+    endsAt:   "2026-06-19T05:00:00Z", // Last MD2 final whistle + buffer (Mexico vs SKorea, 9pm UTC-6 Jun 18 = 03:00 UTC Jun 19 + 90min + 5min)
     phase: "md1_to_md2_lock",
   },
   {
-    // Transfer window: MD2 ends → first MD3 kickoff (~75 min window)
-    startsAt: "2026-06-18T23:45:00Z", // Last MD2 final whistle
-    endsAt:   "2026-06-19T01:00:00Z", // Mexico vs South Korea — first MD3 kickoff (2am BST = 01:00 UTC)
+    // Transfer window: MD2 ends → first MD3 kickoff (~5.5 day window)
+    startsAt: "2026-06-19T05:00:00Z", // Last MD2 final whistle (Mexico vs South Korea)
+    endsAt:   "2026-06-24T19:00:00Z", // Switzerland vs Canada — first MD3 kickoff (3pm ET Jun 24 = 19:00 UTC)
     phase: "md2_unlock_window",
   },
   {
     // MD3 → final: re-locked for the rest of the tournament
-    startsAt: "2026-06-19T01:00:00Z", // First MD3 kickoff
-    endsAt:   "2026-07-19T20:30:00Z", // Final whistle (8pm BST final + 90 min = 20:30 UTC)
+    startsAt: "2026-06-24T19:00:00Z", // First MD3 kickoff (Switzerland vs Canada)
+    endsAt:   "2026-07-19T20:30:00Z", // Final whistle (3pm ET Jul 19 + 90 min = 20:30 UTC)
     phase: "md3_to_final_lock",
   },
   {
