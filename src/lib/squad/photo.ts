@@ -16,10 +16,10 @@ import seedManifest from "../../../public/stickers/seed-manifest.json";
 
 // Originales manifest — may not exist yet while BULK processes PNGs.
 // Use require() inside a try/catch so a missing JSON doesn't break the build.
-let originalesManifest: Record<string, string> = {};
+let originalesManifest: { photos?: Record<string, string> } = {};
 try {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  originalesManifest = require("../../../public/stickers/originales-manifest.json") as Record<string, string>;
+  originalesManifest = require("../../../public/stickers/originales-manifest.json") as { photos?: Record<string, string> };
 } catch {
   // BULK hasn't written this file yet — seed/ and placeholder will cover all stickers.
 }
@@ -34,7 +34,7 @@ const seedMap = seedManifest as Record<string, string>;
  */
 export function photoUrlFor(stickerId: string): string {
   // 1. originales (BULK pipeline — full quality)
-  const orig = originalesManifest[stickerId];
+  const orig = originalesManifest.photos?.[stickerId];
   if (orig) return orig.startsWith("/") ? orig : `/stickers/originales/${orig}`;
 
   // 2. seed (manually cropped subset)
@@ -60,7 +60,7 @@ export function photoCoverage(stickerIds: string[]): {
   let placeholder = 0;
 
   for (const id of stickerIds) {
-    if (originalesManifest[id]) {
+    if (originalesManifest.photos?.[id]) {
       originales++;
     } else if (seedMap[id]) {
       seed++;
