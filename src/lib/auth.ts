@@ -37,6 +37,19 @@ function isMobile(): boolean {
   return window.matchMedia("(pointer: coarse)").matches;
 }
 
+/**
+ * iOS PWA standalone mode breaks signInWithRedirect: the redirect result is
+ * lost when the in-app auth sheet closes, leaving the user stuck on /login
+ * after Google auth completes. Detecting standalone mode lets us force the
+ * popup path, which uses postMessage instead of redirect state.
+ */
+function isStandalonePWA(): boolean {
+  if (typeof window === "undefined") return false;
+  if (window.matchMedia("(display-mode: standalone)").matches) return true;
+  const nav = window.navigator as Navigator & { standalone?: boolean };
+  return nav.standalone === true;
+}
+
 function toAppUser(user: User): AppUser {
   return {
     uid: user.uid,
@@ -78,12 +91,13 @@ export async function signInWithGoogle(): Promise<AppUser | null> {
 
   const provider = new GoogleAuthProvider();
 
-  if (isMobile()) {
-    // On mobile: redirect flow (better UX, no popup blocker issues)
+  if (isMobile() && !isStandalonePWA()) {
+    // Regular mobile Safari/Chrome: redirect flow (better UX, no popup blocker)
     await signInWithRedirect(fb.auth, provider);
     return null; // page will redirect and come back
   } else {
-    // On desktop: popup flow
+    // Desktop or iOS PWA standalone: popup flow (postMessage avoids the iOS
+    // PWA bug where signInWithRedirect loses state when the auth sheet closes)
     const result = await signInWithPopup(fb.auth, provider);
     await migrateProfileToFirestore(result.user);
     return toAppUser(result.user);
