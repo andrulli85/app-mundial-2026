@@ -1,8 +1,7 @@
 /**
  * fav-team.ts — Favorite national team constant.
  *
- * Verbatim from data.jsx lines 16-23.
- * FIJA = fixed, cannot be changed mid-tournament.
+ * Defaults to France because Chile did not qualify for the 2026 World Cup.
  */
 
 export interface FavTier {
@@ -19,8 +18,8 @@ export interface FavTeam {
 }
 
 export const FAV_TEAM: FavTeam = {
-  name: "Chile",
-  flag: "🇨🇱",
+  name: "France",
+  flag: "🇫🇷",
   tiers: [
     { stage: "Cuartos de final", detail: "Top 8",       pts: 200, reached: true  },
     { stage: "Semifinal / Podio", detail: "2º · 3º · 4º", pts: 350, reached: false },
