@@ -30,10 +30,13 @@ export default function InviteLinkCard() {
   useEffect(() => {
     if (!inviteUrl || !canvasRef.current) return;
     import("qrcode").then(({ toCanvas }) => {
+      // QR codes need raw hex (the qrcode lib can't read CSS vars). Use the
+      // canonical --gold (#F4C84A) for modules + --bg-2 (#15181F) for bg so
+      // the QR sits naturally on the dark card surface.
       toCanvas(canvasRef.current!, inviteUrl, {
         width: 200,
         margin: 2,
-        color: { dark: "#006847", light: "#ffffff" },
+        color: { dark: "#F4C84A", light: "#15181F" },
       }).catch(console.error);
     });
   }, [inviteUrl]);

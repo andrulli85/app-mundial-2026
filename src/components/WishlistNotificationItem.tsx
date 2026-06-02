@@ -21,7 +21,6 @@ interface Props {
 }
 
 const GOLD = "#F4C84A";
-const GREEN = "#006847";
 
 function relativeTime(ts: number): string {
   const diffMs = Date.now() - ts;
@@ -100,8 +99,8 @@ export default function WishlistNotificationItem({ notification, onPropose, onDi
                 padding: "8px 12px",
                 borderRadius: 8,
                 border: "none",
-                backgroundColor: GREEN,
-                color: "#ffffff",
+                background: "var(--foil-gold-soft)",
+                color: "var(--fg-onlight)",
                 fontSize: 12,
                 fontWeight: 700,
                 cursor: "pointer",

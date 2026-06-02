@@ -92,14 +92,14 @@ export default function AchievementToast({ toastQueue, onDismiss }: Props) {
     >
       <div
         style={{
-          background: "linear-gradient(135deg, #006847 0%, #004d33 100%)",
-          border: "2px solid #c2d5c2",
-          borderRadius: "16px",
+          background: "var(--foil-gold)",
+          border: "1px solid var(--gold)",
+          borderRadius: "var(--r-md)",
           padding: "12px 16px",
           display: "flex",
           alignItems: "center",
           gap: "12px",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.32), 0 2px 8px rgba(0,0,0,0.16)",
+          boxShadow: "var(--sh-3), var(--glow-gold)",
         }}
       >
         {/* Rarity glow ring around emoji */}

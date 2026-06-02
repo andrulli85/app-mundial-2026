@@ -115,7 +115,10 @@ export default function InstallBanner() {
   return (
     <div
       className="flex items-center gap-2 px-3 py-2 text-xs"
-      style={{ backgroundColor: "#f0e6d2", borderBottom: "1px solid #d1c9b8" }}
+      style={{
+        backgroundColor: "var(--bg-2)",
+        borderBottom: "1px solid var(--line-strong)",
+      }}
       role="banner"
       aria-label="Sugerencia de instalación"
     >
@@ -125,14 +128,15 @@ export default function InstallBanner() {
       <button
         onClick={handleInstall}
         className="flex-1 text-left font-semibold leading-snug"
-        style={{ color: "#006847" }}
+        style={{ color: "var(--gold)" }}
       >
         {labels[platform]}
       </button>
       <button
         onClick={dismiss}
         aria-label="Cerrar sugerencia de instalación"
-        className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full text-gray-500 hover:text-gray-700 hover:bg-black/5 transition-colors"
+        className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full transition-opacity active:opacity-70"
+        style={{ color: "var(--fg-3)" }}
       >
         ✕
       </button>
