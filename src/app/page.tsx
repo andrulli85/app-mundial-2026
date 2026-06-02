@@ -119,69 +119,74 @@ function MiniCard({ accentColor, rotate, translateX, zIndex = 1, animationDelay 
         top: 0,
         transform: `translateX(calc(-50% + ${translateX}px)) rotate(${rotate}deg)`,
         zIndex,
-        width: 104,
-        height: 146,
-        borderRadius: "var(--r-card)",
-        overflow: "hidden",
-        background: "linear-gradient(180deg,#8fe0ef 0%,#6fd0e6 60%,#58c2dc 100%)",
-        boxShadow: "var(--sh-3)",
-        animation: `floaty 3s ease-in-out ${animationDelay} infinite`,
-        flexShrink: 0,
       }}
     >
-      {/* Giant "26" */}
-      <span
-        style={{
-          position: "absolute",
-          left: -70 * 0.12,
-          top: -70 * 0.06,
-          fontFamily: "var(--font-display)",
-          fontSize: 70,
-          lineHeight: 0.8,
-          color: "rgba(13,20,24,.9)",
-          letterSpacing: "-.04em",
-          userSelect: "none",
-        }}
-      >
-        2
-      </span>
-      <span
-        style={{
-          position: "absolute",
-          right: -70 * 0.14,
-          top: 70 * 0.18,
-          fontFamily: "var(--font-display)",
-          fontSize: 70,
-          lineHeight: 0.8,
-          color: accentColor,
-          opacity: 0.92,
-          letterSpacing: "-.04em",
-          userSelect: "none",
-        }}
-      >
-        6
-      </span>
-      {/* Name plate */}
       <div
         style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: accentColor,
-          padding: "5px 7px 6px",
+          width: 104,
+          height: 146,
+          borderRadius: "var(--r-card)",
+          overflow: "hidden",
+          background: "linear-gradient(180deg,#8fe0ef 0%,#6fd0e6 60%,#58c2dc 100%)",
+          boxShadow: "var(--sh-3)",
+          animation: `floaty 3s ease-in-out ${animationDelay} infinite`,
+          position: "relative",
         }}
       >
-        <div
+        {/* Giant "26" */}
+        <span
           style={{
+            position: "absolute",
+            left: -70 * 0.12,
+            top: -70 * 0.06,
             fontFamily: "var(--font-display)",
-            fontSize: 11,
-            lineHeight: 0.95,
-            color: "#fff",
-            textTransform: "uppercase",
+            fontSize: 70,
+            lineHeight: 0.8,
+            color: "rgba(13,20,24,.9)",
+            letterSpacing: "-.04em",
+            userSelect: "none",
           }}
         >
-          FIGURITA
+          2
+        </span>
+        <span
+          style={{
+            position: "absolute",
+            right: -70 * 0.14,
+            top: 70 * 0.18,
+            fontFamily: "var(--font-display)",
+            fontSize: 70,
+            lineHeight: 0.8,
+            color: accentColor,
+            opacity: 0.92,
+            letterSpacing: "-.04em",
+            userSelect: "none",
+          }}
+        >
+          6
+        </span>
+        {/* Name plate */}
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: accentColor,
+            padding: "5px 7px 6px",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 11,
+              lineHeight: 0.95,
+              color: "#fff",
+              textTransform: "uppercase",
+            }}
+          >
+            FIGURITA
+          </div>
         </div>
       </div>
     </div>
@@ -350,7 +355,7 @@ function TutorialCarousel({ step, onNext, onSkip }: CarouselProps) {
         </p>
       </div>
 
-      <div style={{ flex: 1.4 }} />
+      <div style={{ flex: 1 }} />
 
       {/* CTA button — foil gold pill */}
       <button
@@ -569,7 +574,7 @@ function NicknameForm({ onDone, onBack }: NicknameFormProps) {
         </button>
       </div>
 
-      <div style={{ flex: 1.3 }} />
+      <div style={{ flex: 1 }} />
 
       <button
         onClick={onBack}
