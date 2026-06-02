@@ -87,7 +87,7 @@ function PageShell({
 }) {
   return (
     <main
-      className="min-h-screen flex flex-col items-center justify-center px-6 py-12"
+      className="flex-1 flex flex-col items-center justify-center px-6 py-12"
       style={{
         background:
           "radial-gradient(ellipse 80% 60% at 50% 0%, var(--bg-2) 0%, var(--bg-1) 100%)",

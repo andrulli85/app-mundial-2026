@@ -20,6 +20,7 @@
  *   /sw.js           — PWA service worker
  *   /manifest.json   — PWA manifest
  *   /icons/*         — PWA icons
+ *   /assets/*        — static brand SVGs (logomark, mascot, etc.)
  *   /stickers/*      — sticker images (PWA install must work without login)
  *   /splash/*        — splash screen images
  *   /api/health      — health check if it ever exists
@@ -35,6 +36,7 @@ const PUBLIC_PREFIXES = [
   "/api/auth/",
   "/_next/",
   "/icons/",
+  "/assets/",
   "/stickers/",
   "/splash/",
 ];
