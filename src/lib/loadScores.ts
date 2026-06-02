@@ -16,6 +16,17 @@ import type { MatchdayScores } from "./scoring";
 import MD1Scores from "@/data/match-scores/MD-1.json";
 
 /**
+ * Matchdays whose JSON has been committed beyond MD-1 (which is static-imported
+ * above). Empty for now — the World Cup hasn't kicked off yet. Push numbers
+ * here as new MD-N.json files land in /public/data/match-scores/.
+ *
+ * Hardcoded instead of "fetch + 404-tolerate" because browsers log every 404
+ * at the network layer regardless of JS try/catch, polluting the console with
+ * 7+ false-positive errors per /scoreboard load.
+ */
+const SHIPPED_MATCHDAYS: number[] = [];
+
+/**
  * Try to fetch a matchday JSON from the public directory.
  * Returns null if the file 404s or the fetch fails.
  */
@@ -45,10 +56,9 @@ export async function loadAvailableScores(): Promise<MatchdayScores[]> {
     scores: MD1Scores as Record<string, number>,
   };
 
-  // MD-2 through MD-8: runtime fetch
-  const futureMDs = await Promise.all(
-    [2, 3, 4, 5, 6, 7, 8].map((n) => fetchMD(n))
-  );
+  // Future MDs: runtime fetch only the ones we've shipped (see SHIPPED_MATCHDAYS
+  // above). When a matchday file is committed, bump the array.
+  const futureMDs = await Promise.all(SHIPPED_MATCHDAYS.map((n) => fetchMD(n)));
 
   return [md1, ...futureMDs.filter((r): r is MatchdayScores => r !== null)];
 }
