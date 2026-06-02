@@ -64,6 +64,7 @@ export interface StickerCardPaniniProps {
   onClick?: () => void;
   showXBadge?: boolean;
   count?: number;
+  /** Retained for backward compat with callers; star glyph was removed. */
   favorited?: boolean;
   posColor?: string;
 }
@@ -76,7 +77,7 @@ export default function StickerCardPanini({
   onClick,
   showXBadge = false,
   count = 0,
-  favorited = false,
+  favorited: _favorited = false,
   posColor,
 }: StickerCardPaniniProps) {
   const dims = DIMS[size];
@@ -90,6 +91,10 @@ export default function StickerCardPanini({
   // Resolve photo: originales → seed → placeholder. Falls back to seed_image from catalog.
   const resolvedPhoto = sticker.type === "player" ? photoUrlFor(sticker.id) : (sticker.seed_image ?? null);
   const hasPhoto = Boolean(resolvedPhoto) && !resolvedPhoto?.endsWith("placeholder.svg");
+  // True when the resolved photo is a full Panini sticker scan from /stickers/originales/.
+  // These JPGs already include the cyan bg, "2"/"6" digits, flag, nameplate and bio baked in —
+  // the synthesized overlays must be suppressed to avoid double-layering.
+  const isOriginalesPhoto = Boolean(resolvedPhoto?.startsWith("/stickers/originales/"));
 
   // Flag chip position — matches cards.jsx line 84
   const flagTop = isLg ? 92 : size === "md" ? 58 : 40;
@@ -150,61 +155,67 @@ export default function StickerCardPanini({
     >
       {/* ------------------------------------------------------------------ */}
       {/* Giant "26" motif — absolutely positioned background decoration      */}
+      {/* Skipped for originales JPGs: the digits are already baked into the  */}
+      {/* source image and rendering them again causes a dark band at top.    */}
       {/* ------------------------------------------------------------------ */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 0,
-          overflow: "hidden",
-          pointerEvents: "none",
-        }}
-      >
-        {/* "2" — top-left, dark */}
-        <span
+      {!isOriginalesPhoto && (
+        <div
+          aria-hidden
           style={{
             position: "absolute",
-            left: -dims.num * 0.12,
-            top: -dims.num * 0.06,
-            fontFamily: "var(--font-display, 'Impact', sans-serif)",
-            fontSize: dims.num,
-            lineHeight: 0.8,
-            color: "rgba(13,20,24,.9)",
-            letterSpacing: "-.04em",
-            userSelect: "none",
+            inset: 0,
+            zIndex: 0,
+            overflow: "hidden",
+            pointerEvents: "none",
           }}
         >
-          2
-        </span>
-        {/* "6" — right-of-center, accent color */}
-        <span
-          style={{
-            position: "absolute",
-            right: -dims.num * 0.14,
-            top: dims.num * 0.18,
-            fontFamily: "var(--font-display, 'Impact', sans-serif)",
-            fontSize: dims.num,
-            lineHeight: 0.8,
-            color: accent,
-            opacity: 0.92,
-            letterSpacing: "-.04em",
-            userSelect: "none",
-          }}
-        >
-          6
-        </span>
-      </div>
+          {/* "2" — top-left, dark */}
+          <span
+            style={{
+              position: "absolute",
+              left: -dims.num * 0.12,
+              top: -dims.num * 0.06,
+              fontFamily: "var(--font-display, 'Impact', sans-serif)",
+              fontSize: dims.num,
+              lineHeight: 0.8,
+              color: "rgba(13,20,24,.9)",
+              letterSpacing: "-.04em",
+              userSelect: "none",
+            }}
+          >
+            2
+          </span>
+          {/* "6" — right-of-center, accent color */}
+          <span
+            style={{
+              position: "absolute",
+              right: -dims.num * 0.14,
+              top: dims.num * 0.18,
+              fontFamily: "var(--font-display, 'Impact', sans-serif)",
+              fontSize: dims.num,
+              lineHeight: 0.8,
+              color: accent,
+              opacity: 0.92,
+              letterSpacing: "-.04em",
+              userSelect: "none",
+            }}
+          >
+            6
+          </span>
+        </div>
+      )}
 
       {/* ------------------------------------------------------------------ */}
       {/* Photo slot — full-bleed center area, ends at plate top              */}
       {/* ------------------------------------------------------------------ */}
+      {/* Photo slot — for originales, fills the entire card edge-to-edge.    */}
+      {/* For synthesized/placeholder cards, inset stops above the nameplate. */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          top: showBio ? 6 : 4,
-          bottom: dims.plate - 6,
+          top: isOriginalesPhoto ? 0 : (showBio ? 6 : 4),
+          bottom: isOriginalesPhoto ? 0 : (dims.plate - 6),
           zIndex: 1,
           display: "flex",
           alignItems: "flex-end",
@@ -233,7 +244,7 @@ export default function StickerCardPanini({
             src={resolvedPhoto!}
             alt={`${sticker.code} ${sticker.display_name || sticker.name}`}
             fill
-            className="object-cover object-top"
+            className={isOriginalesPhoto ? "object-cover" : "object-cover object-top"}
             sizes="(max-width: 640px) 33vw, (max-width: 1024px) 20vw, 17vw"
             style={{ borderRadius: 0 }}
           />
@@ -266,8 +277,9 @@ export default function StickerCardPanini({
 
       {/* ------------------------------------------------------------------ */}
       {/* Flag chip — white pill, right edge                                   */}
+      {/* Skipped for originales: the flag is already baked into the JPG.     */}
       {/* ------------------------------------------------------------------ */}
-      {!locked && (
+      {!locked && !isOriginalesPhoto && (
         <div
           style={{
             position: "absolute",
@@ -293,51 +305,55 @@ export default function StickerCardPanini({
 
       {/* ------------------------------------------------------------------ */}
       {/* Name plate — accent color at bottom                                  */}
+      {/* Skipped for originales: the red nameplate + bio are baked into the  */}
+      {/* JPG; rendering a second plate creates a redundant band at bottom.   */}
       {/* ------------------------------------------------------------------ */}
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 2,
-          background: locked ? "#3a4148" : accent,
-          padding: platePad,
-        }}
-      >
-        {/* Player name */}
+      {!isOriginalesPhoto && (
         <div
           style={{
-            fontFamily: "var(--font-display, 'Impact', sans-serif)",
-            fontSize: dims.name,
-            lineHeight: 0.95,
-            letterSpacing: ".01em",
-            color: "#fff",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            textTransform: "uppercase",
+            position: "absolute",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 2,
+            background: locked ? "#3a4148" : accent,
+            padding: platePad,
           }}
         >
-          {locked ? "???" : sticker.display_name || sticker.name}
-        </div>
-
-        {/* Bio sub-line — born · height · weight */}
-        {showBio && bio && (
+          {/* Player name */}
           <div
             style={{
-              fontFamily: "var(--font-stat, 'Roboto Mono', monospace)",
-              fontWeight: 700,
-              fontSize: dims.sub,
-              color: "rgba(255,255,255,.92)",
-              marginTop: 2,
+              fontFamily: "var(--font-display, 'Impact', sans-serif)",
+              fontSize: dims.name,
+              lineHeight: 0.95,
+              letterSpacing: ".01em",
+              color: "#fff",
               whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              textTransform: "uppercase",
             }}
           >
-            {bio.born} · {bio.height}cm · {bio.weight}kg
+            {locked ? "???" : sticker.display_name || sticker.name}
           </div>
-        )}
-      </div>
+
+          {/* Bio sub-line — born · height · weight */}
+          {showBio && bio && (
+            <div
+              style={{
+                fontFamily: "var(--font-stat, 'Roboto Mono', monospace)",
+                fontWeight: 700,
+                fontSize: dims.sub,
+                color: "rgba(255,255,255,.92)",
+                marginTop: 2,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {bio.born} · {bio.height}cm · {bio.weight}kg
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ------------------------------------------------------------------ */}
       {/* Duplicate badge — top-left, gold border pill (count > 1)             */}
