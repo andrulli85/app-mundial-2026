@@ -148,6 +148,7 @@ export default function PerfilPage() {
   const [owned, setOwned] = useState(0);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [useInitial, setUseInitial] = useState(false);
 
   // claimable achievements — stubbed 0 until achievements store exposes a helper
   const claimable = 0;
@@ -186,6 +187,7 @@ export default function PerfilPage() {
   }
 
   const initial = (nickname[0] ?? "?").toUpperCase();
+  const photoURL = user?.photoURL ?? null;
 
   return (
     <div className="home-dark flex flex-col flex-1 w-full max-w-lg mx-auto">
@@ -217,25 +219,44 @@ export default function PerfilPage() {
           }}
         />
 
-        {/* 88px foil avatar */}
-        <div
-          style={{
-            position: "relative",
-            width: 88,
-            height: 88,
-            borderRadius: 99,
-            background: "var(--foil-gold)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontFamily: "var(--font-display)",
-            fontSize: 38,
-            color: "var(--fg-onlight)",
-            boxShadow: "var(--glow-gold)",
-          }}
-        >
-          {initial}
-        </div>
+        {/* 88px avatar — Google photo when available, foil initial as fallback */}
+        {photoURL && !useInitial ? (
+          <img
+            src={photoURL}
+            alt="Profile photo"
+            onError={() => setUseInitial(true)}
+            data-testid="avatar-photo"
+            style={{
+              width: 88,
+              height: 88,
+              borderRadius: 99,
+              objectFit: "cover",
+              boxShadow: "var(--glow-gold)",
+              border: "2px solid var(--line-gold)",
+            }}
+          />
+        ) : (
+          <div
+            aria-label={`Avatar inicial ${initial}`}
+            data-testid="avatar-initial"
+            style={{
+              position: "relative",
+              width: 88,
+              height: 88,
+              borderRadius: 99,
+              background: "var(--foil-gold)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "var(--font-display)",
+              fontSize: 38,
+              color: "var(--fg-onlight)",
+              boxShadow: "var(--glow-gold)",
+            }}
+          >
+            {initial}
+          </div>
+        )}
 
         {/* Name */}
         <h1

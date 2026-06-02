@@ -94,9 +94,7 @@ export default function StickerDetailModal({
   const displayName = teamEntry?.display_name ?? sticker.team;
   const bio = isPlayer ? getBio(sticker.id, sticker.team_code) : null;
 
-  // Determine position from player-meta — we only need the string key
-  // Import getPlayerMeta lazily to avoid bundling if it's not a player
-  // For simplicity we read from sticker number heuristic inline (same logic as player-meta.ts):
+  // Determine position for stats table only (not rendered in header)
   const posKey = (() => {
     if (!isPlayer) return null;
     const n = sticker.number;
@@ -242,8 +240,16 @@ export default function StickerDetailModal({
           />
         </button>
 
-        {/* ---- Card (lg size) ---- */}
-        <div style={{ position: "relative", zIndex: 1 }}>
+        {/* ---- Card (lg size — enlarged to ~72% vw) ---- */}
+        <div
+          style={{
+            position: "relative",
+            zIndex: 1,
+            width: "min(72vw, 280px)",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <StickerCardPanini
             sticker={sticker}
             count={count}
@@ -251,41 +257,11 @@ export default function StickerDetailModal({
           />
         </div>
 
-        {/* ---- Name header ---- */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            marginTop: 20,
-            width: "100%",
-            justifyContent: "center",
-          }}
-        >
-          <span style={{ fontSize: 26 }}>{flag}</span>
-          <div>
-            <div
-              style={{
-                fontFamily: "var(--font-display, 'Anton', sans-serif)",
-                fontSize: 26,
-                color: "var(--fg-1)",
-                lineHeight: 1,
-                textTransform: "uppercase",
-              }}
-            >
-              {sticker.display_name}
-            </div>
-            <div style={{ fontSize: 13, color: "var(--fg-2)", marginTop: 2 }}>
-              {displayName}
-              {isPlayer && posLabel && ` · ${posLabel}`}
-            </div>
-          </div>
-        </div>
-
-        {/* ---- Stats table ---- */}
+        {/* ---- Stats table (max-w-sm, centered) ---- */}
         <div
           style={{
             width: "100%",
+            maxWidth: 384,
             background: "var(--bg-2)",
             border: "1px solid var(--line)",
             borderRadius: 18,
@@ -317,11 +293,12 @@ export default function StickerDetailModal({
           )}
         </div>
 
-        {/* ---- Duplicate banner (count > 1) ---- */}
+        {/* ---- Duplicate banner (count > 1, max-w-sm) ---- */}
         {count > 1 && (
           <div
             style={{
               width: "100%",
+              maxWidth: 384,
               marginTop: 14,
               padding: "12px 16px",
               borderRadius: 14,
@@ -342,10 +319,11 @@ export default function StickerDetailModal({
           </div>
         )}
 
-        {/* ---- Bottom action area ---- */}
+        {/* ---- Bottom action area (max-w-sm, centered) ---- */}
         <div
           style={{
             width: "100%",
+            maxWidth: 384,
             marginTop: 20,
             display: "flex",
             flexDirection: "column",
@@ -355,6 +333,8 @@ export default function StickerDetailModal({
           {/* Primary CTA — CAMBIAR */}
           <button
             onClick={() => router.push("/market")}
+            className="active:scale-95 active:opacity-80 transition-transform duration-100"
+            data-testid="btn-cambiar"
             style={{
               width: "100%",
               padding: "16px 0",
@@ -383,6 +363,7 @@ export default function StickerDetailModal({
           {count === 0 && (
             <button
               onClick={applyToggle}
+              className="active:scale-95 active:opacity-80 transition-transform duration-100"
               style={{
                 width: "100%",
                 padding: "14px 0",
@@ -403,16 +384,20 @@ export default function StickerDetailModal({
           {count === 1 && (
             <button
               onClick={applyToggle}
+              className="active:scale-95 active:opacity-80 transition-transform duration-100"
+              data-testid="btn-sumar-repetida"
               style={{
                 width: "100%",
                 padding: "14px 0",
                 borderRadius: "var(--r-pill)",
-                background: "transparent",
-                border: "1px solid var(--line-gold)",
-                color: "var(--fg-1)",
+                background:
+                  "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
+                border: "none",
+                color: "#111111",
                 fontWeight: 700,
                 fontSize: 14,
                 cursor: "pointer",
+                boxShadow: "var(--glow-gold)",
                 letterSpacing: ".02em",
                 display: "flex",
                 alignItems: "center",
@@ -429,6 +414,7 @@ export default function StickerDetailModal({
             <div style={{ display: "flex", gap: 10 }}>
               <button
                 onClick={handleDecrement}
+                className="active:scale-95 active:opacity-80 transition-transform duration-100"
                 style={{
                   flex: 1,
                   padding: "14px 0",
@@ -450,16 +436,19 @@ export default function StickerDetailModal({
               </button>
               <button
                 onClick={applyToggle}
+                className="active:scale-95 active:opacity-80 transition-transform duration-100"
                 style={{
                   flex: 1,
                   padding: "14px 0",
                   borderRadius: "var(--r-pill)",
-                  background: "transparent",
-                  border: "1px solid var(--line-gold)",
-                  color: "var(--fg-1)",
+                  background:
+                    "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
+                  border: "none",
+                  color: "#111111",
                   fontWeight: 700,
                   fontSize: 14,
                   cursor: "pointer",
+                  boxShadow: "var(--glow-gold)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
