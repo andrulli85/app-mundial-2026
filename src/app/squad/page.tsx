@@ -61,43 +61,43 @@ interface Slot {
 
 const FORMATIONS: Record<FormationKey, Slot[]> = {
   "4-3-3": [
-    { id: "POR0", pos: "POR", x: 50, y: 90 },
-    { id: "DEF0", pos: "DEF", x: 15, y: 71 },
-    { id: "DEF1", pos: "DEF", x: 38, y: 74 },
-    { id: "DEF2", pos: "DEF", x: 62, y: 74 },
-    { id: "DEF3", pos: "DEF", x: 85, y: 71 },
-    { id: "MED0", pos: "MED", x: 27, y: 49 },
-    { id: "MED1", pos: "MED", x: 50, y: 45 },
-    { id: "MED2", pos: "MED", x: 73, y: 49 },
-    { id: "DEL0", pos: "DEL", x: 22, y: 21 },
-    { id: "DEL1", pos: "DEL", x: 50, y: 15 },
-    { id: "DEL2", pos: "DEL", x: 78, y: 21 },
+    { id: "POR0", pos: "POR", x: 50, y: 85 },
+    { id: "DEF0", pos: "DEF", x: 15, y: 70 },
+    { id: "DEF1", pos: "DEF", x: 38, y: 73 },
+    { id: "DEF2", pos: "DEF", x: 62, y: 73 },
+    { id: "DEF3", pos: "DEF", x: 85, y: 70 },
+    { id: "MED0", pos: "MED", x: 27, y: 52 },
+    { id: "MED1", pos: "MED", x: 50, y: 48 },
+    { id: "MED2", pos: "MED", x: 73, y: 52 },
+    { id: "DEL0", pos: "DEL", x: 22, y: 27 },
+    { id: "DEL1", pos: "DEL", x: 50, y: 22 },
+    { id: "DEL2", pos: "DEL", x: 78, y: 27 },
   ],
   "4-4-2": [
-    { id: "POR0", pos: "POR", x: 50, y: 90 },
-    { id: "DEF0", pos: "DEF", x: 15, y: 71 },
-    { id: "DEF1", pos: "DEF", x: 38, y: 74 },
-    { id: "DEF2", pos: "DEF", x: 62, y: 74 },
-    { id: "DEF3", pos: "DEF", x: 85, y: 71 },
-    { id: "MED0", pos: "MED", x: 15, y: 49 },
-    { id: "MED1", pos: "MED", x: 38, y: 47 },
-    { id: "MED2", pos: "MED", x: 62, y: 47 },
-    { id: "MED3", pos: "MED", x: 85, y: 49 },
-    { id: "DEL0", pos: "DEL", x: 34, y: 19 },
-    { id: "DEL1", pos: "DEL", x: 66, y: 19 },
+    { id: "POR0", pos: "POR", x: 50, y: 85 },
+    { id: "DEF0", pos: "DEF", x: 15, y: 70 },
+    { id: "DEF1", pos: "DEF", x: 38, y: 73 },
+    { id: "DEF2", pos: "DEF", x: 62, y: 73 },
+    { id: "DEF3", pos: "DEF", x: 85, y: 70 },
+    { id: "MED0", pos: "MED", x: 15, y: 52 },
+    { id: "MED1", pos: "MED", x: 38, y: 50 },
+    { id: "MED2", pos: "MED", x: 62, y: 50 },
+    { id: "MED3", pos: "MED", x: 85, y: 52 },
+    { id: "DEL0", pos: "DEL", x: 34, y: 25 },
+    { id: "DEL1", pos: "DEL", x: 66, y: 25 },
   ],
   "3-5-2": [
-    { id: "POR0", pos: "POR", x: 50, y: 90 },
-    { id: "DEF0", pos: "DEF", x: 26, y: 73 },
-    { id: "DEF1", pos: "DEF", x: 50, y: 75 },
-    { id: "DEF2", pos: "DEF", x: 74, y: 73 },
-    { id: "MED0", pos: "MED", x: 12, y: 52 },
-    { id: "MED1", pos: "MED", x: 33, y: 47 },
-    { id: "MED2", pos: "MED", x: 50, y: 43 },
-    { id: "MED3", pos: "MED", x: 67, y: 47 },
-    { id: "MED4", pos: "MED", x: 88, y: 52 },
-    { id: "DEL0", pos: "DEL", x: 34, y: 19 },
-    { id: "DEL1", pos: "DEL", x: 66, y: 19 },
+    { id: "POR0", pos: "POR", x: 50, y: 85 },
+    { id: "DEF0", pos: "DEF", x: 26, y: 72 },
+    { id: "DEF1", pos: "DEF", x: 50, y: 74 },
+    { id: "DEF2", pos: "DEF", x: 74, y: 72 },
+    { id: "MED0", pos: "MED", x: 12, y: 54 },
+    { id: "MED1", pos: "MED", x: 33, y: 50 },
+    { id: "MED2", pos: "MED", x: 50, y: 46 },
+    { id: "MED3", pos: "MED", x: 67, y: 50 },
+    { id: "MED4", pos: "MED", x: 88, y: 54 },
+    { id: "DEL0", pos: "DEL", x: 34, y: 25 },
+    { id: "DEL1", pos: "DEL", x: 66, y: 25 },
   ],
 };
 
@@ -233,7 +233,7 @@ interface SquadTokenProps {
   posColor?: string;
 }
 
-function SquadToken({ player, size = 60, dragging = false, posColor }: SquadTokenProps) {
+function SquadToken({ player, size = 78, dragging = false, posColor }: SquadTokenProps) {
   const c = RARITY[player.rarity] ?? RARITY.common;
   const border = posColor ?? c.border;
   const shadow = posColor
@@ -363,7 +363,7 @@ interface EmptySlotProps {
   onClick: () => void;
 }
 
-function EmptySlot({ pos, size = 60, onClick }: EmptySlotProps) {
+function EmptySlot({ pos, size = 78, onClick }: EmptySlotProps) {
   const col = POS_COLOR[pos];
   const height = Math.round(size * 1.18);
   return (
@@ -443,7 +443,7 @@ function PitchView({ slots, renderSlot }: PitchViewProps) {
       style={{
         position: "relative",
         width: "100%",
-        aspectRatio: "0.74",
+        aspectRatio: "0.80",
         borderRadius: 20,
         overflow: "hidden",
         background: "linear-gradient(180deg,#0f3d24,#0a2d1a 55%,#082616)",
@@ -464,7 +464,7 @@ function PitchView({ slots, renderSlot }: PitchViewProps) {
             zIndex: 3,
           }}
         >
-          {renderSlot(s, 58)}
+          {renderSlot(s, 78)}
         </div>
       ))}
     </div>
