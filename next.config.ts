@@ -7,6 +7,21 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  async headers() {
+    // Firebase signInWithPopup needs the opener to inspect popup.closed and
+    // call popup.close() on a cross-origin popup (albumix-577f4.firebaseapp.com).
+    // Default COOP "same-origin" blocks that, breaking Google sign-in with
+    // "PERMISSION_DENIED" / 403 on /api/auth/whitelist-check. "same-origin-allow-popups"
+    // keeps the protection for non-popup nav but allows the popup interaction Firebase needs.
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       { source: "/trade", destination: "/market", permanent: true },
