@@ -5,21 +5,23 @@
  * All comparisons are done on the normalized form (lowercase, Gmail +tag stripped).
  *
  * Env vars required:
- *   KV_REST_API_URL   — provided by Vercel KV (auto-injected when KV is attached)
- *   KV_REST_API_TOKEN — provided by Vercel KV (auto-injected when KV is attached)
+ *   kv_KV_REST_API_URL   — Vercel Upstash integration output (doubled prefix)
+ *   kv_KV_REST_API_TOKEN — Vercel Upstash integration output (doubled prefix)
  *
- * When KV env vars are absent the module fails closed — isWhitelisted returns false.
- * This matches the ALBUMIX_INVITE_SECRET gate-disabled behavior elsewhere.
+ * When KV env vars are absent the module fails open to the WHITELIST_EMAILS
+ * env-var fallback. If neither source has the email, isWhitelisted returns false.
  */
 
-import { kv } from "@vercel/kv";
+import { createClient } from "@vercel/kv";
 import { normalizeEmail } from "./invite";
 
-const KEY = "albumix:whitelist:emails";
+const KV_URL = process.env.kv_KV_REST_API_URL;
+const KV_TOKEN = process.env.kv_KV_REST_API_TOKEN;
 
-function kvAvailable(): boolean {
-  return !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
-}
+const kv =
+  KV_URL && KV_TOKEN ? createClient({ url: KV_URL, token: KV_TOKEN }) : null;
+
+const KEY = "albumix:whitelist:emails";
 
 /**
  * Returns whether an email is in the KV whitelist.
@@ -31,7 +33,7 @@ export async function isWhitelisted(email: string): Promise<boolean> {
   const normalized = normalizeEmail(email);
 
   // KV path (production)
-  if (kvAvailable()) {
+  if (kv) {
     try {
       const score = await kv.zscore(KEY, normalized);
       return score !== null;
@@ -54,23 +56,29 @@ export async function isWhitelisted(email: string): Promise<boolean> {
  * Adds an email to the KV whitelist.
  * Uses a sorted set with timestamp score for ordered listing.
  * No-op if the email is already present.
+ * Throws if KV is not configured.
  */
 export async function addToWhitelist(email: string): Promise<void> {
+  if (!kv) throw new Error("[whitelist] KV not configured");
   const normalized = normalizeEmail(email);
   await kv.zadd(KEY, { score: Date.now(), member: normalized });
 }
 
 /**
  * Removes an email from the KV whitelist.
+ * Throws if KV is not configured.
  */
 export async function removeFromWhitelist(email: string): Promise<void> {
+  if (!kv) throw new Error("[whitelist] KV not configured");
   const normalized = normalizeEmail(email);
   await kv.zrem(KEY, normalized);
 }
 
 /**
  * Returns all whitelisted emails, ordered by insertion time (ascending).
+ * Returns empty array if KV is not configured.
  */
 export async function listWhitelist(): Promise<string[]> {
+  if (!kv) return [];
   return kv.zrange(KEY, 0, -1);
 }
