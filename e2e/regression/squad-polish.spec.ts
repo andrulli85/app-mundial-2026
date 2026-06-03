@@ -52,30 +52,30 @@ test("#2 & #3 — Puntos tab: Tabla Amigos first, PUNTOS chip right-aligned", as
 
   // #2 — TABLA DE AMIGOS section appears BEFORE PUNTOS DE TU 11 card in DOM order
   const tablaHeader = page.getByText(/tabla de amigos/i).first();
-  const puntosCard = page.locator('[data-testid="puntos-tu-11-card"]');
+  const puntosWrapper = page.locator('[data-testid="puntos-tu-11-wrapper"]');
+  const puntosChip = page.locator('[data-testid="puntos-tu-11-card"]');
 
   await expect(tablaHeader).toBeVisible({ timeout: 10000 });
-  await expect(puntosCard).toBeVisible({ timeout: 10000 });
+  await expect(puntosWrapper).toBeVisible({ timeout: 10000 });
+  await expect(puntosChip).toBeVisible({ timeout: 10000 });
 
   const tablaBox = await tablaHeader.boundingBox();
-  const puntosBox = await puntosCard.boundingBox();
+  const puntosBox = await puntosWrapper.boundingBox();
 
   // Tabla Amigos header must have a smaller Y (appears higher on screen = earlier in DOM flow)
   expect(tablaBox!.y).toBeLessThan(puntosBox!.y);
 
-  // #3 — PUNTOS card has a right-aligned parent flex container
-  // Verify via computed style: the card wrapper uses justifyContent: flex-end
-  const parentFlexEnd = await puntosCard.evaluate((el) => {
-    const parent = el.parentElement;
-    if (!parent) return false;
-    const style = window.getComputedStyle(parent);
-    return style.justifyContent === "flex-end" || style.justifyContent === "end";
-  });
-  expect(parentFlexEnd).toBe(true);
-
-  // Also verify card is narrower than full width (max-width constraint applied)
+  // #3 — PUNTOS chip is compact: narrower than 65% of the page
   const pageWidth = 390;
-  expect(puntosBox!.width).toBeLessThan(pageWidth * 0.65);
+  const chipBox = await puntosChip.boundingBox();
+
+  // Chip must be narrower than 65% of page (proving it's a compact chip, not full-width hero)
+  expect(chipBox!.width).toBeLessThan(pageWidth * 0.65);
+
+  // Right-aligned: the chip's right edge (x + width) should be greater than 60% of page width
+  // (accounting for 18px padding on the container)
+  const cardRightEdge = chipBox!.x + chipBox!.width;
+  expect(cardRightEdge).toBeGreaterThan(pageWidth * 0.6);
 
   await page.screenshot({
     path: path.join(SCREENSHOTS_DIR, "puntos-amigos-first-points-right.png"),

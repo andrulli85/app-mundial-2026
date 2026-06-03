@@ -846,7 +846,7 @@ function PointsView({ lineup, slots, teamPts }: PointsViewProps) {
 
       {/* Total points — compact chip, right-aligned */}
       <div
-        data-testid="puntos-tu-11-card"
+        data-testid="puntos-tu-11-wrapper"
         style={{
           display: "flex",
           justifyContent: "flex-end",
@@ -855,6 +855,7 @@ function PointsView({ lineup, slots, teamPts }: PointsViewProps) {
         }}
       >
         <div
+          data-testid="puntos-tu-11-card"
           style={{
             maxWidth: "55%",
             background: "linear-gradient(135deg,#1b1606,#0d0f13)",
