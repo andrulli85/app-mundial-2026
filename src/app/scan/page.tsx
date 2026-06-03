@@ -32,7 +32,7 @@ function ScanDeepLinkInner() {
 
   return (
     <div className="flex-1 flex items-center justify-center">
-      <p className="text-gray-600 text-sm">Abriendo trade...</p>
+      <p className="text-sm" style={{ color: "var(--fg-3)" }}>Abriendo trade...</p>
     </div>
   );
 }
@@ -44,7 +44,7 @@ export default function ScanDeepLinkPage() {
         <div className="flex-1 flex items-center justify-center">
           <div
             className="w-10 h-10 rounded-full border-4 animate-spin"
-            style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+            style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
           />
         </div>
       }

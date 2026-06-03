@@ -19,12 +19,11 @@ import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import { getAllStickers } from "@/lib/db";
 
-const BG = "#0d0f13";
-const SURFACE = "#131519";
-const GOLD = "#F4C84A";
-const GREEN = "#006847";
+const BG = "var(--bg-1)";
+const SURFACE = "var(--bg-2)";
+const GOLD = "var(--gold)";
 const LIME = "#c2ef4e";
-const MUTED = "rgba(240,236,227,0.4)";
+const MUTED = "var(--fg-3)";
 
 // ---------------------------------------------------------------------------
 // Component
@@ -153,20 +152,20 @@ export default function FriendProfilePage({ params }: { params: Promise<{ uid: s
               width: 52,
               height: 52,
               borderRadius: "50%",
-              backgroundColor: GREEN,
+              backgroundColor: "var(--bg-3)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 22,
               fontWeight: 800,
-              color: "#fff",
+              color: "var(--gold)",
               flexShrink: 0,
             }}
           >
             {peer.displayName[0].toUpperCase()}
           </div>
           <div>
-            <div style={{ fontSize: 17, fontWeight: 800, color: "#f0ece3" }}>
+            <div style={{ fontSize: 17, fontWeight: 800, color: "var(--fg-1)" }}>
               {peer.displayName}
             </div>
             <div style={{ marginTop: 2 }}>{statusDot}</div>
@@ -219,7 +218,7 @@ export default function FriendProfilePage({ params }: { params: Promise<{ uid: s
               margin: "0 0 10px",
               fontSize: 14,
               fontWeight: 800,
-              color: "#f0ece3",
+              color: "var(--fg-1)",
               letterSpacing: ".01em",
             }}
           >

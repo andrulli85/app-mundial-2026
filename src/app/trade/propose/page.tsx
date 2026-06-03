@@ -145,10 +145,10 @@ function ProposeInner() {
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: "var(--bg-1)" }}>
         <div
           className="w-10 h-10 rounded-full border-4 animate-spin"
-          style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+          style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
         />
       </div>
     );
@@ -157,25 +157,26 @@ function ProposeInner() {
   const canGenerate = give.size > 0 && want.size > 0;
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full pb-safe">
+    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full pb-safe" style={{ backgroundColor: "var(--bg-1)" }}>
       {/* Header */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{ backgroundColor: "var(--bg-1)", borderBottom: "1px solid var(--line)" }}
       >
         <button
           onClick={() => router.back()}
-          className="text-white text-xl leading-none"
+          className="text-xl leading-none"
+          style={{ color: "var(--fg-2)", background: "none", border: "none", cursor: "pointer", minWidth: 44, minHeight: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
           aria-label="Volver"
         >
-          ←
+          ‹
         </button>
         <div className="flex-1 min-w-0">
-          <h1 className="text-lg font-black text-white leading-tight">
+          <h1 className="text-lg font-black leading-tight" style={{ color: "var(--fg-1)" }}>
             Proponer intercambio
           </h1>
           {searchParams.get("partner_uid") && (
-            <p className="text-xs text-white/70 leading-tight">
+            <p className="text-xs leading-tight" style={{ color: "var(--fg-3)" }}>
               Contrapropuesta para {searchParams.get("partner_uid")}
             </p>
           )}
@@ -185,7 +186,7 @@ function ProposeInner() {
       <main className="flex-1 overflow-y-auto px-4 py-4 pb-24">
         {/* ── DAY SECTION ── */}
         <section className="mb-5">
-          <h2 className="font-bold text-gray-700 mb-2 text-sm uppercase tracking-wide">
+          <h2 className="font-bold mb-2 text-sm uppercase tracking-wide" style={{ color: "var(--fg-3)" }}>
             Doy
           </h2>
 
@@ -211,7 +212,7 @@ function ProposeInner() {
           )}
 
           {offerableStickers.length === 0 ? (
-            <p className="text-sm text-gray-600 italic py-4 text-center">
+            <p className="text-sm italic py-4 text-center" style={{ color: "var(--fg-3)" }}>
               Todavía no tenés repes para ofrecer.
             </p>
           ) : (
@@ -229,11 +230,11 @@ function ProposeInner() {
           )}
         </section>
 
-        <div className="border-t my-4" style={{ borderColor: "#e5e0d6" }} />
+        <div className="border-t my-4" style={{ borderColor: "var(--line)" }} />
 
         {/* ── WANT SECTION ── */}
         <section className="mb-5">
-          <h2 className="font-bold text-gray-700 mb-2 text-sm uppercase tracking-wide">
+          <h2 className="font-bold mb-2 text-sm uppercase tracking-wide" style={{ color: "var(--fg-3)" }}>
             Quiero
           </h2>
 
@@ -264,8 +265,8 @@ function ProposeInner() {
               <select
                 value={wantTeamFilter}
                 onChange={(e) => setWantTeamFilter(e.target.value)}
-                className="text-sm border rounded-lg px-3 py-2 bg-white focus:outline-none"
-                style={{ borderColor: "#d1c9b8", color: "#333" }}
+                className="text-sm border rounded-lg px-3 py-2 focus:outline-none"
+                style={{ borderColor: "var(--line)", color: "var(--fg-1)", backgroundColor: "var(--bg-2)", fontSize: "16px" }}
               >
                 <option value="all">Todos los equipos</option>
                 {wantableTeams
@@ -283,11 +284,11 @@ function ProposeInner() {
           )}
 
           {wantableStickers.length === 0 ? (
-            <p className="text-sm text-gray-600 italic py-4 text-center">
+            <p className="text-sm italic py-4 text-center" style={{ color: "var(--fg-3)" }}>
               Tu álbum está completo, no falta ninguna figurita.
             </p>
           ) : filteredWantable.length === 0 ? (
-            <p className="text-sm text-gray-600 italic py-4 text-center">
+            <p className="text-sm italic py-4 text-center" style={{ color: "var(--fg-3)" }}>
               No faltan figuritas de este equipo.
             </p>
           ) : (
@@ -309,16 +310,20 @@ function ProposeInner() {
       <div
         className="fixed bottom-0 left-0 right-0 px-4 py-3 border-t"
         style={{
-          backgroundColor: "#f9f5ee",
-          borderColor: "#e5e0d6",
+          backgroundColor: "var(--bg-1)",
+          borderColor: "var(--line)",
           paddingBottom: "calc(0.75rem + var(--safe-area-bottom, 0px))",
         }}
       >
         <button
           onClick={handleGenerateQr}
           disabled={!canGenerate || generating}
-          className="w-full py-3.5 rounded-xl font-black text-lg text-white transition-opacity disabled:opacity-40"
-          style={{ backgroundColor: "#006847" }}
+          className="w-full py-3.5 rounded-xl font-black text-lg disabled:opacity-40"
+          style={{
+            background: canGenerate ? "var(--foil-gold)" : "var(--bg-3)",
+            color: canGenerate ? "#111111" : "var(--fg-3)",
+            transition: "transform 0.1s, opacity 0.1s",
+          }}
         >
           {generating ? "Generando..." : "Generar QR"}
         </button>
@@ -371,14 +376,14 @@ function TradeSelectCard({ sticker, selected, badge, onTap }: TradeSelectCardPro
         <div
           className="absolute inset-0 rounded pointer-events-none"
           style={{
-            boxShadow: `0 0 0 3px #006847`,
-            backgroundColor: "rgba(0,104,71,0.18)",
+            boxShadow: `0 0 0 3px var(--gold)`,
+            backgroundColor: "rgba(244,200,74,0.18)",
           }}
         >
           {/* Checkmark */}
           <div
             className="absolute top-1 right-1 w-4 h-4 rounded-full flex items-center justify-center text-white"
-            style={{ backgroundColor: "#006847", fontSize: "0.5rem", fontWeight: 900 }}
+            style={{ backgroundColor: "var(--gold)", color: "#111111", fontSize: "0.5rem", fontWeight: 900 }}
           >
             ✓
           </div>
@@ -404,10 +409,10 @@ export default function ProposePage() {
   return (
     <Suspense
       fallback={
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: "var(--bg-1)" }}>
           <div
             className="w-10 h-10 rounded-full border-4 animate-spin"
-            style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+            style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
           />
         </div>
       }

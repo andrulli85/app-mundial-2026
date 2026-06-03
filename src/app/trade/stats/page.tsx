@@ -35,14 +35,13 @@ import {
 import { TradeLogEntry } from "@/lib/db";
 
 // ── Dark theme tokens ──────────────────────────────────────────────────────
-const GOLD = "#F4C84A";
-const GREEN = "#006847";
+const GOLD = "var(--gold)";
 const LIME = "#c2ef4e";
-const BG = "#0a0a0a";
-const SURFACE = "rgba(26,26,26,0.95)";
-const BORDER = "rgba(255,255,255,0.08)";
-const TEXT_PRIMARY = "#f5f5f5";
-const TEXT_MUTED = "#9ca3af";
+const BG = "var(--bg-1)";
+const SURFACE = "var(--bg-2)";
+const BORDER = "var(--line)";
+const TEXT_PRIMARY = "var(--fg-1)";
+const TEXT_MUTED = "var(--fg-3)";
 
 // ── Types ─────────────────────────────────────────────────────────────────
 
@@ -60,8 +59,8 @@ interface StatsData {
 function PartnerAvatar({ initials }: { initials: string }) {
   return (
     <div
-      className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-sm font-black text-white"
-      style={{ backgroundColor: GREEN }}
+      className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-sm font-black"
+      style={{ backgroundColor: "var(--bg-3)", color: "var(--gold)" }}
     >
       {initials || "?"}
     </div>
@@ -99,7 +98,7 @@ function TypeBar({ row, max }: { row: TypeBreakdown; max: number }) {
       >
         <div
           className="h-full rounded-full transition-all"
-          style={{ width: `${pct}%`, backgroundColor: GREEN }}
+          style={{ width: `${pct}%`, backgroundColor: "var(--gold)" }}
         />
       </div>
     </div>
@@ -126,7 +125,7 @@ function TimelineSection({ timeline }: { timeline: DayBucket[] }) {
                   className="w-full rounded-t-sm transition-all"
                   style={{
                     height: `${Math.max(heightPct, day.count > 0 ? 6 : 0)}%`,
-                    backgroundColor: day.count > 0 ? GREEN : "rgba(255,255,255,0.06)",
+                    backgroundColor: day.count > 0 ? "var(--gold)" : "rgba(255,255,255,0.06)",
                     minHeight: day.count > 0 ? 4 : 0,
                   }}
                   title={`${day.dateLabel}: ${day.count} trade${day.count !== 1 ? "s" : ""}`}
@@ -178,19 +177,20 @@ export default function TradeStatsPage() {
       className="flex flex-col flex-1 max-w-lg mx-auto w-full"
       style={{ backgroundColor: BG, minHeight: "100dvh", color: TEXT_PRIMARY }}
     >
-      {/* Header — keep green brand stripe */}
+      {/* Header */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: GREEN }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{ backgroundColor: "var(--bg-1)", borderBottom: "1px solid var(--line)" }}
       >
         <button
           onClick={() => router.back()}
-          className="text-white text-xl leading-none"
+          className="text-xl leading-none"
+          style={{ color: "var(--fg-2)", background: "none", border: "none", cursor: "pointer", minWidth: 44, minHeight: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
           aria-label="Volver"
         >
-          ←
+          ‹
         </button>
-        <h1 className="text-lg font-black text-white leading-none flex-1">
+        <h1 className="text-lg font-black leading-none flex-1" style={{ color: "var(--fg-1)" }}>
           Análisis de intercambios
         </h1>
       </header>
@@ -201,7 +201,7 @@ export default function TradeStatsPage() {
           <div className="flex-1 flex items-center justify-center py-16">
             <div
               className="w-8 h-8 rounded-full border-4 animate-spin"
-              style={{ borderColor: GREEN, borderTopColor: "transparent" }}
+              style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
             />
           </div>
         ) : data && data.trades.length === 0 ? (
@@ -221,8 +221,8 @@ export default function TradeStatsPage() {
             </div>
             <a
               href="/trade"
-              className="mt-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white inline-block"
-              style={{ backgroundColor: GREEN }}
+              className="mt-2 px-5 py-2.5 rounded-xl font-bold text-sm inline-block"
+              style={{ background: "var(--foil-gold)", color: "#111111" }}
             >
               Hacer mi primer trade
             </a>

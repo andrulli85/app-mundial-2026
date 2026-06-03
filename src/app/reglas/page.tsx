@@ -25,7 +25,6 @@ import { isLocked, lockEngagesAt, nextUnlockAt, LOCK_PHASES } from "@/lib/userXI
 // ---------------------------------------------------------------------------
 
 const LIME = "#c2ef4e";
-const GREEN = "#006847";
 const GOLD = "#F4C84A";
 
 // ---------------------------------------------------------------------------
@@ -333,7 +332,7 @@ export default function ReglasPage() {
             transform: "translateX(-50%)",
             width: 340,
             height: 220,
-            background: `radial-gradient(circle, ${GREEN}28, transparent 65%)`,
+            background: `radial-gradient(circle, rgba(244,200,74,0.12), transparent 65%)`,
             pointerEvents: "none",
           }}
         />

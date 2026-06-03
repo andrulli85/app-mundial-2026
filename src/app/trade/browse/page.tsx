@@ -250,7 +250,7 @@ function BrowseInner() {
       <div className="flex-1 flex items-center justify-center">
         <div
           className="w-10 h-10 rounded-full border-4 animate-spin"
-          style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+          style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
         />
       </div>
     );
@@ -474,7 +474,7 @@ function BrowseInner() {
           onClick={handleContinue}
           disabled={wants.size === 0}
           className="w-full py-3.5 rounded-xl font-black text-base text-white transition-opacity disabled:opacity-40"
-          style={{ backgroundColor: "#006847" }}
+          style={{ background: "var(--foil-gold)", color: "#111111" }}
         >
           {wants.size === 0
             ? "Tocá figuritas para agregar a tu propuesta"
@@ -625,7 +625,7 @@ export default function BrowsePage() {
         <div className="flex-1 flex items-center justify-center">
           <div
             className="w-10 h-10 rounded-full border-4 animate-spin"
-            style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+            style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
           />
         </div>
       }

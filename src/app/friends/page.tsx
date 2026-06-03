@@ -6,6 +6,9 @@
  * - Invite via WhatsApp button
  * - Scan QR link to /friends/add
  * - Live friend list from Firestore (onSnapshot) with PresenceDot
+ *
+ * Dark+gold migration: S126 batch 2.
+ * Back-nav fix: router.back() replaces hardcoded /settings href.
  */
 
 import { useEffect, useState } from "react";
@@ -50,20 +53,47 @@ export default function FriendsPage() {
   }
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
-      {/* Header */}
+    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full" style={{ backgroundColor: "var(--bg-1)" }}>
+      {/* Header — dark, no green */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{
+          backgroundColor: "var(--bg-1)",
+          borderBottom: "1px solid var(--line)",
+        }}
       >
-        <a
-          href="/settings"
-          className="text-white text-xl leading-none"
-          aria-label="Volver a opciones"
+        <button
+          onClick={() => router.back()}
+          aria-label="Volver"
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "var(--fg-2)",
+            fontSize: 22,
+            lineHeight: 1,
+            padding: "4px",
+            minWidth: 44,
+            minHeight: 44,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          ←
-        </a>
-        <h1 className="text-lg font-black text-white leading-none">Amigos</h1>
+          ‹
+        </button>
+        <h1
+          style={{
+            fontSize: 17,
+            fontWeight: 900,
+            color: "var(--fg-1)",
+            fontFamily: "var(--font-ui)",
+            lineHeight: 1,
+            margin: 0,
+          }}
+        >
+          Amigos
+        </h1>
       </header>
 
       <main className="flex-1 px-4 py-6 flex flex-col gap-5">
@@ -80,35 +110,43 @@ export default function FriendsPage() {
             />
           ) : (
             <div
-              className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg"
-              style={{ backgroundColor: "#006847" }}
+              className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg"
+              style={{ backgroundColor: "var(--gold)", color: "#111111" }}
             >
               {(user.displayName ?? user.email ?? "?")[0].toUpperCase()}
             </div>
           )}
           <div>
-            <p className="font-bold text-gray-800">{user.displayName}</p>
-            <p className="text-xs text-gray-500">{user.email}</p>
+            <p className="font-bold" style={{ color: "var(--fg-1)" }}>{user.displayName}</p>
+            <p className="text-xs" style={{ color: "var(--fg-3)" }}>{user.email}</p>
           </div>
         </div>
 
         {/* Action buttons */}
         <div className="flex gap-3">
+          {/* WhatsApp — brand green #25D366 is legitimate here */}
           <button
             onClick={handleWhatsApp}
-            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-semibold text-sm text-white shadow-sm active:opacity-80 transition-opacity"
-            style={{ backgroundColor: "#25D366" }}
+            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-semibold text-sm text-white"
+            style={{
+              backgroundColor: "#25D366",
+              transition: "transform 0.1s, opacity 0.1s",
+            }}
+            onPointerDown={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = "scale(0.95)"; (e.currentTarget as HTMLButtonElement).style.opacity = "0.8"; }}
+            onPointerUp={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = ""; (e.currentTarget as HTMLButtonElement).style.opacity = ""; }}
+            onPointerLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = ""; (e.currentTarget as HTMLButtonElement).style.opacity = ""; }}
           >
             <span className="text-base leading-none">📤</span>
             Invitar por WhatsApp
           </button>
           <a
             href="/friends/add"
-            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-semibold text-sm shadow-sm active:opacity-80 transition-opacity"
+            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-semibold text-sm"
             style={{
-              backgroundColor: "#f0ece3",
-              color: "#333",
-              border: "2px solid #d1c9b8",
+              backgroundColor: "var(--bg-2)",
+              color: "var(--fg-1)",
+              border: "1.5px solid var(--line-gold)",
+              textDecoration: "none",
             }}
           >
             <span className="text-base leading-none">📷</span>
@@ -116,44 +154,57 @@ export default function FriendsPage() {
           </a>
         </div>
 
-        {/* Demo friends (mock peers — Phase A) */}
+        {/* Demo friends (mock peers) */}
         <section>
-          <h2 className="font-bold text-gray-700 mb-1">
+          <p
+            className="mb-1"
+            style={{
+              fontSize: 11,
+              fontWeight: 800,
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              color: "var(--fg-3)",
+              fontFamily: "var(--font-ui)",
+            }}
+          >
             Demo · Amigos (simulado)
-          </h2>
-          <p className="text-xs text-gray-400 mb-3">
+          </p>
+          <p className="text-xs mb-3" style={{ color: "var(--fg-3)" }}>
             Interacción de prueba hasta que actives Firebase
           </p>
           <div
-            className="rounded-2xl overflow-hidden shadow-sm"
-            style={{ backgroundColor: "#ffffff" }}
+            className="rounded-2xl overflow-hidden"
+            style={{ backgroundColor: "var(--bg-2)", border: "1px solid var(--line)" }}
           >
             {mockPeers.map((peer, i) => (
               <Link
                 key={peer.uid}
                 href={`/friends/${peer.uid}`}
                 data-testid={`friend-row-${peer.uid}`}
-                className={`flex items-center gap-3 px-4 py-3 ${i < mockPeers.length - 1 ? "border-b" : ""}`}
-                style={{ borderColor: "#f0ece3", textDecoration: "none" }}
+                className="flex items-center gap-3 px-4 py-3"
+                style={{
+                  borderTop: i > 0 ? "1px solid var(--line)" : "none",
+                  textDecoration: "none",
+                }}
               >
                 <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-                  style={{ backgroundColor: "#006847" }}
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                  style={{ backgroundColor: "var(--bg-3)", color: "var(--gold)" }}
                 >
                   {peer.displayName[0].toUpperCase()}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-gray-800 text-sm leading-tight truncate">
+                  <p className="font-semibold text-sm leading-tight truncate" style={{ color: "var(--fg-1)" }}>
                     {peer.displayName}
                   </p>
-                  <p className="text-xs text-gray-400 mt-0.5">
+                  <p className="text-xs mt-0.5" style={{ color: "var(--fg-3)" }}>
                     {peer.wishlist.length} en wishlist
                   </p>
                 </div>
                 <span style={{ fontSize: 16 }}>
                   {peer.status === "online" ? "🟢" : "🟡"}
                 </span>
-                <span className="text-gray-300 text-sm" aria-hidden="true">›</span>
+                <span className="text-sm" style={{ color: "var(--fg-3)" }} aria-hidden="true">›</span>
               </Link>
             ))}
           </div>
@@ -161,33 +212,44 @@ export default function FriendsPage() {
 
         {/* Friends list */}
         <section>
-          <h2 className="font-bold text-gray-700 mb-3">
+          <p
+            className="mb-3"
+            style={{
+              fontSize: 11,
+              fontWeight: 800,
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              color: "var(--fg-3)",
+              fontFamily: "var(--font-ui)",
+            }}
+          >
             {friends.length > 0
               ? `${friends.length} amigo${friends.length === 1 ? "" : "s"}`
               : "Sin amigos aún"}
-          </h2>
+          </p>
 
           {friends.length === 0 ? (
             <div
               className="rounded-2xl p-6 text-center"
-              style={{ backgroundColor: "#ffffff", border: "2px dashed #d1c9b8" }}
+              style={{
+                backgroundColor: "var(--bg-2)",
+                border: "2px dashed var(--line)",
+              }}
             >
-              <p className="text-gray-500 text-sm">
+              <p className="text-sm" style={{ color: "var(--fg-3)" }}>
                 Agregá amigos con el botón de WhatsApp o escaneando su QR.
               </p>
             </div>
           ) : (
             <div
-              className="rounded-2xl overflow-hidden shadow-sm"
-              style={{ backgroundColor: "#ffffff" }}
+              className="rounded-2xl overflow-hidden"
+              style={{ backgroundColor: "var(--bg-2)", border: "1px solid var(--line)" }}
             >
               {friends.map((friend, i) => (
                 <div
                   key={friend.uid}
-                  className={`flex items-center gap-3 px-4 py-3 ${
-                    i < friends.length - 1 ? "border-b" : ""
-                  }`}
-                  style={{ borderColor: "#f0ece3" }}
+                  className="flex items-center gap-3 px-4 py-3"
+                  style={{ borderTop: i > 0 ? "1px solid var(--line)" : "none" }}
                 >
                   {friend.photoURL ? (
                     <img
@@ -200,14 +262,14 @@ export default function FriendsPage() {
                     />
                   ) : (
                     <div
-                      className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-                      style={{ backgroundColor: "#006847" }}
+                      className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                      style={{ backgroundColor: "var(--bg-3)", color: "var(--gold)" }}
                     >
                       {friend.displayName[0].toUpperCase()}
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-gray-800 text-sm leading-tight truncate">
+                    <p className="font-semibold text-sm leading-tight truncate" style={{ color: "var(--fg-1)" }}>
                       {friend.displayName}
                     </p>
                   </div>

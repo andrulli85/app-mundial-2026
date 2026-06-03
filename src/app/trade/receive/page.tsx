@@ -342,20 +342,21 @@ function ReceiveInner() {
   const headerTitle = mode === "confirm" ? "Confirmar intercambio" : "Escanear propuesta";
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
+    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full" style={{ backgroundColor: "var(--bg-1)" }}>
       {/* Header */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{ backgroundColor: "var(--bg-1)", borderBottom: "1px solid var(--line)" }}
       >
         <button
           onClick={() => router.back()}
-          className="text-white text-xl leading-none"
+          className="text-xl leading-none"
+          style={{ color: "var(--fg-2)", background: "none", border: "none", cursor: "pointer", minWidth: 44, minHeight: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
           aria-label="Volver"
         >
-          ←
+          ‹
         </button>
-        <h1 className="text-lg font-black text-white leading-none flex-1">
+        <h1 className="text-lg font-black leading-none flex-1" style={{ color: "var(--fg-1)" }}>
           {headerTitle}
         </h1>
       </header>
@@ -371,20 +372,21 @@ function ReceiveInner() {
                   onError={handleScanError}
                   active={scanActive}
                 />
-                <p className="text-sm text-gray-600 text-center">
+                <p className="text-sm text-center" style={{ color: "var(--fg-3)" }}>
                   {mode === "initial"
                     ? "Apuntá al QR que generó tu amigo."
                     : "Apuntá al QR de aceptación de tu amigo."}
                 </p>
                 {scanError && (
-                  <p className="text-sm text-red-600 text-center bg-red-50 rounded-lg px-3 py-2">
+                  <p className="text-sm text-center rounded-lg px-3 py-2" style={{ color: "var(--red)", backgroundColor: "rgba(228,0,43,0.08)", border: "1px solid rgba(228,0,43,0.2)" }}>
                     {scanError}
                   </p>
                 )}
                 {/* E.4 — gallery upload fallback */}
                 <button
                   onClick={triggerGalleryPicker}
-                  className="text-xs text-gray-600 underline text-center"
+                  className="text-xs underline text-center"
+                  style={{ color: "var(--fg-3)" }}
                 >
                   Subir QR desde galería
                 </button>
@@ -398,7 +400,8 @@ function ReceiveInner() {
 
                 <button
                   onClick={() => setShowPaste(true)}
-                  className="text-xs text-gray-600 underline text-center"
+                  className="text-xs underline text-center"
+                  style={{ color: "var(--fg-3)" }}
                 >
                   No tengo acceso a la cámara, pegar QR de texto
                 </button>
@@ -406,7 +409,7 @@ function ReceiveInner() {
             ) : (
               /* Manual paste fallback */
               <div className="flex flex-col gap-3">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm" style={{ color: "var(--fg-3)" }}>
                   No tenemos acceso a la cámara. Pegá el texto del QR de tu amigo:
                 </p>
                 <textarea
@@ -414,23 +417,24 @@ function ReceiveInner() {
                   onChange={(e) => setPasteText(e.target.value)}
                   rows={5}
                   className="w-full border rounded-lg p-3 text-sm font-mono focus:outline-none"
-                  style={{ borderColor: "#d1c9b8", backgroundColor: "#fff" }}
+                  style={{ borderColor: "var(--line)", backgroundColor: "var(--bg-2)", color: "var(--fg-1)", fontSize: "16px" }}
                   placeholder="Pegá el código QR acá..."
                 />
                 {pasteError && (
-                  <p className="text-sm text-red-600">{pasteError}</p>
+                  <p className="text-sm" style={{ color: "var(--red)" }}>{pasteError}</p>
                 )}
                 <button
                   onClick={handlePasteSubmit}
                   disabled={!pasteText.trim()}
-                  className="w-full py-3 rounded-xl font-bold text-white disabled:opacity-40"
-                  style={{ backgroundColor: "#006847" }}
+                  className="w-full py-3 rounded-xl font-bold disabled:opacity-40"
+                  style={{ background: "var(--foil-gold)", color: "#111111" }}
                 >
                   Continuar
                 </button>
                 <button
                   onClick={() => setShowPaste(false)}
-                  className="text-sm text-gray-600 underline text-center"
+                  className="text-sm underline text-center"
+                  style={{ color: "var(--fg-3)" }}
                 >
                   Intentar con cámara
                 </button>
@@ -456,20 +460,20 @@ function ReceiveInner() {
           <div className="flex flex-col gap-5 items-center text-center">
             <div
               className="w-full rounded-xl p-5"
-              style={{ backgroundColor: "#fff", border: "1px solid #e5e0d6" }}
+              style={{ backgroundColor: "var(--bg-2)", border: "1px solid var(--line-gold)" }}
             >
-              <p className="font-bold text-gray-700 mb-1">
+              <p className="font-bold mb-1" style={{ color: "var(--fg-1)" }}>
                 QR de {scanned.uid} recibido
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm" style={{ color: "var(--fg-3)" }}>
                 El intercambio se confirmó. Tu colección está actualizada.
               </p>
             </div>
             <button
               onClick={handleConfirmTrade}
               disabled={accepting}
-              className="w-full py-3.5 rounded-xl font-black text-lg text-white transition-opacity disabled:opacity-40"
-              style={{ backgroundColor: "#006847" }}
+              className="w-full py-3.5 rounded-xl font-black text-lg transition-opacity disabled:opacity-40"
+              style={{ background: "var(--foil-gold)", color: "#111111" }}
             >
               {accepting ? "Actualizando..." : "Listo, ir al álbum"}
             </button>
@@ -504,19 +508,19 @@ function ProposalDisplay({
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="font-bold text-gray-700 text-center">
-        Propuesta de <span style={{ color: "#006847" }}>{payload.uid}</span>
+      <p className="font-bold text-center" style={{ color: "var(--fg-2)" }}>
+        Propuesta de <span style={{ color: "var(--gold)" }}>{payload.uid}</span>
       </p>
 
-      {/* What they give / want */}
+      {/* What they give / want — 2-pane trade preview */}
       <div
         className="rounded-xl overflow-hidden"
-        style={{ border: "1px solid #e5e0d6" }}
+        style={{ border: "1px solid var(--line-gold)" }}
       >
-        <div className="p-4 bg-white">
+        <div className="p-4" style={{ backgroundColor: "var(--bg-2)" }}>
           <p
             className="text-xs font-bold uppercase tracking-wide mb-2"
-            style={{ color: "#006847" }}
+            style={{ color: "var(--green-bright)" }}
           >
             Te ofrece
           </p>
@@ -525,7 +529,7 @@ function ProposalDisplay({
               <span
                 key={id}
                 className="px-2 py-1 rounded-full text-xs font-bold text-white"
-                style={{ backgroundColor: "#006847" }}
+                style={{ backgroundColor: "var(--green)" }}
               >
                 {id}
               </span>
@@ -533,12 +537,12 @@ function ProposalDisplay({
           </div>
         </div>
 
-        <div className="h-px" style={{ backgroundColor: "#e5e0d6" }} />
+        <div className="h-px" style={{ backgroundColor: "var(--line-gold)" }} />
 
-        <div className="p-4 bg-white">
+        <div className="p-4" style={{ backgroundColor: "var(--bg-2)" }}>
           <p
             className="text-xs font-bold uppercase tracking-wide mb-2"
-            style={{ color: "#c8102e" }}
+            style={{ color: "var(--red)" }}
           >
             Quiere
           </p>
@@ -547,7 +551,7 @@ function ProposalDisplay({
               <span
                 key={id}
                 className="px-2 py-1 rounded-full text-xs font-bold text-white"
-                style={{ backgroundColor: "#c8102e" }}
+                style={{ backgroundColor: "var(--red)" }}
               >
                 {id}
               </span>
@@ -560,12 +564,12 @@ function ProposalDisplay({
       {missingItems.length > 0 && (
         <div
           className="rounded-lg px-4 py-3 text-sm"
-          style={{ backgroundColor: "#fff3cd", border: "1px solid #ffc107", color: "#664d03" }}
+          style={{ backgroundColor: "rgba(244,200,74,0.08)", border: "1px solid rgba(244,200,74,0.3)", color: "var(--gold)" }}
         >
           <p className="font-semibold mb-1">No podés aceptar esta propuesta</p>
           <p>
             No tenés:{" "}
-            <span className="font-mono">{missingItems.join(", ")}</span>
+            <span className="font-mono" style={{ color: "var(--fg-1)" }}>{missingItems.join(", ")}</span>
           </p>
         </div>
       )}
@@ -575,15 +579,15 @@ function ProposalDisplay({
         <button
           onClick={onDecline}
           className="flex-1 py-3 rounded-xl font-bold text-sm border transition-colors"
-          style={{ borderColor: "#d1c9b8", color: "#555", backgroundColor: "#fff" }}
+          style={{ borderColor: "var(--line)", color: "var(--fg-2)", backgroundColor: "var(--bg-2)" }}
         >
           Rechazar
         </button>
         <button
           onClick={onAccept}
           disabled={!canAccept || accepting}
-          className="flex-1 py-3 rounded-xl font-black text-sm text-white transition-opacity disabled:opacity-40"
-          style={{ backgroundColor: "#006847" }}
+          className="flex-1 py-3 rounded-xl font-black text-sm transition-opacity disabled:opacity-40"
+          style={{ background: "var(--foil-gold)", color: "#111111" }}
         >
           {accepting ? "Procesando..." : "Aceptar"}
         </button>
@@ -598,7 +602,7 @@ function ProposalDisplay({
             )
           }
           className="w-full py-3 rounded-xl font-bold text-sm border transition-colors"
-          style={{ borderColor: "#006847", color: "#006847", backgroundColor: "#fff" }}
+          style={{ borderColor: "var(--line-gold)", color: "var(--gold)", backgroundColor: "var(--bg-2)" }}
         >
           Ver inventario de {payload.uid}
         </button>
@@ -613,10 +617,10 @@ export default function ReceivePage() {
   return (
     <Suspense
       fallback={
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: "var(--bg-1)" }}>
           <div
             className="w-10 h-10 rounded-full border-4 animate-spin"
-            style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+            style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
           />
         </div>
       }

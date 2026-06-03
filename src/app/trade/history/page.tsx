@@ -73,27 +73,27 @@ function RevertModal({ entry, onConfirm, onCancel }: RevertModalProps) {
     >
       <div
         className="w-full max-w-lg rounded-t-2xl px-5 py-6 flex flex-col gap-4"
-        style={{ backgroundColor: "#131519", border: "1px solid rgba(255,255,255,0.08)" }}
+        style={{ backgroundColor: "var(--bg-2)", border: "1px solid var(--line)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-lg font-black" style={{ color: "#f5f5f5" }}>
+        <h2 className="text-lg font-black" style={{ color: "var(--fg-1)" }}>
           Revertir intercambio?
         </h2>
 
-        <div className="text-sm flex flex-col gap-1.5" style={{ color: "#9ca3af" }}>
+        <div className="text-sm flex flex-col gap-1.5" style={{ color: "var(--fg-3)" }}>
           {entry.gave.length > 0 && (
             <p>
-              <span className="font-semibold" style={{ color: "#f5f5f5" }}>+ Volvés a tener:</span>{" "}
+              <span className="font-semibold" style={{ color: "var(--fg-1)" }}>+ Volvés a tener:</span>{" "}
               {entry.gave.join(", ")}
             </p>
           )}
           {entry.received.length > 0 && (
             <p>
-              <span className="font-semibold" style={{ color: "#f5f5f5" }}>− Perdés:</span>{" "}
+              <span className="font-semibold" style={{ color: "var(--fg-1)" }}>− Perdés:</span>{" "}
               {entry.received.join(", ")}
             </p>
           )}
-          <p className="text-xs mt-1" style={{ color: "#6b7280" }}>
+          <p className="text-xs mt-1" style={{ color: "var(--fg-3)" }}>
             Este intercambio va a desaparecer del historial.
           </p>
         </div>
@@ -103,8 +103,8 @@ function RevertModal({ entry, onConfirm, onCancel }: RevertModalProps) {
             onClick={onCancel}
             className="flex-1 py-3 rounded-xl font-bold text-sm border"
             style={{
-              borderColor: "rgba(255,255,255,0.12)",
-              color: "#9ca3af",
+              borderColor: "var(--line)",
+              color: "var(--fg-2)",
               backgroundColor: "transparent",
             }}
           >
@@ -134,7 +134,7 @@ function TradeCard({ entry, onRevert }: TradeCardProps) {
   return (
     <div
       className="rounded-xl p-4 flex flex-col gap-3"
-      style={{ backgroundColor: "rgba(26,26,26,0.95)", border: "1px solid rgba(255,255,255,0.08)" }}
+      style={{ backgroundColor: "var(--bg-2)", border: "1px solid var(--line)" }}
     >
       {/* Header row */}
       <div className="flex items-center justify-between gap-2">
@@ -172,7 +172,7 @@ function TradeCard({ entry, onRevert }: TradeCardProps) {
           </p>
           <div className="flex flex-wrap gap-1.5">
             {entry.received.map((id) => (
-              <Chip key={id} label={id} color="#006847" />
+              <Chip key={id} label={id} color="var(--green)" />
             ))}
           </div>
         </div>
@@ -255,25 +255,26 @@ export default function TradeHistoryPage() {
 
   return (
     <div
-      className="home-dark flex flex-col flex-1 max-w-lg mx-auto w-full"
+      className="flex flex-col flex-1 max-w-lg mx-auto w-full"
+      style={{ backgroundColor: "var(--bg-1)" }}
     >
       {/* Header */}
       <header
         className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
         style={{
-          background: "linear-gradient(180deg, #111827 0%, #0d1117 100%)",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
+          backgroundColor: "var(--bg-1)",
+          borderBottom: "1px solid var(--line)",
         }}
       >
         <button
           onClick={() => router.back()}
           className="text-xl leading-none"
-          style={{ color: "#f5f5f5" }}
+          style={{ color: "var(--fg-2)", background: "none", border: "none", cursor: "pointer", minWidth: 44, minHeight: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
           aria-label="Volver"
         >
-          ←
+          ‹
         </button>
-        <h1 className="text-lg font-black leading-none flex-1" style={{ color: "#f5f5f5" }}>
+        <h1 className="text-lg font-black leading-none flex-1" style={{ color: "var(--fg-1)" }}>
           Historial
         </h1>
       </header>
@@ -284,7 +285,7 @@ export default function TradeHistoryPage() {
             <div
               className="w-8 h-8 rounded-full border-4 animate-spin"
               style={{
-                borderColor: "#c2ef4e",
+                borderColor: "var(--gold)",
                 borderTopColor: "transparent",
               }}
             />
@@ -303,8 +304,8 @@ export default function TradeHistoryPage() {
             </div>
             <button
               onClick={() => router.push("/trade")}
-              className="mt-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white"
-              style={{ backgroundColor: "#006847" }}
+              className="mt-2 px-5 py-2.5 rounded-xl font-bold text-sm"
+              style={{ background: "var(--foil-gold)", color: "#111111" }}
             >
               Volver a intercambiar
             </button>

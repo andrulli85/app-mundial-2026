@@ -69,20 +69,21 @@ function ProposeQrInner() {
   };
 
   return (
-    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full">
+    <div className="flex flex-col flex-1 max-w-lg mx-auto w-full" style={{ backgroundColor: "var(--bg-1)" }}>
       {/* Header */}
       <header
-        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3 shadow-sm"
-        style={{ backgroundColor: "#006847" }}
+        className="sticky top-[54px] z-20 px-4 py-3 flex items-center gap-3"
+        style={{ backgroundColor: "var(--bg-1)", borderBottom: "1px solid var(--line)" }}
       >
         <button
           onClick={() => router.back()}
-          className="text-white text-xl leading-none"
+          className="text-xl leading-none"
+          style={{ color: "var(--fg-2)", background: "none", border: "none", cursor: "pointer", minWidth: 44, minHeight: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
           aria-label="Volver"
         >
-          ←
+          ‹
         </button>
-        <h1 className="text-lg font-black text-white leading-none flex-1">
+        <h1 className="text-lg font-black leading-none flex-1" style={{ color: "var(--fg-1)" }}>
           Tu propuesta
         </h1>
       </header>
@@ -96,48 +97,51 @@ function ProposeQrInner() {
         {/* Instruction */}
         <div
           className="w-full rounded-xl p-4 text-center text-sm"
-          style={{ backgroundColor: "#fff", border: "1px solid #e5e0d6" }}
+          style={{ backgroundColor: "var(--bg-2)", border: "1px solid var(--line)" }}
         >
-          <p className="text-gray-700 leading-snug">
+          <p className="leading-snug" style={{ color: "var(--fg-2)" }}>
             Mostrá este QR a tu amigo. Cuando él escanee y acepte, te va a mostrar su QR de vuelta.
           </p>
         </div>
 
-        {/* Summary */}
+        {/* Summary — 2-pane trade preview */}
         <div
-          className="w-full rounded-xl p-4"
-          style={{ backgroundColor: "#fff", border: "1px solid #e5e0d6" }}
+          className="w-full rounded-xl overflow-hidden"
+          style={{ border: "1px solid var(--line-gold)" }}
         >
-          <div className="flex flex-col gap-2">
+          <div className="p-4" style={{ backgroundColor: "var(--bg-2)" }}>
             <div className="flex gap-2 items-start">
               <span
                 className="text-xs font-bold uppercase tracking-wide mt-0.5"
-                style={{ color: "#006847", minWidth: 48 }}
+                style={{ color: "var(--green-bright)", minWidth: 48 }}
               >
                 Doy:
               </span>
-              <span className="text-sm text-gray-700 leading-snug">{giveSummary || "—"}</span>
+              <span className="text-sm leading-snug" style={{ color: "var(--fg-1)" }}>{giveSummary || "—"}</span>
             </div>
+          </div>
+          <div style={{ height: 1, backgroundColor: "var(--line-gold)" }} />
+          <div className="p-4" style={{ backgroundColor: "var(--bg-2)" }}>
             <div className="flex gap-2 items-start">
               <span
                 className="text-xs font-bold uppercase tracking-wide mt-0.5"
-                style={{ color: "#c8102e", minWidth: 48 }}
+                style={{ color: "var(--red)", minWidth: 48 }}
               >
                 Quiero:
               </span>
-              <span className="text-sm text-gray-700 leading-snug">{wantSummary || "—"}</span>
+              <span className="text-sm leading-snug" style={{ color: "var(--fg-1)" }}>{wantSummary || "—"}</span>
             </div>
           </div>
         </div>
 
-        {/* E.3 — Share button (Web Share API or clipboard fallback) */}
+        {/* E.3 — Share button */}
         <button
           onClick={handleShare}
-          className="w-full rounded-full px-4 py-2.5 text-sm font-semibold border transition-colors active:scale-[0.98]"
+          className="w-full rounded-full px-4 py-2.5 text-sm font-semibold transition-all active:scale-[0.98]"
           style={{
-            backgroundColor: "#fff",
-            border: "1.5px solid #d1c9b8",
-            color: "#333",
+            backgroundColor: "var(--bg-2)",
+            border: "1.5px solid var(--line-gold)",
+            color: "var(--fg-1)",
           }}
         >
           Compartir por WhatsApp
@@ -145,7 +149,7 @@ function ProposeQrInner() {
 
         {/* Toast */}
         {toastMsg && (
-          <p className="text-xs text-center" style={{ color: "#006847" }}>
+          <p className="text-xs text-center" style={{ color: "var(--gold)" }}>
             {toastMsg}
           </p>
         )}
@@ -153,15 +157,16 @@ function ProposeQrInner() {
         {/* CTA — scan friend's acceptance QR */}
         <button
           onClick={handleScanConfirm}
-          className="w-full py-3.5 rounded-xl font-black text-lg text-white transition-all active:scale-[0.98]"
-          style={{ backgroundColor: "#006847" }}
+          className="w-full py-3.5 rounded-xl font-black text-lg transition-all active:scale-[0.98] active:opacity-80"
+          style={{ background: "var(--foil-gold)", color: "#111111" }}
         >
           Escanear su QR
         </button>
 
         <button
           onClick={() => router.push("/trade/propose")}
-          className="text-sm text-gray-600 underline"
+          className="text-sm underline"
+          style={{ color: "var(--fg-3)" }}
         >
           Cambiar propuesta
         </button>
@@ -174,10 +179,10 @@ export default function ProposeQrPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: "var(--bg-1)" }}>
           <div
             className="w-10 h-10 rounded-full border-4 animate-spin"
-            style={{ borderColor: "#006847", borderTopColor: "transparent" }}
+            style={{ borderColor: "var(--gold)", borderTopColor: "transparent" }}
           />
         </div>
       }
