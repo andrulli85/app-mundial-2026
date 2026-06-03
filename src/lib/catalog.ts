@@ -9,6 +9,29 @@
  *
  * The Sticker interface keeps `id` as the canonical key (mapped from sticker_id)
  * so callers (album page, StickerCard, db.ts) are unaffected.
+ *
+ * ---------------------------------------------------------------------------
+ * APP-SIDE PRODUCT FIELDS
+ * ---------------------------------------------------------------------------
+ * The base catalog is sourced from the mission-control ETL pipeline
+ * (`tools/scripts/mundial-2026-visuals/generate-enriched-dataset.mjs`).
+ * The following fields are APP-SIDE product fields, added in commit 976ba4a
+ * (2026-06-01) — they are NOT produced by the ETL and must NOT be backfilled
+ * into it:
+ *
+ *   variant        — "base" | "extra-gold"
+ *                    drives variant display (all 980 current entries are "base";
+ *                    "extra-gold" is a planned product value)
+ *
+ *   rarity_tier    — "common" | "team"
+ *                    drives gold border CSS + /album/doradas filter
+ *
+ *   base_player_id — string | null  (100% null across all 980 entries as of 2026-06-02)
+ *                    scheduled for removal in Phase 4.1
+ *
+ * See docs/learnings/2026-06-02-albumix-field-drift-trace.md for the full trace.
+ * Zod validation: src/data/stickers.schema.ts (EtlStickerSchema / AppStickerSchema).
+ * ---------------------------------------------------------------------------
  */
 
 export type StickerType = "player" | "team_logo" | "team_photo" | "fwc" | "panini_special" | "extra";
