@@ -245,7 +245,8 @@ function SquadToken({ player, size = 78, dragging = false, posColor }: SquadToke
     : dragging && c.glow
     ? `${c.glow}, 0 14px 26px -8px rgba(0,0,0,.7)`
     : c.glow;
-  const height = Math.round(size * 1.18);
+  // Height multiplier raised from 1.18 → 1.32 for Panini-sticker proportions (taller, not wider)
+  const height = Math.round(size * 1.32);
 
   return (
     <div
@@ -354,7 +355,8 @@ interface EmptySlotProps {
 
 function EmptySlot({ pos, size = 78, onClick }: EmptySlotProps) {
   const col = POS_COLOR[pos];
-  const height = Math.round(size * 1.18);
+  // Height multiplier raised to 1.32 to match SquadToken taller proportions
+  const height = Math.round(size * 1.32);
   return (
     <button
       onClick={onClick}
@@ -747,139 +749,7 @@ function PointsView({ lineup, slots, teamPts }: PointsViewProps) {
 
   return (
     <div style={{ padding: "14px 0 0" }}>
-      {/* Total points card */}
-      <div
-        style={{
-          background: "linear-gradient(135deg,#1b1606,#0d0f13)",
-          border: "1px solid var(--line-gold)",
-          borderRadius: 16,
-          padding: 16,
-          boxShadow: "var(--glow-gold)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginBottom: 20,
-        }}
-      >
-        <div>
-          <div
-            style={{
-              fontSize: 11,
-              fontWeight: 800,
-              letterSpacing: ".1em",
-              color: "var(--gold)",
-              textTransform: "uppercase",
-              fontFamily: "var(--font-ui)",
-            }}
-          >
-            Puntos de tu 11
-          </div>
-          <div
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: 36,
-              color: "var(--fg-1)",
-              lineHeight: 1,
-              marginTop: 2,
-              fontVariantNumeric: "tabular-nums",
-            }}
-          >
-            {teamPts}
-          </div>
-        </div>
-        <span style={{ fontSize: 32 }} aria-hidden="true">⚡</span>
-      </div>
-
-      {/* Per-player breakdown */}
-      <div
-        style={{
-          fontSize: 11,
-          fontWeight: 800,
-          letterSpacing: ".08em",
-          color: "var(--fg-3)",
-          textTransform: "uppercase",
-          fontFamily: "var(--font-ui)",
-          margin: "0 2px 10px",
-        }}
-      >
-        Por jugador
-      </div>
-      <div
-        style={{
-          background: "var(--bg-2)",
-          border: "1px solid var(--line)",
-          borderRadius: 16,
-          overflow: "hidden",
-          marginBottom: 22,
-        }}
-      >
-        {players.map(({ s, p }, i) => (
-          <div
-            key={s.id}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 11,
-              padding: "11px 14px",
-              borderTop: i ? "1px solid var(--line)" : "none",
-            }}
-          >
-            <span
-              style={{
-                width: 30,
-                fontSize: 9,
-                fontWeight: 800,
-                letterSpacing: ".06em",
-                color: POS_COLOR[s.pos],
-                fontFamily: "var(--font-ui)",
-              }}
-            >
-              {s.pos}
-            </span>
-            <span style={{ fontSize: 17 }}>{p.flag}</span>
-            <span
-              style={{
-                flex: 1,
-                fontWeight: 700,
-                fontSize: 14,
-                color: "var(--fg-1)",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                fontFamily: "var(--font-ui)",
-              }}
-            >
-              {p.name}
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-stat)",
-                fontWeight: 800,
-                fontSize: 15,
-                color: "var(--gold)",
-                fontVariantNumeric: "tabular-nums",
-              }}
-            >
-              {p.pts}
-            </span>
-          </div>
-        ))}
-        {players.length === 0 && (
-          <div
-            style={{
-              padding: "24px 14px",
-              textAlign: "center",
-              color: "var(--fg-3)",
-              fontSize: 13,
-              fontFamily: "var(--font-ui)",
-            }}
-          >
-            Armá tu 11 para ver los puntos
-          </div>
-        )}
-      </div>
-
-      {/* Friends leaderboard */}
+      {/* Friends leaderboard — focal point, renders first */}
       <div
         style={{
           display: "flex",
@@ -972,6 +842,148 @@ function PointsView({ lineup, slots, teamPts }: PointsViewProps) {
             </div>
           );
         })}
+      </div>
+
+      {/* Total points — compact chip, right-aligned */}
+      <div
+        data-testid="puntos-tu-11-card"
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginTop: 20,
+          marginBottom: 4,
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "55%",
+            background: "linear-gradient(135deg,#1b1606,#0d0f13)",
+            border: "1px solid var(--line-gold)",
+            borderRadius: 14,
+            padding: "10px 14px",
+            boxShadow: "var(--glow-gold)",
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
+          <div>
+            <div
+              style={{
+                fontSize: 9,
+                fontWeight: 800,
+                letterSpacing: ".1em",
+                color: "var(--gold)",
+                textTransform: "uppercase",
+                fontFamily: "var(--font-ui)",
+              }}
+            >
+              Puntos de tu 11
+            </div>
+            <div
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: 26,
+                color: "var(--fg-1)",
+                lineHeight: 1,
+                marginTop: 1,
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {teamPts}
+            </div>
+          </div>
+          <span style={{ fontSize: 20 }} aria-hidden="true">⚡</span>
+        </div>
+      </div>
+
+      {/* Per-player breakdown */}
+      <div
+        style={{
+          fontSize: 11,
+          fontWeight: 800,
+          letterSpacing: ".08em",
+          color: "var(--fg-3)",
+          textTransform: "uppercase",
+          fontFamily: "var(--font-ui)",
+          margin: "14px 2px 10px",
+        }}
+      >
+        Por jugador
+      </div>
+      <div
+        style={{
+          background: "var(--bg-2)",
+          border: "1px solid var(--line)",
+          borderRadius: 16,
+          overflow: "hidden",
+          marginBottom: 22,
+        }}
+      >
+        {players.map(({ s, p }, i) => (
+          <div
+            key={s.id}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 11,
+              padding: "11px 14px",
+              borderTop: i ? "1px solid var(--line)" : "none",
+            }}
+          >
+            <span
+              style={{
+                width: 30,
+                fontSize: 9,
+                fontWeight: 800,
+                letterSpacing: ".06em",
+                color: POS_COLOR[s.pos],
+                fontFamily: "var(--font-ui)",
+              }}
+            >
+              {s.pos}
+            </span>
+            <span style={{ fontSize: 17 }}>{p.flag}</span>
+            <span
+              style={{
+                flex: 1,
+                fontWeight: 700,
+                fontSize: 14,
+                color: "var(--fg-1)",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                fontFamily: "var(--font-ui)",
+              }}
+            >
+              {p.name}
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-stat)",
+                fontWeight: 800,
+                fontSize: 15,
+                color: "var(--gold)",
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {p.pts}
+            </span>
+          </div>
+        ))}
+        {players.length === 0 && (
+          <div
+            style={{
+              padding: "24px 14px",
+              textAlign: "center",
+              color: "var(--fg-3)",
+              fontSize: 13,
+              fontFamily: "var(--font-ui)",
+            }}
+          >
+            Armá tu 11 para ver los puntos
+          </div>
+        )}
       </div>
     </div>
   );
@@ -1128,24 +1140,6 @@ function ResultsView() {
               >
                 +{r.myPts} pts
               </span>
-              {r.fav && (
-                <span
-                  style={{
-                    marginLeft: 6,
-                    fontSize: 9,
-                    fontWeight: 800,
-                    color: "var(--gold)",
-                    background: "rgba(244,200,74,.14)",
-                    border: "1px solid var(--line-gold)",
-                    borderRadius: 99,
-                    padding: "2px 7px",
-                    letterSpacing: ".04em",
-                    fontFamily: "var(--font-ui)",
-                  }}
-                >
-                  TU SELECCIÓN 🇨🇱
-                </span>
-              )}
             </div>
           </div>
         ))}
