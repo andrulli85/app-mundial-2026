@@ -30,10 +30,12 @@ function ensureDir() {
 
 /**
  * Completes onboarding if needed so /inicio does not redirect to /.
+ * Handles the multi-step flow: tutorial → nickname → mode selection.
  */
 async function ensureNickname(page: import("@playwright/test").Page) {
   await page.goto(`${BASE}/`, { waitUntil: "domcontentloaded" });
 
+  // Check for tutorial skip button (step 0-2)
   const hasOnboarding = await page
     .waitForSelector("text=Saltar tutorial", { timeout: 8000 })
     .then(() => true)
@@ -41,18 +43,39 @@ async function ensureNickname(page: import("@playwright/test").Page) {
 
   if (!hasOnboarding) return;
 
+  // Step 1: skip tutorial carousel → lands on NicknameForm (step 3)
   await page.click("text=Saltar tutorial");
   await page.waitForSelector('input[aria-label="Ingresá tu nombre de jugador"]', { timeout: 8000 });
 
+  // Step 2: fill nickname and click "Siguiente →"
   const input = page.locator('input[aria-label="Ingresá tu nombre de jugador"]');
   await input.click();
   await input.pressSequentially("pwarma11", { delay: 50 });
 
-  const submitBtn = page.getByRole("button", { name: /Empezar/i });
-  await submitBtn.waitFor({ state: "visible" });
-  await submitBtn.click();
+  // "Siguiente →" is the nickname submit button
+  const siguienteBtn = page.getByRole("button", { name: /Siguiente/i });
+  await siguienteBtn.waitFor({ state: "visible", timeout: 8000 }).catch(() => {});
+  const siguienteVisible = await siguienteBtn.isVisible().catch(() => false);
+  if (siguienteVisible) {
+    await siguienteBtn.click();
+  }
 
-  await page.waitForURL((url) => url.pathname !== "/", { timeout: 12000 }).catch(() => {});
+  // Step 3: mode selection — wait for "¡Empezar!" button, pick first mode if visible
+  const empezarBtn = page.getByRole("button", { name: /Empezar/i });
+  const empezarVisible = await empezarBtn
+    .waitFor({ state: "visible", timeout: 10000 })
+    .then(() => true)
+    .catch(() => false);
+
+  if (empezarVisible) {
+    // Select collector mode ("Tengo el álbum Panini") — first chip
+    const collectorChip = page.getByText(/Tengo el álbum Panini/i).first();
+    await collectorChip.click().catch(() => {});
+    // Now click ¡Empezar!
+    await empezarBtn.click().catch(() => {});
+  }
+
+  await page.waitForURL((url) => url.pathname !== "/", { timeout: 15000 }).catch(() => {});
   await page.waitForLoadState("networkidle");
 }
 
