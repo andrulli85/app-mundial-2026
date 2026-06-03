@@ -14,7 +14,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import EmptySlot from "@/components/EmptySlot";
 import Image from "next/image";
 import { getCatalog } from "@/lib/catalog";
-import { getAllStickers, getNickname, collectionBitset, collectionRepeBitset } from "@/lib/db";
+import { getAllStickers, getNickname, collectionBitset, collectionRepeBitset, getUserMode } from "@/lib/db";
 import { encodeTradePayload } from "@/lib/qr-engine";
 import { TEAM_CATALOG } from "@/lib/team-catalog";
 import type { Sticker } from "@/lib/catalog";
@@ -40,6 +40,14 @@ function ProposeInner() {
         router.replace("/");
         return;
       }
+
+      // Fantasy users can't trade — redirect to scoreboard
+      const userMode = await getUserMode();
+      if (userMode === "fantasy") {
+        router.replace("/scoreboard");
+        return;
+      }
+
       setNickname(nick);
 
       const [cat, entries] = await Promise.all([getCatalog(), getAllStickers()]);

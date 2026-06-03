@@ -15,7 +15,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import StickerCardPanini from "@/components/StickerCardPanini";
 import StickerDetailModal from "@/components/StickerDetailModal";
-import { getNickname, getAllStickers } from "@/lib/db";
+import { getNickname, getAllStickers, getUserMode } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import type { Sticker } from "@/lib/catalog";
 import type { StickerEntry } from "@/lib/db";
@@ -119,6 +119,14 @@ export default function AlbumPage() {
         router.replace("/");
         return;
       }
+
+      // Fantasy users don't use the album — redirect to Mi Once
+      const userMode = await getUserMode();
+      if (userMode === "fantasy") {
+        router.replace("/squad");
+        return;
+      }
+
       setNickname(nick);
 
       // Demo data: seed Domi's missing-card collection on first load.

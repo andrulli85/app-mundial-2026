@@ -31,7 +31,7 @@ import Image from "next/image";
 import EmptySlot from "@/components/EmptySlot";
 import TeamHeader from "@/components/TeamHeader";
 import { getCatalog } from "@/lib/catalog";
-import { getAllStickers } from "@/lib/db";
+import { getAllStickers, getUserMode } from "@/lib/db";
 import {
   decodeTradePayload,
   TradePayload,
@@ -112,6 +112,13 @@ function BrowseInner() {
   const [loading, setLoading] = useState(true);
 
   const { message: toastMessage, showToast } = useToast();
+
+  // ── Fantasy redirect ──
+  useEffect(() => {
+    getUserMode().then((userMode) => {
+      if (userMode === "fantasy") router.replace("/scoreboard");
+    });
+  }, [router]);
 
   // ── Decode payload + load my collection ──
   useEffect(() => {

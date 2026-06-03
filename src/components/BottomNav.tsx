@@ -3,22 +3,26 @@
 /**
  * BottomNav — 5-tab navigation bar (Stream A, Phase 4.1).
  *
- * Tab order:
- *   Inicio · Mercado · Álbum (CENTER hero FAB) · Mi 11 · Perfil
+ * Bi-mode (Epic 3): the 2nd tab swaps based on userMode stored in IndexedDB.
+ *   Collector: Inicio · Álbum (FAB) · Mi 11 · Puntos · Perfil
+ *   Fantasy:   Inicio · Reglas     · Mi 11 · Puntos · Perfil
  *
- * Center "Álbum" tab:
- *   - Gold gradient circle (FAB-style), elevated visually
- *   - Links to /album
+ * The center FAB always links to /squad (Mi 11).
+ * Mode is read once on mount; a storage event triggers re-read for
+ * same-tab mode toggle in /perfil.
  *
  * Active state: --gold fill + weight 800 label
  * Inactive state: --fg-3 icon + --fg-3 label
  * Background: --bg-1 with top hairline border
  */
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Home, Grid3x3, Users, ArrowLeftRight, User } from "lucide-react";
+import { Home, Grid3x3, Users, User, BookOpen, ArrowLeftRight } from "lucide-react";
+import { getUserMode } from "@/lib/db";
+import type { UserMode } from "@/lib/db";
 
-export type NavTab = "inicio" | "album" | "once" | "mercado" | "perfil" | "scoreboard";
+export type NavTab = "inicio" | "album" | "once" | "mercado" | "perfil" | "scoreboard" | "reglas";
 
 interface BottomNavProps {
   active: NavTab;
@@ -28,7 +32,18 @@ const GOLD = "#F4C84A";
 const INACTIVE = "#6B7382"; // --fg-3
 
 export default function BottomNav({ active }: BottomNavProps) {
-  const isAlbumActive = active === "album";
+  const [mode, setMode] = useState<UserMode | null>(null);
+
+  useEffect(() => {
+    getUserMode().then(setMode);
+
+    // Re-read mode when storage changes (same-tab toggle from /perfil)
+    const handler = () => { getUserMode().then(setMode); };
+    window.addEventListener("albumix:modechange", handler);
+    return () => window.removeEventListener("albumix:modechange", handler);
+  }, []);
+
+  const isFantasy = mode === "fantasy";
 
   return (
     <>
@@ -63,18 +78,30 @@ export default function BottomNav({ active }: BottomNavProps) {
         <Home size={22} strokeWidth={active === "inicio" ? 2.4 : 1.8} />
       </NavItem>
 
-      {/* ── Mercado ── */}
-      <NavItem
-        href="/mercado"
-        label="Mercado"
-        active={active === "mercado"}
-        activeColor={GOLD}
-        inactiveColor={INACTIVE}
-      >
-        <ArrowLeftRight size={22} strokeWidth={active === "mercado" ? 2.4 : 1.8} />
-      </NavItem>
+      {/* ── Tab 2: Álbum (collector) or Reglas (fantasy) ── */}
+      {isFantasy ? (
+        <NavItem
+          href="/reglas"
+          label="Reglas"
+          active={active === "reglas"}
+          activeColor={GOLD}
+          inactiveColor={INACTIVE}
+        >
+          <BookOpen size={22} strokeWidth={active === "reglas" ? 2.4 : 1.8} />
+        </NavItem>
+      ) : (
+        <NavItem
+          href="/mercado"
+          label="Mercado"
+          active={active === "mercado"}
+          activeColor={GOLD}
+          inactiveColor={INACTIVE}
+        >
+          <ArrowLeftRight size={22} strokeWidth={active === "mercado" ? 2.4 : 1.8} />
+        </NavItem>
+      )}
 
-      {/* ── Álbum — FAB center ── */}
+      {/* ── Mi 11 — FAB center (always) ── */}
       <div
         style={{
           flex: 1,
@@ -87,9 +114,9 @@ export default function BottomNav({ active }: BottomNavProps) {
         }}
       >
         <Link
-          href="/album"
-          aria-label="Álbum"
-          aria-current={isAlbumActive ? "page" : undefined}
+          href="/squad"
+          aria-label="Mi 11"
+          aria-current={active === "once" ? "page" : undefined}
           style={{
             width: 52,
             height: 52,
@@ -99,10 +126,8 @@ export default function BottomNav({ active }: BottomNavProps) {
             justifyContent: "center",
             textDecoration: "none",
             flexShrink: 0,
-            background: isAlbumActive
-              ? "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)"
-              : "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
-            boxShadow: isAlbumActive
+            background: "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
+            boxShadow: active === "once"
               ? `0 0 0 3px var(--bg-1), 0 0 20px -2px rgba(244,200,74,.7), var(--sh-3)`
               : `0 0 0 3px var(--bg-1), 0 0 12px -4px rgba(244,200,74,.4), var(--sh-2)`,
             transition: "box-shadow 0.2s var(--ease-out)",
@@ -124,19 +149,19 @@ export default function BottomNav({ active }: BottomNavProps) {
             fontFamily: "var(--font-ui)",
           }}
         >
-          Álbum
+          Mi 11
         </span>
       </div>
 
-      {/* ── Mi 11 ── */}
+      {/* ── Puntos ── */}
       <NavItem
-        href="/squad"
-        label="Mi 11"
-        active={active === "once"}
+        href="/scoreboard"
+        label="Puntos"
+        active={active === "scoreboard"}
         activeColor={GOLD}
         inactiveColor={INACTIVE}
       >
-        <Users size={22} strokeWidth={active === "once" ? 2.4 : 1.8} />
+        <Users size={22} strokeWidth={active === "scoreboard" ? 2.4 : 1.8} />
       </NavItem>
 
       {/* ── Perfil ── */}

@@ -30,6 +30,7 @@ import {
   logTrade,
   collectionBitset,
   collectionRepeBitset,
+  getUserMode,
 } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import {
@@ -79,10 +80,13 @@ function ReceiveInner() {
   const processedRef = useRef(false);
 
   useEffect(() => {
-    getNickname().then((n) => {
-      if (!n) router.replace("/");
-      else setNickname(n);
-    });
+    (async () => {
+      const n = await getNickname();
+      if (!n) { router.replace("/"); return; }
+      const userMode = await getUserMode();
+      if (userMode === "fantasy") { router.replace("/scoreboard"); return; }
+      setNickname(n);
+    })();
   }, [router]);
 
   const handleScanResult = useCallback(

@@ -4,7 +4,7 @@
  *
  * Stores:
  *   collection  — { sticker_id: string, count: number, acquired_at: number }
- *   profile     — { key: string, value: string }  (key='nickname' | 'color')
+ *   profile     — { key: string, value: string }  (key='nickname' | 'color' | 'userMode')
  *   trade_log   — { trade_id: string, ts: number, partner: string, gave: string[], received: string[] }
  */
 
@@ -20,6 +20,9 @@ export interface ProfileEntry {
   key: string;
   value: string;
 }
+
+/** Play-style mode stored in the profile store under key "userMode". */
+export type UserMode = "collector" | "fantasy";
 
 export interface TradeLogEntry {
   trade_id: string; // uuid v4
@@ -118,8 +121,8 @@ let dbPromise: Promise<IDBPDatabase<MundialDB>> | null = null;
 
 export function getDB(): Promise<IDBPDatabase<MundialDB>> {
   if (!dbPromise) {
-    dbPromise = openDB<MundialDB>("mundial-2026", 4, {
-      upgrade(db, oldVersion) {
+    dbPromise = openDB<MundialDB>("mundial-2026", 5, {
+      upgrade(db, oldVersion, _newVersion, tx) {
         // v1 stores — create only if they don't exist (safe for existing users)
         if (oldVersion < 1) {
           // Collection store — one entry per sticker
@@ -148,6 +151,20 @@ export function getDB(): Promise<IDBPDatabase<MundialDB>> {
         // v4 — userXI store for confirmed locked XI + transfer-window state (Epic 2 Phase B)
         if (oldVersion < 4) {
           db.createObjectStore("userXI", { keyPath: "key" });
+        }
+
+        // v5 — bi-mode: set existing users (those with a nickname) to "collector"
+        // Brand-new users get null until they answer the onboarding mode question.
+        // We use a microtask-safe approach: schedule on the existing transaction.
+        if (oldVersion >= 1 && oldVersion < 5) {
+          const profileStore = tx.objectStore("profile");
+          // tx.objectStore() returns the idb-wrapped store where .get() returns a Promise.
+          // Queue the conditional put on the open upgrade transaction.
+          (profileStore.get("nickname") as unknown as Promise<ProfileEntry | undefined>).then((entry) => {
+            if (entry) {
+              profileStore.put({ key: "userMode", value: "collector" });
+            }
+          });
         }
       },
     });
@@ -213,6 +230,24 @@ export async function getNickname(): Promise<string | null> {
 
 export async function setNickname(nickname: string): Promise<void> {
   return setProfile("nickname", nickname);
+}
+
+// --- User mode helpers (bi-mode Epic 3) ---
+
+/**
+ * Returns the current play-style mode:
+ *   "collector" — has the Panini album, marks owned stickers, can trade.
+ *   "fantasy"   — adult free-play; picks XI from full roster, no album.
+ *   null        — brand-new user who hasn't completed onboarding yet.
+ */
+export async function getUserMode(): Promise<UserMode | null> {
+  const val = await getProfile("userMode");
+  if (val === "collector" || val === "fantasy") return val as UserMode;
+  return null;
+}
+
+export async function setUserMode(mode: UserMode): Promise<void> {
+  return setProfile("userMode", mode);
 }
 
 // --- Trade log helpers ---

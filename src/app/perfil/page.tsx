@@ -28,8 +28,10 @@ import {
   Shield,
   ChevronRight,
   Users,
+  Gamepad2,
 } from "lucide-react";
-import { getNickname, getAllStickers } from "@/lib/db";
+import { getNickname, getAllStickers, getUserMode, setUserMode } from "@/lib/db";
+import type { UserMode } from "@/lib/db";
 import { getCatalog } from "@/lib/catalog";
 import { useAuth } from "@/components/AuthProvider";
 import BottomNav from "@/components/BottomNav";
@@ -149,6 +151,10 @@ export default function PerfilPage() {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [useInitial, setUseInitial] = useState(false);
+  const [currentMode, setCurrentMode] = useState<UserMode | null>(null);
+  const [switchModal, setSwitchModal] = useState(false);
+  const [modeSaving, setModeSaving] = useState(false);
+  const [modeToast, setModeToast] = useState<string | null>(null);
 
   // claimable achievements — stubbed 0 until achievements store exposes a helper
   const claimable = 0;
@@ -162,12 +168,48 @@ export default function PerfilPage() {
       }
       setNickname(nick);
 
-      const [cat, entries] = await Promise.all([getCatalog(), getAllStickers()]);
+      const [cat, entries, mode] = await Promise.all([
+        getCatalog(),
+        getAllStickers(),
+        getUserMode(),
+      ]);
       setTotal(cat.length);
       setOwned(entries.filter((e) => e.count > 0).length);
+      setCurrentMode(mode);
       setLoading(false);
     })();
   }, [router]);
+
+  const flashModeToast = (msg: string) => {
+    setModeToast(msg);
+    setTimeout(() => setModeToast(null), 2200);
+  };
+
+  const handleModeSelect = async (mode: UserMode) => {
+    if (mode === currentMode) return;
+    if (mode === "collector") {
+      // Show warning modal before switching to collector
+      setSwitchModal(true);
+      return;
+    }
+    // Switching to fantasy — no confirmation needed
+    setModeSaving(true);
+    await setUserMode("fantasy");
+    setCurrentMode("fantasy");
+    window.dispatchEvent(new Event("albumix:modechange"));
+    setModeSaving(false);
+    flashModeToast("Modo Fantasy activo — ahora podés elegir cualquier jugador");
+  };
+
+  const confirmSwitchToCollector = async () => {
+    setSwitchModal(false);
+    setModeSaving(true);
+    await setUserMode("collector");
+    setCurrentMode("collector");
+    window.dispatchEvent(new Event("albumix:modechange"));
+    setModeSaving(false);
+    router.push("/album");
+  };
 
   const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
 
@@ -468,6 +510,140 @@ export default function PerfilPage() {
       </div>
 
       {/* ------------------------------------------------------------------ */}
+      {/* Modo de juego — bi-mode toggle (Epic 3)                             */}
+      {/* ------------------------------------------------------------------ */}
+      <div style={{ padding: "14px 18px 0" }}>
+        {/* Section header */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            marginBottom: 12,
+          }}
+        >
+          <Gamepad2 size={16} color="var(--fg-3)" />
+          <span
+            style={{
+              fontSize: 11,
+              fontWeight: 800,
+              letterSpacing: ".1em",
+              color: "var(--fg-3)",
+              textTransform: "uppercase",
+            }}
+          >
+            Modo de juego
+          </span>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {/* Collector chip */}
+          <button
+            onClick={() => handleModeSelect("collector")}
+            disabled={modeSaving}
+            aria-pressed={currentMode === "collector"}
+            style={{
+              width: "100%",
+              border: `2px solid ${currentMode === "collector" ? "var(--gold)" : "var(--line)"}`,
+              borderRadius: 16,
+              padding: "14px 16px",
+              cursor: modeSaving ? "default" : "pointer",
+              background: currentMode === "collector"
+                ? "linear-gradient(135deg,rgba(244,200,74,.12),rgba(244,200,74,.04))"
+                : "var(--bg-2)",
+              textAlign: "left",
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              boxShadow: currentMode === "collector" ? "var(--glow-gold)" : "none",
+              transition: "all .15s",
+            }}
+          >
+            <span style={{ fontSize: 26, lineHeight: 1, flexShrink: 0 }}>🎴</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 800, fontSize: 14, color: currentMode === "collector" ? "var(--gold)" : "var(--fg-1)" }}>
+                Tengo el álbum Panini
+              </div>
+              <div style={{ fontSize: 12, color: "var(--fg-3)", marginTop: 2 }}>
+                Marcá figuritas · intercambiá · Mi 11 de tus cartas
+              </div>
+            </div>
+            {currentMode === "collector" && (
+              <div
+                style={{
+                  width: 20,
+                  height: 20,
+                  borderRadius: 99,
+                  background: "var(--foil-gold)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 11,
+                  color: "var(--fg-onlight)",
+                  fontWeight: 800,
+                  flexShrink: 0,
+                }}
+              >
+                ✓
+              </div>
+            )}
+          </button>
+
+          {/* Fantasy chip */}
+          <button
+            onClick={() => handleModeSelect("fantasy")}
+            disabled={modeSaving}
+            aria-pressed={currentMode === "fantasy"}
+            style={{
+              width: "100%",
+              border: `2px solid ${currentMode === "fantasy" ? "var(--gold)" : "var(--line)"}`,
+              borderRadius: 16,
+              padding: "14px 16px",
+              cursor: modeSaving ? "default" : "pointer",
+              background: currentMode === "fantasy"
+                ? "linear-gradient(135deg,rgba(244,200,74,.12),rgba(244,200,74,.04))"
+                : "var(--bg-2)",
+              textAlign: "left",
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              boxShadow: currentMode === "fantasy" ? "var(--glow-gold)" : "none",
+              transition: "all .15s",
+            }}
+          >
+            <span style={{ fontSize: 26, lineHeight: 1, flexShrink: 0 }}>⚽</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 800, fontSize: 14, color: currentMode === "fantasy" ? "var(--gold)" : "var(--fg-1)" }}>
+                Solo Fantasy
+              </div>
+              <div style={{ fontSize: 12, color: "var(--fg-3)", marginTop: 2 }}>
+                Armá tu 11 gratis — sin álbum, sin figuritas
+              </div>
+            </div>
+            {currentMode === "fantasy" && (
+              <div
+                style={{
+                  width: 20,
+                  height: 20,
+                  borderRadius: 99,
+                  background: "var(--foil-gold)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 11,
+                  color: "var(--fg-onlight)",
+                  fontWeight: 800,
+                  flexShrink: 0,
+                }}
+              >
+                ✓
+              </div>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* ------------------------------------------------------------------ */}
       {/* Footer                                                               */}
       {/* ------------------------------------------------------------------ */}
       <div
@@ -481,6 +657,119 @@ export default function PerfilPage() {
       >
         Albumix · Mundial 2026
       </div>
+
+      {/* ---- Mode toast ---- */}
+      {modeToast && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 100,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 400,
+            background: "var(--bg-3)",
+            border: "1px solid var(--line-gold)",
+            borderRadius: 99,
+            padding: "10px 20px",
+            fontSize: 13,
+            fontWeight: 700,
+            color: "var(--fg-1)",
+            fontFamily: "var(--font-ui)",
+            boxShadow: "var(--sh-3)",
+            whiteSpace: "nowrap",
+            animation: "sheetup .25s var(--ease-pop)",
+            maxWidth: "calc(100vw - 48px)",
+            textAlign: "center",
+          }}
+        >
+          {modeToast}
+        </div>
+      )}
+
+      {/* ---- Collector switch confirmation modal ---- */}
+      {switchModal && (
+        <div
+          onClick={() => setSwitchModal(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 200,
+            background: "rgba(7,8,10,.75)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            display: "flex",
+            alignItems: "flex-end",
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              width: "100%",
+              background: "var(--bg-1)",
+              borderRadius: "22px 22px 0 0",
+              border: "1px solid var(--line-gold)",
+              borderBottom: "none",
+              padding: "24px 24px 40px",
+              animation: "sheetup .3s var(--ease-out)",
+            }}
+          >
+            <div style={{ width: 40, height: 4, borderRadius: 99, background: "var(--line-strong)", margin: "0 auto 20px" }} />
+            <div
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: 22,
+                color: "var(--fg-1)",
+                textTransform: "uppercase",
+                marginBottom: 12,
+              }}
+            >
+              Cambiar a modo coleccionista
+            </div>
+            <p style={{ fontSize: 14, color: "var(--fg-2)", lineHeight: 1.5, marginBottom: 24 }}>
+              Vas a necesitar marcar tus stickers en Mi Álbum para que aparezcan en el picker.
+              Serás redirigido a Mi Álbum ahora. ¿Confirmás?
+            </p>
+            <button
+              onClick={confirmSwitchToCollector}
+              style={{
+                width: "100%",
+                border: "none",
+                borderRadius: "var(--r-pill)",
+                padding: "15px 0",
+                cursor: "pointer",
+                fontFamily: "var(--font-ui)",
+                fontWeight: 800,
+                fontSize: 15,
+                letterSpacing: ".04em",
+                textTransform: "uppercase",
+                background: "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
+                color: "var(--fg-onlight)",
+                boxShadow: "var(--glow-gold)",
+                marginBottom: 12,
+              }}
+            >
+              Confirmar
+            </button>
+            <button
+              onClick={() => setSwitchModal(false)}
+              style={{
+                width: "100%",
+                border: "1px solid var(--line-strong)",
+                borderRadius: "var(--r-pill)",
+                padding: "14px 0",
+                cursor: "pointer",
+                fontFamily: "var(--font-ui)",
+                fontWeight: 700,
+                fontSize: 14,
+                background: "transparent",
+                color: "var(--fg-2)",
+              }}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
 
       <BottomNav active="perfil" />
     </div>

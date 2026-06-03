@@ -32,10 +32,13 @@ import {
   byId,
   loadSavedSquad,
   ownedByPos,
+  allByPos,
   persistSquad,
   pointsLeaderboard,
 } from "@/lib/squad/data";
 import type { Player, Position, SavedSquad } from "@/lib/squad/data";
+import { getUserMode } from "@/lib/db";
+import type { UserMode } from "@/lib/db";
 import { useAuth } from "@/components/AuthProvider";
 import { getFirebase } from "@/lib/firebase";
 import {
@@ -209,11 +212,12 @@ function calcPoints(lineup: Record<string, string>, slots: Slot[]): number {
 }
 
 /** Auto-fill: picks best OVR player per slot, no repeats. */
-function doAutoFill(slots: Slot[]): Record<string, string> {
+function doAutoFill(slots: Slot[], mode?: UserMode | null): Record<string, string> {
   const used = new Set<string>();
   const map: Record<string, string> = {};
   slots.forEach((s) => {
-    const pick = ownedByPos(s.pos).filter((p) => !used.has(p.id))[0];
+    const pool = mode === "fantasy" ? allByPos(s.pos) : ownedByPos(s.pos);
+    const pick = pool.filter((p) => !used.has(p.id))[0];
     if (pick) {
       map[s.id] = pick.id;
       used.add(pick.id);
@@ -531,16 +535,19 @@ interface PickerSheetProps {
   onAssign: (pid: string) => void;
   onRemove: () => void;
   onClose: () => void;
+  mode: UserMode | null;
 }
 
-function PickerSheet({ slotId, pos, lineup, onAssign, onRemove, onClose }: PickerSheetProps) {
+function PickerSheet({ slotId, pos, lineup, onAssign, onRemove, onClose, mode }: PickerSheetProps) {
   const usedElsewhere = new Set(
     Object.entries(lineup)
       .filter(([k]) => k !== slotId)
       .map(([, v]) => v)
   );
   const current = lineup[slotId];
-  const options = ownedByPos(pos);
+  // Fantasy mode: show ALL players regardless of ownership.
+  // Collector mode: show only owned players.
+  const options = mode === "fantasy" ? allByPos(pos) : ownedByPos(pos);
 
   return (
     <div
@@ -708,7 +715,9 @@ function PickerSheet({ slotId, pos, lineup, onAssign, onRemove, onClose }: Picke
                 fontFamily: "var(--font-ui)",
               }}
             >
-              No tenés cartas de {LINE_LABEL[pos]}
+              {mode === "fantasy"
+                ? `No hay jugadores de ${LINE_LABEL[pos]}`
+                : `No tenés cartas de ${LINE_LABEL[pos]}`}
             </div>
           )}
         </div>
@@ -1202,9 +1211,15 @@ export default function SquadPage() {
   const [tab, setTab] = useState<TabKey>("equipo");
   const [toast, setToast] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
+  const [userMode, setUserMode] = useState<UserMode | null>(null);
 
   const dragRef = useRef<{ slotId: string; moved: boolean } | null>(null);
   const slots = FORMATIONS[formation];
+
+  // Load play mode on mount
+  useEffect(() => {
+    getUserMode().then(setUserMode);
+  }, []);
 
   // ---- Load on mount / auth change: Firestore (authed) or localStorage (anon) ----
   useEffect(() => {
@@ -1234,7 +1249,7 @@ export default function SquadPage() {
             try { localStorage.removeItem("albumix.miOnce"); } catch { /* noop */ }
           } else {
             // Fresh authenticated user — auto-fill
-            const filled = doAutoFill(FORMATIONS["4-3-3"]);
+            const filled = doAutoFill(FORMATIONS["4-3-3"], userMode);
             setLineup(filled);
           }
         }
@@ -1257,7 +1272,7 @@ export default function SquadPage() {
           setFormation(saved.formation as FormationKey);
           setLineup(saved.lineup);
         } else {
-          setLineup(doAutoFill(FORMATIONS["4-3-3"]));
+          setLineup(doAutoFill(FORMATIONS["4-3-3"], userMode));
         }
       }
 
@@ -1268,8 +1283,8 @@ export default function SquadPage() {
       cancelled = true;
       if (unsubFirestore) unsubFirestore();
     };
-    // Re-run when auth state changes (user signs in / out)
-  }, [user?.uid]);
+    // Re-run when auth state or mode changes
+  }, [user?.uid, userMode]);
 
   // ---- Toast helper ----
   const flash = useCallback((msg: string) => {
@@ -1297,7 +1312,8 @@ export default function SquadPage() {
         const used = new Set(Object.values(next));
         newSlots.forEach((s) => {
           if (!next[s.id]) {
-            const pick = ownedByPos(s.pos).filter((p) => !used.has(p.id))[0];
+            const pool = userMode === "fantasy" ? allByPos(s.pos) : ownedByPos(s.pos);
+            const pick = pool.filter((p) => !used.has(p.id))[0];
             if (pick) {
               next[s.id] = pick.id;
               used.add(pick.id);
@@ -1307,7 +1323,7 @@ export default function SquadPage() {
         return next;
       });
     },
-    []
+    [userMode]
   );
 
   // ---- Assign player to slot ----
@@ -1339,9 +1355,9 @@ export default function SquadPage() {
 
   // ---- Auto-fill ----
   const autoFill = useCallback(() => {
-    setLineup(doAutoFill(slots));
+    setLineup(doAutoFill(slots, userMode));
     flash("11 ideal armado ⚡");
-  }, [slots, flash]);
+  }, [slots, userMode, flash]);
 
   // ---- Save squad — Firestore for authed users, localStorage for anonymous ----
   const saveSquad = useCallback(async () => {
@@ -1765,6 +1781,7 @@ export default function SquadPage() {
           onAssign={(pid) => assign(picker.slotId, pid)}
           onRemove={() => removeSlot(picker.slotId)}
           onClose={() => setPicker(null)}
+          mode={userMode}
         />
       )}
 

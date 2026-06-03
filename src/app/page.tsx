@@ -15,7 +15,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getNickname, setNickname } from "@/lib/db";
+import { getNickname, setNickname, getUserMode, setUserMode } from "@/lib/db";
+import type { UserMode } from "@/lib/db";
 import Image from "next/image";
 
 // ── Tutorial content ─────────────────────────────────────────────────────────
@@ -570,7 +571,7 @@ function NicknameForm({ onDone, onBack }: NicknameFormProps) {
             transition: "all .2s",
           }}
         >
-          {saving ? "Guardando..." : "¡Empezar!"}
+          {saving ? "Guardando..." : "Siguiente →"}
         </button>
       </div>
 
@@ -596,38 +597,279 @@ function NicknameForm({ onDone, onBack }: NicknameFormProps) {
   );
 }
 
+// ── Mode selector (step 4) ────────────────────────────────────────────────────
+
+interface ModeFormProps {
+  onDone: (mode: UserMode) => void;
+}
+
+interface ModeChipProps {
+  selected: boolean;
+  onClick: () => void;
+  icon: string;
+  title: string;
+  subtitle: string;
+}
+
+function ModeChip({ selected, onClick, icon, title, subtitle }: ModeChipProps) {
+  return (
+    <button
+      onClick={onClick}
+      aria-pressed={selected}
+      style={{
+        width: "100%",
+        border: `2px solid ${selected ? "var(--gold)" : "var(--line)"}`,
+        borderRadius: 18,
+        padding: "18px 20px",
+        cursor: "pointer",
+        background: selected
+          ? "linear-gradient(135deg,rgba(244,200,74,.14),rgba(244,200,74,.06))"
+          : "var(--bg-2)",
+        textAlign: "left",
+        display: "flex",
+        alignItems: "flex-start",
+        gap: 16,
+        transition: "all .18s var(--ease-out)",
+        boxShadow: selected ? "var(--glow-gold)" : "none",
+        position: "relative",
+      }}
+    >
+      {/* Icon */}
+      <span style={{ fontSize: 34, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>
+        {icon}
+      </span>
+
+      {/* Text */}
+      <div style={{ flex: 1 }}>
+        <div
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: 20,
+            color: selected ? "var(--gold)" : "var(--fg-1)",
+            textTransform: "uppercase",
+            lineHeight: 1.1,
+            marginBottom: 5,
+          }}
+        >
+          {title}
+        </div>
+        <div
+          style={{
+            fontSize: 13,
+            color: "var(--fg-3)",
+            fontWeight: 600,
+            lineHeight: 1.4,
+          }}
+        >
+          {subtitle}
+        </div>
+      </div>
+
+      {/* Selection indicator */}
+      {selected && (
+        <div
+          style={{
+            position: "absolute",
+            top: 14,
+            right: 14,
+            width: 22,
+            height: 22,
+            borderRadius: 99,
+            background: "var(--foil-gold)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 12,
+            color: "var(--fg-onlight)",
+            fontWeight: 800,
+          }}
+        >
+          ✓
+        </div>
+      )}
+    </button>
+  );
+}
+
+function ModeForm({ onDone }: ModeFormProps) {
+  const [selected, setSelected] = useState<UserMode | null>(null);
+  const [saving, setSaving] = useState(false);
+
+  const handleConfirm = async () => {
+    if (!selected) return;
+    setSaving(true);
+    onDone(selected);
+  };
+
+  return (
+    <div
+      style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        padding: "0 24px 40px",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Glow */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: -40,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 340,
+          height: 320,
+          background: "radial-gradient(circle, rgba(244,200,74,.12), transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div style={{ flex: 0.8 }} />
+
+      {/* Title */}
+      <div style={{ textAlign: "center", position: "relative", zIndex: 1, marginBottom: 28 }}>
+        <h1
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: 30,
+            color: "var(--fg-1)",
+            textTransform: "uppercase",
+            lineHeight: 1,
+          }}
+        >
+          ¿Cómo querés jugar?
+        </h1>
+        <p
+          className="t-body"
+          style={{ margin: "8px auto 0", maxWidth: 280 }}
+        >
+          Elegí tu modo. Podés cambiarlo después en Perfil.
+        </p>
+      </div>
+
+      {/* Mode chips */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 14, position: "relative", zIndex: 1 }}>
+        <ModeChip
+          selected={selected === "collector"}
+          onClick={() => setSelected("collector")}
+          icon="🎴"
+          title="Tengo el álbum Panini"
+          subtitle="Marcá tus figuritas + armá tu 11 + intercambiá con amigos"
+        />
+        <ModeChip
+          selected={selected === "fantasy"}
+          onClick={() => setSelected("fantasy")}
+          icon="⚽"
+          title="Solo Fantasy"
+          subtitle="Armá tu 11 y jugá gratis — sin álbum, sin figuritas"
+        />
+      </div>
+
+      <div style={{ flex: 0.6 }} />
+
+      {/* Confirm CTA */}
+      <button
+        onClick={handleConfirm}
+        disabled={!selected || saving}
+        style={{
+          width: "100%",
+          border: "none",
+          borderRadius: "var(--r-pill)",
+          padding: "16px 0",
+          cursor: selected && !saving ? "pointer" : "default",
+          fontFamily: "var(--font-ui)",
+          fontWeight: 800,
+          fontSize: 15,
+          letterSpacing: ".04em",
+          textTransform: "uppercase",
+          background: selected
+            ? "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)"
+            : "var(--bg-4)",
+          color: selected ? "var(--fg-onlight)" : "var(--fg-3)",
+          boxShadow: selected ? "var(--glow-gold)" : "none",
+          transition: "all .2s",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        {saving ? "Guardando..." : "¡Empezar!"}
+      </button>
+
+      <p
+        style={{
+          textAlign: "center",
+          marginTop: 14,
+          fontSize: 12,
+          color: "var(--fg-3)",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        Podés cambiar de modo después en Perfil.
+      </p>
+    </div>
+  );
+}
+
 // ── Main onboarding page ──────────────────────────────────────────────────────
+// step 0-2  = tutorial carousel
+// step 3    = nickname form
+// step 4    = mode selection
+// step 5+   = done (redirect in progress)
 
 export default function OnboardingPage() {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
-  const [step, setStep] = useState(0); // 0-2 = carousel, 3 = nickname form
+  const [step, setStep] = useState(0);
+  const [pendingNickname, setPendingNickname] = useState("");
 
   useEffect(() => {
-    getNickname().then((name) => {
+    (async () => {
+      const name = await getNickname();
       if (name) {
-        router.replace("/inicio");
+        // Returning user — check mode
+        const mode = await getUserMode();
+        if (mode === "fantasy") {
+          router.replace("/squad");
+        } else {
+          router.replace("/inicio");
+        }
       } else {
         setChecking(false);
       }
-    });
+    })();
   }, [router]);
 
   const handleNext = () => {
     if (step < SLIDES.length - 1) {
       setStep((s) => s + 1);
     } else {
-      setStep(SLIDES.length); // → nickname form
+      setStep(SLIDES.length); // → nickname form (step 3)
     }
   };
 
   const handleSkip = () => {
-    setStep(SLIDES.length); // → nickname form
+    setStep(SLIDES.length); // → nickname form (step 3)
   };
 
-  const handleDone = async (name: string) => {
-    await setNickname(name.toLowerCase());
-    router.replace("/inicio");
+  // Called when nickname form is submitted
+  const handleNicknameDone = (name: string) => {
+    setPendingNickname(name);
+    setStep(SLIDES.length + 1); // → mode selection (step 4)
+  };
+
+  // Called when mode is selected
+  const handleModeDone = async (mode: UserMode) => {
+    await setNickname(pendingNickname.toLowerCase());
+    await setUserMode(mode);
+    if (mode === "fantasy") {
+      router.replace("/squad");
+    } else {
+      router.replace("/inicio");
+    }
   };
 
   // ── Loading state ──────────────────────────────────────────────────
@@ -668,10 +910,13 @@ export default function OnboardingPage() {
         background: "radial-gradient(circle at 50% 0%, #14110a 0%, #07080a 60%)",
       }}
     >
-      {/* Nickname form */}
-      {step >= SLIDES.length ? (
+      {step >= SLIDES.length + 1 ? (
+        /* Mode selection */
+        <ModeForm onDone={handleModeDone} />
+      ) : step >= SLIDES.length ? (
+        /* Nickname form */
         <NicknameForm
-          onDone={handleDone}
+          onDone={handleNicknameDone}
           onBack={() => setStep(0)}
         />
       ) : (

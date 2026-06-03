@@ -350,6 +350,16 @@ export function ownedByPos(pos: Position): Player[] {
   );
 }
 
+/**
+ * ALL players for a given position, sorted by OVR desc.
+ * Used in Fantasy mode where ownership is not a prerequisite.
+ */
+export function allByPos(pos: Position): Player[] {
+  return PLAYERS.filter((p) => p.pos === pos).sort(
+    (a, b) => b.ovr - a.ovr,
+  );
+}
+
 /** Find a player by sticker_id. */
 export function byId(id: string): Player | undefined {
   return PLAYERS.find((p) => p.id === id);
