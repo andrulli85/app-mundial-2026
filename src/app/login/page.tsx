@@ -269,7 +269,10 @@ export default function LoginPage() {
       // user will be set by AuthProvider → the useEffect above fires.
       // On mobile (redirect): page navigates away; on return AuthProvider
       // calls handleRedirectResult and sets the user → useEffect fires.
-    } catch {
+    } catch (e) {
+      const code = (e as { code?: string })?.code ?? "unknown";
+      const msg = (e as Error)?.message ?? String(e);
+      console.error("[login] signIn failed:", { code, message: msg, err: e });
       setErrorMsg("No se pudo iniciar sesion con Google. Intentá de nuevo.");
       setState("error");
     }
