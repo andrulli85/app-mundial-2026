@@ -34,7 +34,7 @@
  * ---------------------------------------------------------------------------
  */
 
-export type StickerType = "player" | "team_logo" | "team_photo" | "fwc" | "panini_special" | "extra";
+export type StickerType = "player" | "team_logo" | "team_photo" | "fwc" | "panini_special";
 
 export interface Sticker {
   id: string;           // canonical sticker_id (e.g. "mex-3-vasquez")
