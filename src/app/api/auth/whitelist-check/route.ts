@@ -17,11 +17,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyFirebaseIdToken } from "@/lib/firebase-id-token";
 import {
-  isWhitelisted,
   signCookieValue,
   COOKIE_NAME,
   MAX_AGE_SECONDS,
 } from "@/lib/invite";
+import { isWhitelisted } from "@/lib/whitelist";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 // Simple token bucket — same parameters as the old invite/verify route: 5 attempts / 5 min / IP.
@@ -119,7 +119,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   // Whitelist check
-  if (!isWhitelisted(tokenPayload.email)) {
+  if (!(await isWhitelisted(tokenPayload.email))) {
     return NextResponse.json({ error: "not_invited" }, { status: 403 });
   }
 

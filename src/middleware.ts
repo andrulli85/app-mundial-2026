@@ -14,7 +14,7 @@
  *
  * Routes that bypass the gate (no cookie needed):
  *   /login           — the SSO gate page itself
- *   /invite          — legacy path (redirects 308 to /login via next.config.ts)
+ *   /invite          — self-serve access request page (public)
  *   /api/auth/*      — auth endpoints (whitelist-check)
  *   /_next/*         — Next.js static assets
  *   /sw.js           — PWA service worker
@@ -32,8 +32,10 @@ import { verifyCookieValue, COOKIE_NAME } from "@/lib/invite";
 // Paths that are always public — no cookie required even when gate is active
 const PUBLIC_PREFIXES = [
   "/login",
-  "/invite",
+  "/invite",       // self-serve access request page + /invite/sent confirmation
   "/api/auth/",
+  "/api/invite",   // POST endpoint for invite requests
+  "/api/slack/",   // Slack callback (interact, etc.)
   "/_next/",
   "/icons/",
   "/assets/",

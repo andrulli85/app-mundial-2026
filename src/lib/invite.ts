@@ -120,25 +120,6 @@ export async function verifyCookieValue(
   return email;
 }
 
-// ── Whitelist check ───────────────────────────────────────────────────────────
-
-/**
- * Returns whether an email is in the comma-separated WHITELIST_EMAILS env var.
- * Fail-closed: if the env var is empty/unset, always returns false.
- */
-export function isWhitelisted(email: string): boolean {
-  const raw = process.env.WHITELIST_EMAILS ?? "";
-  if (!raw.trim()) return false; // fail closed
-
-  const normalized = normalizeEmail(email);
-  const list = raw
-    .split(",")
-    .map((e) => normalizeEmail(e))
-    .filter(Boolean);
-
-  return list.includes(normalized);
-}
-
 // ── Cookie attributes ─────────────────────────────────────────────────────────
 
 export { COOKIE_NAME, MAX_AGE_SECONDS };

@@ -13,6 +13,7 @@
     "icons:generate": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
+    "@vercel/kv": "^3.0.0",
     "@zxing/browser": "^0.2.0",
     "@zxing/library": "^0.22.0",
     "base45": "^2.0.1",
