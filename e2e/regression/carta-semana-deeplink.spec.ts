@@ -58,11 +58,20 @@ async function ensureNickname(page: import("@playwright/test").Page) {
   await page.waitForLoadState("networkidle");
 }
 
+async function dismissCoachmark(page: import("@playwright/test").Page, section: "inicio" | "album" | "once") {
+  const btn = page.locator(`[data-testid="coachmark-dismiss-${section}"]`);
+  if (await btn.count() > 0 && await btn.first().isVisible().catch(() => false)) {
+    await btn.first().click();
+    await page.waitForSelector(`[data-testid="coachmark-${section}"]`, { state: "hidden", timeout: 4000 }).catch(() => {});
+  }
+}
+
 async function goToInicio(page: import("@playwright/test").Page) {
   await page.goto(`${BASE}/inicio`, { waitUntil: "networkidle" });
   await page.waitForSelector('[data-testid="home-dark-root"]', { timeout: 20000 });
   // Wait for async data load (carta-semana-hero renders after sticker fetch)
   await page.waitForSelector('[data-testid="carta-semana-hero"]', { timeout: 20000 });
+  await dismissCoachmark(page, "inicio");
 }
 
 test('1 — /inicio: NO "Ver carta" button (carta-semana-cta absent)', async ({ page }) => {
@@ -121,6 +130,7 @@ test("3+4 — clicking carta card navigates to /album?sticker= and modal opens",
 
   // Wait for album sticker grid to load
   await page.waitForSelector('[data-testid="sticker-grid"]', { timeout: 30000 });
+  await dismissCoachmark(page, "album");
 
   // If the URL has a sticker param the modal should auto-open
   const url = page.url();
@@ -147,6 +157,7 @@ test("5 — /album?sticker=<known-id> directly opens the modal", async ({ page }
   // Navigate to album first without sticker param so catalog loads and we get a valid ID
   await page.goto(`${BASE}/album`, { waitUntil: "networkidle" });
   await page.waitForSelector('[data-testid="sticker-grid"]', { timeout: 30000 });
+  await dismissCoachmark(page, "album");
 
   // Pick first sticker wrapper that has a data-sticker-pos-color attribute
   const firstCard = page.locator('[data-sticker-pos-color]').first();
