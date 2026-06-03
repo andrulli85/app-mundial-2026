@@ -11,7 +11,7 @@
  *   Fix 5 — StickerCardPanini outer border = position color (POS_COLORS)
  */
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import StickerCardPanini from "@/components/StickerCardPanini";
 import StickerDetailModal from "@/components/StickerDetailModal";
@@ -31,6 +31,9 @@ import BottomNav from "@/components/BottomNav";
 import Coachmark from "@/components/Coachmark";
 import { getPeersWishing } from "@/lib/peer-mock";
 import { Star } from "lucide-react";
+import ConfettiBurst from "@/components/celebration/ConfettiBurst";
+import MascotsCelebration from "@/components/celebration/MascotsCelebration";
+import { hasCelebrated, markCelebrated } from "@/lib/celebration-store";
 
 // Fase 2.5: 4-chip strip (per screens.jsx line 135)
 type ChipFilter = "todos" | "favoritas" | "chile" | "repetidas";
@@ -106,6 +109,22 @@ export default function AlbumPage() {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [_demandMap, setDemandMap] = useState<Record<string, number>>({});
   const [activeSticker, setActiveSticker] = useState<Sticker | null>(null);
+  const [showMascots, setShowMascots] = useState(false);
+
+  // Detect prefers-reduced-motion once on mount (client-only)
+  const reducedMotion = useRef(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      reducedMotion.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+  }, []);
+
+  const handleTeamComplete = useCallback((teamCode: string) => {
+    if (teamCode === "FWC" && !reducedMotion.current) {
+      setShowMascots(true);
+    }
+    // ConfettiBurst is rendered inside DarkTeamHeader; no action needed here for tier 1
+  }, []);
 
   // Load favorites from localStorage on mount
   useEffect(() => {
@@ -557,6 +576,8 @@ export default function AlbumPage() {
                 teamColor={group.teamColor}
                 owned={teamStats.get(group.team_code)?.owned ?? 0}
                 total={teamStats.get(group.team_code)?.total ?? group.stickers.length}
+                onComplete={handleTeamComplete}
+                reducedMotion={reducedMotion.current}
               />
               <div className="grid grid-cols-3 gap-x-2 gap-y-4 mb-4 md:grid-cols-5 lg:grid-cols-6">
                 {group.stickers.map((sticker) => {
@@ -594,12 +615,16 @@ export default function AlbumPage() {
           }
         />
       )}
+
+      {showMascots && (
+        <MascotsCelebration onDismiss={() => setShowMascots(false)} />
+      )}
     </div>
   );
 }
 
 // ---------------------------------------------------------------------------
-// DarkTeamHeader — dark-themed team section header
+// DarkTeamHeader — dark-themed team section header with tiered celebration
 // ---------------------------------------------------------------------------
 
 interface DarkTeamHeaderProps {
@@ -607,16 +632,74 @@ interface DarkTeamHeaderProps {
   teamColor: string;
   owned: number;
   total: number;
+  /** Called on the false→true edge of `complete`. Passes the team code. */
+  onComplete?: (teamCode: string) => void;
+  /** Forwarded from AlbumPage's reducedMotion ref. */
+  reducedMotion?: boolean;
 }
 
-function DarkTeamHeader({ entry, teamColor, owned, total }: DarkTeamHeaderProps) {
+function DarkTeamHeader({
+  entry,
+  teamColor,
+  owned,
+  total,
+  onComplete,
+  reducedMotion = false,
+}: DarkTeamHeaderProps) {
   const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
-  const complete = owned === total;
+  const complete = owned === total && total > 0;
+
+  // Track previous complete value to detect the false→true edge
+  const prevCompleteRef = useRef<boolean | null>(null);
+
+  // confetti state local to this header instance
+  const [showConfetti, setShowConfetti] = useState(false);
+  // pulse the ✓ when it first appears
+  const [checkmarkPulsed, setCheckmarkPulsed] = useState(false);
+
+  useEffect(() => {
+    if (prevCompleteRef.current === null) {
+      // First render — store initial state, do NOT fire celebration
+      prevCompleteRef.current = complete;
+      // If already complete on first render, mark as already celebrated
+      // so sessionStorage stays consistent (no replay on remount)
+      if (complete) markCelebrated(entry.code);
+      return;
+    }
+
+    const wasComplete = prevCompleteRef.current;
+    prevCompleteRef.current = complete;
+
+    if (!wasComplete && complete) {
+      // True false→true edge detected
+      if (hasCelebrated(entry.code)) return; // already fired this session
+      markCelebrated(entry.code);
+
+      // Tier 1: confetti burst on the header
+      if (!reducedMotion) {
+        setShowConfetti(true);
+        setCheckmarkPulsed(false);
+        // Reset to trigger re-animation
+        requestAnimationFrame(() => setCheckmarkPulsed(true));
+      } else {
+        // Reduced-motion: subtle highlight pulse via CSS class (no keyframe)
+        setCheckmarkPulsed(true);
+      }
+
+      // Tier 2: FWC mascot overlay — delegate to parent
+      onComplete?.(entry.code);
+    }
+  }, [complete, entry.code, onComplete, reducedMotion]);
 
   return (
     <div
       className="flex items-center gap-2 px-2.5 py-2 mb-2 mt-3 rounded-lg"
-      style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}
+      style={{
+        position: "relative",
+        backgroundColor: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        overflow: "visible",
+      }}
     >
       <span className="text-base leading-none">{entry.flag}</span>
       <span className="text-xs font-bold flex-1 uppercase tracking-wide" style={{ color: "#e5e7eb" }}>
@@ -627,7 +710,18 @@ function DarkTeamHeader({ entry, teamColor, owned, total }: DarkTeamHeaderProps)
         style={{ color: complete ? "#facc15" : "#6b7280" }}
       >
         {owned}/{total}
-        {complete && <span className="ml-1">✓</span>}
+        {complete && (
+          <span
+            className="ml-1 inline-block"
+            style={
+              checkmarkPulsed && !reducedMotion
+                ? { animation: "checkmark-pulse 0.6s cubic-bezier(0.34,1.56,0.64,1) both" }
+                : undefined
+            }
+          >
+            ✓
+          </span>
+        )}
       </span>
       <div
         className="w-16 h-1 rounded-full overflow-hidden"
@@ -641,6 +735,26 @@ function DarkTeamHeader({ entry, teamColor, owned, total }: DarkTeamHeaderProps)
           }}
         />
       </div>
+
+      {/* Tier 1 confetti — anchored to the center of this header */}
+      <ConfettiBurst
+        active={showConfetti}
+        onDone={() => setShowConfetti(false)}
+        dense={false}
+        reducedMotion={reducedMotion}
+      />
+
+      {/* Checkmark pulse keyframe — injected once per instance */}
+      {checkmarkPulsed && !reducedMotion && (
+        <style>{`
+          @keyframes checkmark-pulse {
+            0%   { transform: scale(1);    opacity: 1; }
+            30%  { transform: scale(1.8);  opacity: 1; }
+            60%  { transform: scale(0.9);  opacity: 1; }
+            100% { transform: scale(1);    opacity: 1; }
+          }
+        `}</style>
+      )}
     </div>
   );
 }
