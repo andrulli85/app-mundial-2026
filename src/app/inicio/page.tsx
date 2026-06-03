@@ -305,6 +305,9 @@ export default function InicioPage() {
   const [countryProgress, setCountryProgress] = useState<CountryProgress[]>([]);
   const [recentStickers, setRecentStickers] = useState<Sticker[]>([]);
   const [featuredSticker, setFeaturedSticker] = useState<Sticker | null>(null);
+  // "Arma tu 11" tile dismiss — render by default, hide via effect after reading localStorage
+  const [arma11Dismissed, setArma11Dismissed] = useState(false);
+  const [arma11Visible, setArma11Visible] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -404,6 +407,18 @@ export default function InicioPage() {
     })();
   }, [router]);
 
+  // Read localStorage on mount to restore dismiss state without hydration mismatch
+  useEffect(() => {
+    try {
+      if (localStorage.getItem("arma_tu_11_dismissed_v1") === "1") {
+        setArma11Dismissed(true);
+        setArma11Visible(false);
+      }
+    } catch {
+      // localStorage unavailable (private browsing, SSR) — show tile by default
+    }
+  }, []);
+
   if (loading) {
     return (
       <div
@@ -480,54 +495,115 @@ export default function InicioPage() {
 
           {/* -------------------------------------------------------------- */}
           {/* "Arma tu 11" card (renamed from "Arma tu once" — Fase 1)         */}
+          {/* Dismiss × button added — persists in localStorage (Fase 2)        */}
           {/* -------------------------------------------------------------- */}
-          <Link
-            href="/squad"
-            className="card-dark flex items-center gap-3 p-4 active:opacity-80 transition-opacity"
-            style={{ textDecoration: "none" }}
-            data-testid="once-card"
-          >
-            {/* Squad icon */}
+          {!arma11Dismissed && (
             <div
-              className="w-11 h-11 rounded-full flex items-center justify-center text-xl flex-shrink-0"
-              style={{ background: "rgba(250,204,21,0.12)", border: "1px solid rgba(250,204,21,0.3)" }}
-              aria-hidden="true"
+              className="relative"
+              data-testid="arma-tu-11-tile"
+              style={{
+                opacity: arma11Visible ? 1 : 0,
+                transform: arma11Visible ? "translateY(0)" : "translateY(-6px)",
+                transition: "opacity 200ms ease, transform 200ms ease",
+                pointerEvents: arma11Visible ? "auto" : "none",
+              }}
             >
-              ⚽
-            </div>
-            {/* Text */}
-            <div className="flex-1 min-w-0">
-              <div className="font-black text-sm leading-none mb-1" style={{ color: "#f5f5f5" }}>
-                Arma tu 11
-              </div>
-              {/* TODO(squad): replace 85 with live OVR from getSquad() calculation */}
-              <div className="text-xs" style={{ color: "#9ca3af" }}>
-                Tu equipo está en{" "}
-                <span
-                  className="font-bold"
-                  style={{ color: "#facc15" }}
-                  data-testid="ovr-text"
+              {/* × dismiss button — top-right overlay */}
+              <button
+                aria-label="Ocultar"
+                data-testid="arma-tu-11-dismiss"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  // Fade/slide out first, then unmount
+                  setArma11Visible(false);
+                  try {
+                    localStorage.setItem("arma_tu_11_dismissed_v1", "1");
+                  } catch {
+                    // localStorage unavailable — dismiss for session only
+                  }
+                  setTimeout(() => setArma11Dismissed(true), 210);
+                }}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  zIndex: 10,
+                  // 32×32 hit area via padding
+                  padding: "9px",
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "#6b7280",
+                  lineHeight: 0,
+                }}
+              >
+                {/* X icon — 14px, matches Lucide stroke style */}
+                <svg
+                  width={14}
+                  height={14}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
                 >
-                  {MOCK_OVR} OVR
-                </span>{" "}
-                · mejóralo
-              </div>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+
+              {/* Tile body — <Link> to /squad (unchanged content) */}
+              <Link
+                href="/squad"
+                className="card-dark flex items-center gap-3 p-4 active:opacity-80 transition-opacity"
+                style={{ textDecoration: "none" }}
+                data-testid="once-card"
+              >
+                {/* Squad icon */}
+                <div
+                  className="w-11 h-11 rounded-full flex items-center justify-center text-xl flex-shrink-0"
+                  style={{ background: "rgba(250,204,21,0.12)", border: "1px solid rgba(250,204,21,0.3)" }}
+                  aria-hidden="true"
+                >
+                  ⚽
+                </div>
+                {/* Text */}
+                <div className="flex-1 min-w-0">
+                  <div className="font-black text-sm leading-none mb-1" style={{ color: "#f5f5f5" }}>
+                    Arma tu 11
+                  </div>
+                  {/* TODO(squad): replace 85 with live OVR from getSquad() calculation */}
+                  <div className="text-xs" style={{ color: "#9ca3af" }}>
+                    Tu equipo está en{" "}
+                    <span
+                      className="font-bold"
+                      style={{ color: "#facc15" }}
+                      data-testid="ovr-text"
+                    >
+                      {MOCK_OVR} OVR
+                    </span>{" "}
+                    · mejóralo
+                  </div>
+                </div>
+                {/* Chevron */}
+                <svg
+                  width={18}
+                  height={18}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#6b7280"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </Link>
             </div>
-            {/* Chevron */}
-            <svg
-              width={18}
-              height={18}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#6b7280"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </Link>
+          )}
 
           {/* -------------------------------------------------------------- */}
           {/* "Últimos puntos" — last round scores (mock, Fase 1)              */}
