@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "git config core.hooksPath .github-hooks",
     "dev": "next dev",
     "prebuild": "node scripts/inject-sw-version.mjs",
     "build": "next build",

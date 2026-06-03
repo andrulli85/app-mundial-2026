@@ -3,11 +3,10 @@
 /**
  * BottomNav — 5-tab navigation bar (Stream A, Phase 4.1).
  *
- * Bi-mode (Epic 3): the 2nd tab swaps based on userMode stored in IndexedDB.
- *   Collector: Inicio · Álbum (FAB) · Mi 11 · Puntos · Perfil
- *   Fantasy:   Inicio · Reglas     · Mi 11 · Puntos · Perfil
+ * Bi-mode (Epic 3): the center FAB and the 2nd tab both swap based on userMode.
+ *   Collector: Inicio · Mercado · [FAB Álbum → /album] · Puntos · Perfil
+ *   Fantasy:   Inicio · Reglas  · [FAB Mi 11  → /squad] · Puntos · Perfil
  *
- * The center FAB always links to /squad (Mi 11).
  * Mode is read once on mount; a storage event triggers re-read for
  * same-tab mode toggle in /perfil.
  *
@@ -101,57 +100,64 @@ export default function BottomNav({ active }: BottomNavProps) {
         </NavItem>
       )}
 
-      {/* ── Mi 11 — FAB center (always) ── */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 4,
-          // Lift the center tab above the bar
-          marginTop: -14,
-        }}
-      >
-        <Link
-          href="/squad"
-          aria-label="Mi 11"
-          aria-current={active === "once" ? "page" : undefined}
-          style={{
-            width: 52,
-            height: 52,
-            borderRadius: "50%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textDecoration: "none",
-            flexShrink: 0,
-            background: "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
-            boxShadow: active === "once"
-              ? `0 0 0 3px var(--bg-1), 0 0 20px -2px rgba(244,200,74,.7), var(--sh-3)`
-              : `0 0 0 3px var(--bg-1), 0 0 12px -4px rgba(244,200,74,.4), var(--sh-2)`,
-            transition: "box-shadow 0.2s var(--ease-out)",
-          }}
-        >
-          <Grid3x3
-            size={24}
-            strokeWidth={2}
-            color="var(--fg-onlight)"
-          />
-        </Link>
-        <span
-          style={{
-            fontSize: 10,
-            fontWeight: 800,
-            letterSpacing: ".04em",
-            textTransform: "uppercase",
-            color: GOLD,
-            fontFamily: "var(--font-ui)",
-          }}
-        >
-          Mi 11
-        </span>
-      </div>
+      {/* ── Center FAB: Álbum (collector) or Mi 11 (fantasy) ── */}
+      {(() => {
+        const fabHref        = isFantasy ? "/squad" : "/album";
+        const fabLabel       = isFantasy ? "Mi 11"  : "Álbum";
+        const fabActiveMatch = isFantasy ? "once"   : "album";
+        const fabActive      = active === fabActiveMatch;
+        return (
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 4,
+              marginTop: -14,
+            }}
+          >
+            <Link
+              href={fabHref}
+              aria-label={fabLabel}
+              aria-current={fabActive ? "page" : undefined}
+              style={{
+                width: 52,
+                height: 52,
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textDecoration: "none",
+                flexShrink: 0,
+                background: "linear-gradient(135deg,#FFE9A8 0%,#F4C84A 38%,#C2913A 62%,#FFE9A8 100%)",
+                boxShadow: fabActive
+                  ? `0 0 0 3px var(--bg-1), 0 0 20px -2px rgba(244,200,74,.7), var(--sh-3)`
+                  : `0 0 0 3px var(--bg-1), 0 0 12px -4px rgba(244,200,74,.4), var(--sh-2)`,
+                transition: "box-shadow 0.2s var(--ease-out)",
+              }}
+            >
+              <Grid3x3
+                size={24}
+                strokeWidth={2}
+                color="var(--fg-onlight)"
+              />
+            </Link>
+            <span
+              style={{
+                fontSize: 10,
+                fontWeight: 800,
+                letterSpacing: ".04em",
+                textTransform: "uppercase",
+                color: GOLD,
+                fontFamily: "var(--font-ui)",
+              }}
+            >
+              {fabLabel}
+            </span>
+          </div>
+        );
+      })()}
 
       {/* ── Puntos ── */}
       <NavItem

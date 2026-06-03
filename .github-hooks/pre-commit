@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# app-mundial-2026 — pre-commit hook
+#
+# Rejects staged files whose names match macOS copy-on-conflict patterns
+# (" 2." or " 3." suffix under src/).  These files are filesystem noise
+# produced when macOS cannot merge two versions of the same file and appends
+# " 2" or " 3" to the copy's name.  They must never reach git history.
+#
+# Activated via `git config core.hooksPath .github-hooks` (set by `npm install`
+# via the `prepare` script in package.json).
+#
+# See: docs/plans/2026-06-02-albumix-data-hardening.md §10
+
+set -e
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+printf "\033[1;34m[pre-commit]\033[0m checking for macOS copy-on-conflict files...\n"
+
+CONFLICT_FILES=$(git diff --cached --name-only --diff-filter=AM | grep -E '^src/.*( 2\.| 3\.)' || true)
+
+if [ -n "$CONFLICT_FILES" ]; then
+  printf "\n\033[1;31m[pre-commit] ERROR: macOS copy-on-conflict files detected:\033[0m\n"
+  echo "$CONFLICT_FILES" | while IFS= read -r f; do
+    printf "  \033[1;31m%s\033[0m\n" "$f"
+  done
+  printf "\n\033[1;31mRename to canonical name (drop ' 2'/' 3' suffix) or delete before committing.\033[0m\n"
+  printf "\033[1;31mSee: docs/plans/2026-06-02-albumix-data-hardening.md §10\033[0m\n"
+  exit 1
+fi
+
+printf "\033[1;32m[pre-commit] no copy-on-conflict files found. Proceeding with commit.\033[0m\n"

@@ -45,3 +45,8 @@ next-env.d.ts
 
 # Source sticker PNGs — 498MB, gitignored (use originales-manifest.json for references)
 /originales/
+
+# macOS copy-on-conflict duplicates (Finder renames conflicting files "<name> 2.<ext>")
+# The pre-commit hook also rejects these from being staged — .gitignore is the second layer.
+*[[:space:]]2.*
+*[[:space:]]3.*
