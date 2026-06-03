@@ -5,14 +5,16 @@
   "scripts": {
     "prepare": "git config core.hooksPath .github-hooks",
     "dev": "next dev",
-    "prebuild": "node scripts/inject-sw-version.mjs",
+    "prebuild": "node scripts/verify-data-manifest.mjs && node scripts/inject-sw-version.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
     "import-seed": "node scripts/import-seed.mjs",
     "import-seed:dry": "node scripts/import-seed.mjs --dry-run",
     "icons:generate": "node scripts/generate-icons.mjs",
-    "validate-data": "node scripts/validate-data.mjs"
+    "validate-data": "node scripts/validate-data.mjs",
+    "verify-data-manifest": "node scripts/verify-data-manifest.mjs",
+    "regenerate-manifests": "node scripts/verify-data-manifest.mjs --regenerate"
   },
   "dependencies": {
     "@vercel/kv": "^3.0.0",

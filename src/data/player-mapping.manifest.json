@@ -1,0 +1,28 @@
+{
+  "manifest_version": "1.0",
+  "data_file": "player-mapping.json",
+  "generated_at": "2026-06-03T13:27:36.861Z",
+  "source_commit": "e87e9d7",
+  "scraper_version": "1.0.0",
+  "row_count": 736,
+  "sha256": "6a4fa9dff5588063207badf26d4d8349b779d9df2a3bdecaf139d6d1359a98cd",
+  "field_coverage": {
+    "mapping": {
+      "covered": 736,
+      "total": 864,
+      "pct": 0.851852
+    }
+  },
+  "low_confidence_mapping_ids": [
+    "can-2-st-clair",
+    "can-9-miller",
+    "qat-12-fatehi",
+    "bra-2-alisson",
+    "hai-15-etienne",
+    "par-14-fonda",
+    "aus-9-miller",
+    "egy-4-hamdy",
+    "cpv-11-andrade"
+  ],
+  "low_confidence_ratings_ids": []
+}
