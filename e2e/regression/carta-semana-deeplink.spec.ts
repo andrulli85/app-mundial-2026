@@ -48,9 +48,9 @@ async function ensureNickname(page: import("@playwright/test").Page) {
 
   const input = page.locator('input[aria-label="Ingresá tu nombre de jugador"]');
   await input.click();
-  await input.pressSequentially("pw-carta", { delay: 50 });
+  await input.pressSequentially("pwcarta", { delay: 50 });
 
-  const submitBtn = page.locator('button[type="submit"]');
+  const submitBtn = page.getByRole("button", { name: /Empezar/i });
   await submitBtn.waitFor({ state: "visible" });
   await submitBtn.click();
 

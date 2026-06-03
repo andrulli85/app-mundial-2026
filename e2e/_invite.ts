@@ -20,6 +20,15 @@ function getSecret(): string {
   return process.env.ALBUMIX_INVITE_SECRET ?? DEFAULT_SECRET;
 }
 
+function getDefaultEmail(): string {
+  const whitelist = process.env.WHITELIST_EMAILS;
+  if (whitelist) {
+    const first = whitelist.split(",")[0]?.trim();
+    if (first) return first;
+  }
+  return "test@example.com";
+}
+
 function getBaseUrl(): string {
   return process.env.BASE_URL ?? "https://albumix-app.vercel.app";
 }
@@ -66,7 +75,7 @@ function computeCookieValue(email: string, secret: string): string {
  */
 export async function grantAccess(
   page: Page,
-  email: string = "test@example.com"
+  email: string = getDefaultEmail()
 ): Promise<void> {
   const secret = getSecret();
   const cookieValue = computeCookieValue(email, secret);
