@@ -358,7 +358,7 @@ export default function LoginPage() {
           </a>
 
           <button
-            onClick={handleTryAgain}
+            onClick={handleForceReset}
             className="t-small underline transition-opacity active:opacity-75"
             style={{
               background: "none",
